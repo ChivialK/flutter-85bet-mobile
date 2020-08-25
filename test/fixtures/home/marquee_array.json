@@ -1,0 +1,49 @@
+{
+  "marquee": [
+    {
+      "id": 2,
+      "content_cn": "Dear members, in the current fast payment and WeChat payment maintenance, the company provides bank deposit, Alipay payment, online payment, UnionPay scan code, virtual currency, please refer to the above recharge methods.",
+      "content_us": "",
+      "content_vn": "",
+      "content_th": "",
+      "url": "https:\/\/www.baidu.com\/",
+      "created_at": "2019-04-10",
+      "updated_at": "2020-06-04",
+      "showDate": "2019-01-17"
+    },
+    {
+      "id": 1,
+      "content_cn": "important Notice:\nMembers please pay attention! ! ! !\nIf you see the 85Bet cooperation or 85Bet merger announcement in other casinos\nEverything is fake, please don't be fooled!\n85Bet currently does not have any relevant cooperative casinos. If you have any questions, please consult the 24-hour customer service.",
+      "content_us": "",
+      "content_vn": "",
+      "content_th": "",
+      "url": "https:\/\/www.baidu.com\/",
+      "created_at": "2019-04-10",
+      "updated_at": "2020-06-04",
+      "showDate": "2020-05-14"
+    },
+    {
+      "id": 6,
+      "content_cn": "Hello Dear Member! Due to the rampant website hijacking in recent days, if you open a website other than our company or cannot open the webpage effectively, please use the online customer service system, QQ customer service, WeChat customer service to contact the company, or directly go to the 85Bet navigation station to select a spare domain name to enter the company Do not provide personal information on non-company websites to maintain the security of your account information and funds! Thank you for your support for 85Bet!",
+      "content_us": "",
+      "content_vn": "",
+      "content_th": "",
+      "url": "https:\/\/www.baidu.com\/",
+      "created_at": "2019-04-18",
+      "updated_at": "2020-06-04",
+      "showDate": "2020-01-16"
+    },
+    {
+      "id": 7,
+      "content_cn": "\u2605Important notice\u2605: The receiving bank account of 85Bet will be changed from time to time. Please re-acquire the latest receiving account before each remittance recharge. For example, if you deposit to a deactivated receiving account, the company cannot check and accept it. !\n85Bet Thank you for your support and love!! \u2267\u25bd\u2266y",
+      "content_us": "",
+      "content_vn": "",
+      "content_th": "",
+      "url": "https:\/\/www.baidu.com\/",
+      "created_at": "2019-05-03",
+      "updated_at": "2020-06-04",
+      "showDate": "2020-01-16"
+    }
+  ],
+  "speed": 156
+}

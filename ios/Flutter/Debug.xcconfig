@@ -1,0 +1,7 @@
+#include "Generated.xcconfig"
+
+FLUTTER_TARGET=lib/main_dev.dart
+
+APP_DISPLAY_NAME = 85Bet Mobile Test
+
+CONFIG_FLAG = DEBUG

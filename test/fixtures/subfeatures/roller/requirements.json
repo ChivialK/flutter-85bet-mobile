@@ -1,0 +1,160 @@
+{
+  "code": 0,
+  "data": {
+    "type": {
+      "1": {
+        "id": 1,
+        "name": "deposit",
+        "ch": "\u5145\u503c",
+        "status": "1",
+        "updated_at": "2019-07-10 21:56:43"
+      },
+      "2": {
+        "id": 2,
+        "name": "turnover",
+        "ch": "\u6d41\u6c34",
+        "status": "1",
+        "updated_at": "2019-07-10 21:56:46"
+      }
+    },
+    "target": {
+      "1": {
+        "1": {
+          "id": 1,
+          "name": "\u6bcf\u65e5\u5145\u503c",
+          "type": "1",
+          "require": 2000,
+          "count": 5,
+          "time": "day",
+          "status": "1",
+          "sort": 13,
+          "updated_at": "2019-07-11 06:02:09",
+          "vaild": true
+        },
+        "8": {
+          "id": 8,
+          "name": "\u6bcf\u65e5\u5145\u503c",
+          "type": "1",
+          "require": 500,
+          "count": 1,
+          "time": "day",
+          "status": "1",
+          "sort": 7,
+          "updated_at": "2019-07-18 04:13:25",
+          "vaild": true
+        },
+        "17": {
+          "id": 17,
+          "name": "10",
+          "type": "1",
+          "require": 10,
+          "count": 10,
+          "time": "week",
+          "status": "1",
+          "sort": 17,
+          "updated_at": "2019-09-11 17:28:32",
+          "vaild": true
+        },
+        "18": {
+          "id": 18,
+          "name": "1",
+          "type": "1",
+          "require": 100,
+          "count": 1,
+          "time": "day",
+          "status": "1",
+          "sort": 18,
+          "updated_at": "2019-09-14 08:55:00",
+          "vaild": true
+        }
+      },
+      "2": {
+        "6": {
+          "id": 6,
+          "name": "\u6bcf\u6708\u6d41\u6c34",
+          "type": "2",
+          "require": 100,
+          "count": 5,
+          "time": "week",
+          "status": "1",
+          "sort": 1,
+          "updated_at": "2019-07-12 02:56:07",
+          "vaild": true
+        },
+        "7": {
+          "id": 7,
+          "name": "\u6bcf\u5468\u6d41\u6c34",
+          "type": "2",
+          "require": 500,
+          "count": 50,
+          "time": "week",
+          "status": "1",
+          "sort": 6,
+          "updated_at": "2019-07-12 03:12:37",
+          "vaild": true
+        },
+        "13": {
+          "id": 13,
+          "name": "\u6bcf\u6708\u6d41\u6c34",
+          "type": "2",
+          "require": 600,
+          "count": 600,
+          "time": "month",
+          "status": "1",
+          "sort": 8,
+          "updated_at": "2019-08-02 05:48:11",
+          "vaild": true
+        },
+        "14": {
+          "id": 14,
+          "name": "eric",
+          "type": "2",
+          "require": 10000,
+          "count": 10,
+          "time": "day",
+          "status": "1",
+          "sort": 14,
+          "updated_at": "2019-09-11 05:49:27",
+          "vaild": true
+        },
+        "15": {
+          "id": 15,
+          "name": "TEST",
+          "type": "2",
+          "require": 99999,
+          "count": 20,
+          "time": "month",
+          "status": "1",
+          "sort": 15,
+          "updated_at": "2019-09-11 22:43:37",
+          "vaild": true
+        },
+        "16": {
+          "id": 16,
+          "name": "10",
+          "type": "2",
+          "require": 10,
+          "count": 10,
+          "time": "day",
+          "status": "1",
+          "sort": 16,
+          "updated_at": "2019-09-11 17:20:40",
+          "vaild": true
+        }
+      }
+    },
+    "current": {
+      "1": {
+        "day": 0,
+        "week": 0,
+        "month": 0
+      },
+      "2": {
+        "day": 0,
+        "week": 0,
+        "month": 0
+      }
+    }
+  },
+  "msg": ""
+}

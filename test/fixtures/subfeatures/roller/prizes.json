@@ -1,0 +1,70 @@
+{
+  "code": 0,
+  "data": {
+    "1": {
+      "id": 1,
+      "pic": 220,
+      "alert_pic": 221,
+      "prize": "Lucky red envelope 8",
+      "img": "images\/turntable\/220.png?202006301709",
+      "alert": "images\/turntable\/221.png?202006301709"
+    },
+    "2": {
+      "id": 2,
+      "pic": 222,
+      "alert_pic": 223,
+      "prize": "Lucky red envelope 1",
+      "img": "images\/turntable\/222.png?202006301709",
+      "alert": "images\/turntable\/223.png?202006301709"
+    },
+    "3": {
+      "id": 3,
+      "pic": 224,
+      "alert_pic": 225,
+      "prize": "Lucky red envelope 2",
+      "img": "images\/turntable\/224.png?202006301709",
+      "alert": "images\/turntable\/225.png?202006301709"
+    },
+    "4": {
+      "id": 4,
+      "pic": 232,
+      "alert_pic": 233,
+      "prize": "Thanks for coming.",
+      "img": "images\/turntable\/232.png?202006301709",
+      "alert": "images\/turntable\/233.png?202006301709"
+    },
+    "5": {
+      "id": 5,
+      "pic": 234,
+      "alert_pic": 235,
+      "prize": "Thanks for coming.",
+      "img": "images\/turntable\/234.png?202006301709",
+      "alert": "images\/turntable\/235.png?202006301709"
+    },
+    "6": {
+      "id": 6,
+      "pic": 226,
+      "alert_pic": 227,
+      "prize": "Lucky red envelope 8",
+      "img": "images\/turntable\/226.png?202006301709",
+      "alert": "images\/turntable\/227.png?202006301709"
+    },
+    "7": {
+      "id": 7,
+      "pic": 228,
+      "alert_pic": 229,
+      "prize": "Lucky red envelope 1",
+      "img": "images\/turntable\/228.png?202006301709",
+      "alert": "images\/turntable\/229.png?202006301709"
+    },
+    "8": {
+      "id": 8,
+      "pic": 230,
+      "alert_pic": 231,
+      "prize": "Lucky red envelope 5",
+      "img": "images\/turntable\/230.png?202006301709",
+      "alert": "images\/turntable\/231.png?202006301709"
+    }
+  },
+  "msg": ""
+}

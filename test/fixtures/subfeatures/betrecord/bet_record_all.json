@@ -1,0 +1,72 @@
+{
+  "data": {
+    "total": {
+      "bet": 1.2,
+      "payout": -0.95
+    },
+    "AG slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "BB slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "BG slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "CQ9 slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "DS slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "EBET slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "EG slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "FG slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "GMT slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "ICG slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "JDB slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "MG slot": {
+      "bet": 1.2,
+      "payout": -0.95
+    },
+    "MW slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "NT slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "PT slot": {
+      "bet": 0,
+      "payout": 0
+    },
+    "SW slot": {
+      "bet": 0,
+      "payout": 0
+    }
+  }
+}

@@ -1,0 +1,2580 @@
+{
+  "@@last_modified": "2020-08-06T17:12:17+0800",
+  "@@locale": "en",
+  "title": "85Bet Mobile",
+  "@title": {
+    "description": "85Bet Demo",
+    "type": "text",
+    "placeholders": {}
+  },
+  "pageTitleHome": "Home",
+  "@pageTitleHome": {
+    "type": "text"
+  },
+  "pageTitleMovieEG": "EG Movie",
+  "@pageTitleMovieEG": {
+    "type": "text"
+  },
+  "pageTitleMovie": "New Movie",
+  "@pageTitleMovie": {
+    "type": "text"
+  },
+  "pageTitleDownload": "APP Download",
+  "@pageTitleDownload": {
+    "type": "text"
+  },
+  "pageTitleTutorial": "Tutorial",
+  "@pageTitleTutorial": {
+    "type": "text"
+  },
+  "pageTitleNotice": "Announcement",
+  "@pageTitleNotice": {
+    "type": "text"
+  },
+  "pageTitleRouter": "Line Navigation",
+  "@pageTitleRouter": {
+    "type": "text"
+  },
+  "pageTitleRank": "Vip Tier",
+  "@pageTitleRank": {
+    "type": "text"
+  },
+  "pageTitleStore": "Store",
+  "@pageTitleStore": {
+    "type": "text"
+  },
+  "pageTitleSign": "Sign in",
+  "@pageTitleSign": {
+    "type": "text"
+  },
+  "pageTitleRoller": "Lucky Roller",
+  "@pageTitleRoller": {
+    "type": "text"
+  },
+  "pageTitleCollect": "Word Collect",
+  "@pageTitleCollect": {
+    "type": "text"
+  },
+  "pageTitleDeposit": "Recharge",
+  "@pageTitleDeposit": {
+    "type": "text"
+  },
+  "pageTitlePromo": "Offer",
+  "@pageTitlePromo": {
+    "type": "text"
+  },
+  "pageTitleService": "Support",
+  "@pageTitleService": {
+    "type": "text"
+  },
+  "pageTitleMember": "My",
+  "@pageTitleMember": {
+    "type": "text"
+  },
+  "pageTitleCenter": "Center",
+  "@pageTitleCenter": {
+    "type": "text"
+  },
+  "pageTitleLogin": "Login",
+  "@pageTitleLogin": {
+    "type": "text"
+  },
+  "pageTitleLogin2": "Member Login",
+  "@pageTitleLogin2": {
+    "type": "text"
+  },
+  "pageTitleRegister": "Register",
+  "@pageTitleRegister": {
+    "type": "text"
+  },
+"pageTitleRegisterFree": "Register Free",
+  "@pageTitleRegisterFree": {
+    "type": "text"
+  },
+  "pageTitleRegisterMember": "Register Member",
+  "@pageTitleRegisterMember": {
+    "type": "text"
+  },
+  "pageTitleMemberTransfer": "Transfer",
+  "@pageTitleMemberTransfer": {
+    "type": "text"
+  },
+  "pageTitleMemberCard": "Bank Card",
+  "@pageTitleMemberCard": {
+    "type": "text"
+  },
+  "pageTitleMemberWithdraw": "Withdraw",
+  "@pageTitleMemberWithdraw": {
+    "type": "text"
+  },
+  "pageTitleMemberBalance": "Platform Balance",
+  "@pageTitleMemberBalance": {
+    "type": "text"
+  },
+  "pageTitleMemberWallet": "No Wallet",
+  "@pageTitleMemberWallet": {
+    "type": "text"
+  },
+  "pageTitleMemberMessage": "Site Message",
+  "@pageTitleMemberMessage": {
+    "type": "text"
+  },
+  "pageTitleMemberCenter": "Center",
+  "@pageTitleMemberCenter": {
+    "type": "text"
+  },
+  "pageTitleMemberPassword": "Change Password",
+  "@pageTitleMemberPassword": {
+    "type": "text"
+  },
+  "pageTitleMemberTransaction": "Transfer Record",
+  "@pageTitleMemberTransaction": {
+    "type": "text"
+  },
+  "pageTitleMemberBets": "Bet History",
+  "@pageTitleMemberBets": {
+    "type": "text"
+  },
+  "pageTitleMemberDeals": "Transaction History",
+  "@pageTitleMemberDeals": {
+    "type": "text"
+  },
+  "pageTitleMemberFlow": "Flowing Record",
+  "@pageTitleMemberFlow": {
+    "type": "text"
+  },
+  "pageTitleMemberAgent": "Agent",
+  "@pageTitleMemberAgent": {
+    "type": "text"
+  },
+  "pageTitleMemberAgentAbout": "Agent?",
+  "@pageTitleMemberAgentAbout": {
+    "type": "text"
+  },
+  "pageTitleTask": "Task",
+  "@pageTitleTask": {
+    "type": "text"
+  },
+  "pageTitleMore": "More",
+  "@pageTitleMore": {
+    "type": "text"
+  },
+  "toolBarMemberCredit": "￥ {value}",
+  "@toolBarMemberCredit": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "100.00"
+      }
+    }
+  },
+  "workInProgress": "Features coming soon!",
+  "@workInProgress": {
+    "type": "text"
+  },
+  "exitAppHint": "Press again to exit APP",
+  "@exitAppHint": {
+    "type": "text"
+  },
+  "btnMenu": "Menu",
+  "@btnMenu": {
+    "type": "text"
+  },
+  "btnBack": "Back",
+  "@btnBack": {
+    "type": "text"
+  },
+  "btnRefresh": "Refresh",
+  "@btnRefresh": {
+    "type": "text"
+  },
+  "btnUpdate": "Update",
+  "@btnUpdate": {
+    "type": "text"
+  },
+  "btnClose": "Close",
+  "@btnClose": {
+    "type": "text"
+  },
+  "btnSearch": "Search",
+  "@btnSearch": {
+    "type": "text"
+  },
+  "btnConfirm": "Confirm",
+  "@btnConfirm": {
+    "type": "text"
+  },
+  "btnCancel": "Cancel",
+  "@btnCancel": {
+    "type": "text"
+  },
+  "btnSend": "Send",
+  "@btnSend": {
+    "type": "text"
+  },
+  "btnSubmit": "Submit",
+  "@btnSubmit": {
+    "type": "text"
+  },
+  "btnConfirmSend": "Confirm & Send",
+  "@btnConfirmSend": {
+    "type": "text"
+  },
+  "btnLogin": "Login",
+  "@btnLogin": {
+    "type": "text"
+  },
+  "btnRegister": "Register",
+  "@btnRegister": {
+    "type": "text"
+  },
+  "btnStopShowing": "Skip",
+  "@btnStopShowing": {
+    "type": "text"
+  },
+  "btnResetPassword": "Forgot Password",
+  "@btnResetPassword": {
+    "type": "text"
+  },
+  "btnFastLogin": "Save Login Info",
+  "@btnFastLogin": {
+    "type": "text"
+  },
+  "btnSignUp": "Sign in",
+  "@btnSignUp": {
+    "type": "text"
+  },
+  "btnDownload": "Download",
+  "@btnDownload": {
+    "type": "text"
+  },
+  "btnBind": "Bind",
+  "@btnBind": {
+    "type": "text"
+  },
+  "btnQueryNow": "Search",
+  "@btnQueryNow": {
+    "type": "text"
+  },
+  "btnShow": "Show",
+  "@btnShow": {
+    "type": "text"
+  },
+  "btnOn": "On",
+  "@btnOn": {
+    "type": "text"
+  },
+  "btnOff": "Off",
+  "@btnOff": {
+    "type": "text"
+  },
+  "sideBtnBackHome": "Return",
+  "@sideBtnBackHome": {
+    "type": "text"
+  },
+  "sideBtnRotate": "Rotate Left",
+  "@sideBtnRotate": {
+    "type": "text"
+  },
+  "sideBtnLockRotate": "Lock Rotate",
+  "@sideBtnLockRotate": {
+    "type": "text"
+  },
+  "spinnerDateAll": "All",
+  "@spinnerDateAll": {
+    "type": "text"
+  },
+  "spinnerDateToday": "Today",
+  "@spinnerDateToday": {
+    "type": "text"
+  },
+  "spinnerDateYesterday": "Yesterday",
+  "@spinnerDateYesterday": {
+    "type": "text"
+  },
+  "spinnerDateMonth": "Month",
+  "@spinnerDateMonth": {
+    "type": "text"
+  },
+  "spinnerDateCustom": "Custom",
+  "@spinnerDateCustom": {
+    "type": "text"
+  },
+  "hintActionSelect": "Please select",
+  "@hintActionSelect": {
+    "type": "text"
+  },
+  "hintActionLogin": "Please login first",
+  "@hintActionLogin": {
+    "type": "text"
+  },
+  "hintTitleLogin": "Please enter your member info",
+  "@hintTitleLogin": {
+    "type": "text"
+  },
+  "hintAccount": "UserName *",
+  "@hintAccount": {
+    "type": "text"
+  },
+  "hintAccountPassword": "Password *",
+  "@hintAccountPassword": {
+    "type": "text"
+  },
+  "hintAccountInput": "enter account",
+  "@hintAccountInput": {
+    "type": "text"
+  },
+  "hintPasswordInput": "enter password",
+  "@hintPasswordInput": {
+    "type": "text"
+  },
+  "hintConfirmedInput": "enter password again",
+  "@hintConfirmedInput": {
+    "type": "text"
+  },
+  "hintPhoneInput": "enter phone number",
+  "@hintPhoneInput": {
+    "type": "text"
+  },
+  "hintReferralInput": "enter referral code",
+  "@hintReferralInput": {
+    "type": "text"
+  },
+  "hintName": "Enter username",
+  "@hintName": {
+    "type": "text"
+  },
+  "hintEmail": "Enter Email",
+  "@hintEmail": {
+    "type": "text"
+  },
+  "hintPassword": "Enter password",
+  "@hintPassword": {
+    "type": "text"
+  },
+  "hintConfirmed": "Enter the password again",
+  "@hintConfirmed": {
+    "type": "text"
+  },
+  "messageLoading": "Loading...",
+  "@messageLoading": {
+    "type": "text"
+  },
+  "messageWelcomeUser": "Welcome, {name}",
+  "@messageWelcomeUser": {
+    "type": "text",
+    "placeholders": {
+      "name": {
+        "example": "user"
+      }
+    }
+  },
+  "messageWelcome": "Welcome",
+  "@messageWelcome": {
+    "type": "text"
+  },
+  "messageWelcomeHint": "please login / register",
+  "@messageWelcomeHint": {
+    "type": "text"
+  },
+  "messageRegisterFailed": "Registration failed",
+  "@messageRegisterFailed": {
+    "type": "text"
+  },
+  "messageLoginFailed": "Login Failed",
+  "@messageLoginFailed": {
+    "type": "text"
+  },
+  "messageActionFailed": "Invalid Action",
+  "@messageActionFailed": {
+    "type": "text"
+  },
+  "messageActionFillForm": "Please fill the form",
+  "@messageActionFillForm": {
+    "type": "text"
+  },
+  "messageLogout": "{name}, please log in again",
+  "@messageLogout": {
+    "type": "text",
+    "placeholders": {
+      "name": {
+        "example": "user"
+      }
+    }
+  },
+  "messageActionTooFrequent": "Too many action in a short time",
+  "@messageActionTooFrequent": {
+    "type": "text"
+  },
+  "messageNoEvent": "No activity currently",
+  "@messageNoEvent": {
+    "type": "text"
+  },
+  "messageVerifySuccess": "Verify Success",
+  "@messageVerifySuccess": {
+    "type": "text"
+  },
+  "messageTaskSuccess": "{msg} success",
+  "@messageTaskSuccess": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "login success"
+      }
+    }
+  },
+  "messageTaskCanceled": "{msg} canceled",
+  "@messageTaskCanceled": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "login canceled"
+      }
+    }
+  },
+  "messageTaskFailed": "{msg} failed",
+  "@messageTaskFailed": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "login"
+      }
+    }
+  },
+  "messageError": "{msg} error",
+  "@messageError": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "login"
+      }
+    }
+  },
+  "messageErrorCause": "Error:{msg}({msg2})",
+  "@messageErrorCause": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "login error"
+      },
+      "msg2": {
+        "example": "wrong password"
+      }
+    }
+  },
+  "messageErrorStatus": "Error:{msg}",
+  "@messageErrorStatus": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "login error"
+      }
+    }
+  },
+  "messageErrorLink": "Cannot open link：{url}",
+  "@messageErrorLink": {
+    "type": "text",
+    "placeholders": {
+      "url": {
+        "example": "https://"
+      }
+    }
+  },
+  "messageInvalidSymbol": "Contains Invalid Symbols",
+  "@messageInvalidSymbol": {
+    "type": "text"
+  },
+  "messageInvalidFormat": "Error Data Format",
+  "@messageInvalidFormat": {
+    "type": "text"
+  },
+  "messageInvalidName": "Malformed name",
+  "@messageInvalidName": {
+    "type": "text"
+  },
+  "messageInvalidEmail": "Mailbox is malformed",
+  "@messageInvalidEmail": {
+    "type": "text"
+  },
+  "messageInvalidPhone": "Error Phone Number(10)",
+  "@messageInvalidPhone": {
+    "type": "text"
+  },
+  "messageInvalidPostCode": "Error Post Code(5~6)",
+  "@messageInvalidPostCode": {
+    "type": "text"
+  },
+  "messageInvalidWechat": "Invalid WeChat account",
+  "@messageInvalidWechat": {
+    "type": "text"
+  },
+  "messageInvalidVerify": "Please enter a verification code",
+  "@messageInvalidVerify": {
+    "type": "text"
+  },
+  "messageInvalidPasswordArg": "Password must be at least {num} words",
+  "@messageInvalidPasswordArg": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "6"
+      }
+    }
+  },
+  "messageInvalidAccount": "Username should be 6 ~ 12 words",
+  "@messageInvalidAccount": {
+    "type": "text"
+  },
+  "messageInvalidPassword": "Password should be 6 ~ 20 words",
+  "@messageInvalidPassword": {
+    "type": "text"
+  },
+  "messageInvalidPasswordNew": "Password should be 8 ~ 20 words",
+  "@messageInvalidPasswordNew": {
+    "type": "text"
+  },
+  "messageInvalidConfirmPassword": "Password does not match",
+  "@messageInvalidConfirmPassword": {
+    "type": "text"
+  },
+  "messageInvalidDepositAmount": "Amount Error",
+  "@messageInvalidDepositAmount": {
+    "type": "text"
+  },
+  "messageInvalidDepositAmountMin": "The minimum amount is {num}",
+  "@messageInvalidDepositAmountMin": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "0"
+      }
+    }
+  },
+  "messageInvalidDepositName": "Incorrect account name",
+  "@messageInvalidDepositName": {
+    "type": "text"
+  },
+  "messageInvalidCardOwner": "Wrong cardholder name",
+  "@messageInvalidCardOwner": {
+    "type": "text"
+  },
+  "messageInvalidCardNumber": "The card number is 6 ~ 19 characters",
+  "@messageInvalidCardNumber": {
+    "type": "text"
+  },
+  "messageInvalidCardBankPoint": "The name must be greater than 3 characters",
+  "@messageInvalidCardBankPoint": {
+    "type": "text"
+  },
+  "messageInvalidWithdrawPassword": "Password Error!(default is login password)",
+  "@messageInvalidWithdrawPassword": {
+    "type": "text"
+  },
+  "messageInvalidWithdrawAmount": "Not enough credit",
+  "@messageInvalidWithdrawAmount": {
+    "type": "text"
+  },
+  "messageWarnUsingCellular": "You are using a mobile network",
+  "@messageWarnUsingCellular": {
+    "type": "text"
+  },
+  "messageWarnNetworkLocation": "This service is not available in your network area",
+  "@messageWarnNetworkLocation": {
+    "type": "text"
+  },
+  "messageWarnLoadingGame": "Please wait while loading the game ...",
+  "@messageWarnLoadingGame": {
+    "type": "text"
+  },
+  "messageWarnNoHistoryData": "No data found",
+  "@messageWarnNoHistoryData": {
+    "type": "text"
+  },
+  "messageWarnNoPromoData": "No offer found",
+  "@messageWarnNoPromoData": {
+    "type": "text"
+  },
+  "messageWarnNoPromoInfo": "No offer information found",
+  "@messageWarnNoPromoInfo": {
+    "type": "text"
+  },
+  "messageErrorInternal": "Internal error, please try again later or contact customer service",
+  "@messageErrorInternal": {
+    "type": "text"
+  },
+  "messageErrorCachedFile": "Cached file error, please try again later or contact customer service",
+  "@messageErrorCachedFile": {
+    "type": "text"
+  },
+  "messageErrorEvent": "Can't not retrieve event from server, please try again later.",
+  "@messageErrorEvent": {
+    "type": "text"
+  },
+  "messageErrorToken": "User token error, please logout and login again",
+  "@messageErrorToken": {
+    "type": "text"
+  },
+  "messageErrorAutoLogin": "Data error, please log in manually",
+  "@messageErrorAutoLogin": {
+    "type": "text"
+  },
+  "messageErrorNotLogin": "Please login first",
+  "@messageErrorNotLogin": {
+    "type": "text"
+  },
+  "messageErrorNoNetwork": "Please check the network status",
+  "@messageErrorNoNetwork": {
+    "type": "text"
+  },
+  "messageErrorNoServerConnection": "Unable to connect to the server !!",
+  "@messageErrorNoServerConnection": {
+    "type": "text"
+  },
+  "messageErrorTimeoutError": "Network timed out, please try again later",
+  "@messageErrorTimeoutError": {
+    "type": "text"
+  },
+  "messageErrorServerData": "Server data error, please try again later or contact customer service",
+  "@messageErrorServerData": {
+    "type": "text"
+  },
+  "messageErrorLoadingGame": "An error occurred while loading the game, please try again later",
+  "@messageErrorLoadingGame": {
+    "type": "text"
+  },
+  "messageErrorLoadingPay": "Page loading error, please try again later",
+  "@messageErrorLoadingPay": {
+    "type": "text"
+  },
+  "messageErrorNoStoragePermission": "Please turn on \"Save\" permissions",
+  "@messageErrorNoStoragePermission": {
+    "type": "text"
+  },
+  "messageErrorHasCardData": "A bank card has been bound",
+  "@messageErrorHasCardData": {
+    "type": "text"
+  },
+  "messageErrorFieldError": "Please enter {msg}",
+  "@messageErrorFieldError": {
+    "type": "text",
+    "placeholders": {
+      "msg": {
+        "example": "input filter"
+      }
+    }
+  },
+  "messageErrorBindUrl": "Cannot retrieve {wallet} wallet url",
+  "@messageErrorBindUrl": {
+    "type": "text",
+    "placeholders": {
+      "wallet": {
+        "example": "CGP"
+      }
+    }
+  },
+  "messageErrorBindCgp": "Please bind Cgp wallet first",
+  "@messageErrorBindCgp": {
+    "type": "text"
+  },
+  "messageErrorBindCpw": "Please bind the wallet for buying treasure",
+  "@messageErrorBindCpw": {
+    "type": "text"
+  },
+  "messageErrorBindBankcard": "Please bind your bank card first!",
+  "@messageErrorBindBankcard": {
+    "type": "text"
+  },
+  "messageErrorAccount": "Account Error",
+  "@messageErrorAccount": {
+    "type": "text"
+  },
+  "messageErrorPassword": "Password Error",
+  "@messageErrorPassword": {
+    "type": "text"
+  },
+  "messageErrorPasswordHint": "password not match, account will be locked after 5 errors",
+  "@messageErrorPasswordHint": {
+    "type": "text"
+  },
+  "messageErrorWithdraw": "withdrawal failed",
+  "@messageErrorWithdraw": {
+    "type": "text"
+  },
+  "messageCopy": "Copy to clipboard",
+  "@messageCopy": {
+    "type": "text"
+  },
+  "messageCopyError": "Copy failed",
+  "@messageCopyError": {
+    "type": "text"
+  },
+  "messageWait": "Please wait while processing the request ...",
+  "@messageWait": {
+    "type": "text"
+  },
+  "messageWaitComplete": "Don't exit while processing a request",
+  "@messageWaitComplete": {
+    "type": "text"
+  },
+  "messageSuccess": "Success",
+  "@messageSuccess": {
+    "type": "text"
+  },
+  "messageFailed": "Change failed, please try again later",
+  "@messageFailed": {
+    "type": "text"
+  },
+  "messagePartFailed": "Some of the transfer action has failed",
+  "@messagePartFailed": {
+    "type": "text"
+  },
+  "homeHintWelcomeLogin": "Welcome！ Please login first",
+  "@homeHintWelcomeLogin": {
+    "type": "text"
+  },
+  "homeHintWelcome": "Welcome！",
+  "@homeHintWelcome": {
+    "type": "text"
+  },
+  "homeHintWelcomeMember": "Hello, {name}！",
+  "@homeHintWelcomeMember": {
+    "type": "text",
+    "placeholders": {
+      "name": {
+        "example": "user"
+      }
+    }
+  },
+  "homeHintMemberCreditLeft": "Credit",
+  "@homeHintMemberCreditLeft": {
+    "type": "text"
+  },
+  "homeHintDefaultMarquee": "Hello, dear member! If you have any questions about this website, please use the online customer service system.",
+  "@homeHintDefaultMarquee": {
+    "type": "text"
+  },
+  "homeUserTabCategoryMovie": "Movie",
+  "@homeUserTabCategoryMovie": {
+    "type": "text"
+  },
+  "homeUserTabCategoryEgMovie": "EG Movie",
+  "@homeUserTabCategoryEgMovie": {
+    "type": "text"
+  },
+  "homeUserTabCategoryNewMovie": "New Movie",
+  "@homeUserTabCategoryNewMovie": {
+    "type": "text"
+  },
+  "homeUserTabCategoryRecommend": "Recommend",
+  "@homeUserTabCategoryRecommend": {
+    "type": "text"
+  },
+  "homeUserTabCategoryFavorite": "Favorite",
+  "@homeUserTabCategoryFavorite": {
+    "type": "text"
+  },
+  "gameCategoryCasino": "Casino",
+  "@gameCategoryCasino": {
+    "type": "text"
+  },
+  "gameCategoryCasinoFull": "Casino",
+  "@gameCategoryCasinoFull": {
+    "type": "text"
+  },
+  "gameCategorySlot": "Slot",
+  "@gameCategorySlot": {
+    "type": "text"
+  },
+  "gameCategorySlotFull": "Slot",
+  "@gameCategorySlotFull": {
+    "type": "text"
+  },
+  "gameCategorySport": "Sport",
+  "@gameCategorySport": {
+    "type": "text"
+  },
+  "gameCategorySportFull": "Sport",
+  "@gameCategorySportFull": {
+    "type": "text"
+  },
+  "gameCategoryFish": "Fish",
+  "@gameCategoryFish": {
+    "type": "text"
+  },
+  "gameCategoryFishFull": "Fishing",
+  "@gameCategoryFishFull": {
+    "type": "text"
+  },
+  "gameCategoryLottery": "Lottery",
+  "@gameCategoryLottery": {
+    "type": "text"
+  },
+  "gameCategoryLotteryFull": "Lottery",
+  "@gameCategoryLotteryFull": {
+    "type": "text"
+  },
+  "gameCategoryCard": "Card",
+  "@gameCategoryCard": {
+    "type": "text"
+  },
+  "gameCategoryCardFull": "Card",
+  "@gameCategoryCardFull": {
+    "type": "text"
+  },
+  "gameCategoryGift": "Gift",
+  "@gameCategoryGift": {
+    "type": "text"
+  },
+  "gameCategoryCockFighting": "Cockfighting",
+  "@gameCategoryCockFighting": {
+    "type": "text"
+  },
+  "gameCategoryAll": "All",
+  "@gameCategoryAll": {
+    "type": "text"
+  },
+  "gameCategoryOther": "Other",
+  "@gameCategoryOther": {
+    "type": "text"
+  },
+  "gameCategoryWeb": "Website",
+  "@gameCategoryWeb": {
+    "type": "text"
+  },
+  "gameCategoryWebHint": "Click me to open 85Bet website",
+  "@gameCategoryWebHint": {
+    "type": "text"
+  },
+  "userPwdFieldTitleOld": "Old Password:",
+  "@userPwdFieldTitleOld": {
+    "type": "text"
+  },
+  "userPwdFieldTitleNew": "New Password:",
+  "@userPwdFieldTitleNew": {
+    "type": "text"
+  },
+  "userPwdFieldTitleConfirm": "Password Confirmation:",
+  "@userPwdFieldTitleConfirm": {
+    "type": "text"
+  },
+  "userPwdFieldHintOld": "Enter old password",
+  "@userPwdFieldHintOld": {
+    "type": "text"
+  },
+  "userPwdFieldHintNew": "Enter new password",
+  "@userPwdFieldHintNew": {
+    "type": "text"
+  },
+  "userPwdFieldHintConfirm": "Enter the new password again",
+  "@userPwdFieldHintConfirm": {
+    "type": "text"
+  },
+  "userPwdButtonTitle": "Change Password",
+  "@userPwdButtonTitle": {
+    "type": "text"
+  },
+  "userVerifyFieldTitle": "Verify:",
+  "@userVerifyFieldTitle": {
+    "type": "text"
+  },
+  "userVerifyFieldHint": "enter verify code",
+  "@userVerifyFieldHint": {
+    "type": "text"
+  },
+  "userVerifyFieldInfo": "You can only request once in 24 hrs",
+  "@userVerifyFieldInfo": {
+    "type": "text"
+  },
+  "userVerifyButtonText": "Request{separator}Code",
+  "@userVerifyButtonText": {
+    "type": "text",
+    "placeholders": {
+      "separator": {
+        "example": "\n"
+      }
+    }
+  },
+  "registerFieldTitleAccount": "Account",
+  "@registerFieldTitleAccount": {
+    "type": "text"
+  },
+  "registerFieldTitlePassword": "Password",
+  "@registerFieldTitlePassword": {
+    "type": "text"
+  },
+  "registerFieldTitleConfirm": "Confirm Password",
+  "@registerFieldTitleConfirm": {
+    "type": "text"
+  },
+  "registerFieldTitlePhone": "Mobile number",
+  "@registerFieldTitlePhone": {
+    "type": "text"
+  },
+  "registerFieldTitleRecommend": "Recommended Code",
+  "@registerFieldTitleRecommend": {
+    "type": "text"
+  },
+  "registerFieldTitleVerify": "Verification Code",
+  "@registerFieldTitleVerify": {
+    "type": "text"
+  },
+  "registerFieldHintVerify": "Please enter a verification code",
+  "@registerFieldHintVerify": {
+    "type": "text"
+  },
+  "registerButtonTitleRefresh": "Dotmap Refresh",
+  "@registerButtonTitleRefresh": {
+    "type": "text"
+  },
+  "registerButtonTitleRegister": "Register",
+  "@registerButtonTitleRegister": {
+    "type": "text"
+  },
+  "registerCheckButtonNews": "Receive promotion information",
+  "@registerCheckButtonNews": {
+    "type": "text"
+  },
+  "registerCheckButtonTerms": "Have read and agree to the 'Terms and Conditions' betting rules",
+  "@registerCheckButtonTerms": {
+    "type": "text"
+  },
+  "registerButtonServiceHint": "If you have any questions, please click this icon!",
+  "@registerButtonServiceHint": {
+    "type": "text"
+  },
+  "registerHintAutoLogin": "Logging in，please wait...",
+  "@registerHintAutoLogin": {
+    "type": "text"
+  },
+  "promoDetailText": ">>Detail",
+  "@promoDetailText": {
+    "type": "text"
+  },
+  "promoCategoryAll": "All",
+  "@promoCategoryAll": {
+    "type": "text"
+  },
+  "promoCategoryOther": "Other",
+  "@promoCategoryOther": {
+    "type": "text"
+  },
+  "promoDetailPlatform": "Applicable Platform",
+  "@promoDetailPlatform": {
+    "type": "text"
+  },
+  "promoDetailContent": "Event Content",
+  "@promoDetailContent": {
+    "type": "text"
+  },
+  "promoDetailApply": "Application Method",
+  "@promoDetailApply": {
+    "type": "text"
+  },
+  "promoDetailRules": "Event Details",
+  "@promoDetailRules": {
+    "type": "text"
+  },
+  "memberGridTitleDeposit": "Recharge",
+  "@memberGridTitleDeposit": {
+    "type": "text"
+  },
+  "memberGridTitleTransfer": "Transfer",
+  "@memberGridTitleTransfer": {
+    "type": "text"
+  },
+  "memberGridTitleCard": "Bank Card",
+  "@memberGridTitleCard": {
+    "type": "text"
+  },
+  "memberGridTitleWithdraw": "Withdraw",
+  "@memberGridTitleWithdraw": {
+    "type": "text"
+  },
+  "memberGridTitleBalance": "Platform balance",
+  "@memberGridTitleBalance": {
+    "type": "text"
+  },
+  "memberGridTitleWallet": "Transfer Wallet",
+  "@memberGridTitleWallet": {
+    "type": "text"
+  },
+  "memberGridTitleMessage": "Site Message",
+  "@memberGridTitleMessage": {
+    "type": "text"
+  },
+  "memberGridTitleAccount": "Account Center",
+  "@memberGridTitleAccount": {
+    "type": "text"
+  },
+  "memberGridTitleTransaction": "Transfer Record",
+  "@memberGridTitleTransaction": {
+    "type": "text"
+  },
+  "memberGridTitleBet": "Bet History",
+  "@memberGridTitleBet": {
+    "type": "text"
+  },
+  "memberGridTitleDeal": "Transaction History",
+  "@memberGridTitleDeal": {
+    "type": "text"
+  },
+  "memberGridTitleFlow": "Flowing Record",
+  "@memberGridTitleFlow": {
+    "type": "text"
+  },
+  "memberGridTitleAgent": "Agent",
+  "@memberGridTitleAgent": {
+    "type": "text"
+  },
+  "memberGridTitleLogout": "Sign Out",
+  "@memberGridTitleLogout": {
+    "type": "text"
+  },
+  "transferViewTitleIn": "IN",
+  "@transferViewTitleIn": {
+    "type": "text"
+  },
+  "transferViewTitleOut": "OUT",
+  "@transferViewTitleOut": {
+    "type": "text"
+  },
+  "transferViewSiteHint": "Select One",
+  "@transferViewSiteHint": {
+    "type": "text"
+  },
+  "transferViewTitleAmount": "Amount",
+  "@transferViewTitleAmount": {
+    "type": "text"
+  },
+  "transferViewTitleOption": "Select Amount",
+  "@transferViewTitleOption": {
+    "type": "text"
+  },
+  "transferViewTextOptionAll": "All credits",
+  "@transferViewTextOptionAll": {
+    "type": "text"
+  },
+  "transferViewButtonConfirm": "Confirm Transfer",
+  "@transferViewButtonConfirm": {
+    "type": "text"
+  },
+  "transferDataError": "Data error, please select again",
+  "@transferDataError": {
+    "type": "text"
+  },
+  "transferPlatformError": "Selected platform is maintaining",
+  "@transferPlatformError": {
+    "type": "text"
+  },
+  "transferResultAlertTitle": "Transfer failed",
+  "@transferResultAlertTitle": {
+    "type": "text"
+  },
+  "transferHintRefresh": "4. If platform credit did not update after transfer, please reselect the platform to refresh or contact customer service",
+  "@transferHintRefresh": {
+    "type": "text"
+  },
+  "transferMessage": "{from} to {to}",
+  "@transferMessage": {
+    "type": "text",
+    "placeholders": {
+      "from": {
+        "example": "site1"
+      },
+      "to": {
+        "example": "site2"
+      }
+    }
+  },
+  "bankcardViewTitleOwner": "Account Name",
+  "@bankcardViewTitleOwner": {
+    "type": "text"
+  },
+  "bankcardViewTitleHolder": "Account Holder",
+  "@bankcardViewTitleHolder": {
+    "type": "text"
+  },
+  "bankcardViewTitleBank": "Bank",
+  "@bankcardViewTitleBank": {
+    "type": "text"
+  },
+  "bankcardViewTitleBankName": "Bank Name",
+  "@bankcardViewTitleBankName": {
+    "type": "text"
+  },
+  "bankcardViewTitleCardNumber": "Account (Card) Number",
+  "@bankcardViewTitleCardNumber": {
+    "type": "text"
+  },
+  "bankcardViewTitleBankBranch": "Bank Branch",
+  "@bankcardViewTitleBankBranch": {
+    "type": "text"
+  },
+  "bankcardViewTitleBankProvince": "Open an Account",
+  "@bankcardViewTitleBankProvince": {
+    "type": "text"
+  },
+  "bankcardViewTitleBankArea": "Area",
+  "@bankcardViewTitleBankArea": {
+    "type": "text"
+  },
+  "bankcardViewTitleSend": "Send",
+  "@bankcardViewTitleSend": {
+    "type": "text"
+  },
+  "withdrawViewTitleAmount": "Withdrawal Amount",
+  "@withdrawViewTitleAmount": {
+    "type": "text"
+  },
+  "withdrawViewTitlePwd": "Withdrawal Password",
+  "@withdrawViewTitlePwd": {
+    "type": "text"
+  },
+  "withdrawViewTitleNote": "Note",
+  "@withdrawViewTitleNote": {
+    "type": "text"
+  },
+  "withdrawViewOptionVirtual": "Do not use virtual currency",
+  "@withdrawViewOptionVirtual": {
+    "type": "text"
+  },
+  "withdrawViewOptionCgp": "Use CGP",
+  "@withdrawViewOptionCgp": {
+    "type": "text"
+  },
+  "withdrawViewOptionCpw": "Use CPW",
+  "@withdrawViewOptionCpw": {
+    "type": "text"
+  },
+  "withdrawViewOptionHint1": "If you want to withdraw virtual currency, please select it after binding",
+  "@withdrawViewOptionHint1": {
+    "type": "text"
+  },
+  "withdrawViewOptionHint2": "You will need to keep at least: ",
+  "@withdrawViewOptionHint2": {
+    "type": "text"
+  },
+  "withdrawViewOptionHint3": "Data delay will very from game suppliers",
+  "@withdrawViewOptionHint3": {
+    "type": "text"
+  },
+  "withdrawViewHint1": "Members who want to change the bank card bound to the network when withdrawing money, please contact online customer service for instructions. ",
+  "@withdrawViewHint1": {
+    "type": "text"
+  },
+  "withdrawViewHint2": "Each member account can only withdraw up to 3 withdrawals per day, if more than 3 withdrawals will be charged a 5% service fee. ",
+  "@withdrawViewHint2": {
+    "type": "text"
+  },
+  "walletViewTitleMy": "My Wallet",
+  "@walletViewTitleMy": {
+    "type": "text"
+  },
+  "walletViewTitleRemain": "Total balance",
+  "@walletViewTitleRemain": {
+    "type": "text"
+  },
+  "walletViewTitleWalletSingle": "Single Wallet",
+  "@walletViewTitleWalletSingle": {
+    "type": "text"
+  },
+  "walletViewTitleWalletMulti": "Multi-Wallet",
+  "@walletViewTitleWalletMulti": {
+    "type": "text"
+  },
+  "walletViewButtonOneClick": "Transfer Here",
+  "@walletViewButtonOneClick": {
+    "type": "text"
+  },
+  "walletViewHintOneClick": "All platform credits will transfer to the main wallet",
+  "@walletViewHintOneClick": {
+    "type": "text"
+  },
+  "walletViewHintOneClickWait": "Transferring...",
+  "@walletViewHintOneClickWait": {
+    "type": "text"
+  },
+  "walletViewHintWalletSingle": "* System presets automatically transfer credits to open game platforms",
+  "@walletViewHintWalletSingle": {
+    "type": "text"
+  },
+  "walletViewHintWalletMulti": "* Manually transfer credits to this game platform",
+  "@walletViewHintWalletMulti": {
+    "type": "text"
+  },
+  "walletViewMessageSetting": "change wallet settings",
+  "@walletViewMessageSetting": {
+    "type": "text"
+  },
+  "centerViewTitleData": "Profile",
+  "@centerViewTitleData": {
+    "type": "text"
+  },
+  "centerViewTitleLotto": "Lucky Code",
+  "@centerViewTitleLotto": {
+    "type": "text"
+  },
+  "centerViewTitleVip": "Vip Tier",
+  "@centerViewTitleVip": {
+    "type": "text"
+  },
+  "centerTextTitleAccount": "Username:",
+  "@centerTextTitleAccount": {
+    "type": "text"
+  },
+  "centerTextTitleName": "Name:",
+  "@centerTextTitleName": {
+    "type": "text"
+  },
+  "centerTextTitleBirth": "Birthday:",
+  "@centerTextTitleBirth": {
+    "type": "text"
+  },
+  "centerTextTitleDateHint": "Format is: 0000–00–00",
+  "@centerTextTitleDateHint": {
+    "type": "text"
+  },
+  "centerTextTitleDateError": "Please enter the correct date (format: YYYY–MM–DD)",
+  "@centerTextTitleDateError": {
+    "type": "text"
+  },
+  "centerTextTitleMailError": "Please enter the correct email",
+  "@centerTextTitleMailError": {
+    "type": "text"
+  },
+  "centerTextTitlePhone": "Mobile number:",
+  "@centerTextTitlePhone": {
+    "type": "text"
+  },
+  "centerTextTitleMail": "Mailbox:",
+  "@centerTextTitleMail": {
+    "type": "text"
+  },
+  "centerTextTitleWechat": "WeChat:",
+  "@centerTextTitleWechat": {
+    "type": "text"
+  },
+  "centerTextTitleCgp": "Cgp Wallet",
+  "@centerTextTitleCgp": {
+    "type": "text"
+  },
+  "centerTextTitleCpw": "Shop treasure wallet",
+  "@centerTextTitleCpw": {
+    "type": "text"
+  },
+  "centerTextButtonChangePwd": "Change Password",
+  "@centerTextButtonChangePwd": {
+    "type": "text"
+  },
+  "centerTextButtonBind": "Bind",
+  "@centerTextButtonBind": {
+    "type": "text"
+  },
+  "centerTextButtonEdit": "Modify",
+  "@centerTextButtonEdit": {
+    "type": "text"
+  },
+  "centerTextButtonSend": "Send",
+  "@centerTextButtonSend": {
+    "type": "text"
+  },
+  "centerHintNoName": "Please go to the binding bank card to make related settings",
+  "@centerHintNoName": {
+    "type": "text"
+  },
+  "centerLuckyTitle": "Please fill in the numbers from 01 to 49 in the following 7 spaces",
+  "@centerLuckyTitle": {
+    "type": "text"
+  },
+  "centerLuckyNumberError": "Number range: 01 ~ 49",
+  "@centerLuckyNumberError": {
+    "type": "text"
+  },
+  "centerLuckyHint": "Bind the Liuhe Lucky Code, you can participate in the Liuhe Lottery Match Code, wonderful gift for you !!!",
+  "@centerLuckyHint": {
+    "type": "text"
+  },
+  "centerLuckyButtonGenerate": "Auto Generated",
+  "@centerLuckyButtonGenerate": {
+    "type": "text"
+  },
+  "centerLuckyButtonBind": "Confirm Bind",
+  "@centerLuckyButtonBind": {
+    "type": "text"
+  },
+  "centerDialogCpwLeftTitle": "APP not installed？",
+  "@centerDialogCpwLeftTitle": {
+    "type": "text"
+  },
+  "centerDialogCpwLeftHint": "※ Will close APP",
+  "@centerDialogCpwLeftHint": {
+    "type": "text"
+  },
+  "centerDialogCpwRightTitle": "APP installed",
+  "@centerDialogCpwRightTitle": {
+    "type": "text"
+  },
+  "centerDialogCpwRightHint": "(please wait for data update after bind wallet)",
+  "@centerDialogCpwRightHint": {
+    "type": "text"
+  },
+  "centerDialogCpwRightHint2": "or",
+  "@centerDialogCpwRightHint2": {
+    "type": "text"
+  },
+  "centerDialogCpwRightLinkError": "Url Error, please contact service.",
+  "@centerDialogCpwRightLinkError": {
+    "type": "text"
+  },
+  "transactionViewSpinnerTitle": "Transfer time",
+  "@transactionViewSpinnerTitle": {
+    "type": "text"
+  },
+  "transactionHeaderSerial": "Serial Number",
+  "@transactionHeaderSerial": {
+    "type": "text"
+  },
+  "transactionHeaderDate": "Date",
+  "@transactionHeaderDate": {
+    "type": "text"
+  },
+  "transactionHeaderType": "Category",
+  "@transactionHeaderType": {
+    "type": "text"
+  },
+  "transactionHeaderDesc": "Description",
+  "@transactionHeaderDesc": {
+    "type": "text"
+  },
+  "transactionHeaderAmount": "Amount",
+  "@transactionHeaderAmount": {
+    "type": "text"
+  },
+  "betsSpinnerTitlePlatform": "Game Platform",
+  "@betsSpinnerTitlePlatform": {
+    "type": "text"
+  },
+  "betsSpinnerOptionAllPlatform": "All Platform",
+  "@betsSpinnerOptionAllPlatform": {
+    "type": "text"
+  },
+  "betsSpinnerTitleTime": "Bet Time",
+  "@betsSpinnerTitleTime": {
+    "type": "text"
+  },
+  "betsFieldTitleStartTime": "Start",
+  "@betsFieldTitleStartTime": {
+    "type": "text"
+  },
+  "betsFieldTitleEndTime": "End",
+  "@betsFieldTitleEndTime": {
+    "type": "text"
+  },
+  "betsFieldDateError": "Date Range Error",
+  "@betsFieldDateError": {
+    "type": "text"
+  },
+  "betsTextTotal": "Total: $ {value}",
+  "@betsTextTotal": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "80.0"
+      }
+    }
+  },
+  "betsHeaderDate": "Time",
+  "@betsHeaderDate": {
+    "type": "text"
+  },
+  "betsHeaderId": "bet slip number",
+  "@betsHeaderId": {
+    "type": "text"
+  },
+  "betsHeaderPlatform": "Platform",
+  "@betsHeaderPlatform": {
+    "type": "text"
+  },
+  "betsHeaderGame": "Game Name",
+  "@betsHeaderGame": {
+    "type": "text"
+  },
+  "betsHeaderAmount": "Bet Amount",
+  "@betsHeaderAmount": {
+    "type": "text"
+  },
+  "betsHeaderValidBet": "Valid Bet",
+  "@betsHeaderValidBet": {
+    "type": "text"
+  },
+  "betsHeaderBonus": "Payout Amount",
+  "@betsHeaderBonus": {
+    "type": "text"
+  },
+  "betsHeaderSum": "Total",
+  "@betsHeaderSum": {
+    "type": "text"
+  },
+  "dealsViewSpinnerType0": "All",
+  "@ dealsViewSpinnerType0": {
+    "type": "text"
+  },
+  "dealsViewSpinnerType1": "Recharge",
+  "@ dealsViewSpinnerType1": {
+    "type": "text"
+  },
+  "dealsViewSpinnerType2": "Withdrawal",
+  "@ dealsViewSpinnerType2": {
+    "type": "text"
+  },
+  "dealsViewSpinnerType3": "Bonus",
+  "@ dealsViewSpinnerType3": {
+    "type": "text"
+  },
+  "dealsViewSpinnerStatus0": "All",
+  "@ dealsViewSpinnerStatus0": {
+    "type": "text"
+  },
+  "dealsViewSpinnerStatus1": "Success",
+  "@ dealsViewSpinnerStatus1": {
+    "type": "text"
+  },
+  "dealsViewSpinnerStatus2": "Failed",
+  "@ dealsViewSpinnerStatus2": {
+    "type": "text"
+  },
+  "dealsViewSpinnerStatus3": "Processing",
+  "@ dealsViewSpinnerStatus3": {
+    "type": "text"
+  },
+  "dealsViewSpinnerStatus4": "New Deal",
+  "@ dealsViewSpinnerStatus4": {
+    "type": "text"
+  },
+  "dealsHeaderSerial": "Single Number",
+  "@dealsHeaderSerial": {
+    "type": "text"
+  },
+  "dealsHeaderType": "items",
+  "@dealsHeaderType": {
+    "type": "text"
+  },
+  "dealsHeaderDetail": "Details",
+  "@dealsHeaderDetail": {
+    "type": "text"
+  },
+  "dealsHeaderStatus": "Order Status",
+  "@dealsHeaderStatus": {
+    "type": "text"
+  },
+  "dealsHeaderDate": "Date",
+  "@dealsHeaderDate": {
+    "type": "text"
+  },
+  "dealsHeaderAmount": "Amount",
+  "@dealsHeaderAmount": {
+    "type": "text"
+  },
+  "depositPaymentTitleBank": "Bank Deposit",
+  "@depositPaymentTitleBank": {
+    "type": "text"
+  },
+  "depositPaymentTitleQuick": "Quick Pay (Recommended)",
+  "@depositPaymentTitleQuick": {
+    "type": "text"
+  },
+  "depositPaymentTitleUnion": "UnionPay",
+  "@depositPaymentTitleUnion": {
+    "type": "text"
+  },
+  "depositPaymentTitleCgp": "CGPay",
+  "@depositPaymentTitleCgp": {
+    "type": "text"
+  },
+  "depositPaymentTitleAli": "AliPay",
+  "@depositPaymentTitleAli": {
+    "type": "text"
+  },
+  "depositPaymentTitleJd": "JD Pay",
+  "@depositPaymentTitleJd": {
+    "type": "text"
+  },
+  "depositPaymentTitleOnline": "Online Payment",
+  "@depositPaymentTitleOnline": {
+    "type": "text"
+  },
+  "depositPaymentTitleWechat": "WeChat Pay",
+  "@depositPaymentTitleWechat": {
+    "type": "text"
+  },
+  "depositPaymentTitleAtm": "WEB ATM",
+  "@depositPaymentTitleAtm": {
+    "type": "text"
+  },
+  "depositPaymentSpinnerTitlePromo": "Choose Offer",
+  "@depositPaymentSpinnerTitlePromo": {
+    "type": "text"
+  },
+  "depositPaymentSpinnerTitleBank": "Deposit Bank",
+  "@depositPaymentSpinnerTitleBank": {
+    "type": "text"
+  },
+  "depositPaymentSpinnerTitleAccountBank": "Bank",
+  "@depositPaymentSpinnerTitleAccountBank": {
+    "type": "text"
+  },
+  "depositPaymentSpinnerTitleMethod": "Recharge Method",
+  "@depositPaymentSpinnerTitleMethod": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleName": "Name",
+  "@depositPaymentEditTitleName": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleNameHint": "Please fill in your payer name",
+  "@depositPaymentEditTitleNameHint": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleAccount": "Bank Account",
+  "@depositPaymentEditTitleAccount": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleAccountHint": "Please fill in the bank account of the payer",
+  "@depositPaymentEditTitleAccountHint": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleAmount": "Deposit Amount",
+  "@depositPaymentEditTitleAmount": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleAmountHintVND": "Reality: {value} VND",
+  "@depositPaymentEditTitleAmountHintVND": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "100"
+      }
+    }
+  },
+  "depositPaymentEditTitleNote": "Remarks",
+  "@depositPaymentEditTitleNote": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleAmountHintRange": "Input range: {num} ~ {num2}",
+  "@depositPaymentEditTitleAmountHintRange": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "1"
+      },
+      "num2": {
+        "example": "100"
+      }
+    }
+  },
+  "depositPaymentEditTitleAmountHintRangeStep": "Input range: {num} ~ {num2} (amount is a multiple of {num3})",
+  "@depositPaymentEditTitleAmountHintRangeStep": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "50"
+      },
+      "num2": {
+        "example": "500"
+      },
+      "num3": {
+        "example": "50"
+      }
+    }
+  },
+  "depositPaymentButtonTitleTutorial": "Tutorial",
+  "@depositPaymentButtonTitleTutorial": {
+    "type": "text"
+  },
+  "depositPaymentTitleTutorial": "Tutorial",
+  "@depositPaymentTitleTutorial": {
+    "type": "text"
+  },
+  "depositPaymentMethodLocal1": "Local Transfer",
+  "@ depositPaymentMethodLocal1": {
+    "type": "text"
+  },
+  "depositPaymentMethodLocal2": "ATM Deposit",
+  "@ depositPaymentMethodLocal2": {
+    "type": "text"
+  },
+  "depositPaymentNoPromo": "Abandon Application Offer",
+  "@depositPaymentNoPromo": {
+    "type": "text"
+  },
+  "depositHintTextAccount": "Please contact customer service for recharge account information",
+  "@depositHintTextAccount": {
+    "type": "text"
+  },
+  "depositHintTextAmount": "Single Deposit Limit: ￥{value}",
+  "@depositHintTextAmount": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "100"
+      }
+    }
+  },
+  "depositHintTextService": "Online customer service",
+  "@depositHintTextService": {
+    "type": "text"
+  },
+  "depositHintTextTitle": "Notes",
+  "@depositHintTextTitle": {
+    "type": "text"
+  },
+  "depositHintTextMax": "{no} single maximum limit\n",
+  "@depositHintTextMax": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "1."
+      }
+    }
+  },
+  "depositHintTextClearInfo": "{no} [Important reminder] Do not keep your bank account, please re-acquire the latest collection account before each recharge. If you deposit to a disabled collection account, the company cannot check the collection and will not be responsible!\n",
+  "@depositHintTextClearInfo": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "2."
+      }
+    }
+  },
+  "depositHintTextMaxExceed": "{no} exceeds the online payment limit for a single day or a single large deposit, other deposit methods can be used\n",
+  "@depositHintTextMaxExceed": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "3."
+      }
+    }
+  },
+  "depositHintTextFailure": "{no} If you encounter failures such as failed deposit scanning, please try to refresh and try again, and contact customer service to use another replacement channel\n",
+  "@depositHintTextFailure": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "4."
+      }
+    }
+  },
+  "depositHintTextInfo": "{no} payment bank and account name, please contact",
+  "@depositHintTextInfo": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "5."
+      }
+    }
+  },
+  "depositHintTextUnionShortcut": "{no} opens a quick function to China UnionPay to make your payment more convenient\n",
+  "@depositHintTextUnionShortcut": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "6."
+      }
+    }
+  },
+  "depositHintTextQuickpay": "{no} Warm reminder: you need to pay two decimal places for quick payment, and the system will automatically bring in (if you submit 00 for two decimal places, it will not be successful)\n",
+  "@depositHintTextQuickpay": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "7."
+      }
+    }
+  },
+  "depositHintTextUnion": "{no} want to use UnionPay scan code to pay, as long as you have a UnionPay card starting with card number 62, credit card debit cards can be used.\n",
+  "@depositHintTextUnion": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "8."
+      }
+    }
+  },
+  "depositHintTextUnionA": "A. Download the Bank of China App or UnionPay Wallet App on your phone;\n",
+  "@depositHintTextUnionA": {
+    "type": "text"
+  },
+  "depositHintTextUnionB": "B. Log in to the Bank of China Mobile App and use the payment function in the upper right corner or the payment function in the mobile payment module;\n",
+  "@depositHintTextUnionB": {
+    "type": "text"
+  },
+  "depositHintTextUnionC": "C. Enter the QR code page for payment to the merchant, just scan the code with the machine.\n",
+  "@depositHintTextUnionC": {
+    "type": "text"
+  },
+  "depositHintTextAli": "{no} Restricted Debit Card and Alipay Balance Payment!\n",
+  "@depositHintTextAli": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "9."
+      }
+    }
+  },
+  "depositHintTextLastNum": "{no} If the end of the single transaction amount is not 0 (such as: 1000 yuan), it will result in unsuccessful deposit\n",
+  "@depositHintTextLastNum": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "10."
+      }
+    }
+  },
+  "depositHintTextLimit": "{no} Issuer Limit Solution: Requires the user to call the issuer's customer service to request an increase in online transaction limit\n",
+  "@depositHintTextLimit": {
+    "type": "text",
+    "placeholders": {
+      "no": {
+        "example": "11."
+      }
+    }
+  },
+  "depositMessageFailed": "Recharge failed, please try again later or contact customer service",
+  "@depositMessageFailed": {
+    "type": "text"
+  },
+  "depositMessageSuccessLocal": "Request Success, Order No.{value}",
+  "@depositMessageSuccessLocal": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "12345"
+      }
+    }
+  },
+  "depositNewbieQuick0": "Debit Card Teaching",
+  "@ depositNewbieQuick0": {
+    "type": "text"
+  },
+  "depositNewbieAli0": "Alipay to Bank Card Teaching",
+  "@ depositNewbieAli0": {
+    "type": "text"
+  },
+  "depositNewbieAli1": "First open Alipay on your mobile phone and log in, click the [Transfer] function on the motherboard.",
+  "@ depositNewbieAli1": {
+    "type": "text"
+  },
+  "depositNewbieAli2": "Select the [Go to Bank Card] button at the bottom of the transfer page",
+  "@ depositNewbieAli2": {
+    "type": "text"
+  },
+  "depositNewbieAli3": "It is also necessary to fill in [Payee Card Number] == [Banking] == [Payee Name] == [Payment Amount]",
+  "@ depositNewbieAli3": {
+    "type": "text"
+  },
+  "depositNewbieAli4": "After submission, enter Alipay [Payment Password].",
+  "@ depositNewbieAli4": {
+    "type": "text"
+  },
+  "depositNewbieAli5": "After the transfer is successful, you can view it in the Alipay bill details, and change the transfer details and arrival time.",
+  "@ depositNewbieAli5": {
+    "type": "text"
+  },
+  "depositNewbieJd0": "JD.COM Tutorial",
+  "@depositNewbieJd0": {
+    "type": "text"
+  },
+  "depositNewbieJd1": "1、Download JD.COM App",
+  "@depositNewbieJd1": {
+    "type": "text"
+  },
+  "depositNewbieJd2": "2、Enter the App and press 'My' tab",
+  "@depositNewbieJd2": {
+    "type": "text"
+  },
+  "depositNewbieJd3": "3、Register or Login a account",
+  "@depositNewbieJd3": {
+    "type": "text"
+  },
+  "depositNewbieJd4": "4、Press 'Scanner' to pay or bind bank card",
+  "@depositNewbieJd4": {
+    "type": "text"
+  },
+  "depositNewbieUnion0": "UnionPay Payment Tutorial",
+  "@ depositNewbieUnion0": {
+    "type": "text"
+  },
+  "depositNewbieUnion1": "1. Download UnionPay Wallet App",
+  "@ depositNewbieUnion1": {
+    "type": "text"
+  },
+  "depositNewbieUnion2": "2. Register and log in.",
+  "@ depositNewbieUnion2": {
+    "type": "text"
+  },
+  "depositNewbieUnion3": "3. Bind a bank card, select Card Manager → Card List → Add Bank Card → Add a New Card.",
+  "@ depositNewbieUnion3": {
+    "type": "text"
+  },
+  "depositNewbieUnion4": "You can add both credit and debit cards",
+  "@ depositNewbieUnion4": {
+    "type": "text"
+  },
+  "depositNewbieWechat0": "Code Scan Teaching",
+  "@ depositNewbieWechat0": {
+    "type": "text"
+  },
+  "depositNewbieWechat1": "1. Take a payment QR code with a mobile phone.",
+  "@ depositNewbieWechat1": {
+    "type": "text"
+  },
+  "depositNewbieWechat2": "2. Then use another mobile phone WeChat to scan the code.",
+  "@depositNewbieWechat2": {
+    "type": "text"
+  },
+  "depositNewbieCgp0": "Download Link",
+  "@depositNewbieCgp0": {
+    "type": "text"
+  },
+  "depositNewbieButtonCgp1": "APP",
+  "@depositNewbieButtonCgp1": {
+    "type": "text"
+  },
+  "depositNewbieButtonCgp2": "Manual",
+  "@depositNewbieButtonCgp2": {
+    "type": "text"
+  },
+  "balanceStatusMaintenance": "Maintenance",
+  "@balanceStatusMaintenance": {
+    "type": "text"
+  },
+  "balanceTransferInText": "Transfer In",
+  "@balanceTransferInText": {
+    "type": "text"
+  },
+  "balanceTransferOutText": "Transfer Out",
+  "@balanceTransferOutText": {
+    "type": "text"
+  },
+  "balanceTransferAmountError": "Not enough credit: {value}",
+  "@balanceTransferAmountError": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "0.2"
+      }
+    }
+  },
+  "balanceTransferAlertTitle": "Please confirm",
+  "@balanceTransferAlertTitle": {
+    "type": "text"
+  },
+  "balanceTransferAlertMsg": "Are you sure of {action} to {platform} platform?",
+  "@balanceTransferAlertMsg": {
+    "type": "text",
+    "placeholders": {
+      "action": {
+        "example": "Slot"
+      },
+      "platform": {
+        "example": "AG"
+      }
+    }
+  },
+  "balanceHintTextTitle": "Reminder:",
+  "@balanceHintTextTitle": {
+    "type": "text"
+  },
+  "balanceHintText1": "1. Please exit the game or game betting interface before transferring money.",
+  "@ balanceHintText1": {
+    "type": "text"
+  },
+  "balanceHintText2": "2. When not participating in the activity, the amount of the indoor transfer cannot be less than 1 yuan, and there is no handling fee for indoor transfer.",
+  "@ balanceHintText2": {
+    "type": "text"
+  },
+  "balanceHintText3": "3. If you have a slow internet connection, please wait for a while and don't repeat the submission multiple times.",
+  "@ balanceHintText3": {
+    "type": "text"
+  },
+  "balanceHintText4": "4. If the platform amount has not changed after 4 successful transfers, please refresh the platform manually or contact customer service",
+  "@ balanceHintText4": {
+    "type": "text"
+  },
+  "flowHeaderTextTime": "Time Interval",
+  "@flowHeaderTextTime": {
+    "type": "text"
+  },
+  "flowHeaderTextCode": "Transaction Code",
+  "@flowHeaderTextCode": {
+    "type": "text"
+  },
+  "flowHeaderTextType": "Type",
+  "@flowHeaderTextType": {
+    "type": "text"
+  },
+  "flowHeaderTextAmount": "Amount",
+  "@flowHeaderTextAmount": {
+    "type": "text"
+  },
+  "flowHeaderTextMultiple": "Multiple",
+  "@flowHeaderTextMultiple": {
+    "type": "text"
+  },
+  "flowHeaderTextPromo": "Cash Offer",
+  "@flowHeaderTextPromo": {
+    "type": "text"
+  },
+  "flowHeaderTextRequire": "Requirement for bet amount",
+  "@flowHeaderTextRequire": {
+    "type": "text"
+  },
+  "flowHeaderTextCurrent": "Current Stake",
+  "@flowHeaderTextCurrent": {
+    "type": "text"
+  },
+  "flowHeaderTextNeed": "Remaining capital required",
+  "@flowHeaderTextNeed": {
+    "type": "text"
+  },
+  "flowHeaderTextTotal": "Total",
+  "@flowHeaderTextTotal": {
+    "type": "text"
+  },
+  "agentTabTitleInfo": "Info",
+  "@agentTabTitleInfo": {
+    "type": "text"
+  },
+  "agentTabTitleChart": "Chart",
+  "@agentTabTitleChart": {
+    "type": "text"
+  },
+  "agentTabTitleCommission": "Commission",
+  "@agentTabTitleCommission": {
+    "type": "text"
+  },
+  "agentTabTitleLedger": "Ledger",
+  "@agentTabTitleLedger": {
+    "type": "text"
+  },
+  "agentTabTitleAds": "Ads",
+  "@agentTabTitleAds": {
+    "type": "text"
+  },
+  "agentInfoFieldCode": "Recommend Code",
+  "@agentInfoTitleCode": {
+    "type": "text"
+  },
+  "agentInfoFieldLink": "Agent Link",
+  "@agentInfoFieldLink": {
+    "type": "text"
+  },
+  "agentInfoFieldAgents": "Agents",
+  "@agentInfoFieldAgents": {
+    "type": "text"
+  },
+  "agentInfoFieldButtonGetCode": "Get Code",
+  "@agentInfoFieldButtonGetCode": {
+    "type": "text"
+  },
+  "agentButtonTextShare": "Share",
+  "@agentButtonTextShare": {
+    "type": "text"
+  },
+  "agentButtonTextLink": "Link",
+  "@agentButtonTextLink": {
+    "type": "text"
+  },
+  "agentButtonTextCopy": "Copy",
+  "@agentButtonTextCopy": {
+    "type": "text"
+  },
+  "agentTextChartDate": "Time:",
+  "@agentTextChartDate": {
+    "type": "text"
+  },
+  "agentTextChartMonth": "This month",
+  "@agentTextChartMonth": {
+    "type": "text"
+  },
+  "agentTextChartMonthPrev": "Last month",
+  "@agentTextChartMonthPrev": {
+    "type": "text"
+  },
+  "agentTextChartOption": "Select",
+  "@agentTextChartOption": {
+    "type": "text"
+  },
+  "agentTextChartPlatform": "Platform",
+  "@agentTextChartPlatform": {
+    "type": "text"
+  },
+  "agentTextChartCategory": "Category",
+  "@agentTextChartCategory": {
+    "type": "text"
+  },
+  "agentTextChartQuery": "Query",
+  "@agentTextChartQuery": {
+    "type": "text"
+  },
+  "agentTextChartCheckFull": "show full data",
+  "@agentTextChartCheckFull": {
+    "type": "text"
+  },
+  "agentChartTableSpinner": "form",
+  "@agentChartTableSpinner": {
+    "type": "text"
+  },
+  "agentChartHeaderAccount": "Account",
+  "@agentChartHeaderAccount": {
+    "type": "text"
+  },
+  "agentChartHeaderWager": "Bet Amount",
+  "@agentChartHeaderWager": {
+    "type": "text"
+  },
+  "agentChartHeaderBet": "Bet Amount",
+  "@agentChartHeaderBet": {
+    "type": "text"
+  },
+  "agentChartHeaderValid": "Valid bet amount",
+  "@agentChartHeaderValid": {
+    "type": "text"
+  },
+  "agentChartHeaderPayout": "Pay",
+  "@agentChartHeaderPayout": {
+    "type": "text"
+  },
+  "agentChartHeaderTotalWager": "Total Bet Volume",
+  "@agentChartHeaderTotalWager": {
+    "type": "text"
+  },
+  "agentChartHeaderTotalBet": "Total Bet",
+  "@agentChartHeaderTotalBet": {
+    "type": "text"
+  },
+  "agentChartHeaderTotalValid": "Total Valid Amount",
+  "@agentChartHeaderTotalValid": {
+    "type": "text"
+  },
+  "agentChartHeaderTotalPayout": "Total Payout",
+  "@agentChartHeaderTotalPayout": {
+    "type": "text"
+  },
+  "agentCommissionHeaderMonth": "Month",
+  "@agentCommissionHeaderMonth": {
+    "type": "text"
+  },
+  "agentCommissionHeaderLowLine": "Offline Commission",
+  "@agentCommissionHeaderLowLine": {
+    "type": "text"
+  },
+  "agentCommissionHeaderGroup": "Group Commission",
+  "@agentCommissionHeaderGroup": {
+    "type": "text"
+  },
+  "agentCommissionHeaderAdmin": "Administration Fee",
+  "@agentCommissionHeaderAdmin": {
+    "type": "text"
+  },
+  "agentCommissionHeaderPlatform": "Platform fee",
+  "@agentCommissionHeaderPlatform": {
+    "type": "text"
+  },
+  "agentCommissionHeaderReceive": "Actual Commission",
+  "@agentCommissionHeaderReceive": {
+    "type": "text"
+  },
+  "agentLedgerFieldTitleAccount": "please enter agent name",
+  "@agentLedgerFieldTitleAccount": {
+    "type": "text"
+  },
+  "agentLedgerHeaderAccount": "Account",
+  "@agentLedgerHeaderAccount": {
+    "type": "text"
+  },
+  "agentLedgerHeaderDeposit": "Deposit",
+  "@agentLedgerHeaderDeposit": {
+    "type": "text"
+  },
+  "agentLedgerHeaderWithdraw": "Withdraw",
+  "@agentLedgerHeaderWithdraw": {
+    "type": "text"
+  },
+  "agentLedgerHeaderPromo": "Promo",
+  "@agentLedgerHeaderPromo": {
+    "type": "text"
+  },
+  "agentLedgerHeaderRefund": "Refund",
+  "@agentLedgerHeaderRefund": {
+    "type": "text"
+  },
+  "agentAdTabAvailable": "Available",
+  "@agentAdTabAvailable": {
+    "type": "text"
+  },
+  "agentAdTabGenerated": "Generated",
+  "@agentAdTabGenerated": {
+    "type": "text"
+  },
+  "agentAdButtonGenerate": "Generate Ad",
+  "@agentAdButtonGenerate": {
+    "type": "text"
+  },
+  "noticeTabGeneral": "General Message",
+  "@noticeTabGeneral": {
+    "type": "text"
+  },
+  "noticeTabMaintenance": "Maintenance Notification",
+  "@noticeTabMaintenance": {
+    "type": "text"
+  },
+  "wheelTextTitleCount": "Cumulative Lucky Draw: {num} times",
+  "@wheelTextTitleCount": {
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "4"
+      }
+    }
+  },
+  "wheelTextTitlePrize": "Winning History",
+  "@wheelTextTitlePrize": {
+    "type": "text"
+  },
+  "wheelTextTitleRecord": "Operation Record",
+  "@wheelTextTitleRecord": {
+    "type": "text"
+  },
+  "wheelTextTitleGet": "Get spins",
+  "@wheelTextTitleGet": {
+    "type": "text"
+  },
+  "wheelTextTitleRules": "Event Rules",
+  "@wheelTextTitleRules": {
+    "type": "text"
+  },
+  "wheelMessageErrorPrizeUrl": "Prize image error, please check the order.",
+  "@wheelMessageErrorPrizeUrl": {
+    "type": "text"
+  },
+  "wheelOrderTableTextTime": "Time",
+  "@wheelOrderTableTextTime": {
+    "type": "text"
+  },
+  "wheelOrderTableTextPrize": "Awards",
+  "@wheelOrderTableTextPrize": {
+    "type": "text"
+  },
+  "wheelOrderTableTextStatus": "Dispatch Status",
+  "@wheelOrderTableTextStatus": {
+    "type": "text"
+  },
+  "wheelRecordTableTextTime": "Time",
+  "@wheelRecordTableTextTime": {
+    "type": "text"
+  },
+  "wheelRecordTableTextOperate": "Operation",
+  "@wheelRecordTableTextOperate": {
+    "type": "text"
+  },
+  "wheelRecordTableTextCount": "Number of times",
+  "@wheelRecordTableTextCount": {
+    "type": "text"
+  },
+  "wheelRecordTableTextContent": "Content",
+  "@wheelRecordTableTextContent": {
+    "type": "text"
+  },
+  "wheelApplyTableTextContent": "Content",
+  "@wheelApplyTableTextContent": {
+    "type": "text"
+  },
+  "wheelApplyTableTextProgress": "Progress",
+  "@wheelApplyTableTextProgress": {
+    "type": "text"
+  },
+  "wheelApplyTableTextCount": "Number of rotations",
+  "@wheelApplyTableTextCount": {
+    "type": "text"
+  },
+  "wheelApplyTableTextStatus": "Status",
+  "@wheelApplyTableTextStatus": {
+    "type": "text"
+  },
+  "wheelOrderTableTextStatus0": "Not dispatched",
+  "@ wheelOrderTableTextStatus0": {
+    "type": "text"
+  },
+  "wheelOrderTableTextStatus1": "Dispatched",
+  "@ wheelOrderTableTextStatus1": {
+    "type": "text"
+  },
+  "wheelApplyTableTextStatus0": "Not reached",
+  "@ wheelApplyTableTextStatus0": {
+    "type": "text"
+  },
+  "wheelApplyTableTextStatus1": "Achieved",
+  "@ wheelApplyTableTextStatus1": {
+    "type": "text"
+  },
+  "wheelApplyTableTextStatus2": "Applied",
+  "@wheelApplyTableTextStatus2": {
+    "type": "text"
+  },
+  "storeTextTitleProduct": "Redeem Product",
+  "@storeTextTitleProduct": {
+    "type": "text"
+  },
+  "storeTextTitleRule": "Exchange Rules",
+  "@storeTextTitleRule": {
+    "type": "text"
+  },
+  "storeTextTitleRecord": "Point Record",
+  "@storeTextTitleRecord": {
+    "type": "text"
+  },
+  "storeTextTitlePoint": "Member Points:",
+  "@storeTextTitlePoint": {
+    "type": "text"
+  },
+  "storeTextItemHint": "Limited to a limited number",
+  "@storeTextItemHint": {
+    "type": "text"
+  },
+  "storeTextItemPoint": "{value} points",
+  "@storeTextItemPoint": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "100"
+      }
+    }
+  },
+  "storeTextItemButton": "Redeem Now",
+  "@storeTextItemButton": {
+    "type": "text"
+  },
+  "storeTextItemButtonDisabled": "Not enough points",
+  "@storeTextItemButtonDisabled": {
+    "type": "text"
+  },
+  "storeRuleTableHeader": "You can get a points table for every 100 yuan of valid bets",
+  "@storeRuleTableHeader": {
+    "type": "text"
+  },
+  "storeRuleTableTitle": "Each platform {value}",
+  "@storeRuleTableTitle": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "100"
+      }
+    }
+  },
+  "storeRecordSpinnerTitle1": "Show",
+  "@ storeRecordSpinnerTitle1": {
+    "type": "text"
+  },
+  "storeRecordSpinnerTitle2": "item",
+  "@ storeRecordSpinnerTitle2": {
+    "type": "text"
+  },
+  "storeRecordFieldHint": "Please enter a product name",
+  "@storeRecordFieldHint": {
+    "type": "text"
+  },
+  "storeRecordButtonTitle": "Search",
+  "@storeRecordButtonTitle": {
+    "type": "text"
+  },
+  "storeRecordTableTitleNo": "Order Number",
+  "@storeRecordTableTitleNo": {
+    "type": "text"
+  },
+  "storeRecordTableTitleProduct": "Product",
+  "@storeRecordTableTitleProduct": {
+    "type": "text"
+  },
+  "storeRecordTableTitlePoint": "Integral",
+  "@storeRecordTableTitlePoint": {
+    "type": "text"
+  },
+  "storeRecordTableTitleDate": "Date",
+  "@storeRecordTableTitleDate": {
+    "type": "text"
+  },
+  "storeRecordTableTitleState": "State",
+  "@storeRecordTableTitleState": {
+    "type": "text"
+  },
+  "storeRecordTableStatusPending": "Pending",
+  "@storeRecordTableStatusPending": {
+    "type": "text"
+  },
+  "storeRecordTableDetailName": "Name: {value}",
+  "@storeRecordTableDetailName": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "name"
+      }
+    }
+  },
+  "storeRecordTableDetailPhone": "Phone: {value}",
+  "@storeRecordTableDetailPhone": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "123"
+      }
+    }
+  },
+  "storeRecordTableDetailPostCode": "PostCode: {value}",
+  "@storeRecordTableDetailPostCode": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "110"
+      }
+    }
+  },
+  "storeRecordTableDetailAddress": "Address: {value}",
+  "@storeRecordTableDetailAddress": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "address"
+      }
+    }
+  },
+  "storeRecordTableDetailItem": "showing No.{from} to {to} results，total is {total}",
+  "@storeRecordTableDetailItem": {
+    "type": "text",
+    "placeholders": {
+      "from": {
+        "example": "1"
+      },
+      "to": {
+        "example": "5"
+      },
+      "total": {
+        "example": "10"
+      }
+    }
+  },
+  "storeProductWindowTitle": "Member Redemption",
+  "@storeProductWindowTitle": {
+    "type": "text"
+  },
+  "storeProductWindowTextRemain": "Remaining Quantity",
+  "@storeProductWindowTextRemain": {
+    "type": "text"
+  },
+  "storeProductWindowHint1": "Limited number, while stocks last",
+  "@ storeProductWindowHint1": {
+    "type": "text"
+  },
+  "storeProductWindowHint2": "Use per branch",
+  "@ storeProductWindowHint2": {
+    "type": "text"
+  },
+  "storeProductWindowHint3": "Point Exchange",
+  "@ storeProductWindowHint3": {
+    "type": "text"
+  },
+  "storeRequestWindowTextPoint": "Accumulated Points:",
+  "@storeRequestWindowTextPoint": {
+    "type": "text"
+  },
+  "storeRequestWindowTitle": "Contact Information",
+  "@storeRequestWindowTitle": {
+    "type": "text"
+  },
+  "storeRequestWindowPoints": "Points:",
+  "@storeRequestWindowPoints": {
+    "type": "text"
+  },
+  "storeRequestWindowHint": "Recipient",
+  "@storeRequestWindowHint": {
+    "type": "text"
+  },
+  "storeRequestWindowFieldTitleName": "Name",
+  "@storeRequestWindowFieldTitleName": {
+    "type": "text"
+  },
+  "storeRequestWindowFieldTitlePhone": "Phone",
+  "@storeRequestWindowFieldTitlePhone": {
+    "type": "text"
+  },
+  "storeRequestWindowFieldTitlePostno": "Postcode",
+  "@storeRequestWindowFieldTitlePostno": {
+    "type": "text"
+  },
+  "storeRequestWindowFieldTitleArea": "Area",
+  "@storeRequestWindowFieldTitleArea": {
+    "type": "text"
+  },
+  "storeRequestWindowFieldTitleAddress": "Address",
+  "@storeRequestWindowFieldTitleAddress": {
+    "type": "text"
+  },
+  "storeRequestWindowSpinnerHint": "Please select",
+  "@storeRequestWindowSpinnerHint": {
+    "type": "text"
+  },
+  "storeExchangeResultWindowTitleSuccess": "Exchange Success",
+  "@storeExchangeResultWindowTitleSuccess": {
+    "type": "text"
+  },
+  "storeExchangeResultWindowHint": "Congratulation",
+  "@storeExchangeResultWindowHint": {
+    "type": "text"
+  },
+  "storeExchangeResultWindowHintItem1": "Exchanged ",
+  "@storeExchangeResultWindowHintItem1": {
+    "type": "text"
+  },
+  "storeExchangeResultWindowHintItem2": " *1",
+  "@storeExchangeResultWindowHintItem2": {
+    "type": "text"
+  },
+  "storeExchangeResultError": "Exchange failed",
+  "@storeExchangeResultError": {
+    "type": "text"
+  },
+  "eventButtonSignUpTv": "signed {value} days",
+  "@eventButtonSignUpTv": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "3"
+      }
+    }
+  },
+  "eventSignUpHint1": "Has Signed-Up",
+  "@eventSignUpHint1": {
+    "type": "text"
+  },
+  "eventSignUpHint2": "Days",
+  "@eventSignUpHint2": {
+    "type": "text"
+  },
+  "eventButtonSignUpAlready": "Signed in",
+  "@eventButtonSignUpAlready": {
+    "type": "text"
+  },
+  "eventButtonSignUpSuccess": "Sign in successfully!!",
+  "@eventButtonSignUpSuccess": {
+    "type": "text"
+  },
+  "eventButtonSignUpFailed": "Sign in failed!!",
+  "@eventButtonSignUpFailed": {
+    "type": "text"
+  },
+  "movieCategoryLabelCollect": "Collection",
+  "@movieCategoryLabelCollect": {
+    "type": "text"
+  },
+  "movieCategoryLabelBuy": "Buy",
+  "@movieCategoryLabelBuy": {
+    "type": "text"
+  },
+  "movieCategoryLabelExpand": "Expand",
+  "@movieCategoryLabelExpand": {
+    "type": "text"
+  },
+  "movieCategoryLabelFold": "Fold",
+  "@movieCategoryLabelFold": {
+    "type": "text"
+  },
+  "movieSeparatorTextHot": "Others are watching",
+  "@movieSeparatorTextHot": {
+    "type": "text"
+  },
+  "movieTextBuyNow": "Buy Now",
+  "@movieTextBuyNow": {
+    "type": "text"
+  },
+  "movieHintTextFree": "Free Today",
+  "@movieHintTextFree": {
+    "type": "text"
+  },
+  "movieHintTextPurchased": "Purchased",
+  "@movieHintTextPurchased": {
+    "type": "text"
+  },
+  "movieHintTextNotPurchased": "Unpurchased",
+  "@movieHintTextNotPurchased": {
+    "type": "text"
+  },
+  "movieListHintLoad": "Load More",
+  "@movieListHintLoad": {
+    "type": "text"
+  },
+  "movieListHintLoadReady": "Requesting...",
+  "@movieListHintLoadReady": {
+    "type": "text"
+  },
+  "movieListHintLoading": "Loading...",
+  "@movieListHintLoading": {
+    "type": "text"
+  },
+  "movieListHintLoadSuccess": "Load Success",
+  "@movieListHintLoadSuccess": {
+    "type": "text"
+  },
+  "movieListHintLoadFailed": "Load Failed",
+  "@movieListHintLoadFailed": {
+    "type": "text"
+  },
+  "movieListHintLoadNoMore": "No More",
+  "@movieListHintLoadNoMore": {
+    "type": "text"
+  },
+  "movieDialogTitlePay": "Buy this movie",
+  "@movieDialogTitlePay": {
+    "type": "text"
+  },
+  "movieDialogTextFreeTimes": "Watch-Free Remain: ",
+  "@movieDialogTextFreeTimes": {
+    "type": "text"
+  },
+  "movieDialogTextStorePoints": "Current Store Point: ",
+  "@movieDialogTextStorePoints": {
+    "type": "text"
+  },
+  "movieDialogButtonWatchFree": "Watch Free",
+  "@movieDialogButtonWatchFree": {
+    "type": "text"
+  },
+  "movieDialogButtonPayPoint": "Pay {value} Store Points",
+  "@movieDialogButtonPayPoint": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "10"
+      }
+    }
+  },
+  "updateDialogErrorUrl": "Unable to get the download URL, please contact customer service!!",
+  "@updateDialogErrorUrl": {
+    "type": "text"
+  },
+  "updateDialogMessage": "Found new version，please click 'update' button to download and install.\nCurrent Version：{version}\nNew Version：{value}",
+  "@updateDialogMessage": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "v1.0"
+      },
+      "version": {
+        "example": "v1.0"
+      }
+    }
+  },
+  "networkChangedHint": "Detect network status has changed, do you want to refresh?",
+  "@networkChangedHint": {
+    "type": "text"
+  }
+}

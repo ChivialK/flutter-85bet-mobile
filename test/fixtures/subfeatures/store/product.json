@@ -1,0 +1,30 @@
+{
+  "code": 0,
+  "data": [
+    {
+      "productname": "\u5145\u503c\u8a71\u8cbb (30\u5143)",
+      "point": 100,
+      "productid": 10,
+      "pic": 50,
+      "sequence": 9976,
+      "new": "1"
+    },
+    {
+      "productname": "\u5145\u503c\u8a71\u8cbb (500\u5143)",
+      "point": 10000,
+      "productid": 14,
+      "pic": 52,
+      "sequence": 99,
+      "new": "1"
+    },
+    {
+      "productname": "test",
+      "point": 10,
+      "productid": 15,
+      "pic": 54,
+      "sequence": 10,
+      "new": "1"
+    }
+  ],
+  "msg": ""
+}

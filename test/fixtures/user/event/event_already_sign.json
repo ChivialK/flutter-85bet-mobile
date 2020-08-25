@@ -1,0 +1,13 @@
+{
+  "code": 0,
+  "data": {
+    "aid": "136",
+    "mid": 10314,
+    "pretime": "2020-06-12",
+    "currtime": "2020-06-15",
+    "continue": 0,
+    "times": 2,
+    "msg": "alreadySign"
+  },
+  "msg": ""
+}

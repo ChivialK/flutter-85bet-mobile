@@ -1,0 +1,161 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new Exception("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+android {
+    buildToolsVersion = '29.0.3'
+    compileSdkVersion 29
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+    }
+
+//    splits {
+//        // Configures multiple APKs based on ABI.
+//        abi {
+//            // Enables building multiple APKs per ABI.
+//            enable true
+//
+//            // By default all ABIs are included, so use reset() and include to specify that we only
+//            // want APKs for x86 and x86_64.
+//
+//            // Resets the list of ABIs that Gradle should create APKs for to none.
+//            reset()
+//            // Specifies a list of ABIs that Gradle should create APKs for.
+//            include "x86_64", "armeabi-v7a", "arm64-v8a"
+//            // Specifies that we do not want to also generate a universal APK that includes all ABIs.
+//            universalApk true
+//        }
+//    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.op85bet.mobile"
+        minSdkVersion 25
+        targetSdkVersion 29
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            v1SigningEnabled true
+            v2SigningEnabled true
+            readKeystoreProperties()
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            useProguard true // set to true for VLC player
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            zipAlignEnabled true
+            resValue "string", "app_name", "85Bet Mobile"
+        }
+        debug {
+            debuggable true
+            minifyEnabled true
+            useProguard true // set to true for VLC player
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            resValue "string", "app_name", "85Bet Mobile (Test)"
+            versionNameSuffix "T"
+            applicationIdSuffix ".debug"
+        }
+    }
+
+//    flavorDimensions "appType"
+//
+//    productFlavors {
+//        dev {
+//            dimension "appType"
+//            resValue "string", "app_name", "85Bet Test"
+//            versionNameSuffix "T"
+//            applicationIdSuffix ".debug"
+//        }
+//        prod {
+//            dimension "appType"
+//            versionNameSuffix "R"
+//            resValue "string", "app_name", "85Bet Mobile"
+//        }
+//    }
+}
+
+//android.applicationVariants.all { variants ->
+//    // Change Application Name by BuildType
+//    switch (variants.getBuildType().name) {
+//        case 'debug':
+//            resValue "string", "app_name", "TYMobile2 Test"
+//            break
+//        default:
+//            resValue "string", "app_name", "添运国际"
+//            break
+//    }
+//}
+
+def readKeystoreProperties() {
+    def propsFile = rootProject.file('keystore.properties')
+    def configName = 'release'
+
+    if (propsFile.exists() && android.signingConfigs.hasProperty(configName)) {
+        def props = new Properties()
+        props.load(new FileInputStream(propsFile))
+        println "===== load keystore success ====="
+        // sign.release.* like `sign.release.storeFile` etc. are defined in `keystore.properties` file
+        android.signingConfigs[configName].storeFile = rootProject.file(props['storeFile'])
+        android.signingConfigs[configName].storePassword = props['storePassword']
+        android.signingConfigs[configName].keyAlias = props['keyAlias']
+        android.signingConfigs[configName].keyPassword = props['keyPassword']
+        //keyAlias keystoreProperties['keyAlias']
+        //keyPassword keystoreProperties['keyPassword']
+        //storeFile rootProject.file(keystoreProperties['storeFile'])
+        //storePassword keystoreProperties['storePassword']
+        println "===== read keystore properties success ====="
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

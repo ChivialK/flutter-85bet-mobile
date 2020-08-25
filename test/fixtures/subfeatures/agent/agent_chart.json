@@ -1,0 +1,26 @@
+{
+  "SB": {
+    "jasper_qq": {
+      "wager": 6,
+      "bet": 20000,
+      "payout": 5000,
+      "validbet": 12000,
+      "totalwager": 0,
+      "totalbet": 0,
+      "totalpayout": 0,
+      "totalvalidbet": 0
+    }
+  },
+  "AG": {
+    "jaspermoney2": {
+      "wager": 8,
+      "bet": 323,
+      "payout": 977,
+      "validbet": 323,
+      "totalwager": 0,
+      "totalbet": 0,
+      "totalpayout": 0,
+      "totalvalidbet": 0
+    }
+  }
+}

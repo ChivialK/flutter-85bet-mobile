@@ -1,0 +1,65 @@
+{
+  "current_page": 1,
+  "data": {
+    "0": {
+      "starttime": "2020-04-09 17:10:50",
+      "type": "1921",
+      "bet": "510.00",
+      "activebet": "510.00",
+      "payout": "520.00",
+      "betno": "21749958328",
+      "site": "MG casino"
+    },
+    "1": {
+      "starttime": "2020-03-26 11:40:41",
+      "type": "1921",
+      "bet": "510.00",
+      "activebet": "510.00",
+      "payout": "520.00",
+      "betno": "21749970710",
+      "site": "MG casino"
+    },
+    "2": {
+      "starttime": "2020-02-26 11:42:06",
+      "type": "1921",
+      "bet": "2.00",
+      "activebet": "2.00",
+      "payout": "0.00",
+      "betno": "21750001564",
+      "site": "MG casino"
+    },
+    "3": {
+      "starttime": "2020-02-26 11:38:53",
+      "type": "1921",
+      "bet": "10.00",
+      "activebet": "10.00",
+      "payout": "20.00",
+      "betno": "21749950530",
+      "site": "MG casino"
+    },
+    "4": {
+      "starttime": "2020-02-26 11:38:16",
+      "type": "1921",
+      "bet": "10.00",
+      "activebet": "10.00",
+      "payout": "10.00",
+      "betno": "21749932003",
+      "site": "MG casino"
+    },
+    "sumTotal": {
+      "bet": "1042.00",
+      "validbet": "1042.00",
+      "payout": "1070.00"
+    }
+  },
+  "first_page_url": "http:\/\/www.eg990.com\/api\/getRecord\/1?page=1",
+  "from": 1,
+  "last_page": 1,
+  "last_page_url": "http:\/\/www.eg990.com\/api\/getRecord\/1?page=1",
+  "next_page_url": null,
+  "path": "http:\/\/www.eg990.com\/api\/getRecord\/1",
+  "per_page": 10,
+  "prev_page_url": null,
+  "to": 6,
+  "total": 5
+}

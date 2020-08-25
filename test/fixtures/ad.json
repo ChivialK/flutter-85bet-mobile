@@ -1,0 +1,44 @@
+[
+  {
+    "id": 9,
+    "type": "image\/jpeg",
+    "title": "\u8d2d\u5b9d",
+    "url": "https:\/\/www.gamewallet.asia\/version.php?fn=gp_a&latest",
+    "url_blank": true,
+    "mobile_url": "https:\/\/www.gamewallet.asia\/version.php?fn=gp_a&latest",
+    "pic": "images\/ad\/pc\/27.jpg",
+    "pic_mobile": "images\/ad\/mobile\/28.jpg",
+    "start_time": "2020-06-30 17:27:27",
+    "end_time": "2021-06-01 00:00:00",
+    "status": true,
+    "sort": 1
+  },
+  {
+    "id": 6,
+    "type": "image\/jpeg",
+    "title": "test2",
+    "url": "\/index\/slot",
+    "url_blank": true,
+    "mobile_url": "\/index\/slot",
+    "pic": "images\/ad\/pc\/23.jpg",
+    "pic_mobile": "images\/ad\/mobile\/24.jpg",
+    "start_time": "2020-06-15 09:23:08",
+    "end_time": "2021-06-01 00:00:00",
+    "status": true,
+    "sort": 4
+  },
+  {
+    "id": 8,
+    "type": "image\/jpeg",
+    "title": "test3",
+    "url": "\/mission",
+    "url_blank": true,
+    "mobile_url": "\/mission",
+    "pic": "images\/ad\/pc\/25.jpg",
+    "pic_mobile": "images\/ad\/mobile\/26.jpg",
+    "start_time": "2020-06-19 16:30:31",
+    "end_time": "2021-06-01 16:30:33",
+    "status": true,
+    "sort": 5
+  }
+]
