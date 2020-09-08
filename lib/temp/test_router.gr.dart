@@ -4,13 +4,13 @@
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/temp/test_home_size_calc.dart';
-import 'package:flutter_85bet_mobile/temp/test_input_route.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter_85bet_mobile/temp/test_nested_nav_screen_view.dart';
 import 'package:flutter_85bet_mobile/temp/test_permission_screen.dart';
+import 'package:flutter_85bet_mobile/temp/test_input_route.dart';
+import 'package:flutter_85bet_mobile/temp/test_home_size_calc.dart';
 
 abstract class TestRoutes {
   static const testScreenInnerView = '/test-screen-inner-view';

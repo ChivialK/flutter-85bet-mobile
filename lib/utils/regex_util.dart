@@ -6,7 +6,7 @@ const String _gameAutoAPI = 'api/openUrl';
 const String _gameAPI = 'api/open';
 
 const String _serviceRegexString =
-    (Global.IS_TEST_VER) ? Global.CURRENT_BASE : _tyRegString;
+    (Global.HAS_FLEX_ROUTE) ? _tyRegString : Global.CURRENT_BASE;
 const String _tyRegString = 'https://www.vip66[6-7][0-9][0-9].com';
 
 final RegExp _routeRegex = RegExp("^(?:$_serviceRegexString/?)");

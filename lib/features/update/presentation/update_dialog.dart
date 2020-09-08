@@ -6,8 +6,13 @@ import 'package:flutter_85bet_mobile/features/general/widgets/dialog_widget.dart
 class UpdateDialog extends StatelessWidget {
   final String newVersion;
   final Function onUpdateClick;
+  final Function onDialogClose;
 
-  UpdateDialog(this.newVersion, this.onUpdateClick);
+  UpdateDialog({
+    @required this.newVersion,
+    @required this.onUpdateClick,
+    @required this.onDialogClose,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +20,7 @@ class UpdateDialog extends StatelessWidget {
       heightFactor: 0.3,
       minHeight: 150,
       maxHeight: 156,
+      onClose: () => onDialogClose(),
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,12 +56,13 @@ class UpdateDialog extends StatelessWidget {
                     ),
                   ),
                   RaisedButton(
-                    child: Text(localeStr.btnClose),
-                    onPressed: () =>
+                      child: Text(localeStr.btnClose),
+                      onPressed: () {
+                        onDialogClose();
                         Future.delayed(Duration(milliseconds: 100), () {
-                      Navigator.of(context).pop();
-                    }),
-                  ),
+                          Navigator.of(context).pop();
+                        });
+                      }),
                 ],
               ),
             ),

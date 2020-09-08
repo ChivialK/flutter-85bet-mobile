@@ -7,7 +7,10 @@ import 'package:package_info/package_info.dart';
 class Device {
   final bool isIos;
   final MediaQueryData _mediaQueryData;
+
   PackageInfo packageInfo;
+  String _version;
+
   double _screenWidth;
   double _screenHeight;
 
@@ -29,15 +32,17 @@ class Device {
 
   Device(this._mediaQueryData, this.isIos) {
     PackageInfo.fromPlatform().then((PackageInfo info) {
-//      String appName = packageInfo.appName;
-//      String packageName = packageInfo.packageName;
-//      String version = packageInfo.version;
-//      String buildNumber = packageInfo.buildNumber;
       packageInfo = info;
+      _version = (packageInfo.buildNumber == '1' ||
+              packageInfo.buildNumber == packageInfo.version)
+          ? packageInfo.version
+          : '${packageInfo.version}+${packageInfo.buildNumber}';
       debugPrint('packageInfo: '
           'app=${packageInfo.appName}, '
           'package=${packageInfo.packageName}, '
-          'version=${packageInfo.version}+${packageInfo.buildNumber}');
+          'pkg version=${packageInfo.version}, '
+          'pkg build=${packageInfo.buildNumber}, '
+          'app version=$_version');
     });
     _screenWidth = double.parse(_mediaQueryData.size.width.toStringAsFixed(2));
     _screenHeight =
@@ -68,6 +73,8 @@ class Device {
 
   /// App Version
   String get appVersion => '${packageInfo.version}+${packageInfo.buildNumber}';
+  String get appVersionSide =>
+      '${packageInfo.version}+${packageInfo.buildNumber}${(Global.addAnalytics) ? ' (GA)' : ''}';
 
   /// device's current orientation
   Orientation get orientation => _mediaQueryData.orientation;

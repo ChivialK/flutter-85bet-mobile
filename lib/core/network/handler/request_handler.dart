@@ -2,6 +2,7 @@ import 'dart:convert' show jsonDecode, jsonEncode;
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_85bet_mobile/core/base/task_extension.dart';
 import 'package:flutter_85bet_mobile/core/error/exceptions.dart';
 import 'package:flutter_85bet_mobile/core/error/failures.dart';
@@ -24,6 +25,9 @@ Future<dynamic> _exceptionHandler(Function func, String tag) async {
   } on ServerException {
     MyLogger.warn(msg: 'Request Failed: Server Exception', tag: tag);
     throw Failure.server();
+  } on TokenException {
+    MyLogger.warn(msg: 'Request Failed: Token Exception', tag: tag);
+    throw Failure.token(FailureType.TASK);
   } on FormatException catch (e, s) {
     MyLogger.wtf(msg: 'Data format error!!', tag: tag, error: e, stackTrace: s);
     throw e;
@@ -33,11 +37,11 @@ Future<dynamic> _exceptionHandler(Function func, String tag) async {
         tag: tag,
         error: e,
         stackTrace: s);
-    throw Failure.internal(FailureCode(type: FailureType.TASK));
+    throw Failure.internal(FailureCode(type: FailureType.TASK, code: 1));
   } on Exception catch (e, s) {
     MyLogger.error(
         msg: 'Something went wrong!!', tag: tag, error: e, stackTrace: s);
-    throw Failure.internal(FailureCode());
+    throw Failure.internal(FailureCode(type: FailureType.TASK, code: 2));
   }
 }
 
@@ -55,6 +59,9 @@ Future _makeRequest({
     if (response == null ||
         response.statusCode == null ||
         response.statusCode != 200) throw ResponseException();
+    if ('${response.data}'.contains('Repeat token') ||
+        '${response.data}'.contains('route.query.forRefresh') ||
+        response.statusCode == 302) throw TokenException();
     if ('${response.data}'.startsWith('<!DOCTYPE html>'))
       throw RequestTypeErrorException();
     return response.data;
@@ -141,11 +148,14 @@ Future<Either<Failure, T>> requestModel<T>({
   String tag = 'remote-MODEL',
 }) async {
   return await runTask(_makeRequest(request: request, tag: tag)).then((result) {
-    return result.fold(
-      (failure) => Left(failure),
-      (data) => Right(
-          JsonUtil.decodeToModel<T>(data, jsonToModel, trim: trim, tag: tag)),
-    );
+    return result.fold((failure) => Left(failure), (data) {
+      try {
+        return Right(
+            JsonUtil.decodeToModel<T>(data, jsonToModel, trim: trim, tag: tag));
+      } on TokenException {
+        return Left(Failure.token(FailureType.TASK));
+      }
+    });
   });
 }
 
@@ -202,10 +212,11 @@ Future<Either<Failure, dynamic>> requestHeader({
       (data) {
         if (data[0] is Headers) {
           String headerRequested = data[0].value(header);
-//          debugPrint('test header cookie: $headerRequested');
+          debugPrint('test header cookie: $headerRequested');
           return Right(headerRequested ?? data[1]);
         }
-        return Left(Failure.internal(FailureCode(type: FailureType.TASK)));
+        return Left(
+            Failure.internal(FailureCode(type: FailureType.TASK, code: 3)));
       },
     );
   });

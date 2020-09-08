@@ -41,7 +41,7 @@ class _MainStartupState extends State<MainStartup> with AfterLayoutMixin {
     } catch (e) {
       MyLogger.warn(msg: 'locale file has exception: $e');
     } finally {
-      Global.regLocale = true;
+      Global.initLocale = true;
     }
 //    debugPrint('test locale res:${localeStr.pageTitleHome}');
 //    sl.get<LocalStrings>().init().then((value) {
@@ -64,7 +64,7 @@ class _MainStartupState extends State<MainStartup> with AfterLayoutMixin {
   @override
   Widget build(BuildContext context) {
     if (Global.device == null) getDeviceInfo(context);
-    if (Global.regLocale == false) registerLocale(context);
+    if (Global.initLocale == false) registerLocale(context);
     return SafeArea(
       child: WillPopScope(
         onWillPop: () async {
@@ -100,24 +100,27 @@ class _MainStartupState extends State<MainStartup> with AfterLayoutMixin {
   @override
   void afterFirstLayout(BuildContext context) {
     if (updateStore != null) {
-      updateFuture ??= Future.delayed(
-          Duration(milliseconds: 5000), () => updateStore.getVersion());
+      updateFuture ??=
+          Future.delayed(Duration(seconds: 5), () => updateStore.getVersion());
       updateFuture.then((hasUpdate) {
         if (hasUpdate) {
           showDialog(
             context: context,
             barrierDismissible: false,
             builder: (context) => UpdateDialog(
-              updateStore.serverAppVersion,
-              () {
+              newVersion: updateStore.serverAppVersion,
+              onUpdateClick: () {
                 String url = updateStore.serverAppUrl;
                 if (url == null || url.isEmpty || url.isUrl == false)
                   callToastError(localeStr.updateDialogErrorUrl);
                 else
                   launch(updateStore.serverAppUrl);
               },
+              onDialogClose: () => updateStore.dialogClosed(),
             ),
           );
+        } else {
+          updateStore.dialogClosed();
         }
       });
     }

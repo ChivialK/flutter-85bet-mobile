@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_85bet_mobile/features/subfeatures/notice/data/models/notice_model.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/notice/data/models/notice_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../../../../fixtures/fixture_reader.dart';

@@ -9,9 +9,7 @@ class FailureCode extends _$FailureCode {
   final int code;
 
   const FailureCode({this.type = FailureType.NOT_DEFINED, this.code = 0});
-}
 
-extension FailureCodeExtension on FailureCode {
   int get errorCode => type.value + code;
 }
 
@@ -21,6 +19,7 @@ class FailureType extends Vnum<int> {
   static const FailureType UPDATE = const FailureType.define(0100);
   static const FailureType LOGIN = const FailureType.define(0200);
   static const FailureType REGISTER = const FailureType.define(0300);
+  static const FailureType EVENT = const FailureType.define(0400);
   static const FailureType WEB = const FailureType.define(0700);
   static const FailureType WEB_URL = const FailureType.define(0800);
   static const FailureType SERVICE = const FailureType.define(0900);
@@ -51,19 +50,21 @@ class FailureType extends Vnum<int> {
   static const FailureType FLOWS = const FailureType.define(2830);
   static const FailureType AGENT = const FailureType.define(2900);
 
-  static const FailureType SIDE_MENU = const FailureType.define(3000);
-  static const FailureType DOWNLOAD_AREA = const FailureType.define(3100);
-  static const FailureType TUTORIAL = const FailureType.define(3200);
-  static const FailureType NOTICE = const FailureType.define(3300);
-  static const FailureType VIP_LEVEL = const FailureType.define(3400);
-  static const FailureType STORE = const FailureType.define(3500);
-  static const FailureType ROLLER = const FailureType.define(3600);
+  static const FailureType SIDE_MENU = const FailureType.define(4000);
+  static const FailureType DOWNLOAD_AREA = const FailureType.define(4100);
+  static const FailureType TUTORIAL = const FailureType.define(4200);
+  static const FailureType NOTICE = const FailureType.define(4300);
+  static const FailureType VIP_LEVEL = const FailureType.define(4400);
+  static const FailureType STORE = const FailureType.define(4500);
+  static const FailureType ROLLER = const FailureType.define(4600);
 
   static const FailureType INHERIT = const FailureType.define(7000);
   static const FailureType INJECTOR = const FailureType.define(7100);
+
   static const FailureType TASK = const FailureType.define(8000);
   static const FailureType JSON = const FailureType.define(8100);
-  static const FailureType REPO = const FailureType.define(8200);
+  static const FailureType TOKEN = const FailureType.define(8200);
+  static const FailureType CREDIT = const FailureType.define(8300);
 
   static const FailureType NOT_DEFINED = const FailureType.define(9000);
 

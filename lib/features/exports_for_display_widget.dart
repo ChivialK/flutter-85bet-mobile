@@ -1,5 +1,5 @@
 export 'package:flutter_85bet_mobile/core/error/failures.dart';
-export 'package:flutter_85bet_mobile/features/member/presentation/data/member_grid_item.dart';
+export 'package:flutter_85bet_mobile/features/routes/member/presentation/data/member_grid_item.dart';
 export 'package:mobx/mobx.dart' show ReactionDisposer, reaction;
 
 export '../utils/value_util.dart';

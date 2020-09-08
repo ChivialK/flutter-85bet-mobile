@@ -361,6 +361,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameCategoryGift" : MessageLookupByLibrary.simpleMessage("礼物"),
     "gameCategoryLottery" : MessageLookupByLibrary.simpleMessage("彩票"),
     "gameCategoryLotteryFull" : MessageLookupByLibrary.simpleMessage("彩票投注"),
+    "gameCategoryMovieWeb" : MessageLookupByLibrary.simpleMessage("观看电影"),
+    "gameCategoryMovieWebHint" : MessageLookupByLibrary.simpleMessage("点我观看电影"),
     "gameCategoryOther" : MessageLookupByLibrary.simpleMessage("其他"),
     "gameCategorySlot" : MessageLookupByLibrary.simpleMessage("电子"),
     "gameCategorySlotFull" : MessageLookupByLibrary.simpleMessage("电子游戏"),

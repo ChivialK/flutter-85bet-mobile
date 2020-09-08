@@ -11,6 +11,9 @@ abstract class RequestCodeModel with _$RequestCodeModel {
   }) = _RequestCodeModel;
 
   static RequestCodeModel jsonToCodeModel(Map<String, dynamic> jsonMap) {
+//    if (jsonMap.containsKey('msg') &&
+//        '${jsonMap['msg']}'.toLowerCase() == 'Repeat token'.toLowerCase())
+//      throw TokenException();
     return _$_RequestCodeModel(
       code: jsonMap['code'] as int,
       data: jsonMap['data'],

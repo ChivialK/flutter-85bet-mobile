@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_85bet_mobile/features/subfeatures/deposit/data/model/payment_promo.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/deposit/data/model/payment_promo.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../../../../fixtures/fixture_reader.dart';

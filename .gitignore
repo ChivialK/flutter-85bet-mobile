@@ -30,14 +30,17 @@
 .pub-cache/
 .pub/
 /build/
+/gen/
 
 # Web related
 lib/generated_plugin_registrant.dart
+
+# Firebase Key
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 /android/keystore.properties
 /android/mobileapp.keystore
 /config/
-
-sync.ffs_db

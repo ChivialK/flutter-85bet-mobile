@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter_85bet_mobile/features/subfeatures/accountcenter/data/entity/center_vip_entity.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/accountcenter/data/models/center_model.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/accountcenter/data/models/center_vip_setting_model.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/accountcenter/data/entity/center_vip_entity.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/accountcenter/data/models/center_model.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/accountcenter/data/models/center_vip_setting_model.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart';
 import 'package:flutter_test/flutter_test.dart';
 

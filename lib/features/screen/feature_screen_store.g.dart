@@ -98,37 +98,12 @@ mixin _$FeatureScreenStore on _FeatureScreenStore, Store {
     });
   }
 
-  final _$hasNewMessageAtom = Atom(name: '_FeatureScreenStore.hasNewMessage');
-
-  @override
-  bool get hasNewMessage {
-    _$hasNewMessageAtom.reportRead();
-    return super.hasNewMessage;
-  }
-
-  @override
-  set hasNewMessage(bool value) {
-    _$hasNewMessageAtom.reportWrite(value, super.hasNewMessage, () {
-      super.hasNewMessage = value;
-    });
-  }
-
-  final _$getNewMessageCountAsyncAction =
-      AsyncAction('_FeatureScreenStore.getNewMessageCount');
-
-  @override
-  Future<void> getNewMessageCount() {
-    return _$getNewMessageCountAsyncAction
-        .run(() => super.getNewMessageCount());
-  }
-
   @override
   String toString() {
     return '''
 errorMessage: ${errorMessage},
 pageInfo: ${pageInfo},
 userStatus: ${userStatus},
-hasNewMessage: ${hasNewMessage},
 navIndex: ${navIndex},
 hasUser: ${hasUser}
     ''';

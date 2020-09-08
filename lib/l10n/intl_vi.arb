@@ -292,11 +292,11 @@
   "@spinnerDateYesterday": {
     "type": "text"
   },
-  "spinnerDateMonth": "Trong vòng một tháng",
+  "spinnerDateMonth": "tháng này",
   "@spinnerDateMonth": {
     "type": "text"
   },
-  "spinnerDateCustom": "Thời gian tùy chỉnh",
+  "spinnerDateCustom": "Tập quán",
   "@spinnerDateCustom": {
     "type": "text"
   },
@@ -839,6 +839,14 @@
   },
   "gameCategoryWeb": "Phiên bản web",
   "@gameCategoryWeb": {
+    "type": "text"
+  },
+  "gameCategoryMovieWeb": "xem phim",
+  "@gameCategoryMovieWeb": {
+    "type": "text"
+  },
+  "gameCategoryMovieWebHint": "Bấm để xem phim",
+  "@gameCategoryMovieWebHint": {
     "type": "text"
   },
   "gameCategoryWebHint": "Nhấp vào tôi để mở phiên bản web",
@@ -1552,7 +1560,7 @@
   "@depositPaymentEditTitleNote": {
     "type": "text"
   },
-  "depositPaymentEditTitleAmountHintRange": "Phạm vi đầu vào:{num}~{num2}",
+  "depositPaymentEditTitleAmountHintRange": "{num}~{num2}",
   "@depositPaymentEditTitleAmountHintRange": {
     "type": "text",
     "placeholders": {

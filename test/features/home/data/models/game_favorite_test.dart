@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_85bet_mobile/features/home/data/models/game_model.dart';
-import 'package:flutter_85bet_mobile/features/home/data/models/game_platform.dart';
+import 'package:flutter_85bet_mobile/features/routes/home/data/models/game_model.dart';
+import 'package:flutter_85bet_mobile/features/routes/home/data/models/game_platform.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

@@ -8,9 +8,6 @@ part of 'request_status_model.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-RequestStatusModel _$RequestStatusModelFromJson(Map<String, dynamic> json) {
-  return _RequestStatusModel.fromJson(json);
-}
 
 class _$RequestStatusModelTearOff {
   const _$RequestStatusModelTearOff();
@@ -34,7 +31,6 @@ mixin _$RequestStatusModel {
   @JsonKey(fromJson: JsonUtil.getRawJson, required: false)
   String get msg;
 
-  Map<String, dynamic> toJson();
   $RequestStatusModelCopyWith<RequestStatusModel> get copyWith;
 }
 
@@ -100,15 +96,11 @@ class __$RequestStatusModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
 class _$_RequestStatusModel implements _RequestStatusModel {
   _$_RequestStatusModel(
       {@required this.status,
       @JsonKey(fromJson: JsonUtil.getRawJson, required: false) this.msg})
       : assert(status != null);
-
-  factory _$_RequestStatusModel.fromJson(Map<String, dynamic> json) =>
-      _$_$_RequestStatusModelFromJson(json);
 
   @override
   final String status;
@@ -152,11 +144,6 @@ class _$_RequestStatusModel implements _RequestStatusModel {
   @override
   _$RequestStatusModelCopyWith<_RequestStatusModel> get copyWith =>
       __$RequestStatusModelCopyWithImpl<_RequestStatusModel>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$_$_RequestStatusModelToJson(this);
-  }
 }
 
 abstract class _RequestStatusModel implements RequestStatusModel {
@@ -165,9 +152,6 @@ abstract class _RequestStatusModel implements RequestStatusModel {
           String status,
       @JsonKey(fromJson: JsonUtil.getRawJson, required: false)
           String msg}) = _$_RequestStatusModel;
-
-  factory _RequestStatusModel.fromJson(Map<String, dynamic> json) =
-      _$_RequestStatusModel.fromJson;
 
   @override
   String get status;

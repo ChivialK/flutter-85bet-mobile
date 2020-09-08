@@ -24,7 +24,6 @@ class RoutePage extends Vnum<RouteInfo> {
   static const RoutePage login = const RoutePage.define(RouteInfo(
     id: RouteEnum.LOGIN,
     route: Routes.loginRoute,
-//    disableLanguageDropDown: true,
   ));
 
 //  static const RoutePage movieEg = const RoutePage.define(RouteInfo(
@@ -56,10 +55,6 @@ class RoutePage extends Vnum<RouteInfo> {
   static const RoutePage service = const RoutePage.define(RouteInfo(
     id: RouteEnum.SERVICE,
     route: Routes.serviceRoute,
-    routeArg: const WebRouteArguments(
-      startUrl: Global.CURRENT_SERVICE,
-      hideBars: true,
-    ),
     isFeature: true,
     bottomNavIndex: 3,
     hideAppbarActions: false,
@@ -79,14 +74,12 @@ class RoutePage extends Vnum<RouteInfo> {
     parentRoute: Routes.homeRoute,
     isFeature: true,
     bottomNavIndex: 1,
-    disableLanguageDropDown: true,
   ));
 
   static const RoutePage deposit = const RoutePage.define(RouteInfo(
     id: RouteEnum.DEPOSIT,
     route: Routes.depositRoute,
     parentRoute: Routes.memberRoute,
-    disableLanguageDropDown: true,
   ));
 
   static const RoutePage depositWeb = const RoutePage.define(RouteInfo(
@@ -100,35 +93,31 @@ class RoutePage extends Vnum<RouteInfo> {
     id: RouteEnum.TRANSFER,
     route: Routes.transferRoute,
     parentRoute: Routes.memberRoute,
-    disableLanguageDropDown: true,
   ));
 
   static const RoutePage bankcard = const RoutePage.define(RouteInfo(
     id: RouteEnum.BANKCARD,
     route: Routes.bankcardRoute,
     parentRoute: Routes.memberRoute,
-    disableLanguageDropDown: true,
   ));
 
   static const RoutePage withdraw = const RoutePage.define(RouteInfo(
     id: RouteEnum.WITHDRAW,
     route: Routes.withdrawRoute,
+    routeArg: BankcardRouteArguments(withdraw: true),
     parentRoute: Routes.memberRoute,
-    disableLanguageDropDown: true,
   ));
 
   static const RoutePage balance = const RoutePage.define(RouteInfo(
     id: RouteEnum.BALANCE,
     route: Routes.balanceRoute,
     parentRoute: Routes.memberRoute,
-    disableLanguageDropDown: true,
   ));
 
   static const RoutePage wallet = const RoutePage.define(RouteInfo(
     id: RouteEnum.WALLET,
     route: Routes.walletRoute,
     parentRoute: Routes.memberRoute,
-    disableLanguageDropDown: true,
   ));
 
   static const RoutePage message = const RoutePage.define(RouteInfo(
@@ -163,28 +152,24 @@ class RoutePage extends Vnum<RouteInfo> {
     id: RouteEnum.TRANSFER_RECORD,
     route: Routes.transactionRoute,
     parentRoute: Routes.memberRoute,
-    disableLanguageDropDown: true,
   ));
 
   static const RoutePage betRecord = const RoutePage.define(RouteInfo(
     id: RouteEnum.BETS,
     route: Routes.betRecordRoute,
     parentRoute: Routes.memberRoute,
-    disableLanguageDropDown: true,
   ));
 
   static const RoutePage deals = const RoutePage.define(RouteInfo(
     id: RouteEnum.DEALS,
     route: Routes.dealsRoute,
     parentRoute: Routes.memberRoute,
-    disableLanguageDropDown: true,
   ));
 
   static const RoutePage flows = const RoutePage.define(RouteInfo(
     id: RouteEnum.FLOW,
     route: Routes.flowsRoute,
     parentRoute: Routes.memberRoute,
-    disableLanguageDropDown: true,
   ));
 
   static const RoutePage agentFeature = const RoutePage.define(RouteInfo(
@@ -217,7 +202,13 @@ class RoutePage extends Vnum<RouteInfo> {
   static const RoutePage noticeBoard = const RoutePage.define(RouteInfo(
     id: RouteEnum.NOTICE,
     route: Routes.noticeRoute,
-    disableLanguageDropDown: true,
+    parentRoute: Routes.memberRoute,
+  ));
+
+  static const RoutePage vipLevel = const RoutePage.define(RouteInfo(
+    id: RouteEnum.VIP,
+    route: Routes.levelRoute,
+    parentRoute: Routes.memberRoute,
   ));
 
   static const RoutePage agentAbout = const RoutePage.define(RouteInfo(
@@ -242,9 +233,7 @@ class RoutePage extends Vnum<RouteInfo> {
   static const RoutePage sideNoticeBoard = const RoutePage.define(RouteInfo(
     id: RouteEnum.NOTICE,
     route: Routes.noticeRoute,
-    parentRoute: Routes.homeRoute,
     showDrawer: true,
-    disableLanguageDropDown: true,
   ));
 
   static const RoutePage sideTutorial = const RoutePage.define(RouteInfo(
@@ -254,7 +243,6 @@ class RoutePage extends Vnum<RouteInfo> {
       startUrl: '${Global.CURRENT_BASE}newbie',
       hideBars: true,
     ),
-    parentRoute: Routes.homeRoute,
     showDrawer: true,
     disableLanguageDropDown: true,
   ));
@@ -263,14 +251,12 @@ class RoutePage extends Vnum<RouteInfo> {
     id: RouteEnum.WALLET,
     route: Routes.walletRoute,
     showDrawer: true,
-    disableLanguageDropDown: true,
   ));
 
-  static const RoutePage vipLevel = const RoutePage.define(RouteInfo(
+  static const RoutePage sideVipLevel = const RoutePage.define(RouteInfo(
     id: RouteEnum.VIP,
     route: Routes.levelRoute,
     showDrawer: true,
-    disableLanguageDropDown: true,
   ));
 //
 //  static const RoutePage pointStore = const RoutePage.define(RouteInfo(
@@ -288,11 +274,11 @@ class RoutePage extends Vnum<RouteInfo> {
 //  ));
 
   /// test route
-  static const RoutePage template = const RoutePage.define(RouteInfo(
-    id: RouteEnum.TEMPLATE,
-    route: Routes.templateRoute,
-    disableLanguageDropDown: true,
-  ));
+//  static const RoutePage template = const RoutePage.define(RouteInfo(
+//    id: RouteEnum.TEMPLATE,
+//    route: Routes.templateRoute,
+//    disableLanguageDropDown: true,
+//  ));
 
   static const RoutePage testArea = const RoutePage.define(RouteInfo(
     id: RouteEnum.TEST,
@@ -365,8 +351,8 @@ extension PagesNameExtension on String {
         return RoutePage.member;
       case Routes.centerRoute:
         return RoutePage.center;
-      case Routes.templateRoute:
-        return RoutePage.template;
+//      case Routes.templateRoute:
+//        return RoutePage.template;
       case Routes.testAreaRoute:
         return RoutePage.testArea;
       default:

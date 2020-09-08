@@ -2,17 +2,13 @@ import 'dart:async' show StreamSubscription;
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/global.dart';
 import 'package:flutter_85bet_mobile/core/network/util/network_info.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
-import 'package:flutter_85bet_mobile/features/home/presentation/state/home_store.dart';
-import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
 import 'package:flutter_85bet_mobile/features/screen/feature_screen_inherited_widget.dart';
 import 'package:flutter_85bet_mobile/features/screen/network_changed_dialog.dart';
-import 'package:flutter_85bet_mobile/injection_container.dart';
 import 'package:flutter_85bet_mobile/utils/platform_util.dart';
 
-import '../../mylogger.dart';
+import '../routes/home/presentation/state/home_store.dart';
 import 'feature_screen_store.dart';
 import 'feature_screen_view.dart';
 
@@ -31,8 +27,8 @@ class FeatureScreen extends StatefulWidget {
 
 class _FeatureScreenState extends State<FeatureScreen> {
   final String tag = 'FeatureScreen';
+  final FeatureScreenStore _store = FeatureScreenStore(sl());
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  FeatureScreenStore _store = FeatureScreenStore();
 
   StreamSubscription<ConnectivityResult> networkSubscript;
   ConnectivityResult _currentNetworkType;
@@ -48,9 +44,7 @@ class _FeatureScreenState extends State<FeatureScreen> {
           .onChangedStream
           .listen((ConnectivityResult result) {
         debugPrint('connectivity result: $result');
-        _currentNetworkType ??= result;
-        if (_currentNetworkType != result && mounted && !isShowingDialog) {
-          _currentNetworkType = result;
+        if (_currentNetworkType != null && mounted && !isShowingDialog) {
           try {
             showDialog(
               context: context,
@@ -64,6 +58,8 @@ class _FeatureScreenState extends State<FeatureScreen> {
           } catch (e) {
             MyLogger.error(msg: 'connectivity dialog has error: $e');
           }
+        } else {
+          _currentNetworkType = result;
         }
       });
     } catch (e) {
@@ -73,12 +69,17 @@ class _FeatureScreenState extends State<FeatureScreen> {
   }
 
   void updateScreen() {
+    debugPrint('reassembling feature screen...');
     try {
       sl?.get<HomeStore>()?.getInitializeData(force: true);
-      // refresh widget under scaffold (ex. menu bar, nav bar...)
-      _scaffoldKey?.currentState?.setState(() {});
-      // refresh current route widget
-      RouterNavigate.navigator.reassemble();
+      Future.delayed(
+          Duration(milliseconds: (RouterNavigate.current == '/') ? 2000 : 100),
+          () {
+        // refresh widget under scaffold (ex. menu bar, nav bar...)
+        _scaffoldKey?.currentState?.setState(() {});
+        // refresh current route widget
+        RouterNavigate.navigator.reassemble();
+      });
     } catch (e) {
       MyLogger.error(msg: 'update feature screen has error: $e');
       PlatformUtil.restart();
@@ -90,6 +91,10 @@ class _FeatureScreenState extends State<FeatureScreen> {
     MyLogger.debug(msg: 'init feature screen', tag: tag);
     locale = Global.lang;
     super.initState();
+    if (_store != null) {
+      _store.getWebsiteList();
+      _store.getAds();
+    }
     setNetworkListener();
   }
 
@@ -123,6 +128,7 @@ class _FeatureScreenState extends State<FeatureScreen> {
             return FeatureScreenInheritedWidget(
               scaffoldKey: _scaffoldKey,
               store: _store,
+              eventStore: sl(),
               child: FeatureScreenView(),
             );
           }),
@@ -142,7 +148,7 @@ class _FeatureScreenState extends State<FeatureScreen> {
   void dispose() {
     MyLogger.warn(msg: 'disposing feature screen', tag: tag);
     try {
-      Global.regLocale = false;
+      Global.initLocale = false;
       _store.closeStreams();
     } on Exception {}
     Future.delayed(Duration(milliseconds: 200), () => PlatformUtil.restart());

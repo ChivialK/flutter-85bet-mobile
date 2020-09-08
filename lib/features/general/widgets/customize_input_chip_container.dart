@@ -62,8 +62,14 @@ class _CustomizeInputChipContainerState
   List<Widget> chips;
 
   @override
+  void didUpdateWidget(CustomizeInputChipContainer oldWidget) {
+    chips = null;
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    if (chips == null) {
+    if (chips == null && widget.labels.isNotEmpty) {
       chips = new List();
       int index = 0;
       for (String label in widget.labels) {

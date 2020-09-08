@@ -7,7 +7,9 @@ class ServerException implements Exception {}
 
 class RequestTimeoutException implements ServerException {
   final String message;
+
   RequestTimeoutException([this.message = ""]);
+
   @override
   String toString() {
     if (message.isEmpty) return super.toString();
@@ -21,9 +23,13 @@ class ResponseException implements ServerException {}
 
 class UnknownException implements ServerException {}
 
+class TokenException implements Exception {}
+
 class LoginException implements Exception {
   final RequestStatusModel data;
+
   LoginException({this.data});
+
   @override
   String toString() {
     if (data != null) return super.toString();
@@ -33,7 +39,9 @@ class LoginException implements Exception {
 
 class JsonFormatException implements Exception {
   final String json;
+
   JsonFormatException(this.json);
+
   @override
   String toString() {
     return 'JsonFormatException!!\njson data: $json';

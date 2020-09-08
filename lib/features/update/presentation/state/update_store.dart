@@ -23,12 +23,16 @@ abstract class _UpdateStore with Store {
 
   bool _hasNewVersion = false;
 
+  bool _dialogClosed = false;
+
   @observable
   String errorMessage;
 
   String get serverAppVersion => _updateVersion;
 
   String get serverAppUrl => _updateUrl;
+
+  bool get showingUpdateDialog => !_dialogClosed;
 
   @action
   Future<bool> getVersion() async {
@@ -74,4 +78,6 @@ abstract class _UpdateStore with Store {
     debugPrint('server version as int: $server');
     return (current == -1 || server == -1) ? false : current < server;
   }
+
+  void dialogClosed() => _dialogClosed = true;
 }

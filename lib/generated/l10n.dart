@@ -1,7 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -13,23 +12,22 @@ import 'intl/messages_all.dart';
 
 class S {
   S();
-
+  
   static S current;
-
-  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
+  
+  static const AppLocalizationDelegate delegate =
+    AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
-    final localeName = Intl.canonicalizedLocale(name);
+    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
+    final localeName = Intl.canonicalizedLocale(name); 
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       S.current = S();
-
+      
       return S.current;
     });
-  }
+  } 
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
@@ -365,20 +363,20 @@ class S {
     );
   }
 
-  /// `Transaction History`
+  /// `Deals History`
   String get pageTitleMemberDeals {
     return Intl.message(
-      'Transaction History',
+      'Deals History',
       name: 'pageTitleMemberDeals',
       desc: '',
       args: [],
     );
   }
 
-  /// `Flowing Record`
+  /// `Flow Record`
   String get pageTitleMemberFlow {
     return Intl.message(
-      'Flowing Record',
+      'Flow Record',
       name: 'pageTitleMemberFlow',
       desc: '',
       args: [],
@@ -795,20 +793,20 @@ class S {
     );
   }
 
-  /// `UserName *`
+  /// `UserName`
   String get hintAccount {
     return Intl.message(
-      'UserName *',
+      'UserName',
       name: 'hintAccount',
       desc: '',
       args: [],
     );
   }
 
-  /// `Password *`
+  /// `Password`
   String get hintAccountPassword {
     return Intl.message(
-      'Password *',
+      'Password',
       name: 'hintAccountPassword',
       desc: '',
       args: [],
@@ -1935,6 +1933,26 @@ class S {
     );
   }
 
+  /// `Watch Movie`
+  String get gameCategoryMovieWeb {
+    return Intl.message(
+      'Watch Movie',
+      name: 'gameCategoryMovieWeb',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Click me to watch movie`
+  String get gameCategoryMovieWebHint {
+    return Intl.message(
+      'Click me to watch movie',
+      name: 'gameCategoryMovieWebHint',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Click me to open 85Bet website`
   String get gameCategoryWebHint {
     return Intl.message(
@@ -2355,20 +2373,20 @@ class S {
     );
   }
 
-  /// `Transaction History`
+  /// `Deals History`
   String get memberGridTitleDeal {
     return Intl.message(
-      'Transaction History',
+      'Deals History',
       name: 'memberGridTitleDeal',
       desc: '',
       args: [],
     );
   }
 
-  /// `Flowing Record`
+  /// `Flow Record`
   String get memberGridTitleFlow {
     return Intl.message(
-      'Flowing Record',
+      'Flow Record',
       name: 'memberGridTitleFlow',
       desc: '',
       args: [],
@@ -3615,10 +3633,10 @@ class S {
     );
   }
 
-  /// `Please fill in your payer name`
+  /// `fill in account holder`
   String get depositPaymentEditTitleNameHint {
     return Intl.message(
-      'Please fill in your payer name',
+      'fill in account holder',
       name: 'depositPaymentEditTitleNameHint',
       desc: '',
       args: [],
@@ -3635,10 +3653,10 @@ class S {
     );
   }
 
-  /// `Please fill in the bank account of the payer`
+  /// `fill in bank account`
   String get depositPaymentEditTitleAccountHint {
     return Intl.message(
-      'Please fill in the bank account of the payer',
+      'fill in bank account',
       name: 'depositPaymentEditTitleAccountHint',
       desc: '',
       args: [],
@@ -3675,21 +3693,20 @@ class S {
     );
   }
 
-  /// `Input range: {num} ~ {num2}`
+  /// `Range: {num} ~ {num2}`
   String depositPaymentEditTitleAmountHintRange(Object num, Object num2) {
     return Intl.message(
-      'Input range: $num ~ $num2',
+      'Range: $num ~ $num2',
       name: 'depositPaymentEditTitleAmountHintRange',
       desc: '',
       args: [num, num2],
     );
   }
 
-  /// `Input range: {num} ~ {num2} (amount is a multiple of {num3})`
-  String depositPaymentEditTitleAmountHintRangeStep(
-      Object num, Object num2, Object num3) {
+  /// `Range: {num} ~ {num2} (Step:{num3})`
+  String depositPaymentEditTitleAmountHintRangeStep(Object num, Object num2, Object num3) {
     return Intl.message(
-      'Input range: $num ~ $num2 (amount is a multiple of $num3)',
+      'Range: $num ~ $num2 (Step:$num3)',
       name: 'depositPaymentEditTitleAmountHintRangeStep',
       desc: '',
       args: [num, num2, num3],
@@ -3736,10 +3753,10 @@ class S {
     );
   }
 
-  /// `Abandon Application Offer`
+  /// `Without Promo`
   String get depositPaymentNoPromo {
     return Intl.message(
-      'Abandon Application Offer',
+      'Without Promo',
       name: 'depositPaymentNoPromo',
       desc: '',
       args: [],

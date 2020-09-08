@@ -35,7 +35,7 @@ abstract class Failure extends Equatable {
   factory Failure.login(RequestStatusModel requestStatusModel) =
       RequestStatusModelWrapper;
 
-  factory Failure.token() = Token;
+  factory Failure.token(FailureType failureType) = FailureTypeWrapper;
 
   factory Failure.event() = Event;
 
@@ -54,7 +54,7 @@ abstract class Failure extends Equatable {
       @required R Function(RequestCodeModel) errorCode,
       @required R Function(FailureCode) internal,
       @required R Function(RequestStatusModel) login,
-      @required R Function(Token) token,
+      @required R Function(FailureType) token,
       @required R Function(Event) event}) {
     assert(() {
       if (network == null ||
@@ -99,7 +99,7 @@ abstract class Failure extends Equatable {
       case _Failure.Login:
         return login((this as RequestStatusModelWrapper).requestStatusModel);
       case _Failure.Token:
-        return token(this as Token);
+        return token((this as FailureTypeWrapper).failureType);
       case _Failure.Event:
         return event(this as Event);
     }
@@ -118,7 +118,7 @@ abstract class Failure extends Equatable {
       @required FutureOr<R> Function(RequestCodeModel) errorCode,
       @required FutureOr<R> Function(FailureCode) internal,
       @required FutureOr<R> Function(RequestStatusModel) login,
-      @required FutureOr<R> Function(Token) token,
+      @required FutureOr<R> Function(FailureType) token,
       @required FutureOr<R> Function(Event) event}) {
     assert(() {
       if (network == null ||
@@ -163,7 +163,7 @@ abstract class Failure extends Equatable {
       case _Failure.Login:
         return login((this as RequestStatusModelWrapper).requestStatusModel);
       case _Failure.Token:
-        return token(this as Token);
+        return token((this as FailureTypeWrapper).failureType);
       case _Failure.Event:
         return event(this as Event);
     }
@@ -181,7 +181,7 @@ abstract class Failure extends Equatable {
       R Function(RequestCodeModel) errorCode,
       R Function(FailureCode) internal,
       R Function(RequestStatusModel) login,
-      R Function(Token) token,
+      R Function(FailureType) token,
       R Function(Event) event,
       @required R Function(Failure) orElse}) {
     assert(() {
@@ -227,7 +227,7 @@ abstract class Failure extends Equatable {
         return login((this as RequestStatusModelWrapper).requestStatusModel);
       case _Failure.Token:
         if (token == null) break;
-        return token(this as Token);
+        return token((this as FailureTypeWrapper).failureType);
       case _Failure.Event:
         if (event == null) break;
         return event(this as Event);
@@ -247,7 +247,7 @@ abstract class Failure extends Equatable {
       FutureOr<R> Function(RequestCodeModel) errorCode,
       FutureOr<R> Function(FailureCode) internal,
       FutureOr<R> Function(RequestStatusModel) login,
-      FutureOr<R> Function(Token) token,
+      FutureOr<R> Function(FailureType) token,
       FutureOr<R> Function(Event) event,
       @required FutureOr<R> Function(Failure) orElse}) {
     assert(() {
@@ -293,7 +293,7 @@ abstract class Failure extends Equatable {
         return login((this as RequestStatusModelWrapper).requestStatusModel);
       case _Failure.Token:
         if (token == null) break;
-        return token(this as Token);
+        return token((this as FailureTypeWrapper).failureType);
       case _Failure.Event:
         if (event == null) break;
         return event(this as Event);
@@ -314,7 +314,7 @@ abstract class Failure extends Equatable {
       FutureOr<void> Function(RequestCodeModel) errorCode,
       FutureOr<void> Function(FailureCode) internal,
       FutureOr<void> Function(RequestStatusModel) login,
-      FutureOr<void> Function(Token) token,
+      FutureOr<void> Function(FailureType) token,
       FutureOr<void> Function(Event) event}) {
     assert(() {
       if (network == null &&
@@ -371,7 +371,7 @@ abstract class Failure extends Equatable {
         return login((this as RequestStatusModelWrapper).requestStatusModel);
       case _Failure.Token:
         if (token == null) break;
-        return token(this as Token);
+        return token((this as FailureTypeWrapper).failureType);
       case _Failure.Event:
         if (event == null) break;
         return event(this as Event);
@@ -462,6 +462,7 @@ class ErrorMessage extends Failure {
 
   @override
   String toString() => 'ErrorMessage(msg:${this.msg})';
+
   @override
   List get props => [msg];
 }
@@ -475,6 +476,7 @@ class RequestStatusModelWrapper extends Failure {
 
   @override
   String toString() => 'RequestStatusModelWrapper($requestStatusModel)';
+
   @override
   List get props => [requestStatusModel];
 }
@@ -488,6 +490,7 @@ class RequestCodeModelWrapper extends Failure {
 
   @override
   String toString() => 'RequestCodeModelWrapper($requestCodeModel)';
+
   @override
   List get props => [requestCodeModel];
 }
@@ -500,20 +503,22 @@ class FailureCodeWrapper extends Failure {
 
   @override
   String toString() => 'FailureCodeWrapper($failureCode)';
+
   @override
   List get props => [failureCode];
 }
 
 @immutable
-class Token extends Failure {
-  const Token._() : super(_Failure.Token);
+class FailureTypeWrapper extends Failure {
+  const FailureTypeWrapper(this.failureType) : super(_Failure.Token);
 
-  factory Token() {
-    _instance ??= const Token._();
-    return _instance;
-  }
+  final FailureType failureType;
 
-  static Token _instance;
+  @override
+  String toString() => 'FailureTypeWrapper($failureType)';
+
+  @override
+  List get props => [failureType];
 }
 
 @immutable

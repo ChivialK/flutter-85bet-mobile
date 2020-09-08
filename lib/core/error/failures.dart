@@ -36,7 +36,7 @@ enum _Failure {
   Internal,
   @UseClass(RequestStatusModel)
   Login,
-  @object
+  @UseClass(FailureType)
   Token,
   @object
   Event,
@@ -44,6 +44,7 @@ enum _Failure {
 
 extension FailureExtension on Failure {
   int get typeIndex => this._type.index;
+
   String get message {
     switch (this._type) {
       case _Failure.Network:
@@ -57,7 +58,8 @@ extension FailureExtension on Failure {
       case _Failure.Login:
         return localeStr.messageLoginFailed + '(${this.props.first.msg})';
       case _Failure.Token:
-        return localeStr.messageErrorToken;
+        return localeStr.messageErrorToken +
+            '(code: ${this.props.first.value})';
       case _Failure.Event:
         return localeStr.messageErrorEvent;
       case _Failure.CachedFile:
@@ -71,6 +73,8 @@ extension FailureExtension on Failure {
         return '${this.props.first.msg}';
       case _Failure.ErrorCode:
         return '${this.props.first.msg}(code: ${this.props.first.code})';
+      case _Failure.DataType:
+        return localeStr.messageErrorServerData;
       default:
         return _OTHER_FAILURE_MESSAGE;
     }

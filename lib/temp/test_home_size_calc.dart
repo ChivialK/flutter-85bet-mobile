@@ -2,7 +2,7 @@ import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/core/internal/device.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
-import 'package:flutter_85bet_mobile/features/home/presentation/widgets/home_display_size_calc.dart';
+import 'package:flutter_85bet_mobile/features/routes/home/presentation/widgets/home_display_size_calc.dart';
 
 class TestHomeSizeCalc extends StatefulWidget {
   @override

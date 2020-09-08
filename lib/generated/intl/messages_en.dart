@@ -51,9 +51,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m15(value) => "Request Success, Order No.${value}";
 
-  static m16(num, num2) => "Input range: ${num} ~ ${num2}";
+  static m16(num, num2) => "Range: ${num} ~ ${num2}";
 
-  static m17(num, num2, num3) => "Input range: ${num} ~ ${num2} (amount is a multiple of ${num3})";
+  static m17(num, num2, num3) => "Range: ${num} ~ ${num2} (Step:${num3})";
 
   static m18(value) => "Reality: ${value} VND";
 
@@ -308,17 +308,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "depositNewbieWechat2" : MessageLookupByLibrary.simpleMessage("2. Then use another mobile phone WeChat to scan the code."),
     "depositPaymentButtonTitleTutorial" : MessageLookupByLibrary.simpleMessage("Tutorial"),
     "depositPaymentEditTitleAccount" : MessageLookupByLibrary.simpleMessage("Bank Account"),
-    "depositPaymentEditTitleAccountHint" : MessageLookupByLibrary.simpleMessage("Please fill in the bank account of the payer"),
+    "depositPaymentEditTitleAccountHint" : MessageLookupByLibrary.simpleMessage("fill in bank account"),
     "depositPaymentEditTitleAmount" : MessageLookupByLibrary.simpleMessage("Deposit Amount"),
     "depositPaymentEditTitleAmountHintRange" : m16,
     "depositPaymentEditTitleAmountHintRangeStep" : m17,
     "depositPaymentEditTitleAmountHintVND" : m18,
     "depositPaymentEditTitleName" : MessageLookupByLibrary.simpleMessage("Name"),
-    "depositPaymentEditTitleNameHint" : MessageLookupByLibrary.simpleMessage("Please fill in your payer name"),
+    "depositPaymentEditTitleNameHint" : MessageLookupByLibrary.simpleMessage("fill in account holder"),
     "depositPaymentEditTitleNote" : MessageLookupByLibrary.simpleMessage("Remarks"),
     "depositPaymentMethodLocal1" : MessageLookupByLibrary.simpleMessage("Local Transfer"),
     "depositPaymentMethodLocal2" : MessageLookupByLibrary.simpleMessage("ATM Deposit"),
-    "depositPaymentNoPromo" : MessageLookupByLibrary.simpleMessage("Abandon Application Offer"),
+    "depositPaymentNoPromo" : MessageLookupByLibrary.simpleMessage("Without Promo"),
     "depositPaymentSpinnerTitleAccountBank" : MessageLookupByLibrary.simpleMessage("Bank"),
     "depositPaymentSpinnerTitleBank" : MessageLookupByLibrary.simpleMessage("Deposit Bank"),
     "depositPaymentSpinnerTitleMethod" : MessageLookupByLibrary.simpleMessage("Recharge Method"),
@@ -361,6 +361,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameCategoryGift" : MessageLookupByLibrary.simpleMessage("Gift"),
     "gameCategoryLottery" : MessageLookupByLibrary.simpleMessage("Lottery"),
     "gameCategoryLotteryFull" : MessageLookupByLibrary.simpleMessage("Lottery"),
+    "gameCategoryMovieWeb" : MessageLookupByLibrary.simpleMessage("Watch Movie"),
+    "gameCategoryMovieWebHint" : MessageLookupByLibrary.simpleMessage("Click me to watch movie"),
     "gameCategoryOther" : MessageLookupByLibrary.simpleMessage("Other"),
     "gameCategorySlot" : MessageLookupByLibrary.simpleMessage("Slot"),
     "gameCategorySlotFull" : MessageLookupByLibrary.simpleMessage("Slot"),
@@ -368,9 +370,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameCategorySportFull" : MessageLookupByLibrary.simpleMessage("Sport"),
     "gameCategoryWeb" : MessageLookupByLibrary.simpleMessage("Website"),
     "gameCategoryWebHint" : MessageLookupByLibrary.simpleMessage("Click me to open 85Bet website"),
-    "hintAccount" : MessageLookupByLibrary.simpleMessage("UserName *"),
+    "hintAccount" : MessageLookupByLibrary.simpleMessage("UserName"),
     "hintAccountInput" : MessageLookupByLibrary.simpleMessage("enter account"),
-    "hintAccountPassword" : MessageLookupByLibrary.simpleMessage("Password *"),
+    "hintAccountPassword" : MessageLookupByLibrary.simpleMessage("Password"),
     "hintActionLogin" : MessageLookupByLibrary.simpleMessage("Please login first"),
     "hintActionSelect" : MessageLookupByLibrary.simpleMessage("Please select"),
     "hintConfirmed" : MessageLookupByLibrary.simpleMessage("Enter the password again"),
@@ -397,9 +399,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "memberGridTitleBalance" : MessageLookupByLibrary.simpleMessage("Platform balance"),
     "memberGridTitleBet" : MessageLookupByLibrary.simpleMessage("Bet History"),
     "memberGridTitleCard" : MessageLookupByLibrary.simpleMessage("Bank Card"),
-    "memberGridTitleDeal" : MessageLookupByLibrary.simpleMessage("Transaction History"),
+    "memberGridTitleDeal" : MessageLookupByLibrary.simpleMessage("Deals History"),
     "memberGridTitleDeposit" : MessageLookupByLibrary.simpleMessage("Recharge"),
-    "memberGridTitleFlow" : MessageLookupByLibrary.simpleMessage("Flowing Record"),
+    "memberGridTitleFlow" : MessageLookupByLibrary.simpleMessage("Flow Record"),
     "memberGridTitleLogout" : MessageLookupByLibrary.simpleMessage("Sign Out"),
     "memberGridTitleMessage" : MessageLookupByLibrary.simpleMessage("Site Message"),
     "memberGridTitleTransaction" : MessageLookupByLibrary.simpleMessage("Transfer Record"),
@@ -519,8 +521,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "pageTitleMemberBets" : MessageLookupByLibrary.simpleMessage("Bet History"),
     "pageTitleMemberCard" : MessageLookupByLibrary.simpleMessage("Bank Card"),
     "pageTitleMemberCenter" : MessageLookupByLibrary.simpleMessage("Center"),
-    "pageTitleMemberDeals" : MessageLookupByLibrary.simpleMessage("Transaction History"),
-    "pageTitleMemberFlow" : MessageLookupByLibrary.simpleMessage("Flowing Record"),
+    "pageTitleMemberDeals" : MessageLookupByLibrary.simpleMessage("Deals History"),
+    "pageTitleMemberFlow" : MessageLookupByLibrary.simpleMessage("Flow Record"),
     "pageTitleMemberMessage" : MessageLookupByLibrary.simpleMessage("Site Message"),
     "pageTitleMemberPassword" : MessageLookupByLibrary.simpleMessage("Change Password"),
     "pageTitleMemberTransaction" : MessageLookupByLibrary.simpleMessage("Transfer Record"),

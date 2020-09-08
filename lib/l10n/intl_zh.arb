@@ -842,6 +842,14 @@
   "@gameCategoryWeb": {
     "type": "text"
   },
+  "gameCategoryMovieWeb": "观看电影",
+  "@gameCategoryMovieWeb": {
+    "type": "text"
+  },
+  "gameCategoryMovieWebHint": "点我观看电影",
+  "@gameCategoryMovieWebHint": {
+    "type": "text"
+  },
   "gameCategoryWebHint": "点我开启85Bet网页版",
   "@gameCategoryWebHint": {
     "type": "text"

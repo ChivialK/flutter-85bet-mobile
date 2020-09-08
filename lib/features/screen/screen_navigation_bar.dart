@@ -20,6 +20,7 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
   ];
 
   FeatureScreenStore _store;
+  EventStore _eventStore;
   Widget _barWidget;
   String _locale;
   int _navIndex = 0;
@@ -40,10 +41,11 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
       if (value.isUserOnly && !hasUser)
         RouterNavigate.navigateToPage(RoutePage.login);
       else if (item == ScreenNavigationBarItem.service)
-        RouterNavigate.navigateToPage(
-          value.route,
-          arg: value.route.value.routeArg
-        );
+        RouterNavigate.navigateToPage(value.route,
+            arg: WebRouteArguments(
+              startUrl: Global.currentService,
+              hideBars: true,
+            ));
       else
         RouterNavigate.navigateToPage(value.route);
     }
@@ -56,10 +58,19 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
   }
 
   @override
+  void didUpdateWidget(ScreenNavigationBar oldWidget) {
+    _store = null;
+    _eventStore = null;
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
-//    debugPrint('triggered nav bar rebuild');
-    final viewState = FeatureScreenInheritedWidget.of(context);
-    _store ??= viewState.store;
+    if (_store == null || _eventStore == null) {
+      final viewState = FeatureScreenInheritedWidget.of(context);
+      _store ??= viewState?.store;
+      _eventStore ??= viewState?.eventStore;
+    }
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -67,7 +78,7 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
         ),
       ),
       child: StreamBuilder<bool>(
-          stream: viewState.store.loginStateStream,
+          stream: _store.loginStateStream,
           initialData: false,
           builder: (context, snapshot) {
             if (_barWidget != null && _locale != Global.lang) {
@@ -112,7 +123,7 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
     return BottomNavigationBarItem(
       icon: (addBadge)
           ? Badge(
-              showBadge: store.hasNewMessage,
+              showBadge: _eventStore.hasNewMessage,
               badgeColor: Themes.hintHighlightRed,
               badgeContent: Container(
                 margin: const EdgeInsets.all(1.0),

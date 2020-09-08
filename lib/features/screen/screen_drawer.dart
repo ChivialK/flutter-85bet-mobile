@@ -24,7 +24,7 @@ class ScreenDrawer extends StatelessWidget {
       return true;
     }
     if (item == ScreenDrawerItem.website) {
-      launch(Global.CURRENT_SERVICE);
+      launch(Global.CURRENT_BASE);
       return true;
     }
     if (item == ScreenDrawerItem.test) {
@@ -38,7 +38,7 @@ class ScreenDrawer extends StatelessWidget {
         item.value.id == RouteEnum.AGENT_ABOUT) {
       debugPrint('${item.value.id} route arg: ${route.value.routeArg}');
       // open web page
-      RouterNavigate.navigateToPage(route, arg: route.value.routeArg);
+      RouterNavigate.replacePage(route);
       return true;
     } else if (route.page != RouterNavigate.current) {
       RouterNavigate.navigateToPage(route);
@@ -231,7 +231,7 @@ class ScreenDrawer extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      'version: ${Global.device.appVersion}',
+                      'version: ${Global.device.appVersionSide}',
                       style: TextStyle(
                         fontSize: FontSize.SMALL.value,
                         color: Themes.defaultHintSubColor,

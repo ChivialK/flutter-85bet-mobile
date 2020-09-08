@@ -4,35 +4,34 @@
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/features/home/presentation/home_route.dart';
-import 'package:flutter_85bet_mobile/features/member/presentation/member_route.dart';
-import 'package:flutter_85bet_mobile/features/promo/presentation/promo_route.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/home/presentation/home_route.dart';
 import 'package:flutter_85bet_mobile/features/router/my_static_page_transition.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/accountcenter/presentation/center_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/accountcenter/presentation/state/center_store.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/accountcenter/presentation/widgets/center_display_account_pwd.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/agent/presentation/agent_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/balance/presentation/balance_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/bankcard/presentation/bankcard_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/betrecord/presentation/bet_record_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/deals/presentation/deals_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/deposit/presentation/deposit_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/downloadarea/download_area_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/flows/presentation/flows_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/message/presentation/message_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/notice/presentation/notice_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/register/presentation/register_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/transactions/presentation/transaction_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/transfer/presentation/transfer_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/viplevel/presentation/vip_level_route.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/wallet/presentation/wallet_route.dart';
-import 'package:flutter_85bet_mobile/features/test_area_route.dart';
 import 'package:flutter_85bet_mobile/features/user/login/presentation/login_route.dart';
-import 'package:flutter_85bet_mobile/features/web/web_route.dart';
-import 'package:flutter_85bet_mobile/template/mobx/presentation/template_route.dart';
+import 'package:flutter_85bet_mobile/features/user/register/presentation/register_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/web/web_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/member/presentation/member_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/promo/presentation/promo_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/deposit/presentation/deposit_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/transfer/presentation/transfer_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/bankcard/presentation/bankcard_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/balance/presentation/balance_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/wallet/presentation/wallet_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/message/presentation/message_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/accountcenter/presentation/center_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/accountcenter/presentation/widgets/center_display_account_pwd.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/accountcenter/presentation/state/center_store.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/transactions/presentation/transaction_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/betrecord/presentation/bet_record_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/deals/presentation/deals_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/flows/presentation/flows_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/agent/presentation/agent_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/downloadarea/download_area_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/notice/presentation/notice_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/viplevel/presentation/vip_level_route.dart';
+import 'package:flutter_85bet_mobile/features/test_area_route.dart';
 
 abstract class Routes {
   static const homeRoute = '/';
@@ -64,7 +63,6 @@ abstract class Routes {
   static const noticeRoute = '/notice-route';
   static const levelRoute = '/level-route';
   static const testAreaRoute = '/test-area-route';
-  static const templateRoute = '/template-route';
   static const all = {
     homeRoute,
     loginRoute,
@@ -95,7 +93,6 @@ abstract class Routes {
     noticeRoute,
     levelRoute,
     testAreaRoute,
-    templateRoute,
   };
 }
 
@@ -388,12 +385,6 @@ class Router extends RouterBase {
           transitionsBuilder: MyStaticPageTransition.slide,
           transitionDuration: const Duration(milliseconds: 400),
         );
-      case Routes.templateRoute:
-        return MaterialPageRoute<dynamic>(
-          builder: (context) => TemplateRoute(),
-          settings: settings,
-          fullscreenDialog: true,
-        );
       default:
         return unknownRoutePage(settings.name);
     }
@@ -440,7 +431,7 @@ class PromoRouteArguments {
 //BankcardRoute arguments holder class
 class BankcardRouteArguments {
   final bool withdraw;
-  BankcardRouteArguments({this.withdraw = false});
+  const BankcardRouteArguments({this.withdraw = false});
 }
 
 //CenterDisplayAccountPassword arguments holder class

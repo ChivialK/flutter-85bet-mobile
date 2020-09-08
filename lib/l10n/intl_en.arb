@@ -135,11 +135,11 @@
   "@pageTitleMemberBets": {
     "type": "text"
   },
-  "pageTitleMemberDeals": "Transaction History",
+  "pageTitleMemberDeals": "Deals History",
   "@pageTitleMemberDeals": {
     "type": "text"
   },
-  "pageTitleMemberFlow": "Flowing Record",
+  "pageTitleMemberFlow": "Flow Record",
   "@pageTitleMemberFlow": {
     "type": "text"
   },
@@ -312,11 +312,11 @@
   "@hintTitleLogin": {
     "type": "text"
   },
-  "hintAccount": "UserName *",
+  "hintAccount": "UserName",
   "@hintAccount": {
     "type": "text"
   },
-  "hintAccountPassword": "Password *",
+  "hintAccountPassword": "Password",
   "@hintAccountPassword": {
     "type": "text"
   },
@@ -841,6 +841,14 @@
   "@gameCategoryWeb": {
     "type": "text"
   },
+  "gameCategoryMovieWeb": "Watch Movie",
+  "@gameCategoryMovieWeb": {
+    "type": "text"
+  },
+  "gameCategoryMovieWebHint": "Click me to watch movie",
+  "@gameCategoryMovieWebHint": {
+    "type": "text"
+  },
   "gameCategoryWebHint": "Click me to open 85Bet website",
   "@gameCategoryWebHint": {
     "type": "text"
@@ -1014,11 +1022,11 @@
   "@memberGridTitleBet": {
     "type": "text"
   },
-  "memberGridTitleDeal": "Transaction History",
+  "memberGridTitleDeal": "Deals History",
   "@memberGridTitleDeal": {
     "type": "text"
   },
-  "memberGridTitleFlow": "Flowing Record",
+  "memberGridTitleFlow": "Flow Record",
   "@memberGridTitleFlow": {
     "type": "text"
   },
@@ -1531,7 +1539,7 @@
   "@depositPaymentEditTitleName": {
     "type": "text"
   },
-  "depositPaymentEditTitleNameHint": "Please fill in your payer name",
+  "depositPaymentEditTitleNameHint": "fill in account holder",
   "@depositPaymentEditTitleNameHint": {
     "type": "text"
   },
@@ -1539,7 +1547,7 @@
   "@depositPaymentEditTitleAccount": {
     "type": "text"
   },
-  "depositPaymentEditTitleAccountHint": "Please fill in the bank account of the payer",
+  "depositPaymentEditTitleAccountHint": "fill in bank account",
   "@depositPaymentEditTitleAccountHint": {
     "type": "text"
   },
@@ -1560,7 +1568,7 @@
   "@depositPaymentEditTitleNote": {
     "type": "text"
   },
-  "depositPaymentEditTitleAmountHintRange": "Input range: {num} ~ {num2}",
+  "depositPaymentEditTitleAmountHintRange": "Range: {num} ~ {num2}",
   "@depositPaymentEditTitleAmountHintRange": {
     "type": "text",
     "placeholders": {
@@ -1572,7 +1580,7 @@
       }
     }
   },
-  "depositPaymentEditTitleAmountHintRangeStep": "Input range: {num} ~ {num2} (amount is a multiple of {num3})",
+  "depositPaymentEditTitleAmountHintRangeStep": "Range: {num} ~ {num2} (Step:{num3})",
   "@depositPaymentEditTitleAmountHintRangeStep": {
     "type": "text",
     "placeholders": {
@@ -1603,7 +1611,7 @@
   "@ depositPaymentMethodLocal2": {
     "type": "text"
   },
-  "depositPaymentNoPromo": "Abandon Application Offer",
+  "depositPaymentNoPromo": "Without Promo",
   "@depositPaymentNoPromo": {
     "type": "text"
   },

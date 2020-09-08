@@ -3,13 +3,12 @@ import 'dart:async' show Timer;
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/checkbox_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/register/presentation/register_route.dart';
 
 import '../../../data/form/login_form.dart';
+import '../../../register/presentation/register_route.dart';
 import '../state/login_store.dart';
 import 'login_navigate.dart';
 
@@ -327,7 +326,6 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
                   value: value.length,
                   min: InputLimit.ACCOUNT_MIN,
                   max: InputLimit.ACCOUNT_MAX),
-              debug: true,
             ),
             SizedBox(height: 12.0),
             new CustomizeFieldWidget(
@@ -335,7 +333,7 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
               fieldType: FieldType.Password,
               persistHint: false,
               hint: localeStr.hintPasswordInput,
-              prefixText: localeStr.hintPassword,
+              prefixText: localeStr.hintAccountPassword,
               prefixTextSize: FontSize.SUBTITLE.value,
               maxInputLength: InputLimit.PASSWORD_MAX,
               errorMsg: localeStr.messageInvalidPasswordNew,
@@ -407,7 +405,8 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
             RouterNavigate.navigateToPage(
               RoutePage.service,
               arg: WebRouteArguments(
-                startUrl: Global.CURRENT_SERVICE,
+                startUrl: Global.currentService,
+                hideBars: true,
               ),
             );
           },

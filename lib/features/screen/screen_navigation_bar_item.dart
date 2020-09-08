@@ -11,14 +11,14 @@ class ScreenNavigationBarItem extends Vnum<RouteListItem> {
       ScreenNavigationBarItem.define(RouteListItem(
     id: RouteEnum.HOME,
 //    iconData: const IconData(0xf015, fontFamily: 'FontAwesome'),
-    iconData: const IconData(0xe95e, fontFamily: 'IconMoon'),
+    iconData: const IconData(0xe95f, fontFamily: 'IconMoon'),
     route: RoutePage.home,
   ));
   static ScreenNavigationBarItem deposit =
       ScreenNavigationBarItem.define(RouteListItem(
     id: RouteEnum.DEPOSIT,
 //    iconData: const IconData(0xf09d, fontFamily: 'FontAwesome'),
-    iconData: const IconData(0xe95d, fontFamily: 'IconMoon'),
+    iconData: const IconData(0xe95e, fontFamily: 'IconMoon'),
     route: RoutePage.depositFeature,
     isUserOnly: true,
   ));
@@ -32,21 +32,22 @@ class ScreenNavigationBarItem extends Vnum<RouteListItem> {
   static ScreenNavigationBarItem promo =
       ScreenNavigationBarItem.define(RouteListItem(
     id: RouteEnum.PROMO,
-    iconData: const IconData(0xf06b, fontFamily: 'FontAwesome'),
+//    iconData: const IconData(0xf06b, fontFamily: 'FontAwesome'),
+    iconData: const IconData(0xe966, fontFamily: 'IconMoon'),
     route: RoutePage.promo,
   ));
   static ScreenNavigationBarItem service =
       ScreenNavigationBarItem.define(RouteListItem(
     id: RouteEnum.SERVICE,
 //    iconData: const IconData(0xf27a, fontFamily: 'FontAwesome'),
-    iconData: const IconData(0xe967, fontFamily: 'IconMoon'),
+    iconData: const IconData(0xe968, fontFamily: 'IconMoon'),
     route: RoutePage.service,
   ));
   static ScreenNavigationBarItem member =
       ScreenNavigationBarItem.define(RouteListItem(
     id: RouteEnum.MEMBER,
 //    iconData: const IconData(0xf2bd, fontFamily: 'FontAwesome'),
-    iconData: const IconData(0xe961, fontFamily: 'IconMoon'),
+    iconData: const IconData(0xe962, fontFamily: 'IconMoon'),
     route: RoutePage.member,
     isUserOnly: true,
   ));

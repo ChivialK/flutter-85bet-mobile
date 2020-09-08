@@ -1,4 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
@@ -6,17 +8,23 @@ import 'package:flutter_85bet_mobile/generated/l10n.dart';
 import 'package:flutter_85bet_mobile/injection_container.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'home/presentation/state/home_store.dart';
 import 'main_startup.dart';
 import 'router/app_global_streams.dart';
+import 'routes/home/presentation/state/home_store.dart';
 
 class MainApp extends StatefulWidget {
+  final FirebaseAnalytics analytics;
+
+  MainApp(this.analytics);
+
   @override
   State<StatefulWidget> createState() => _MainAppState();
 }
 
 class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   final String tag = 'Main';
+
+  FirebaseAnalyticsObserver firebaseObserver;
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -44,6 +52,10 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
     MyLogger.info(msg: 'app init', tag: tag);
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    if (widget.analytics != null) {
+      widget.analytics.logAppOpen();
+      firebaseObserver = FirebaseAnalyticsObserver(analytics: widget.analytics);
+    }
   }
 
   @override
@@ -101,7 +113,9 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
 //              child = botToastBuilder(context,child);
 //              return child;
 //            },
-      navigatorObservers: [BotToastNavigatorObserver()],
+      navigatorObservers: (firebaseObserver != null)
+          ? [BotToastNavigatorObserver(), firebaseObserver]
+          : [BotToastNavigatorObserver()],
       home: new MainStartup(),
     );
   }

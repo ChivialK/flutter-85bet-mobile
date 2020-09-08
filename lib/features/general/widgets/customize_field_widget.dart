@@ -241,10 +241,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
         minHeight: _smallWidgetHeight,
       );
     }
-    if (widget.prefixTextMaxLines != null) {
-      _currentPrefixMaxLines =
-          widget.prefixTextMaxLines ?? (Global.lang == 'zh') ? 1 : 2;
-    }
+    _currentPrefixMaxLines =
+        widget.prefixTextMaxLines ?? (Global.lang == 'zh') ? 1 : 2;
     _updateFieldStyle();
     super.didUpdateWidget(oldWidget);
   }

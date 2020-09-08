@@ -1,6 +1,6 @@
 import 'dart:convert' show json;
 
-import 'package:flutter_85bet_mobile/features/home/data/models/ad_model.dart';
+import 'package:flutter_85bet_mobile/features/event/data/models/ad_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../fixtures/fixture_reader.dart';

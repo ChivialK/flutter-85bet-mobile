@@ -3,8 +3,8 @@ import 'dart:async' show StreamController, Stream;
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_85bet_mobile/core/network/dio_api_service.dart';
 import 'package:flutter_85bet_mobile/features/general/data/user/user_token_storage.dart';
-import 'package:flutter_85bet_mobile/features/member/data/repository/member_jwt_interface.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/login_status.dart';
+import 'package:flutter_85bet_mobile/features/user/data/repository/jwt_interface.dart';
 import 'package:flutter_85bet_mobile/features/user/data/repository/user_repository.dart'
     show UserApi;
 import 'package:flutter_85bet_mobile/injection_container.dart';
@@ -73,7 +73,7 @@ class AppGlobalStreams {
     String userName = _user.currentUser.account;
     MyLogger.info(msg: 'logging out user $userName', tag: 'RouteUserStreams');
     try {
-      var jwtInterface = sl.get<MemberJwtInterface>();
+      var jwtInterface = sl.get<JwtInterface>();
       _dioApiService ??= sl.get<DioApiService>();
 
       String token = (jwtInterface.token.isNotEmpty)

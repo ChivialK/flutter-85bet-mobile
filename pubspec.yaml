@@ -11,7 +11,7 @@ description: 85Bet mobile app for multi platforms.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.2+8
+version: 1.0.3+8
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -22,6 +22,10 @@ dependencies:
   meta: ^1.1.8
   flutter_localizations:
     sdk: flutter
+
+  # Firebase analytics
+  firebase_core: any
+  firebase_analytics: any
 
   # Object Injectors https://pub.dev/packages/get_it
   get_it: ^4.0.4
@@ -95,7 +99,7 @@ dependencies:
   # WebView https://pub.dev/packages/webview_flutter
   webview_flutter: ^0.3.22+1
   # Toast https://pub.dev/packages/bot_toast
-  bot_toast: ^3.0.3
+  bot_toast: ^3.0.4
   # Advance Photo Viewer https://pub.dev/packages/carousel_pro
   carousel_pro: ^1.0.0
   # Relative Align Widget https://pub.dev/packages/relative_layout
@@ -112,7 +116,7 @@ dependencies:
   # Scroller Load & Refresh https://pub.dev/packages/flutter_easyrefresh
   flutter_easyrefresh: ^2.1.5
   # Official Video Player https://pub.dev/packages/video_player/example
-  video_player: ^0.10.12
+  video_player: ^0.10.12+2
   # dot border
   dotted_border: ^1.0.6
 

@@ -2,7 +2,6 @@ import 'package:flutter_85bet_mobile/utils/json_util.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'request_status_model.freezed.dart';
-part 'request_status_model.g.dart';
 
 @freezed
 abstract class RequestStatusModel with _$RequestStatusModel {
@@ -11,11 +10,15 @@ abstract class RequestStatusModel with _$RequestStatusModel {
     @JsonKey(fromJson: JsonUtil.getRawJson, required: false) String msg,
   }) = _RequestStatusModel;
 
-  factory RequestStatusModel.fromJson(Map<String, dynamic> json) =>
-      _$RequestStatusModelFromJson(json);
-
-  static RequestStatusModel jsonToStatusModel(Map<String, dynamic> jsonMap) =>
-      RequestStatusModel.fromJson(jsonMap);
+  static RequestStatusModel jsonToStatusModel(Map<String, dynamic> jsonMap) {
+//    if (jsonMap.containsKey('msg') &&
+//        '${jsonMap['msg']}'.toLowerCase() == 'Repeat token'.toLowerCase())
+//      throw TokenException();
+    return _$_RequestStatusModel(
+      status: jsonMap['status'] as String,
+      msg: JsonUtil.getRawJson(jsonMap['msg']),
+    );
+  }
 
   @late
   bool get isSuccess => status == 'success';

@@ -18,7 +18,7 @@ class WarningDisplay extends StatelessWidget {
     this.smallerText = false,
     this.largerText = false,
     this.highlight = false,
-    this.widthFactor = 2,
+    this.widthFactor = 1.5,
     this.fixedHeight,
     this.isFailureMsg = true,
   }) : super(key: key);
@@ -45,21 +45,24 @@ class WarningDisplay extends StatelessWidget {
                   (highlight) ? Themes.defaultErrorColor : Themes.iconSubColor1,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: RichText(
-              maxLines: (isFailureMsg) ? 3 : 30,
-              text: TextSpan(
-                text: (isFailureMsg) ? message.split('-')[0].trim() : message,
-                style: TextStyle(
-                  fontSize: (largerText)
-                      ? FontSize.SUBTITLE.value
-                      : (smallerText)
-                          ? FontSize.SMALLER.value
-                          : FontSize.NORMAL.value,
-                  color: (highlight)
-                      ? Themes.defaultMessageColor
-                      : Themes.defaultTextColor,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: RichText(
+                maxLines: (isFailureMsg) ? 3 : 30,
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  text: (isFailureMsg) ? message.split('-')[0].trim() : message,
+                  style: TextStyle(
+                    fontSize: (largerText)
+                        ? FontSize.SUBTITLE.value
+                        : (smallerText)
+                            ? FontSize.SMALLER.value
+                            : FontSize.NORMAL.value,
+                    color: (highlight)
+                        ? Themes.defaultMessageColor
+                        : Themes.defaultTextColor,
+                  ),
                 ),
               ),
             ),

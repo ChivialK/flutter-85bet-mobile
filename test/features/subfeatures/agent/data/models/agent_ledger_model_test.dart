@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_85bet_mobile/core/network/handler/request_code_model.dart';
-import 'package:flutter_85bet_mobile/features/subfeatures/agent/data/models/agent_ledger_model.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/agent/data/models/agent_ledger_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../../../../fixtures/fixture_reader.dart';

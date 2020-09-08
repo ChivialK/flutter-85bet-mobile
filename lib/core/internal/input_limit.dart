@@ -18,6 +18,7 @@ class InputLimit {
 
   static const int POSTCODE_MAX = 8;
   static const int ADDRESS_MAX = 100;
+  static const int NOTE_MAX = 30;
 
   static const int CARD_MIN = 6;
   static const int CARD_MAX = 19; // vn365:6~19   85bet kk:6~18

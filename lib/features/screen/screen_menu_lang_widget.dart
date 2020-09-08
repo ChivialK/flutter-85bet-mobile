@@ -87,7 +87,7 @@ class _ScreenMenuLangWidgetState extends State<ScreenMenuLangWidget> {
             MyLogger.error(
                 msg: 'Localize File not initialized', tag: 'LocalStrings');
           } finally {
-            Global.lang = newLang;
+            Global.setLanguage = newLang;
             if (mounted) {
               _currentLang = newLang;
             }

@@ -51,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m15(value) => "Đơn hàng đã được thiết lập, số đơn hàng: ${value}";
 
-  static m16(num, num2) => "Phạm vi đầu vào:${num}~${num2}";
+  static m16(num, num2) => "${num}~${num2}";
 
   static m17(num, num2, num3) => "Phạm vi đầu vào:${num}~${num2}(Số tiền là bội số của ${num3})";
 
@@ -361,6 +361,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameCategoryGift" : MessageLookupByLibrary.simpleMessage("Quà tặng"),
     "gameCategoryLottery" : MessageLookupByLibrary.simpleMessage("XỔ SỐ"),
     "gameCategoryLotteryFull" : MessageLookupByLibrary.simpleMessage("XỔ SỐ"),
+    "gameCategoryMovieWeb" : MessageLookupByLibrary.simpleMessage("xem phim"),
+    "gameCategoryMovieWebHint" : MessageLookupByLibrary.simpleMessage("Bấm để xem phim"),
     "gameCategoryOther" : MessageLookupByLibrary.simpleMessage("Khác"),
     "gameCategorySlot" : MessageLookupByLibrary.simpleMessage("TRÒ CHƠI"),
     "gameCategorySlotFull" : MessageLookupByLibrary.simpleMessage("TRÒ CHƠI"),
@@ -565,8 +567,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "sideBtnLockRotate" : MessageLookupByLibrary.simpleMessage("Khóa màn hình xoay"),
     "sideBtnRotate" : MessageLookupByLibrary.simpleMessage("Xoay màn hình"),
     "spinnerDateAll" : MessageLookupByLibrary.simpleMessage("Mọi lúc"),
-    "spinnerDateCustom" : MessageLookupByLibrary.simpleMessage("Thời gian tùy chỉnh"),
-    "spinnerDateMonth" : MessageLookupByLibrary.simpleMessage("Trong vòng một tháng"),
+    "spinnerDateCustom" : MessageLookupByLibrary.simpleMessage("Tập quán"),
+    "spinnerDateMonth" : MessageLookupByLibrary.simpleMessage("tháng này"),
     "spinnerDateToday" : MessageLookupByLibrary.simpleMessage("Hôm nay"),
     "spinnerDateYesterday" : MessageLookupByLibrary.simpleMessage("Hôm qua"),
     "storeExchangeResultError" : MessageLookupByLibrary.simpleMessage("Đổi không thành công, vui lòng thử lại sau hoặc liên hệ với dịch vụ khách hàng"),
