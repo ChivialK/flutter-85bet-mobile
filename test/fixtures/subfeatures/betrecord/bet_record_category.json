@@ -1,0 +1,37 @@
+[
+  {
+    "ch": "\u771f\u4eba",
+    "id": 1,
+    "type": "casino"
+  },
+  {
+    "ch": "\u7535\u5b50",
+    "id": 2,
+    "type": "slot"
+  },
+  {
+    "ch": "\u4f53\u80b2",
+    "id": 3,
+    "type": "sport"
+  },
+  {
+    "ch": "\u6355\u9c7c",
+    "id": 4,
+    "type": "fish"
+  },
+  {
+    "ch": "\u5f69\u7968",
+    "id": 5,
+    "type": "lottery"
+  },
+  {
+    "ch": "\u68cb\u724c",
+    "id": 6,
+    "type": "card"
+  },
+  {
+    "ch": "\u79ae\u7269",
+    "id": 7,
+    "type": "gift"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 15,
+    "type": "image/jpeg",
+    "title": "123",
+    "url": "456",
+    "url_blank": true,
+    "mobile_url": "890",
+    "pic": "images/banner/pc/238.jpg",
+    "pic_mobile": "images/banner/mobile/239.jpg",
+    "start_time": "2019-07-08 16:31:47",
+    "end_time": "2029-07-08 16:31:49",
+    "status": true,
+    "sort": 6
+  },
+  {
+    "id": 17,
+    "type": "image/jpeg",
+    "title": "11",
+    "url": "22",
+    "url_blank": true,
+    "mobile_url": "44",
+    "pic": "images/banner/pc/248.jpg",
+    "pic_mobile": "images/banner/mobile/249.jpg",
+    "start_time": "2019-07-12 00:00:00",
+    "end_time": "2029-07-12 00:00:00",
+    "status": true,
+    "sort": 7
+  },
+  {
+    "id": 1,
+    "type": "image/jpeg",
+    "title": "23456781",
+    "url": "456456",
+    "url_blank": true,
+    "mobile_url": "456456456",
+    "pic": "images/banner/pc/292.jpg",
+    "pic_mobile": "images/banner/mobile/291.jpg",
+    "start_time": "2019-07-17 00:00:00",
+    "end_time": "2029-07-11 09:39:00",
+    "status": true,
+    "sort": 8
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "platform": [
+    {
+      "id": 34,
+      "type": "slot",
+      "site": "fg",
+      "favorite": "1"
+    }
+  ],
+  "game": [
+    {
+      "id": 2,
+      "category": "slot",
+      "platform": "pt",
+      "gameid": "c7",
+      "cname": "Crazy 7",
+      "favorite": 1
+    }
+  ]
+}

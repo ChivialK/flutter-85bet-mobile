@@ -1,0 +1,56 @@
+{
+  "2020-05": {
+    "validbet": "0.00",
+    "winlose": "0.00",
+    "fee": "0.00",
+    "direct": "1697.28",
+    "team": "0.00",
+    "summary": "1574.05",
+    "platform_fee": "123.23"
+  },
+  "2020-04": {
+    "validbet": "510.00",
+    "winlose": "-500.00",
+    "fee": "0.00",
+    "direct": "0.00",
+    "team": "0.00",
+    "summary": "10.00",
+    "platform_fee": "0.00"
+  },
+  "2020-03": {
+    "validbet": "0.00",
+    "winlose": "0.00",
+    "fee": "0.00",
+    "direct": "0.00",
+    "team": "0.00",
+    "summary": "0.00",
+    "platform_fee": "0.00"
+  },
+  "2020-02": {
+    "validbet": "43.20",
+    "winlose": "-16.15",
+    "fee": "0.00",
+    "direct": "0.00",
+    "team": "0.00",
+    "summary": "0.00",
+    "platform_fee": "0.00"
+  },
+  "2019-11": {
+    "validbet": "0.00",
+    "winlose": "0.00",
+    "fee": "0.00",
+    "direct": "0.00",
+    "team": "0.00",
+    "summary": "0.00",
+    "platform_fee": "0.00"
+  },
+  "2019-08": {
+    "validbet": "189.50",
+    "winlose": "-269.00",
+    "fee": "0.00",
+    "direct": "0.00",
+    "team": "0.00",
+    "summary": "0.00",
+    "platform_fee": "0.00"
+  }
+}

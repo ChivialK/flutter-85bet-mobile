@@ -1,0 +1,29 @@
+{
+  "code": 0,
+  "data": {
+    "0": {
+      "id": 136,
+      "title": "TEST",
+      "signtimes": 1,
+      "times": 1,
+      "continue": "0",
+      "joinmember": "ALLMEMBER",
+      "datestart": "2020-06-01",
+      "dateend": "2020-06-30",
+      "memberLevel": "1,2,3,4,5,6",
+      "status": "1",
+      "pic": "images\/sign\/pc\/271.jpg",
+      "pic_mobile": 0,
+      "prize": 0
+    },
+    "signData": {
+      "id": 494,
+      "aid": 136,
+      "mid": 10314,
+      "pretime": "2020-06-12",
+      "currtime": "2020-06-12",
+      "continue": 0,
+      "times": 1
+    }
+  }
+}

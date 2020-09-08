@@ -1,0 +1,90 @@
+[
+  {
+    "id": 4103,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "rich",
+    "cname": "\u5bcc\u8d35\u5409\u7965",
+    "favorite": 0
+  },
+  {
+    "id": 4104,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "fish",
+    "cname": "\u9c7c\u867e\u87f9",
+    "favorite": 0
+  },
+  {
+    "id": 4105,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "dice",
+    "cname": "\u9ab0\u5b9d",
+    "favorite": 0
+  },
+  {
+    "id": 4107,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "candy",
+    "cname": "\u7cd6\u679c\u4e16\u754c",
+    "favorite": 0
+  },
+  {
+    "id": 4108,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "diamonds",
+    "cname": "\u5b9d\u77f3\u5927\u4ea8",
+    "favorite": 0
+  },
+  {
+    "id": 4109,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "hamster",
+    "cname": "\u6b22\u4e50\u5730\u9f20",
+    "favorite": 0
+  },
+  {
+    "id": 4110,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "monkey",
+    "cname": "\u9f50\u5929\u5927\u5723",
+    "favorite": 0
+  },
+  {
+    "id": 4111,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "fighter",
+    "cname": "\u5723\u57df\u4f20\u8bf4",
+    "favorite": 0
+  },
+  {
+    "id": 4112,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "opera",
+    "cname": "\u4e1c\u65b9\u66f2\u827a",
+    "favorite": 0
+  },
+  {
+    "id": 4113,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "grave",
+    "cname": "\u76d7\u5893\u7b14\u8bb0",
+    "favorite": 0
+  },
+  {
+    "id": 4114,
+    "category": "slot",
+    "platform": "eg",
+    "gameid": "tank",
+    "cname": "\u6218\u5730\u98ce\u4e91",
+    "favorite": 0
+  }
+]

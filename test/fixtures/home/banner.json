@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "type": "image/jpeg",
+  "title": "23456781",
+  "url": "456456",
+  "url_blank": true,
+  "mobile_url": "456456456",
+  "pic": "images/banner/pc/292.jpg",
+  "pic_mobile": "images/banner/mobile/291.jpg",
+  "start_time": "2019-07-17 00:00:00",
+  "end_time": "2029-07-11 09:39:00",
+  "status": true,
+  "sort": 8
+}

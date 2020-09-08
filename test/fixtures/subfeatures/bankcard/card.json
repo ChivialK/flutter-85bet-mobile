@@ -1,0 +1,13 @@
+{
+  "code": 0,
+  "data": {
+    "bankaddress": "測試支行",
+    "firstname": "測試人",
+    "bankaccountno": "1543********8435",
+    "bankprovince": "天津市",
+    "bankcity": "武清区",
+    "bankarea": "",
+    "bankname": "上海银行"
+  },
+  "msg": ""
+}

@@ -1,0 +1,118 @@
+{
+  "accountcode": "hcchiang92",
+  "accountid": 10144,
+  "firstname": "\u6e2c\u8a66",
+  "gender": "",
+  "mobileno": "13134567892(\u672a\u9a8c\u8bc1)",
+  "email": "abcd1324@yahoo.com",
+  "wechat": "",
+  "address": "",
+  "dob": "1990-01-01",
+  "auto_transfer": "0",
+  "allgame": 0,
+  "allgame_level": 0,
+  "allgame_value": 0,
+  "casinogame": 0,
+  "casinogame_level": 0,
+  "casinogame_value": 0,
+  "slotgame": 0,
+  "slotgame_level": 0,
+  "slotgame_value": 0,
+  "sportgame": 0,
+  "sportgame_level": 0,
+  "sportgame_value": 0,
+  "fishgame": 0,
+  "fishgame_level": 0,
+  "fishgame_value": 0,
+  "lotterygame": 0,
+  "lotterygame_level": 0,
+  "lotterygame_value": 0,
+  "cardgame": 0,
+  "cardgame_level": 0,
+  "cardgame_value": 0,
+  "vip_setting": {
+    "1": {
+      "setting": {
+        "allgame": "0",
+        "slotgame": "0",
+        "casinogame": "0",
+        "sportgame": "0",
+        "fishgame": "0",
+        "lotterygame": "0",
+        "cardgame": "0"
+      },
+      "title": "\u666e\u901a\u4f1a\u5458"
+    },
+    "2": {
+      "setting": {
+        "allgame": "40000",
+        "slotgame": "20000",
+        "casinogame": "40000",
+        "sportgame": "30000",
+        "fishgame": "20000",
+        "lotterygame": "50000",
+        "cardgame": "10000"
+      },
+      "title": "\u9ec4\u91d1\u4f1a\u5458"
+    },
+    "3": {
+      "setting": {
+        "allgame": "3000000",
+        "slotgame": "2500000",
+        "casinogame": "50000",
+        "sportgame": "40000",
+        "fishgame": "30000",
+        "lotterygame": "20000",
+        "cardgame": "10000"
+      },
+      "title": "\u7ea2\u5b9d\u77f3\u4f1a\u5458"
+    },
+    "4": {
+      "setting": {
+        "allgame": "6000000",
+        "slotgame": "5000000",
+        "casinogame": "60000",
+        "sportgame": "50000",
+        "fishgame": "40000",
+        "lotterygame": "30000",
+        "cardgame": "20000"
+      },
+      "title": "\u7fe1\u7fe0\u4f1a\u5458"
+    },
+    "5": {
+      "setting": {
+        "allgame": "9000000",
+        "slotgame": "8000000",
+        "casinogame": "110000",
+        "sportgame": "100000",
+        "fishgame": "90000",
+        "lotterygame": "80000",
+        "cardgame": "70000"
+      },
+      "title": "\u94bb\u77f3\u4f1a\u5458"
+    },
+    "6": {
+      "setting": {
+        "allgame": "\u65e0",
+        "slotgame": "\u65e0",
+        "casinogame": "5000",
+        "sportgame": "4000",
+        "fishgame": "3000",
+        "lotterygame": "2000",
+        "cardgame": "1000"
+      },
+      "title": "\u81f3\u5c0a\u4f1a\u5458"
+    }
+  },
+  "vip_option": {
+    "allgame": "\u603b\u6295\u6ce8\u989d\u9700\u6c42",
+    "slotgame": "\u7535\u5b50\u6ce8\u989d\u9700\u6c42",
+    "casinogame": "\u771f\u4eba\u6ce8\u989d\u9700\u6c42",
+    "sportgame": "\u4f53\u80b2\u6ce8\u989d\u9700\u6c42",
+    "fishgame": "\u6355\u9c7c\u6ce8\u989d\u9700\u6c42",
+    "lotterygame": "\u5f69\u7968\u6ce8\u989d\u9700\u6c42",
+    "cardgame": "\u68cb\u724c\u6ce8\u989d\u9700\u6c42"
+  },
+  "CGP_wallet": "",
+  "CPW_wallet": ""
+}

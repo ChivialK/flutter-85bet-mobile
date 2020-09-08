@@ -1,0 +1,16 @@
+{
+  "code": 0,
+  "data": [
+    {
+      "title": "\u79ef\u5206\u9001\u793c\u4e0d\u624b\u8f6f",
+      "pic": "images\/mall_banner\/64.jpg",
+      "end_time": "2020-09-25 12:00:00"
+    },
+    {
+      "title": "\u79ef\u5206\u9001\u8c6a\u793c",
+      "pic": "images\/mall_banner\/66.jpg",
+      "end_time": "2020-09-28 12:00:00"
+    }
+  ],
+  "msg": ""
+}

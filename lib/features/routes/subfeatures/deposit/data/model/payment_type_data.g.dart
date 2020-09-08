@@ -1,0 +1,74 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'payment_type_data.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+// ignore: non_constant_identifier_names
+_$PaymentTypeOnlineData _$_$PaymentTypeOnlineDataFromJson(
+    Map<String, dynamic> json) {
+  return _$PaymentTypeOnlineData(
+    amount: json['amount'] as String,
+    amountOption:
+        (json['amountoption'] as List)?.map((e) => e as String)?.toList(),
+    amountType: json['amounttype'] as int,
+    bankAccountId: json['bankaccountid'] as int,
+    gateway: json['gateway'] as int,
+    max: json['max'] as int,
+    min: json['min'] as int,
+    payment: json['payment'] as int,
+    pgIndex: json['pgindex'] as int,
+    sb: (json['sb'] as List)?.map((e) => e as int)?.toList(),
+    type: json['type'] as String,
+    key: json['key'],
+  );
+}
+
+// ignore: non_constant_identifier_names
+Map<String, dynamic> _$_$PaymentTypeOnlineDataToJson(
+        _$PaymentTypeOnlineData instance) =>
+    <String, dynamic>{
+      'amount': instance.amount,
+      'amountoption': instance.amountOption,
+      'amounttype': instance.amountType,
+      'bankaccountid': instance.bankAccountId,
+      'gateway': instance.gateway,
+      'max': instance.max,
+      'min': instance.min,
+      'payment': instance.payment,
+      'pgindex': instance.pgIndex,
+      'sb': instance.sb,
+      'type': instance.type,
+      'key': instance.key,
+    };
+
+// ignore: non_constant_identifier_names
+_$PaymentTypeLocalData _$_$PaymentTypeLocalDataFromJson(
+    Map<String, dynamic> json) {
+  return _$PaymentTypeLocalData(
+    bankAccountId: json['bankaccountid'] as int,
+    bankAccountNo: json['bankaccountno'] as String,
+    bankIndex: json['bankindex'] as int,
+    max: JsonUtil.getRawJson(json['max']),
+    min: JsonUtil.getRawJson(json['min']),
+    payment: json['payment'] as String,
+    type: json['type'] as String,
+    key: json['key'],
+  );
+}
+
+// ignore: non_constant_identifier_names
+Map<String, dynamic> _$_$PaymentTypeLocalDataToJson(
+        _$PaymentTypeLocalData instance) =>
+    <String, dynamic>{
+      'bankaccountid': instance.bankAccountId,
+      'bankaccountno': instance.bankAccountNo,
+      'bankindex': instance.bankIndex,
+      'max': instance.max,
+      'min': instance.min,
+      'payment': instance.payment,
+      'type': instance.type,
+      'key': instance.key,
+    };

@@ -1,0 +1,82 @@
+{
+  "1": {
+    "all": "ALL",
+    "mg": "MG",
+    "ag": "AG",
+    "bb": "BB",
+    "og": "OG",
+    "allbet": "AllBet",
+    "bg": "BG",
+    "ebet": "Ebet",
+    "sg": "SG",
+    "eg": "EG",
+    "wm": "WM"
+  },
+  "2": {
+    "all": "ALL",
+    "mg": "MG",
+    "ag": "AG",
+    "bb": "BB",
+    "nt": "NT",
+    "pt": "PT",
+    "bg": "BG",
+    "cq9": "CQ9",
+    "jdb": "JDB",
+    "fg": "FG",
+    "sw": "SW",
+    "ebet": "Ebet",
+    "mw": "Mw",
+    "ds": "DS",
+    "eg": "EG",
+    "gmt": "GMT",
+    "icg": "ICG"
+  },
+  "4": {
+    "all": "ALL",
+    "ag": "AG",
+    "bb": "BB",
+    "jdb": "JDB",
+    "fg": "FG",
+    "sw": "SW",
+    "mw": "Mw",
+    "ds": "DS",
+    "allbet": "AllBet",
+    "bg": "BG",
+    "gmt": "GMT",
+    "icg": "ICG"
+  },
+  "3": {
+    "all": "ALL",
+    "bb": "BB",
+    "sb": "SB",
+    "sing": "SING",
+    "ig": "IG",
+    "cmd": "CMD",
+    "tf": "TF",
+    "ia": "IA",
+    "maja": "MAJA",
+    "sb365": "SB365"
+  },
+  "5": {
+    "all": "ALL",
+    "bb": "BB",
+    "vr": "VR",
+    "gt": "GT"
+  },
+  "6": {
+    "all": "ALL",
+    "kg": "KG",
+    "lg": "LG",
+    "jdb": "JDB",
+    "fg": "FG",
+    "yg": "YG",
+    "bl": "BL",
+    "im": "IM",
+    "mw": "Mw",
+    "ds": "DS",
+    "wm": "WM",
+    "lc": "LC",
+    "chy": "CHY",
+    "vg": "VG"
+  }
+}

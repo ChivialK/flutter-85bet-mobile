@@ -1,0 +1,70 @@
+{
+  "code": 0,
+  "data": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 8,
+        "name": "\u6e2c\u8a664",
+        "code": "10329",
+        "phone": "13287*****",
+        "productname": "\u5145\u503c\u8a71\u8cbb (30\u5143)",
+        "point": -100,
+        "date": "2019-11-01 16:21:17",
+        "address": "\u5317\u4eac\u5e02\u4e1c\u57ce\u533a***",
+        "status": "1"
+      },
+      {
+        "id": 7,
+        "name": "\u6e2c\u8a663",
+        "code": "10243",
+        "phone": "13240*****",
+        "productname": "\u5145\u503c\u8a71\u8cbb (30\u5143)",
+        "point": -100,
+        "date": "2019-11-01 16:19:33",
+        "address": "\u5317\u4eac\u5e02\u4e1c\u57ce\u533a***",
+        "status": "1"
+      },
+      {
+        "id": 6,
+        "name": "\u6e2c\u8a662",
+        "code": "10327",
+        "phone": "13280*****",
+        "productname": "\u5145\u503c\u8a71\u8cbb (30\u5143)",
+        "point": -100,
+        "date": "2019-11-01 16:05:20",
+        "address": "\u5317\u4eac\u5e02\u4e1c\u57ce\u533a***",
+        "status": "1"
+      },
+      {
+        "id": 5,
+        "name": "\u6e2c\u8a66\u4eba",
+        "code": "10241",
+        "phone": "13215*****",
+        "productname": "\u5145\u503c\u8a71\u8cbb (30\u5143)",
+        "point": -100,
+        "date": "2019-11-01 13:54:47",
+        "address": "\u5317\u4eac\u5e02\u623f\u5c71\u533a****",
+        "status": "1"
+      },
+      {
+        "id": 30,
+        "productname": "\u5546\u54c1\u5151\u6362",
+        "point": -100,
+        "date": "2019-11-01 16:21:17",
+        "status": "\u5df2\u5151\u6362"
+      }
+    ],
+    "first_page_url": "http:\/\/www.eg990.com\/api\/listexchange?page=1",
+    "from": 1,
+    "last_page": 2,
+    "last_page_url": "http:\/\/www.eg990.com\/api\/listexchange?page=2",
+    "next_page_url": "http:\/\/www.eg990.com\/api\/listexchange?page=2",
+    "path": "http:\/\/www.eg990.com\/api\/listexchange",
+    "per_page": 5,
+    "prev_page_url": null,
+    "to": 5,
+    "total": 8
+  },
+  "msg": ""
+}

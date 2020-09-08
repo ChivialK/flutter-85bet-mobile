@@ -1,0 +1,64 @@
+[
+  {
+    "id": 34,
+    "type": "slot",
+    "site": "fg",
+    "sort": 7,
+    "favorite": "1"
+  },
+  {
+    "id": 2,
+    "category": "slot",
+    "platform": "pt",
+    "gameid": "c7",
+    "cname": "Crazy 7",
+    "sort": 9,
+    "favorite": "0"
+  },
+  {
+    "id": 1,
+    "category": "slot",
+    "platform": "pt",
+    "gameid": "bt",
+    "cname": "Bermuda Triangle",
+    "sort": 11,
+    "favorite": "0"
+  },
+  {
+    "id": 3,
+    "type": "casino",
+    "site": "ag",
+    "sort": 41,
+    "favorite": "0"
+  },
+  {
+    "id": 23,
+    "category": "slot",
+    "platform": "pt",
+    "gameid": "bs",
+    "cname": "Bai Shi",
+    "sort": 42,
+    "favorite": "0"
+  },
+  {
+    "id": 20,
+    "type": "sport",
+    "site": "sing",
+    "sort": 43,
+    "favorite": "0"
+  },
+  {
+    "id": 33,
+    "type": "card",
+    "site": "jdb",
+    "sort": 44,
+    "favorite": "0"
+  },
+  {
+    "id": 62,
+    "type": "card",
+    "site": "lc",
+    "sort": 45,
+    "favorite": "0"
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "1": {
+    "30": {
+      "promoid": 30,
+      "promodesc": "银行入款1%红利",
+      "min_deposit": 50,
+      "type": "4",
+      "percentage": "1",
+      "max_promo_amt": 888,
+      "multiply": 1,
+      "dtype": "[\"1\",\"2\"]",
+      "sequence": 30,
+      "featureindex": "[\"0\",\"1\",\"2\",\"3\",\"7\",\"8\",\"9\",\"11\",\"13\",\"14\",\"15\",\"16\",\"19\",\"20\",\"21\",\"22\"]"
+    },
+    "31": {
+      "promoid": 31,
+      "promodesc": "银行入款100%红利",
+      "min_deposit": 50,
+      "type": "4",
+      "percentage": "1",
+      "max_promo_amt": 888,
+      "multiply": 3,
+      "dtype": "[\"1\",\"2\"]",
+      "sequence": 31,
+      "featureindex": "[\"0\",\"3\"]"
+    },
+    "63": {
+      "promoid": 63,
+      "promodesc": "VVVIP優惠",
+      "min_deposit": 1,
+      "type": "2",
+      "percentage": "1",
+      "max_promo_amt": 888,
+      "multiply": 18,
+      "dtype": "[\"1\"]",
+      "sequence": 63,
+      "featureindex": "[\"0\",\"2\",\"3\",\"7\",\"8\",\"9\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\",\"23\"]"
+    }
+  },
+  "2": {
+    "30": {
+      "promoid": 30,
+      "promodesc": "银行入款1%红利",
+      "min_deposit": 50,
+      "type": "4",
+      "percentage": "1",
+      "max_promo_amt": 888,
+      "multiply": 1,
+      "dtype": "[\"1\",\"2\"]",
+      "sequence": 30,
+      "featureindex": "[\"0\",\"1\",\"2\",\"3\",\"7\",\"8\",\"9\",\"11\",\"13\",\"14\",\"15\",\"16\",\"19\",\"20\",\"21\",\"22\"]"
+    },
+    "31": {
+      "promoid": 31,
+      "promodesc": "银行入款100%红利",
+      "min_deposit": 50,
+      "type": "4",
+      "percentage": "1",
+      "max_promo_amt": 888,
+      "multiply": 3,
+      "dtype": "[\"1\",\"2\"]",
+      "sequence": 31,
+      "featureindex": "[\"0\",\"3\"]"
+    }
+  }
+}

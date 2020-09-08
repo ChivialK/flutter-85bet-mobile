@@ -1,0 +1,16 @@
+{
+  "1": {
+    "id": 1,
+    "name": "deposit",
+    "ch": "\u5145\u503c",
+    "status": "1",
+    "updated_at": "2019-07-10 21:56:43"
+  },
+  "2": {
+    "id": 2,
+    "name": "turnover",
+    "ch": "\u6d41\u6c34",
+    "status": "1",
+    "updated_at": "2019-07-10 21:56:46"
+  }
+}
