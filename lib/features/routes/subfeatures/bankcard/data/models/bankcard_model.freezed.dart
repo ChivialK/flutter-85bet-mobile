@@ -12,6 +12,7 @@ BankcardModel _$BankcardModelFromJson(Map<String, dynamic> json) {
   return _BankcardModel.fromJson(json);
 }
 
+/// @nodoc
 class _$BankcardModelTearOff {
   const _$BankcardModelTearOff();
 
@@ -36,11 +37,18 @@ class _$BankcardModelTearOff {
       bankName: bankName,
     );
   }
+
+// ignore: unused_element
+  BankcardModel fromJson(Map<String, Object> json) {
+    return BankcardModel.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BankcardModel = _$BankcardModelTearOff();
 
+/// @nodoc
 mixin _$BankcardModel {
   @nullable
   bool get hasCard;
@@ -63,6 +71,7 @@ mixin _$BankcardModel {
   $BankcardModelCopyWith<BankcardModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $BankcardModelCopyWith<$Res> {
   factory $BankcardModelCopyWith(
           BankcardModel value, $Res Function(BankcardModel) then) =
@@ -78,6 +87,7 @@ abstract class $BankcardModelCopyWith<$Res> {
       @JsonKey(name: 'bankname', defaultValue: '') String bankName});
 }
 
+/// @nodoc
 class _$BankcardModelCopyWithImpl<$Res>
     implements $BankcardModelCopyWith<$Res> {
   _$BankcardModelCopyWithImpl(this._value, this._then);
@@ -115,6 +125,7 @@ class _$BankcardModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$BankcardModelCopyWith<$Res>
     implements $BankcardModelCopyWith<$Res> {
   factory _$BankcardModelCopyWith(
@@ -132,6 +143,7 @@ abstract class _$BankcardModelCopyWith<$Res>
       @JsonKey(name: 'bankname', defaultValue: '') String bankName});
 }
 
+/// @nodoc
 class __$BankcardModelCopyWithImpl<$Res>
     extends _$BankcardModelCopyWithImpl<$Res>
     implements _$BankcardModelCopyWith<$Res> {
@@ -172,6 +184,8 @@ class __$BankcardModelCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_BankcardModel implements _BankcardModel {
   const _$_BankcardModel(
       {@nullable this.hasCard,

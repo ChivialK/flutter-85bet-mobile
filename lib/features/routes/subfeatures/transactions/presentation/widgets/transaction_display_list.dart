@@ -21,7 +21,7 @@ class TransactionDisplayListState extends State<TransactionDisplayList> {
   String _textOut;
 
   set updateContent(List<TransactionData> list) {
-    print('transaction list length: ${list?.length ?? -1}');
+    debugPrint('transaction list length: ${list?.length ?? -1}');
     if (_dataList != list) {
       _dataList = list;
       setState(() {});

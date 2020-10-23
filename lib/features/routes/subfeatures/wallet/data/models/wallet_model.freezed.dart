@@ -12,6 +12,7 @@ WalletModel _$WalletModelFromJson(Map<String, dynamic> json) {
   return _WalletModel.fromJson(json);
 }
 
+/// @nodoc
 class _$WalletModelTearOff {
   const _$WalletModelTearOff();
 
@@ -24,11 +25,18 @@ class _$WalletModelTearOff {
       credit: credit,
     );
   }
+
+// ignore: unused_element
+  WalletModel fromJson(Map<String, Object> json) {
+    return WalletModel.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $WalletModel = _$WalletModelTearOff();
 
+/// @nodoc
 mixin _$WalletModel {
   String get auto;
   @JsonKey(name: 'creditlimit', defaultValue: '0.00')
@@ -38,6 +46,7 @@ mixin _$WalletModel {
   $WalletModelCopyWith<WalletModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $WalletModelCopyWith<$Res> {
   factory $WalletModelCopyWith(
           WalletModel value, $Res Function(WalletModel) then) =
@@ -47,6 +56,7 @@ abstract class $WalletModelCopyWith<$Res> {
       @JsonKey(name: 'creditlimit', defaultValue: '0.00') String credit});
 }
 
+/// @nodoc
 class _$WalletModelCopyWithImpl<$Res> implements $WalletModelCopyWith<$Res> {
   _$WalletModelCopyWithImpl(this._value, this._then);
 
@@ -66,6 +76,7 @@ class _$WalletModelCopyWithImpl<$Res> implements $WalletModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$WalletModelCopyWith<$Res>
     implements $WalletModelCopyWith<$Res> {
   factory _$WalletModelCopyWith(
@@ -77,6 +88,7 @@ abstract class _$WalletModelCopyWith<$Res>
       @JsonKey(name: 'creditlimit', defaultValue: '0.00') String credit});
 }
 
+/// @nodoc
 class __$WalletModelCopyWithImpl<$Res> extends _$WalletModelCopyWithImpl<$Res>
     implements _$WalletModelCopyWith<$Res> {
   __$WalletModelCopyWithImpl(
@@ -99,6 +111,8 @@ class __$WalletModelCopyWithImpl<$Res> extends _$WalletModelCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_WalletModel implements _WalletModel {
   const _$_WalletModel(
       {this.auto = '0',

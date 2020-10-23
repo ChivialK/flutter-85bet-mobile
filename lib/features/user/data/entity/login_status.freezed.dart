@@ -9,6 +9,7 @@ part of 'login_status.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$LoginStatusTearOff {
   const _$LoginStatusTearOff();
 
@@ -21,9 +22,11 @@ class _$LoginStatusTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $LoginStatus = _$LoginStatusTearOff();
 
+/// @nodoc
 mixin _$LoginStatus {
   bool get loggedIn;
   UserEntity get currentUser;
@@ -31,6 +34,7 @@ mixin _$LoginStatus {
   $LoginStatusCopyWith<LoginStatus> get copyWith;
 }
 
+/// @nodoc
 abstract class $LoginStatusCopyWith<$Res> {
   factory $LoginStatusCopyWith(
           LoginStatus value, $Res Function(LoginStatus) then) =
@@ -40,6 +44,7 @@ abstract class $LoginStatusCopyWith<$Res> {
   $UserEntityCopyWith<$Res> get currentUser;
 }
 
+/// @nodoc
 class _$LoginStatusCopyWithImpl<$Res> implements $LoginStatusCopyWith<$Res> {
   _$LoginStatusCopyWithImpl(this._value, this._then);
 
@@ -71,6 +76,7 @@ class _$LoginStatusCopyWithImpl<$Res> implements $LoginStatusCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$LoginStatusCopyWith<$Res>
     implements $LoginStatusCopyWith<$Res> {
   factory _$LoginStatusCopyWith(
@@ -83,6 +89,7 @@ abstract class _$LoginStatusCopyWith<$Res>
   $UserEntityCopyWith<$Res> get currentUser;
 }
 
+/// @nodoc
 class __$LoginStatusCopyWithImpl<$Res> extends _$LoginStatusCopyWithImpl<$Res>
     implements _$LoginStatusCopyWith<$Res> {
   __$LoginStatusCopyWithImpl(
@@ -106,6 +113,7 @@ class __$LoginStatusCopyWithImpl<$Res> extends _$LoginStatusCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LoginStatus implements _LoginStatus {
   const _$_LoginStatus({@required this.loggedIn, this.currentUser})
       : assert(loggedIn != null);

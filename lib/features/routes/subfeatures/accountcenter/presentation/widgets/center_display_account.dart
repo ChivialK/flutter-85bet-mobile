@@ -139,7 +139,7 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
                         String birth = date.toDateString;
 //                        print('birth date: $birth');
                         checkAndPost(context, () {
-                          if (birth.isValidDate)
+                          if (birth.isDate)
                             _store.bindBirth(birth);
                           else
                             callToast(localeStr.messageInvalidFormat);

@@ -6,7 +6,6 @@ part of 'payment_type_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-// ignore: non_constant_identifier_names
 _$PaymentTypeOnlineData _$_$PaymentTypeOnlineDataFromJson(
     Map<String, dynamic> json) {
   return _$PaymentTypeOnlineData(
@@ -26,7 +25,6 @@ _$PaymentTypeOnlineData _$_$PaymentTypeOnlineDataFromJson(
   );
 }
 
-// ignore: non_constant_identifier_names
 Map<String, dynamic> _$_$PaymentTypeOnlineDataToJson(
         _$PaymentTypeOnlineData instance) =>
     <String, dynamic>{
@@ -44,7 +42,6 @@ Map<String, dynamic> _$_$PaymentTypeOnlineDataToJson(
       'key': instance.key,
     };
 
-// ignore: non_constant_identifier_names
 _$PaymentTypeLocalData _$_$PaymentTypeLocalDataFromJson(
     Map<String, dynamic> json) {
   return _$PaymentTypeLocalData(
@@ -59,7 +56,6 @@ _$PaymentTypeLocalData _$_$PaymentTypeLocalDataFromJson(
   );
 }
 
-// ignore: non_constant_identifier_names
 Map<String, dynamic> _$_$PaymentTypeLocalDataToJson(
         _$PaymentTypeLocalData instance) =>
     <String, dynamic>{

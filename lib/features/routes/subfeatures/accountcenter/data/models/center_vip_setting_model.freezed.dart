@@ -21,6 +21,7 @@ CenterVipSettingModel _$CenterVipSettingModelFromJson(
   }
 }
 
+/// @nodoc
 class _$CenterVipSettingModelTearOff {
   const _$CenterVipSettingModelTearOff();
 
@@ -54,11 +55,18 @@ class _$CenterVipSettingModelTearOff {
       cardgame: cardgame,
     );
   }
+
+// ignore: unused_element
+  CenterVipSettingModel fromJson(Map<String, Object> json) {
+    return CenterVipSettingModel.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CenterVipSettingModel = _$CenterVipSettingModelTearOff();
 
+/// @nodoc
 mixin _$CenterVipSettingModel {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -101,12 +109,14 @@ mixin _$CenterVipSettingModel {
   Map<String, dynamic> toJson();
 }
 
+/// @nodoc
 abstract class $CenterVipSettingModelCopyWith<$Res> {
   factory $CenterVipSettingModelCopyWith(CenterVipSettingModel value,
           $Res Function(CenterVipSettingModel) then) =
       _$CenterVipSettingModelCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CenterVipSettingModelCopyWithImpl<$Res>
     implements $CenterVipSettingModelCopyWith<$Res> {
   _$CenterVipSettingModelCopyWithImpl(this._value, this._then);
@@ -116,6 +126,7 @@ class _$CenterVipSettingModelCopyWithImpl<$Res>
   final $Res Function(CenterVipSettingModel) _then;
 }
 
+/// @nodoc
 abstract class $CenterVipSettingCopyWith<$Res> {
   factory $CenterVipSettingCopyWith(
           CenterVipSetting value, $Res Function(CenterVipSetting) then) =
@@ -126,6 +137,7 @@ abstract class $CenterVipSettingCopyWith<$Res> {
       String title});
 }
 
+/// @nodoc
 class _$CenterVipSettingCopyWithImpl<$Res>
     extends _$CenterVipSettingModelCopyWithImpl<$Res>
     implements $CenterVipSettingCopyWith<$Res> {
@@ -149,6 +161,8 @@ class _$CenterVipSettingCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$CenterVipSetting implements CenterVipSetting {
   const _$CenterVipSetting(
       {@JsonKey(name: 'setting', fromJson: CenterVipSettingModel.jsonToCenterVipSettingItem)
@@ -280,6 +294,7 @@ abstract class CenterVipSetting implements CenterVipSettingModel {
   $CenterVipSettingCopyWith<CenterVipSetting> get copyWith;
 }
 
+/// @nodoc
 abstract class $CenterVipSettingItemCopyWith<$Res> {
   factory $CenterVipSettingItemCopyWith(CenterVipSettingItem value,
           $Res Function(CenterVipSettingItem) then) =
@@ -294,6 +309,7 @@ abstract class $CenterVipSettingItemCopyWith<$Res> {
       String cardgame});
 }
 
+/// @nodoc
 class _$CenterVipSettingItemCopyWithImpl<$Res>
     extends _$CenterVipSettingModelCopyWithImpl<$Res>
     implements $CenterVipSettingItemCopyWith<$Res> {
@@ -329,6 +345,8 @@ class _$CenterVipSettingItemCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$CenterVipSettingItem implements CenterVipSettingItem {
   const _$CenterVipSettingItem(
       {this.allgame,

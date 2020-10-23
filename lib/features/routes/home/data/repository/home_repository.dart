@@ -17,7 +17,6 @@ import '../models/marquee_model_list.dart';
 import 'home_local_storage.dart';
 
 class HomeApi {
-  static const String GET_LIMIT = "api/get_account/creditlimit";
   static const String BANNER = "api/banner";
   static const String MARQUEE = "api/marquee";
   static const String GAME_ALL = "api/getAll";
@@ -34,8 +33,6 @@ class HomeApi {
 }
 
 abstract class HomeRepository {
-  Future<Either<Failure, String>> updateCredit(String account);
-
   Future<Either<Failure, List<BannerEntity>>> getBanners();
 
   Future<Either<Failure, List<BannerEntity>>> getCachedBanners();
@@ -66,41 +63,6 @@ class HomeRepositoryImpl implements HomeRepository {
     @required this.localStorage,
     @required this.jwtInterface,
   });
-
-  @override
-  Future<Either<Failure, String>> updateCredit(String account) async {
-    final result = await requestData(
-      request: dioApiService.get(
-        HomeApi.GET_LIMIT,
-        userToken: jwtInterface.token,
-      ),
-      tag: 'remote-HOME_CREDIT',
-    );
-//    debugPrint('test response type: ${result.runtimeType}, data: $result');
-    return result.fold(
-      (failure) => Left(failure),
-      (data) {
-        try {
-          Map<String, dynamic> map;
-          if (data is Map)
-            map = data;
-          else if (data is String)
-            map = jsonDecode(data);
-          else
-            return Left(Failure.dataType());
-
-          if (map.containsKey('creditlimit')) {
-            return Right(map['creditlimit']);
-          } else {
-            return Left(Failure.token(FailureType.CREDIT));
-          }
-        } catch (e) {
-          debugPrint('credit limit error: $e');
-          return Left(Failure.server());
-        }
-      },
-    );
-  }
 
   @override
   Future<Either<Failure, List<BannerEntity>>> getBanners() async {

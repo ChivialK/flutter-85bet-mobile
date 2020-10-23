@@ -9,6 +9,7 @@ part of 'game_types.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$GameTypesTearOff {
   const _$GameTypesTearOff();
 
@@ -25,9 +26,11 @@ class _$GameTypesTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $GameTypes = _$GameTypesTearOff();
 
+/// @nodoc
 mixin _$GameTypes {
   @JsonKey(name: 'category', fromJson: decodeGameCategoryModel)
   List<GameCategoryModel> get categories;
@@ -37,6 +40,7 @@ mixin _$GameTypes {
   $GameTypesCopyWith<GameTypes> get copyWith;
 }
 
+/// @nodoc
 abstract class $GameTypesCopyWith<$Res> {
   factory $GameTypesCopyWith(GameTypes value, $Res Function(GameTypes) then) =
       _$GameTypesCopyWithImpl<$Res>;
@@ -47,6 +51,7 @@ abstract class $GameTypesCopyWith<$Res> {
           List<GamePlatform> platforms});
 }
 
+/// @nodoc
 class _$GameTypesCopyWithImpl<$Res> implements $GameTypesCopyWith<$Res> {
   _$GameTypesCopyWithImpl(this._value, this._then);
 
@@ -70,6 +75,7 @@ class _$GameTypesCopyWithImpl<$Res> implements $GameTypesCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$GameTypesCopyWith<$Res> implements $GameTypesCopyWith<$Res> {
   factory _$GameTypesCopyWith(
           _GameTypes value, $Res Function(_GameTypes) then) =
@@ -82,6 +88,7 @@ abstract class _$GameTypesCopyWith<$Res> implements $GameTypesCopyWith<$Res> {
           List<GamePlatform> platforms});
 }
 
+/// @nodoc
 class __$GameTypesCopyWithImpl<$Res> extends _$GameTypesCopyWithImpl<$Res>
     implements _$GameTypesCopyWith<$Res> {
   __$GameTypesCopyWithImpl(_GameTypes _value, $Res Function(_GameTypes) _then)
@@ -106,6 +113,7 @@ class __$GameTypesCopyWithImpl<$Res> extends _$GameTypesCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_GameTypes implements _GameTypes {
   const _$_GameTypes(
       {@JsonKey(name: 'category', fromJson: decodeGameCategoryModel)

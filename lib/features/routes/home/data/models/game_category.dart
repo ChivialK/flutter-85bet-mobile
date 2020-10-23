@@ -17,12 +17,14 @@ enum HomeCategoryEnum {
   PROMO,
   MOVIE_WEBSITE,
   WEBSITE,
+  ABOUT,
   UNDEFINE,
 }
 
 class HomeCategoryInfo {
   final HomeCategoryEnum id;
   final String imageUrl;
+  final String assetPath;
   final GamePageType pageType;
 
   ///
@@ -32,6 +34,7 @@ class HomeCategoryInfo {
   const HomeCategoryInfo({
     @required this.id,
     this.imageUrl,
+    this.assetPath,
     this.pageType = GamePageType.Games,
   });
 }
@@ -120,6 +123,12 @@ class GameCategory extends Vnum<HomeCategoryInfo> {
     imageUrl: '',
     pageType: GamePageType.Website,
   ));
+  static const GameCategory about = const GameCategory.define(HomeCategoryInfo(
+    id: HomeCategoryEnum.ABOUT,
+    imageUrl: '',
+    assetPath: Res.iconAbout,
+    pageType: GamePageType.About,
+  ));
   static const GameCategory undefined =
       const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.UNDEFINE,
@@ -182,6 +191,8 @@ extension HomeCategoryExtension on HomeCategoryInfo {
         return localeStr.gameCategoryMovieWeb;
       case HomeCategoryEnum.WEBSITE:
         return localeStr.gameCategoryWeb;
+      case HomeCategoryEnum.ABOUT:
+        return localeStr.gameCategoryAbout;
       default:
         return '???';
     }

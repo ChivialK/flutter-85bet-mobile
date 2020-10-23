@@ -59,7 +59,7 @@ class HomeDisplayBanner extends StatelessWidget {
         debugPrint('clicked image $index, url: $url');
         if (onBannerClicked != null)
           onBannerClicked(
-              url.startsWith('/api/open/'), url.replaceAll('/api/open/', ''));
+              url.contains('/api/open/'), url.replaceAll('/api/open/', ''));
       },
     );
   }

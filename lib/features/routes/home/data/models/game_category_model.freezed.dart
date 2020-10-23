@@ -9,6 +9,7 @@ part of 'game_category_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$GameCategoryModelTearOff {
   const _$GameCategoryModelTearOff();
 
@@ -25,9 +26,11 @@ class _$GameCategoryModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $GameCategoryModel = _$GameCategoryModelTearOff();
 
+/// @nodoc
 mixin _$GameCategoryModel {
   @HiveField(0)
   String get ch;
@@ -38,6 +41,7 @@ mixin _$GameCategoryModel {
   $GameCategoryModelCopyWith<GameCategoryModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $GameCategoryModelCopyWith<$Res> {
   factory $GameCategoryModelCopyWith(
           GameCategoryModel value, $Res Function(GameCategoryModel) then) =
@@ -46,6 +50,7 @@ abstract class $GameCategoryModelCopyWith<$Res> {
       {@HiveField(0) String ch, @HiveField(1) String type, GameCategory info});
 }
 
+/// @nodoc
 class _$GameCategoryModelCopyWithImpl<$Res>
     implements $GameCategoryModelCopyWith<$Res> {
   _$GameCategoryModelCopyWithImpl(this._value, this._then);
@@ -68,6 +73,7 @@ class _$GameCategoryModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$GameCategoryModelCopyWith<$Res>
     implements $GameCategoryModelCopyWith<$Res> {
   factory _$GameCategoryModelCopyWith(
@@ -78,6 +84,7 @@ abstract class _$GameCategoryModelCopyWith<$Res>
       {@HiveField(0) String ch, @HiveField(1) String type, GameCategory info});
 }
 
+/// @nodoc
 class __$GameCategoryModelCopyWithImpl<$Res>
     extends _$GameCategoryModelCopyWithImpl<$Res>
     implements _$GameCategoryModelCopyWith<$Res> {
@@ -104,6 +111,8 @@ class __$GameCategoryModelCopyWithImpl<$Res>
 
 @HiveType(typeId: 103)
 @Implements(DataOperator)
+
+/// @nodoc
 class _$_GameCategoryModel implements _GameCategoryModel {
   const _$_GameCategoryModel(
       {@required @HiveField(0) this.ch,

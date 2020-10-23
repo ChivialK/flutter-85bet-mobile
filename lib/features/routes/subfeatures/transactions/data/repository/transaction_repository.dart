@@ -55,7 +55,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
       jsonToModel: TransactionModel.jsonToTransactionModel,
       tag: 'remote-TRANSACTION',
     );
-//    print('test response type: ${result.runtimeType}, data: $result');
+//    debugPrint('test response type: ${result.runtimeType}, data: $result');
     return result.fold(
       (failure) => Left(failure),
       (model) => Right(model),

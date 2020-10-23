@@ -12,6 +12,7 @@ FreezedForm _$FreezedFormFromJson(Map<String, dynamic> json) {
   return _FreezedForm.fromJson(json);
 }
 
+/// @nodoc
 class _$FreezedFormTearOff {
   const _$FreezedFormTearOff();
 
@@ -23,11 +24,18 @@ class _$FreezedFormTearOff {
       password,
     );
   }
+
+// ignore: unused_element
+  FreezedForm fromJson(Map<String, Object> json) {
+    return FreezedForm.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FreezedForm = _$FreezedFormTearOff();
 
+/// @nodoc
 mixin _$FreezedForm {
   @JsonKey(name: 'accountcode')
   String get account;
@@ -37,6 +45,7 @@ mixin _$FreezedForm {
   $FreezedFormCopyWith<FreezedForm> get copyWith;
 }
 
+/// @nodoc
 abstract class $FreezedFormCopyWith<$Res> {
   factory $FreezedFormCopyWith(
           FreezedForm value, $Res Function(FreezedForm) then) =
@@ -44,6 +53,7 @@ abstract class $FreezedFormCopyWith<$Res> {
   $Res call({@JsonKey(name: 'accountcode') String account, String password});
 }
 
+/// @nodoc
 class _$FreezedFormCopyWithImpl<$Res> implements $FreezedFormCopyWith<$Res> {
   _$FreezedFormCopyWithImpl(this._value, this._then);
 
@@ -63,6 +73,7 @@ class _$FreezedFormCopyWithImpl<$Res> implements $FreezedFormCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$FreezedFormCopyWith<$Res>
     implements $FreezedFormCopyWith<$Res> {
   factory _$FreezedFormCopyWith(
@@ -72,6 +83,7 @@ abstract class _$FreezedFormCopyWith<$Res>
   $Res call({@JsonKey(name: 'accountcode') String account, String password});
 }
 
+/// @nodoc
 class __$FreezedFormCopyWithImpl<$Res> extends _$FreezedFormCopyWithImpl<$Res>
     implements _$FreezedFormCopyWith<$Res> {
   __$FreezedFormCopyWithImpl(
@@ -94,6 +106,8 @@ class __$FreezedFormCopyWithImpl<$Res> extends _$FreezedFormCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_FreezedForm implements _FreezedForm {
   const _$_FreezedForm(
       @JsonKey(name: 'accountcode') this.account, this.password)
@@ -159,6 +173,7 @@ abstract class _FreezedForm implements FreezedForm {
   _$FreezedFormCopyWith<_FreezedForm> get copyWith;
 }
 
+/// @nodoc
 class _$FreezedNestedTearOff {
   const _$FreezedNestedTearOff();
 
@@ -177,9 +192,11 @@ class _$FreezedNestedTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FreezedNested = _$FreezedNestedTearOff();
 
+/// @nodoc
 mixin _$FreezedNested {
   int get status;
 
@@ -209,6 +226,7 @@ mixin _$FreezedNested {
   $FreezedNestedCopyWith<FreezedNested> get copyWith;
 }
 
+/// @nodoc
 abstract class $FreezedNestedCopyWith<$Res> {
   factory $FreezedNestedCopyWith(
           FreezedNested value, $Res Function(FreezedNested) then) =
@@ -216,6 +234,7 @@ abstract class $FreezedNestedCopyWith<$Res> {
   $Res call({int status});
 }
 
+/// @nodoc
 class _$FreezedNestedCopyWithImpl<$Res>
     implements $FreezedNestedCopyWith<$Res> {
   _$FreezedNestedCopyWithImpl(this._value, this._then);
@@ -234,6 +253,7 @@ class _$FreezedNestedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$AddCopyWith<$Res> implements $FreezedNestedCopyWith<$Res> {
   factory _$AddCopyWith(_Add value, $Res Function(_Add) then) =
       __$AddCopyWithImpl<$Res>;
@@ -241,6 +261,7 @@ abstract class _$AddCopyWith<$Res> implements $FreezedNestedCopyWith<$Res> {
   $Res call({int status});
 }
 
+/// @nodoc
 class __$AddCopyWithImpl<$Res> extends _$FreezedNestedCopyWithImpl<$Res>
     implements _$AddCopyWith<$Res> {
   __$AddCopyWithImpl(_Add _value, $Res Function(_Add) _then)
@@ -259,6 +280,7 @@ class __$AddCopyWithImpl<$Res> extends _$FreezedNestedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Add implements _Add {
   const _$_Add(this.status) : assert(status != null);
 
@@ -346,6 +368,7 @@ abstract class _Add implements FreezedNested {
   _$AddCopyWith<_Add> get copyWith;
 }
 
+/// @nodoc
 abstract class _$SubtractCopyWith<$Res>
     implements $FreezedNestedCopyWith<$Res> {
   factory _$SubtractCopyWith(_Subtract value, $Res Function(_Subtract) then) =
@@ -354,6 +377,7 @@ abstract class _$SubtractCopyWith<$Res>
   $Res call({int status});
 }
 
+/// @nodoc
 class __$SubtractCopyWithImpl<$Res> extends _$FreezedNestedCopyWithImpl<$Res>
     implements _$SubtractCopyWith<$Res> {
   __$SubtractCopyWithImpl(_Subtract _value, $Res Function(_Subtract) _then)
@@ -372,6 +396,7 @@ class __$SubtractCopyWithImpl<$Res> extends _$FreezedNestedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Subtract implements _Subtract {
   const _$_Subtract(this.status) : assert(status != null);
 
@@ -459,6 +484,7 @@ abstract class _Subtract implements FreezedNested {
   _$SubtractCopyWith<_Subtract> get copyWith;
 }
 
+/// @nodoc
 class _$FreezedOperationTearOff {
   const _$FreezedOperationTearOff();
 
@@ -484,9 +510,11 @@ class _$FreezedOperationTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FreezedOperation = _$FreezedOperationTearOff();
 
+/// @nodoc
 mixin _$FreezedOperation {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -516,12 +544,14 @@ mixin _$FreezedOperation {
   });
 }
 
+/// @nodoc
 abstract class $FreezedOperationCopyWith<$Res> {
   factory $FreezedOperationCopyWith(
           FreezedOperation value, $Res Function(FreezedOperation) then) =
       _$FreezedOperationCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$FreezedOperationCopyWithImpl<$Res>
     implements $FreezedOperationCopyWith<$Res> {
   _$FreezedOperationCopyWithImpl(this._value, this._then);
@@ -531,12 +561,14 @@ class _$FreezedOperationCopyWithImpl<$Res>
   final $Res Function(FreezedOperation) _then;
 }
 
+/// @nodoc
 abstract class $AddCopyWith<$Res> {
   factory $AddCopyWith(Add value, $Res Function(Add) then) =
       _$AddCopyWithImpl<$Res>;
   $Res call({int value});
 }
 
+/// @nodoc
 class _$AddCopyWithImpl<$Res> extends _$FreezedOperationCopyWithImpl<$Res>
     implements $AddCopyWith<$Res> {
   _$AddCopyWithImpl(Add _value, $Res Function(Add) _then)
@@ -555,6 +587,7 @@ class _$AddCopyWithImpl<$Res> extends _$FreezedOperationCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$Add implements Add {
   const _$Add(this.value) : assert(value != null);
 
@@ -645,12 +678,14 @@ abstract class Add implements FreezedOperation {
   $AddCopyWith<Add> get copyWith;
 }
 
+/// @nodoc
 abstract class $SubtractCopyWith<$Res> {
   factory $SubtractCopyWith(Subtract value, $Res Function(Subtract) then) =
       _$SubtractCopyWithImpl<$Res>;
   $Res call({int value});
 }
 
+/// @nodoc
 class _$SubtractCopyWithImpl<$Res> extends _$FreezedOperationCopyWithImpl<$Res>
     implements $SubtractCopyWith<$Res> {
   _$SubtractCopyWithImpl(Subtract _value, $Res Function(Subtract) _then)
@@ -669,6 +704,7 @@ class _$SubtractCopyWithImpl<$Res> extends _$FreezedOperationCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$Subtract implements Subtract {
   const _$Subtract(this.value) : assert(value != null);
 
@@ -760,12 +796,14 @@ abstract class Subtract implements FreezedOperation {
   $SubtractCopyWith<Subtract> get copyWith;
 }
 
+/// @nodoc
 abstract class $ErrorCopyWith<$Res> {
   factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
       _$ErrorCopyWithImpl<$Res>;
   $Res call({String msg});
 }
 
+/// @nodoc
 class _$ErrorCopyWithImpl<$Res> extends _$FreezedOperationCopyWithImpl<$Res>
     implements $ErrorCopyWith<$Res> {
   _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
@@ -784,6 +822,7 @@ class _$ErrorCopyWithImpl<$Res> extends _$FreezedOperationCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$Error implements Error {
   const _$Error([this.msg]);
 

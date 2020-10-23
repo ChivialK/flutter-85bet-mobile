@@ -9,6 +9,7 @@ part of 'center_account_entity.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$CenterAccountEntityTearOff {
   const _$CenterAccountEntityTearOff();
 
@@ -41,9 +42,11 @@ class _$CenterAccountEntityTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CenterAccountEntity = _$CenterAccountEntityTearOff();
 
+/// @nodoc
 mixin _$CenterAccountEntity {
   String get accountCode;
   int get accountId;
@@ -60,6 +63,7 @@ mixin _$CenterAccountEntity {
   $CenterAccountEntityCopyWith<CenterAccountEntity> get copyWith;
 }
 
+/// @nodoc
 abstract class $CenterAccountEntityCopyWith<$Res> {
   factory $CenterAccountEntityCopyWith(
           CenterAccountEntity value, $Res Function(CenterAccountEntity) then) =
@@ -78,6 +82,7 @@ abstract class $CenterAccountEntityCopyWith<$Res> {
       String cpwWallet});
 }
 
+/// @nodoc
 class _$CenterAccountEntityCopyWithImpl<$Res>
     implements $CenterAccountEntityCopyWith<$Res> {
   _$CenterAccountEntityCopyWithImpl(this._value, this._then);
@@ -119,6 +124,7 @@ class _$CenterAccountEntityCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$CenterAccountEntityCopyWith<$Res>
     implements $CenterAccountEntityCopyWith<$Res> {
   factory _$CenterAccountEntityCopyWith(_CenterAccountEntity value,
@@ -139,6 +145,7 @@ abstract class _$CenterAccountEntityCopyWith<$Res>
       String cpwWallet});
 }
 
+/// @nodoc
 class __$CenterAccountEntityCopyWithImpl<$Res>
     extends _$CenterAccountEntityCopyWithImpl<$Res>
     implements _$CenterAccountEntityCopyWith<$Res> {
@@ -182,6 +189,7 @@ class __$CenterAccountEntityCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_CenterAccountEntity implements _CenterAccountEntity {
   const _$_CenterAccountEntity(
       {this.accountCode,

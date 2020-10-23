@@ -67,9 +67,9 @@ mixin _$TransactionStore on _TransactionStore, Store {
   @override
   String toString() {
     return '''
-dataList: $dataList,
-waitForPageData: $waitForPageData,
-errorMessage: $errorMessage
+dataList: ${dataList},
+waitForPageData: ${waitForPageData},
+errorMessage: ${errorMessage}
     ''';
   }
 }

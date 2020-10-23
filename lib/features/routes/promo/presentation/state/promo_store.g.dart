@@ -71,6 +71,10 @@ mixin _$PromoStore on _PromoStore, Store {
 
   @override
   String toString() {
-    return '''promos: $promos,errorMessage: $errorMessage,state: $state''';
+    return '''
+promos: ${promos},
+errorMessage: ${errorMessage},
+state: ${state}
+    ''';
   }
 }

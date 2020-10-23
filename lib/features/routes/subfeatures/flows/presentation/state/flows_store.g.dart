@@ -64,9 +64,9 @@ mixin _$FlowsStore on _FlowsStore, Store {
   @override
   String toString() {
     return '''
-dataList: $dataList,
-waitForPageData: $waitForPageData,
-errorMessage: $errorMessage
+dataList: ${dataList},
+waitForPageData: ${waitForPageData},
+errorMessage: ${errorMessage}
     ''';
   }
 }

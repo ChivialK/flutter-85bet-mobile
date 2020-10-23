@@ -9,6 +9,7 @@ part of 'user_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$UserModelTearOff {
   const _$UserModelTearOff();
 
@@ -29,9 +30,11 @@ class _$UserModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $UserModel = _$UserModelTearOff();
 
+/// @nodoc
 mixin _$UserModel {
   @JsonKey(name: 'accountcode', required: true)
   String get account;
@@ -45,6 +48,7 @@ mixin _$UserModel {
   $UserModelCopyWith<UserModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res>;
@@ -56,6 +60,7 @@ abstract class $UserModelCopyWith<$Res> {
       @JsonKey(name: 'vip_name', required: false) String vipName});
 }
 
+/// @nodoc
 class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
   _$UserModelCopyWithImpl(this._value, this._then);
 
@@ -81,6 +86,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
   factory _$UserModelCopyWith(
           _UserModel value, $Res Function(_UserModel) then) =
@@ -94,6 +100,7 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       @JsonKey(name: 'vip_name', required: false) String vipName});
 }
 
+/// @nodoc
 class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     implements _$UserModelCopyWith<$Res> {
   __$UserModelCopyWithImpl(_UserModel _value, $Res Function(_UserModel) _then)
@@ -120,6 +127,7 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_UserModel implements _UserModel {
   const _$_UserModel(
       {@JsonKey(name: 'accountcode', required: true) this.account,

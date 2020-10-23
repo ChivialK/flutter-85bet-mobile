@@ -12,6 +12,7 @@ DepositResult _$DepositResultFromJson(Map<String, dynamic> json) {
   return _DepositResult.fromJson(json);
 }
 
+/// @nodoc
 class _$DepositResultTearOff {
   const _$DepositResultTearOff();
 
@@ -30,11 +31,18 @@ class _$DepositResultTearOff {
       ledger: ledger,
     );
   }
+
+// ignore: unused_element
+  DepositResult fromJson(Map<String, Object> json) {
+    return DepositResult.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $DepositResult = _$DepositResultTearOff();
 
+/// @nodoc
 mixin _$DepositResult {
   @nullable
   bool get ss;
@@ -49,6 +57,7 @@ mixin _$DepositResult {
   $DepositResultCopyWith<DepositResult> get copyWith;
 }
 
+/// @nodoc
 abstract class $DepositResultCopyWith<$Res> {
   factory $DepositResultCopyWith(
           DepositResult value, $Res Function(DepositResult) then) =
@@ -61,6 +70,7 @@ abstract class $DepositResultCopyWith<$Res> {
       @JsonKey(name: 'ledgerindex', defaultValue: -1) int ledger});
 }
 
+/// @nodoc
 class _$DepositResultCopyWithImpl<$Res>
     implements $DepositResultCopyWith<$Res> {
   _$DepositResultCopyWithImpl(this._value, this._then);
@@ -87,6 +97,7 @@ class _$DepositResultCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$DepositResultCopyWith<$Res>
     implements $DepositResultCopyWith<$Res> {
   factory _$DepositResultCopyWith(
@@ -101,6 +112,7 @@ abstract class _$DepositResultCopyWith<$Res>
       @JsonKey(name: 'ledgerindex', defaultValue: -1) int ledger});
 }
 
+/// @nodoc
 class __$DepositResultCopyWithImpl<$Res>
     extends _$DepositResultCopyWithImpl<$Res>
     implements _$DepositResultCopyWith<$Res> {
@@ -130,6 +142,8 @@ class __$DepositResultCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_DepositResult implements _DepositResult {
   const _$_DepositResult(
       {@nullable this.ss,

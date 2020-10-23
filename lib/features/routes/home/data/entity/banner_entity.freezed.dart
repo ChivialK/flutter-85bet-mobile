@@ -9,6 +9,7 @@ part of 'banner_entity.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$BannerEntityTearOff {
   const _$BannerEntityTearOff();
 
@@ -29,9 +30,11 @@ class _$BannerEntityTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BannerEntity = _$BannerEntityTearOff();
 
+/// @nodoc
 mixin _$BannerEntity {
   @HiveField(0)
   int get id;
@@ -47,6 +50,7 @@ mixin _$BannerEntity {
   $BannerEntityCopyWith<BannerEntity> get copyWith;
 }
 
+/// @nodoc
 abstract class $BannerEntityCopyWith<$Res> {
   factory $BannerEntityCopyWith(
           BannerEntity value, $Res Function(BannerEntity) then) =
@@ -59,6 +63,7 @@ abstract class $BannerEntityCopyWith<$Res> {
       @HiveField(4) int sort});
 }
 
+/// @nodoc
 class _$BannerEntityCopyWithImpl<$Res> implements $BannerEntityCopyWith<$Res> {
   _$BannerEntityCopyWithImpl(this._value, this._then);
 
@@ -84,6 +89,7 @@ class _$BannerEntityCopyWithImpl<$Res> implements $BannerEntityCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$BannerEntityCopyWith<$Res>
     implements $BannerEntityCopyWith<$Res> {
   factory _$BannerEntityCopyWith(
@@ -98,6 +104,7 @@ abstract class _$BannerEntityCopyWith<$Res>
       @HiveField(4) int sort});
 }
 
+/// @nodoc
 class __$BannerEntityCopyWithImpl<$Res> extends _$BannerEntityCopyWithImpl<$Res>
     implements _$BannerEntityCopyWith<$Res> {
   __$BannerEntityCopyWithImpl(
@@ -127,6 +134,8 @@ class __$BannerEntityCopyWithImpl<$Res> extends _$BannerEntityCopyWithImpl<$Res>
 
 @HiveType(typeId: 101)
 @Implements(DataOperator)
+
+/// @nodoc
 class _$_BannerEntity implements _BannerEntity {
   const _$_BannerEntity(
       {@required @HiveField(0) this.id,

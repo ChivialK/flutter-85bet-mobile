@@ -11,8 +11,10 @@ class BetRecordApi {
 }
 
 abstract class BetRecordRepository {
-  Future<Either<Failure, List<BetRecordTypeModel>>> getTypeData();
+  Future<Either<Failure, List<BetRecordType>>> getTypeData();
+
   Future<Either<Failure, BetRecordModel>> getRecord(BetRecordForm form);
+
   Future<Either<Failure, List<BetRecordDataAllPlatform>>> getRecordAll(
       BetRecordForm form);
 }
@@ -28,13 +30,13 @@ class BetRecordRepositoryImpl implements BetRecordRepository {
   }
 
   @override
-  Future<Either<Failure, List<BetRecordTypeModel>>> getTypeData() async {
-    final result = await requestModelList<BetRecordTypeModel>(
+  Future<Either<Failure, List<BetRecordType>>> getTypeData() async {
+    final result = await requestModelList<BetRecordType>(
       request: dioApiService.get(
         BetRecordApi.GET_CATEGORY,
         userToken: jwtInterface.token,
       ),
-      jsonToModel: BetRecordTypeModel.jsonToBetRecordTypeModel,
+      jsonToModel: BetRecordTypeModel.jsonToBetRecordType,
       tag: 'remote-BET_TYPE',
     );
     if (result.isLeft()) return result;
@@ -61,7 +63,7 @@ class BetRecordRepositoryImpl implements BetRecordRepository {
         else
           return Left(Failure.jsonFormat());
 
-        List<BetRecordTypeModel> resultList = new List();
+        List<BetRecordType> resultList = new List();
         modelList.forEach((model) {
           resultList
               .add(model.copyWith(platformMap: map['${model.categoryId}']));

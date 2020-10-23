@@ -9,6 +9,7 @@ part of 'withdraw_form.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$WithdrawFormTearOff {
   const _$WithdrawFormTearOff();
 
@@ -25,9 +26,11 @@ class _$WithdrawFormTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $WithdrawForm = _$WithdrawFormTearOff();
 
+/// @nodoc
 mixin _$WithdrawForm {
   String get amount;
   String get password;
@@ -36,6 +39,7 @@ mixin _$WithdrawForm {
   $WithdrawFormCopyWith<WithdrawForm> get copyWith;
 }
 
+/// @nodoc
 abstract class $WithdrawFormCopyWith<$Res> {
   factory $WithdrawFormCopyWith(
           WithdrawForm value, $Res Function(WithdrawForm) then) =
@@ -43,6 +47,7 @@ abstract class $WithdrawFormCopyWith<$Res> {
   $Res call({String amount, String password, String type});
 }
 
+/// @nodoc
 class _$WithdrawFormCopyWithImpl<$Res> implements $WithdrawFormCopyWith<$Res> {
   _$WithdrawFormCopyWithImpl(this._value, this._then);
 
@@ -64,6 +69,7 @@ class _$WithdrawFormCopyWithImpl<$Res> implements $WithdrawFormCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$WithdrawFormCopyWith<$Res>
     implements $WithdrawFormCopyWith<$Res> {
   factory _$WithdrawFormCopyWith(
@@ -73,6 +79,7 @@ abstract class _$WithdrawFormCopyWith<$Res>
   $Res call({String amount, String password, String type});
 }
 
+/// @nodoc
 class __$WithdrawFormCopyWithImpl<$Res> extends _$WithdrawFormCopyWithImpl<$Res>
     implements _$WithdrawFormCopyWith<$Res> {
   __$WithdrawFormCopyWithImpl(
@@ -96,6 +103,7 @@ class __$WithdrawFormCopyWithImpl<$Res> extends _$WithdrawFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_WithdrawForm implements _WithdrawForm {
   const _$_WithdrawForm(
       {@required this.amount, @required this.password, @required this.type})

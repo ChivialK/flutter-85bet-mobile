@@ -14,7 +14,10 @@ class TypesGridWidget<T extends DataOperator> extends StatefulWidget {
   final OnTypeGridTap onTypeGridTap;
   final int tabsPerRow;
   final double itemSpace;
+  final double itemSpaceHorFactor;
   final double expectTabHeight;
+  final double horizontalInset;
+  final bool round;
 
   TypesGridWidget({
     Key key,
@@ -23,7 +26,10 @@ class TypesGridWidget<T extends DataOperator> extends StatefulWidget {
     @required this.onTypeGridTap,
     this.tabsPerRow = 2,
     this.itemSpace = 8.0,
+    this.itemSpaceHorFactor = 2.0,
     this.expectTabHeight = 42.0,
+    this.horizontalInset = 48.0,
+    this.round = false,
   }) : super(key: key);
 
   @override
@@ -38,7 +44,7 @@ class _TypesGridWidgetState extends State<TypesGridWidget> {
   void initState() {
     // screen width - widget padding - cross space = available width
     double itemWidth = (Global.device.width -
-            48 -
+            widget.horizontalInset -
             widget.itemSpace * (widget.tabsPerRow + 2)) /
         widget.tabsPerRow;
     _gridRatio = itemWidth / widget.expectTabHeight;
@@ -63,7 +69,7 @@ class _TypesGridWidgetState extends State<TypesGridWidget> {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: widget.tabsPerRow,
         crossAxisSpacing: widget.itemSpace,
-        mainAxisSpacing: widget.itemSpace * 2,
+        mainAxisSpacing: widget.itemSpace * widget.itemSpaceHorFactor,
         childAspectRatio: _gridRatio,
       ),
       physics: BouncingScrollPhysics(),
@@ -87,7 +93,9 @@ class _TypesGridWidgetState extends State<TypesGridWidget> {
                 color: (_clicked == index)
                     ? Themes.buttonTextPrimaryColor
                     : Themes.walletBoxButtonColor,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(6.0)),
+                borderRadius: (widget.round)
+                    ? BorderRadius.circular(6.0)
+                    : BorderRadius.vertical(top: Radius.circular(6.0)),
               ),
               alignment: Alignment.center,
               child: Padding(

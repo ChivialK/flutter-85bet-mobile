@@ -20,6 +20,7 @@ PaymentPromo _$PaymentPromoFromJson(Map<String, dynamic> json) {
   }
 }
 
+/// @nodoc
 class _$PaymentPromoTearOff {
   const _$PaymentPromoTearOff();
 
@@ -44,11 +45,18 @@ class _$PaymentPromoTearOff {
       promoDesc: promoDesc,
     );
   }
+
+// ignore: unused_element
+  PaymentPromo fromJson(Map<String, Object> json) {
+    return PaymentPromo.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PaymentPromo = _$PaymentPromoTearOff();
 
+/// @nodoc
 mixin _$PaymentPromo {
   @optionalTypeArgs
   Result when<Result extends Object>(
@@ -86,12 +94,14 @@ mixin _$PaymentPromo {
   Map<String, dynamic> toJson();
 }
 
+/// @nodoc
 abstract class $PaymentPromoCopyWith<$Res> {
   factory $PaymentPromoCopyWith(
           PaymentPromo value, $Res Function(PaymentPromo) then) =
       _$PaymentPromoCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$PaymentPromoCopyWithImpl<$Res> implements $PaymentPromoCopyWith<$Res> {
   _$PaymentPromoCopyWithImpl(this._value, this._then);
 
@@ -100,6 +110,7 @@ class _$PaymentPromoCopyWithImpl<$Res> implements $PaymentPromoCopyWith<$Res> {
   final $Res Function(PaymentPromo) _then;
 }
 
+/// @nodoc
 abstract class $PaymentPromoTypeJsonCopyWith<$Res> {
   factory $PaymentPromoTypeJsonCopyWith(PaymentPromoTypeJson value,
           $Res Function(PaymentPromoTypeJson) then) =
@@ -109,6 +120,7 @@ abstract class $PaymentPromoTypeJsonCopyWith<$Res> {
       @JsonKey(name: '2', defaultValue: '') dynamic other});
 }
 
+/// @nodoc
 class _$PaymentPromoTypeJsonCopyWithImpl<$Res>
     extends _$PaymentPromoCopyWithImpl<$Res>
     implements $PaymentPromoTypeJsonCopyWith<$Res> {
@@ -132,6 +144,8 @@ class _$PaymentPromoTypeJsonCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$PaymentPromoTypeJson implements PaymentPromoTypeJson {
   const _$PaymentPromoTypeJson(
       {@JsonKey(name: '1', defaultValue: '') this.local,
@@ -257,6 +271,7 @@ abstract class PaymentPromoTypeJson implements PaymentPromo {
   $PaymentPromoTypeJsonCopyWith<PaymentPromoTypeJson> get copyWith;
 }
 
+/// @nodoc
 abstract class $PaymentPromoDataCopyWith<$Res> {
   factory $PaymentPromoDataCopyWith(
           PaymentPromoData value, $Res Function(PaymentPromoData) then) =
@@ -268,6 +283,7 @@ abstract class $PaymentPromoDataCopyWith<$Res> {
           String promoDesc});
 }
 
+/// @nodoc
 class _$PaymentPromoDataCopyWithImpl<$Res>
     extends _$PaymentPromoCopyWithImpl<$Res>
     implements $PaymentPromoDataCopyWith<$Res> {
@@ -291,6 +307,8 @@ class _$PaymentPromoDataCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$PaymentPromoData implements PaymentPromoData {
   const _$PaymentPromoData(
       {@JsonKey(name: 'promoid', required: true)

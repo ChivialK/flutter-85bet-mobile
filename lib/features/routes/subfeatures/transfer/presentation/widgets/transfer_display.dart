@@ -78,7 +78,7 @@ class _TransferDisplayState extends State<TransferDisplay> {
 
   void _setSite1(String platform) {
     if (platform == null) return;
-    print('display selected: $platform');
+    debugPrint('display selected: $platform');
     // platform credit can only transfer to member wallet
     if (platform != '0') {
       _site2List = [widget.store.platforms.first];
@@ -108,7 +108,7 @@ class _TransferDisplayState extends State<TransferDisplay> {
 
   void _setSite2(String platform) {
     if (platform == null) return;
-    print('display selected: $platform');
+    debugPrint('display selected: $platform');
     // set site2 selected
     _site2Selected = platform;
     widget.store.setSite2Value('');
@@ -314,7 +314,7 @@ class _TransferDisplayState extends State<TransferDisplay> {
                               hint: 'VDK',
                               prefixText: localeStr.transferViewTitleAmount,
                               prefixTextSize: FontSize.SUBTITLE.value,
-                              maxInputLength: 10,
+                              maxInputLength: InputLimit.AMOUNT,
                               horizontalInset: _fieldInset,
                             ),
 

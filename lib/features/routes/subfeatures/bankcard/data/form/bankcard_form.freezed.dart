@@ -9,6 +9,7 @@ part of 'bankcard_form.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$BankcardFormTearOff {
   const _$BankcardFormTearOff();
 
@@ -31,9 +32,11 @@ class _$BankcardFormTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BankcardForm = _$BankcardFormTearOff();
 
+/// @nodoc
 mixin _$BankcardForm {
   @JsonKey(name: 'bankname')
   String get owner;
@@ -51,6 +54,7 @@ mixin _$BankcardForm {
   $BankcardFormCopyWith<BankcardForm> get copyWith;
 }
 
+/// @nodoc
 abstract class $BankcardFormCopyWith<$Res> {
   factory $BankcardFormCopyWith(
           BankcardForm value, $Res Function(BankcardForm) then) =
@@ -64,6 +68,7 @@ abstract class $BankcardFormCopyWith<$Res> {
       @JsonKey(name: 'bankcity') String area});
 }
 
+/// @nodoc
 class _$BankcardFormCopyWithImpl<$Res> implements $BankcardFormCopyWith<$Res> {
   _$BankcardFormCopyWithImpl(this._value, this._then);
 
@@ -91,6 +96,7 @@ class _$BankcardFormCopyWithImpl<$Res> implements $BankcardFormCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$BankcardFormCopyWith<$Res>
     implements $BankcardFormCopyWith<$Res> {
   factory _$BankcardFormCopyWith(
@@ -106,6 +112,7 @@ abstract class _$BankcardFormCopyWith<$Res>
       @JsonKey(name: 'bankcity') String area});
 }
 
+/// @nodoc
 class __$BankcardFormCopyWithImpl<$Res> extends _$BankcardFormCopyWithImpl<$Res>
     implements _$BankcardFormCopyWith<$Res> {
   __$BankcardFormCopyWithImpl(
@@ -135,6 +142,7 @@ class __$BankcardFormCopyWithImpl<$Res> extends _$BankcardFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_BankcardForm implements _BankcardForm {
   const _$_BankcardForm(
       {@required @JsonKey(name: 'bankname') this.owner,

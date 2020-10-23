@@ -6,7 +6,6 @@ part of 'center_vip_setting_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-// ignore: non_constant_identifier_names
 _$CenterVipSetting _$_$CenterVipSettingFromJson(Map<String, dynamic> json) {
   return _$CenterVipSetting(
     item: CenterVipSettingModel.jsonToCenterVipSettingItem(
@@ -15,14 +14,12 @@ _$CenterVipSetting _$_$CenterVipSettingFromJson(Map<String, dynamic> json) {
   );
 }
 
-// ignore: non_constant_identifier_names
 Map<String, dynamic> _$_$CenterVipSettingToJson(_$CenterVipSetting instance) =>
     <String, dynamic>{
       'setting': instance.item,
       'title': instance.title,
     };
 
-// ignore: non_constant_identifier_names
 _$CenterVipSettingItem _$_$CenterVipSettingItemFromJson(
     Map<String, dynamic> json) {
   return _$CenterVipSettingItem(
@@ -36,7 +33,6 @@ _$CenterVipSettingItem _$_$CenterVipSettingItemFromJson(
   );
 }
 
-// ignore: non_constant_identifier_names
 Map<String, dynamic> _$_$CenterVipSettingItemToJson(
         _$CenterVipSettingItem instance) =>
     <String, dynamic>{

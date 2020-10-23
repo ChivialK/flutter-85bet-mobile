@@ -52,7 +52,7 @@ class _DepositRouteState extends State<DepositRoute> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        print('pop deposit route');
+        debugPrint('pop deposit route');
         Future.delayed(
             Duration(milliseconds: 100), () => RouterNavigate.navigateBack());
         return Future(() => true);

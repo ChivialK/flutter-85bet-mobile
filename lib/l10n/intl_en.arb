@@ -35,8 +35,8 @@
   "@pageTitleRouter": {
     "type": "text"
   },
-  "pageTitleRank": "Vip Tier",
-  "@pageTitleRank": {
+  "pageTitleVip": "VIP",
+  "@pageTitleVip": {
     "type": "text"
   },
   "pageTitleStore": "Store",
@@ -87,7 +87,7 @@
   "@pageTitleRegister": {
     "type": "text"
   },
-"pageTitleRegisterFree": "Register Free",
+  "pageTitleRegisterFree": "Register Free",
   "@pageTitleRegisterFree": {
     "type": "text"
   },
@@ -143,6 +143,18 @@
   "@pageTitleMemberFlow": {
     "type": "text"
   },
+  "pageTitleMemberAgentRegister": "Agent Member Register",
+  "@pageTitleMemberAgentRegister": {
+    "type": "text"
+  },
+  "pageTitleMemberAgentLogin": "Agent Member Login",
+  "@pageTitleMemberAgentLogin": {
+    "type": "text"
+  },
+  "pageTitleMemberAgentLoginHint": "Login agent member",
+  "@pageTitleMemberAgentLoginHint": {
+    "type": "text"
+  },
   "pageTitleMemberAgent": "Agent",
   "@pageTitleMemberAgent": {
     "type": "text"
@@ -159,7 +171,7 @@
   "@pageTitleMore": {
     "type": "text"
   },
-  "toolBarMemberCredit": "￥ {value}",
+  "toolBarMemberCredit": "VDK {value}",
   "@toolBarMemberCredit": {
     "type": "text",
     "placeholders": {
@@ -168,12 +180,40 @@
       }
     }
   },
+  "themeColorHintSelect": "Select Theme Color",
+  "@themeColorHintSelect": {
+    "type": "text"
+  },
+  "themeColorDefault": "Default",
+  "@themeColorDefault": {
+    "type": "text"
+  },
+  "themeColorDark": "Dark",
+  "@themeColorDark": {
+    "type": "text"
+  },
+  "themeColorLight": "Light",
+  "@themeColorLight": {
+    "type": "text"
+  },
   "workInProgress": "Features coming soon!",
   "@workInProgress": {
     "type": "text"
   },
+  "networkChangedHint": "Detect network status has changed, do you want to refresh?",
+  "@networkChangedHint": {
+    "type": "text"
+  },
   "exitAppHint": "Press again to exit APP",
   "@exitAppHint": {
+    "type": "text"
+  },
+  "gameToolHintUsage": "Tap to show，Long-Press to hide ↗",
+  "@gameToolHintUsage": {
+    "type": "text"
+  },
+  "gameToolHintRestore": "Double-Tap to restore",
+  "@gameToolHintRestore": {
     "type": "text"
   },
   "btnMenu": "Menu",
@@ -252,6 +292,10 @@
   "@btnBind": {
     "type": "text"
   },
+  "btnQuery": "Search",
+  "@btnQuery": {
+    "type": "text"
+  },
   "btnQueryNow": "Search",
   "@btnQueryNow": {
     "type": "text"
@@ -266,6 +310,14 @@
   },
   "btnOff": "Off",
   "@btnOff": {
+    "type": "text"
+  },
+  "btnGo": "Go",
+  "@btnGo": {
+    "type": "text"
+  },
+  "btnCopy": "Copy",
+  "@btnCopy": {
     "type": "text"
   },
   "sideBtnBackHome": "Return",
@@ -300,7 +352,7 @@
   "@spinnerDateCustom": {
     "type": "text"
   },
-  "hintActionSelect": "Please select",
+  "hintActionSelect": "Select",
   "@hintActionSelect": {
     "type": "text"
   },
@@ -373,8 +425,12 @@
   "@messageWelcome": {
     "type": "text"
   },
-  "messageWelcomeHint": "please login / register",
+  "messageWelcomeHint": "Welcome! Please login / register",
   "@messageWelcomeHint": {
+    "type": "text"
+  },
+  "messageLoginHint": "Please login / register",
+  "@messageWelcomeHintShort": {
     "type": "text"
   },
   "messageRegisterFailed": "Registration failed",
@@ -391,6 +447,10 @@
   },
   "messageActionFillForm": "Please fill the form",
   "@messageActionFillForm": {
+    "type": "text"
+  },
+  "messageActionCheckTerms": "Please read and agree the bet terms",
+  "@messageActionCheckTerms": {
     "type": "text"
   },
   "messageLogout": "{name}, please log in again",
@@ -496,11 +556,16 @@
   "@messageInvalidEmail": {
     "type": "text"
   },
-  "messageInvalidPhone": "Error Phone Number(10)",
+  "messageInvalidPhone": "Error Phone Number({num})",
   "@messageInvalidPhone": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "num": {
+        "example": "6"
+      }
+    }
   },
-  "messageInvalidPostCode": "Error Post Code(5~6)",
+  "messageInvalidPostCode": "Error Post Code(5~8)",
   "@messageInvalidPostCode": {
     "type": "text"
   },
@@ -525,11 +590,11 @@
   "@messageInvalidAccount": {
     "type": "text"
   },
-  "messageInvalidPassword": "Password should be 6 ~ 20 words",
+  "messageInvalidPassword": "Password should be 8 ~ 18 words",
   "@messageInvalidPassword": {
     "type": "text"
   },
-  "messageInvalidPasswordNew": "Password should be 8 ~ 20 words",
+  "messageInvalidPasswordNew": "Password should be 8 ~ 18 words",
   "@messageInvalidPasswordNew": {
     "type": "text"
   },
@@ -558,7 +623,7 @@
   "@messageInvalidCardOwner": {
     "type": "text"
   },
-  "messageInvalidCardNumber": "The card number is 6 ~ 19 characters",
+  "messageInvalidCardNumber": "The card number is 5 ~ 19 characters",
   "@messageInvalidCardNumber": {
     "type": "text"
   },
@@ -688,6 +753,10 @@
   "@messageErrorAccount": {
     "type": "text"
   },
+  "messageRepeatAccount": "Account name repeat",
+  "@messageRepeatAccount": {
+    "type": "text"
+  },
   "messageErrorPassword": "Password Error",
   "@messageErrorPassword": {
     "type": "text"
@@ -728,6 +797,10 @@
   "@messagePartFailed": {
     "type": "text"
   },
+  "messageSentVerify": "Verify Code has sent",
+  "@messageSentVerify": {
+    "type": "text"
+  },
   "homeHintWelcomeLogin": "Welcome！ Please login first",
   "@homeHintWelcomeLogin": {
     "type": "text"
@@ -744,6 +817,10 @@
         "example": "user"
       }
     }
+  },
+  "homeHintFreeUsage": "Free of charge",
+  "@homeHintFreeUsage": {
+    "type": "text"
   },
   "homeHintMemberCreditLeft": "Credit",
   "@homeHintMemberCreditLeft": {
@@ -841,6 +918,10 @@
   "@gameCategoryWeb": {
     "type": "text"
   },
+  "gameCategoryWebHint": "Click me to open 85Bet website",
+  "@gameCategoryWebHint": {
+    "type": "text"
+  },
   "gameCategoryMovieWeb": "Watch Movie",
   "@gameCategoryMovieWeb": {
     "type": "text"
@@ -849,8 +930,8 @@
   "@gameCategoryMovieWebHint": {
     "type": "text"
   },
-  "gameCategoryWebHint": "Click me to open 85Bet website",
-  "@gameCategoryWebHint": {
+  "gameCategoryAbout": "About Us",
+  "@gameCategoryAbout": {
     "type": "text"
   },
   "userPwdFieldTitleOld": "Old Password:",
@@ -918,8 +999,20 @@
   "@registerFieldTitlePhone": {
     "type": "text"
   },
-  "registerFieldTitleRecommend": "Recommended Code",
-  "@registerFieldTitleRecommend": {
+  "registerFieldTitleEmail": "E-Mail",
+  "@registerFieldTitleEmail": {
+    "type": "text"
+  },
+  "registerFieldTitleZalo": "Zalo",
+  "@registerFieldTitleZalo": {
+    "type": "text"
+  },
+  "registerFieldTitleLine": "Line",
+  "@registerFieldTitleLine": {
+    "type": "text"
+  },
+  "registerFieldTitleQQ": "QQ",
+  "@registerFieldTitleQQ": {
     "type": "text"
   },
   "registerFieldTitleVerify": "Verification Code",
@@ -930,12 +1023,20 @@
   "@registerFieldHintVerify": {
     "type": "text"
   },
-  "registerButtonTitleRefresh": "Dotmap Refresh",
+  "registerFieldTitleRecommend": "Recommended Code",
+  "@registerFieldTitleRecommend": {
+    "type": "text"
+  },
+  "registerButtonTitleRefresh": "Refresh",
   "@registerButtonTitleRefresh": {
     "type": "text"
   },
   "registerButtonTitleRegister": "Register",
   "@registerButtonTitleRegister": {
+    "type": "text"
+  },
+  "registerButtonTitleSendVerify": "Send Verify Code",
+  "@registerButtonTitleSendVerify": {
     "type": "text"
   },
   "registerCheckButtonNews": "Receive promotion information",
@@ -1222,8 +1323,8 @@
   "@centerViewTitleLotto": {
     "type": "text"
   },
-  "centerViewTitleVip": "Vip Tier",
-  "@centerViewTitleVip": {
+  "centerViewTitleVipRank": "Vip Tier",
+  "@centerViewTitleVipRank": {
     "type": "text"
   },
   "centerTextTitleAccount": "Username:",
@@ -1298,7 +1399,7 @@
   "@centerLuckyNumberError": {
     "type": "text"
   },
-  "centerLuckyHint": "Bind the Liuhe Lucky Code, you can participate in the Liuhe Lottery Match Code, wonderful gift for you !!!",
+  "centerLuckyHint": "Bind the Lucky Code, you can participate in the Lottery Match Code, wonderful gift for you !!!",
   "@centerLuckyHint": {
     "type": "text"
   },
@@ -1322,7 +1423,7 @@
   "@centerDialogCpwRightTitle": {
     "type": "text"
   },
-  "centerDialogCpwRightHint": "(please wait for data update after bind wallet)",
+  "centerDialogCpwRightHint": "(please wait for data update)",
   "@centerDialogCpwRightHint": {
     "type": "text"
   },
@@ -1382,7 +1483,7 @@
   "@betsFieldDateError": {
     "type": "text"
   },
-  "betsTextTotal": "Total: $ {value}",
+  "betsTextTotal": "Total: VDK {value}",
   "@betsTextTotal": {
     "type": "text",
     "placeholders": {
@@ -1481,6 +1582,10 @@
   },
   "dealsHeaderAmount": "Amount",
   "@dealsHeaderAmount": {
+    "type": "text"
+  },
+  "depositPaymentNoData": "No available payment method",
+  "@depositPaymentNoData": {
     "type": "text"
   },
   "depositPaymentTitleBank": "Bank Deposit",
@@ -1615,11 +1720,15 @@
   "@depositPaymentNoPromo": {
     "type": "text"
   },
+  "depositHintRedirectBankcard": "Please add a bankcard first",
+  "@depositHintRedirectBankcard": {
+    "type": "text"
+  },
   "depositHintTextAccount": "Please contact customer service for recharge account information",
   "@depositHintTextAccount": {
     "type": "text"
   },
-  "depositHintTextAmount": "Single Deposit Limit: ￥{value}",
+  "depositHintTextAmount": "Single Deposit Limit: {value}",
   "@depositHintTextAmount": {
     "type": "text",
     "placeholders": {
@@ -1708,11 +1817,11 @@
       }
     }
   },
-  "depositHintTextUnionA": "A. Download the Bank of China App or UnionPay Wallet App on your phone;\n",
+  "depositHintTextUnionA": "A. Download the China Bank App or UnionPay Wallet App on your phone;\n",
   "@depositHintTextUnionA": {
     "type": "text"
   },
-  "depositHintTextUnionB": "B. Log in to the Bank of China Mobile App and use the payment function in the upper right corner or the payment function in the mobile payment module;\n",
+  "depositHintTextUnionB": "B. Login to the China Bank App and use the payment function in the upper right corner or the payment function in the mobile payment module;\n",
   "@depositHintTextUnionB": {
     "type": "text"
   },
@@ -1760,11 +1869,11 @@
       }
     }
   },
-  "depositNewbieQuick0": "Debit Card Teaching",
+  "depositNewbieQuick0": "Debit Card Tutorial",
   "@ depositNewbieQuick0": {
     "type": "text"
   },
-  "depositNewbieAli0": "Alipay to Bank Card Teaching",
+  "depositNewbieAli0": "Alipay Tutorial",
   "@ depositNewbieAli0": {
     "type": "text"
   },
@@ -1828,7 +1937,7 @@
   "@ depositNewbieUnion4": {
     "type": "text"
   },
-  "depositNewbieWechat0": "Code Scan Teaching",
+  "depositNewbieWechat0": "Code Scan Tutorial",
   "@ depositNewbieWechat0": {
     "type": "text"
   },
@@ -1856,11 +1965,11 @@
   "@balanceStatusMaintenance": {
     "type": "text"
   },
-  "balanceTransferInText": "Transfer In",
+  "balanceTransferInText": "In",
   "@balanceTransferInText": {
     "type": "text"
   },
-  "balanceTransferOutText": "Transfer Out",
+  "balanceTransferOutText": "Out",
   "@balanceTransferOutText": {
     "type": "text"
   },
@@ -1949,6 +2058,51 @@
   "@flowHeaderTextTotal": {
     "type": "text"
   },
+  "agentActionLoginHint": "Please login your agent account",
+  "@agentActionLoginHint": {
+    "type": "text"
+  },
+  "agentActionLogin": "Agent Login",
+  "@agentActionLogin": {
+    "type": "text"
+  },
+  "agentActionRegister": "Agent Register",
+  "@agentActionRegister": {
+    "type": "text"
+  },
+  "agentRegisterSuccess": "The agent has been submitted for review, please wait",
+  "@agentRegisterSuccess": {
+    "type": "text"
+  },
+  "agentAccountLevelCompany": "Company",
+  "@agentAccountLevelCompany": {
+    "type": "text"
+  },
+  "agentAccountLevelGrandMaster": "Grand-Master",
+  "@agentAccountLevelGrandMaster": {
+    "type": "text"
+  },
+  "agentAccountLevelMaster": "Master",
+  "@agentAccountLevelMaster": {
+    "type": "text"
+  },
+  "agentAccountLevelAgent": "Agent",
+  "@agentAccountLevelAgent": {
+    "type": "text"
+  },
+  "agentAccountLevelMember": "Member",
+  "@agentAccountLevelMember": {
+    "type": "text"
+  },
+  "agentTitleAccount": "{level} Account",
+  "@agentTitleAccount": {
+    "type": "text",
+    "placeholders": {
+      "level": {
+        "example": "agent"
+      }
+    }
+  },
   "agentTabTitleInfo": "Info",
   "@agentTabTitleInfo": {
     "type": "text"
@@ -1963,6 +2117,19 @@
   },
   "agentTabTitleLedger": "Ledger",
   "@agentTabTitleLedger": {
+    "type": "text"
+  },
+  "agentTabTitleDownlineList": "{level} List",
+  "@agentTabTitleDownlineList": {
+    "type": "text",
+    "placeholders": {
+      "level": {
+        "example": "agent"
+      }
+    }
+  },
+  "agentTabTitleCard": "Edit bank card",
+  "@agentTabTitleCard": {
     "type": "text"
   },
   "agentTabTitleAds": "Ads",
@@ -2029,7 +2196,7 @@
   "@agentTextChartCheckFull": {
     "type": "text"
   },
-  "agentChartTableSpinner": "form",
+  "agentChartTableSpinner": "Form",
   "@agentChartTableSpinner": {
     "type": "text"
   },
@@ -2093,8 +2260,16 @@
   "@agentCommissionHeaderReceive": {
     "type": "text"
   },
-  "agentLedgerFieldTitleAccount": "please enter agent name",
+  "agentLedgerFieldTitleAccount": "Account",
   "@agentLedgerFieldTitleAccount": {
+    "type": "text"
+  },
+  "agentLedgerFieldTitleDepositCheck": "Deposit members",
+  "@agentLedgerFieldTitleDepositCheck": {
+    "type": "text"
+  },
+  "agentLedgerHeaderNo": "No",
+  "@agentLedgerHeaderNo": {
     "type": "text"
   },
   "agentLedgerHeaderAccount": "Account",
@@ -2117,6 +2292,78 @@
   "@agentLedgerHeaderRefund": {
     "type": "text"
   },
+  "agentLedgerHeaderRegDate": "Registered",
+  "@agentLedgerHeaderRegDate": {
+    "type": "text"
+  },
+  "agentLedgerHeaderLastLogin": "Last Login",
+  "@agentLedgerHeaderLastLogin": {
+    "type": "text"
+  },
+  "agentBankcardHint": "You will have to contact us to edit card info after you add the card",
+  "@agentBankcardHint": {
+    "type": "text"
+  },
+  "agentAddDownlineHint": "※ {level} account can only add {downline} account as downline",
+  "@agentAddDownlineHint": {
+    "type": "text",
+    "placeholders": {
+      "level": {
+        "example": "Slot"
+      },
+      "downline": {
+        "example": "AG"
+      }
+    }
+  },
+  "agentDownlineButtonAdd": "Add Downline",
+  "@agentDownlineButtonAdd": {
+    "type": "text"
+  },
+  "agentDownlineButtonProportion": "Update Proportion",
+  "@agentDownlineButtonProportion": {
+    "type": "text"
+  },
+  "agentDownlineHeaderAccount": "Account",
+  "@agentDownlineHeaderAccount": {
+    "type": "text"
+  },
+  "agentDownlineHeaderStatus": "Status",
+  "@agentDownlineHeaderStatus": {
+    "type": "text"
+  },
+  "agentDownlineHeaderStatus0": "Enabled",
+  "@agentDownlineHeaderStatus0": {
+    "type": "text"
+  },
+  "agentDownlineHeaderStatus1": "Disabled",
+  "@agentDownlineHeaderStatus1": {
+    "type": "text"
+  },
+  "agentDownlineHeaderUpdateHint": "Update Proportion\n(You can edit the proportion directly after adding the account)",
+  "@agentDownlineHeaderUpdateHint": {
+    "type": "text"
+  },
+  "agentDownlineHeaderUpdate": "Update Proportion",
+  "@agentDownlineHeaderUpdate": {
+    "type": "text"
+  },
+  "agentDownlineHeaderMore": "More",
+  "@agentDownlineHeaderMore": {
+    "type": "text"
+  },
+  "agentDownlineHeaderCategory": "Category",
+  "@agentDownlineHeaderCategory": {
+    "type": "text"
+  },
+  "agentDownlineHeaderProportion": "Proportion",
+  "@agentDownlineHeaderProportion": {
+    "type": "text"
+  },
+  "agentDownlineHeaderFee": "Handling fee/\nPlatform fee",
+  "@agentDownlineHeaderFee": {
+    "type": "text"
+  },
   "agentAdTabAvailable": "Available",
   "@agentAdTabAvailable": {
     "type": "text"
@@ -2137,7 +2384,7 @@
   "@noticeTabMaintenance": {
     "type": "text"
   },
-  "wheelTextTitleCount": "Cumulative Lucky Draw: {num} times",
+  "wheelTextTitleCount": "Available draws: {num} times",
   "@wheelTextTitleCount": {
     "type": "text",
     "placeholders": {
@@ -2581,8 +2828,216 @@
       }
     }
   },
-  "networkChangedHint": "Detect network status has changed, do you want to refresh?",
-  "@networkChangedHint": {
+  "aboutCertTitle": "牌照",
+  "@aboutCertTitle": {
+    "type": "text"
+  },
+  "aboutCertTitleGC": "Gambling Commission",
+  "@aboutCertTitleGC": {
+    "type": "text"
+  },
+  "aboutCertTitleMGA": "MGA License",
+  "@aboutCertTitleMGA": {
+    "type": "text"
+  },
+  "aboutCertTitlePGC": "PAGCOR License",
+  "@aboutCertTitlePGC": {
+    "type": "text"
+  },
+  "aboutCertTitleBVI": "BVI Certified",
+  "@aboutCertTitleBVI": {
+    "type": "text"
+  },
+  "aboutDataTitle1": "Introducing the 85BET Dealer",
+  "@aboutDataTitle1": {
+    "type": "text"
+  },
+  "aboutDataDesc10": "85BET is licensed by the Isle of Man and the Cagayan and Freeport Economic Zones. This is a multinational company with operations in the Asia-Pacific region.",
+  "@aboutDataDesc10": {
+    "type": "text"
+  },
+  "aboutDataDesc11": "85bet relies on its rich experience and reputation to service more than ten million players, which demonstrates long-term legitimacy and is completely reliable.",
+  "@aboutDataDesc11": {
+    "type": "text"
+  },
+  "aboutDataDesc12": "Is a game company under M.A.N Entertainment Group, headquartered in Manila, Philippines. This is considered the largest corporation in the Asian online gambling market with a large workforce. With the recognized high confidence, 85bet has now become one of the International Online Games Association's most fully verified and licensed bookmakers.",
+  "@aboutDataDesc12": {
+    "type": "text"
+  },
+  "aboutDataTitle2": "INFORMATION",
+  "@aboutDataTitle2": {
+    "type": "text"
+  },
+  "aboutDataSubtitle20": "Registration",
+  "@aboutDataSubtitle20": {
+    "type": "text"
+  },
+  "aboutDataDesc20": "Open a Vietnamese 85bet account to join online all of our online betting promotions high quality entertainment website with exceptionally good value. We believe that in bonus points, customers will have the opportunity to receive valuable gifts and incentives when participating in promotions.",
+  "@aboutDataDesc20": {
+    "type": "text"
+  },
+  "aboutDataSubtitle21": "Agency",
+  "@aboutDataSubtitle21": {
+    "type": "text"
+  },
+  "aboutDataDesc21": "Become our best partner and enjoy great commissions every month by referring players to 85bet.",
+  "@aboutDataDesc21": {
+    "type": "text"
+  },
+  "aboutDataSubtitle22": "Responsible Betting",
+  "@aboutDataSubtitle22": {
+    "type": "text"
+  },
+  "aboutDataDesc22": "85bet betting odds soccer strives to provide a channel of entertainment to our customers in a positive way. We have safeguards primarily promoting and ensuring responsible betting.",
+  "@aboutDataDesc22": {
+    "type": "text"
+  },
+  "aboutDataSubtitle23": "Security",
+  "@aboutDataSubtitle23": {
+    "type": "text"
+  },
+  "aboutDataDesc23": "With a stable and safe betting system. Your privacy is our top priority so we are always in strict compliance with the privacy policies.",
+  "@aboutDataDesc23": {
+    "type": "text"
+  },
+  "aboutDataTitle3": "PRODUCT",
+  "@aboutDataTitle3": {
+    "type": "text"
+  },
+  "aboutDataSubtitle30": "Sports Betting And Live Betting soccer odds",
+  "@aboutDataSubtitle30": {
+    "type": "text"
+  },
+  "aboutDataDesc30": "Football betting odds We offer major tournaments such as: Premier League, Spanish Championship La Liga, Italian Serie A, UEFA Championship, French National Championship, Germany, NFL, NBA, NCAA, Women's Basketball, Tennis, Racing F1 We are honored to bring you over 4,000 matches per month.",
+  "@aboutDataDesc30": {
+    "type": "text"
+  },
+  "aboutDataSubtitle31": "Game online",
+  "@aboutDataSubtitle31": {
+    "type": "text"
+  },
+  "aboutDataDesc31": "Online games with many opportunities to win Jackpots in games: Roulette, Blackjack, Poker, Slots. More progressive jackpot prizes and higher chances of winning in 85bet.",
+  "@aboutDataDesc31": {
+    "type": "text"
+  },
+  "aboutDataSubtitle32": "Online Casino",
+  "@aboutDataSubtitle32": {
+    "type": "text"
+  },
+  "aboutDataDesc32": "In addition we also offer many other types of online games, especially: Live Casino with hot dealers in Baccarat, Sicbo, Dragon / Tiger, Roulette and Online Casino Slots, easy to play.",
+  "@aboutDataDesc32": {
+    "type": "text"
+  },
+  "aboutDataTitle4": "INFORMATION CENTRE",
+  "@aboutDataTitle4": {
+    "type": "text"
+  },
+  "aboutDataSubtitle40": "Promotion",
+  "@aboutDataSubtitle40": {
+    "type": "text"
+  },
+  "aboutDataDesc40": "Bonus promotions for new members. Bonuses on subsequent Fundings and refunds to existing members.",
+  "@aboutDataDesc40": {
+    "type": "text"
+  },
+  "aboutDataSubtitle41": "Support center",
+  "@aboutDataSubtitle41": {
+    "type": "text"
+  },
+  "aboutDataDesc41": "See also FAQs for sports and other games. Support for account registration, Money Transfer, withdrawals and other technical information.",
+  "@aboutDataDesc41": {
+    "type": "text"
+  },
+  "aboutDataSubtitle42": "Payment methods",
+  "@aboutDataSubtitle42": {
+    "type": "text"
+  },
+  "aboutDataDesc42": "We offer excellent options for customers to deposit and withdraw money through NETELLER, Moneybookers, International Bank Transfer, Western Union. We have it all, let's get started right away with 85bet.",
+  "@aboutDataDesc42": {
+    "type": "text"
+  },
+  "aboutDataSubtitle43": "Contact",
+  "@aboutDataSubtitle43": {
+    "type": "text"
+  },
+  "aboutDataDesc43": "If you need any help or questions about online betting on football odds or online casino, we will provide 24/7 support via Live Chat, Phone and email.",
+  "@aboutDataDesc43": {
+    "type": "text"
+  },
+  "aboutDataTitle5": "Betting information",
+  "@aboutDataTitle5": {
+    "type": "text"
+  },
+  "aboutDataSubtitle50": "Sports Results",
+  "@aboutDataSubtitle50": {
+    "type": "text"
+  },
+  "aboutDataDesc50": "Vietnam football odds Provides the results of all the best sports games and leagues in Vietnam today.",
+  "@aboutDataDesc50": {
+    "type": "text"
+  },
+  "aboutDataSubtitle51": "Bet Statistics",
+  "@aboutDataSubtitle51": {
+    "type": "text"
+  },
+  "aboutDataDesc51": "More than 200 diverse tournaments with a variety of sports, formats, teams and individual matches, fixtures, lineups, teams, extra times and deferred matches.",
+  "@aboutDataDesc51": {
+    "type": "text"
+  },
+  "aboutDataSubtitle52": "Sports Betting",
+  "@aboutDataSubtitle52": {
+    "type": "text"
+  },
+  "aboutDataDesc52": "All of our Sports Rules are strictly followed by the Official Rules of the Best Organizing Committee in Vietnam today.",
+  "@aboutDataDesc52": {
+    "type": "text"
+  },
+  "aboutDataSubtitle53": "Casino Betting",
+  "@aboutDataSubtitle53": {
+    "type": "text"
+  },
+  "aboutDataDesc53": "Live Casino fully displays: bet limit, result and bet history details. All of your betting information is integrated on the screen for your entertainment convenience. You can check any bet information at any time.",
+  "@aboutDataDesc53": {
+    "type": "text"
+  },
+  "serviceRouteHint": "Need Help? Please contact us",
+  "@serviceRouteHint": {
+    "type": "text"
+  },
+  "serviceButtonContact": "Contact Customer Service",
+  "@serviceButtonContact": {
+    "type": "text"
+  },
+  "serviceTitleCustomerService": "Online customer service",
+  "@serviceTitleCustomerService": {
+    "type": "text"
+  },
+  "serviceDescCustomerService": "24 hours uninterrupted service",
+  "@serviceTitleCustomerServiceDesc": {
+    "type": "text"
+  },
+  "serviceTitleEmail": "E-Mail",
+  "@serviceTitleEmail": {
+    "type": "text"
+  },
+  "serviceTitlePhone": "手机号",
+  "@serviceTitlePhone": {
+    "type": "text"
+  },
+  "serviceTitleSkype": "Skype",
+  "@serviceTitleSkype": {
+    "type": "text"
+  },
+  "serviceTitleLine": "Line",
+  "@serviceTitleLine": {
+    "type": "text"
+  },
+  "serviceTitleZalo": "Zalo",
+  "@serviceTitleZalo": {
+    "type": "text"
+  },
+  "serviceTitleFacebook": "Facebook",
+  "@serviceTitleFacebook": {
     "type": "text"
   }
 }

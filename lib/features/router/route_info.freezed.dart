@@ -9,6 +9,7 @@ part of 'route_info.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$RouteInfoTearOff {
   const _$RouteInfoTearOff();
 
@@ -37,23 +38,37 @@ class _$RouteInfoTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $RouteInfo = _$RouteInfoTearOff();
 
+/// @nodoc
 mixin _$RouteInfo {
   RouteEnum get id;
   String get route;
   Object get routeArg;
   String get parentRoute;
+
+  /// 1. effect the navigation action
+  /// 2. if true, shows the side menu action bar
   bool get isFeature;
+
+  /// if true, shows the top navigator drawer icon
   bool get showDrawer;
+
+  /// if true, shows the widget on the left side (lang...etc)
   bool get disableLanguageDropDown;
+
+  /// if true, shows the widget on the right side (logout, register...etc)
   bool get hideAppbarActions;
+
+  /// sets the bottom navigator index to highlight icon
   int get bottomNavIndex;
 
   $RouteInfoCopyWith<RouteInfo> get copyWith;
 }
 
+/// @nodoc
 abstract class $RouteInfoCopyWith<$Res> {
   factory $RouteInfoCopyWith(RouteInfo value, $Res Function(RouteInfo) then) =
       _$RouteInfoCopyWithImpl<$Res>;
@@ -69,6 +84,7 @@ abstract class $RouteInfoCopyWith<$Res> {
       int bottomNavIndex});
 }
 
+/// @nodoc
 class _$RouteInfoCopyWithImpl<$Res> implements $RouteInfoCopyWith<$Res> {
   _$RouteInfoCopyWithImpl(this._value, this._then);
 
@@ -110,6 +126,7 @@ class _$RouteInfoCopyWithImpl<$Res> implements $RouteInfoCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$RouteInfoCopyWith<$Res> implements $RouteInfoCopyWith<$Res> {
   factory _$RouteInfoCopyWith(
           _RouteInfo value, $Res Function(_RouteInfo) then) =
@@ -127,6 +144,7 @@ abstract class _$RouteInfoCopyWith<$Res> implements $RouteInfoCopyWith<$Res> {
       int bottomNavIndex});
 }
 
+/// @nodoc
 class __$RouteInfoCopyWithImpl<$Res> extends _$RouteInfoCopyWithImpl<$Res>
     implements _$RouteInfoCopyWith<$Res> {
   __$RouteInfoCopyWithImpl(_RouteInfo _value, $Res Function(_RouteInfo) _then)
@@ -169,6 +187,7 @@ class __$RouteInfoCopyWithImpl<$Res> extends _$RouteInfoCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_RouteInfo implements _RouteInfo {
   const _$_RouteInfo(
       {@required this.id,
@@ -200,18 +219,29 @@ class _$_RouteInfo implements _RouteInfo {
   final String parentRoute;
   @JsonKey(defaultValue: false)
   @override
+
+  /// 1. effect the navigation action
+  /// 2. if true, shows the side menu action bar
   final bool isFeature;
   @JsonKey(defaultValue: false)
   @override
+
+  /// if true, shows the top navigator drawer icon
   final bool showDrawer;
   @JsonKey(defaultValue: false)
   @override
+
+  /// if true, shows the widget on the left side (lang...etc)
   final bool disableLanguageDropDown;
   @JsonKey(defaultValue: true)
   @override
+
+  /// if true, shows the widget on the right side (logout, register...etc)
   final bool hideAppbarActions;
   @JsonKey(defaultValue: -1)
   @override
+
+  /// sets the bottom navigator index to highlight icon
   final int bottomNavIndex;
 
   @override
@@ -290,14 +320,25 @@ abstract class _RouteInfo implements RouteInfo {
   @override
   String get parentRoute;
   @override
+
+  /// 1. effect the navigation action
+  /// 2. if true, shows the side menu action bar
   bool get isFeature;
   @override
+
+  /// if true, shows the top navigator drawer icon
   bool get showDrawer;
   @override
+
+  /// if true, shows the widget on the left side (lang...etc)
   bool get disableLanguageDropDown;
   @override
+
+  /// if true, shows the widget on the right side (logout, register...etc)
   bool get hideAppbarActions;
   @override
+
+  /// sets the bottom navigator index to highlight icon
   int get bottomNavIndex;
   @override
   _$RouteInfoCopyWith<_RouteInfo> get copyWith;

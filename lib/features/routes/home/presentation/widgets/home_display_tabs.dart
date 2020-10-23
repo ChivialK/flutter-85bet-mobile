@@ -4,10 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/tabs_page_control_widget.dart';
+import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
 import '../../data/models/game_category_model.dart';
 import '../state/home_store.dart';
 import 'home_display_size_calc.dart';
+import 'home_display_tab_about.dart';
 import 'home_display_tab_page.dart';
 import 'home_display_tab_promo.dart';
 import 'home_display_tab_website.dart';
@@ -227,6 +229,12 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
                             url: Global.CURRENT_BASE,
                             linkHint: localeStr.gameCategoryWebHint,
                           );
+                        case GamePageType.About:
+                          return HomeDisplayTabAbout(
+                            onNavigateCallBack: () {
+                              _pageController?.jumpToPage(0);
+                            },
+                          );
                         default:
                           return SizedBox.shrink();
                       }
@@ -274,15 +282,20 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
                               category.iconUrl,
                               imgColor: Themes.homeTabIconColor,
                             )
-                          : (category.iconCode != null)
-                              ? Icon(
-                                  category.iconCode,
+                          : (category.assetPath != null)
+                              ? Image.asset(
+                                  category.assetPath,
                                   color: Themes.homeTabIconColor,
                                 )
-                              : Icon(
-                                  Icons.add,
-                                  color: Themes.homeTabIconColor,
-                                ),
+                              : (category.iconCode != null)
+                                  ? Icon(
+                                      category.iconCode,
+                                      color: Themes.homeTabIconColor,
+                                    )
+                                  : Icon(
+                                      Icons.add,
+                                      color: Themes.homeTabIconColor,
+                                    ),
                     ),
                   ),
                 ),
@@ -302,10 +315,22 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
                             : Themes.homeTabBgColor,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Text(
-                            category.label,
+                          child: RichText(
                             maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.start,
+                            overflow: TextOverflow.visible,
+                            text: TextSpan(
+                                text: category.label,
+                                style: TextStyle(
+                                  fontSize: (category.label.countLength >= 6)
+                                      ? FontSize.SMALLER.value
+                                      : FontSize.NORMAL.value,
+                                  color: (update.data.contains(type))
+                                      ? (type == _currentType)
+                                          ? Themes.homeTabSelectedTextColor
+                                          : Themes.homeTabTextColor
+                                      : Themes.homeTabTextColor,
+                                )),
                           ),
                         ),
                       );

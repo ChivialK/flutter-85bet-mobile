@@ -10,9 +10,7 @@ abstract class _$FailureCode {
   const _$FailureCode();
 
   FailureType get type;
-
   int get code;
-
   bool operator ==(other) {
     if (identical(this, other)) return true;
     if (other is! FailureCode) return false;

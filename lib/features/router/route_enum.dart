@@ -4,6 +4,7 @@ enum RouteEnum {
   HOME,
   PROMO,
   SERVICE,
+  SERVICE_WEB,
 
   ///
   MOVIE_EG,
@@ -34,6 +35,7 @@ enum RouteEnum {
   STORE,
   SIGN,
   WEBSITE,
+  ABOUT,
 
   ///
   MORE,
@@ -115,7 +117,7 @@ extension RouteEnumExtension on RouteEnum {
       case RouteEnum.AGENT_ABOUT:
         return localeStr.pageTitleMemberAgentAbout;
       case RouteEnum.VIP:
-        return localeStr.centerViewTitleVip;
+        return localeStr.centerViewTitleVipRank;
       case RouteEnum.STORE:
         return localeStr.pageTitleStore;
       case RouteEnum.ROLLER:

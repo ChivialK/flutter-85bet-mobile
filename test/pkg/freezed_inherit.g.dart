@@ -6,7 +6,6 @@ part of 'freezed_inherit.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-// ignore: non_constant_identifier_names
 _$FreezedParentData _$_$FreezedParentDataFromJson(Map<String, dynamic> json) {
   return _$FreezedParentData(
     account: json['account'] as String,
@@ -14,7 +13,6 @@ _$FreezedParentData _$_$FreezedParentDataFromJson(Map<String, dynamic> json) {
   );
 }
 
-// ignore: non_constant_identifier_names
 Map<String, dynamic> _$_$FreezedParentDataToJson(
         _$FreezedParentData instance) =>
     <String, dynamic>{
@@ -22,7 +20,6 @@ Map<String, dynamic> _$_$FreezedParentDataToJson(
       'credit': instance.credit,
     };
 
-// ignore: non_constant_identifier_names
 _$FreezedChildData _$_$FreezedChildDataFromJson(Map<String, dynamic> json) {
   return _$FreezedChildData(
     account: json['account'] as String,
@@ -31,7 +28,6 @@ _$FreezedChildData _$_$FreezedChildDataFromJson(Map<String, dynamic> json) {
   );
 }
 
-// ignore: non_constant_identifier_names
 Map<String, dynamic> _$_$FreezedChildDataToJson(_$FreezedChildData instance) =>
     <String, dynamic>{
       'account': instance.account,

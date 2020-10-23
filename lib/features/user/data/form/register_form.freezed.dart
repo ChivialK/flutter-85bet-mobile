@@ -9,6 +9,7 @@ part of 'register_form.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$RegisterFormTearOff {
   const _$RegisterFormTearOff();
 
@@ -31,9 +32,11 @@ class _$RegisterFormTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $RegisterForm = _$RegisterFormTearOff();
 
+/// @nodoc
 mixin _$RegisterForm {
   String get username;
   String get password;
@@ -45,6 +48,7 @@ mixin _$RegisterForm {
   $RegisterFormCopyWith<RegisterForm> get copyWith;
 }
 
+/// @nodoc
 abstract class $RegisterFormCopyWith<$Res> {
   factory $RegisterFormCopyWith(
           RegisterForm value, $Res Function(RegisterForm) then) =
@@ -58,6 +62,7 @@ abstract class $RegisterFormCopyWith<$Res> {
       String code});
 }
 
+/// @nodoc
 class _$RegisterFormCopyWithImpl<$Res> implements $RegisterFormCopyWith<$Res> {
   _$RegisterFormCopyWithImpl(this._value, this._then);
 
@@ -87,6 +92,7 @@ class _$RegisterFormCopyWithImpl<$Res> implements $RegisterFormCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$RegisterFormCopyWith<$Res>
     implements $RegisterFormCopyWith<$Res> {
   factory _$RegisterFormCopyWith(
@@ -102,6 +108,7 @@ abstract class _$RegisterFormCopyWith<$Res>
       String code});
 }
 
+/// @nodoc
 class __$RegisterFormCopyWithImpl<$Res> extends _$RegisterFormCopyWithImpl<$Res>
     implements _$RegisterFormCopyWith<$Res> {
   __$RegisterFormCopyWithImpl(
@@ -133,6 +140,7 @@ class __$RegisterFormCopyWithImpl<$Res> extends _$RegisterFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_RegisterForm implements _RegisterForm {
   const _$_RegisterForm(
       {@required this.username,

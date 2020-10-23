@@ -164,9 +164,9 @@ mixin _$WalletStore on _WalletStore, Store {
       AsyncAction('_WalletStore.postWalletTransfer');
 
   @override
-  Future<dynamic> postWalletTransfer({bool toSingle = false}) {
+  Future<dynamic> postWalletTransfer() {
     return _$postWalletTransferAsyncAction
-        .run(() => super.postWalletTransfer(toSingle: toSingle));
+        .run(() => super.postWalletTransfer());
   }
 
   @override

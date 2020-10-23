@@ -126,7 +126,7 @@ class UserRepositoryImpl implements UserRepository {
       jsonToModel: RequestStatusModel.jsonToStatusModel,
       tag: 'remote-REGISTER',
     );
-//    print('test response type: ${result.runtimeType}, data: $result');
+//    debugPrint('test response type: ${result.runtimeType}, data: $result');
     return result.fold(
       (failure) => Left(failure),
       (data) => Right(data),

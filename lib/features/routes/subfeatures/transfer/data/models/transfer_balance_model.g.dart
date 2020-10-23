@@ -6,7 +6,6 @@ part of 'transfer_balance_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-// ignore: non_constant_identifier_names
 _$_TransferBalanceModel _$_$_TransferBalanceModelFromJson(
     Map<String, dynamic> json) {
   return _$_TransferBalanceModel(
@@ -14,7 +13,6 @@ _$_TransferBalanceModel _$_$_TransferBalanceModelFromJson(
   );
 }
 
-// ignore: non_constant_identifier_names
 Map<String, dynamic> _$_$_TransferBalanceModelToJson(
         _$_TransferBalanceModel instance) =>
     <String, dynamic>{

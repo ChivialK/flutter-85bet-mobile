@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_85bet_mobile/utils/json_util.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart'
     show ValueUtilExtension;
@@ -93,7 +94,7 @@ extension CenterModelExtension on CenterModel {
     try {
       return List.castFrom<dynamic, int>(this.lotto);
     } catch (e) {
-      print(e);
+      debugPrint(e);
       return lotto.map((e) => e.toString().strToInt).toList();
     }
   }

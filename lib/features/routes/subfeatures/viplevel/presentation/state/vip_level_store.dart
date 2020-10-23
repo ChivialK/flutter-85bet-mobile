@@ -22,17 +22,14 @@ abstract class _VipLevelStore with Store {
   @observable
   String errorMessage;
 
-  String _lastError;
-
-  void setErrorMsg({String msg, bool showOnce, FailureType type, int code}) {
-    if (showOnce && _lastError != null && msg == _lastError) return;
-    if (msg.isNotEmpty) _lastError = msg;
-    errorMessage = msg ??
-        Failure.internal(FailureCode(
-          type: type ?? FailureType.VIP_LEVEL,
-          code: code,
-        )).message;
-  }
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
+      errorMessage = getErrorMsg(
+          from: FailureType.VIP_LEVEL,
+          msg: msg,
+          showOnce: showOnce,
+          type: type,
+          code: code);
 
   @computed
   VipLevelStoreState get state {

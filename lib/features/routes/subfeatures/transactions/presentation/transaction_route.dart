@@ -78,14 +78,14 @@ class _TransactionRouteState extends State<TransactionRoute> {
         (_) => _store.waitForPageData,
         // Run some logic with the content of the observed field
         (bool wait) {
-          print('reaction on wait transaction: $wait');
+          debugPrint('reaction on wait transaction: $wait');
           if (wait) {
             toastDismiss = callToastLoading();
           } else if (toastDismiss != null) {
             toastDismiss();
             toastDismiss = null;
             if (_store.dataModel != null) {
-              print(
+              debugPrint(
                   'updating transaction record, page: ${_store.dataModel.currentPage}');
               try {
                 if (_store.dataModel.total > 0) {
@@ -135,7 +135,7 @@ class _TransactionRouteState extends State<TransactionRoute> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        print('pop transactions route');
+        debugPrint('pop transactions route');
         Future.delayed(
             Duration(milliseconds: 100), () => RouterNavigate.navigateBack());
         return Future(() => true);
@@ -218,7 +218,7 @@ class _TransactionRouteState extends State<TransactionRoute> {
                                   optionStrings: _selectorStrings,
                                   changeNotify: (data) {
                                     _selected = data;
-                                    print('selected: $data');
+                                    debugPrint('selected: $data');
                                   },
                                 ),
                               ),

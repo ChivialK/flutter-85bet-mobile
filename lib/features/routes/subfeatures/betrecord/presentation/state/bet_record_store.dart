@@ -22,9 +22,9 @@ abstract class _BetRecordStore with Store {
   }
 
   @observable
-  ObservableFuture<Either<Failure, List<BetRecordTypeModel>>> _typeFuture;
+  ObservableFuture<Either<Failure, List<BetRecordType>>> _typeFuture;
 
-  List<BetRecordTypeModel> typeList;
+  List<BetRecordType> typeList;
 
   Stream get dataStream => _dataController.stream;
 
@@ -34,17 +34,14 @@ abstract class _BetRecordStore with Store {
   @observable
   String errorMessage;
 
-  String _lastError;
-
-  void setErrorMsg({String msg, bool showOnce, FailureType type, int code}) {
-    if (showOnce && _lastError != null && msg == _lastError) return;
-    if (msg.isNotEmpty) _lastError = msg;
-    errorMessage = msg ??
-        Failure.internal(FailureCode(
-          type: type ?? FailureType.BETS,
-          code: code,
-        )).message;
-  }
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
+      errorMessage = getErrorMsg(
+          from: FailureType.BETS,
+          msg: msg,
+          showOnce: showOnce,
+          type: type,
+          code: code);
 
   @computed
   BetRecordStoreState get state {
@@ -77,8 +74,7 @@ abstract class _BetRecordStore with Store {
         ),
       );
     } on Exception {
-      //errorMessage = "Couldn't fetch description. Is the device online?";
-      setErrorMsg(code: 2);
+      setErrorMsg(code: 1);
     }
   }
 
@@ -118,9 +114,8 @@ abstract class _BetRecordStore with Store {
             .whenComplete(() => waitForRecordResponse = false);
       }
     } on Exception {
-      //errorMessage = "Couldn't fetch description. Is the device online?";
       waitForRecordResponse = false;
-      setErrorMsg(code: 3);
+      setErrorMsg(code: 2);
     }
   }
 

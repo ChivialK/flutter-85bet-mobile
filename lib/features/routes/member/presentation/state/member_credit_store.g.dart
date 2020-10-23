@@ -54,21 +54,6 @@ mixin _$MemberCreditStore on _MemberCreditStore, Store {
     });
   }
 
-  final _$_creditFutureAtom = Atom(name: '_MemberCreditStore._creditFuture');
-
-  @override
-  ObservableFuture<Either<Failure, String>> get _creditFuture {
-    _$_creditFutureAtom.reportRead();
-    return super._creditFuture;
-  }
-
-  @override
-  set _creditFuture(ObservableFuture<Either<Failure, String>> value) {
-    _$_creditFutureAtom.reportWrite(value, super._creditFuture, () {
-      super._creditFuture = value;
-    });
-  }
-
   final _$creditAtom = Atom(name: '_MemberCreditStore.credit');
 
   @override
@@ -108,20 +93,21 @@ mixin _$MemberCreditStore on _MemberCreditStore, Store {
         .run(() => super.getNewMessageCount());
   }
 
-  final _$getCreditAsyncAction = AsyncAction('_MemberCreditStore.getCredit');
+  final _$getUserCreditAsyncAction =
+      AsyncAction('_MemberCreditStore.getUserCredit');
 
   @override
-  Future<void> getCredit() {
-    return _$getCreditAsyncAction.run(() => super.getCredit());
+  Future<void> getUserCredit() {
+    return _$getUserCreditAsyncAction.run(() => super.getUserCredit());
   }
 
   @override
   String toString() {
     return '''
-user: $user,
-hasNewMessage: $hasNewMessage,
-credit: $credit,
-errorMessage: $errorMessage
+user: ${user},
+hasNewMessage: ${hasNewMessage},
+credit: ${credit},
+errorMessage: ${errorMessage}
     ''';
   }
 }

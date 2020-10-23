@@ -61,6 +61,15 @@ class RoutePage extends Vnum<RouteInfo> {
     disableLanguageDropDown: true,
   ));
 
+  static const RoutePage serviceWeb = const RoutePage.define(RouteInfo(
+    id: RouteEnum.SERVICE_WEB,
+    route: Routes.serviceWebRoute,
+    parentRoute: Routes.serviceRoute,
+    bottomNavIndex: 3,
+    hideAppbarActions: false,
+    disableLanguageDropDown: true,
+  ));
+
   static const RoutePage member = const RoutePage.define(RouteInfo(
     id: RouteEnum.MEMBER,
     route: Routes.memberRoute,
@@ -220,6 +229,13 @@ class RoutePage extends Vnum<RouteInfo> {
     ),
     parentRoute: Routes.homeRoute,
     disableLanguageDropDown: true,
+  ));
+
+  static const RoutePage about = const RoutePage.define(RouteInfo(
+    id: RouteEnum.ABOUT,
+    route: Routes.aboutRoute,
+    disableLanguageDropDown: true,
+    hideAppbarActions: true,
   ));
 
   /// side menu route

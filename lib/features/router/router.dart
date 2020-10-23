@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route_annotations.dart';
 import '../routes/home/presentation/home_route.dart';
 import '../routes/member/presentation/member_route.dart';
 import '../routes/promo/presentation/promo_route.dart';
+import '../routes/subfeatures/about/presentation/about_route.dart';
 import '../routes/subfeatures/accountcenter/presentation/center_route.dart';
 import '../routes/subfeatures/accountcenter/presentation/widgets/center_display_account_pwd.dart';
 import '../routes/subfeatures/agent/presentation/agent_route.dart';
@@ -15,6 +16,7 @@ import '../routes/subfeatures/downloadarea/download_area_route.dart';
 import '../routes/subfeatures/flows/presentation/flows_route.dart';
 import '../routes/subfeatures/message/presentation/message_route.dart';
 import '../routes/subfeatures/notice/presentation/notice_route.dart';
+import '../routes/subfeatures/service/presentation/service_route.dart';
 import '../routes/subfeatures/transactions/presentation/transaction_route.dart';
 import '../routes/subfeatures/transfer/presentation/transfer_route.dart';
 import '../routes/subfeatures/viplevel/presentation/vip_level_route.dart';
@@ -34,7 +36,8 @@ class $Router {
   HomeRoute homeRoute;
   LoginRoute loginRoute;
   RegisterRoute registerRoute;
-  WebRoute serviceRoute;
+  ServiceRoute serviceRoute;
+  WebRoute serviceWebRoute;
   MemberRoute memberRoute;
   PromoRoute promoRoute;
   DepositRoute depositRoute;
@@ -56,6 +59,7 @@ class $Router {
   AgentRoute agentRoute;
   AgentRoute agentFeatureRoute;
   WebRoute moreWebPage;
+  AboutRoute aboutRoute;
 
   /// side menu route
   DownloadAreaRoute downloadAreaRoute;

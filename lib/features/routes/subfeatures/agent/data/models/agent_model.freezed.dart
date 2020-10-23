@@ -9,6 +9,7 @@ part of 'agent_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AgentModelTearOff {
   const _$AgentModelTearOff();
 
@@ -29,9 +30,11 @@ class _$AgentModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AgentModel = _$AgentModelTearOff();
 
+/// @nodoc
 mixin _$AgentModel {
   int get code;
   List<dynamic> get descendant;
@@ -42,6 +45,7 @@ mixin _$AgentModel {
   $AgentModelCopyWith<AgentModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $AgentModelCopyWith<$Res> {
   factory $AgentModelCopyWith(
           AgentModel value, $Res Function(AgentModel) then) =
@@ -54,6 +58,7 @@ abstract class $AgentModelCopyWith<$Res> {
       String url});
 }
 
+/// @nodoc
 class _$AgentModelCopyWithImpl<$Res> implements $AgentModelCopyWith<$Res> {
   _$AgentModelCopyWithImpl(this._value, this._then);
 
@@ -81,6 +86,7 @@ class _$AgentModelCopyWithImpl<$Res> implements $AgentModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$AgentModelCopyWith<$Res> implements $AgentModelCopyWith<$Res> {
   factory _$AgentModelCopyWith(
           _AgentModel value, $Res Function(_AgentModel) then) =
@@ -94,6 +100,7 @@ abstract class _$AgentModelCopyWith<$Res> implements $AgentModelCopyWith<$Res> {
       String url});
 }
 
+/// @nodoc
 class __$AgentModelCopyWithImpl<$Res> extends _$AgentModelCopyWithImpl<$Res>
     implements _$AgentModelCopyWith<$Res> {
   __$AgentModelCopyWithImpl(
@@ -123,6 +130,7 @@ class __$AgentModelCopyWithImpl<$Res> extends _$AgentModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AgentModel implements _AgentModel {
   const _$_AgentModel(
       {this.code, this.descendant, this.qrcode, this.upline, this.url});

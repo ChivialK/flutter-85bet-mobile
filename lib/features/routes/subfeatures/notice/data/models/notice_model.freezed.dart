@@ -9,6 +9,7 @@ part of 'notice_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$NoticeModelTearOff {
   const _$NoticeModelTearOff();
 
@@ -22,9 +23,11 @@ class _$NoticeModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $NoticeModel = _$NoticeModelTearOff();
 
+/// @nodoc
 mixin _$NoticeModel {
   String get code;
   NoticeDataModel get data;
@@ -33,6 +36,7 @@ mixin _$NoticeModel {
   $NoticeModelCopyWith<NoticeModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $NoticeModelCopyWith<$Res> {
   factory $NoticeModelCopyWith(
           NoticeModel value, $Res Function(NoticeModel) then) =
@@ -42,6 +46,7 @@ abstract class $NoticeModelCopyWith<$Res> {
   $NoticeDataModelCopyWith<$Res> get data;
 }
 
+/// @nodoc
 class _$NoticeModelCopyWithImpl<$Res> implements $NoticeModelCopyWith<$Res> {
   _$NoticeModelCopyWithImpl(this._value, this._then);
 
@@ -73,6 +78,7 @@ class _$NoticeModelCopyWithImpl<$Res> implements $NoticeModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$NoticeModelCopyWith<$Res>
     implements $NoticeModelCopyWith<$Res> {
   factory _$NoticeModelCopyWith(
@@ -85,6 +91,7 @@ abstract class _$NoticeModelCopyWith<$Res>
   $NoticeDataModelCopyWith<$Res> get data;
 }
 
+/// @nodoc
 class __$NoticeModelCopyWithImpl<$Res> extends _$NoticeModelCopyWithImpl<$Res>
     implements _$NoticeModelCopyWith<$Res> {
   __$NoticeModelCopyWithImpl(
@@ -108,6 +115,7 @@ class __$NoticeModelCopyWithImpl<$Res> extends _$NoticeModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_NoticeModel implements _NoticeModel {
   const _$_NoticeModel({this.code, this.data, this.msg});
 
@@ -161,6 +169,7 @@ abstract class _NoticeModel implements NoticeModel {
   _$NoticeModelCopyWith<_NoticeModel> get copyWith;
 }
 
+/// @nodoc
 class _$NoticeDataModelTearOff {
   const _$NoticeDataModelTearOff();
 
@@ -174,9 +183,11 @@ class _$NoticeDataModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $NoticeDataModel = _$NoticeDataModelTearOff();
 
+/// @nodoc
 mixin _$NoticeDataModel {
   List<NoticeData> get maintenanceList;
   List<NoticeData> get marqueeList;
@@ -184,6 +195,7 @@ mixin _$NoticeDataModel {
   $NoticeDataModelCopyWith<NoticeDataModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $NoticeDataModelCopyWith<$Res> {
   factory $NoticeDataModelCopyWith(
           NoticeDataModel value, $Res Function(NoticeDataModel) then) =
@@ -191,6 +203,7 @@ abstract class $NoticeDataModelCopyWith<$Res> {
   $Res call({List<NoticeData> maintenanceList, List<NoticeData> marqueeList});
 }
 
+/// @nodoc
 class _$NoticeDataModelCopyWithImpl<$Res>
     implements $NoticeDataModelCopyWith<$Res> {
   _$NoticeDataModelCopyWithImpl(this._value, this._then);
@@ -215,6 +228,7 @@ class _$NoticeDataModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$NoticeDataModelCopyWith<$Res>
     implements $NoticeDataModelCopyWith<$Res> {
   factory _$NoticeDataModelCopyWith(
@@ -224,6 +238,7 @@ abstract class _$NoticeDataModelCopyWith<$Res>
   $Res call({List<NoticeData> maintenanceList, List<NoticeData> marqueeList});
 }
 
+/// @nodoc
 class __$NoticeDataModelCopyWithImpl<$Res>
     extends _$NoticeDataModelCopyWithImpl<$Res>
     implements _$NoticeDataModelCopyWith<$Res> {
@@ -250,6 +265,7 @@ class __$NoticeDataModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_NoticeDataModel implements _NoticeDataModel {
   const _$_NoticeDataModel({this.maintenanceList, this.marqueeList});
 
@@ -299,6 +315,7 @@ abstract class _NoticeDataModel implements NoticeDataModel {
   _$NoticeDataModelCopyWith<_NoticeDataModel> get copyWith;
 }
 
+/// @nodoc
 class _$NoticeDataTearOff {
   const _$NoticeDataTearOff();
 
@@ -313,9 +330,11 @@ class _$NoticeDataTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $NoticeData = _$NoticeDataTearOff();
 
+/// @nodoc
 mixin _$NoticeData {
   @JsonKey(name: 'content_cn')
   String get content;
@@ -325,6 +344,7 @@ mixin _$NoticeData {
   $NoticeDataCopyWith<NoticeData> get copyWith;
 }
 
+/// @nodoc
 abstract class $NoticeDataCopyWith<$Res> {
   factory $NoticeDataCopyWith(
           NoticeData value, $Res Function(NoticeData) then) =
@@ -333,6 +353,7 @@ abstract class $NoticeDataCopyWith<$Res> {
       {@JsonKey(name: 'content_cn') String content, String date, int sort});
 }
 
+/// @nodoc
 class _$NoticeDataCopyWithImpl<$Res> implements $NoticeDataCopyWith<$Res> {
   _$NoticeDataCopyWithImpl(this._value, this._then);
 
@@ -354,6 +375,7 @@ class _$NoticeDataCopyWithImpl<$Res> implements $NoticeDataCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$NoticeDataCopyWith<$Res> implements $NoticeDataCopyWith<$Res> {
   factory _$NoticeDataCopyWith(
           _NoticeData value, $Res Function(_NoticeData) then) =
@@ -363,6 +385,7 @@ abstract class _$NoticeDataCopyWith<$Res> implements $NoticeDataCopyWith<$Res> {
       {@JsonKey(name: 'content_cn') String content, String date, int sort});
 }
 
+/// @nodoc
 class __$NoticeDataCopyWithImpl<$Res> extends _$NoticeDataCopyWithImpl<$Res>
     implements _$NoticeDataCopyWith<$Res> {
   __$NoticeDataCopyWithImpl(
@@ -386,6 +409,7 @@ class __$NoticeDataCopyWithImpl<$Res> extends _$NoticeDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_NoticeData implements _NoticeData {
   const _$_NoticeData(
       {@JsonKey(name: 'content_cn') this.content, this.date, this.sort});

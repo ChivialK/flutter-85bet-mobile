@@ -402,13 +402,7 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
           onTap: () {
             // clear text field focus
             FocusScope.of(context).requestFocus(new FocusNode());
-            RouterNavigate.navigateToPage(
-              RoutePage.service,
-              arg: WebRouteArguments(
-                startUrl: Global.currentService,
-                hideBars: true,
-              ),
-            );
+            RouterNavigate.navigateToPage(RoutePage.service);
           },
           child: Row(
             children: [

@@ -72,9 +72,9 @@ mixin _$WebRouteStore on _WebRouteStore, Store {
   @override
   String toString() {
     return '''
-desc: $desc,
-errorMessage: $errorMessage,
-state: $state
+desc: ${desc},
+errorMessage: ${errorMessage},
+state: ${state}
     ''';
   }
 }

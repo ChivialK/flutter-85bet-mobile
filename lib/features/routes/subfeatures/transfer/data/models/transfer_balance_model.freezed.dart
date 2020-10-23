@@ -12,6 +12,7 @@ TransferBalanceModel _$TransferBalanceModelFromJson(Map<String, dynamic> json) {
   return _TransferBalanceModel.fromJson(json);
 }
 
+/// @nodoc
 class _$TransferBalanceModelTearOff {
   const _$TransferBalanceModelTearOff();
 
@@ -21,11 +22,18 @@ class _$TransferBalanceModelTearOff {
       balance: balance,
     );
   }
+
+// ignore: unused_element
+  TransferBalanceModel fromJson(Map<String, Object> json) {
+    return TransferBalanceModel.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $TransferBalanceModel = _$TransferBalanceModelTearOff();
 
+/// @nodoc
 mixin _$TransferBalanceModel {
   String get balance;
 
@@ -33,6 +41,7 @@ mixin _$TransferBalanceModel {
   $TransferBalanceModelCopyWith<TransferBalanceModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $TransferBalanceModelCopyWith<$Res> {
   factory $TransferBalanceModelCopyWith(TransferBalanceModel value,
           $Res Function(TransferBalanceModel) then) =
@@ -40,6 +49,7 @@ abstract class $TransferBalanceModelCopyWith<$Res> {
   $Res call({String balance});
 }
 
+/// @nodoc
 class _$TransferBalanceModelCopyWithImpl<$Res>
     implements $TransferBalanceModelCopyWith<$Res> {
   _$TransferBalanceModelCopyWithImpl(this._value, this._then);
@@ -58,6 +68,7 @@ class _$TransferBalanceModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$TransferBalanceModelCopyWith<$Res>
     implements $TransferBalanceModelCopyWith<$Res> {
   factory _$TransferBalanceModelCopyWith(_TransferBalanceModel value,
@@ -67,6 +78,7 @@ abstract class _$TransferBalanceModelCopyWith<$Res>
   $Res call({String balance});
 }
 
+/// @nodoc
 class __$TransferBalanceModelCopyWithImpl<$Res>
     extends _$TransferBalanceModelCopyWithImpl<$Res>
     implements _$TransferBalanceModelCopyWith<$Res> {
@@ -88,6 +100,8 @@ class __$TransferBalanceModelCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_TransferBalanceModel implements _TransferBalanceModel {
   const _$_TransferBalanceModel({this.balance});
 

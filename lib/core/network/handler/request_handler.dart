@@ -27,7 +27,7 @@ Future<dynamic> _exceptionHandler(Function func, String tag) async {
     throw Failure.server();
   } on TokenException {
     MyLogger.warn(msg: 'Request Failed: Token Exception', tag: tag);
-    throw Failure.token(FailureType.TASK);
+    throw Failure.token(FailureType.TOKEN);
   } on FormatException catch (e, s) {
     MyLogger.wtf(msg: 'Data format error!!', tag: tag, error: e, stackTrace: s);
     throw e;
@@ -58,12 +58,15 @@ Future _makeRequest({
     final response = await request;
     if (response == null ||
         response.statusCode == null ||
-        response.statusCode != 200) throw ResponseException();
-    if ('${response.data}'.contains('Repeat token') ||
-        '${response.data}'.contains('route.query.forRefresh') ||
-        response.statusCode == 302) throw TokenException();
-    if ('${response.data}'.startsWith('<!DOCTYPE html>'))
+        response.statusCode != 200) {
+      throw ResponseException();
+    }
+    final String resp = '${response.data}';
+    if (resp.startsWith('<!DOCTYPE html>')) {
       throw RequestTypeErrorException();
+    } else if (resp.contains('Repeat token') || resp.contains('RepeatToken')) {
+      throw TokenException();
+    }
     return response.data;
   }, tag);
   MyLogger.debug(
@@ -153,7 +156,7 @@ Future<Either<Failure, T>> requestModel<T>({
         return Right(
             JsonUtil.decodeToModel<T>(data, jsonToModel, trim: trim, tag: tag));
       } on TokenException {
-        return Left(Failure.token(FailureType.TASK));
+        return Left(Failure.token(FailureType.TOKEN));
       }
     });
   });

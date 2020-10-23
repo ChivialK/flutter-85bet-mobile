@@ -9,6 +9,7 @@ part of 'marquee_entity.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$MarqueeEntityTearOff {
   const _$MarqueeEntityTearOff();
 
@@ -25,9 +26,11 @@ class _$MarqueeEntityTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $MarqueeEntity = _$MarqueeEntityTearOff();
 
+/// @nodoc
 mixin _$MarqueeEntity {
   @HiveField(0)
   int get id;
@@ -39,6 +42,7 @@ mixin _$MarqueeEntity {
   $MarqueeEntityCopyWith<MarqueeEntity> get copyWith;
 }
 
+/// @nodoc
 abstract class $MarqueeEntityCopyWith<$Res> {
   factory $MarqueeEntityCopyWith(
           MarqueeEntity value, $Res Function(MarqueeEntity) then) =
@@ -49,6 +53,7 @@ abstract class $MarqueeEntityCopyWith<$Res> {
       @HiveField(2) String url});
 }
 
+/// @nodoc
 class _$MarqueeEntityCopyWithImpl<$Res>
     implements $MarqueeEntityCopyWith<$Res> {
   _$MarqueeEntityCopyWithImpl(this._value, this._then);
@@ -71,6 +76,7 @@ class _$MarqueeEntityCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$MarqueeEntityCopyWith<$Res>
     implements $MarqueeEntityCopyWith<$Res> {
   factory _$MarqueeEntityCopyWith(
@@ -83,6 +89,7 @@ abstract class _$MarqueeEntityCopyWith<$Res>
       @HiveField(2) String url});
 }
 
+/// @nodoc
 class __$MarqueeEntityCopyWithImpl<$Res>
     extends _$MarqueeEntityCopyWithImpl<$Res>
     implements _$MarqueeEntityCopyWith<$Res> {
@@ -109,6 +116,8 @@ class __$MarqueeEntityCopyWithImpl<$Res>
 
 @HiveType(typeId: 102)
 @Implements(DataOperator)
+
+/// @nodoc
 class _$_MarqueeEntity implements _MarqueeEntity {
   const _$_MarqueeEntity(
       {@required @HiveField(0) this.id,

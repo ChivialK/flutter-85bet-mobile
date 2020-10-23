@@ -9,6 +9,7 @@ part of 'request_code_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$RequestCodeModelTearOff {
   const _$RequestCodeModelTearOff();
 
@@ -22,9 +23,11 @@ class _$RequestCodeModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $RequestCodeModel = _$RequestCodeModelTearOff();
 
+/// @nodoc
 mixin _$RequestCodeModel {
   int get code;
   dynamic get data;
@@ -33,6 +36,7 @@ mixin _$RequestCodeModel {
   $RequestCodeModelCopyWith<RequestCodeModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $RequestCodeModelCopyWith<$Res> {
   factory $RequestCodeModelCopyWith(
           RequestCodeModel value, $Res Function(RequestCodeModel) then) =
@@ -40,6 +44,7 @@ abstract class $RequestCodeModelCopyWith<$Res> {
   $Res call({int code, dynamic data, String msg});
 }
 
+/// @nodoc
 class _$RequestCodeModelCopyWithImpl<$Res>
     implements $RequestCodeModelCopyWith<$Res> {
   _$RequestCodeModelCopyWithImpl(this._value, this._then);
@@ -62,6 +67,7 @@ class _$RequestCodeModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$RequestCodeModelCopyWith<$Res>
     implements $RequestCodeModelCopyWith<$Res> {
   factory _$RequestCodeModelCopyWith(
@@ -71,6 +77,7 @@ abstract class _$RequestCodeModelCopyWith<$Res>
   $Res call({int code, dynamic data, String msg});
 }
 
+/// @nodoc
 class __$RequestCodeModelCopyWithImpl<$Res>
     extends _$RequestCodeModelCopyWithImpl<$Res>
     implements _$RequestCodeModelCopyWith<$Res> {
@@ -95,6 +102,7 @@ class __$RequestCodeModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_RequestCodeModel implements _RequestCodeModel {
   _$_RequestCodeModel({this.code, this.data, this.msg});
 

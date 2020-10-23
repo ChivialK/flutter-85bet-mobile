@@ -9,6 +9,7 @@ part of 'transfer_form.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$TransferFormTearOff {
   const _$TransferFormTearOff();
 
@@ -23,9 +24,11 @@ class _$TransferFormTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $TransferForm = _$TransferFormTearOff();
 
+/// @nodoc
 mixin _$TransferForm {
   String get amount;
   String get from;
@@ -34,6 +37,7 @@ mixin _$TransferForm {
   $TransferFormCopyWith<TransferForm> get copyWith;
 }
 
+/// @nodoc
 abstract class $TransferFormCopyWith<$Res> {
   factory $TransferFormCopyWith(
           TransferForm value, $Res Function(TransferForm) then) =
@@ -41,6 +45,7 @@ abstract class $TransferFormCopyWith<$Res> {
   $Res call({String amount, String from, String to});
 }
 
+/// @nodoc
 class _$TransferFormCopyWithImpl<$Res> implements $TransferFormCopyWith<$Res> {
   _$TransferFormCopyWithImpl(this._value, this._then);
 
@@ -62,6 +67,7 @@ class _$TransferFormCopyWithImpl<$Res> implements $TransferFormCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$TransferFormCopyWith<$Res>
     implements $TransferFormCopyWith<$Res> {
   factory _$TransferFormCopyWith(
@@ -71,6 +77,7 @@ abstract class _$TransferFormCopyWith<$Res>
   $Res call({String amount, String from, String to});
 }
 
+/// @nodoc
 class __$TransferFormCopyWithImpl<$Res> extends _$TransferFormCopyWithImpl<$Res>
     implements _$TransferFormCopyWith<$Res> {
   __$TransferFormCopyWithImpl(
@@ -94,6 +101,7 @@ class __$TransferFormCopyWithImpl<$Res> extends _$TransferFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_TransferForm implements _TransferForm {
   const _$_TransferForm(
       {@required this.amount, @required this.from, @required this.to})

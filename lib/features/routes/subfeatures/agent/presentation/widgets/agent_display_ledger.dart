@@ -106,7 +106,7 @@ class _AgentDisplayLedgerState extends State<AgentDisplayLedger>
             hint: localeStr.agentLedgerFieldTitleAccount,
             persistHint: false,
             prefixText: localeStr.agentLedgerHeaderAccount,
-            maxInputLength: 12,
+            maxInputLength: InputLimit.ACCOUNT_MAX,
             minusHeight: 12.0,
           ),
           Padding(

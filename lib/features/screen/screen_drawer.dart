@@ -188,8 +188,7 @@ class ScreenDrawer extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(vertical: 12.0),
                               child: Text(
-                                formatValue(viewState.store.user.credit,
-                                    creditSign: true),
+                                getAppGlobalStreams.getCredit(addSymbol: true),
                                 style:
                                     TextStyle(fontSize: FontSize.TITLE.value),
                               ),

@@ -121,11 +121,11 @@ mixin _$TransferStore on _TransferStore, Store {
   @override
   String toString() {
     return '''
-platforms: $platforms,
-transferResult: $transferResult,
-waitForTransferResult: $waitForTransferResult,
-errorMessage: $errorMessage,
-state: $state
+platforms: ${platforms},
+transferResult: ${transferResult},
+waitForTransferResult: ${waitForTransferResult},
+errorMessage: ${errorMessage},
+state: ${state}
     ''';
   }
 }

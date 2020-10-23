@@ -9,6 +9,7 @@ part of 'center_vip_entity.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$CenterVipEntityTearOff {
   const _$CenterVipEntityTearOff();
 
@@ -65,9 +66,11 @@ class _$CenterVipEntityTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CenterVipEntity = _$CenterVipEntityTearOff();
 
+/// @nodoc
 mixin _$CenterVipEntity {
   dynamic get vipOption;
   dynamic get vipSetting;
@@ -96,6 +99,7 @@ mixin _$CenterVipEntity {
   $CenterVipEntityCopyWith<CenterVipEntity> get copyWith;
 }
 
+/// @nodoc
 abstract class $CenterVipEntityCopyWith<$Res> {
   factory $CenterVipEntityCopyWith(
           CenterVipEntity value, $Res Function(CenterVipEntity) then) =
@@ -126,6 +130,7 @@ abstract class $CenterVipEntityCopyWith<$Res> {
       int sportGameValue});
 }
 
+/// @nodoc
 class _$CenterVipEntityCopyWithImpl<$Res>
     implements $CenterVipEntityCopyWith<$Res> {
   _$CenterVipEntityCopyWithImpl(this._value, this._then);
@@ -216,6 +221,7 @@ class _$CenterVipEntityCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$CenterVipEntityCopyWith<$Res>
     implements $CenterVipEntityCopyWith<$Res> {
   factory _$CenterVipEntityCopyWith(
@@ -248,6 +254,7 @@ abstract class _$CenterVipEntityCopyWith<$Res>
       int sportGameValue});
 }
 
+/// @nodoc
 class __$CenterVipEntityCopyWithImpl<$Res>
     extends _$CenterVipEntityCopyWithImpl<$Res>
     implements _$CenterVipEntityCopyWith<$Res> {
@@ -340,6 +347,7 @@ class __$CenterVipEntityCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_CenterVipEntity implements _CenterVipEntity {
   const _$_CenterVipEntity(
       {this.vipOption,

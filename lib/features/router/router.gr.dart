@@ -11,6 +11,7 @@ import 'package:flutter_85bet_mobile/features/routes/home/presentation/home_rout
 import 'package:flutter_85bet_mobile/features/router/my_static_page_transition.dart';
 import 'package:flutter_85bet_mobile/features/user/login/presentation/login_route.dart';
 import 'package:flutter_85bet_mobile/features/user/register/presentation/register_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/service/presentation/service_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/web/web_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/member/presentation/member_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/promo/presentation/promo_route.dart';
@@ -28,6 +29,7 @@ import 'package:flutter_85bet_mobile/features/routes/subfeatures/betrecord/prese
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/deals/presentation/deals_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/flows/presentation/flows_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/agent/presentation/agent_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/about/presentation/about_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/downloadarea/download_area_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/notice/presentation/notice_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/viplevel/presentation/vip_level_route.dart';
@@ -38,6 +40,7 @@ abstract class Routes {
   static const loginRoute = '/login-route';
   static const registerRoute = '/register-route';
   static const serviceRoute = '/service-route';
+  static const serviceWebRoute = '/service-web-route';
   static const memberRoute = '/member-route';
   static const promoRoute = '/promo-route';
   static const depositRoute = '/deposit-route';
@@ -59,6 +62,7 @@ abstract class Routes {
   static const agentRoute = '/agent-route';
   static const agentFeatureRoute = '/agent-feature-route';
   static const moreWebPage = '/more-web-page';
+  static const aboutRoute = '/about-route';
   static const downloadAreaRoute = '/download-area-route';
   static const noticeRoute = '/notice-route';
   static const levelRoute = '/level-route';
@@ -68,6 +72,7 @@ abstract class Routes {
     loginRoute,
     registerRoute,
     serviceRoute,
+    serviceWebRoute,
     memberRoute,
     promoRoute,
     depositRoute,
@@ -89,6 +94,7 @@ abstract class Routes {
     agentRoute,
     agentFeatureRoute,
     moreWebPage,
+    aboutRoute,
     downloadAreaRoute,
     noticeRoute,
     levelRoute,
@@ -142,6 +148,14 @@ class Router extends RouterBase {
           transitionDuration: const Duration(milliseconds: 400),
         );
       case Routes.serviceRoute:
+        return PageRouteBuilder<dynamic>(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              ServiceRoute(),
+          settings: settings,
+          transitionsBuilder: MyStaticPageTransition.slide,
+          transitionDuration: const Duration(milliseconds: 400),
+        );
+      case Routes.serviceWebRoute:
         if (hasInvalidArgs<WebRouteArguments>(args, isRequired: true)) {
           return misTypedArgsRoute<WebRouteArguments>(args);
         }
@@ -349,6 +363,13 @@ class Router extends RouterBase {
         return PageRouteBuilder<dynamic>(
           pageBuilder: (context, animation, secondaryAnimation) => WebRoute(
               startUrl: typedArgs.startUrl, hideBars: typedArgs.hideBars),
+          settings: settings,
+          transitionsBuilder: MyStaticPageTransition.slide,
+          transitionDuration: const Duration(milliseconds: 400),
+        );
+      case Routes.aboutRoute:
+        return PageRouteBuilder<dynamic>(
+          pageBuilder: (context, animation, secondaryAnimation) => AboutRoute(),
           settings: settings,
           transitionsBuilder: MyStaticPageTransition.slide,
           transitionDuration: const Duration(milliseconds: 400),

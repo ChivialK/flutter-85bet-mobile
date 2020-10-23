@@ -9,6 +9,7 @@ part of 'platform_game_form.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$PlatformGameFormTearOff {
   const _$PlatformGameFormTearOff();
 
@@ -22,9 +23,11 @@ class _$PlatformGameFormTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PlatformGameForm = _$PlatformGameFormTearOff();
 
+/// @nodoc
 mixin _$PlatformGameForm {
   String get category;
   String get platform;
@@ -32,6 +35,7 @@ mixin _$PlatformGameForm {
   $PlatformGameFormCopyWith<PlatformGameForm> get copyWith;
 }
 
+/// @nodoc
 abstract class $PlatformGameFormCopyWith<$Res> {
   factory $PlatformGameFormCopyWith(
           PlatformGameForm value, $Res Function(PlatformGameForm) then) =
@@ -39,6 +43,7 @@ abstract class $PlatformGameFormCopyWith<$Res> {
   $Res call({String category, String platform});
 }
 
+/// @nodoc
 class _$PlatformGameFormCopyWithImpl<$Res>
     implements $PlatformGameFormCopyWith<$Res> {
   _$PlatformGameFormCopyWithImpl(this._value, this._then);
@@ -59,6 +64,7 @@ class _$PlatformGameFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$PlatformGameFormCopyWith<$Res>
     implements $PlatformGameFormCopyWith<$Res> {
   factory _$PlatformGameFormCopyWith(
@@ -68,6 +74,7 @@ abstract class _$PlatformGameFormCopyWith<$Res>
   $Res call({String category, String platform});
 }
 
+/// @nodoc
 class __$PlatformGameFormCopyWithImpl<$Res>
     extends _$PlatformGameFormCopyWithImpl<$Res>
     implements _$PlatformGameFormCopyWith<$Res> {
@@ -90,6 +97,7 @@ class __$PlatformGameFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_PlatformGameForm implements _PlatformGameForm {
   const _$_PlatformGameForm({@required this.category, @required this.platform})
       : assert(category != null),

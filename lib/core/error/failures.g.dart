@@ -462,7 +462,6 @@ class ErrorMessage extends Failure {
 
   @override
   String toString() => 'ErrorMessage(msg:${this.msg})';
-
   @override
   List get props => [msg];
 }
@@ -476,7 +475,6 @@ class RequestStatusModelWrapper extends Failure {
 
   @override
   String toString() => 'RequestStatusModelWrapper($requestStatusModel)';
-
   @override
   List get props => [requestStatusModel];
 }
@@ -490,7 +488,6 @@ class RequestCodeModelWrapper extends Failure {
 
   @override
   String toString() => 'RequestCodeModelWrapper($requestCodeModel)';
-
   @override
   List get props => [requestCodeModel];
 }
@@ -503,7 +500,6 @@ class FailureCodeWrapper extends Failure {
 
   @override
   String toString() => 'FailureCodeWrapper($failureCode)';
-
   @override
   List get props => [failureCode];
 }
@@ -516,7 +512,6 @@ class FailureTypeWrapper extends Failure {
 
   @override
   String toString() => 'FailureTypeWrapper($failureType)';
-
   @override
   List get props => [failureType];
 }

@@ -9,6 +9,7 @@ part of 'marquee_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$MarqueeModelTearOff {
   const _$MarqueeModelTearOff();
 
@@ -31,9 +32,11 @@ class _$MarqueeModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $MarqueeModel = _$MarqueeModelTearOff();
 
+/// @nodoc
 mixin _$MarqueeModel {
   int get id;
   @JsonKey(name: 'content_cn')
@@ -48,6 +51,7 @@ mixin _$MarqueeModel {
   $MarqueeModelCopyWith<MarqueeModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $MarqueeModelCopyWith<$Res> {
   factory $MarqueeModelCopyWith(
           MarqueeModel value, $Res Function(MarqueeModel) then) =
@@ -61,6 +65,7 @@ abstract class $MarqueeModelCopyWith<$Res> {
       String showDate});
 }
 
+/// @nodoc
 class _$MarqueeModelCopyWithImpl<$Res> implements $MarqueeModelCopyWith<$Res> {
   _$MarqueeModelCopyWithImpl(this._value, this._then);
 
@@ -88,6 +93,7 @@ class _$MarqueeModelCopyWithImpl<$Res> implements $MarqueeModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$MarqueeModelCopyWith<$Res>
     implements $MarqueeModelCopyWith<$Res> {
   factory _$MarqueeModelCopyWith(
@@ -103,6 +109,7 @@ abstract class _$MarqueeModelCopyWith<$Res>
       String showDate});
 }
 
+/// @nodoc
 class __$MarqueeModelCopyWithImpl<$Res> extends _$MarqueeModelCopyWithImpl<$Res>
     implements _$MarqueeModelCopyWith<$Res> {
   __$MarqueeModelCopyWithImpl(
@@ -132,6 +139,7 @@ class __$MarqueeModelCopyWithImpl<$Res> extends _$MarqueeModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_MarqueeModel implements _MarqueeModel {
   const _$_MarqueeModel(
       {@required this.id,

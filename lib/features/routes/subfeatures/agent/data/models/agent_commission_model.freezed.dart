@@ -9,6 +9,7 @@ part of 'agent_commission_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AgentCommissionModelTearOff {
   const _$AgentCommissionModelTearOff();
 
@@ -35,9 +36,11 @@ class _$AgentCommissionModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AgentCommissionModel = _$AgentCommissionModelTearOff();
 
+/// @nodoc
 mixin _$AgentCommissionModel {
   String get direct;
   String get fee;
@@ -54,6 +57,7 @@ mixin _$AgentCommissionModel {
   $AgentCommissionModelCopyWith<AgentCommissionModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $AgentCommissionModelCopyWith<$Res> {
   factory $AgentCommissionModelCopyWith(AgentCommissionModel value,
           $Res Function(AgentCommissionModel) then) =
@@ -69,6 +73,7 @@ abstract class $AgentCommissionModelCopyWith<$Res> {
       dynamic key});
 }
 
+/// @nodoc
 class _$AgentCommissionModelCopyWithImpl<$Res>
     implements $AgentCommissionModelCopyWith<$Res> {
   _$AgentCommissionModelCopyWithImpl(this._value, this._then);
@@ -102,6 +107,7 @@ class _$AgentCommissionModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$AgentCommissionModelCopyWith<$Res>
     implements $AgentCommissionModelCopyWith<$Res> {
   factory _$AgentCommissionModelCopyWith(_AgentCommissionModel value,
@@ -119,6 +125,7 @@ abstract class _$AgentCommissionModelCopyWith<$Res>
       dynamic key});
 }
 
+/// @nodoc
 class __$AgentCommissionModelCopyWithImpl<$Res>
     extends _$AgentCommissionModelCopyWithImpl<$Res>
     implements _$AgentCommissionModelCopyWith<$Res> {
@@ -154,6 +161,7 @@ class __$AgentCommissionModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AgentCommissionModel implements _AgentCommissionModel {
   const _$_AgentCommissionModel(
       {this.direct,

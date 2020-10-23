@@ -9,6 +9,7 @@ part of 'route_list_item.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$RouteListItemTearOff {
   const _$RouteListItemTearOff();
 
@@ -29,12 +30,14 @@ class _$RouteListItemTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $RouteListItem = _$RouteListItemTearOff();
 
+/// @nodoc
 mixin _$RouteListItem {
   RouteEnum get id;
-  IconData get iconData;
+  IconData get iconData; // IconData need to be constant
   String get imageName;
   RoutePage get route;
   bool get isUserOnly;
@@ -42,6 +45,7 @@ mixin _$RouteListItem {
   $RouteListItemCopyWith<RouteListItem> get copyWith;
 }
 
+/// @nodoc
 abstract class $RouteListItemCopyWith<$Res> {
   factory $RouteListItemCopyWith(
           RouteListItem value, $Res Function(RouteListItem) then) =
@@ -54,6 +58,7 @@ abstract class $RouteListItemCopyWith<$Res> {
       bool isUserOnly});
 }
 
+/// @nodoc
 class _$RouteListItemCopyWithImpl<$Res>
     implements $RouteListItemCopyWith<$Res> {
   _$RouteListItemCopyWithImpl(this._value, this._then);
@@ -81,6 +86,7 @@ class _$RouteListItemCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$RouteListItemCopyWith<$Res>
     implements $RouteListItemCopyWith<$Res> {
   factory _$RouteListItemCopyWith(
@@ -95,6 +101,7 @@ abstract class _$RouteListItemCopyWith<$Res>
       bool isUserOnly});
 }
 
+/// @nodoc
 class __$RouteListItemCopyWithImpl<$Res>
     extends _$RouteListItemCopyWithImpl<$Res>
     implements _$RouteListItemCopyWith<$Res> {
@@ -124,6 +131,7 @@ class __$RouteListItemCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_RouteListItem with DiagnosticableTreeMixin implements _RouteListItem {
   const _$_RouteListItem(
       {@required this.id,
@@ -138,7 +146,7 @@ class _$_RouteListItem with DiagnosticableTreeMixin implements _RouteListItem {
   final RouteEnum id;
   @override
   final IconData iconData;
-  @override
+  @override // IconData need to be constant
   final String imageName;
   @override
   final RoutePage route;
@@ -208,7 +216,7 @@ abstract class _RouteListItem implements RouteListItem {
   RouteEnum get id;
   @override
   IconData get iconData;
-  @override
+  @override // IconData need to be constant
   String get imageName;
   @override
   RoutePage get route;

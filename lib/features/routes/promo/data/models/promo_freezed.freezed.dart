@@ -12,6 +12,7 @@ PromoModel _$PromoModelFromJson(Map<String, dynamic> json) {
   return _PromoModel.fromJson(json);
 }
 
+/// @nodoc
 class _$PromoModelTearOff {
   const _$PromoModelTearOff();
 
@@ -54,11 +55,18 @@ class _$PromoModelTearOff {
       categoryStr: categoryStr,
     );
   }
+
+// ignore: unused_element
+  PromoModel fromJson(Map<String, Object> json) {
+    return PromoModel.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PromoModel = _$PromoModelTearOff();
 
+/// @nodoc
 mixin _$PromoModel {
   int get id;
   @JsonKey(name: 'post_category_id')
@@ -92,6 +100,7 @@ mixin _$PromoModel {
   $PromoModelCopyWith<PromoModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $PromoModelCopyWith<$Res> {
   factory $PromoModelCopyWith(
           PromoModel value, $Res Function(PromoModel) then) =
@@ -116,6 +125,7 @@ abstract class $PromoModelCopyWith<$Res> {
       String categoryStr});
 }
 
+/// @nodoc
 class _$PromoModelCopyWithImpl<$Res> implements $PromoModelCopyWith<$Res> {
   _$PromoModelCopyWithImpl(this._value, this._then);
 
@@ -176,6 +186,7 @@ class _$PromoModelCopyWithImpl<$Res> implements $PromoModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$PromoModelCopyWith<$Res> implements $PromoModelCopyWith<$Res> {
   factory _$PromoModelCopyWith(
           _PromoModel value, $Res Function(_PromoModel) then) =
@@ -201,6 +212,7 @@ abstract class _$PromoModelCopyWith<$Res> implements $PromoModelCopyWith<$Res> {
       String categoryStr});
 }
 
+/// @nodoc
 class __$PromoModelCopyWithImpl<$Res> extends _$PromoModelCopyWithImpl<$Res>
     implements _$PromoModelCopyWith<$Res> {
   __$PromoModelCopyWithImpl(
@@ -264,6 +276,8 @@ class __$PromoModelCopyWithImpl<$Res> extends _$PromoModelCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_PromoModel implements _PromoModel {
   const _$_PromoModel(
       {@required this.id,
@@ -497,6 +511,7 @@ abstract class _PromoModel implements PromoModel {
   _$PromoModelCopyWith<_PromoModel> get copyWith;
 }
 
+/// @nodoc
 class _$PromoEntityTearOff {
   const _$PromoEntityTearOff();
 
@@ -531,9 +546,11 @@ class _$PromoEntityTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PromoEntity = _$PromoEntityTearOff();
 
+/// @nodoc
 mixin _$PromoEntity {
   @HiveField(0)
   int get id;
@@ -563,6 +580,7 @@ mixin _$PromoEntity {
   $PromoEntityCopyWith<PromoEntity> get copyWith;
 }
 
+/// @nodoc
 abstract class $PromoEntityCopyWith<$Res> {
   factory $PromoEntityCopyWith(
           PromoEntity value, $Res Function(PromoEntity) then) =
@@ -582,6 +600,7 @@ abstract class $PromoEntityCopyWith<$Res> {
       @HiveField(11) String status});
 }
 
+/// @nodoc
 class _$PromoEntityCopyWithImpl<$Res> implements $PromoEntityCopyWith<$Res> {
   _$PromoEntityCopyWithImpl(this._value, this._then);
 
@@ -632,6 +651,7 @@ class _$PromoEntityCopyWithImpl<$Res> implements $PromoEntityCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$PromoEntityCopyWith<$Res>
     implements $PromoEntityCopyWith<$Res> {
   factory _$PromoEntityCopyWith(
@@ -653,6 +673,7 @@ abstract class _$PromoEntityCopyWith<$Res>
       @HiveField(11) String status});
 }
 
+/// @nodoc
 class __$PromoEntityCopyWithImpl<$Res> extends _$PromoEntityCopyWithImpl<$Res>
     implements _$PromoEntityCopyWith<$Res> {
   __$PromoEntityCopyWithImpl(
@@ -706,6 +727,8 @@ class __$PromoEntityCopyWithImpl<$Res> extends _$PromoEntityCopyWithImpl<$Res>
 }
 
 @HiveType(typeId: 201)
+
+/// @nodoc
 class _$_PromoEntity implements _PromoEntity {
   const _$_PromoEntity(
       {@required @HiveField(0) this.id,

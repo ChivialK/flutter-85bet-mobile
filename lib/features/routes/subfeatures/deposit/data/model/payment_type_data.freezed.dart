@@ -20,6 +20,7 @@ PaymentTypeData _$PaymentTypeDataFromJson(Map<String, dynamic> json) {
   }
 }
 
+/// @nodoc
 class _$PaymentTypeDataTearOff {
   const _$PaymentTypeDataTearOff();
 
@@ -74,11 +75,18 @@ class _$PaymentTypeDataTearOff {
       key: key,
     );
   }
+
+// ignore: unused_element
+  PaymentTypeData fromJson(Map<String, Object> json) {
+    return PaymentTypeData.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PaymentTypeData = _$PaymentTypeDataTearOff();
 
+/// @nodoc
 mixin _$PaymentTypeData {
   @JsonKey(name: 'bankaccountid')
   int get bankAccountId;
@@ -153,6 +161,7 @@ mixin _$PaymentTypeData {
   $PaymentTypeDataCopyWith<PaymentTypeData> get copyWith;
 }
 
+/// @nodoc
 abstract class $PaymentTypeDataCopyWith<$Res> {
   factory $PaymentTypeDataCopyWith(
           PaymentTypeData value, $Res Function(PaymentTypeData) then) =
@@ -163,6 +172,7 @@ abstract class $PaymentTypeDataCopyWith<$Res> {
       dynamic key});
 }
 
+/// @nodoc
 class _$PaymentTypeDataCopyWithImpl<$Res>
     implements $PaymentTypeDataCopyWith<$Res> {
   _$PaymentTypeDataCopyWithImpl(this._value, this._then);
@@ -187,6 +197,7 @@ class _$PaymentTypeDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class $PaymentTypeOnlineDataCopyWith<$Res>
     implements $PaymentTypeDataCopyWith<$Res> {
   factory $PaymentTypeOnlineDataCopyWith(PaymentTypeOnlineData value,
@@ -208,6 +219,7 @@ abstract class $PaymentTypeOnlineDataCopyWith<$Res>
       dynamic key});
 }
 
+/// @nodoc
 class _$PaymentTypeOnlineDataCopyWithImpl<$Res>
     extends _$PaymentTypeDataCopyWithImpl<$Res>
     implements $PaymentTypeOnlineDataCopyWith<$Res> {
@@ -255,6 +267,8 @@ class _$PaymentTypeOnlineDataCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
   const _$PaymentTypeOnlineData(
       {this.amount,
@@ -506,6 +520,7 @@ abstract class PaymentTypeOnlineData implements PaymentTypeData {
   $PaymentTypeOnlineDataCopyWith<PaymentTypeOnlineData> get copyWith;
 }
 
+/// @nodoc
 abstract class $PaymentTypeLocalDataCopyWith<$Res>
     implements $PaymentTypeDataCopyWith<$Res> {
   factory $PaymentTypeLocalDataCopyWith(PaymentTypeLocalData value,
@@ -523,6 +538,7 @@ abstract class $PaymentTypeLocalDataCopyWith<$Res>
       dynamic key});
 }
 
+/// @nodoc
 class _$PaymentTypeLocalDataCopyWithImpl<$Res>
     extends _$PaymentTypeDataCopyWithImpl<$Res>
     implements $PaymentTypeLocalDataCopyWith<$Res> {
@@ -562,6 +578,8 @@ class _$PaymentTypeLocalDataCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$PaymentTypeLocalData implements PaymentTypeLocalData {
   const _$PaymentTypeLocalData(
       {@JsonKey(name: 'bankaccountid') this.bankAccountId,

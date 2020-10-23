@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_dropdown_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
-import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
 import '../../data/form/deposit_form.dart';
 import '../../data/model/deposit_info.dart';
@@ -78,10 +77,6 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
           gateway: '1',
           remark: _noteFieldKey.currentState.getInput,
         );
-        if (dataForm.name.hasInvalidChinese) {
-          callToast(localeStr.messageInvalidSymbol);
-          return;
-        }
         if (dataForm.isValid == false) {
           callToast(localeStr.messageActionFillForm);
           return;
@@ -101,15 +96,19 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
   }
 
   void _generateBankDataList() {
-//    debugPrint('bank map: ${widget.bankMap}');
+    debugPrint('bank map: ${widget.bankMap}');
     _bankNames = widget.bankMap.values.toList()..sort();
-//    debugPrint('bank names sorted: $_bankNames\n\n');
+    debugPrint('bank names sorted: $_bankNames\n\n');
     _bankIds = _bankNames
-        .map((value) => widget.bankMap.entries
-            .singleWhere((element) => element.value == value)
-            .key)
-        .toList();
-//    debugPrint('bank ids sorted: $_bankIds\n\n');
+        .map((value) =>
+            widget.bankMap.entries
+                .firstWhere((element) => element.value == value,
+                    orElse: () => null)
+                ?.key ??
+            -1)
+        .toList()
+          ..removeWhere((element) => element == -1);
+    debugPrint('bank ids sorted: $_bankIds\n\n');
   }
 
   @override
@@ -290,7 +289,6 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
               padding: const EdgeInsets.only(top: 8.0),
               child: new CustomizeFieldWidget(
                 key: _nameFieldKey,
-                fieldType: FieldType.TextOnly,
                 hint: localeStr.depositPaymentEditTitleNameHint,
                 persistHint: false,
                 prefixText: localeStr.depositPaymentEditTitleName,
@@ -299,8 +297,10 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                 horizontalInset: _fieldInset,
                 maxInputLength: InputLimit.NAME_MAX,
                 errorMsg: localeStr.messageInvalidDepositName,
-                validCondition: (value) =>
-                    rangeCheck(value: value.length, min: 2, max: 12),
+                validCondition: (value) => rangeCheck(
+                    value: value.length,
+                    min: InputLimit.NAME_MIN,
+                    max: InputLimit.NAME_MAX),
               ),
             ),
 
@@ -392,8 +392,8 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                 horizontalInset: _fieldInset,
                 maxInputLength: InputLimit.NOTE_MAX,
                 errorMsg: localeStr.messageInvalidFormat,
-                validCondition: (value) =>
-                    rangeCheck(value: value.length, min: 0, max: 20),
+                validCondition: (value) => rangeCheck(
+                    value: value.length, min: 0, max: InputLimit.NOTE_MAX),
               ),
             ),
 

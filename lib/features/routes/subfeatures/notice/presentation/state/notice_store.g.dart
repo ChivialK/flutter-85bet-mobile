@@ -57,8 +57,8 @@ mixin _$NoticeStore on _NoticeStore, Store {
   @override
   String toString() {
     return '''
-errorMessage: $errorMessage,
-state: $state
+errorMessage: ${errorMessage},
+state: ${state}
     ''';
   }
 }
