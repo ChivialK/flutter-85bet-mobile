@@ -1,12 +1,17 @@
+import 'package:device_info/device_info.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter/widgets.dart'
     show EdgeInsets, MediaQueryData, Orientation;
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
 import 'package:package_info/package_info.dart';
+import 'package:uuid/uuid.dart';
 
 class Device {
   final bool isIos;
   final MediaQueryData _mediaQueryData;
+
+  String _device;
+  String _uuid;
 
   PackageInfo packageInfo;
   String _version;
@@ -44,6 +49,7 @@ class Device {
           'pkg build=${packageInfo.buildNumber}, '
           'app version=$_version');
     });
+
     _screenWidth = double.parse(_mediaQueryData.size.width.toStringAsFixed(2));
     _screenHeight =
         double.parse(_mediaQueryData.size.height.toStringAsFixed(2));
@@ -56,11 +62,29 @@ class Device {
     _screenButtonHeight = (_screenHeightScale > 1)
         ? (36 * _screenHeightScale).ceilToDouble()
         : 36.0;
+
+    getDeviceInfo(isIos);
+  }
+
+  Future<void> getDeviceInfo(bool isIOS) async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    if (isIOS) {
+      IosDeviceInfo info = await deviceInfo.iosInfo;
+      _device = info.name;
+//      _device = info.utsname.machine;  // e.g. "iPod7,1"
+      _uuid = Uuid().v5(Uuid.NAMESPACE_OID, info.identifierForVendor);
+    } else {
+      AndroidDeviceInfo info = await deviceInfo.androidInfo;
+      _device = info.model;
+      _uuid = Uuid().v5(Uuid.NAMESPACE_OID, info.androidId);
+    }
+    debugPrint('Device: $_device, uuid: $_uuid');
   }
 
   @override
   String toString() {
-    return 'width=$_screenWidth\n'
+    return 'device=$_device\n'
+        'width=$_screenWidth\n'
         'width scale=$_screenWidthScale\n'
         'height=$_screenHeight\n'
         'height scale=$_screenHeightScale\n'
@@ -71,15 +95,19 @@ class Device {
         'button=$_screenButtonHeight';
   }
 
+  MediaQueryData get query => _mediaQueryData;
+
+  String get uuid => _uuid;
+
   /// App Version
-  String get appVersion => '${packageInfo.version}+${packageInfo.buildNumber}';
+  String get appVersion => _version;
+  String get appVersionOrigin =>
+      'Version:${packageInfo.version} Build:${packageInfo.buildNumber}';
   String get appVersionSide =>
-      '${packageInfo.version}+${packageInfo.buildNumber}${(Global.addAnalytics) ? ' (GA)' : ''}';
+      (Global.addAnalytics) ? '$_version (GA)' : _version;
 
   /// device's current orientation
   Orientation get orientation => _mediaQueryData.orientation;
-
-  MediaQueryData get query => _mediaQueryData;
 
   /// screen's ratio = width / height
   double get ratio => _mediaQueryData.size.aspectRatio;
@@ -99,6 +127,9 @@ class Device {
   /// device's height
   double get heightScale => _screenHeightScale;
 
+  /// device's relative button height
+  double get comfortButtonHeight => _screenButtonHeight;
+
   double get safeHorizontalPadding => _mediaQueryData.padding.horizontal;
 
   double get safeVerticalPadding => _screenPadding.vertical;
@@ -108,9 +139,6 @@ class Device {
   double get safeInset => _screenViewInset.bottom;
 
   double get safeFloat => _screenViewPadding.bottom + _screenViewInset.bottom;
-
-  /// device's relative button height
-  double get comfortButtonHeight => _screenButtonHeight;
 
   double get featureContentHeight =>
       _screenHeight - Global.APP_TOOLS_HEIGHT - safeInset - safeVerticalPadding;

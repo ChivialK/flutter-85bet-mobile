@@ -16,23 +16,21 @@ import 'env/config_reader.dart';
 import 'env/environment.dart';
 import 'features/main_app.dart';
 import 'injection_container.dart' as di;
-import 'mylogger.dart';
 
 FirebaseAnalytics _analytics;
 
-Future<void> mainCommon(String env) async {
+Future<void> mainCommon(Environment env) async {
   // Always call this if the main method is asynchronous
   WidgetsFlutterBinding.ensureInitialized();
   // Load the JSON config into memory
   await ConfigReader.initialize();
 
   switch (env) {
-    case Environment.dev:
-      debugPrint('App Config Version: ${ConfigReader.getVersion()}');
-      Global.addAnalytics = false;
-      break;
-    case Environment.release:
-      MyLogger.log(msg: 'App Config Version: ${ConfigReader.getVersion()}');
+    case Environment.DEV:
+    case Environment.RELEASE:
+      debugPrint(
+          'Env:${env.toString()}, config Version: ${ConfigReader.getVersion()}, add analytics: ${Global.addAnalytics}');
+
       break;
   }
 

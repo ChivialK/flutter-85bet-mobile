@@ -6,7 +6,6 @@ part of 'transfer_platform_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-// ignore: non_constant_identifier_names
 _$_TransferPlatformModel _$_$_TransferPlatformModelFromJson(
     Map<String, dynamic> json) {
   return _$_TransferPlatformModel(
@@ -15,7 +14,6 @@ _$_TransferPlatformModel _$_$_TransferPlatformModelFromJson(
   );
 }
 
-// ignore: non_constant_identifier_names
 Map<String, dynamic> _$_$_TransferPlatformModelToJson(
         _$_TransferPlatformModel instance) =>
     <String, dynamic>{

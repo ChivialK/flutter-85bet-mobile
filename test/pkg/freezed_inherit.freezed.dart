@@ -20,6 +20,7 @@ FreezedParent _$FreezedParentFromJson(Map<String, dynamic> json) {
   }
 }
 
+/// @nodoc
 class _$FreezedParentTearOff {
   const _$FreezedParentTearOff();
 
@@ -39,11 +40,18 @@ class _$FreezedParentTearOff {
       status: status,
     );
   }
+
+// ignore: unused_element
+  FreezedParent fromJson(Map<String, Object> json) {
+    return FreezedParent.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FreezedParent = _$FreezedParentTearOff();
 
+/// @nodoc
 mixin _$FreezedParent {
   String get account;
   String get credit;
@@ -74,6 +82,7 @@ mixin _$FreezedParent {
   $FreezedParentCopyWith<FreezedParent> get copyWith;
 }
 
+/// @nodoc
 abstract class $FreezedParentCopyWith<$Res> {
   factory $FreezedParentCopyWith(
           FreezedParent value, $Res Function(FreezedParent) then) =
@@ -81,6 +90,7 @@ abstract class $FreezedParentCopyWith<$Res> {
   $Res call({String account, String credit});
 }
 
+/// @nodoc
 class _$FreezedParentCopyWithImpl<$Res>
     implements $FreezedParentCopyWith<$Res> {
   _$FreezedParentCopyWithImpl(this._value, this._then);
@@ -101,6 +111,7 @@ class _$FreezedParentCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class $FreezedParentDataCopyWith<$Res>
     implements $FreezedParentCopyWith<$Res> {
   factory $FreezedParentDataCopyWith(
@@ -110,6 +121,7 @@ abstract class $FreezedParentDataCopyWith<$Res>
   $Res call({String account, String credit});
 }
 
+/// @nodoc
 class _$FreezedParentDataCopyWithImpl<$Res>
     extends _$FreezedParentCopyWithImpl<$Res>
     implements $FreezedParentDataCopyWith<$Res> {
@@ -133,6 +145,8 @@ class _$FreezedParentDataCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$FreezedParentData implements FreezedParentData {
   _$FreezedParentData({this.account, this.credit});
 
@@ -246,6 +260,7 @@ abstract class FreezedParentData implements FreezedParent {
   $FreezedParentDataCopyWith<FreezedParentData> get copyWith;
 }
 
+/// @nodoc
 abstract class $FreezedChildDataCopyWith<$Res>
     implements $FreezedParentCopyWith<$Res> {
   factory $FreezedChildDataCopyWith(
@@ -255,6 +270,7 @@ abstract class $FreezedChildDataCopyWith<$Res>
   $Res call({String account, String credit, String status});
 }
 
+/// @nodoc
 class _$FreezedChildDataCopyWithImpl<$Res>
     extends _$FreezedParentCopyWithImpl<$Res>
     implements $FreezedChildDataCopyWith<$Res> {
@@ -280,6 +296,8 @@ class _$FreezedChildDataCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$FreezedChildData implements FreezedChildData {
   _$FreezedChildData({this.account, this.credit, this.status});
 

@@ -9,6 +9,7 @@ part of 'deposit_info.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$DepositInfoTearOff {
   const _$DepositInfoTearOff();
 
@@ -29,9 +30,11 @@ class _$DepositInfoTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $DepositInfo = _$DepositInfoTearOff();
 
+/// @nodoc
 mixin _$DepositInfo {
   @JsonKey(name: 'accountname')
   String get accountName;
@@ -47,6 +50,7 @@ mixin _$DepositInfo {
   $DepositInfoCopyWith<DepositInfo> get copyWith;
 }
 
+/// @nodoc
 abstract class $DepositInfoCopyWith<$Res> {
   factory $DepositInfoCopyWith(
           DepositInfo value, $Res Function(DepositInfo) then) =
@@ -59,6 +63,7 @@ abstract class $DepositInfoCopyWith<$Res> {
       @JsonKey(name: 'bankcode') String bankCode});
 }
 
+/// @nodoc
 class _$DepositInfoCopyWithImpl<$Res> implements $DepositInfoCopyWith<$Res> {
   _$DepositInfoCopyWithImpl(this._value, this._then);
 
@@ -91,6 +96,7 @@ class _$DepositInfoCopyWithImpl<$Res> implements $DepositInfoCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$DepositInfoCopyWith<$Res>
     implements $DepositInfoCopyWith<$Res> {
   factory _$DepositInfoCopyWith(
@@ -105,6 +111,7 @@ abstract class _$DepositInfoCopyWith<$Res>
       @JsonKey(name: 'bankcode') String bankCode});
 }
 
+/// @nodoc
 class __$DepositInfoCopyWithImpl<$Res> extends _$DepositInfoCopyWithImpl<$Res>
     implements _$DepositInfoCopyWith<$Res> {
   __$DepositInfoCopyWithImpl(
@@ -139,6 +146,7 @@ class __$DepositInfoCopyWithImpl<$Res> extends _$DepositInfoCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_DepositInfo implements _DepositInfo {
   const _$_DepositInfo(
       {@JsonKey(name: 'accountname') this.accountName,

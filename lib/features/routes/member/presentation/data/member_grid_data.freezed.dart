@@ -9,6 +9,7 @@ part of 'member_grid_data.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$MemberGridDataTearOff {
   const _$MemberGridDataTearOff();
 
@@ -19,7 +20,8 @@ class _$MemberGridDataTearOff {
       Color iconDecorColor,
       Color iconDecorColorStart,
       Color iconDecorColorEnd,
-      RoutePage route}) {
+      RoutePage route,
+      bool isUserOnly = true}) {
     return _MemberGridData(
       id: id,
       iconData: iconData,
@@ -27,13 +29,16 @@ class _$MemberGridDataTearOff {
       iconDecorColorStart: iconDecorColorStart,
       iconDecorColorEnd: iconDecorColorEnd,
       route: route,
+      isUserOnly: isUserOnly,
     );
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $MemberGridData = _$MemberGridDataTearOff();
 
+/// @nodoc
 mixin _$MemberGridData {
   RouteEnum get id;
   IconData get iconData;
@@ -41,10 +46,12 @@ mixin _$MemberGridData {
   Color get iconDecorColorStart;
   Color get iconDecorColorEnd;
   RoutePage get route;
+  bool get isUserOnly;
 
   $MemberGridDataCopyWith<MemberGridData> get copyWith;
 }
 
+/// @nodoc
 abstract class $MemberGridDataCopyWith<$Res> {
   factory $MemberGridDataCopyWith(
           MemberGridData value, $Res Function(MemberGridData) then) =
@@ -55,9 +62,11 @@ abstract class $MemberGridDataCopyWith<$Res> {
       Color iconDecorColor,
       Color iconDecorColorStart,
       Color iconDecorColorEnd,
-      RoutePage route});
+      RoutePage route,
+      bool isUserOnly});
 }
 
+/// @nodoc
 class _$MemberGridDataCopyWithImpl<$Res>
     implements $MemberGridDataCopyWith<$Res> {
   _$MemberGridDataCopyWithImpl(this._value, this._then);
@@ -74,6 +83,7 @@ class _$MemberGridDataCopyWithImpl<$Res>
     Object iconDecorColorStart = freezed,
     Object iconDecorColorEnd = freezed,
     Object route = freezed,
+    Object isUserOnly = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as RouteEnum,
@@ -88,10 +98,13 @@ class _$MemberGridDataCopyWithImpl<$Res>
           ? _value.iconDecorColorEnd
           : iconDecorColorEnd as Color,
       route: route == freezed ? _value.route : route as RoutePage,
+      isUserOnly:
+          isUserOnly == freezed ? _value.isUserOnly : isUserOnly as bool,
     ));
   }
 }
 
+/// @nodoc
 abstract class _$MemberGridDataCopyWith<$Res>
     implements $MemberGridDataCopyWith<$Res> {
   factory _$MemberGridDataCopyWith(
@@ -104,9 +117,11 @@ abstract class _$MemberGridDataCopyWith<$Res>
       Color iconDecorColor,
       Color iconDecorColorStart,
       Color iconDecorColorEnd,
-      RoutePage route});
+      RoutePage route,
+      bool isUserOnly});
 }
 
+/// @nodoc
 class __$MemberGridDataCopyWithImpl<$Res>
     extends _$MemberGridDataCopyWithImpl<$Res>
     implements _$MemberGridDataCopyWith<$Res> {
@@ -125,6 +140,7 @@ class __$MemberGridDataCopyWithImpl<$Res>
     Object iconDecorColorStart = freezed,
     Object iconDecorColorEnd = freezed,
     Object route = freezed,
+    Object isUserOnly = freezed,
   }) {
     return _then(_MemberGridData(
       id: id == freezed ? _value.id : id as RouteEnum,
@@ -139,10 +155,13 @@ class __$MemberGridDataCopyWithImpl<$Res>
           ? _value.iconDecorColorEnd
           : iconDecorColorEnd as Color,
       route: route == freezed ? _value.route : route as RoutePage,
+      isUserOnly:
+          isUserOnly == freezed ? _value.isUserOnly : isUserOnly as bool,
     ));
   }
 }
 
+/// @nodoc
 class _$_MemberGridData
     with DiagnosticableTreeMixin
     implements _MemberGridData {
@@ -152,9 +171,11 @@ class _$_MemberGridData
       this.iconDecorColor,
       this.iconDecorColorStart,
       this.iconDecorColorEnd,
-      this.route})
+      this.route,
+      this.isUserOnly = true})
       : assert(id != null),
-        assert(iconData != null);
+        assert(iconData != null),
+        assert(isUserOnly != null);
 
   @override
   final RouteEnum id;
@@ -168,10 +189,13 @@ class _$_MemberGridData
   final Color iconDecorColorEnd;
   @override
   final RoutePage route;
+  @JsonKey(defaultValue: true)
+  @override
+  final bool isUserOnly;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MemberGridData(id: $id, iconData: $iconData, iconDecorColor: $iconDecorColor, iconDecorColorStart: $iconDecorColorStart, iconDecorColorEnd: $iconDecorColorEnd, route: $route)';
+    return 'MemberGridData(id: $id, iconData: $iconData, iconDecorColor: $iconDecorColor, iconDecorColorStart: $iconDecorColorStart, iconDecorColorEnd: $iconDecorColorEnd, route: $route, isUserOnly: $isUserOnly)';
   }
 
   @override
@@ -184,7 +208,8 @@ class _$_MemberGridData
       ..add(DiagnosticsProperty('iconDecorColor', iconDecorColor))
       ..add(DiagnosticsProperty('iconDecorColorStart', iconDecorColorStart))
       ..add(DiagnosticsProperty('iconDecorColorEnd', iconDecorColorEnd))
-      ..add(DiagnosticsProperty('route', route));
+      ..add(DiagnosticsProperty('route', route))
+      ..add(DiagnosticsProperty('isUserOnly', isUserOnly));
   }
 
   @override
@@ -206,7 +231,10 @@ class _$_MemberGridData
                 const DeepCollectionEquality()
                     .equals(other.iconDecorColorEnd, iconDecorColorEnd)) &&
             (identical(other.route, route) ||
-                const DeepCollectionEquality().equals(other.route, route)));
+                const DeepCollectionEquality().equals(other.route, route)) &&
+            (identical(other.isUserOnly, isUserOnly) ||
+                const DeepCollectionEquality()
+                    .equals(other.isUserOnly, isUserOnly)));
   }
 
   @override
@@ -217,7 +245,8 @@ class _$_MemberGridData
       const DeepCollectionEquality().hash(iconDecorColor) ^
       const DeepCollectionEquality().hash(iconDecorColorStart) ^
       const DeepCollectionEquality().hash(iconDecorColorEnd) ^
-      const DeepCollectionEquality().hash(route);
+      const DeepCollectionEquality().hash(route) ^
+      const DeepCollectionEquality().hash(isUserOnly);
 
   @override
   _$MemberGridDataCopyWith<_MemberGridData> get copyWith =>
@@ -231,7 +260,8 @@ abstract class _MemberGridData implements MemberGridData {
       Color iconDecorColor,
       Color iconDecorColorStart,
       Color iconDecorColorEnd,
-      RoutePage route}) = _$_MemberGridData;
+      RoutePage route,
+      bool isUserOnly}) = _$_MemberGridData;
 
   @override
   RouteEnum get id;
@@ -245,6 +275,8 @@ abstract class _MemberGridData implements MemberGridData {
   Color get iconDecorColorEnd;
   @override
   RoutePage get route;
+  @override
+  bool get isUserOnly;
   @override
   _$MemberGridDataCopyWith<_MemberGridData> get copyWith;
 }

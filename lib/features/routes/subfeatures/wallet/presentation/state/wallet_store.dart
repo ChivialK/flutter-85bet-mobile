@@ -47,17 +47,14 @@ abstract class _WalletStore with Store {
   @observable
   String errorMessage;
 
-  String _lastError;
-
-  void setErrorMsg({String msg, bool showOnce, FailureType type, int code}) {
-    if (showOnce && _lastError != null && msg == _lastError) return;
-    if (msg.isNotEmpty) _lastError = msg;
-    errorMessage = msg ??
-        Failure.internal(FailureCode(
-          type: type ?? FailureType.WALLET,
-          code: code,
-        )).message;
-  }
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
+      errorMessage = getErrorMsg(
+          from: FailureType.WALLET,
+          msg: msg,
+          showOnce: showOnce,
+          type: type,
+          code: code);
 
   @computed
   WalletStoreState get state {
@@ -148,7 +145,7 @@ abstract class _WalletStore with Store {
   }
 
   @action
-  Future postWalletTransfer({bool toSingle = false}) async {
+  Future postWalletTransfer() async {
     try {
       // Reset the possible previous error message.
       transferErrorList = null;
@@ -186,11 +183,7 @@ abstract class _WalletStore with Store {
                     msg:
                         'wallet transfer error: ${transferErrorList.toString()}',
                     tag: 'Wallet');
-                if (toSingle)
-                  Future.delayed(
-                      Duration(milliseconds: 500), () => postWalletType(true));
-                else
-                  updateCredit();
+                updateCredit();
               },
             ),
           )

@@ -9,6 +9,7 @@ part of 'request_status_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$RequestStatusModelTearOff {
   const _$RequestStatusModelTearOff();
 
@@ -23,9 +24,11 @@ class _$RequestStatusModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $RequestStatusModel = _$RequestStatusModelTearOff();
 
+/// @nodoc
 mixin _$RequestStatusModel {
   String get status;
   @JsonKey(fromJson: JsonUtil.getRawJson, required: false)
@@ -34,6 +37,7 @@ mixin _$RequestStatusModel {
   $RequestStatusModelCopyWith<RequestStatusModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $RequestStatusModelCopyWith<$Res> {
   factory $RequestStatusModelCopyWith(
           RequestStatusModel value, $Res Function(RequestStatusModel) then) =
@@ -43,6 +47,7 @@ abstract class $RequestStatusModelCopyWith<$Res> {
       @JsonKey(fromJson: JsonUtil.getRawJson, required: false) String msg});
 }
 
+/// @nodoc
 class _$RequestStatusModelCopyWithImpl<$Res>
     implements $RequestStatusModelCopyWith<$Res> {
   _$RequestStatusModelCopyWithImpl(this._value, this._then);
@@ -63,6 +68,7 @@ class _$RequestStatusModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$RequestStatusModelCopyWith<$Res>
     implements $RequestStatusModelCopyWith<$Res> {
   factory _$RequestStatusModelCopyWith(
@@ -74,6 +80,7 @@ abstract class _$RequestStatusModelCopyWith<$Res>
       @JsonKey(fromJson: JsonUtil.getRawJson, required: false) String msg});
 }
 
+/// @nodoc
 class __$RequestStatusModelCopyWithImpl<$Res>
     extends _$RequestStatusModelCopyWithImpl<$Res>
     implements _$RequestStatusModelCopyWith<$Res> {
@@ -96,6 +103,7 @@ class __$RequestStatusModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_RequestStatusModel implements _RequestStatusModel {
   _$_RequestStatusModel(
       {@required this.status,
@@ -162,6 +170,7 @@ abstract class _RequestStatusModel implements RequestStatusModel {
   _$RequestStatusModelCopyWith<_RequestStatusModel> get copyWith;
 }
 
+/// @nodoc
 class _$DataRequestResultTearOff {
   const _$DataRequestResultTearOff();
 
@@ -174,9 +183,11 @@ class _$DataRequestResultTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $DataRequestResult = _$DataRequestResultTearOff();
 
+/// @nodoc
 mixin _$DataRequestResult {
   dynamic get data;
   RequestStatusModel get failedData;
@@ -184,6 +195,7 @@ mixin _$DataRequestResult {
   $DataRequestResultCopyWith<DataRequestResult> get copyWith;
 }
 
+/// @nodoc
 abstract class $DataRequestResultCopyWith<$Res> {
   factory $DataRequestResultCopyWith(
           DataRequestResult value, $Res Function(DataRequestResult) then) =
@@ -193,6 +205,7 @@ abstract class $DataRequestResultCopyWith<$Res> {
   $RequestStatusModelCopyWith<$Res> get failedData;
 }
 
+/// @nodoc
 class _$DataRequestResultCopyWithImpl<$Res>
     implements $DataRequestResultCopyWith<$Res> {
   _$DataRequestResultCopyWithImpl(this._value, this._then);
@@ -225,6 +238,7 @@ class _$DataRequestResultCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$DataRequestResultCopyWith<$Res>
     implements $DataRequestResultCopyWith<$Res> {
   factory _$DataRequestResultCopyWith(
@@ -237,6 +251,7 @@ abstract class _$DataRequestResultCopyWith<$Res>
   $RequestStatusModelCopyWith<$Res> get failedData;
 }
 
+/// @nodoc
 class __$DataRequestResultCopyWithImpl<$Res>
     extends _$DataRequestResultCopyWithImpl<$Res>
     implements _$DataRequestResultCopyWith<$Res> {
@@ -261,6 +276,7 @@ class __$DataRequestResultCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_DataRequestResult implements _DataRequestResult {
   const _$_DataRequestResult({this.data, this.failedData});
 

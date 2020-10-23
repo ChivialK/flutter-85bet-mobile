@@ -9,6 +9,7 @@ part of 'agent_chart_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AgentChartModelTearOff {
   const _$AgentChartModelTearOff();
 
@@ -21,9 +22,11 @@ class _$AgentChartModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AgentChartModel = _$AgentChartModelTearOff();
 
+/// @nodoc
 mixin _$AgentChartModel {
   String get platform;
   List<AgentChartData> get dataList;
@@ -31,6 +34,7 @@ mixin _$AgentChartModel {
   $AgentChartModelCopyWith<AgentChartModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $AgentChartModelCopyWith<$Res> {
   factory $AgentChartModelCopyWith(
           AgentChartModel value, $Res Function(AgentChartModel) then) =
@@ -38,6 +42,7 @@ abstract class $AgentChartModelCopyWith<$Res> {
   $Res call({String platform, List<AgentChartData> dataList});
 }
 
+/// @nodoc
 class _$AgentChartModelCopyWithImpl<$Res>
     implements $AgentChartModelCopyWith<$Res> {
   _$AgentChartModelCopyWithImpl(this._value, this._then);
@@ -60,6 +65,7 @@ class _$AgentChartModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$AgentChartModelCopyWith<$Res>
     implements $AgentChartModelCopyWith<$Res> {
   factory _$AgentChartModelCopyWith(
@@ -69,6 +75,7 @@ abstract class _$AgentChartModelCopyWith<$Res>
   $Res call({String platform, List<AgentChartData> dataList});
 }
 
+/// @nodoc
 class __$AgentChartModelCopyWithImpl<$Res>
     extends _$AgentChartModelCopyWithImpl<$Res>
     implements _$AgentChartModelCopyWith<$Res> {
@@ -93,6 +100,7 @@ class __$AgentChartModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AgentChartModel implements _AgentChartModel {
   const _$_AgentChartModel({this.platform, this.dataList});
 
@@ -146,6 +154,7 @@ abstract class _AgentChartModel implements AgentChartModel {
   _$AgentChartModelCopyWith<_AgentChartModel> get copyWith;
 }
 
+/// @nodoc
 class _$AgentChartDataTearOff {
   const _$AgentChartDataTearOff();
 
@@ -174,9 +183,11 @@ class _$AgentChartDataTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AgentChartData = _$AgentChartDataTearOff();
 
+/// @nodoc
 mixin _$AgentChartData {
   num get bet;
   num get payout;
@@ -196,6 +207,7 @@ mixin _$AgentChartData {
   $AgentChartDataCopyWith<AgentChartData> get copyWith;
 }
 
+/// @nodoc
 abstract class $AgentChartDataCopyWith<$Res> {
   factory $AgentChartDataCopyWith(
           AgentChartData value, $Res Function(AgentChartData) then) =
@@ -212,6 +224,7 @@ abstract class $AgentChartDataCopyWith<$Res> {
       String key});
 }
 
+/// @nodoc
 class _$AgentChartDataCopyWithImpl<$Res>
     implements $AgentChartDataCopyWith<$Res> {
   _$AgentChartDataCopyWithImpl(this._value, this._then);
@@ -249,6 +262,7 @@ class _$AgentChartDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$AgentChartDataCopyWith<$Res>
     implements $AgentChartDataCopyWith<$Res> {
   factory _$AgentChartDataCopyWith(
@@ -267,6 +281,7 @@ abstract class _$AgentChartDataCopyWith<$Res>
       String key});
 }
 
+/// @nodoc
 class __$AgentChartDataCopyWithImpl<$Res>
     extends _$AgentChartDataCopyWithImpl<$Res>
     implements _$AgentChartDataCopyWith<$Res> {
@@ -306,6 +321,7 @@ class __$AgentChartDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AgentChartData implements _AgentChartData {
   const _$_AgentChartData(
       {this.bet,

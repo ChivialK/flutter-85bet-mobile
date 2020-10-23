@@ -4,13 +4,15 @@ import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_85bet_mobile/core/network/dio_api_service.dart';
 import 'package:flutter_85bet_mobile/features/general/data/user/user_token_storage.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/login_status.dart';
+import 'package:flutter_85bet_mobile/features/user/data/entity/user_entity.dart';
 import 'package:flutter_85bet_mobile/features/user/data/repository/jwt_interface.dart';
 import 'package:flutter_85bet_mobile/features/user/data/repository/user_repository.dart'
     show UserApi;
 import 'package:flutter_85bet_mobile/injection_container.dart';
 import 'package:flutter_85bet_mobile/mylogger.dart';
+import 'package:flutter_85bet_mobile/utils/value_util.dart';
 
-import 'app_navigate.dart' show RouterNavigate;
+import 'app_navigate.dart' show RoutePage, RouterNavigate;
 
 AppGlobalStreams get getAppGlobalStreams => sl.get<AppGlobalStreams>();
 
@@ -21,11 +23,32 @@ class AppGlobalStreams {
   final StreamController<LoginStatus> _userControl =
       StreamController<LoginStatus>.broadcast();
 
+  final StreamController<String> _creditController =
+      StreamController<String>.broadcast();
+
+  final StreamController<bool> _messageController =
+      StreamController<bool>.broadcast();
+
   final StreamController<bool> _recheckControl =
       StreamController<bool>.broadcast();
 
   final StreamController<String> _languageControl =
       StreamController<String>.broadcast();
+
+  AppGlobalStreams() {
+    _userControl.stream.listen((event) {
+      debugPrint('update stream user: $event');
+      _user = event;
+    });
+    _creditController.stream.listen((event) {
+//      debugPrint('home stream credit: $event');
+      _userCredit = event;
+    });
+    _messageController.stream.listen((event) {
+//      debugPrint('home stream credit: $event');
+      _hasNewMessage = event;
+    });
+  }
 
   DioApiService _dioApiService;
 
@@ -37,7 +60,15 @@ class AppGlobalStreams {
 
   Stream<bool> get recheckUserStream => _recheckControl.stream;
 
+  Stream<String> get creditStream => _creditController.stream;
+
   LoginStatus _user = LoginStatus(loggedIn: false);
+
+  bool _hasNewMessage = false;
+
+  String _userCredit = '0';
+
+  final String creditResetStr = '$creditSymbol---';
 
   LoginStatus get lastStatus => _user;
 
@@ -47,17 +78,34 @@ class AppGlobalStreams {
 
   String get userName => _user.currentUser?.account ?? 'Guest';
 
-  String get userCredit => _user.currentUser?.credit ?? '0';
-
-  AppGlobalStreams() {
-    _userControl.stream.listen((event) {
-      debugPrint('update stream user: $event');
-      _user = event;
-    });
-  }
+  bool get hasNewMessage => _hasNewMessage;
 
   updateUser(LoginStatus user) {
     _userControl.sink.add(user);
+    _creditController.sink.add(user.currentUser?.credit ?? creditResetStr);
+  }
+
+  updateCredit(String credit) {
+    _creditController.sink.add(credit);
+    lastStatus.currentUser.updateCredit(credit);
+  }
+
+  String getCredit({bool addSymbol = false}) {
+    if (_userCredit.contains('-') == false) {
+      return formatValue(_userCredit, creditSign: addSymbol);
+    } else {
+      if (addSymbol) return '$creditSymbol$_userCredit';
+    }
+    return _userCredit;
+  }
+
+  resetCredit() {
+    _creditController.sink.add(creditResetStr);
+    lastStatus.currentUser.updateCredit(creditResetStr);
+  }
+
+  updateMessageState(bool hasNew) {
+    _messageController.sink.add(hasNew);
   }
 
   setCheck(bool recheck) {
@@ -68,7 +116,7 @@ class AppGlobalStreams {
     _languageControl.sink.add(lang);
   }
 
-  logout() async {
+  logout({bool force = false, bool navToLogin = false}) async {
     if (!hasUser) return;
     String userName = _user.currentUser.account;
     MyLogger.info(msg: 'logging out user $userName', tag: 'RouteUserStreams');
@@ -76,13 +124,18 @@ class AppGlobalStreams {
       var jwtInterface = sl.get<JwtInterface>();
       _dioApiService ??= sl.get<DioApiService>();
 
-      String token = (jwtInterface.token.isNotEmpty)
-          ? jwtInterface.token
-          : await Future.value(UserTokenStorage.load(userName)).then((value) {
-              return value?.cookie?.value ?? '';
-            });
-      if (token.isNotEmpty)
-        _dioApiService.post(UserApi.LOGOUT, userToken: token);
+      if (!force) {
+        String token = (jwtInterface.token.isNotEmpty)
+            ? jwtInterface.token
+            : await Future.value(UserTokenStorage.load(userName)).then((value) {
+                return value?.cookie?.value ?? '';
+              });
+        if (token.isNotEmpty) {
+          _dioApiService.post(UserApi.LOGOUT, userToken: token);
+        }
+      } else {
+        UserTokenStorage.clear();
+      }
 
       jwtInterface.clearToken();
     } catch (e, s) {
@@ -92,15 +145,24 @@ class AppGlobalStreams {
       );
       debugPrint('error stack:\n$s');
     }
-    Future.delayed(Duration(milliseconds: 500),
-        () => RouterNavigate.navigateClean(force: true));
+
+    Future.delayed(
+        Duration(milliseconds: 500),
+        () => (navToLogin)
+            ? RouterNavigate.navigateToPage(RoutePage.login)
+            : RouterNavigate.navigateClean(force: true));
+
     _userControl.sink.add(LoginStatus(loggedIn: false));
+    _creditController.sink.add(creditResetStr);
+    _messageController.sink.add(false);
     _recheckControl.sink.add(true);
   }
 
   dispose() {
     MyLogger.warn(msg: 'disposing route streams!!', tag: 'RouteUserStreams');
     _userControl.close();
+    _creditController.close();
+    _messageController.close();
     _recheckControl.close();
     _languageControl.close();
   }

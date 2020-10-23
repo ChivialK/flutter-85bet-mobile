@@ -9,6 +9,7 @@ part of 'center_password_form.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$CenterPasswordFormTearOff {
   const _$CenterPasswordFormTearOff();
 
@@ -25,9 +26,11 @@ class _$CenterPasswordFormTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CenterPasswordForm = _$CenterPasswordFormTearOff();
 
+/// @nodoc
 mixin _$CenterPasswordForm {
   @JsonKey(name: 'oldpassword')
   String get oldPwd;
@@ -39,6 +42,7 @@ mixin _$CenterPasswordForm {
   $CenterPasswordFormCopyWith<CenterPasswordForm> get copyWith;
 }
 
+/// @nodoc
 abstract class $CenterPasswordFormCopyWith<$Res> {
   factory $CenterPasswordFormCopyWith(
           CenterPasswordForm value, $Res Function(CenterPasswordForm) then) =
@@ -49,6 +53,7 @@ abstract class $CenterPasswordFormCopyWith<$Res> {
       @JsonKey(name: 'conpassword') String confirmPwd});
 }
 
+/// @nodoc
 class _$CenterPasswordFormCopyWithImpl<$Res>
     implements $CenterPasswordFormCopyWith<$Res> {
   _$CenterPasswordFormCopyWithImpl(this._value, this._then);
@@ -72,6 +77,7 @@ class _$CenterPasswordFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$CenterPasswordFormCopyWith<$Res>
     implements $CenterPasswordFormCopyWith<$Res> {
   factory _$CenterPasswordFormCopyWith(
@@ -84,6 +90,7 @@ abstract class _$CenterPasswordFormCopyWith<$Res>
       @JsonKey(name: 'conpassword') String confirmPwd});
 }
 
+/// @nodoc
 class __$CenterPasswordFormCopyWithImpl<$Res>
     extends _$CenterPasswordFormCopyWithImpl<$Res>
     implements _$CenterPasswordFormCopyWith<$Res> {
@@ -109,6 +116,7 @@ class __$CenterPasswordFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_CenterPasswordForm implements _CenterPasswordForm {
   const _$_CenterPasswordForm(
       {@required @JsonKey(name: 'oldpassword') this.oldPwd,

@@ -9,6 +9,7 @@ part of 'deposit_form.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$DepositDataFormTearOff {
   const _$DepositDataFormTearOff();
 
@@ -39,9 +40,11 @@ class _$DepositDataFormTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $DepositDataForm = _$DepositDataFormTearOff();
 
+/// @nodoc
 mixin _$DepositDataForm {
   int get methodId;
   int get promoId;
@@ -57,6 +60,7 @@ mixin _$DepositDataForm {
   $DepositDataFormCopyWith<DepositDataForm> get copyWith;
 }
 
+/// @nodoc
 abstract class $DepositDataFormCopyWith<$Res> {
   factory $DepositDataFormCopyWith(
           DepositDataForm value, $Res Function(DepositDataForm) then) =
@@ -74,6 +78,7 @@ abstract class $DepositDataFormCopyWith<$Res> {
       String localBankCard});
 }
 
+/// @nodoc
 class _$DepositDataFormCopyWithImpl<$Res>
     implements $DepositDataFormCopyWith<$Res> {
   _$DepositDataFormCopyWithImpl(this._value, this._then);
@@ -112,6 +117,7 @@ class _$DepositDataFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$DepositDataFormCopyWith<$Res>
     implements $DepositDataFormCopyWith<$Res> {
   factory _$DepositDataFormCopyWith(
@@ -131,6 +137,7 @@ abstract class _$DepositDataFormCopyWith<$Res>
       String localBankCard});
 }
 
+/// @nodoc
 class __$DepositDataFormCopyWithImpl<$Res>
     extends _$DepositDataFormCopyWithImpl<$Res>
     implements _$DepositDataFormCopyWith<$Res> {
@@ -171,6 +178,7 @@ class __$DepositDataFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_DepositDataForm implements _DepositDataForm {
   const _$_DepositDataForm(
       {@required this.methodId,

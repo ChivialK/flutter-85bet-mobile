@@ -9,6 +9,7 @@ part of 'flow_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$FlowModelTearOff {
   const _$FlowModelTearOff();
 
@@ -49,9 +50,11 @@ class _$FlowModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FlowModel = _$FlowModelTearOff();
 
+/// @nodoc
 mixin _$FlowModel {
   String get code;
   @JsonKey(name: 'fundindex')
@@ -85,6 +88,7 @@ mixin _$FlowModel {
   $FlowModelCopyWith<FlowModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $FlowModelCopyWith<$Res> {
   factory $FlowModelCopyWith(FlowModel value, $Res Function(FlowModel) then) =
       _$FlowModelCopyWithImpl<$Res>;
@@ -106,6 +110,7 @@ abstract class $FlowModelCopyWith<$Res> {
       dynamic key});
 }
 
+/// @nodoc
 class _$FlowModelCopyWithImpl<$Res> implements $FlowModelCopyWith<$Res> {
   _$FlowModelCopyWithImpl(this._value, this._then);
 
@@ -158,6 +163,7 @@ class _$FlowModelCopyWithImpl<$Res> implements $FlowModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$FlowModelCopyWith<$Res> implements $FlowModelCopyWith<$Res> {
   factory _$FlowModelCopyWith(
           _FlowModel value, $Res Function(_FlowModel) then) =
@@ -181,6 +187,7 @@ abstract class _$FlowModelCopyWith<$Res> implements $FlowModelCopyWith<$Res> {
       dynamic key});
 }
 
+/// @nodoc
 class __$FlowModelCopyWithImpl<$Res> extends _$FlowModelCopyWithImpl<$Res>
     implements _$FlowModelCopyWith<$Res> {
   __$FlowModelCopyWithImpl(_FlowModel _value, $Res Function(_FlowModel) _then)
@@ -234,6 +241,7 @@ class __$FlowModelCopyWithImpl<$Res> extends _$FlowModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_FlowModel implements _FlowModel {
   const _$_FlowModel(
       {this.code,

@@ -131,12 +131,12 @@ mixin _$LoginStore on _LoginStore, Store {
   @override
   String toString() {
     return '''
-waitForHive: $waitForHive,
-hiveLoginForm: $hiveLoginForm,
-waitForLogin: $waitForLogin,
-errorMessage: $errorMessage,
-state: $state,
-loginState: $loginState
+waitForHive: ${waitForHive},
+hiveLoginForm: ${hiveLoginForm},
+waitForLogin: ${waitForLogin},
+errorMessage: ${errorMessage},
+state: ${state},
+loginState: ${loginState}
     ''';
   }
 }

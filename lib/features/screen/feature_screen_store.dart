@@ -31,8 +31,6 @@ abstract class _FeatureScreenStore with Store {
       _loginStateController.sink.add(userStatus.loggedIn);
       if (userStatus.loggedIn) {
         getNewMessageCount();
-      } else {
-        _eventStore.hasNewMessage = false;
       }
     });
 

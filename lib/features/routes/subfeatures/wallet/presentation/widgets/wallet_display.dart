@@ -291,8 +291,7 @@ class _WalletDisplayState extends State<WalletDisplay> {
                                   callToast(localeStr.messageWait);
                                 } else if (_walletType != _selected) {
                                   if (_selected == WalletType.SINGLE)
-                                    widget.store
-                                        .postWalletTransfer(toSingle: true);
+                                    widget.store.postWalletType(true);
                                   else
                                     widget.store.postWalletType(false);
                                 }

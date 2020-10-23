@@ -15,7 +15,7 @@ class _CenterDisplayState extends State<CenterDisplay> {
   final List<String> tabs = [
     localeStr.centerViewTitleData,
 //    localeStr.centerViewTitleLotto,
-    localeStr.centerViewTitleVip,
+    localeStr.centerViewTitleVipRank,
   ];
 
   final int tabsPerRow = 3;

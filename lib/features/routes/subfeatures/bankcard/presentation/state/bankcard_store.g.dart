@@ -200,15 +200,15 @@ mixin _$BankcardStore on _BankcardStore, Store {
   @override
   String toString() {
     return '''
-bankcard: $bankcard,
-provinceMap: $provinceMap,
-banksMap: $banksMap,
-cityMap: $cityMap,
-areaMap: $areaMap,
-waitForNewCardResult: $waitForNewCardResult,
-newCardResult: $newCardResult,
-errorMessage: $errorMessage,
-state: $state
+bankcard: ${bankcard},
+provinceMap: ${provinceMap},
+banksMap: ${banksMap},
+cityMap: ${cityMap},
+areaMap: ${areaMap},
+waitForNewCardResult: ${waitForNewCardResult},
+newCardResult: ${newCardResult},
+errorMessage: ${errorMessage},
+state: ${state}
     ''';
   }
 }

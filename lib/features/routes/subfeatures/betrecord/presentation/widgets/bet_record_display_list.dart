@@ -41,7 +41,7 @@ class BetRecordDisplayList extends StatelessWidget {
       itemCount: dataList.length,
       itemBuilder: (context, index) {
         var data = dataList[index];
-        bool isSumData;
+        bool isSumData = false;
         List<dynamic> dataTexts;
         if (data is BetRecordDataAllPlatform) {
           isSumData = data.isSumData();

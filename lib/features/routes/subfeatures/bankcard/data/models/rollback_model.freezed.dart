@@ -9,6 +9,7 @@ part of 'rollback_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$RollbackModelTearOff {
   const _$RollbackModelTearOff();
 
@@ -47,9 +48,11 @@ class _$RollbackModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $RollbackModel = _$RollbackModelTearOff();
 
+/// @nodoc
 mixin _$RollbackModel {
   dynamic get key;
   @JsonKey(name: 'amountlocal')
@@ -82,6 +85,7 @@ mixin _$RollbackModel {
   $RollbackModelCopyWith<RollbackModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $RollbackModelCopyWith<$Res> {
   factory $RollbackModelCopyWith(
           RollbackModel value, $Res Function(RollbackModel) then) =
@@ -103,6 +107,7 @@ abstract class $RollbackModelCopyWith<$Res> {
       @JsonKey(name: 'withdrawal_valid') String withdrawalValid});
 }
 
+/// @nodoc
 class _$RollbackModelCopyWithImpl<$Res>
     implements $RollbackModelCopyWith<$Res> {
   _$RollbackModelCopyWithImpl(this._value, this._then);
@@ -157,6 +162,7 @@ class _$RollbackModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$RollbackModelCopyWith<$Res>
     implements $RollbackModelCopyWith<$Res> {
   factory _$RollbackModelCopyWith(
@@ -180,6 +186,7 @@ abstract class _$RollbackModelCopyWith<$Res>
       @JsonKey(name: 'withdrawal_valid') String withdrawalValid});
 }
 
+/// @nodoc
 class __$RollbackModelCopyWithImpl<$Res>
     extends _$RollbackModelCopyWithImpl<$Res>
     implements _$RollbackModelCopyWith<$Res> {
@@ -236,6 +243,7 @@ class __$RollbackModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_RollbackModel implements _RollbackModel {
   const _$_RollbackModel(
       {this.key,

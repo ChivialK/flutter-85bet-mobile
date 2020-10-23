@@ -41,7 +41,9 @@ class BalanceGridItemState extends State<BalanceGridItem>
     if (_credit == credit) return;
     debugPrint('${widget.platform} balance credit: $credit');
     _credit = credit;
-    isMaintaining = credit == '$creditSymbol-1.00' || credit == 'maintenance';
+    isMaintaining = credit == '$creditSymbol-1.00' ||
+        credit == 'maintenance' ||
+        credit == 'InMaintenance';
     if (isMaintaining || _credit == '---') {
       canTransferIn = false;
       canTransferOut = false;
@@ -51,7 +53,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
       if (credit == 'x' || dCredit < 0) canTransferIn = false;
     }
     setState(() {});
-    print('${widget.platform} credit updated');
+    debugPrint('${widget.platform} credit updated: $_credit');
   }
 
   void startAnim() {
@@ -64,7 +66,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
 
   void stopAnim() {
     if (_controller.isAnimating) {
-      print('stop anim');
+      debugPrint('stop anim');
       _controller.forward(from: 0);
       _controller.stop(canceled: true);
     }

@@ -9,6 +9,7 @@ part of 'withdraw_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$WithdrawModelTearOff {
   const _$WithdrawModelTearOff();
 
@@ -22,9 +23,11 @@ class _$WithdrawModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $WithdrawModel = _$WithdrawModelTearOff();
 
+/// @nodoc
 mixin _$WithdrawModel {
   int get code;
   dynamic get data;
@@ -33,6 +36,7 @@ mixin _$WithdrawModel {
   $WithdrawModelCopyWith<WithdrawModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $WithdrawModelCopyWith<$Res> {
   factory $WithdrawModelCopyWith(
           WithdrawModel value, $Res Function(WithdrawModel) then) =
@@ -40,6 +44,7 @@ abstract class $WithdrawModelCopyWith<$Res> {
   $Res call({int code, dynamic data, String msg});
 }
 
+/// @nodoc
 class _$WithdrawModelCopyWithImpl<$Res>
     implements $WithdrawModelCopyWith<$Res> {
   _$WithdrawModelCopyWithImpl(this._value, this._then);
@@ -62,6 +67,7 @@ class _$WithdrawModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$WithdrawModelCopyWith<$Res>
     implements $WithdrawModelCopyWith<$Res> {
   factory _$WithdrawModelCopyWith(
@@ -71,6 +77,7 @@ abstract class _$WithdrawModelCopyWith<$Res>
   $Res call({int code, dynamic data, String msg});
 }
 
+/// @nodoc
 class __$WithdrawModelCopyWithImpl<$Res>
     extends _$WithdrawModelCopyWithImpl<$Res>
     implements _$WithdrawModelCopyWith<$Res> {
@@ -95,6 +102,7 @@ class __$WithdrawModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_WithdrawModel implements _WithdrawModel {
   const _$_WithdrawModel({this.code, this.data, this.msg});
 

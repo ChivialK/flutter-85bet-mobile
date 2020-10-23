@@ -72,9 +72,9 @@ mixin _$TemplateStore on _TemplateStore, Store {
   @override
   String toString() {
     return '''
-description: $description,
-errorMessage: $errorMessage,
-state: $state
+description: ${description},
+errorMessage: ${errorMessage},
+state: ${state}
     ''';
   }
 }

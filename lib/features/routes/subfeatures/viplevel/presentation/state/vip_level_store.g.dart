@@ -57,8 +57,8 @@ mixin _$VipLevelStore on _VipLevelStore, Store {
   @override
   String toString() {
     return '''
-errorMessage: $errorMessage,
-state: $state
+errorMessage: ${errorMessage},
+state: ${state}
     ''';
   }
 }

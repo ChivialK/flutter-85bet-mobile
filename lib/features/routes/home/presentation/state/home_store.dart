@@ -2,7 +2,6 @@ import 'dart:collection' show HashMap;
 
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
 import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
-import 'package:flutter_85bet_mobile/features/user/data/entity/user_entity.dart';
 
 import '../../data/entity/banner_entity.dart';
 import '../../data/entity/game_entity.dart';
@@ -21,9 +20,6 @@ enum HomeStoreState { initial, loading, loaded }
 
 abstract class _HomeStore with Store {
   final HomeRepository _repository;
-
-  final StreamController<String> _creditController =
-      StreamController<String>.broadcast();
 
   static StreamController<List<BannerEntity>> _bannerController =
       StreamController<List<BannerEntity>>.broadcast();
@@ -45,10 +41,6 @@ abstract class _HomeStore with Store {
 
   _HomeStore(this._repository) {
     debugPrint('init home store');
-    _creditController.stream.listen((event) {
-//      debugPrint('home stream credit: $event');
-      userCredit = event;
-    });
     _bannerController.stream.listen((event) {
 //      debugPrint('home stream banners: ${event.length}');
       banners = event;
@@ -80,9 +72,6 @@ abstract class _HomeStore with Store {
 
   Stream<String> get gamesStream => _gamesRetrieveController.stream;
 
-  Stream<String> get creditStream =>
-      _creditController.stream.asBroadcastStream();
-
   Stream<String> get showPlatformStream => _searchPlatformController.stream;
 
   Stream<String> get homeGameTitleStream => _gameTitleController.stream;
@@ -112,7 +101,7 @@ abstract class _HomeStore with Store {
   /// home tab tab categories
   List<GameCategoryModel> homeTabs;
 
-  String searchPlatform = '';
+  bool hasUser = false;
 
   @computed
   List<GameCategoryModel> get homeUserTabs => homeTabs;
@@ -121,9 +110,7 @@ abstract class _HomeStore with Store {
 //           + [movieEgCategory, movieNewCategory],
 //      );
 
-  /// shortcut widget user credit
-  String userCredit = '0';
-  bool hasUser = false;
+  String searchPlatform = '';
 
   @observable
   bool waitForGameUrl = false;
@@ -141,17 +128,14 @@ abstract class _HomeStore with Store {
   @observable
   String errorMessage;
 
-  String _lastError;
-
-  void setErrorMsg({String msg, bool showOnce, FailureType type, int code}) {
-    if (showOnce && _lastError != null && msg == _lastError) return;
-    if (msg.isNotEmpty) _lastError = msg;
-    errorMessage = msg ??
-        Failure.internal(FailureCode(
-          type: type ?? FailureType.HOME,
-          code: code,
-        )).message;
-  }
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
+      errorMessage = getErrorMsg(
+          from: FailureType.HOME,
+          msg: msg,
+          showOnce: showOnce,
+          type: type,
+          code: code);
 
   @computed
   HomeStoreState get state {
@@ -342,6 +326,7 @@ abstract class _HomeStore with Store {
     homeTabs.add(promoCategory);
     homeTabs.add(movieWebCategory);
     homeTabs.add(websiteCategory);
+    homeTabs.add(aboutCategory);
 
 //    homePlatformMap.keys.forEach((key) => MyLogger.debugPrint(
 //        msg: '$key: ${homePlatformMap[key]}\n', tag: 'HomePlatformMap'));
@@ -374,7 +359,6 @@ abstract class _HomeStore with Store {
   void checkHomeTabs() {
     if (hasUser != getAppGlobalStreams.hasUser) {
       hasUser = getAppGlobalStreams.hasUser;
-      _creditController.sink.add(getAppGlobalStreams.userCredit);
 //      debugPrint('home store has user = $hasUser');
       getGameTypes();
     }
@@ -467,32 +451,9 @@ abstract class _HomeStore with Store {
 
   void clearSearch() => searchPlatform = '';
 
-  @action
-  Future<void> getCredit() async {
-    try {
-      if (!hasUser) return;
-      debugPrint('requesting home page user credit...');
-      var user = getAppGlobalStreams.lastStatus.currentUser;
-      // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
-      await _repository.updateCredit(user.account).then(
-            (result) => result.fold(
-              (failure) => setErrorMsg(msg: failure.message, showOnce: true),
-              (value) {
-                getAppGlobalStreams.lastStatus.currentUser.updateCredit(value);
-                _creditController.sink.add(value);
-              },
-            ),
-          );
-    } on Exception catch (e) {
-      MyLogger.error(msg: 'home user credit has exception', error: e);
-      setErrorMsg(code: 2);
-    }
-  }
-
   Future<void> closeStreams() {
     try {
       return Future.wait([
-        _creditController.close(),
         _bannerController.close(),
         _marqueeController.close(),
         _tabController.close(),

@@ -77,7 +77,6 @@ class PromoEntityAdapter extends TypeAdapter<_$_PromoEntity> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-// ignore: non_constant_identifier_names
 _$_PromoModel _$_$_PromoModelFromJson(Map<String, dynamic> json) {
   return _$_PromoModel(
     id: json['id'] as int,
@@ -100,7 +99,6 @@ _$_PromoModel _$_$_PromoModelFromJson(Map<String, dynamic> json) {
   );
 }
 
-// ignore: non_constant_identifier_names
 Map<String, dynamic> _$_$_PromoModelToJson(_$_PromoModel instance) =>
     <String, dynamic>{
       'id': instance.id,

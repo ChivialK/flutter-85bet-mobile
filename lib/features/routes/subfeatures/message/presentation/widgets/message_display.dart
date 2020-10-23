@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/event/event_inject.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
+import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart'
+    show getAppGlobalStreams;
 import 'package:flutter_85bet_mobile/features/screen/feature_screen_inherited_widget.dart';
 
 import '../state/message_store.dart';
@@ -38,7 +40,7 @@ class _MessageDisplayState extends State<MessageDisplay> {
     }
 
     _eventStore = FeatureScreenInheritedWidget.of(context)?.eventStore;
-    debugPrint('screen has new message: ${_eventStore?.hasNewMessage}');
+    debugPrint('screen has new message: ${getAppGlobalStreams.hasNewMessage}');
 
     _itemSizeCalc ??= new MessageItemSizeCalc();
     _itemKeys ??= new List();

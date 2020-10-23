@@ -9,7 +9,7 @@ class Global {
   static Device device;
 
   /// BuildType
-  static bool addAnalytics = false;
+  static bool addAnalytics = true;
 
   /// APP Language
   static bool initLocale = false;
@@ -38,7 +38,6 @@ class Global {
   /// Web Service
   static const bool HAS_FLEX_ROUTE = false;
   static const String CURRENT_BASE = BET85_OFFICIAL_URL;
-  static String currentService = BET85_SERVICE_URL;
 
   static const String EG_BASE_URL = "https://www.eg990.com/";
   static const String EG_SERVICE_URL = "http://vip66741.com/";

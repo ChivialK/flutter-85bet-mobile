@@ -23,6 +23,7 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
       new GlobalKey<MemberDisplayHeaderState>(debugLabel: 'header');
   final int _itemPerRow = 3;
   final double _itemSpace = 12.0;
+  final double _iconSize = 32 * Global.device.widthScale;
   double _gridRatio;
 
   static final List<MemberGridItem> _gridItems = [
@@ -55,8 +56,7 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
     double gridItemWidth =
         ((Global.device.width - 32) - _itemSpace * (_itemPerRow + 2) - 12) /
             _itemPerRow;
-    _gridRatio =
-        (Global.lang == 'zh') ? gridItemWidth / 96 : gridItemWidth / 108;
+    _gridRatio = gridItemWidth / (_iconSize * 3);
     debugPrint('grid item width: $gridItemWidth, gridRatio: $_gridRatio');
     super.initState();
   }
@@ -110,7 +110,7 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
           initialData: false,
           builder: (context, snapshot) {
             if (snapshot.data) {
-              widget.store.getCredit();
+              widget.store.getUserCredit();
               widget.store.getNewMessageCount();
               try {
                 final featureInherit =
@@ -135,7 +135,7 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
                 ),
                 child: Icon(
                   const IconData(0xe962, fontFamily: 'IconMoon'),
-                  size: 32 * Global.device.widthScale,
+                  size: _iconSize,
                 ),
               ),
               Padding(
@@ -154,7 +154,7 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
             key: _headerKey,
             userName: widget.store.user.account,
             vipLevel: widget.store.user.vip,
-            onRefresh: () => widget.store.getCredit(),
+            onRefresh: () => widget.store.getUserCredit(),
           ),
         ),
         /* Features Grid */
@@ -171,7 +171,7 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
             children: _gridItems
                 .map((item) => MemberGridItemWidget(
                       item: item,
-                      iconSize: 32 * Global.device.widthScale,
+                      iconSize: _iconSize,
                       onItemTap: (gridItem) => _itemTapped(gridItem),
                     ))
                 .toList(),
@@ -183,6 +183,6 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
 
   @override
   void afterFirstLayout(BuildContext context) {
-    widget.store.getCredit();
+    widget.store.getUserCredit();
   }
 }

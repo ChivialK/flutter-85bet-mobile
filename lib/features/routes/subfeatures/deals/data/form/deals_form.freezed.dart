@@ -9,6 +9,7 @@ part of 'deals_form.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$DealsFormTearOff {
   const _$DealsFormTearOff();
 
@@ -23,9 +24,11 @@ class _$DealsFormTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $DealsForm = _$DealsFormTearOff();
 
+/// @nodoc
 mixin _$DealsForm {
   int get page;
   int get time;
@@ -35,12 +38,14 @@ mixin _$DealsForm {
   $DealsFormCopyWith<DealsForm> get copyWith;
 }
 
+/// @nodoc
 abstract class $DealsFormCopyWith<$Res> {
   factory $DealsFormCopyWith(DealsForm value, $Res Function(DealsForm) then) =
       _$DealsFormCopyWithImpl<$Res>;
   $Res call({int page, int time, int type, int status});
 }
 
+/// @nodoc
 class _$DealsFormCopyWithImpl<$Res> implements $DealsFormCopyWith<$Res> {
   _$DealsFormCopyWithImpl(this._value, this._then);
 
@@ -64,6 +69,7 @@ class _$DealsFormCopyWithImpl<$Res> implements $DealsFormCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$DealsFormCopyWith<$Res> implements $DealsFormCopyWith<$Res> {
   factory _$DealsFormCopyWith(
           _DealsForm value, $Res Function(_DealsForm) then) =
@@ -72,6 +78,7 @@ abstract class _$DealsFormCopyWith<$Res> implements $DealsFormCopyWith<$Res> {
   $Res call({int page, int time, int type, int status});
 }
 
+/// @nodoc
 class __$DealsFormCopyWithImpl<$Res> extends _$DealsFormCopyWithImpl<$Res>
     implements _$DealsFormCopyWith<$Res> {
   __$DealsFormCopyWithImpl(_DealsForm _value, $Res Function(_DealsForm) _then)
@@ -96,6 +103,7 @@ class __$DealsFormCopyWithImpl<$Res> extends _$DealsFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_DealsForm implements _DealsForm {
   const _$_DealsForm({this.page, this.time, this.type, this.status});
 

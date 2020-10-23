@@ -20,7 +20,6 @@ _$_BankcardModel _$_$_BankcardModelFromJson(Map<String, dynamic> json) {
   );
 }
 
-// ignore: non_constant_identifier_names
 Map<String, dynamic> _$_$_BankcardModelToJson(_$_BankcardModel instance) =>
     <String, dynamic>{
       'hasCard': instance.hasCard,

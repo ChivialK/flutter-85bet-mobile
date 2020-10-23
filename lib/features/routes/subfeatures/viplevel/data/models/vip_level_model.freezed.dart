@@ -9,6 +9,7 @@ part of 'vip_level_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$VipLevelModelTearOff {
   const _$VipLevelModelTearOff();
 
@@ -28,9 +29,11 @@ class _$VipLevelModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $VipLevelModel = _$VipLevelModelTearOff();
 
+/// @nodoc
 mixin _$VipLevelModel {
   @JsonKey(name: 'level', fromJson: decodeVipLevelName)
   List<VipLevelName> get levels;
@@ -42,6 +45,7 @@ mixin _$VipLevelModel {
   $VipLevelModelCopyWith<VipLevelModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $VipLevelModelCopyWith<$Res> {
   factory $VipLevelModelCopyWith(
           VipLevelModel value, $Res Function(VipLevelModel) then) =
@@ -55,6 +59,7 @@ abstract class $VipLevelModelCopyWith<$Res> {
           Map<String, dynamic> rules});
 }
 
+/// @nodoc
 class _$VipLevelModelCopyWithImpl<$Res>
     implements $VipLevelModelCopyWith<$Res> {
   _$VipLevelModelCopyWithImpl(this._value, this._then);
@@ -78,6 +83,7 @@ class _$VipLevelModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$VipLevelModelCopyWith<$Res>
     implements $VipLevelModelCopyWith<$Res> {
   factory _$VipLevelModelCopyWith(
@@ -93,6 +99,7 @@ abstract class _$VipLevelModelCopyWith<$Res>
           Map<String, dynamic> rules});
 }
 
+/// @nodoc
 class __$VipLevelModelCopyWithImpl<$Res>
     extends _$VipLevelModelCopyWithImpl<$Res>
     implements _$VipLevelModelCopyWith<$Res> {
@@ -118,6 +125,7 @@ class __$VipLevelModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_VipLevelModel implements _VipLevelModel {
   const _$_VipLevelModel(
       {@JsonKey(name: 'level', fromJson: decodeVipLevelName) this.levels,
@@ -186,6 +194,7 @@ abstract class _VipLevelModel implements VipLevelModel {
   _$VipLevelModelCopyWith<_VipLevelModel> get copyWith;
 }
 
+/// @nodoc
 class _$VipLevelNameTearOff {
   const _$VipLevelNameTearOff();
 
@@ -199,9 +208,11 @@ class _$VipLevelNameTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $VipLevelName = _$VipLevelNameTearOff();
 
+/// @nodoc
 mixin _$VipLevelName {
   String get key;
   String get title;
@@ -210,6 +221,7 @@ mixin _$VipLevelName {
   $VipLevelNameCopyWith<VipLevelName> get copyWith;
 }
 
+/// @nodoc
 abstract class $VipLevelNameCopyWith<$Res> {
   factory $VipLevelNameCopyWith(
           VipLevelName value, $Res Function(VipLevelName) then) =
@@ -217,6 +229,7 @@ abstract class $VipLevelNameCopyWith<$Res> {
   $Res call({String key, String title, String img});
 }
 
+/// @nodoc
 class _$VipLevelNameCopyWithImpl<$Res> implements $VipLevelNameCopyWith<$Res> {
   _$VipLevelNameCopyWithImpl(this._value, this._then);
 
@@ -238,6 +251,7 @@ class _$VipLevelNameCopyWithImpl<$Res> implements $VipLevelNameCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$VipLevelNameCopyWith<$Res>
     implements $VipLevelNameCopyWith<$Res> {
   factory _$VipLevelNameCopyWith(
@@ -247,6 +261,7 @@ abstract class _$VipLevelNameCopyWith<$Res>
   $Res call({String key, String title, String img});
 }
 
+/// @nodoc
 class __$VipLevelNameCopyWithImpl<$Res> extends _$VipLevelNameCopyWithImpl<$Res>
     implements _$VipLevelNameCopyWith<$Res> {
   __$VipLevelNameCopyWithImpl(
@@ -270,6 +285,7 @@ class __$VipLevelNameCopyWithImpl<$Res> extends _$VipLevelNameCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_VipLevelName implements _VipLevelName {
   const _$_VipLevelName({this.key, this.title, this.img});
 
@@ -323,6 +339,7 @@ abstract class _VipLevelName implements VipLevelName {
   _$VipLevelNameCopyWith<_VipLevelName> get copyWith;
 }
 
+/// @nodoc
 class _$VipLevelOptionTearOff {
   const _$VipLevelOptionTearOff();
 
@@ -337,9 +354,11 @@ class _$VipLevelOptionTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $VipLevelOption = _$VipLevelOptionTearOff();
 
+/// @nodoc
 mixin _$VipLevelOption {
   String get key;
   String get name;
@@ -349,6 +368,7 @@ mixin _$VipLevelOption {
   $VipLevelOptionCopyWith<VipLevelOption> get copyWith;
 }
 
+/// @nodoc
 abstract class $VipLevelOptionCopyWith<$Res> {
   factory $VipLevelOptionCopyWith(
           VipLevelOption value, $Res Function(VipLevelOption) then) =
@@ -356,6 +376,7 @@ abstract class $VipLevelOptionCopyWith<$Res> {
   $Res call({String key, String name, String ch, String type});
 }
 
+/// @nodoc
 class _$VipLevelOptionCopyWithImpl<$Res>
     implements $VipLevelOptionCopyWith<$Res> {
   _$VipLevelOptionCopyWithImpl(this._value, this._then);
@@ -380,6 +401,7 @@ class _$VipLevelOptionCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$VipLevelOptionCopyWith<$Res>
     implements $VipLevelOptionCopyWith<$Res> {
   factory _$VipLevelOptionCopyWith(
@@ -389,6 +411,7 @@ abstract class _$VipLevelOptionCopyWith<$Res>
   $Res call({String key, String name, String ch, String type});
 }
 
+/// @nodoc
 class __$VipLevelOptionCopyWithImpl<$Res>
     extends _$VipLevelOptionCopyWithImpl<$Res>
     implements _$VipLevelOptionCopyWith<$Res> {
@@ -415,6 +438,7 @@ class __$VipLevelOptionCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_VipLevelOption implements _VipLevelOption {
   const _$_VipLevelOption({this.key, this.name, this.ch, this.type});
 

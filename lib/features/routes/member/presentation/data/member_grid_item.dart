@@ -92,12 +92,14 @@ class MemberGridItem extends Vnum<MemberGridData> {
 //    iconData: const IconData(0xf219, fontFamily: 'FontAwesome'),
     iconData: const IconData(0xe96e, fontFamily: 'IconMoon'),
     route: RoutePage.vipLevel,
+    isUserOnly: false,
   ));
   static MemberGridItem notice = MemberGridItem.define(MemberGridData(
     id: RouteEnum.NOTICE,
 //    iconData: const IconData(0xf028, fontFamily: 'FontAwesome'),
     iconData: const IconData(0xe967, fontFamily: 'IconMoon'),
     route: RoutePage.noticeBoard,
+    isUserOnly: false,
   ));
 
   /// No Route

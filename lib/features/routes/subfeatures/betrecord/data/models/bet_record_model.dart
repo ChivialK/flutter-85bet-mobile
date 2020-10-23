@@ -37,6 +37,7 @@ extension BetRecordModelExtension on BetRecordModel {
       data == null ||
       data.isEmpty ||
       (data.length == 1 && data.first.isSumData());
+
   BetRecordData get getSum =>
       data.singleWhere((element) => element.isSumData());
 }

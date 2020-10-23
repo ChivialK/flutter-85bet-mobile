@@ -20,14 +20,14 @@ mixin _$BetRecordStore on _BetRecordStore, Store {
   final _$_typeFutureAtom = Atom(name: '_BetRecordStore._typeFuture');
 
   @override
-  ObservableFuture<Either<Failure, List<BetRecordTypeModel>>> get _typeFuture {
+  ObservableFuture<Either<Failure, List<BetRecordType>>> get _typeFuture {
     _$_typeFutureAtom.reportRead();
     return super._typeFuture;
   }
 
   @override
   set _typeFuture(
-      ObservableFuture<Either<Failure, List<BetRecordTypeModel>>> value) {
+      ObservableFuture<Either<Failure, List<BetRecordType>>> value) {
     _$_typeFutureAtom.reportWrite(value, super._typeFuture, () {
       super._typeFuture = value;
     });

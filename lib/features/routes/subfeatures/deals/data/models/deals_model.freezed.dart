@@ -9,6 +9,7 @@ part of 'deals_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$DealsModelTearOff {
   const _$DealsModelTearOff();
 
@@ -37,9 +38,11 @@ class _$DealsModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $DealsModel = _$DealsModelTearOff();
 
+/// @nodoc
 mixin _$DealsModel {
   @JsonKey(name: 'current_page')
   int get currentPage;
@@ -60,6 +63,7 @@ mixin _$DealsModel {
   $DealsModelCopyWith<DealsModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $DealsModelCopyWith<$Res> {
   factory $DealsModelCopyWith(
           DealsModel value, $Res Function(DealsModel) then) =
@@ -76,6 +80,7 @@ abstract class $DealsModelCopyWith<$Res> {
       @JsonKey(fromJson: decodeDealsData) List<DealsData> data});
 }
 
+/// @nodoc
 class _$DealsModelCopyWithImpl<$Res> implements $DealsModelCopyWith<$Res> {
   _$DealsModelCopyWithImpl(this._value, this._then);
 
@@ -112,6 +117,7 @@ class _$DealsModelCopyWithImpl<$Res> implements $DealsModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$DealsModelCopyWith<$Res> implements $DealsModelCopyWith<$Res> {
   factory _$DealsModelCopyWith(
           _DealsModel value, $Res Function(_DealsModel) then) =
@@ -129,6 +135,7 @@ abstract class _$DealsModelCopyWith<$Res> implements $DealsModelCopyWith<$Res> {
       @JsonKey(fromJson: decodeDealsData) List<DealsData> data});
 }
 
+/// @nodoc
 class __$DealsModelCopyWithImpl<$Res> extends _$DealsModelCopyWithImpl<$Res>
     implements _$DealsModelCopyWith<$Res> {
   __$DealsModelCopyWithImpl(
@@ -167,6 +174,7 @@ class __$DealsModelCopyWithImpl<$Res> extends _$DealsModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_DealsModel implements _DealsModel {
   const _$_DealsModel(
       {@JsonKey(name: 'current_page') this.currentPage,
@@ -297,6 +305,7 @@ abstract class _DealsModel implements DealsModel {
   _$DealsModelCopyWith<_DealsModel> get copyWith;
 }
 
+/// @nodoc
 class _$DealsDataTearOff {
   const _$DealsDataTearOff();
 
@@ -319,9 +328,11 @@ class _$DealsDataTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $DealsData = _$DealsDataTearOff();
 
+/// @nodoc
 mixin _$DealsData {
   String get amount;
   @JsonKey(name: 'ledgerdatetime')
@@ -336,6 +347,7 @@ mixin _$DealsData {
   $DealsDataCopyWith<DealsData> get copyWith;
 }
 
+/// @nodoc
 abstract class $DealsDataCopyWith<$Res> {
   factory $DealsDataCopyWith(DealsData value, $Res Function(DealsData) then) =
       _$DealsDataCopyWithImpl<$Res>;
@@ -348,6 +360,7 @@ abstract class $DealsDataCopyWith<$Res> {
       String type});
 }
 
+/// @nodoc
 class _$DealsDataCopyWithImpl<$Res> implements $DealsDataCopyWith<$Res> {
   _$DealsDataCopyWithImpl(this._value, this._then);
 
@@ -375,6 +388,7 @@ class _$DealsDataCopyWithImpl<$Res> implements $DealsDataCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$DealsDataCopyWith<$Res> implements $DealsDataCopyWith<$Res> {
   factory _$DealsDataCopyWith(
           _DealsData value, $Res Function(_DealsData) then) =
@@ -389,6 +403,7 @@ abstract class _$DealsDataCopyWith<$Res> implements $DealsDataCopyWith<$Res> {
       String type});
 }
 
+/// @nodoc
 class __$DealsDataCopyWithImpl<$Res> extends _$DealsDataCopyWithImpl<$Res>
     implements _$DealsDataCopyWith<$Res> {
   __$DealsDataCopyWithImpl(_DealsData _value, $Res Function(_DealsData) _then)
@@ -417,6 +432,7 @@ class __$DealsDataCopyWithImpl<$Res> extends _$DealsDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_DealsData implements _DealsData {
   const _$_DealsData(
       {this.amount,

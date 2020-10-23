@@ -9,6 +9,7 @@ part of 'agent_ad_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AgentAdModelTearOff {
   const _$AgentAdModelTearOff();
 
@@ -23,9 +24,11 @@ class _$AgentAdModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AgentAdModel = _$AgentAdModelTearOff();
 
+/// @nodoc
 mixin _$AgentAdModel {
   int get id;
   String get pic;
@@ -35,6 +38,7 @@ mixin _$AgentAdModel {
   $AgentAdModelCopyWith<AgentAdModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $AgentAdModelCopyWith<$Res> {
   factory $AgentAdModelCopyWith(
           AgentAdModel value, $Res Function(AgentAdModel) then) =
@@ -42,6 +46,7 @@ abstract class $AgentAdModelCopyWith<$Res> {
   $Res call({int id, String pic, String content, String status});
 }
 
+/// @nodoc
 class _$AgentAdModelCopyWithImpl<$Res> implements $AgentAdModelCopyWith<$Res> {
   _$AgentAdModelCopyWithImpl(this._value, this._then);
 
@@ -65,6 +70,7 @@ class _$AgentAdModelCopyWithImpl<$Res> implements $AgentAdModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$AgentAdModelCopyWith<$Res>
     implements $AgentAdModelCopyWith<$Res> {
   factory _$AgentAdModelCopyWith(
@@ -74,6 +80,7 @@ abstract class _$AgentAdModelCopyWith<$Res>
   $Res call({int id, String pic, String content, String status});
 }
 
+/// @nodoc
 class __$AgentAdModelCopyWithImpl<$Res> extends _$AgentAdModelCopyWithImpl<$Res>
     implements _$AgentAdModelCopyWith<$Res> {
   __$AgentAdModelCopyWithImpl(
@@ -99,6 +106,7 @@ class __$AgentAdModelCopyWithImpl<$Res> extends _$AgentAdModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AgentAdModel implements _AgentAdModel {
   const _$_AgentAdModel({this.id, this.pic, this.content, this.status});
 

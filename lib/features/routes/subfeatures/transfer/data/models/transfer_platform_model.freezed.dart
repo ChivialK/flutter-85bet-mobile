@@ -13,6 +13,7 @@ TransferPlatformModel _$TransferPlatformModelFromJson(
   return _TransferPlatformModel.fromJson(json);
 }
 
+/// @nodoc
 class _$TransferPlatformModelTearOff {
   const _$TransferPlatformModelTearOff();
 
@@ -24,11 +25,18 @@ class _$TransferPlatformModelTearOff {
       name: name,
     );
   }
+
+// ignore: unused_element
+  TransferPlatformModel fromJson(Map<String, Object> json) {
+    return TransferPlatformModel.fromJson(json);
+  }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $TransferPlatformModel = _$TransferPlatformModelTearOff();
 
+/// @nodoc
 mixin _$TransferPlatformModel {
   String get site;
   @JsonKey(name: 'site_name')
@@ -38,6 +46,7 @@ mixin _$TransferPlatformModel {
   $TransferPlatformModelCopyWith<TransferPlatformModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $TransferPlatformModelCopyWith<$Res> {
   factory $TransferPlatformModelCopyWith(TransferPlatformModel value,
           $Res Function(TransferPlatformModel) then) =
@@ -45,6 +54,7 @@ abstract class $TransferPlatformModelCopyWith<$Res> {
   $Res call({String site, @JsonKey(name: 'site_name') String name});
 }
 
+/// @nodoc
 class _$TransferPlatformModelCopyWithImpl<$Res>
     implements $TransferPlatformModelCopyWith<$Res> {
   _$TransferPlatformModelCopyWithImpl(this._value, this._then);
@@ -65,6 +75,7 @@ class _$TransferPlatformModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$TransferPlatformModelCopyWith<$Res>
     implements $TransferPlatformModelCopyWith<$Res> {
   factory _$TransferPlatformModelCopyWith(_TransferPlatformModel value,
@@ -74,6 +85,7 @@ abstract class _$TransferPlatformModelCopyWith<$Res>
   $Res call({String site, @JsonKey(name: 'site_name') String name});
 }
 
+/// @nodoc
 class __$TransferPlatformModelCopyWithImpl<$Res>
     extends _$TransferPlatformModelCopyWithImpl<$Res>
     implements _$TransferPlatformModelCopyWith<$Res> {
@@ -97,6 +109,8 @@ class __$TransferPlatformModelCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+
+/// @nodoc
 class _$_TransferPlatformModel implements _TransferPlatformModel {
   const _$_TransferPlatformModel(
       {this.site, @JsonKey(name: 'site_name') this.name});
@@ -159,6 +173,7 @@ abstract class _TransferPlatformModel implements TransferPlatformModel {
   _$TransferPlatformModelCopyWith<_TransferPlatformModel> get copyWith;
 }
 
+/// @nodoc
 class _$TransferPlatformListTearOff {
   const _$TransferPlatformListTearOff();
 
@@ -170,15 +185,18 @@ class _$TransferPlatformListTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $TransferPlatformList = _$TransferPlatformListTearOff();
 
+/// @nodoc
 mixin _$TransferPlatformList {
   List<TransferPlatformModel> get list;
 
   $TransferPlatformListCopyWith<TransferPlatformList> get copyWith;
 }
 
+/// @nodoc
 abstract class $TransferPlatformListCopyWith<$Res> {
   factory $TransferPlatformListCopyWith(TransferPlatformList value,
           $Res Function(TransferPlatformList) then) =
@@ -186,6 +204,7 @@ abstract class $TransferPlatformListCopyWith<$Res> {
   $Res call({List<TransferPlatformModel> list});
 }
 
+/// @nodoc
 class _$TransferPlatformListCopyWithImpl<$Res>
     implements $TransferPlatformListCopyWith<$Res> {
   _$TransferPlatformListCopyWithImpl(this._value, this._then);
@@ -204,6 +223,7 @@ class _$TransferPlatformListCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$TransferPlatformListCopyWith<$Res>
     implements $TransferPlatformListCopyWith<$Res> {
   factory _$TransferPlatformListCopyWith(_TransferPlatformList value,
@@ -213,6 +233,7 @@ abstract class _$TransferPlatformListCopyWith<$Res>
   $Res call({List<TransferPlatformModel> list});
 }
 
+/// @nodoc
 class __$TransferPlatformListCopyWithImpl<$Res>
     extends _$TransferPlatformListCopyWithImpl<$Res>
     implements _$TransferPlatformListCopyWith<$Res> {
@@ -233,6 +254,7 @@ class __$TransferPlatformListCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_TransferPlatformList implements _TransferPlatformList {
   const _$_TransferPlatformList({this.list});
 

@@ -9,6 +9,7 @@ part of 'user_entity.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$UserEntityTearOff {
   const _$UserEntityTearOff();
 
@@ -23,9 +24,11 @@ class _$UserEntityTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $UserEntity = _$UserEntityTearOff();
 
+/// @nodoc
 mixin _$UserEntity {
   String get account;
   String get credit;
@@ -34,6 +37,7 @@ mixin _$UserEntity {
   $UserEntityCopyWith<UserEntity> get copyWith;
 }
 
+/// @nodoc
 abstract class $UserEntityCopyWith<$Res> {
   factory $UserEntityCopyWith(
           UserEntity value, $Res Function(UserEntity) then) =
@@ -41,6 +45,7 @@ abstract class $UserEntityCopyWith<$Res> {
   $Res call({String account, String credit, int vip});
 }
 
+/// @nodoc
 class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
   _$UserEntityCopyWithImpl(this._value, this._then);
 
@@ -62,6 +67,7 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$UserEntityCopyWith<$Res> implements $UserEntityCopyWith<$Res> {
   factory _$UserEntityCopyWith(
           _UserEntity value, $Res Function(_UserEntity) then) =
@@ -70,6 +76,7 @@ abstract class _$UserEntityCopyWith<$Res> implements $UserEntityCopyWith<$Res> {
   $Res call({String account, String credit, int vip});
 }
 
+/// @nodoc
 class __$UserEntityCopyWithImpl<$Res> extends _$UserEntityCopyWithImpl<$Res>
     implements _$UserEntityCopyWith<$Res> {
   __$UserEntityCopyWithImpl(
@@ -93,6 +100,7 @@ class __$UserEntityCopyWithImpl<$Res> extends _$UserEntityCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_UserEntity implements _UserEntity {
   const _$_UserEntity(
       {@required this.account, @required this.credit, @required this.vip})

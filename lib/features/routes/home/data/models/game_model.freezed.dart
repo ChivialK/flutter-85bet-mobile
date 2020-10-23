@@ -9,6 +9,7 @@ part of 'game_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$GameModelTearOff {
   const _$GameModelTearOff();
 
@@ -33,9 +34,11 @@ class _$GameModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $GameModel = _$GameModelTearOff();
 
+/// @nodoc
 mixin _$GameModel {
   int get id;
   String get category;
@@ -49,6 +52,7 @@ mixin _$GameModel {
   $GameModelCopyWith<GameModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $GameModelCopyWith<$Res> {
   factory $GameModelCopyWith(GameModel value, $Res Function(GameModel) then) =
       _$GameModelCopyWithImpl<$Res>;
@@ -62,6 +66,7 @@ abstract class $GameModelCopyWith<$Res> {
       int sort});
 }
 
+/// @nodoc
 class _$GameModelCopyWithImpl<$Res> implements $GameModelCopyWith<$Res> {
   _$GameModelCopyWithImpl(this._value, this._then);
 
@@ -91,6 +96,7 @@ class _$GameModelCopyWithImpl<$Res> implements $GameModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$GameModelCopyWith<$Res> implements $GameModelCopyWith<$Res> {
   factory _$GameModelCopyWith(
           _GameModel value, $Res Function(_GameModel) then) =
@@ -106,6 +112,7 @@ abstract class _$GameModelCopyWith<$Res> implements $GameModelCopyWith<$Res> {
       int sort});
 }
 
+/// @nodoc
 class __$GameModelCopyWithImpl<$Res> extends _$GameModelCopyWithImpl<$Res>
     implements _$GameModelCopyWith<$Res> {
   __$GameModelCopyWithImpl(_GameModel _value, $Res Function(_GameModel) _then)
@@ -136,6 +143,7 @@ class __$GameModelCopyWithImpl<$Res> extends _$GameModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_GameModel implements _GameModel {
   const _$_GameModel(
       {@required this.id,

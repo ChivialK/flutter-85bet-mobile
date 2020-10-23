@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:meta/meta.dart' show required;
 
 /// Check if the [value] is bigger than [min], and smaller than [max]
-bool rangeCheck({@required num value, @required int min, int max = 0}) {
+bool rangeCheck({@required num value, @required num min, num max = 0}) {
   if (max != 0)
     return value >= min && value <= max;
   else
@@ -23,12 +23,28 @@ String formatNum(
   bool floorIfZero = true,
 }) {
   final s = (addCreditSign) ? creditFormat.format(n) : numFormat.format(n);
+  // debugPrint(
+  //     'formatting num: $s, floor Int: $floorIfInt, floor zero: $floorIfZero');
   if (!floorIfZero && s.strToDouble == 0)
     return s;
-  else if (floorIfInt && s.endsWith('.00'))
+  else if (floorIfInt && (s.endsWith('.00') || s.endsWith('.0000')))
     return s.substring(0, s.indexOf('.'));
   else
     return s;
+}
+
+String formatAsCreditNum(
+  num n, {
+  bool floorIfInt = true,
+  bool floorIfZero = true,
+}) {
+  final s = creditFormat.format(n);
+  if (!floorIfZero && s.strToDouble == 0)
+    return s.replaceAll(creditSymbol, '');
+  else if (floorIfInt && s.endsWith('.00'))
+    return s.substring(0, s.indexOf('.')).replaceAll(creditSymbol, '');
+  else
+    return s.replaceAll(creditSymbol, '');
 }
 
 String intToStr(int value, {bool creditSign = false}) =>
@@ -48,8 +64,10 @@ int stringToInt(String str) {
       return double.parse(str.replaceAll(replaceRegex, '').trim()).floor();
     else
       return int.parse(str.replaceAll(replaceRegex, '').trim());
-  } catch (e) {
-    MyLogger.warn(msg: 'parse value has exception, str: $str', tag: 'strToInt');
+  } catch (e, s) {
+    MyLogger.warn(
+        msg: 'parse value has exception, str: $str\nstack:\n$s',
+        tag: 'strToInt');
     return -1;
   }
 }
@@ -89,7 +107,7 @@ String formatValue(
       floorIfInt: floorIfInt || floor,
       floorIfZero: floorIfZero,
     );
-//    debugPrint('result: $result');
+    // debugPrint('format value result: $result');
     return (floor && result.contains('.'))
         ? '${result.substring(0, result.indexOf('.'))}'.trim()
         : result.trim();
@@ -101,6 +119,8 @@ String formatValue(
 
 extension ValueUtilExtension on String {
   int get strToInt => stringToInt(this);
+
   double get strToDouble => stringToDouble(this);
+
   String get basicFormat => formatValue(this);
 }

@@ -18,6 +18,7 @@ import 'features/routes/subfeatures/deposit/deposit_inject.dart';
 import 'features/routes/subfeatures/flows/flows_inject.dart';
 import 'features/routes/subfeatures/message/message_inject.dart';
 import 'features/routes/subfeatures/notice/notice_inject.dart';
+import 'features/routes/subfeatures/service/presentation/state/service_store.dart';
 import 'features/routes/subfeatures/transactions/transaction_inject.dart';
 import 'features/routes/subfeatures/transfer/transfer_inject.dart';
 import 'features/routes/subfeatures/viplevel/vip_level_inject.dart';
@@ -59,6 +60,9 @@ Future<void> init() async {
   sl.registerLazySingleton<UserRepository>(
     () => UserRepositoryImpl(dioApiService: sl(), jwtInterface: sl()),
   );
+  sl.registerLazySingleton<UserInfoRepository>(
+    () => UserInfoRepositoryImpl(dioApiService: sl(), jwtInterface: sl()),
+  );
   sl.registerLazySingleton<EventRepository>(
     () => EventRepositoryImpl(dioApiService: sl(), jwtInterface: sl()),
   );
@@ -71,9 +75,6 @@ Future<void> init() async {
   );
   sl.registerLazySingleton<JwtInterface>(
     () => JwtInterfaceImpl(dioApiService: sl()),
-  );
-  sl.registerLazySingleton<MemberRepository>(
-    () => MemberRepositoryImpl(dioApiService: sl(), jwtInterface: sl()),
   );
   sl.registerLazySingleton<DepositRepository>(
     () => DepositRepositoryImpl(dioApiService: sl(), jwtInterface: sl()),
@@ -129,7 +130,7 @@ Future<void> init() async {
     () => UpdateStore(sl<UpdateRepository>()),
   );
   sl.registerLazySingleton(
-    () => EventStore(sl<EventRepository>()),
+    () => EventStore(sl<EventRepository>(), sl<UserInfoRepository>()),
   );
   sl.registerLazySingleton(
     () => HomeStore(sl<HomeRepository>()),
@@ -141,7 +142,10 @@ Future<void> init() async {
     () => LoginStore(sl<UserRepository>()),
   );
   sl.registerFactory(
-    () => MemberCreditStore(sl<MemberRepository>()),
+    () => RegisterStore(sl<UserRepository>()),
+  );
+  sl.registerFactory(
+    () => MemberCreditStore(sl<UserInfoRepository>()),
   );
   sl.registerFactory(
     () => DepositStore(sl<DepositRepository>()),
@@ -156,7 +160,7 @@ Future<void> init() async {
     () => WithdrawStore(sl<WithdrawRepository>()),
   );
   sl.registerFactory(
-    () => BalanceStore(sl<BalanceRepository>()),
+    () => BalanceStore(sl<BalanceRepository>(), sl<UserInfoRepository>()),
   );
   sl.registerFactory(
     () => WalletStore(sl<WalletRepository>()),
@@ -187,6 +191,9 @@ Future<void> init() async {
   );
   sl.registerFactory(
     () => VipLevelStore(sl<VipLevelRepository>()),
+  );
+  sl.registerFactory(
+    () => ServiceStore(sl<EventRepository>()),
   );
 
   /// Test only

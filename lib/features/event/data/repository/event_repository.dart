@@ -1,5 +1,5 @@
-import 'package:flutter_85bet_mobile/core/internal/global.dart';
 import 'package:flutter_85bet_mobile/core/repository_export.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/service/data/model/service_model.dart';
 
 import '../models/ad_model.dart';
 import '../models/event_model.dart';
@@ -14,7 +14,7 @@ class EventApi {
 }
 
 abstract class EventRepository {
-  Future<Either<Failure, bool>> getWebsiteList();
+  Future<Either<Failure, ServiceModel>> getWebsiteList();
 
   Future<Either<Failure, List<AdModel>>> getAds();
 
@@ -109,7 +109,7 @@ class EventRepositoryImpl implements EventRepository {
   }
 
   @override
-  Future<Either<Failure, bool>> getWebsiteList() async {
+  Future<Either<Failure, ServiceModel>> getWebsiteList() async {
     final result = await requestModel<RequestCodeModel>(
       request: dioApiService.get(EventApi.GET_WEB_LIST),
       jsonToModel: RequestCodeModel.jsonToCodeModel,
@@ -121,12 +121,7 @@ class EventRepositoryImpl implements EventRepository {
       (model) {
         if (model.isSuccess == false) return Left(Failure.event());
         if (model.data != null && model.data is Map) {
-          String service = (model.data as Map).containsKey('cs')
-              ? model.data['cs']
-              : Global.BET85_SERVICE_URL;
-          print('cs url: $service');
-          Global.currentService = service;
-          return Right(true);
+          return Right(ServiceModel.jsonToServiceModel(model.data));
         }
         return Left(Failure.dataType());
       },

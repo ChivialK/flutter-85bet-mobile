@@ -17,11 +17,10 @@ void main() {
     print('decoded map2: $mapList2');
     print('\n\n');
 
-    List<BetRecordTypeModel> modelList = new List();
+    List<BetRecordType> modelList = new List();
     mapList.forEach((value) {
       print('category data: $value');
-      BetRecordTypeModel model =
-          BetRecordTypeModel.jsonToBetRecordTypeModel(value);
+      BetRecordTypeModel model = BetRecordTypeModel.jsonToBetRecordType(value);
       print('platform data: ${mapList2[model.categoryId.toString()]}');
       modelList.add(
           model.copyWith(platformMap: mapList2[model.categoryId.toString()]));

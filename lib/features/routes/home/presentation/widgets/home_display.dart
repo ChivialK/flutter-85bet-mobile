@@ -102,7 +102,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
                   snapshot.data.isNotEmpty &&
                   _eventStore.autoShowAds &&
                   _eventStore.checkSkip == false) {
-                print('stream home ads: ${snapshot.data.length}');
+                debugPrint('stream home ads: ${snapshot.data.length}');
                 showAdsDialog(new List.from(snapshot.data));
               }
               return SizedBox.shrink();
@@ -245,6 +245,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
                                 _shortcutWidget = HomeShortcutWidget(
                                   key: _shortcutWidgetKey,
                                   sizeCalc: _sizeCalc,
+                                  eventStore: _eventStore,
                                 );
                               } else if (snapshot.data) {
                                 _shortcutWidgetKey.currentState.updateUser();

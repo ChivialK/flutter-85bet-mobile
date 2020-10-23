@@ -9,6 +9,7 @@ part of 'bet_record_form.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$BetRecordFormTearOff {
   const _$BetRecordFormTearOff();
 
@@ -31,9 +32,11 @@ class _$BetRecordFormTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BetRecordForm = _$BetRecordFormTearOff();
 
+/// @nodoc
 mixin _$BetRecordForm {
   int get categoryId;
   String get platform;
@@ -45,6 +48,7 @@ mixin _$BetRecordForm {
   $BetRecordFormCopyWith<BetRecordForm> get copyWith;
 }
 
+/// @nodoc
 abstract class $BetRecordFormCopyWith<$Res> {
   factory $BetRecordFormCopyWith(
           BetRecordForm value, $Res Function(BetRecordForm) then) =
@@ -58,6 +62,7 @@ abstract class $BetRecordFormCopyWith<$Res> {
       String endTime});
 }
 
+/// @nodoc
 class _$BetRecordFormCopyWithImpl<$Res>
     implements $BetRecordFormCopyWith<$Res> {
   _$BetRecordFormCopyWithImpl(this._value, this._then);
@@ -86,6 +91,7 @@ class _$BetRecordFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$BetRecordFormCopyWith<$Res>
     implements $BetRecordFormCopyWith<$Res> {
   factory _$BetRecordFormCopyWith(
@@ -101,6 +107,7 @@ abstract class _$BetRecordFormCopyWith<$Res>
       String endTime});
 }
 
+/// @nodoc
 class __$BetRecordFormCopyWithImpl<$Res>
     extends _$BetRecordFormCopyWithImpl<$Res>
     implements _$BetRecordFormCopyWith<$Res> {
@@ -131,6 +138,7 @@ class __$BetRecordFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_BetRecordForm implements _BetRecordForm {
   const _$_BetRecordForm(
       {@required this.categoryId,

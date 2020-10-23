@@ -40,12 +40,6 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
       var value = item.value;
       if (value.isUserOnly && !hasUser)
         RouterNavigate.navigateToPage(RoutePage.login);
-      else if (item == ScreenNavigationBarItem.service)
-        RouterNavigate.navigateToPage(value.route,
-            arg: WebRouteArguments(
-              startUrl: Global.currentService,
-              hideBars: true,
-            ));
       else
         RouterNavigate.navigateToPage(value.route);
     }
@@ -123,7 +117,7 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
     return BottomNavigationBarItem(
       icon: (addBadge)
           ? Badge(
-              showBadge: _eventStore.hasNewMessage,
+              showBadge: getAppGlobalStreams.hasNewMessage,
               badgeColor: Themes.hintHighlightRed,
               badgeContent: Container(
                 margin: const EdgeInsets.all(1.0),

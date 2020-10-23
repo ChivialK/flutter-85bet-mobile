@@ -9,6 +9,7 @@ part of 'marquee_model_list.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$MarqueeModelListTearOff {
   const _$MarqueeModelListTearOff();
 
@@ -25,9 +26,11 @@ class _$MarqueeModelListTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $MarqueeModelList = _$MarqueeModelListTearOff();
 
+/// @nodoc
 mixin _$MarqueeModelList {
   @JsonKey(name: 'marquee', fromJson: decodeMarqueeModel, required: true)
   List<MarqueeModel> get marquees;
@@ -36,6 +39,7 @@ mixin _$MarqueeModelList {
   $MarqueeModelListCopyWith<MarqueeModelList> get copyWith;
 }
 
+/// @nodoc
 abstract class $MarqueeModelListCopyWith<$Res> {
   factory $MarqueeModelListCopyWith(
           MarqueeModelList value, $Res Function(MarqueeModelList) then) =
@@ -46,6 +50,7 @@ abstract class $MarqueeModelListCopyWith<$Res> {
       int speed});
 }
 
+/// @nodoc
 class _$MarqueeModelListCopyWithImpl<$Res>
     implements $MarqueeModelListCopyWith<$Res> {
   _$MarqueeModelListCopyWithImpl(this._value, this._then);
@@ -68,6 +73,7 @@ class _$MarqueeModelListCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$MarqueeModelListCopyWith<$Res>
     implements $MarqueeModelListCopyWith<$Res> {
   factory _$MarqueeModelListCopyWith(
@@ -80,6 +86,7 @@ abstract class _$MarqueeModelListCopyWith<$Res>
       int speed});
 }
 
+/// @nodoc
 class __$MarqueeModelListCopyWithImpl<$Res>
     extends _$MarqueeModelListCopyWithImpl<$Res>
     implements _$MarqueeModelListCopyWith<$Res> {
@@ -104,6 +111,7 @@ class __$MarqueeModelListCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_MarqueeModelList implements _MarqueeModelList {
   const _$_MarqueeModelList(
       {@JsonKey(name: 'marquee', fromJson: decodeMarqueeModel, required: true)

@@ -33,6 +33,7 @@ class JsonUtil {
     bool trim = true,
     String tag = debugTag,
   }) {
+    if (str is List) return str;
     final trimmed = (trim) ? trimJson(str) : str;
     if (trimmed.isEmpty) return [];
     try {

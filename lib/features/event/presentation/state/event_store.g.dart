@@ -9,21 +9,6 @@ part of 'event_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$EventStore on _EventStore, Store {
-  final _$hasNewMessageAtom = Atom(name: '_EventStore.hasNewMessage');
-
-  @override
-  bool get hasNewMessage {
-    _$hasNewMessageAtom.reportRead();
-    return super.hasNewMessage;
-  }
-
-  @override
-  set hasNewMessage(bool value) {
-    _$hasNewMessageAtom.reportWrite(value, super.hasNewMessage, () {
-      super.hasNewMessage = value;
-    });
-  }
-
   final _$errorMessageAtom = Atom(name: '_EventStore.errorMessage');
 
   @override
@@ -55,6 +40,13 @@ mixin _$EventStore on _EventStore, Store {
         .run(() => super.getNewMessageCount());
   }
 
+  final _$getUserCreditAsyncAction = AsyncAction('_EventStore.getUserCredit');
+
+  @override
+  Future<void> getUserCredit() {
+    return _$getUserCreditAsyncAction.run(() => super.getUserCredit());
+  }
+
   final _$getAdsAsyncAction = AsyncAction('_EventStore.getAds');
 
   @override
@@ -65,7 +57,6 @@ mixin _$EventStore on _EventStore, Store {
   @override
   String toString() {
     return '''
-hasNewMessage: ${hasNewMessage},
 errorMessage: ${errorMessage}
     ''';
   }

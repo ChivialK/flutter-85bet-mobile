@@ -24,7 +24,7 @@ class TransactionDisplayTableState extends State<TransactionDisplayTable> {
   TableRow _headerRow;
 
   set updateContent(List<TransactionData> list) {
-    print('transaction list length: ${list.length}');
+    debugPrint('transaction list length: ${list.length}');
     if (_dataList != list) {
       _dataList = list;
       setState(() {});
@@ -39,7 +39,7 @@ class TransactionDisplayTableState extends State<TransactionDisplayTable> {
         48; // 96 = padding and pager
     int availableRows =
         (availableHeight / (FontSize.NORMAL.value * 2.35)).floor();
-    print('max height: $availableHeight, available rows: $availableRows');
+    debugPrint('max height: $availableHeight, available rows: $availableRows');
     // FontSize.NORMAL.value * 2 = font size * 2 line + space
     _tableHeight = FontSize.NORMAL.value * 2.15 * availableRows;
 

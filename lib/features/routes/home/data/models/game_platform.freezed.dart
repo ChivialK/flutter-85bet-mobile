@@ -9,6 +9,7 @@ part of 'game_platform.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$GamePlatformTearOff {
   const _$GamePlatformTearOff();
 
@@ -72,9 +73,11 @@ class _$GamePlatformTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $GamePlatform = _$GamePlatformTearOff();
 
+/// @nodoc
 mixin _$GamePlatform {
   int get id;
   @JsonKey(name: 'class', fromJson: decodePlatformClassName)
@@ -168,6 +171,7 @@ mixin _$GamePlatform {
   $GamePlatformCopyWith<GamePlatform> get copyWith;
 }
 
+/// @nodoc
 abstract class $GamePlatformCopyWith<$Res> {
   factory $GamePlatformCopyWith(
           GamePlatform value, $Res Function(GamePlatform) then) =
@@ -184,6 +188,7 @@ abstract class $GamePlatformCopyWith<$Res> {
       String favorite});
 }
 
+/// @nodoc
 class _$GamePlatformCopyWithImpl<$Res> implements $GamePlatformCopyWith<$Res> {
   _$GamePlatformCopyWithImpl(this._value, this._then);
 
@@ -211,6 +216,7 @@ class _$GamePlatformCopyWithImpl<$Res> implements $GamePlatformCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class $GamePlatformModelCopyWith<$Res>
     implements $GamePlatformCopyWith<$Res> {
   factory $GamePlatformModelCopyWith(
@@ -233,6 +239,7 @@ abstract class $GamePlatformModelCopyWith<$Res>
       String favorite});
 }
 
+/// @nodoc
 class _$GamePlatformModelCopyWithImpl<$Res>
     extends _$GamePlatformCopyWithImpl<$Res>
     implements $GamePlatformModelCopyWith<$Res> {
@@ -271,6 +278,7 @@ class _$GamePlatformModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$GamePlatformModel implements GamePlatformModel {
   const _$GamePlatformModel(
       {@required this.id,
@@ -514,6 +522,7 @@ abstract class GamePlatformModel implements GamePlatform {
   $GamePlatformModelCopyWith<GamePlatformModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $GamePlatformEntityCopyWith<$Res>
     implements $GamePlatformCopyWith<$Res> {
   factory $GamePlatformEntityCopyWith(
@@ -537,6 +546,7 @@ abstract class $GamePlatformEntityCopyWith<$Res>
       String favorite});
 }
 
+/// @nodoc
 class _$GamePlatformEntityCopyWithImpl<$Res>
     extends _$GamePlatformCopyWithImpl<$Res>
     implements $GamePlatformEntityCopyWith<$Res> {
@@ -569,6 +579,8 @@ class _$GamePlatformEntityCopyWithImpl<$Res>
 
 @HiveType(typeId: 104)
 @Implements(DataOperator)
+
+/// @nodoc
 class _$GamePlatformEntity implements GamePlatformEntity {
   const _$GamePlatformEntity(
       {@required

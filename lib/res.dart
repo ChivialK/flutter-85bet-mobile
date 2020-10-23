@@ -6,6 +6,7 @@ class Res {
   static const String homeBoxUserAreaBg = "assets/images/index_member.jpg";
   static const String iconBarLogo = "assets/images/icon_bar_logo.png";
   static const String iconPending = "assets/images/icon_pending.png";
+  static const String iconAbout = "assets/images/icon_about.png";
 
 //  static const String tbico_casino = "assets/images/index/tbico_casino.png";
 //  static const String tbico_slot = "assets/images/index/tbico_slot.png";
@@ -58,4 +59,17 @@ class Res {
 //      "assets/images/movie_new/expand.png";
 //  static const String movie_category_action_fold =
 //      "assets/images/movie_new/fold.png";
+
+  static const String certBvi = "assets/images/about/cert_bvi.png";
+  static const String certGc = "assets/images/about/cert_gc.png";
+  static const String certMga = "assets/images/about/cert_mga.png";
+  static const String certPagcor = "assets/images/about/cert_pagcor.png";
+
+  static const String teamsMcu = "assets/images/about/teams_mcu.png";
+  static const String teamsFra1 = "assets/images/about/teams_fra1.png";
+  static const String teamsFcb = "assets/images/about/teams_fcb.png";
+  static const String teamsLcc = "assets/images/about/teams_lcc.png";
+  static const String teamsAfa = "assets/images/about/teams_afa.png";
+  static const String teamsIta1 = "assets/images/about/teams_ita1.png";
+  static const String teamsHbsc = "assets/images/about/teams_hbsc.png";
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_dropdown_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
-import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
 import '../../data/form/bankcard_form.dart';
 import '../../data/models/bankcard_model.dart';
@@ -52,13 +51,8 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
         province: _provinceFieldKey.currentState.getInput,
         area: '',
       );
-      if (dataForm.owner.hasInvalidChinese ||
-          dataForm.branch.hasInvalidChinese) {
-        callToast(localeStr.messageInvalidSymbol);
-        return;
-      }
       if (dataForm.isValid) {
-        print('bankcard form: ${dataForm.toJson()}');
+        debugPrint('bankcard form: ${dataForm.toJson()}');
         if (widget.store.waitForNewCardResult)
           callToast(localeStr.messageWait);
         else
@@ -85,7 +79,7 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
         (_) => widget.store.banksMap,
         // Run some logic with the content of the observed field
         (map) {
-          print('bank map changed, size: ${map.keys.length}');
+          debugPrint('bank map changed, size: ${map.keys.length}');
           setState(() {
             bankMap = map;
           });
@@ -165,7 +159,6 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                             new CustomizeFieldWidget(
                               key: _nameFieldKey,
                               hint: '',
-                              fieldType: FieldType.TextOnly,
                               persistHint: false,
                               prefixText: localeStr.bankcardViewTitleOwner,
                               prefixTextSize: FontSize.SUBTITLE.value,
@@ -259,7 +252,8 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                                 hint: '',
                                 persistHint: false,
                                 prefixText:
-                                    localeStr.bankcardViewTitleBankBranch,
+                                    localeStr.bankcardViewTitleBankProvince,
+                                prefixTextSize: FontSize.SUBTITLE.value,
                                 maxInputLength: InputLimit.NAME_MAX,
                                 horizontalInset: _fieldInset,
                                 errorMsg: localeStr.messageInvalidCardBankPoint,

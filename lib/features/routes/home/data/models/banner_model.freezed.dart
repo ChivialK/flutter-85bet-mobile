@@ -9,6 +9,7 @@ part of 'banner_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$BannerModelTearOff {
   const _$BannerModelTearOff();
 
@@ -43,9 +44,11 @@ class _$BannerModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BannerModel = _$BannerModelTearOff();
 
+/// @nodoc
 mixin _$BannerModel {
   int get id;
   String get title;
@@ -68,6 +71,7 @@ mixin _$BannerModel {
   $BannerModelCopyWith<BannerModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $BannerModelCopyWith<$Res> {
   factory $BannerModelCopyWith(
           BannerModel value, $Res Function(BannerModel) then) =
@@ -87,6 +91,7 @@ abstract class $BannerModelCopyWith<$Res> {
       @JsonKey(name: 'mobile_url', required: true) String mobileUrl});
 }
 
+/// @nodoc
 class _$BannerModelCopyWithImpl<$Res> implements $BannerModelCopyWith<$Res> {
   _$BannerModelCopyWithImpl(this._value, this._then);
 
@@ -126,6 +131,7 @@ class _$BannerModelCopyWithImpl<$Res> implements $BannerModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$BannerModelCopyWith<$Res>
     implements $BannerModelCopyWith<$Res> {
   factory _$BannerModelCopyWith(
@@ -147,6 +153,7 @@ abstract class _$BannerModelCopyWith<$Res>
       @JsonKey(name: 'mobile_url', required: true) String mobileUrl});
 }
 
+/// @nodoc
 class __$BannerModelCopyWithImpl<$Res> extends _$BannerModelCopyWithImpl<$Res>
     implements _$BannerModelCopyWith<$Res> {
   __$BannerModelCopyWithImpl(
@@ -188,6 +195,7 @@ class __$BannerModelCopyWithImpl<$Res> extends _$BannerModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_BannerModel implements _BannerModel {
   const _$_BannerModel(
       {@required this.id,

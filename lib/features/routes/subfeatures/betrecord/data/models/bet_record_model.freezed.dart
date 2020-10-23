@@ -9,6 +9,7 @@ part of 'bet_record_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$BetRecordModelTearOff {
   const _$BetRecordModelTearOff();
 
@@ -37,9 +38,11 @@ class _$BetRecordModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BetRecordModel = _$BetRecordModelTearOff();
 
+/// @nodoc
 mixin _$BetRecordModel {
   @JsonKey(name: 'current_page')
   int get currentPage;
@@ -60,6 +63,7 @@ mixin _$BetRecordModel {
   $BetRecordModelCopyWith<BetRecordModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $BetRecordModelCopyWith<$Res> {
   factory $BetRecordModelCopyWith(
           BetRecordModel value, $Res Function(BetRecordModel) then) =
@@ -76,6 +80,7 @@ abstract class $BetRecordModelCopyWith<$Res> {
       @JsonKey(fromJson: decodeBetRecordData) List<BetRecordData> data});
 }
 
+/// @nodoc
 class _$BetRecordModelCopyWithImpl<$Res>
     implements $BetRecordModelCopyWith<$Res> {
   _$BetRecordModelCopyWithImpl(this._value, this._then);
@@ -113,6 +118,7 @@ class _$BetRecordModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$BetRecordModelCopyWith<$Res>
     implements $BetRecordModelCopyWith<$Res> {
   factory _$BetRecordModelCopyWith(
@@ -131,6 +137,7 @@ abstract class _$BetRecordModelCopyWith<$Res>
       @JsonKey(fromJson: decodeBetRecordData) List<BetRecordData> data});
 }
 
+/// @nodoc
 class __$BetRecordModelCopyWithImpl<$Res>
     extends _$BetRecordModelCopyWithImpl<$Res>
     implements _$BetRecordModelCopyWith<$Res> {
@@ -170,6 +177,7 @@ class __$BetRecordModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_BetRecordModel implements _BetRecordModel {
   const _$_BetRecordModel(
       {@JsonKey(name: 'current_page') this.currentPage,
@@ -300,6 +308,7 @@ abstract class _BetRecordModel implements BetRecordModel {
   _$BetRecordModelCopyWith<_BetRecordModel> get copyWith;
 }
 
+/// @nodoc
 class _$BetRecordDataTearOff {
   const _$BetRecordDataTearOff();
 
@@ -328,9 +337,11 @@ class _$BetRecordDataTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BetRecordData = _$BetRecordDataTearOff();
 
+/// @nodoc
 mixin _$BetRecordData {
   @JsonKey(name: 'activebet')
   String get activeBet;
@@ -349,6 +360,7 @@ mixin _$BetRecordData {
   $BetRecordDataCopyWith<BetRecordData> get copyWith;
 }
 
+/// @nodoc
 abstract class $BetRecordDataCopyWith<$Res> {
   factory $BetRecordDataCopyWith(
           BetRecordData value, $Res Function(BetRecordData) then) =
@@ -365,6 +377,7 @@ abstract class $BetRecordDataCopyWith<$Res> {
       dynamic key});
 }
 
+/// @nodoc
 class _$BetRecordDataCopyWithImpl<$Res>
     implements $BetRecordDataCopyWith<$Res> {
   _$BetRecordDataCopyWithImpl(this._value, this._then);
@@ -399,6 +412,7 @@ class _$BetRecordDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$BetRecordDataCopyWith<$Res>
     implements $BetRecordDataCopyWith<$Res> {
   factory _$BetRecordDataCopyWith(
@@ -417,6 +431,7 @@ abstract class _$BetRecordDataCopyWith<$Res>
       dynamic key});
 }
 
+/// @nodoc
 class __$BetRecordDataCopyWithImpl<$Res>
     extends _$BetRecordDataCopyWithImpl<$Res>
     implements _$BetRecordDataCopyWith<$Res> {
@@ -453,6 +468,7 @@ class __$BetRecordDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_BetRecordData implements _BetRecordData {
   const _$_BetRecordData(
       {@JsonKey(name: 'activebet') this.activeBet,
@@ -576,6 +592,7 @@ abstract class _BetRecordData implements BetRecordData {
   _$BetRecordDataCopyWith<_BetRecordData> get copyWith;
 }
 
+/// @nodoc
 class _$BetRecordDataAllPlatformTearOff {
   const _$BetRecordDataAllPlatformTearOff();
 
@@ -591,9 +608,11 @@ class _$BetRecordDataAllPlatformTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $BetRecordDataAllPlatform = _$BetRecordDataAllPlatformTearOff();
 
+/// @nodoc
 mixin _$BetRecordDataAllPlatform {
   num get bet;
   num get valid;
@@ -603,6 +622,7 @@ mixin _$BetRecordDataAllPlatform {
   $BetRecordDataAllPlatformCopyWith<BetRecordDataAllPlatform> get copyWith;
 }
 
+/// @nodoc
 abstract class $BetRecordDataAllPlatformCopyWith<$Res> {
   factory $BetRecordDataAllPlatformCopyWith(BetRecordDataAllPlatform value,
           $Res Function(BetRecordDataAllPlatform) then) =
@@ -610,6 +630,7 @@ abstract class $BetRecordDataAllPlatformCopyWith<$Res> {
   $Res call({num bet, num valid, num payout, dynamic key});
 }
 
+/// @nodoc
 class _$BetRecordDataAllPlatformCopyWithImpl<$Res>
     implements $BetRecordDataAllPlatformCopyWith<$Res> {
   _$BetRecordDataAllPlatformCopyWithImpl(this._value, this._then);
@@ -634,6 +655,7 @@ class _$BetRecordDataAllPlatformCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$BetRecordDataAllPlatformCopyWith<$Res>
     implements $BetRecordDataAllPlatformCopyWith<$Res> {
   factory _$BetRecordDataAllPlatformCopyWith(_BetRecordDataAllPlatform value,
@@ -643,6 +665,7 @@ abstract class _$BetRecordDataAllPlatformCopyWith<$Res>
   $Res call({num bet, num valid, num payout, dynamic key});
 }
 
+/// @nodoc
 class __$BetRecordDataAllPlatformCopyWithImpl<$Res>
     extends _$BetRecordDataAllPlatformCopyWithImpl<$Res>
     implements _$BetRecordDataAllPlatformCopyWith<$Res> {
@@ -670,6 +693,7 @@ class __$BetRecordDataAllPlatformCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_BetRecordDataAllPlatform implements _BetRecordDataAllPlatform {
   const _$_BetRecordDataAllPlatform(
       {this.bet, this.valid, this.payout, this.key});

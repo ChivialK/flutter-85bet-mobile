@@ -9,6 +9,7 @@ part of 'message_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$MessageModelTearOff {
   const _$MessageModelTearOff();
 
@@ -25,9 +26,11 @@ class _$MessageModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $MessageModel = _$MessageModelTearOff();
 
+/// @nodoc
 mixin _$MessageModel {
   String get date;
   String get msg;
@@ -38,6 +41,7 @@ mixin _$MessageModel {
   $MessageModelCopyWith<MessageModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $MessageModelCopyWith<$Res> {
   factory $MessageModelCopyWith(
           MessageModel value, $Res Function(MessageModel) then) =
@@ -45,6 +49,7 @@ abstract class $MessageModelCopyWith<$Res> {
   $Res call({String date, String msg, int id, String status, String title});
 }
 
+/// @nodoc
 class _$MessageModelCopyWithImpl<$Res> implements $MessageModelCopyWith<$Res> {
   _$MessageModelCopyWithImpl(this._value, this._then);
 
@@ -70,6 +75,7 @@ class _$MessageModelCopyWithImpl<$Res> implements $MessageModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$MessageModelCopyWith<$Res>
     implements $MessageModelCopyWith<$Res> {
   factory _$MessageModelCopyWith(
@@ -79,6 +85,7 @@ abstract class _$MessageModelCopyWith<$Res>
   $Res call({String date, String msg, int id, String status, String title});
 }
 
+/// @nodoc
 class __$MessageModelCopyWithImpl<$Res> extends _$MessageModelCopyWithImpl<$Res>
     implements _$MessageModelCopyWith<$Res> {
   __$MessageModelCopyWithImpl(
@@ -106,6 +113,7 @@ class __$MessageModelCopyWithImpl<$Res> extends _$MessageModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_MessageModel implements _MessageModel {
   _$_MessageModel({this.date, this.msg, this.id, this.status, this.title});
 

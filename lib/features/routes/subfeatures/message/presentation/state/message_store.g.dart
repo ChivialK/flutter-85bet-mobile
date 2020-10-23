@@ -66,8 +66,8 @@ mixin _$MessageStore on _MessageStore, Store {
   @override
   String toString() {
     return '''
-errorMessage: $errorMessage,
-state: $state
+errorMessage: ${errorMessage},
+state: ${state}
     ''';
   }
 }

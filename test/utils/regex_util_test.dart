@@ -35,7 +35,7 @@ void main() {
 
   test('test date regex', () {
     String date = '1990-01-01';
-    expect(date.isValidDate, true);
+    expect(date.isDate, true);
   });
 
   test('test chinese regex', () {
@@ -49,6 +49,13 @@ void main() {
     expect(testStr4.hasChinese, true);
     String testStr5 = '一2三';
     expect(testStr5.hasChinese, true);
+  });
+
+  test('test mix string to int', () {
+    String mixStr = 'failure(code: 8000)';
+    String extract = mixStr.replaceAll(RegExp('[^0-9]'), '');
+    print('extract int:　$extract');
+    expect(int.parse(extract), 8000);
   });
 
   test('test html regex', () {

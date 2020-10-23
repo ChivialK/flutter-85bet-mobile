@@ -164,11 +164,11 @@ mixin _$CenterStore on _CenterStore, Store {
   @override
   String toString() {
     return '''
-accountDataReady: $accountDataReady,
-waitForResponse: $waitForResponse,
-requestResponse: $requestResponse,
-errorMessage: $errorMessage,
-state: $state
+accountDataReady: ${accountDataReady},
+waitForResponse: ${waitForResponse},
+requestResponse: ${requestResponse},
+errorMessage: ${errorMessage},
+state: ${state}
     ''';
   }
 }

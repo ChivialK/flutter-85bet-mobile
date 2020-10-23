@@ -9,6 +9,7 @@ part of 'login_form.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$LoginFormTearOff {
   const _$LoginFormTearOff();
 
@@ -22,9 +23,11 @@ class _$LoginFormTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $LoginForm = _$LoginFormTearOff();
 
+/// @nodoc
 mixin _$LoginForm {
   @JsonKey(name: 'accountcode')
   String get account;
@@ -33,12 +36,14 @@ mixin _$LoginForm {
   $LoginFormCopyWith<LoginForm> get copyWith;
 }
 
+/// @nodoc
 abstract class $LoginFormCopyWith<$Res> {
   factory $LoginFormCopyWith(LoginForm value, $Res Function(LoginForm) then) =
       _$LoginFormCopyWithImpl<$Res>;
   $Res call({@JsonKey(name: 'accountcode') String account, String password});
 }
 
+/// @nodoc
 class _$LoginFormCopyWithImpl<$Res> implements $LoginFormCopyWith<$Res> {
   _$LoginFormCopyWithImpl(this._value, this._then);
 
@@ -58,6 +63,7 @@ class _$LoginFormCopyWithImpl<$Res> implements $LoginFormCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$LoginFormCopyWith<$Res> implements $LoginFormCopyWith<$Res> {
   factory _$LoginFormCopyWith(
           _LoginForm value, $Res Function(_LoginForm) then) =
@@ -66,6 +72,7 @@ abstract class _$LoginFormCopyWith<$Res> implements $LoginFormCopyWith<$Res> {
   $Res call({@JsonKey(name: 'accountcode') String account, String password});
 }
 
+/// @nodoc
 class __$LoginFormCopyWithImpl<$Res> extends _$LoginFormCopyWithImpl<$Res>
     implements _$LoginFormCopyWith<$Res> {
   __$LoginFormCopyWithImpl(_LoginForm _value, $Res Function(_LoginForm) _then)
@@ -86,6 +93,7 @@ class __$LoginFormCopyWithImpl<$Res> extends _$LoginFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LoginForm implements _LoginForm {
   const _$_LoginForm(
       {@JsonKey(name: 'accountcode') this.account, this.password});
@@ -138,6 +146,7 @@ abstract class _LoginForm implements LoginForm {
   _$LoginFormCopyWith<_LoginForm> get copyWith;
 }
 
+/// @nodoc
 class _$LoginHiveFormTearOff {
   const _$LoginHiveFormTearOff();
 
@@ -154,9 +163,11 @@ class _$LoginHiveFormTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $LoginHiveForm = _$LoginHiveFormTearOff();
 
+/// @nodoc
 mixin _$LoginHiveForm {
   @HiveField(0)
   String get account;
@@ -168,6 +179,7 @@ mixin _$LoginHiveForm {
   $LoginHiveFormCopyWith<LoginHiveForm> get copyWith;
 }
 
+/// @nodoc
 abstract class $LoginHiveFormCopyWith<$Res> {
   factory $LoginHiveFormCopyWith(
           LoginHiveForm value, $Res Function(LoginHiveForm) then) =
@@ -178,6 +190,7 @@ abstract class $LoginHiveFormCopyWith<$Res> {
       @HiveField(2) bool fastLogin});
 }
 
+/// @nodoc
 class _$LoginHiveFormCopyWithImpl<$Res>
     implements $LoginHiveFormCopyWith<$Res> {
   _$LoginHiveFormCopyWithImpl(this._value, this._then);
@@ -200,6 +213,7 @@ class _$LoginHiveFormCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$LoginHiveFormCopyWith<$Res>
     implements $LoginHiveFormCopyWith<$Res> {
   factory _$LoginHiveFormCopyWith(
@@ -212,6 +226,7 @@ abstract class _$LoginHiveFormCopyWith<$Res>
       @HiveField(2) bool fastLogin});
 }
 
+/// @nodoc
 class __$LoginHiveFormCopyWithImpl<$Res>
     extends _$LoginHiveFormCopyWithImpl<$Res>
     implements _$LoginHiveFormCopyWith<$Res> {
@@ -237,6 +252,8 @@ class __$LoginHiveFormCopyWithImpl<$Res>
 }
 
 @HiveType(typeId: 109)
+
+/// @nodoc
 class _$_LoginHiveForm implements _LoginHiveForm {
   const _$_LoginHiveForm(
       {@HiveField(0) this.account,

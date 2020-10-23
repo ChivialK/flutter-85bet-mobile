@@ -9,6 +9,7 @@ part of 'ad_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AdModelTearOff {
   const _$AdModelTearOff();
 
@@ -43,9 +44,11 @@ class _$AdModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AdModel = _$AdModelTearOff();
 
+/// @nodoc
 mixin _$AdModel {
   int get id;
   String get title;
@@ -68,6 +71,7 @@ mixin _$AdModel {
   $AdModelCopyWith<AdModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $AdModelCopyWith<$Res> {
   factory $AdModelCopyWith(AdModel value, $Res Function(AdModel) then) =
       _$AdModelCopyWithImpl<$Res>;
@@ -86,6 +90,7 @@ abstract class $AdModelCopyWith<$Res> {
       @JsonKey(name: 'url_blank') bool urlBlank});
 }
 
+/// @nodoc
 class _$AdModelCopyWithImpl<$Res> implements $AdModelCopyWith<$Res> {
   _$AdModelCopyWithImpl(this._value, this._then);
 
@@ -125,6 +130,7 @@ class _$AdModelCopyWithImpl<$Res> implements $AdModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$AdModelCopyWith<$Res> implements $AdModelCopyWith<$Res> {
   factory _$AdModelCopyWith(_AdModel value, $Res Function(_AdModel) then) =
       __$AdModelCopyWithImpl<$Res>;
@@ -144,6 +150,7 @@ abstract class _$AdModelCopyWith<$Res> implements $AdModelCopyWith<$Res> {
       @JsonKey(name: 'url_blank') bool urlBlank});
 }
 
+/// @nodoc
 class __$AdModelCopyWithImpl<$Res> extends _$AdModelCopyWithImpl<$Res>
     implements _$AdModelCopyWith<$Res> {
   __$AdModelCopyWithImpl(_AdModel _value, $Res Function(_AdModel) _then)
@@ -184,6 +191,7 @@ class __$AdModelCopyWithImpl<$Res> extends _$AdModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AdModel implements _AdModel {
   const _$_AdModel(
       {this.id,

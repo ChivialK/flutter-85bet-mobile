@@ -9,6 +9,7 @@ part of 'agent_ledger_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AgentLedgerModelTearOff {
   const _$AgentLedgerModelTearOff();
 
@@ -37,9 +38,11 @@ class _$AgentLedgerModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AgentLedgerModel = _$AgentLedgerModelTearOff();
 
+/// @nodoc
 mixin _$AgentLedgerModel {
   @JsonKey(name: 'current_page')
   int get currentPage;
@@ -60,6 +63,7 @@ mixin _$AgentLedgerModel {
   $AgentLedgerModelCopyWith<AgentLedgerModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $AgentLedgerModelCopyWith<$Res> {
   factory $AgentLedgerModelCopyWith(
           AgentLedgerModel value, $Res Function(AgentLedgerModel) then) =
@@ -76,6 +80,7 @@ abstract class $AgentLedgerModelCopyWith<$Res> {
       @JsonKey(fromJson: decodeAgentLedgerData) List<AgentLedgerData> data});
 }
 
+/// @nodoc
 class _$AgentLedgerModelCopyWithImpl<$Res>
     implements $AgentLedgerModelCopyWith<$Res> {
   _$AgentLedgerModelCopyWithImpl(this._value, this._then);
@@ -113,6 +118,7 @@ class _$AgentLedgerModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$AgentLedgerModelCopyWith<$Res>
     implements $AgentLedgerModelCopyWith<$Res> {
   factory _$AgentLedgerModelCopyWith(
@@ -131,6 +137,7 @@ abstract class _$AgentLedgerModelCopyWith<$Res>
       @JsonKey(fromJson: decodeAgentLedgerData) List<AgentLedgerData> data});
 }
 
+/// @nodoc
 class __$AgentLedgerModelCopyWithImpl<$Res>
     extends _$AgentLedgerModelCopyWithImpl<$Res>
     implements _$AgentLedgerModelCopyWith<$Res> {
@@ -170,6 +177,7 @@ class __$AgentLedgerModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AgentLedgerModel implements _AgentLedgerModel {
   const _$_AgentLedgerModel(
       {@JsonKey(name: 'current_page') this.currentPage,
@@ -310,6 +318,7 @@ abstract class _AgentLedgerModel implements AgentLedgerModel {
   _$AgentLedgerModelCopyWith<_AgentLedgerModel> get copyWith;
 }
 
+/// @nodoc
 class _$AgentLedgerDataTearOff {
   const _$AgentLedgerDataTearOff();
 
@@ -330,9 +339,11 @@ class _$AgentLedgerDataTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AgentLedgerData = _$AgentLedgerDataTearOff();
 
+/// @nodoc
 mixin _$AgentLedgerData {
   @JsonKey(name: 'Deposit')
   num get deposit;
@@ -348,6 +359,7 @@ mixin _$AgentLedgerData {
   $AgentLedgerDataCopyWith<AgentLedgerData> get copyWith;
 }
 
+/// @nodoc
 abstract class $AgentLedgerDataCopyWith<$Res> {
   factory $AgentLedgerDataCopyWith(
           AgentLedgerData value, $Res Function(AgentLedgerData) then) =
@@ -360,6 +372,7 @@ abstract class $AgentLedgerDataCopyWith<$Res> {
       @JsonKey(name: 'accountcode') String account});
 }
 
+/// @nodoc
 class _$AgentLedgerDataCopyWithImpl<$Res>
     implements $AgentLedgerDataCopyWith<$Res> {
   _$AgentLedgerDataCopyWithImpl(this._value, this._then);
@@ -387,6 +400,7 @@ class _$AgentLedgerDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$AgentLedgerDataCopyWith<$Res>
     implements $AgentLedgerDataCopyWith<$Res> {
   factory _$AgentLedgerDataCopyWith(
@@ -401,6 +415,7 @@ abstract class _$AgentLedgerDataCopyWith<$Res>
       @JsonKey(name: 'accountcode') String account});
 }
 
+/// @nodoc
 class __$AgentLedgerDataCopyWithImpl<$Res>
     extends _$AgentLedgerDataCopyWithImpl<$Res>
     implements _$AgentLedgerDataCopyWith<$Res> {
@@ -430,6 +445,7 @@ class __$AgentLedgerDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AgentLedgerData implements _AgentLedgerData {
   const _$_AgentLedgerData(
       {@JsonKey(name: 'Deposit') this.deposit,

@@ -24,17 +24,14 @@ abstract class _TransactionStore with Store {
   @observable
   String errorMessage;
 
-  String _lastError;
-
-  void setErrorMsg({String msg, bool showOnce, FailureType type, int code}) {
-    if (showOnce && _lastError != null && msg == _lastError) return;
-    if (msg.isNotEmpty) _lastError = msg;
-    errorMessage = msg ??
-        Failure.internal(FailureCode(
-          type: type ?? FailureType.TRANSACTIONS,
-          code: code,
-        )).message;
-  }
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
+      errorMessage = getErrorMsg(
+          from: FailureType.TRANSACTIONS,
+          msg: msg,
+          showOnce: showOnce,
+          type: type,
+          code: code);
 
   @action
   Future getRecord({
@@ -54,7 +51,7 @@ abstract class _TransactionStore with Store {
             (result) => result.fold(
               (failure) => setErrorMsg(msg: failure.message, showOnce: true),
               (model) {
-                print('transaction data result: $model');
+                debugPrint('transaction data result: $model');
                 dataModel = model;
                 dataList = model.data;
               },

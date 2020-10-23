@@ -125,10 +125,10 @@ mixin _$WithdrawStore on _WithdrawStore, Store {
   @override
   String toString() {
     return '''
-waitForWithdrawResult: $waitForWithdrawResult,
-withdrawResult: $withdrawResult,
-errorMessage: $errorMessage,
-state: $state
+waitForWithdrawResult: ${waitForWithdrawResult},
+withdrawResult: ${withdrawResult},
+errorMessage: ${errorMessage},
+state: ${state}
     ''';
   }
 }

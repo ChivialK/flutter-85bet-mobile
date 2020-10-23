@@ -9,6 +9,7 @@ part of 'payment_enum_data.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$PaymentTutorialItemTearOff {
   const _$PaymentTutorialItemTearOff();
 
@@ -25,9 +26,11 @@ class _$PaymentTutorialItemTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PaymentTutorialItem = _$PaymentTutorialItemTearOff();
 
+/// @nodoc
 mixin _$PaymentTutorialItem {
   int get sortId;
   String get value;
@@ -36,6 +39,7 @@ mixin _$PaymentTutorialItem {
   $PaymentTutorialItemCopyWith<PaymentTutorialItem> get copyWith;
 }
 
+/// @nodoc
 abstract class $PaymentTutorialItemCopyWith<$Res> {
   factory $PaymentTutorialItemCopyWith(
           PaymentTutorialItem value, $Res Function(PaymentTutorialItem) then) =
@@ -43,6 +47,7 @@ abstract class $PaymentTutorialItemCopyWith<$Res> {
   $Res call({int sortId, String value, TutorialItemType type});
 }
 
+/// @nodoc
 class _$PaymentTutorialItemCopyWithImpl<$Res>
     implements $PaymentTutorialItemCopyWith<$Res> {
   _$PaymentTutorialItemCopyWithImpl(this._value, this._then);
@@ -65,6 +70,7 @@ class _$PaymentTutorialItemCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$PaymentTutorialItemCopyWith<$Res>
     implements $PaymentTutorialItemCopyWith<$Res> {
   factory _$PaymentTutorialItemCopyWith(_PaymentTutorialItem value,
@@ -74,6 +80,7 @@ abstract class _$PaymentTutorialItemCopyWith<$Res>
   $Res call({int sortId, String value, TutorialItemType type});
 }
 
+/// @nodoc
 class __$PaymentTutorialItemCopyWithImpl<$Res>
     extends _$PaymentTutorialItemCopyWithImpl<$Res>
     implements _$PaymentTutorialItemCopyWith<$Res> {
@@ -98,6 +105,7 @@ class __$PaymentTutorialItemCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_PaymentTutorialItem implements _PaymentTutorialItem {
   const _$_PaymentTutorialItem(
       {@required this.sortId, @required this.value, @required this.type})
@@ -158,6 +166,7 @@ abstract class _PaymentTutorialItem implements PaymentTutorialItem {
   _$PaymentTutorialItemCopyWith<_PaymentTutorialItem> get copyWith;
 }
 
+/// @nodoc
 class _$PaymentEnumDataTearOff {
   const _$PaymentEnumDataTearOff();
 
@@ -176,18 +185,21 @@ class _$PaymentEnumDataTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PaymentEnumData = _$PaymentEnumDataTearOff();
 
+/// @nodoc
 mixin _$PaymentEnumData {
   String get title;
-  String get jsonKey;
+  String get jsonKey; //    @required String jsonKey2,
   String get tutorialTitle;
   List<PaymentTutorialItem> get tutorialItem;
 
   $PaymentEnumDataCopyWith<PaymentEnumData> get copyWith;
 }
 
+/// @nodoc
 abstract class $PaymentEnumDataCopyWith<$Res> {
   factory $PaymentEnumDataCopyWith(
           PaymentEnumData value, $Res Function(PaymentEnumData) then) =
@@ -199,6 +211,7 @@ abstract class $PaymentEnumDataCopyWith<$Res> {
       List<PaymentTutorialItem> tutorialItem});
 }
 
+/// @nodoc
 class _$PaymentEnumDataCopyWithImpl<$Res>
     implements $PaymentEnumDataCopyWith<$Res> {
   _$PaymentEnumDataCopyWithImpl(this._value, this._then);
@@ -227,6 +240,7 @@ class _$PaymentEnumDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$PaymentEnumDataCopyWith<$Res>
     implements $PaymentEnumDataCopyWith<$Res> {
   factory _$PaymentEnumDataCopyWith(
@@ -240,6 +254,7 @@ abstract class _$PaymentEnumDataCopyWith<$Res>
       List<PaymentTutorialItem> tutorialItem});
 }
 
+/// @nodoc
 class __$PaymentEnumDataCopyWithImpl<$Res>
     extends _$PaymentEnumDataCopyWithImpl<$Res>
     implements _$PaymentEnumDataCopyWith<$Res> {
@@ -270,6 +285,7 @@ class __$PaymentEnumDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_PaymentEnumData implements _PaymentEnumData {
   const _$_PaymentEnumData(
       {@required this.title,
@@ -283,7 +299,7 @@ class _$_PaymentEnumData implements _PaymentEnumData {
   final String title;
   @override
   final String jsonKey;
-  @override
+  @override //    @required String jsonKey2,
   final String tutorialTitle;
   @override
   final List<PaymentTutorialItem> tutorialItem;
@@ -334,7 +350,7 @@ abstract class _PaymentEnumData implements PaymentEnumData {
   String get title;
   @override
   String get jsonKey;
-  @override
+  @override //    @required String jsonKey2,
   String get tutorialTitle;
   @override
   List<PaymentTutorialItem> get tutorialItem;

@@ -62,7 +62,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
     final form = _formKey.currentState;
     if (form.validate()) {
       form.save();
-//      print('The user wants to login with $_username and $_password');
+//      debugPrint('The user wants to login with $_username and $_password');
       RegisterForm regForm = RegisterForm(
         username: _accountFieldKey.currentState.getInput,
         password: _pwdFieldKey.currentState.getInput,
@@ -103,7 +103,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
         (_) => _store.waitForRegister,
         // Run some logic with the content of the observed field
         (bool wait) {
-          print('reaction on wait register: $wait');
+          debugPrint('reaction on wait register: $wait');
           if (wait) {
             _toastDismiss = callToastLoading();
           } else if (_toastDismiss != null) {
@@ -119,7 +119,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
         (_) => _store.registerResult,
         // Run some logic with the content of the observed field
         (result) {
-          print('reaction on register result: $result');
+          debugPrint('reaction on register result: $result');
           if (result == null) return;
           if (result.isSuccess) {
             callToastInfo(localeStr.messageSuccess,
@@ -254,7 +254,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       child: Visibility(
                         visible: _showPasswordError,
                         child: Text(
-                          localeStr.messageInvalidPassword,
+                          localeStr.messageInvalidPasswordNew,
                           style: TextStyle(color: Themes.defaultErrorColor),
                         ),
                       ),
@@ -365,7 +365,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       child: Visibility(
                         visible: _showPhoneError,
                         child: Text(
-                          localeStr.messageInvalidPhone,
+                          localeStr.messageInvalidPhone(InputLimit.PHONE_MAX),
                           style: TextStyle(color: Themes.defaultErrorColor),
                         ),
                       ),
@@ -478,13 +478,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                   color: Themes.defaultTextColor,
                 ),
                 onPressed: () {
-                  RouterNavigate.navigateToPage(
-                    RoutePage.service,
-                    arg: WebRouteArguments(
-                      startUrl: Global.currentService,
-                      hideBars: true,
-                    ),
-                  );
+                  RouterNavigate.navigateToPage(RoutePage.service);
                 },
               ),
               Expanded(

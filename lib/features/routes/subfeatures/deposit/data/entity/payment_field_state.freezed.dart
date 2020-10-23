@@ -9,6 +9,7 @@ part of 'payment_field_state.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$PaymentFieldStateTearOff {
   const _$PaymentFieldStateTearOff();
 
@@ -29,9 +30,11 @@ class _$PaymentFieldStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PaymentFieldState = _$PaymentFieldStateTearOff();
 
+/// @nodoc
 mixin _$PaymentFieldState {
   num get min;
   num get max;
@@ -42,6 +45,7 @@ mixin _$PaymentFieldState {
   $PaymentFieldStateCopyWith<PaymentFieldState> get copyWith;
 }
 
+/// @nodoc
 abstract class $PaymentFieldStateCopyWith<$Res> {
   factory $PaymentFieldStateCopyWith(
           PaymentFieldState value, $Res Function(PaymentFieldState) then) =
@@ -50,6 +54,7 @@ abstract class $PaymentFieldStateCopyWith<$Res> {
       {num min, num max, num amountStep, String fieldError, bool isValid});
 }
 
+/// @nodoc
 class _$PaymentFieldStateCopyWithImpl<$Res>
     implements $PaymentFieldStateCopyWith<$Res> {
   _$PaymentFieldStateCopyWithImpl(this._value, this._then);
@@ -77,6 +82,7 @@ class _$PaymentFieldStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$PaymentFieldStateCopyWith<$Res>
     implements $PaymentFieldStateCopyWith<$Res> {
   factory _$PaymentFieldStateCopyWith(
@@ -87,6 +93,7 @@ abstract class _$PaymentFieldStateCopyWith<$Res>
       {num min, num max, num amountStep, String fieldError, bool isValid});
 }
 
+/// @nodoc
 class __$PaymentFieldStateCopyWithImpl<$Res>
     extends _$PaymentFieldStateCopyWithImpl<$Res>
     implements _$PaymentFieldStateCopyWith<$Res> {
@@ -116,6 +123,7 @@ class __$PaymentFieldStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_PaymentFieldState implements _PaymentFieldState {
   const _$_PaymentFieldState(
       {this.min,

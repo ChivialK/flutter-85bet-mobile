@@ -9,6 +9,7 @@ part of 'event_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$EventModelTearOff {
   const _$EventModelTearOff();
 
@@ -25,9 +26,11 @@ class _$EventModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $EventModel = _$EventModelTearOff();
 
+/// @nodoc
 mixin _$EventModel {
   @JsonKey(name: '0')
   EventData get eventData;
@@ -37,6 +40,7 @@ mixin _$EventModel {
   $EventModelCopyWith<EventModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $EventModelCopyWith<$Res> {
   factory $EventModelCopyWith(
           EventModel value, $Res Function(EventModel) then) =
@@ -50,6 +54,7 @@ abstract class $EventModelCopyWith<$Res> {
   $EventSignDataCopyWith<$Res> get signData;
 }
 
+/// @nodoc
 class _$EventModelCopyWithImpl<$Res> implements $EventModelCopyWith<$Res> {
   _$EventModelCopyWithImpl(this._value, this._then);
 
@@ -93,6 +98,7 @@ class _$EventModelCopyWithImpl<$Res> implements $EventModelCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$EventModelCopyWith<$Res> implements $EventModelCopyWith<$Res> {
   factory _$EventModelCopyWith(
           _EventModel value, $Res Function(_EventModel) then) =
@@ -109,6 +115,7 @@ abstract class _$EventModelCopyWith<$Res> implements $EventModelCopyWith<$Res> {
   $EventSignDataCopyWith<$Res> get signData;
 }
 
+/// @nodoc
 class __$EventModelCopyWithImpl<$Res> extends _$EventModelCopyWithImpl<$Res>
     implements _$EventModelCopyWith<$Res> {
   __$EventModelCopyWithImpl(
@@ -134,6 +141,7 @@ class __$EventModelCopyWithImpl<$Res> extends _$EventModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_EventModel implements _EventModel {
   const _$_EventModel(
       {@JsonKey(name: '0') this.eventData, this.signData, this.hasData = true})
@@ -196,6 +204,7 @@ abstract class _EventModel implements EventModel {
   _$EventModelCopyWith<_EventModel> get copyWith;
 }
 
+/// @nodoc
 class _$EventDataTearOff {
   const _$EventDataTearOff();
 
@@ -232,12 +241,14 @@ class _$EventDataTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $EventData = _$EventDataTearOff();
 
+/// @nodoc
 mixin _$EventData {
   @JsonKey(name: 'continue')
-  String get signContinually;
+  String get signContinually; // 需不需要連續簽到
   @JsonKey(name: 'dateend')
   String get dateEnd;
   @JsonKey(name: 'datestart')
@@ -251,14 +262,15 @@ mixin _$EventData {
   int get picMobile;
   int get prize;
   @JsonKey(name: 'signtimes')
-  int get signTimes;
-  String get status;
-  int get times;
+  int get signTimes; // 需要簽到的次數
+  String get status; // 活動開關狀態
+  int get times; // 可以領取獎勵的次數
   String get title;
 
   $EventDataCopyWith<EventData> get copyWith;
 }
 
+/// @nodoc
 abstract class $EventDataCopyWith<$Res> {
   factory $EventDataCopyWith(EventData value, $Res Function(EventData) then) =
       _$EventDataCopyWithImpl<$Res>;
@@ -278,6 +290,7 @@ abstract class $EventDataCopyWith<$Res> {
       String title});
 }
 
+/// @nodoc
 class _$EventDataCopyWithImpl<$Res> implements $EventDataCopyWith<$Res> {
   _$EventDataCopyWithImpl(this._value, this._then);
 
@@ -323,6 +336,7 @@ class _$EventDataCopyWithImpl<$Res> implements $EventDataCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$EventDataCopyWith<$Res> implements $EventDataCopyWith<$Res> {
   factory _$EventDataCopyWith(
           _EventData value, $Res Function(_EventData) then) =
@@ -344,6 +358,7 @@ abstract class _$EventDataCopyWith<$Res> implements $EventDataCopyWith<$Res> {
       String title});
 }
 
+/// @nodoc
 class __$EventDataCopyWithImpl<$Res> extends _$EventDataCopyWithImpl<$Res>
     implements _$EventDataCopyWith<$Res> {
   __$EventDataCopyWithImpl(_EventData _value, $Res Function(_EventData) _then)
@@ -390,6 +405,7 @@ class __$EventDataCopyWithImpl<$Res> extends _$EventDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_EventData implements _EventData {
   const _$_EventData(
       {@JsonKey(name: 'continue') this.signContinually,
@@ -409,7 +425,7 @@ class _$_EventData implements _EventData {
   @override
   @JsonKey(name: 'continue')
   final String signContinually;
-  @override
+  @override // 需不需要連續簽到
   @JsonKey(name: 'dateend')
   final String dateEnd;
   @override
@@ -432,11 +448,11 @@ class _$_EventData implements _EventData {
   @override
   @JsonKey(name: 'signtimes')
   final int signTimes;
-  @override
+  @override // 需要簽到的次數
   final String status;
-  @override
+  @override // 活動開關狀態
   final int times;
-  @override
+  @override // 可以領取獎勵的次數
   final String title;
 
   @override
@@ -524,7 +540,7 @@ abstract class _EventData implements EventData {
   @override
   @JsonKey(name: 'continue')
   String get signContinually;
-  @override
+  @override // 需不需要連續簽到
   @JsonKey(name: 'dateend')
   String get dateEnd;
   @override
@@ -547,16 +563,17 @@ abstract class _EventData implements EventData {
   @override
   @JsonKey(name: 'signtimes')
   int get signTimes;
-  @override
+  @override // 需要簽到的次數
   String get status;
-  @override
+  @override // 活動開關狀態
   int get times;
-  @override
+  @override // 可以領取獎勵的次數
   String get title;
   @override
   _$EventDataCopyWith<_EventData> get copyWith;
 }
 
+/// @nodoc
 class _$EventSignDataTearOff {
   const _$EventSignDataTearOff();
 
@@ -581,9 +598,11 @@ class _$EventSignDataTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $EventSignData = _$EventSignDataTearOff();
 
+/// @nodoc
 mixin _$EventSignData {
   @JsonKey(name: 'continue')
   int get signContinually;
@@ -599,6 +618,7 @@ mixin _$EventSignData {
   $EventSignDataCopyWith<EventSignData> get copyWith;
 }
 
+/// @nodoc
 abstract class $EventSignDataCopyWith<$Res> {
   factory $EventSignDataCopyWith(
           EventSignData value, $Res Function(EventSignData) then) =
@@ -613,6 +633,7 @@ abstract class $EventSignDataCopyWith<$Res> {
       int times});
 }
 
+/// @nodoc
 class _$EventSignDataCopyWithImpl<$Res>
     implements $EventSignDataCopyWith<$Res> {
   _$EventSignDataCopyWithImpl(this._value, this._then);
@@ -648,6 +669,7 @@ class _$EventSignDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$EventSignDataCopyWith<$Res>
     implements $EventSignDataCopyWith<$Res> {
   factory _$EventSignDataCopyWith(
@@ -664,6 +686,7 @@ abstract class _$EventSignDataCopyWith<$Res>
       int times});
 }
 
+/// @nodoc
 class __$EventSignDataCopyWithImpl<$Res>
     extends _$EventSignDataCopyWithImpl<$Res>
     implements _$EventSignDataCopyWith<$Res> {
@@ -701,6 +724,7 @@ class __$EventSignDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_EventSignData implements _EventSignData {
   const _$_EventSignData(
       {@JsonKey(name: 'continue') this.signContinually,

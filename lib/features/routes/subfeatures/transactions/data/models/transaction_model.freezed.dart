@@ -9,6 +9,7 @@ part of 'transaction_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$TransactionModelTearOff {
   const _$TransactionModelTearOff();
 
@@ -37,9 +38,11 @@ class _$TransactionModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $TransactionModel = _$TransactionModelTearOff();
 
+/// @nodoc
 mixin _$TransactionModel {
   @JsonKey(name: 'current_page')
   int get currentPage;
@@ -60,6 +63,7 @@ mixin _$TransactionModel {
   $TransactionModelCopyWith<TransactionModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $TransactionModelCopyWith<$Res> {
   factory $TransactionModelCopyWith(
           TransactionModel value, $Res Function(TransactionModel) then) =
@@ -76,6 +80,7 @@ abstract class $TransactionModelCopyWith<$Res> {
       @JsonKey(fromJson: decodeTransactionData) List<TransactionData> data});
 }
 
+/// @nodoc
 class _$TransactionModelCopyWithImpl<$Res>
     implements $TransactionModelCopyWith<$Res> {
   _$TransactionModelCopyWithImpl(this._value, this._then);
@@ -113,6 +118,7 @@ class _$TransactionModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$TransactionModelCopyWith<$Res>
     implements $TransactionModelCopyWith<$Res> {
   factory _$TransactionModelCopyWith(
@@ -131,6 +137,7 @@ abstract class _$TransactionModelCopyWith<$Res>
       @JsonKey(fromJson: decodeTransactionData) List<TransactionData> data});
 }
 
+/// @nodoc
 class __$TransactionModelCopyWithImpl<$Res>
     extends _$TransactionModelCopyWithImpl<$Res>
     implements _$TransactionModelCopyWith<$Res> {
@@ -170,6 +177,7 @@ class __$TransactionModelCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_TransactionModel implements _TransactionModel {
   const _$_TransactionModel(
       {@JsonKey(name: 'current_page') this.currentPage,
@@ -305,6 +313,7 @@ abstract class _TransactionModel implements TransactionModel {
   _$TransactionModelCopyWith<_TransactionModel> get copyWith;
 }
 
+/// @nodoc
 class _$TransactionDataTearOff {
   const _$TransactionDataTearOff();
 
@@ -329,9 +338,11 @@ class _$TransactionDataTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $TransactionData = _$TransactionDataTearOff();
 
+/// @nodoc
 mixin _$TransactionData {
   String get amount;
   @JsonKey(name: 'clindex')
@@ -348,6 +359,7 @@ mixin _$TransactionData {
   $TransactionDataCopyWith<TransactionData> get copyWith;
 }
 
+/// @nodoc
 abstract class $TransactionDataCopyWith<$Res> {
   factory $TransactionDataCopyWith(
           TransactionData value, $Res Function(TransactionData) then) =
@@ -362,6 +374,7 @@ abstract class $TransactionDataCopyWith<$Res> {
       dynamic key});
 }
 
+/// @nodoc
 class _$TransactionDataCopyWithImpl<$Res>
     implements $TransactionDataCopyWith<$Res> {
   _$TransactionDataCopyWithImpl(this._value, this._then);
@@ -392,6 +405,7 @@ class _$TransactionDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$TransactionDataCopyWith<$Res>
     implements $TransactionDataCopyWith<$Res> {
   factory _$TransactionDataCopyWith(
@@ -408,6 +422,7 @@ abstract class _$TransactionDataCopyWith<$Res>
       dynamic key});
 }
 
+/// @nodoc
 class __$TransactionDataCopyWithImpl<$Res>
     extends _$TransactionDataCopyWithImpl<$Res>
     implements _$TransactionDataCopyWith<$Res> {
@@ -440,6 +455,7 @@ class __$TransactionDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_TransactionData implements _TransactionData {
   const _$_TransactionData(
       {this.amount,

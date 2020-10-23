@@ -10,28 +10,13 @@ class VipLevelDisplay extends StatelessWidget {
   VipLevelDisplay(this.data);
 
   final MemberGridItem pageItem = MemberGridItem.vip;
-  final double itemMaxHeight = 484.0;
-  final double itemMaxWidth = 300.0;
 
   @override
   Widget build(BuildContext context) {
-    double padVertical =
-        (Global.device.featureContentHeight - itemMaxHeight) / 2;
-    if (padVertical > 18.0) padVertical = 18.0;
-
-    double padHorizontal = (Global.device.width - itemMaxWidth) / 2;
-    if (padHorizontal > 30) padHorizontal = 30;
-
     return SizedBox(
       width: Global.device.width - 24.0,
-      child: InkWell(
-        // to dismiss the keyboard when the user tabs out of the TextField
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        focusColor: Colors.transparent,
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
+      child: Align(
+        alignment: Alignment.topCenter,
         child: ListView(
           primary: true,
           shrinkWrap: true,
@@ -75,10 +60,7 @@ class VipLevelDisplay extends StatelessWidget {
 
   Widget _buildLevel(VipLevelName level) {
     return Container(
-      constraints: BoxConstraints(
-        maxHeight: itemMaxHeight,
-        maxWidth: itemMaxWidth - 8,
-      ),
+      margin: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 12.0),
       decoration: BoxDecoration(
         color: Themes.defaultLayerBackgroundColor,
         boxShadow: <BoxShadow>[
@@ -90,13 +72,12 @@ class VipLevelDisplay extends StatelessWidget {
           ),
         ],
       ),
-      margin: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 12.0),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(16.0, 20.0, 12.0, 24.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// Left Content (Vip badge and name)
             Padding(

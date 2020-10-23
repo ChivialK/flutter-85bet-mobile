@@ -4,13 +4,13 @@
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter_85bet_mobile/features/screen/feature_screen.dart';
 import 'package:flutter_85bet_mobile/features/screen/web_game_screen.dart';
-import 'package:flutter_85bet_mobile/temp/test_nested_nav_screen.dart';
 import 'package:flutter_85bet_mobile/temp/test_screen.dart';
+import 'package:flutter_85bet_mobile/temp/test_nested_nav_screen.dart';
 
 abstract class ScreenRoutes {
   static const featureScreen = '/';

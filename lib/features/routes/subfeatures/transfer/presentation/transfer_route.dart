@@ -45,7 +45,7 @@ class _TransferRouteState extends State<TransferRoute> {
         (_) => _store.waitForTransferResult,
         // Run some logic with the content of the observed field
         (bool wait) {
-          print('reaction on wait transfer: $wait');
+          debugPrint('reaction on wait transfer: $wait');
           if (wait) {
             toastDismiss = callToastLoading();
           } else if (toastDismiss != null) {
@@ -61,7 +61,7 @@ class _TransferRouteState extends State<TransferRoute> {
         (_) => _store.transferResult,
         // Run some logic with the content of the observed field
         (RequestStatusModel result) {
-          print('reaction on transfer result: $result');
+          debugPrint('reaction on transfer result: $result');
           if (result == null) return;
           if (result.isSuccess) {
             callToastInfo(result.msg, icon: Icons.check_circle_outline);
@@ -88,7 +88,7 @@ class _TransferRouteState extends State<TransferRoute> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        print('pop transfer route');
+        debugPrint('pop transfer route');
         Future.delayed(
             Duration(milliseconds: 100), () => RouterNavigate.navigateBack());
         return Future(() => true);
