@@ -157,7 +157,7 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
         children: <Widget>[
           /// category tab bar
           Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 4.0, 10.0, 8.0),
+            padding: const EdgeInsets.fromLTRB(4.0, 0, 4.0, 1.0),
             child: Container(
               /* Tab bar constraints */
               constraints: BoxConstraints(
@@ -173,8 +173,8 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
                   key: _tabBarKey,
                   labelStyle: TextStyle(fontSize: FontSize.NORMAL.value + 1),
                   labelPadding: const EdgeInsets.only(top: 2.0),
-                  unselectedLabelColor: Themes.homeTabTextColor,
-                  labelColor: Themes.homeTabSelectedTextColor,
+                  unselectedLabelColor: themeColor.homeTabTextColor,
+                  labelColor: themeColor.homeTabSelectedTextColor,
                   indicatorColor: Colors.transparent, // hide indicator
                   controller: _tabController,
                   isScrollable: true,
@@ -262,7 +262,8 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
             // vertical space between tabs
             margin: const EdgeInsets.symmetric(vertical: 3.0),
             decoration: BoxDecoration(
-              border: Border.all(width: 2.0, color: Themes.homeTabDividerColor),
+              border:
+                  Border.all(width: 2.0, color: themeColor.homeTabDividerColor),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -272,7 +273,7 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
                 Expanded(
                   flex: 1,
                   child: Container(
-                    color: Themes.homeTabIconBgColor,
+                    color: themeColor.homeTabIconBgColor,
                     padding: const EdgeInsets.all(4.0),
                     child: SizedBox(
                       width: 24.0,
@@ -280,21 +281,21 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
                       child: (category.iconUrl.isNotEmpty)
                           ? networkImageBuilder(
                               category.iconUrl,
-                              imgColor: Themes.homeTabIconColor,
+                              imgColor: themeColor.homeTabIconColor,
                             )
                           : (category.assetPath != null)
                               ? Image.asset(
                                   category.assetPath,
-                                  color: Themes.homeTabIconColor,
+                                  color: themeColor.homeTabIconColor,
                                 )
                               : (category.iconCode != null)
                                   ? Icon(
                                       category.iconCode,
-                                      color: Themes.homeTabIconColor,
+                                      color: themeColor.homeTabIconColor,
                                     )
                                   : Icon(
                                       Icons.add,
-                                      color: Themes.homeTabIconColor,
+                                      color: themeColor.homeTabIconColor,
                                     ),
                     ),
                   ),
@@ -310,9 +311,9 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
                         alignment: Alignment.centerLeft,
                         color: (update.data.contains(type))
                             ? (type == _currentType)
-                                ? Themes.homeTabIconBgColor
-                                : Themes.homeTabBgColor
-                            : Themes.homeTabBgColor,
+                                ? themeColor.homeTabIconBgColor
+                                : themeColor.homeTabBgColor
+                            : themeColor.homeTabBgColor,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12.0),
                           child: RichText(
@@ -327,9 +328,9 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
                                       : FontSize.NORMAL.value,
                                   color: (update.data.contains(type))
                                       ? (type == _currentType)
-                                          ? Themes.homeTabSelectedTextColor
-                                          : Themes.homeTabTextColor
-                                      : Themes.homeTabTextColor,
+                                          ? themeColor.homeTabSelectedTextColor
+                                          : themeColor.homeTabTextColor
+                                      : themeColor.homeTabTextColor,
                                 )),
                           ),
                         ),

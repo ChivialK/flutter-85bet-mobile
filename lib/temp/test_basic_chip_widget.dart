@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 class TestBasicChipWidget extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class _TestBasicChipWidgetState extends State<TestBasicChipWidget> {
             label: Text('Label'),
             deleteIcon: Icon(
               Icons.cancel,
-              color: Themes.defaultWidgetColor,
+              color: themeColor.defaultWidgetColor,
             ),
             onDeleted: () => setState(() {
               isDelete = !isDelete;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 class GridItemGame extends StatelessWidget {
   final String imgUrl;
@@ -45,7 +45,7 @@ class GridItemGame extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: fontSize,
-                color: Themes.homeTabSelectedTextColor,
+                color: themeColor.homeTabSelectedTextColor,
               ),
             ),
           ),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/font_size.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 typedef OnSearch = void Function(String);
 
@@ -26,7 +25,7 @@ class _HomeSearchWidgetState extends State<HomeSearchWidget> {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
-        color: Themes.defaultTabUnselectedColor,
+        color: themeColor.defaultTabUnselectedColor,
       ),
       alignment: Alignment.center,
       child: Row(
@@ -39,7 +38,7 @@ class _HomeSearchWidgetState extends State<HomeSearchWidget> {
               child: new CustomizeFieldWidget(
                 key: _searchFieldKey,
                 persistHint: false,
-                prefixBgColor: Themes.fieldPrefixBgColor,
+                prefixBgColor: themeColor.fieldPrefixBgColor,
                 useSameBgColor: true,
                 padding: EdgeInsets.zero,
                 fieldTextSize: FontSize.SUBTITLE.value,

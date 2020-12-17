@@ -30,8 +30,8 @@ class VipLevelDisplay extends StatelessWidget {
                         padding: const EdgeInsets.all(10.0),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Themes.memberIconColor,
-                          boxShadow: Themes.roundIconShadow,
+                          color: themeColor.memberIconColor,
+                          boxShadow: ThemeInterface.iconBottomShadow,
                         ),
                         child: Icon(
                           pageItem.value.iconData,
@@ -62,7 +62,7 @@ class VipLevelDisplay extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 12.0),
       decoration: BoxDecoration(
-        color: Themes.defaultLayerBackgroundColor,
+        color: themeColor.defaultLayeredBackgroundColor,
         boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black12,
@@ -97,7 +97,7 @@ class VipLevelDisplay extends StatelessWidget {
                     child: Text(
                       level.title,
                       style: TextStyle(
-                        color: Themes.vipTitleColor,
+                        color: themeColor.vipTitleColor,
 //                        fontSize: FontSize.SMALL.value,
                       ),
                       textAlign: TextAlign.center,
@@ -120,7 +120,7 @@ class VipLevelDisplay extends StatelessWidget {
                   separatorBuilder: (context, _) {
                     // add divider between options
                     return Divider(
-                      color: Themes.vipTitleColor,
+                      color: themeColor.vipTitleColor,
                       height: 10.0,
                     );
                   },
@@ -149,7 +149,7 @@ class VipLevelDisplay extends StatelessWidget {
                             child: Text(
                               option.ch,
                               style: TextStyle(
-                                color: Themes.vipTitleColor,
+                                color: themeColor.vipTitleColor,
                                 fontSize: FontSize.SUBTITLE.value,
                               ),
                               maxLines: 2,
@@ -167,8 +167,8 @@ class VipLevelDisplay extends StatelessWidget {
                               '$rule',
                               style: TextStyle(
                                 color: (rule == '√')
-                                    ? Themes.hintHighlightDarkRed
-                                    : Themes.vipTextColor,
+                                    ? themeColor.hintHighlightDarkRed
+                                    : themeColor.vipLevelTextColor,
                                 fontSize: FontSize.SUBTITLE.value,
                               ),
                             ),

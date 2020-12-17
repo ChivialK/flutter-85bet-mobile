@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/global.dart';
-import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/table_cell_text_widget.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart';
 
@@ -50,12 +48,12 @@ class AgentDisplayLedgerTable extends StatelessWidget {
       ),
       child: SingleChildScrollView(
         child: ColoredBox(
-          color: Themes.chartBgColor,
+          color: themeColor.chartBgColor,
           child: Table(
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
             columnWidths: _tableWidthMap,
             border: TableBorder.all(
-              color: Themes.chartBorderColor,
+              color: themeColor.chartBorderColor,
               width: 2.0,
               style: BorderStyle.solid,
             ),
@@ -106,11 +104,11 @@ class AgentDisplayLedgerTable extends StatelessWidget {
   TableRow _buildTotalRow() {
     List<String> _totalRowTexts;
     if (sumColumn.isEmpty) {
-      _totalRowTexts = [localeStr.flowHeaderTextTotal] +
+      _totalRowTexts = [localeStr.rollbackHeaderTextTotal] +
           List.generate(4, (index) => formatValue(0));
     } else
       _totalRowTexts = [
-        localeStr.flowHeaderTextTotal,
+        localeStr.rollbackHeaderTextTotal,
         formatValue(sumColumn[0]),
         formatValue(sumColumn[1]),
         formatValue(sumColumn[2]),

@@ -5,7 +5,7 @@ import 'package:flutter_85bet_mobile/features/general/widgets/warning_display.da
 import 'state/deposit_store.dart';
 import 'widgets/deposit_display.dart';
 
-/// Main View of [Router.promoRoute]
+/// Main View of [FeatureRouter.promoRoute]
 ///@author H.C.CHIANG
 ///@version 2020/3/12
 class DepositRoute extends StatefulWidget {

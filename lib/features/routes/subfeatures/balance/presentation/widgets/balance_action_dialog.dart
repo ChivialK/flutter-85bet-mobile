@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/font_size.dart';
-import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/dialog_widget.dart';
 
 class BalanceActionDialog extends StatelessWidget {
@@ -61,7 +59,7 @@ class BalanceActionDialog extends StatelessWidget {
                 children: <Widget>[
                   RaisedButton(
                     child: Text(localeStr.btnCancel),
-                    color: Themes.pagerButtonColor,
+                    color: themeColor.pagerButtonColor,
                     onPressed: () {
                       Navigator.of(context).pop();
                     },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
+import 'package:meta/meta.dart' show required;
 
 ///
 /// Separate checkbox widget to prevent screen flash
@@ -13,6 +14,7 @@ class CheckboxWidget extends StatefulWidget {
   final Color labelColor;
   final Color boxBackgroundColor;
   final bool initValue;
+  final bool mustCheck;
   final double scale;
   final double textSize;
   final EdgeInsets widgetPadding;
@@ -26,6 +28,7 @@ class CheckboxWidget extends StatefulWidget {
     this.labelColor,
     this.boxBackgroundColor,
     this.initValue = false,
+    this.mustCheck = false,
     this.scale = 1.0,
     this.textSize,
     this.widgetPadding = const EdgeInsets.only(top: 2.0),
@@ -113,13 +116,26 @@ class CheckboxWidgetState extends State<CheckboxWidget> {
                 Expanded(
                   child: Padding(
                     padding: widget.textPadding,
-                    child: Text(
-                      widget.label,
-                      style: TextStyle(
-                        color: Themes.defaultTextColor,
-                        fontSize: widget.textSize ?? FontSize.NORMAL.value,
+                    child: RichText(
+                      overflow: TextOverflow.ellipsis,
+                      text: TextSpan(
+                        style: TextStyle(
+                          fontSize: widget.textSize ?? FontSize.NORMAL.value,
+                          color: themeColor.defaultTextColor,
+                        ),
+                        children: [
+                          if (widget.mustCheck)
+                            TextSpan(
+                              text: '* ',
+                              style: TextStyle(
+                                fontSize:
+                                    widget.textSize ?? FontSize.NORMAL.value,
+                                color: themeColor.hintHighlightRed,
+                              ),
+                            ),
+                          TextSpan(text: widget.label),
+                        ],
                       ),
-                      maxLines: widget.maxLines,
                     ),
                   ),
                 ),

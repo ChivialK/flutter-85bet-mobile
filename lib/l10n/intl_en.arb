@@ -7,16 +7,17 @@
     "type": "text",
     "placeholders": {}
   },
+  "appVersion": "Version {value}",
+  "@appVersion": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "1.0.0"
+      }
+    }
+  },
   "pageTitleHome": "Home",
   "@pageTitleHome": {
-    "type": "text"
-  },
-  "pageTitleMovieEG": "EG Movie",
-  "@pageTitleMovieEG": {
-    "type": "text"
-  },
-  "pageTitleMovie": "New Movie",
-  "@pageTitleMovie": {
     "type": "text"
   },
   "pageTitleDownload": "APP Download",
@@ -196,6 +197,10 @@
   "@themeColorLight": {
     "type": "text"
   },
+  "urlActionNotSupported": "Unable to navigate to the destination URL",
+  "@urlActionNotSupported": {
+    "type": "text"
+  },
   "workInProgress": "Features coming soon!",
   "@workInProgress": {
     "type": "text"
@@ -214,6 +219,26 @@
   },
   "gameToolHintRestore": "Double-Tap to restore",
   "@gameToolHintRestore": {
+    "type": "text"
+  },
+  "actionNotify": "Notify",
+  "@actionNotify": {
+    "type": "text"
+  },
+  "actionSetting": "Settings",
+  "@actionSetting": {
+    "type": "text"
+  },
+  "actionSearch": "Search",
+  "@actionSearch": {
+    "type": "text"
+  },
+  "actionHelp": "Tutorial",
+  "@actionHelp": {
+    "type": "text"
+  },
+  "actionBack": "Back",
+  "@actionBack": {
     "type": "text"
   },
   "btnMenu": "Menu",
@@ -258,6 +283,10 @@
   },
   "btnConfirmSend": "Confirm & Send",
   "@btnConfirmSend": {
+    "type": "text"
+  },
+  "btnOpenGame": "Start",
+  "@btnOpenGame": {
     "type": "text"
   },
   "btnLogin": "Login",
@@ -354,6 +383,10 @@
   },
   "hintActionSelect": "Select",
   "@hintActionSelect": {
+    "type": "text"
+  },
+  "hintActionSearchGame": "Please enter a game name",
+  "@hintActionSearchGame": {
     "type": "text"
   },
   "hintActionLogin": "Please login first",
@@ -548,12 +581,24 @@
   "@messageInvalidFormat": {
     "type": "text"
   },
+  "messageInvalidDate": "Invalid date input",
+  "@messageInvalidDate": {
+    "type": "text"
+  },
   "messageInvalidName": "Malformed name",
   "@messageInvalidName": {
     "type": "text"
   },
   "messageInvalidEmail": "Mailbox is malformed",
   "@messageInvalidEmail": {
+    "type": "text"
+  },
+  "messageInvalidBirthDate": "Date of Birth Error",
+  "@messageInvalidBirthDate": {
+    "type": "text"
+  },
+  "messageRepeatPhone": "Phone Number already registered",
+  "@messageRepeatPhone": {
     "type": "text"
   },
   "messageInvalidPhone": "Error Phone Number({num})",
@@ -573,6 +618,10 @@
   "@messageInvalidWechat": {
     "type": "text"
   },
+  "messageInvalidZalo": "Invalid Zalo account",
+  "@messageInvalidZalo": {
+    "type": "text"
+  },
   "messageInvalidVerify": "Please enter a verification code",
   "@messageInvalidVerify": {
     "type": "text"
@@ -586,7 +635,7 @@
       }
     }
   },
-  "messageInvalidAccount": "Username should be 6 ~ 12 words",
+  "messageInvalidAccount": "Username should be 6 ~ 12 words (Lowercase)",
   "@messageInvalidAccount": {
     "type": "text"
   },
@@ -602,6 +651,14 @@
   "@messageInvalidConfirmPassword": {
     "type": "text"
   },
+  "messageInvalidPasswordFive": "The password does not match, the account will be locked for five errors",
+  "@messageInvalidPasswordFive": {
+    "type": "text"
+  },
+  "messageInvalidPasswordLocked": "The password is wrong five times and the account is locked, please contact customer service",
+  "@messageInvalidPasswordLocked": {
+    "type": "text"
+  },
   "messageInvalidDepositAmount": "Amount Error",
   "@messageInvalidDepositAmount": {
     "type": "text"
@@ -614,6 +671,10 @@
         "example": "0"
       }
     }
+  },
+  "messageInvalidDepositAmountMax": "Exceeds the maximum withdrawal amount (please refer to the vip level detail)",
+  "@messageInvalidDepositAmountMax": {
+    "type": "text"
   },
   "messageInvalidDepositName": "Incorrect account name",
   "@messageInvalidDepositName": {
@@ -637,6 +698,10 @@
   },
   "messageInvalidWithdrawAmount": "Not enough credit",
   "@messageInvalidWithdrawAmount": {
+    "type": "text"
+  },
+  "messageInvalidWithdrawUnderAmount": "Below the minimum amount",
+  "@messageInvalidWithdrawUnderAmount": {
     "type": "text"
   },
   "messageWarnUsingCellular": "You are using a mobile network",
@@ -753,16 +818,28 @@
   "@messageErrorAccount": {
     "type": "text"
   },
+  "messageErrorAccountIsLocked": "The account is locked, please contact customer service",
+  "@messageErrorAccountIsLocked": {
+    "type": "text"
+  },
   "messageRepeatAccount": "Account name repeat",
   "@messageRepeatAccount": {
+    "type": "text"
+  },
+  "messageErrorMobile": "Mobile phone number error",
+  "@messageErrorMobile": {
+    "type": "text"
+  },
+  "messageRepeatMobile": "Repeated registration of mobile phone number",
+  "@messageRepeatMobile": {
     "type": "text"
   },
   "messageErrorPassword": "Password Error",
   "@messageErrorPassword": {
     "type": "text"
   },
-  "messageErrorPasswordHint": "password not match, account will be locked after 5 errors",
-  "@messageErrorPasswordHint": {
+  "messageErrorReferral": "Referral Code not valid",
+  "@messageErrorReferral": {
     "type": "text"
   },
   "messageErrorWithdraw": "withdrawal failed",
@@ -834,20 +911,16 @@
   "@homeUserTabCategoryMovie": {
     "type": "text"
   },
-  "homeUserTabCategoryEgMovie": "EG Movie",
-  "@homeUserTabCategoryEgMovie": {
-    "type": "text"
-  },
-  "homeUserTabCategoryNewMovie": "New Movie",
-  "@homeUserTabCategoryNewMovie": {
-    "type": "text"
-  },
   "homeUserTabCategoryRecommend": "Recommend",
   "@homeUserTabCategoryRecommend": {
     "type": "text"
   },
   "homeUserTabCategoryFavorite": "Favorite",
   "@homeUserTabCategoryFavorite": {
+    "type": "text"
+  },
+  "homeUserTabCategoryGames": "Games",
+  "@homeUserTabCategoryGames": {
     "type": "text"
   },
   "gameCategoryCasino": "Casino",
@@ -1195,6 +1268,14 @@
       }
     }
   },
+  "bankcardViewTitleNew": "Add Bankcard",
+  "@bankcardViewTitleNew": {
+    "type": "text"
+  },
+  "bankcardViewHintNew": "Please bind a bankcard for receiving payment",
+  "@bankcardViewHintNew": {
+    "type": "text"
+  },
   "bankcardViewTitleOwner": "Account Name",
   "@bankcardViewTitleOwner": {
     "type": "text"
@@ -1275,6 +1356,10 @@
   "@withdrawViewHint2": {
     "type": "text"
   },
+  "walletViewTitle": "Wallet",
+  "@walletViewTitle": {
+    "type": "text"
+  },
   "walletViewTitleMy": "My Wallet",
   "@walletViewTitleMy": {
     "type": "text"
@@ -1313,6 +1398,10 @@
   },
   "walletViewMessageSetting": "change wallet settings",
   "@walletViewMessageSetting": {
+    "type": "text"
+  },
+  "messageNoMessages": "No messages",
+  "@messageNoMessages": {
     "type": "text"
   },
   "centerViewTitleData": "Profile",
@@ -1395,7 +1484,7 @@
   "@centerLuckyTitle": {
     "type": "text"
   },
-  "centerLuckyNumberError": "Number range: 01 ~ 49",
+  "centerLuckyNumberError": "Number range: 01~49",
   "@centerLuckyNumberError": {
     "type": "text"
   },
@@ -1439,7 +1528,7 @@
   "@transactionViewSpinnerTitle": {
     "type": "text"
   },
-  "transactionHeaderSerial": "Serial Number",
+  "transactionHeaderSerial": "No.",
   "@transactionHeaderSerial": {
     "type": "text"
   },
@@ -1447,15 +1536,15 @@
   "@transactionHeaderDate": {
     "type": "text"
   },
-  "transactionHeaderType": "Category",
+  "transactionHeaderType": "Type",
   "@transactionHeaderType": {
     "type": "text"
   },
-  "transactionHeaderDesc": "Description",
+  "transactionHeaderDesc": "Notice",
   "@transactionHeaderDesc": {
     "type": "text"
   },
-  "transactionHeaderAmount": "Amount",
+  "transactionHeaderAmount": "Value",
   "@transactionHeaderAmount": {
     "type": "text"
   },
@@ -1584,6 +1673,14 @@
   "@dealsHeaderAmount": {
     "type": "text"
   },
+  "dealsDetailTypeAdjustDeposit": "Adjust Deposit",
+  "@dealsDetailTypeAdjustDeposit": {
+    "type": "text"
+  },
+  "dealsDetailTypeAdjustWithdraw": "Adjust Withdraw",
+  "@dealsDetailTypeAdjustWithdraw": {
+    "type": "text"
+  },
   "depositPaymentNoData": "No available payment method",
   "@depositPaymentNoData": {
     "type": "text"
@@ -1622,6 +1719,10 @@
   },
   "depositPaymentTitleAtm": "WEB ATM",
   "@depositPaymentTitleAtm": {
+    "type": "text"
+  },
+  "depositPaymentTitleQr": "QR Code",
+  "@depositPaymentTitleQr": {
     "type": "text"
   },
   "depositPaymentSpinnerTitlePromo": "Choose Offer",
@@ -1673,7 +1774,7 @@
   "@depositPaymentEditTitleNote": {
     "type": "text"
   },
-  "depositPaymentEditTitleAmountHintRange": "Range: {num} ~ {num2}",
+  "depositPaymentEditTitleAmountHintRange": "Range: {num}~{num2}",
   "@depositPaymentEditTitleAmountHintRange": {
     "type": "text",
     "placeholders": {
@@ -1685,7 +1786,7 @@
       }
     }
   },
-  "depositPaymentEditTitleAmountHintRangeStep": "Range: {num} ~ {num2} (Step:{num3})",
+  "depositPaymentEditTitleAmountHintRangeStep": "Range: {num}~{num2} (Step:{num3})",
   "@depositPaymentEditTitleAmountHintRangeStep": {
     "type": "text",
     "placeholders": {
@@ -2018,44 +2119,56 @@
   "@ balanceHintText4": {
     "type": "text"
   },
-  "flowHeaderTextTime": "Time Interval",
-  "@flowHeaderTextTime": {
+  "rollbackHeaderTextTime": "Time Interval",
+  "@rollbackHeaderTextTime": {
     "type": "text"
   },
-  "flowHeaderTextCode": "Transaction Code",
-  "@flowHeaderTextCode": {
+  "rollbackHeaderTextCode": "Transaction Code",
+  "@rollbackHeaderTextCode": {
     "type": "text"
   },
-  "flowHeaderTextType": "Type",
-  "@flowHeaderTextType": {
+  "rollbackHeaderTextType": "Type",
+  "@rollbackHeaderTextType": {
     "type": "text"
   },
-  "flowHeaderTextAmount": "Amount",
-  "@flowHeaderTextAmount": {
+  "rollbackHeaderTextAmount": "Amount",
+  "@rollbackHeaderTextAmount": {
     "type": "text"
   },
-  "flowHeaderTextMultiple": "Multiple",
-  "@flowHeaderTextMultiple": {
+  "rollbackHeaderTextMultiple": "Multiple",
+  "@rollbackHeaderTextMultiple": {
     "type": "text"
   },
-  "flowHeaderTextPromo": "Cash Offer",
-  "@flowHeaderTextPromo": {
+  "rollbackHeaderTextPromo": "Cash Offer",
+  "@rollbackHeaderTextPromo": {
     "type": "text"
   },
-  "flowHeaderTextRequire": "Requirement for bet amount",
-  "@flowHeaderTextRequire": {
+  "rollbackHeaderTextRequire": "Requirement for bet amount",
+  "@rollbackHeaderTextRequire": {
     "type": "text"
   },
-  "flowHeaderTextCurrent": "Current Stake",
-  "@flowHeaderTextCurrent": {
+  "rollbackHeaderTextCurrent": "Current Stake",
+  "@rollbackHeaderTextCurrent": {
     "type": "text"
   },
-  "flowHeaderTextNeed": "Remaining capital required",
-  "@flowHeaderTextNeed": {
+  "rollbackHeaderTextNeed": "Remaining capital required",
+  "@rollbackHeaderTextNeed": {
     "type": "text"
   },
-  "flowHeaderTextTotal": "Total",
-  "@flowHeaderTextTotal": {
+  "rollbackHeaderTextTotal": "Total",
+  "@rollbackHeaderTextTotal": {
+    "type": "text"
+  },
+  "rollbackIndexPromo": "Promo",
+  "@rollbackIndexPromo": {
+    "type": "text"
+  },
+  "rollbackIndexDeposit": "Deposit",
+  "@rollbackIndexDeposit": {
+    "type": "text"
+  },
+  "rollbackIndexRollback": "Rollback",
+  "@rollbackIndexRollback": {
     "type": "text"
   },
   "agentActionLoginHint": "Please login your agent account",
@@ -3038,6 +3151,30 @@
   },
   "serviceTitleFacebook": "Facebook",
   "@serviceTitleFacebook": {
+    "type": "text"
+  },
+  "downloadAndroidCgpay": "CGPAY for Android",
+  "@downloadAndroidCgpay": {
+    "type": "text"
+  },
+  "downloadIosCgpay": "CGPAY for IOS",
+  "@downloadIosCgpay": {
+    "type": "text"
+  },
+  "downloadAndroidDns": "DNS Repair for Android",
+  "@downloadAndroidDns": {
+    "type": "text"
+  },
+  "downloadIosDns": "DNS Repair for IOS",
+  "@downloadIosDns": {
+    "type": "text"
+  },
+  "downloadHintPlatformAndroid": "(Android Only)",
+  "@downloadHintPlatformAndroid": {
+    "type": "text"
+  },
+  "downloadHintPlatformIos": "(iOS Only)",
+  "@downloadHintPlatformIos": {
     "type": "text"
   }
 }

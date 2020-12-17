@@ -1,4 +1,3 @@
-
 import 'package:flutter_85bet_mobile/features/routes/promo/data/models/promo_freezed.dart';
 import 'package:flutter_85bet_mobile/utils/json_util.dart';
 import 'package:flutter_test/flutter_test.dart';

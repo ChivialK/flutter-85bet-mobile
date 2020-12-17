@@ -52,13 +52,11 @@ class _NoticeDisplayState extends State<NoticeDisplay> {
   Widget build(BuildContext context) {
     if (widget.store.dataModel == null || widget.store.dataModel.code != '0')
       return WarningDisplay(message: localeStr.messageErrorServerData);
-    else
+    else {
       return SizedBox(
         width: Global.device.width - 24.0,
-        child: ListView(
-          primary: true,
-          shrinkWrap: true,
-          physics: BouncingScrollPhysics(),
+        height: Global.device.featureContentHeight - 24.0,
+        child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 12.0),
@@ -68,8 +66,8 @@ class _NoticeDisplayState extends State<NoticeDisplay> {
                     padding: const EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Themes.memberIconColor,
-                      boxShadow: Themes.roundIconShadow,
+                      color: themeColor.memberIconColor,
+                      boxShadow: ThemeInterface.iconBottomShadow,
                     ),
                     child: Icon(
                       pageItem.value.iconData,
@@ -111,8 +109,8 @@ class _NoticeDisplayState extends State<NoticeDisplay> {
                       child: Container(
                         decoration: BoxDecoration(
                           color: (_clicked == index)
-                              ? Themes.buttonTextPrimaryColor
-                              : Themes.walletBoxButtonColor,
+                              ? themeColor.buttonTextPrimaryColor
+                              : themeColor.walletBoxButtonColor,
                           borderRadius:
                               BorderRadius.vertical(top: Radius.circular(6.0)),
                         ),
@@ -123,8 +121,8 @@ class _NoticeDisplayState extends State<NoticeDisplay> {
                             tabs[index],
                             style: TextStyle(
                               color: (_clicked == index)
-                                  ? Themes.walletBoxButtonColor
-                                  : Themes.buttonTextPrimaryColor,
+                                  ? themeColor.walletBoxButtonColor
+                                  : themeColor.buttonTextPrimaryColor,
                               fontSize: FontSize.SUBTITLE.value,
                             ),
                             maxLines: 2,
@@ -137,19 +135,21 @@ class _NoticeDisplayState extends State<NoticeDisplay> {
                 },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 8.0),
-              child: IndexedStack(
-                index: _clicked,
-                children: <Widget>[
-                  NoticeDisplayContent(dataList: widget.store.getMarqueeList),
-                  NoticeDisplayContent(
-                      dataList: widget.store.getMaintenanceList),
-                ],
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 8.0),
+                child: IndexedStack(
+                  index: _clicked,
+                  children: <Widget>[
+                    NoticeDisplayContent(dataList: widget.store.getMarqueeList),
+                    NoticeDisplayContent(dataList: widget.store.getMaintenanceList),
+                  ],
+                ),
               ),
             ),
           ],
         ),
       );
+    }
   }
 }

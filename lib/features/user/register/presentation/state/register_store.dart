@@ -27,8 +27,12 @@ abstract class _RegisterStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg(
-          {String msg, bool showOnce = false, FailureType type, int code}) =>
+  void setErrorMsg({
+    String msg,
+    bool showOnce = false,
+    FailureType type,
+    int code,
+  }) =>
       errorMessage = getErrorMsg(
           from: FailureType.REGISTER,
           msg: msg,
@@ -48,7 +52,7 @@ abstract class _RegisterStore with Store {
           .postRegister(form)
           .then(
             (result) => result.fold(
-              (failure) => setErrorMsg(msg: failure.message, showOnce: true),
+              (failure) => setErrorMsg(msg: failure.message),
               (model) {
 //                debugPrint('register result: $model');
                 registerResult = model;

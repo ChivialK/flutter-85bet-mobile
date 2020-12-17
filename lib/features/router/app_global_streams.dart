@@ -3,6 +3,7 @@ import 'dart:async' show StreamController, Stream;
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_85bet_mobile/core/network/dio_api_service.dart';
 import 'package:flutter_85bet_mobile/features/general/data/user/user_token_storage.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_color_enum.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/login_status.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/user_entity.dart';
 import 'package:flutter_85bet_mobile/features/user/data/repository/jwt_interface.dart';
@@ -20,6 +21,8 @@ AppGlobalStreams get getAppGlobalStreams => sl.get<AppGlobalStreams>();
 /// Stream user [LoginStatus] through out the app to control UI state
 ///
 class AppGlobalStreams {
+  static final tag = 'AppGlobalStreams';
+
   final StreamController<LoginStatus> _userControl =
       StreamController<LoginStatus>.broadcast();
 
@@ -34,6 +37,9 @@ class AppGlobalStreams {
 
   final StreamController<String> _languageControl =
       StreamController<String>.broadcast();
+
+  final StreamController<ThemeColorEnum> _themeControl =
+      StreamController<ThemeColorEnum>.broadcast();
 
   AppGlobalStreams() {
     _userControl.stream.listen((event) {
@@ -54,6 +60,8 @@ class AppGlobalStreams {
 
   /// App Relative
   Stream<String> get languageStream => _languageControl.stream;
+
+  Stream<ThemeColorEnum> get themeStream => _themeControl.stream;
 
   /// User Relative
   Stream<LoginStatus> get userStream => _userControl.stream;
@@ -93,8 +101,8 @@ class AppGlobalStreams {
   String getCredit({bool addSymbol = false}) {
     if (_userCredit.contains('-') == false) {
       return formatValue(_userCredit, creditSign: addSymbol);
-    } else {
-      if (addSymbol) return '$creditSymbol$_userCredit';
+    } else if (addSymbol && _userCredit.startsWith(creditSymbol) == false) {
+      return '$creditSymbol$_userCredit';
     }
     return _userCredit;
   }
@@ -116,10 +124,14 @@ class AppGlobalStreams {
     _languageControl.sink.add(lang);
   }
 
+  notifyThemeChange(ThemeColorEnum color) {
+    _themeControl.sink.add(color);
+  }
+
   logout({bool force = false, bool navToLogin = false}) async {
     if (!hasUser) return;
     String userName = _user.currentUser.account;
-    MyLogger.info(msg: 'logging out user $userName', tag: 'RouteUserStreams');
+    MyLogger.info(msg: 'logging out user $userName', tag: tag);
     try {
       var jwtInterface = sl.get<JwtInterface>();
       _dioApiService ??= sl.get<DioApiService>();
@@ -139,10 +151,7 @@ class AppGlobalStreams {
 
       jwtInterface.clearToken();
     } catch (e, s) {
-      MyLogger.error(
-        msg: 'logout $userName has error: $e',
-        tag: 'RouteUserStreams',
-      );
+      MyLogger.error(msg: 'logout $userName has error: $e', tag: tag);
       debugPrint('error stack:\n$s');
     }
 
@@ -159,11 +168,12 @@ class AppGlobalStreams {
   }
 
   dispose() {
-    MyLogger.warn(msg: 'disposing route streams!!', tag: 'RouteUserStreams');
+    MyLogger.warn(msg: 'disposing app streams!!', tag: tag);
     _userControl.close();
     _creditController.close();
     _messageController.close();
     _recheckControl.close();
     _languageControl.close();
+    _themeControl.close();
   }
 }

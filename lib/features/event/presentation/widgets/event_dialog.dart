@@ -91,7 +91,7 @@ class _EventDialogState extends State<EventDialog> {
                                 child: Text(
                                   localeStr.btnSignUp,
                                   style: TextStyle(
-                                    color: Themes.buttonTextPrimaryColor,
+                                    color: themeColor.buttonTextPrimaryColor,
                                     fontSize: FontSize.SUBTITLE.value,
                                   ),
                                 ),
@@ -140,7 +140,7 @@ class _EventDialogState extends State<EventDialog> {
                           TextSpan(
                             text: localeStr.eventSignUpHint1,
                             style: TextStyle(
-                              color: Themes.secondaryTextColor2,
+                              color: themeColor.secondaryTextColor2,
                               fontSize: FontSize.SUBTITLE.value,
                             ),
                           ),
@@ -154,7 +154,7 @@ class _EventDialogState extends State<EventDialog> {
                           TextSpan(
                             text: localeStr.eventSignUpHint2,
                             style: TextStyle(
-                              color: Themes.secondaryTextColor2,
+                              color: themeColor.secondaryTextColor2,
                               fontSize: FontSize.SUBTITLE.value,
                             ),
                           ),

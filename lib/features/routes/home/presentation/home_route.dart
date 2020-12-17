@@ -8,7 +8,7 @@ import 'widgets/home_display.dart';
 import 'widgets/home_store_inherit_widget.dart';
 
 ///
-/// Main View of [Router.homeRoute]
+/// Main View of [FeatureRouter.homeRoute]
 /// @author H.C.CHIANG
 /// @version 2020/6/18
 ///

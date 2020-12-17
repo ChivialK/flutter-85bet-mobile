@@ -201,26 +201,26 @@ mixin _$FreezedNested {
   int get status;
 
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result add(int status),
-    @required Result subtract(int status),
+  TResult when<TResult extends Object>({
+    @required TResult add(int status),
+    @required TResult subtract(int status),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result add(int status),
-    Result subtract(int status),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult add(int status),
+    TResult subtract(int status),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result add(_Add value),
-    @required Result subtract(_Subtract value),
+  TResult map<TResult extends Object>({
+    @required TResult add(_Add value),
+    @required TResult subtract(_Subtract value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result add(_Add value),
-    Result subtract(_Subtract value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult add(_Add value),
+    TResult subtract(_Subtract value),
+    @required TResult orElse(),
   });
 
   $FreezedNestedCopyWith<FreezedNested> get copyWith;
@@ -310,9 +310,9 @@ class _$_Add implements _Add {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result add(int status),
-    @required Result subtract(int status),
+  TResult when<TResult extends Object>({
+    @required TResult add(int status),
+    @required TResult subtract(int status),
   }) {
     assert(add != null);
     assert(subtract != null);
@@ -321,10 +321,10 @@ class _$_Add implements _Add {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result add(int status),
-    Result subtract(int status),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult add(int status),
+    TResult subtract(int status),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (add != null) {
@@ -335,9 +335,9 @@ class _$_Add implements _Add {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result add(_Add value),
-    @required Result subtract(_Subtract value),
+  TResult map<TResult extends Object>({
+    @required TResult add(_Add value),
+    @required TResult subtract(_Subtract value),
   }) {
     assert(add != null);
     assert(subtract != null);
@@ -346,10 +346,10 @@ class _$_Add implements _Add {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result add(_Add value),
-    Result subtract(_Subtract value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult add(_Add value),
+    TResult subtract(_Subtract value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (add != null) {
@@ -426,9 +426,9 @@ class _$_Subtract implements _Subtract {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result add(int status),
-    @required Result subtract(int status),
+  TResult when<TResult extends Object>({
+    @required TResult add(int status),
+    @required TResult subtract(int status),
   }) {
     assert(add != null);
     assert(subtract != null);
@@ -437,10 +437,10 @@ class _$_Subtract implements _Subtract {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result add(int status),
-    Result subtract(int status),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult add(int status),
+    TResult subtract(int status),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (subtract != null) {
@@ -451,9 +451,9 @@ class _$_Subtract implements _Subtract {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result add(_Add value),
-    @required Result subtract(_Subtract value),
+  TResult map<TResult extends Object>({
+    @required TResult add(_Add value),
+    @required TResult subtract(_Subtract value),
   }) {
     assert(add != null);
     assert(subtract != null);
@@ -462,10 +462,10 @@ class _$_Subtract implements _Subtract {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result add(_Add value),
-    Result subtract(_Subtract value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult add(_Add value),
+    TResult subtract(_Subtract value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (subtract != null) {
@@ -517,30 +517,30 @@ const $FreezedOperation = _$FreezedOperationTearOff();
 /// @nodoc
 mixin _$FreezedOperation {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result add(int value),
-    @required Result subtract(int value),
-    @required Result error(String msg),
+  TResult when<TResult extends Object>({
+    @required TResult add(int value),
+    @required TResult subtract(int value),
+    @required TResult error(String msg),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result add(int value),
-    Result subtract(int value),
-    Result error(String msg),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult add(int value),
+    TResult subtract(int value),
+    TResult error(String msg),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result add(Add value),
-    @required Result subtract(Subtract value),
-    @required Result error(Error value),
+  TResult map<TResult extends Object>({
+    @required TResult add(Add value),
+    @required TResult subtract(Subtract value),
+    @required TResult error(Error value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result add(Add value),
-    Result subtract(Subtract value),
-    Result error(Error value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult add(Add value),
+    TResult subtract(Subtract value),
+    TResult error(Error value),
+    @required TResult orElse(),
   });
 }
 
@@ -616,10 +616,10 @@ class _$Add implements Add {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result add(int value),
-    @required Result subtract(int value),
-    @required Result error(String msg),
+  TResult when<TResult extends Object>({
+    @required TResult add(int value),
+    @required TResult subtract(int value),
+    @required TResult error(String msg),
   }) {
     assert(add != null);
     assert(subtract != null);
@@ -629,11 +629,11 @@ class _$Add implements Add {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result add(int value),
-    Result subtract(int value),
-    Result error(String msg),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult add(int value),
+    TResult subtract(int value),
+    TResult error(String msg),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (add != null) {
@@ -644,10 +644,10 @@ class _$Add implements Add {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result add(Add value),
-    @required Result subtract(Subtract value),
-    @required Result error(Error value),
+  TResult map<TResult extends Object>({
+    @required TResult add(Add value),
+    @required TResult subtract(Subtract value),
+    @required TResult error(Error value),
   }) {
     assert(add != null);
     assert(subtract != null);
@@ -657,11 +657,11 @@ class _$Add implements Add {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result add(Add value),
-    Result subtract(Subtract value),
-    Result error(Error value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult add(Add value),
+    TResult subtract(Subtract value),
+    TResult error(Error value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (add != null) {
@@ -734,10 +734,10 @@ class _$Subtract implements Subtract {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result add(int value),
-    @required Result subtract(int value),
-    @required Result error(String msg),
+  TResult when<TResult extends Object>({
+    @required TResult add(int value),
+    @required TResult subtract(int value),
+    @required TResult error(String msg),
   }) {
     assert(add != null);
     assert(subtract != null);
@@ -747,11 +747,11 @@ class _$Subtract implements Subtract {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result add(int value),
-    Result subtract(int value),
-    Result error(String msg),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult add(int value),
+    TResult subtract(int value),
+    TResult error(String msg),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (subtract != null) {
@@ -762,10 +762,10 @@ class _$Subtract implements Subtract {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result add(Add value),
-    @required Result subtract(Subtract value),
-    @required Result error(Error value),
+  TResult map<TResult extends Object>({
+    @required TResult add(Add value),
+    @required TResult subtract(Subtract value),
+    @required TResult error(Error value),
   }) {
     assert(add != null);
     assert(subtract != null);
@@ -775,11 +775,11 @@ class _$Subtract implements Subtract {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result add(Add value),
-    Result subtract(Subtract value),
-    Result error(Error value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult add(Add value),
+    TResult subtract(Subtract value),
+    TResult error(Error value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (subtract != null) {
@@ -852,10 +852,10 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result add(int value),
-    @required Result subtract(int value),
-    @required Result error(String msg),
+  TResult when<TResult extends Object>({
+    @required TResult add(int value),
+    @required TResult subtract(int value),
+    @required TResult error(String msg),
   }) {
     assert(add != null);
     assert(subtract != null);
@@ -865,11 +865,11 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result add(int value),
-    Result subtract(int value),
-    Result error(String msg),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult add(int value),
+    TResult subtract(int value),
+    TResult error(String msg),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {
@@ -880,10 +880,10 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result add(Add value),
-    @required Result subtract(Subtract value),
-    @required Result error(Error value),
+  TResult map<TResult extends Object>({
+    @required TResult add(Add value),
+    @required TResult subtract(Subtract value),
+    @required TResult error(Error value),
   }) {
     assert(add != null);
     assert(subtract != null);
@@ -893,11 +893,11 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result add(Add value),
-    Result subtract(Subtract value),
-    Result error(Error value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult add(Add value),
+    TResult subtract(Subtract value),
+    TResult error(Error value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {

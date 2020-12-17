@@ -62,19 +62,15 @@ class _WithdrawDisplayState extends State<WithdrawDisplay> {
         (_) => _store.withdrawResult,
         // Run some logic with the content of the observed field
         (WithdrawModel result) {
-          debugPrint('withdraw result: $result');
+          debugPrint('reaction on withdraw result: $result');
           if (result == null) return;
           if (result.code == 0) {
             callToastInfo(
-                (result.msg.isNotEmpty && result.msg.hasChinese)
-                    ? result.msg
-                    : localeStr.messageSuccess,
+                MessageMap.getSuccessMessage(result.msg, RouteEnum.WITHDRAW),
                 icon: Icons.check_circle_outline);
           } else {
-            callToastError((result.msg.isNotEmpty && result.msg.hasChinese)
-                ? result.msg
-                : localeStr
-                    .messageTaskFailed(localeStr.transferResultAlertTitle));
+            callToastError(
+                MessageMap.getErrorMessage(result.msg, RouteEnum.WITHDRAW));
           }
         },
       ),

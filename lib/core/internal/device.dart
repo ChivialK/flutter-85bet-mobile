@@ -141,5 +141,5 @@ class Device {
   double get safeFloat => _screenViewPadding.bottom + _screenViewInset.bottom;
 
   double get featureContentHeight =>
-      _screenHeight - Global.APP_TOOLS_HEIGHT - safeInset - safeVerticalPadding;
+      _screenHeight - Global.APP_BARS_HEIGHT - safeInset - safeVerticalPadding;
 }

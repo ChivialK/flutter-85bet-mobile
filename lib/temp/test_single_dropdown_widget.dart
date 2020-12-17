@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 import '../mylogger.dart';
 
@@ -45,10 +45,10 @@ class SingleDropdownWidget extends StatefulWidget {
     this.parentWidth,
     this.widgetHorInset = 32.0,
     this.prefixTitle,
-    this.titleWidthFactor = Themes.prefixTextWidthFactor,
+    this.titleWidthFactor = ThemeInterface.prefixTextWidthFactor,
     this.spacing = 12.0,
     this.prefixIconData,
-    this.iconWidthFactor = Themes.prefixIconWidthFactor,
+    this.iconWidthFactor = ThemeInterface.prefixIconWidthFactor,
     this.debug = false,
   }) : super(key: key);
 
@@ -82,7 +82,7 @@ class SingleDropdownWidgetState extends State<SingleDropdownWidget> {
             : _viewWidth * widget.iconWidthFactor) -
         8;
 
-    _smallWidgetHeight = Themes.fieldHeight - 12;
+    _smallWidgetHeight = ThemeInterface.fieldHeight - 12;
 
     if (widget.debug) {
       debugPrint(
@@ -129,7 +129,7 @@ class SingleDropdownWidgetState extends State<SingleDropdownWidget> {
           if (_prefixWidget != null) _prefixWidget,
           Expanded(
             child: Container(
-              color: Themes.fieldInputBgColor,
+              color: themeColor.fieldInputBgColor,
               padding: const EdgeInsets.symmetric(horizontal: 6.0),
               child: DropdownButtonHideUnderline(
                 child: DropdownButton(
@@ -140,7 +140,7 @@ class SingleDropdownWidgetState extends State<SingleDropdownWidget> {
                   isExpanded: widget.expandWidget,
                   isDense: true,
                   style: TextStyle(
-                    color: Themes.defaultTextColor,
+                    color: themeColor.defaultTextColor,
                     fontSize: FontSize.SUBTITLE.value,
                   ),
                   onChanged: (data) {
@@ -156,7 +156,7 @@ class SingleDropdownWidgetState extends State<SingleDropdownWidget> {
                         return Text(
                           item,
                           style: TextStyle(
-                            color: Themes.secondaryTextColor1,
+                            color: themeColor.secondaryTextColor1,
                           ),
                         );
                       }).toList();
@@ -165,7 +165,7 @@ class SingleDropdownWidgetState extends State<SingleDropdownWidget> {
                         return Text(
                           item,
                           style: TextStyle(
-                            color: Themes.secondaryTextColor1,
+                            color: themeColor.secondaryTextColor1,
                           ),
                         );
                       }).toList();
@@ -184,8 +184,8 @@ class SingleDropdownWidgetState extends State<SingleDropdownWidget> {
                         itemText,
                         style: TextStyle(
                           color: (_dropdownValue == item)
-                              ? Themes.defaultAccentColor
-                              : Themes.defaultTextColor,
+                              ? themeColor.defaultAccentColor
+                              : themeColor.defaultTextColor,
                         ),
                       ),
                     );
@@ -202,7 +202,7 @@ class SingleDropdownWidgetState extends State<SingleDropdownWidget> {
   void _buildPrefix() {
     if (widget.prefixTitle != null && widget.prefixIconData != null) {
       _prefixWidget = Container(
-        color: Themes.defaultWidgetBgColor,
+        color: themeColor.defaultWidgetBgColor,
         constraints: _prefixConstraints,
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -212,8 +212,8 @@ class SingleDropdownWidgetState extends State<SingleDropdownWidget> {
               padding: const EdgeInsets.symmetric(horizontal: 2.0),
               child: Icon(
                 widget.prefixIconData,
-                size: Themes.fieldIconSize,
-                color: Themes.iconSubColor1,
+                size: ThemeInterface.fieldIconSize,
+                color: themeColor.iconSubColor1,
               ),
             ),
             Padding(
@@ -233,7 +233,7 @@ class SingleDropdownWidgetState extends State<SingleDropdownWidget> {
       );
     } else if (widget.prefixTitle != null) {
       _prefixWidget = Container(
-        color: Themes.defaultWidgetBgColor,
+        color: themeColor.defaultWidgetBgColor,
         constraints: _prefixConstraints,
         alignment: Alignment.centerLeft,
         padding: const EdgeInsets.symmetric(horizontal: 6.0),
@@ -249,13 +249,13 @@ class SingleDropdownWidgetState extends State<SingleDropdownWidget> {
       );
     } else if (widget.prefixIconData != null) {
       _prefixWidget = Container(
-        color: Themes.defaultWidgetBgColor,
+        color: themeColor.defaultWidgetBgColor,
         constraints: _prefixConstraints,
         child: Center(
           child: Icon(
             widget.prefixIconData,
-            size: Themes.fieldIconSize,
-            color: Themes.iconSubColor1,
+            size: ThemeInterface.fieldIconSize,
+            color: themeColor.iconSubColor1,
           ),
         ),
       );

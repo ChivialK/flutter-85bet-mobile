@@ -2,10 +2,12 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_carousel.dart';
+import 'package:flutter_85bet_mobile/utils/regex_util.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../data/entity/banner_entity.dart';
 
-typedef OnBannerClicked = void Function(bool, String);
+typedef OnBannerClicked = void Function(String);
 
 ///
 /// Create a [Carousel] widget to display banner images
@@ -24,7 +26,7 @@ class HomeDisplayBanner extends StatelessWidget {
       return _buildCarousel();
     } else {
       return Container(
-        color: Themes.defaultBackgroundColor,
+        color: themeColor.defaultBackgroundColor,
         alignment: Alignment.center,
         margin: const EdgeInsets.only(bottom: 34.0),
         child: WarningDisplay(
@@ -49,17 +51,21 @@ class HomeDisplayBanner extends StatelessWidget {
           .toList(),
       showIndicator: true,
       indicatorSize: 48.0,
-      indicatorColor: Themes.defaultMarqueeBarColor,
+      indicatorColor: themeColor.defaultMarqueeBarColor,
       indicatorPadding: const EdgeInsets.only(bottom: 12.0),
       animationDuration: Duration(milliseconds: 1000),
       autoplayDuration: Duration(seconds: 6),
       jumpOnEndPage: true,
       onImageTap: (index) {
-        var url = bannerUrls[index];
+        String url = bannerUrls[index];
         debugPrint('clicked image $index, url: $url');
-        if (onBannerClicked != null)
-          onBannerClicked(
-              url.contains('/api/open/'), url.replaceAll('/api/open/', ''));
+        if (url.contains(Global.DOMAIN_NAME)) {
+          if (onBannerClicked != null) {
+            onBannerClicked(url);
+          }
+        } else if (url.isUrl) {
+          launch(url);
+        }
       },
     );
   }

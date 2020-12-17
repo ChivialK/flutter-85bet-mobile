@@ -118,8 +118,8 @@ class _TransferDisplayState extends State<TransferDisplay> {
   @override
   void initState() {
     _valueTextPadding = (Global.device.width.roundToDouble() - _fieldInset) *
-            Themes.prefixTextWidthFactor -
-        Themes.minusSize +
+            ThemeInterface.prefixTextWidthFactor -
+        ThemeInterface.minusSize +
         16.0;
     _valueInitText = localeStr.transferViewSiteHint;
     chipLabels = [
@@ -166,8 +166,8 @@ class _TransferDisplayState extends State<TransferDisplay> {
                     padding: const EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Themes.memberIconColor,
-                      boxShadow: Themes.roundIconShadow,
+                      color: themeColor.memberIconColor,
+                      boxShadow: ThemeInterface.iconBottomShadow,
                     ),
                     child: Icon(
                       pageItem.value.iconData,
@@ -187,7 +187,7 @@ class _TransferDisplayState extends State<TransferDisplay> {
             Padding(
               padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 16.0),
               child: Container(
-                decoration: Themes.layerShadowDecorRound,
+                decoration: ThemeInterface.layerShadowDecorRound,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -244,8 +244,8 @@ class _TransferDisplayState extends State<TransferDisplay> {
                                         },
                                         child: Text(text,
                                             style: TextStyle(
-                                                color:
-                                                    Themes.fieldSuffixColor)),
+                                                color: themeColor
+                                                    .fieldSuffixColor)),
                                       );
                                     },
                                   ),
@@ -295,7 +295,8 @@ class _TransferDisplayState extends State<TransferDisplay> {
                                         },
                                         child: Text(text,
                                             style: TextStyle(
-                                              color: Themes.fieldSuffixColor,
+                                              color:
+                                                  themeColor.fieldSuffixColor,
                                             )),
                                       );
                                     },
@@ -350,7 +351,7 @@ class _TransferDisplayState extends State<TransferDisplay> {
                               values: chipValues,
                               heightFactor: 1.75,
                               backgroundColor:
-                                  Themes.defaultLayerBackgroundColor,
+                                  themeColor.defaultLayeredBackgroundColor,
                               roundChip: false,
                               chipTapCall: (value) {
                                 if (value == 'all')
@@ -393,13 +394,13 @@ class _TransferDisplayState extends State<TransferDisplay> {
                       child: RichText(
                         text: TextSpan(
                           style: TextStyle(
-                            color: Themes.defaultTextColor,
+                            color: themeColor.defaultTextColor,
                           ),
                           children: [
                             TextSpan(
                               text: '${localeStr.balanceHintTextTitle}\n',
                               style: TextStyle(
-                                color: Themes.defaultSubtitleColor,
+                                color: themeColor.defaultSubtitleColor,
                                 fontWeight: FontWeight.bold,
                                 height: 3,
                               ),

@@ -1,4 +1,3 @@
-import 'package:flutter_85bet_mobile/core/internal/global.dart';
 import 'package:flutter_85bet_mobile/utils/json_util.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -42,7 +41,10 @@ abstract class NoticeDataModel with _$NoticeDataModel {
 @freezed
 abstract class NoticeData with _$NoticeData {
   const factory NoticeData({
-    @JsonKey(name: 'content_cn') String content,
+    @JsonKey(name: 'content_cn', defaultValue: '') String content,
+    @JsonKey(name: 'content_us', defaultValue: '') String contentEN,
+    @JsonKey(name: 'content_vn', defaultValue: '') String contentVI,
+    @JsonKey(name: 'content_th', defaultValue: '') String contentTH,
     String date,
     int sort,
   }) = _NoticeData;
@@ -51,7 +53,16 @@ abstract class NoticeData with _$NoticeData {
     return _$_NoticeData(
       content: (jsonMap.containsKey('content')
           ? jsonMap['content']
-          : jsonMap[Global.jsonContentKey]) as String,
+          : jsonMap['content_cn']) as String,
+      contentEN: (jsonMap.containsKey('content_us'))
+          ? jsonMap['content_us'] as String
+          : '',
+      contentVI: (jsonMap.containsKey('content_vn'))
+          ? jsonMap['content_vn'] as String
+          : '',
+      contentTH: (jsonMap.containsKey('content_th'))
+          ? jsonMap['content_th'] as String
+          : '',
       date: jsonMap['date'] as String,
       sort: jsonMap['sort'] as int,
     );

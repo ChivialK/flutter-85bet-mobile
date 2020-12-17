@@ -68,7 +68,9 @@ extension RegexExtension on String {
 
   bool get isHtmlFormat =>
       _htmlRegex.hasMatch("""$this""".replaceAll('\n', ''));
-	  
+
+  bool get isValidDate => _dateRegex.hasMatch(this);
+
   bool get hasChinese => _chineseRegex.hasMatch(this);
 
   bool get hasInvalidChinese => _chineseInvalidRegex.hasMatch(this);

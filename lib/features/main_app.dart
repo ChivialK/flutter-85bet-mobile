@@ -1,9 +1,8 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_color_enum.dart';
 import 'package:flutter_85bet_mobile/generated/l10n.dart';
 import 'package:flutter_85bet_mobile/injection_container.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -13,18 +12,12 @@ import 'router/app_global_streams.dart';
 import 'routes/home/presentation/state/home_store.dart';
 
 class MainApp extends StatefulWidget {
-  final FirebaseAnalytics analytics;
-
-  MainApp(this.analytics);
-
   @override
-  State<StatefulWidget> createState() => _MainAppState();
+  _MainAppState createState() => _MainAppState();
 }
 
 class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   final String tag = 'Main';
-
-  FirebaseAnalyticsObserver firebaseObserver;
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -49,74 +42,60 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
 
   @override
   void initState() {
-    MyLogger.info(msg: 'app init', tag: tag);
+    MyLogger.debug(msg: 'app init', tag: tag);
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    if (widget.analytics != null) {
-      widget.analytics.logAppOpen();
-      firebaseObserver = FirebaseAnalyticsObserver(analytics: widget.analytics);
-    }
   }
 
   @override
   void didChangeDependencies() {
-    MyLogger.info(msg: 'app dependencies', tag: tag);
+    MyLogger.debug(msg: 'app changed', tag: tag);
     super.didChangeDependencies();
   }
 
   @override
+  void didUpdateWidget(covariant MainApp oldWidget) {
+    MyLogger.debug(msg: 'app update', tag: tag);
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   void dispose() {
+    MyLogger.debug(msg: 'app dispose', tag: tag);
     sl.get<AppGlobalStreams>().dispose();
     sl.get<HomeStore>().closeStreams();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    MyLogger.info(msg: 'app build', tag: tag);
-    return MaterialApp(
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        S.delegate
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      localeResolutionCallback: (deviceLocale, supportedLocales) {
-//        if (Platform.isAndroid) {
-//          for (var supp in supportedLocales) {
-//            if (supp.languageCode == deviceLocale.languageCode) return supp;
-//          }
-//        }
-        return Locale.fromSubtags(languageCode: Global.lang);
-      },
-      localeListResolutionCallback: (deviceLocales, supportedLocales) {
-        debugPrint('device locales: $deviceLocales');
-        debugPrint('supported locales: $supportedLocales');
-//        if (Platform.isAndroid) {
-//          for (var loc in deviceLocales) {
-//            for (var supp in supportedLocales) {
-//              if (supp.languageCode == loc.languageCode) return supp;
-//            }
-//          }
-//        }
-        return Locale.fromSubtags(languageCode: Global.lang);
-      },
-      theme: appTheme.defaultTheme,
-      // Tell MaterialApp to use our ExtendedNavigator instead of
-      // the native one by assigning it to it's builder
-//    builder: ExtendedNavigator<ScreenRouter>(router: ScreenRouter()),
-      builder: BotToastInit(),
-//            builder: (context, child) {
-//              child = myBuilder(context,child);  //do something
-//              child = botToastBuilder(context,child);
-//              return child;
-//            },
-      navigatorObservers: (firebaseObserver != null)
-          ? [BotToastNavigatorObserver(), firebaseObserver]
-          : [BotToastNavigatorObserver()],
-      home: new MainStartup(),
-    );
+    MyLogger.debug(msg: 'app build', tag: tag);
+    return StreamBuilder<ThemeColorEnum>(
+        stream: getAppGlobalStreams.themeStream,
+        initialData: ThemeInterface.theme.colorEnum,
+        builder: (context, snapshot) {
+          return MaterialApp(
+            localizationsDelegates: [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              S.delegate
+            ],
+            supportedLocales: S.delegate.supportedLocales,
+            localeResolutionCallback: (deviceLocale, supportedLocales) {
+              return Locale.fromSubtags(languageCode: Global.lang);
+            },
+            localeListResolutionCallback: (deviceLocales, supportedLocales) {
+              debugPrint('device locales: $deviceLocales');
+              debugPrint('supported locales: $supportedLocales');
+              return Locale.fromSubtags(languageCode: Global.lang);
+            },
+            theme: ThemeInterface.theme.data,
+            // builder: ExtendedNavigator<ScreenRouter>(router: ScreenRouter()),
+            builder: BotToastInit(),
+            navigatorObservers: [BotToastNavigatorObserver()],
+            home: new MainStartup(),
+          );
+        });
   }
 }

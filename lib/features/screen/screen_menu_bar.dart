@@ -7,7 +7,7 @@ class ScreenMenuBar extends StatefulWidget implements PreferredSizeWidget {
   _ScreenMenuBarState createState() => _ScreenMenuBarState();
 
   @override
-  Size get preferredSize => Size(Global.device.width, Global.APP_BAR_HEIGHT);
+  Size get preferredSize => Size(Global.device.width, Global.APP_MENU_HEIGHT);
 }
 
 class _ScreenMenuBarState extends State<ScreenMenuBar> {
@@ -23,7 +23,7 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
       reaction(
           // Observe in page
           // Tell the reaction which observable to observe
-          (_) => _viewState.store.pageInfo.disableLanguageDropDown,
+          (_) => _viewState.store.pageInfo.hideLanguageOption,
           // Run some logic with the content of the observed field
           (bool disable) {
         if (disable != _hideLangOption) {
@@ -109,7 +109,7 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
         builder: (_) {
           if (_viewState.store.showMenuDrawer) {
             return IconButton(
-              icon: Icon(Icons.menu, color: Themes.drawerIconColor),
+              icon: Icon(Icons.menu, color: themeColor.drawerIconColor),
               tooltip: localeStr.btnMenu,
               onPressed: () {
                 _viewState.scaffoldKey.currentState.openDrawer();
@@ -117,7 +117,8 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
             );
           } else {
             return IconButton(
-              icon: Icon(Icons.arrow_back, color: Themes.drawerIconSubColor),
+              icon:
+                  Icon(Icons.arrow_back, color: themeColor.drawerIconSubColor),
               tooltip: localeStr.btnBack,
               onPressed: () {
                 RouterNavigate.navigateBack();

@@ -1,4 +1,4 @@
-import 'package:dataclass/dataclass.dart';
+import 'package:flutter_85bet_mobile/builders/dataclass/dataclass.dart';
 import 'package:flutter_85bet_mobile/core/base/data_operator.dart';
 import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
 import 'package:flutter_85bet_mobile/utils/json_util.dart';
@@ -43,6 +43,8 @@ extension PaymentTypeExtension on PaymentType {
         return localeStr?.depositPaymentTitleBank ?? 'Bank';
       case 2:
         return localeStr?.depositPaymentTitleOnline ?? 'Online';
+      case 6:
+        return localeStr?.depositPaymentTitleQr ?? 'QR';
       default:
 //        var firstData;
 //        if (data is List && data.isNotEmpty)

@@ -20,6 +20,8 @@ class Res {
 //  static const String tbico_love = "assets/images/index/tbico_love.png";
   static const String tbico_fav = "assets/images/index/tbico_love_dark.png";
 
+  static const String icon_line = "assets/images/icon_line.png";
+
   static const String flico_word = "assets/images/flico_word.png";
 
 //  static const String user_vip_0 = "assets/images/vip/user_vip_0.png";

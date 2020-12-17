@@ -26,7 +26,7 @@ class HomeDisplayTabWebsite extends StatelessWidget {
             text: TextSpan(
               text: linkHint,
               style: TextStyle(
-                color: Themes.hintHyperLink,
+                color: themeColor.hintHyperLink,
                 fontSize: FontSize.MESSAGE.value,
                 decoration: TextDecoration.underline,
               ),

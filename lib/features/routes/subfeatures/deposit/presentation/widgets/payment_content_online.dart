@@ -88,8 +88,8 @@ class _PaymentContentOnlineState extends State<PaymentContentOnline>
   @override
   void initState() {
     _valueTextPadding = (Global.device.width.roundToDouble() - _fieldInset) *
-            Themes.prefixTextWidthFactor -
-        Themes.minusSize;
+            ThemeInterface.prefixTextWidthFactor -
+        ThemeInterface.minusSize;
 //    debugPrint(
 //        'dropdown keys: ${widget.dataList.map((item) => item.key).toList()}');
 //    debugPrint(
@@ -133,7 +133,7 @@ class _PaymentContentOnlineState extends State<PaymentContentOnline>
               clearValueOnMenuChanged: true,
               changeNotify: (key) {
                 // clear text field focus
-                FocusScope.of(context).requestFocus(new FocusNode());
+                FocusScope.of(context).unfocus();
                 // set selected data
                 setContent(dataKey: key);
               },
@@ -144,7 +144,7 @@ class _PaymentContentOnlineState extends State<PaymentContentOnline>
               padding: const EdgeInsets.only(top: 8.0),
               child: Text(
                 localeStr.depositHintTextAccount,
-                style: TextStyle(color: Themes.hintHighlight),
+                style: TextStyle(color: themeColor.hintHighlight),
               ),
             ),
 
@@ -191,7 +191,7 @@ class _PaymentContentOnlineState extends State<PaymentContentOnline>
               child: Text(
                 localeStr.depositPaymentEditTitleAmountHintVND(_amountVnd),
                 style: TextStyle(
-                  color: Themes.defaultHintColor,
+                  color: themeColor.defaultHintColor,
                   fontSize: FontSize.SUBTITLE.value,
                 ),
               ),

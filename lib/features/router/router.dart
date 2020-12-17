@@ -1,4 +1,4 @@
-import 'package:auto_route/auto_route_annotations.dart';
+import 'package:flutter_85bet_mobile/builders/autoroute/auto_route_annotations.dart';
 
 import '../routes/home/presentation/home_route.dart';
 import '../routes/member/presentation/member_route.dart';
@@ -6,14 +6,13 @@ import '../routes/promo/presentation/promo_route.dart';
 import '../routes/subfeatures/about/presentation/about_route.dart';
 import '../routes/subfeatures/accountcenter/presentation/center_route.dart';
 import '../routes/subfeatures/accountcenter/presentation/widgets/center_display_account_pwd.dart';
-import '../routes/subfeatures/agent/presentation/agent_route.dart';
 import '../routes/subfeatures/balance/presentation/balance_route.dart';
 import '../routes/subfeatures/bankcard/presentation/bankcard_route.dart';
 import '../routes/subfeatures/betrecord/presentation/bet_record_route.dart';
 import '../routes/subfeatures/deals/presentation/deals_route.dart';
 import '../routes/subfeatures/deposit/presentation/deposit_route.dart';
 import '../routes/subfeatures/downloadarea/download_area_route.dart';
-import '../routes/subfeatures/flows/presentation/flows_route.dart';
+import '../routes/subfeatures/rollback/presentation/rollback_route.dart';
 import '../routes/subfeatures/message/presentation/message_route.dart';
 import '../routes/subfeatures/notice/presentation/notice_route.dart';
 import '../routes/subfeatures/service/presentation/service_route.dart';
@@ -31,7 +30,7 @@ import 'my_static_page_transition.dart';
   transitionsBuilder: MyStaticPageTransition.slide,
   durationInMilliseconds: 400,
 )
-class $Router {
+class $FeatureRouter {
   @initial
   HomeRoute homeRoute;
   LoginRoute loginRoute;
@@ -55,9 +54,10 @@ class $Router {
   TransactionRoute transactionRoute;
   BetRecordRoute betRecordRoute;
   DealsRoute dealsRoute;
-  FlowsRoute flowsRoute;
-  AgentRoute agentRoute;
-  AgentRoute agentFeatureRoute;
+  RollbackRoute rollbackRoute;
+  // AgentLoginRoute agentLoginRoute;
+  // AgentRegisterRoute agentRegisterRoute;
+  // AgentRoute agentRoute;
   WebRoute moreWebPage;
   AboutRoute aboutRoute;
 

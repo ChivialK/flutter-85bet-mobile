@@ -8,3 +8,32 @@ targets:
 #          - test/**_test.dart
         options:
           formatted: true
+      flutter_85bet_mobile|autoRouteGenerator:
+        generate_for:
+          - lib/features/router/router.dart
+          - lib/features/router/screen_router.dart
+          - lib/temp/test_router.dart
+        options:
+          formatted: true
+
+builders:
+  dataclass:
+    import: "package:flutter_85bet_mobile/builders/dataclass/dataclass_generator.dart"
+    builder_factories: ["dataClass"]
+    build_extensions: {".dart": [".g.part"]}
+    auto_apply: root_package
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
+#  to_string:
+#    import: "package:flutter_85bet_mobile/builders/tostring/to_string_generator.dart"
+#    builder_factories: ["toString"]
+#    build_extensions: {".dart": [".to_string.g.part"]}
+#    auto_apply: root_package
+#    build_to: cache
+#    applies_builders: ["source_gen|combining_builder"]
+  autoRouteGenerator:
+    import: "package:flutter_85bet_mobile/builders/autoroute_generator/auto_route_generator.dart"
+    builder_factories: ["autoRouteGenerator"]
+    build_extensions: {'.dart': ['.gr.dart']}
+    auto_apply: root_package
+    build_to: source

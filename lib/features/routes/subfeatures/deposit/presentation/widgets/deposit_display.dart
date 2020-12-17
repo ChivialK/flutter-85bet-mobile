@@ -113,8 +113,8 @@ class _DepositDisplayState extends State<DepositDisplay> with AfterLayoutMixin {
                     padding: const EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Themes.memberIconColor,
-                      boxShadow: Themes.roundIconShadow,
+                      color: themeColor.memberIconColor,
+                      boxShadow: ThemeInterface.iconBottomShadow,
                     ),
                     child: Icon(
                       pageItem.value.iconData,
@@ -137,6 +137,8 @@ class _DepositDisplayState extends State<DepositDisplay> with AfterLayoutMixin {
                 types: widget.store.paymentTypes,
                 titleKey: 'label',
                 onTypeGridTap: (_, type) => updateContent(type),
+                itemSpace: 2.0,
+                itemSpaceHorFactor: 2.0,
               ),
             ),
             Padding(

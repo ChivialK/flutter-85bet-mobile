@@ -6,7 +6,6 @@ part of 'bankcard_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-// ignore: non_constant_identifier_names
 _$_BankcardModel _$_$_BankcardModelFromJson(Map<String, dynamic> json) {
   return _$_BankcardModel(
     hasCard: json['hasCard'] as bool,

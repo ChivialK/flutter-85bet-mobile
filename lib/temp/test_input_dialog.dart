@@ -27,8 +27,10 @@ class _TestInputDialogState extends State<TestInputDialog> {
       new GlobalKey<SingleInputWidgetState>(debugLabel: 'test');
 
   final double dialogHeight = Global.device.height * 0.85;
+
   // screen width - dialog padding
   final double dialogWidth = Global.device.width - 32;
+
   // screen width - dialog padding - stack padding - text padding
   final double contentWidth = Global.device.width - 32 - 20 - 8;
 
@@ -75,7 +77,7 @@ class _TestInputDialogState extends State<TestInputDialog> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(2.0)),
             ),
-            color: Themes.dialogBgColor,
+            color: themeColor.dialogBgColor,
             child: ConstrainedBox(
               constraints: BoxConstraints(
                 minWidth: dialogWidth,

@@ -79,7 +79,7 @@ class CenterDialogCpw extends StatelessWidget {
                                   localeStr.centerDialogCpwLeftHint,
                                   style: TextStyle(
                                     fontSize: FontSize.SMALL.value,
-                                    color: Themes.defaultHintSubColor,
+                                    color: themeColor.defaultHintSubColor,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
@@ -139,7 +139,7 @@ class CenterDialogCpw extends StatelessWidget {
                                 localeStr.centerDialogCpwRightHint,
                                 style: TextStyle(
                                   fontSize: FontSize.SMALL.value,
-                                  color: Themes.hintHighlightDarkRed,
+                                  color: themeColor.hintHighlightDarkRed,
                                 ),
                                 textAlign: TextAlign.center,
                               )),
@@ -176,7 +176,7 @@ class CenterDialogCpw extends StatelessWidget {
                               child: SizedBox(
                                 height: 2,
                                 child: ColoredBox(
-                                  color: Themes.defaultWidgetColor,
+                                  color: themeColor.defaultWidgetColor,
                                 ),
                               ),
                             ),
@@ -185,7 +185,7 @@ class CenterDialogCpw extends StatelessWidget {
                               child: SizedBox(
                                 height: 2,
                                 child: ColoredBox(
-                                  color: Themes.defaultWidgetColor,
+                                  color: themeColor.defaultWidgetColor,
                                 ),
                               ),
                             ),

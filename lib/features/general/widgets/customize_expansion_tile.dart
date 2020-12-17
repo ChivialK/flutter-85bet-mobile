@@ -109,6 +109,7 @@ class CustomizeExpansionTile extends StatefulWidget {
 
   static final Animatable<double> _easeOutTween =
       CurveTween(curve: Curves.easeOut);
+
   @override
   CustomizeExpansionTileState createState() => CustomizeExpansionTileState();
 }

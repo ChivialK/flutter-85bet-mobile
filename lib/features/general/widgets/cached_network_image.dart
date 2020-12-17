@@ -3,7 +3,7 @@ import 'dart:io' show File;
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 import 'package:flutter_85bet_mobile/mylogger.dart';
 import 'package:flutter_85bet_mobile/res.dart';
 
@@ -28,6 +28,7 @@ Future<Widget> networkImageWidget(
   double imgScale = 1.0,
   Color imgColor,
   bool addPendingIconOnError = false,
+  bool cacheImage = true,
 }) async {
   String imageUrl = (url.startsWith('http://') || url.startsWith('https://'))
       ? url
@@ -49,6 +50,7 @@ Future<Widget> networkImageWidget(
           fit: fit,
           scale: imgScale,
           color: imgColor,
+          cache: cacheImage,
           loadStateChanged: (ExtendedImageState state) {
             switch (state.extendedImageLoadState) {
               case LoadState.completed:
@@ -60,7 +62,7 @@ Future<Widget> networkImageWidget(
                 if (addPendingIconOnError) return Image.asset(Res.iconPending);
                 return Icon(
                   Icons.broken_image,
-                  color: Themes.iconSubColor1,
+                  color: themeColor.iconSubColor1,
                 );
               default:
                 return null;
@@ -84,6 +86,7 @@ FutureBuilder networkImageBuilder(
   bool roundCorner = false,
   double roundParam = 6.0,
   bool addPendingIconOnError = false,
+  bool cacheImage = true,
 }) {
   return FutureBuilder(
     future: networkImageWidget(
@@ -92,22 +95,24 @@ FutureBuilder networkImageBuilder(
       imgScale: imgScale,
       imgColor: imgColor,
       addPendingIconOnError: addPendingIconOnError,
+      cacheImage: cacheImage,
     ),
     builder: (_, snapshot) {
       if (snapshot.connectionState == ConnectionState.done &&
           !snapshot.hasError) {
-        if (roundCorner)
+        if (roundCorner) {
           return ClipRRect(
             borderRadius: BorderRadius.circular(roundParam),
             child: snapshot.data,
           );
-        else
+        } else {
           return snapshot.data;
+        }
       } else if (snapshot.hasError) {
         MyLogger.warn(
             msg: 'network image builder error: ${snapshot.error}',
             error: snapshot.error);
-        return Icon(Icons.broken_image, color: Themes.iconSubColor1);
+        return Icon(Icons.broken_image, color: themeColor.iconSubColor1);
       } else {
         return SizedBox.shrink();
       }

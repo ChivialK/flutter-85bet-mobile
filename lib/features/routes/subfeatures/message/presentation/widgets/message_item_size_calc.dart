@@ -1,5 +1,5 @@
-import 'package:flutter_85bet_mobile/core/internal/font_size.dart';
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
+import 'package:flutter_85bet_mobile/features/themes/font_size.dart';
 
 class MessageItemSizeCalc {
   double headerTextSize;

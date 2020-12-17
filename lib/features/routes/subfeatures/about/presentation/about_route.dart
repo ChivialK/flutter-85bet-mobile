@@ -128,14 +128,14 @@ class AboutRoute extends StatelessWidget {
                         padding: const EdgeInsets.all(10.0),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Themes.memberIconColor,
-                          boxShadow: Themes.roundIconShadow,
+                          color: themeColor.memberIconColor,
+                          boxShadow: ThemeInterface.iconBottomShadow,
                         ),
                         child: SizedBox(
                             width: 32 * Global.device.widthScale,
                             height: 32 * Global.device.widthScale,
                             child: Image.asset(Res.iconAbout,
-                                color: Themes.iconColor)),
+                                color: themeColor.iconColor)),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -146,7 +146,7 @@ class AboutRoute extends StatelessWidget {
                             text: localeStr.aboutDataTitle1,
                             style: TextStyle(
                                 fontSize: FontSize.HEADER.value,
-                                color: Themes.defaultTextColor),
+                                color: themeColor.defaultTextColor),
                           ),
                         ),
                       ),
@@ -170,14 +170,14 @@ class AboutRoute extends StatelessWidget {
                           return Container(
                             padding: const EdgeInsets.all(16.0),
                             decoration: BoxDecoration(
-                                color: Themes.defaultLayerBackgroundColor,
+                                color: themeColor.defaultLayeredBackgroundColor,
                                 borderRadius: BorderRadius.circular(8.0)),
                             child: RichText(
                               textAlign: TextAlign.start,
                               text: TextSpan(
                                 style: TextStyle(
                                     fontSize: FontSize.SUBTITLE.value,
-                                    color: Themes.defaultMessageColor),
+                                    color: themeColor.defaultMessageColor),
                                 children: [
                                   TextSpan(text: data.contents[0]),
                                   WidgetSpan(child: _certGrid),
@@ -197,7 +197,8 @@ class AboutRoute extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(
                                   16.0, 16.0, 16.0, 0.0),
                               decoration: BoxDecoration(
-                                  color: Themes.defaultLayerBackgroundColor,
+                                  color:
+                                      themeColor.defaultLayeredBackgroundColor,
                                   borderRadius: BorderRadius.circular(8.0)),
                               child: Column(
                                 children: [
@@ -251,7 +252,7 @@ class AboutRoute extends StatelessWidget {
                           text: _certLabel[_certImages.indexOf(path)],
                           style: TextStyle(
                               fontSize: FontSize.SUBTITLE.value,
-                              color: Themes.defaultTextColor),
+                              color: themeColor.defaultTextColor),
                         ),
                       ),
                     ],
@@ -305,13 +306,13 @@ class AboutRoute extends StatelessWidget {
             style: TextStyle(
                 fontSize: FontSize.MESSAGE.value,
                 fontWeight: FontWeight.bold,
-                color: Themes.defaultTextColor),
+                color: themeColor.defaultTextColor),
           ),
           TextSpan(
             text: '${data.contents[index]}\n\n',
             style: TextStyle(
                 fontSize: FontSize.SUBTITLE.value,
-                color: Themes.defaultMessageColor),
+                color: themeColor.defaultMessageColor),
           ),
         ],
       ),

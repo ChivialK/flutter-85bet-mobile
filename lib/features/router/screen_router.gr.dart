@@ -6,7 +6,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:auto_route/auto_route.dart';
+import 'package:flutter_85bet_mobile/builders/autoroute/auto_route.dart';
+import 'package:flutter_85bet_mobile/core/internal/global.dart';
 import 'package:flutter_85bet_mobile/features/screen/feature_screen.dart';
 import 'package:flutter_85bet_mobile/features/screen/web_game_screen.dart';
 import 'package:flutter_85bet_mobile/temp/test_screen.dart';
@@ -76,7 +77,7 @@ class ScreenRouter extends RouterBase {
 //WebGameScreen arguments holder class
 class WebGameScreenArguments {
   final String startUrl;
-  WebGameScreenArguments({this.startUrl = 'https://www.eg990.com/'});
+  WebGameScreenArguments({this.startUrl = Global.CURRENT_BASE});
 }
 
 // *************************************************************************
@@ -84,13 +85,10 @@ class WebGameScreenArguments {
 // **************************************************************************
 
 extension ScreenRouterNavigationHelperMethods on ExtendedNavigatorState {
-  Future pushFeatureScreen() => pushNamedAndRemoveUntil(
-        ScreenRoutes.featureScreen,
-        (route) => false, // true => same as push, false => push and clear stack
-      );
+  Future pushFeatureScreen() => pushNamed(ScreenRoutes.featureScreen);
 
   Future pushWebGameScreen({
-    String startUrl = 'https://www.eg990.com/',
+    String startUrl = Global.CURRENT_BASE,
   }) =>
       pushNamed(
         ScreenRoutes.webGameScreen,

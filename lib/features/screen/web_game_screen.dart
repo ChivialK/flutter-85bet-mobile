@@ -1,21 +1,19 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/global.dart';
 import 'package:flutter_85bet_mobile/core/internal/orientation_helper.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
-import 'package:flutter_85bet_mobile/features/screen/web_game_screen_store.dart';
 import 'package:flutter_85bet_mobile/injection_container.dart';
-import 'package:flutter_85bet_mobile/mylogger.dart';
 import 'package:flutter_85bet_mobile/utils/regex_util.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import 'web_game_screen_float_button.dart';
+import 'web_game_screen_store.dart';
 
 class WebGameScreen extends StatefulWidget {
   final String startUrl;
 
-  WebGameScreen({this.startUrl = 'https://www.eg990.com/'});
+  WebGameScreen({this.startUrl = Global.CURRENT_BASE});
 
   @override
   _WebGameScreenState createState() => _WebGameScreenState();
@@ -26,8 +24,8 @@ class _WebGameScreenState extends State<WebGameScreen> with AfterLayoutMixin {
       new GlobalKey<ScaffoldState>(debugLabel: 'webgame');
   final GlobalKey<WebGameScreenFloatButtonState> _toolKey =
       new GlobalKey<WebGameScreenFloatButtonState>(debugLabel: 'webtool');
+  final GlobalKey _webviewKey = new GlobalKey(debugLabel: 'webview');
 
-  WebViewController _controller;
   WebGameScreenStore _store;
   Future<void> _floatFuture;
 
@@ -90,33 +88,16 @@ class _WebGameScreenState extends State<WebGameScreen> with AfterLayoutMixin {
       _store.stopSensor();
       OrientationHelper.restoreUI();
     } catch (e) {}
-    // edit the source code in FlutterWebView
-    // (under external lib -> webview_flutter -> android
-    // -> src.main -> java.io.flutter.plugins.webviewflutter)
-//    @Override
-//    public void dispose() {
-//    if(webView != null){
-//    webView.clearCache(true);
-//    webView.removeAllViews();
-//    }
-//    methodChannel.setMethodCallHandler(null);
-//    webView.dispose();
-//    webView.destroy();
-//    }
-//    /// Load empty page and clear cache
-//    await _store.stopSensor();
-//    _controller.loadUrl(Uri.dataFromString(
-//      '',
-//      mimeType: Global.WEB_MIMETYPE,
-//      encoding: Global.webEncoding,
-//    ).toString());
-//    await _controller.clearCache();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
+      onWillPop: () async {
+        MyLogger.debug(msg: 'pop web game screen', tag: 'WebGameScreen');
+        return Future(() => true);
+      },
       child: Scaffold(
         key: _scaffoldKey,
 //          drawer: WebGameScreenDrawer(
@@ -130,7 +111,7 @@ class _WebGameScreenState extends State<WebGameScreen> with AfterLayoutMixin {
               if (showToolHint) {
                 showToolHint = false;
                 Future.delayed(Duration(milliseconds: 1500), () {
-                  callToast('单击显示，长按隐藏 ↗');
+                  callToast(localeStr.gameToolHintUsage);
                 });
               }
               return GestureDetector(
@@ -138,7 +119,7 @@ class _WebGameScreenState extends State<WebGameScreen> with AfterLayoutMixin {
                   if (showVisibleHint) {
                     showVisibleHint = false;
                     Future.delayed(Duration(milliseconds: 300), () {
-                      callToast('双击可恢复显示');
+                      callToast(localeStr.gameToolHintRestore);
                     });
                   }
                   _toolKey.currentState?.hideTool();
@@ -158,52 +139,90 @@ class _WebGameScreenState extends State<WebGameScreen> with AfterLayoutMixin {
         body: GestureDetector(
 //            onDoubleTap: () => _scaffoldKey.currentState.openDrawer(),
           onDoubleTap: () => _toolKey.currentState?.showTool(),
-          child: WebView(
-            initialUrl: widget.startUrl,
-            javascriptMode: JavascriptMode.unrestricted,
-            onWebViewCreated: (WebViewController controller) async {
-              _controller = controller;
-              if (isForm) {
-                _controller.loadUrl(Uri.dataFromString(
-                  parsedHtml,
-                  mimeType: Global.WEB_MIMETYPE,
-                  encoding: Global.webEncoding,
-                ).toString());
-              } else if (widget.startUrl.isUrl == false) {
-                _controller.loadUrl(Uri.dataFromString(
-                  widget.startUrl,
-                  mimeType: Global.WEB_MIMETYPE,
-                  encoding: Global.webEncoding,
-                ).toString());
-              }
+          child: InAppWebView(
+            key: _webviewKey,
+            initialUrl: (isForm)
+                ? Uri.dataFromString(
+                    parsedHtml,
+                    mimeType: Global.WEB_MIMETYPE,
+                    encoding: Global.webEncoding,
+                  ).toString()
+                : widget.startUrl,
+            // initialHeaders: {},
+            initialOptions: InAppWebViewGroupOptions(
+              crossPlatform: InAppWebViewOptions(supportZoom: false),
+              android: AndroidInAppWebViewOptions(useWideViewPort: true),
+            ),
+            onWebViewCreated: (InAppWebViewController controller) async {
+              controller.addJavaScriptHandler(
+                  handlerName: 'Toaster',
+                  callback: (args) {
+                    // Here you receive all the arguments from the JavaScript side
+                    // that is a List<dynamic>
+                    debugPrint('JS handler: $args');
+                    // Scaffold.of(context).showSnackBar(
+                    //   SnackBar(
+                    //       content: Text(
+                    //           'message: ${args.reduce((curr, next) => curr + next)}')),
+                    // );
+                  });
             },
-            onPageFinished: (String url) async {
+            onLoadStart: (InAppWebViewController controller, String url) {
+              debugPrint('webview start loading: $url');
+            },
+            onLoadStop: (InAppWebViewController controller, String url) async {
               debugPrint('web page loaded: $url');
-              if (url.isUrl == false) return;
-              if (isForm) isForm = false;
-
-              String pageTitle = await _controller.getTitle();
-              debugPrint('web page title: $pageTitle');
-              //TODO check the normal page title or 404
+            },
+            onLoadError: (InAppWebViewController controller, String url,
+                int code, String message) async {
+              String pageTitle = await controller.getTitle();
+              debugPrint(
+                  'web page title: $pageTitle, code: $code, message: $message');
               // Error 500 Title: 500 Internal Server Error
               if (pageTitle.contains('Error') ||
                   pageTitle.contains('Exception')) {
-                if (pageTitle.startsWith('500')) {
-                  _controller.loadUrl(Uri.dataFromString(
-                    pageTitle,
+                controller.loadUrl(
+                  url: Uri.dataFromString(
+                    '<p>${localeStr.messageErrorLoadingPay}. <br>Code: $code. Message: $message. <br>URL: $url</p>',
                     mimeType: Global.WEB_MIMETYPE,
                     encoding: Global.webEncoding,
-                  ).toString());
-                }
+                  ).toString(),
+                );
+              } else if (url.isUrl == false) {
+                controller.loadUrl(
+                  url: Uri.dataFromString(
+                    '<p>URL is not valid. <br>Code: $code. Message: $message. <br>URL: $url</p>',
+                    mimeType: Global.WEB_MIMETYPE,
+                    encoding: Global.webEncoding,
+                  ).toString(),
+                );
+              }
+            },
+            // onProgressChanged: (InAppWebViewController controller, int progress) {
+            //   setState(() {
+            //     this.progress = progress / 100;
+            //   });
+            // },
+            onEnterFullscreen: (InAppWebViewController controller) {
+              debugPrint("webview is fullscreen");
+            },
+            onExitFullscreen: (InAppWebViewController controller) {
+              debugPrint("webview exit fullscreen");
+            },
+            onConsoleMessage: (InAppWebViewController controller,
+                ConsoleMessage consoleMessage) {
+              if (consoleMessage.messageLevel.toValue() >= 4) {
+                debugPrint("webview console debug: ${consoleMessage.message}");
+              } else if (consoleMessage.messageLevel.toValue() > 2) {
+                MyLogger.warn(
+                    msg: 'webview console: ${consoleMessage.message}, '
+                        'level: ${consoleMessage.messageLevel}',
+                    tag: 'WebGameScreen');
               }
             },
           ),
         ),
       ),
-      onWillPop: () async {
-        MyLogger.debug(msg: 'pop web game screen', tag: 'WebGameScreen');
-        return Future(() => true);
-      },
     );
   }
 

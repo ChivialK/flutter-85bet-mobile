@@ -14,7 +14,6 @@ abstract class _$FailureCode {
   bool operator ==(other) {
     if (identical(this, other)) return true;
     if (other is! FailureCode) return false;
-
     return true && this.type == other.type && this.code == other.code;
   }
 

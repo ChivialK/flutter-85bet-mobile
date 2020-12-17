@@ -1,4 +1,4 @@
-import 'package:auto_route/auto_route_annotations.dart';
+import 'package:flutter_85bet_mobile/builders/autoroute/auto_route_annotations.dart';
 import 'package:flutter_85bet_mobile/temp/test_nested_nav_screen.dart';
 import 'package:flutter_85bet_mobile/temp/test_screen.dart';
 

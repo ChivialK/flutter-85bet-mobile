@@ -1,4 +1,4 @@
-import 'package:dataclass/dataclass.dart';
+import 'package:flutter_85bet_mobile/builders/dataclass/dataclass.dart';
 import 'package:vnum/vnum.dart';
 
 part 'failure_code.g.dart';
@@ -47,7 +47,7 @@ class FailureType extends Vnum<int> {
   static const FailureType TRANSACTIONS = const FailureType.define(2800);
   static const FailureType BETS = const FailureType.define(2810);
   static const FailureType DEALS = const FailureType.define(2820);
-  static const FailureType FLOWS = const FailureType.define(2830);
+  static const FailureType ROLLBACK = const FailureType.define(2830);
   static const FailureType AGENT = const FailureType.define(2900);
 
   static const FailureType SIDE_MENU = const FailureType.define(4000);

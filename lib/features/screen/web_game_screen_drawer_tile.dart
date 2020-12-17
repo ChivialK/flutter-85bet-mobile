@@ -19,7 +19,7 @@ class WebGameScreenDrawerTile extends StatefulWidget {
 class _WebGameScreenDrawerTileState extends State<WebGameScreenDrawerTile> {
   Animation<double> widthAnimation, sizedBoxAnimation;
   TextStyle listTitleDefaultTextStyle = TextStyle(
-    color: Themes.defaultTextColor,
+    color: themeColor.defaultTextColor,
     fontSize: FontSize.SUBTITLE.value,
     fontWeight: FontWeight.w600,
   );
@@ -54,7 +54,7 @@ class _WebGameScreenDrawerTileState extends State<WebGameScreenDrawerTile> {
               padding: const EdgeInsets.all(4.0),
               child: Icon(
                 widget.item.iconData,
-                color: Themes.iconSubColor1,
+                color: themeColor.iconSubColor1,
                 size: 24.0,
               ),
             ),

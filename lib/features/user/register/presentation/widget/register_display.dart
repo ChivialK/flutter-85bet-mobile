@@ -21,8 +21,8 @@ class RegisterDisplay extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Themes.memberIconColor,
-                  boxShadow: Themes.roundIconShadow,
+                  color: themeColor.memberIconColor,
+                  boxShadow: ThemeInterface.iconBottomShadow,
                 ),
                 child: Icon(
                   pageItem.value.iconData,
@@ -42,7 +42,7 @@ class RegisterDisplay extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 16.0),
           child: Container(
-            decoration: Themes.layerShadowDecorRound,
+            decoration: ThemeInterface.layerShadowDecorRound,
             child: RegisterFormWidget(32.0, false),
           ),
         ),

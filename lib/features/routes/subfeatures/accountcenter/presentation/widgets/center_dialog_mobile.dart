@@ -47,7 +47,7 @@ class _CenterDialogMobileState extends State<CenterDialogMobile>
                 child: Text(
                   localeStr.userVerifyButtonText(''),
                   style: TextStyle(
-                    color: Themes.defaultAccentColor,
+                    color: themeColor.defaultAccentColor,
                     fontSize: FontSize.SUBTITLE.value,
                   ),
                 ),
@@ -99,7 +99,7 @@ class _CenterDialogMobileState extends State<CenterDialogMobile>
                       padding: const EdgeInsets.only(top: 3.0),
                       child: Icon(
                         Icons.info,
-                        color: Themes.hintHighlight,
+                        color: themeColor.hintHighlight,
                         size: 16.0,
                       ),
                     ),
@@ -107,7 +107,7 @@ class _CenterDialogMobileState extends State<CenterDialogMobile>
                       child: Text(
                         localeStr.userVerifyFieldInfo,
                         style: TextStyle(
-                          color: Themes.hintHighlight,
+                          color: themeColor.hintHighlight,
                         ),
                         textAlign: TextAlign.start,
                         overflow: TextOverflow.ellipsis,
@@ -124,7 +124,7 @@ class _CenterDialogMobileState extends State<CenterDialogMobile>
                   child: Text(localeStr.btnConfirm),
                   onPressed: () {
                     // clear text field focus
-                    FocusScope.of(context).requestFocus(new FocusNode());
+                    FocusScope.of(context).unfocus();
                     _validateForm();
                   },
                 ),

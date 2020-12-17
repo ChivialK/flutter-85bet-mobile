@@ -20,15 +20,18 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
   ];
 
   FeatureScreenStore _store;
-  EventStore _eventStore;
-  Widget _barWidget;
   String _locale;
+
+  EventStore _eventStore;
+  bool _showingEventDialog = false;
+
+  Widget _barWidget;
   int _navIndex = 0;
 
   void _itemTapped(int index, bool hasUser) {
     var item = _tabs[index];
     debugPrint('tapped item: ${item.value}');
-    if (item == ScreenNavigationBarItem.more) {
+    if (item.value.id == RouteEnum.MORE) {
       showDialog(
         context: context,
         barrierDismissible: true,
@@ -38,11 +41,66 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
       callToastInfo(localeStr.workInProgress);
     } else {
       var value = item.value;
-      if (value.isUserOnly && !hasUser)
+      if (value.isUserOnly && !hasUser) {
         RouterNavigate.navigateToPage(RoutePage.login);
-      else
+      } else {
         RouterNavigate.navigateToPage(value.route);
+      }
     }
+  }
+
+  void _checkShowEvent() {
+    _eventStore.debugEvent();
+    if (_eventStore.forceShowEvent && _eventStore.hasEvent == false) {
+      Future.delayed(Duration(milliseconds: 200), () {
+        callToastInfo(localeStr.messageNoEvent);
+      });
+      // set to false so it will not pop on other pages
+      _eventStore.setForceShowEvent = false;
+      return;
+    }
+    if (_eventStore.showEventOnHome && !_showingEventDialog) {
+      _showingEventDialog = true;
+      Future.delayed(Duration(milliseconds: 1200), () {
+        // will not show
+        if (_store.hasUser == false ||
+            (_store.navIndex != 0 && _eventStore.forceShowEvent == false)) {
+          _stopEventAutoShow();
+          return;
+        } else {
+          // set to false so it will not pop on other pages
+          _eventStore.setForceShowEvent = false;
+        }
+        _showEventDialog();
+      });
+    }
+  }
+
+  void _showEventDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => (_eventStore.hasSignedEvent == false)
+          ? new EventDialog(
+              event: _eventStore.event.eventData,
+              signCount: _eventStore.event.signData.times,
+              onSign: () => _eventStore.signEvent(),
+              onSignError: () => _eventStore.getEventError(),
+              onDialogClose: () => _stopEventAutoShow(),
+            )
+          : new EventDialogSigned(
+              event: _eventStore.event.eventData,
+              signCount: _eventStore.event.signData.times,
+              onDialogClose: () => _stopEventAutoShow(),
+            ),
+    );
+  }
+
+  void _stopEventAutoShow() {
+    if (_store == null) return;
+    _showingEventDialog = false;
+    // set to false so it will not pop again when return to home page
+    _eventStore.setShowEvent = false;
   }
 
   @override
@@ -55,6 +113,7 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
   void didUpdateWidget(ScreenNavigationBar oldWidget) {
     _store = null;
     _eventStore = null;
+    _barWidget = null;
     super.didUpdateWidget(oldWidget);
   }
 
@@ -66,9 +125,10 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
       _eventStore ??= viewState?.eventStore;
     }
     return Container(
+      height: Global.APP_NAV_HEIGHT,
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(width: 1.0, color: Themes.defaultAccentColor),
+          top: BorderSide(width: 1.0, color: themeColor.defaultAccentColor),
         ),
       ),
       child: StreamBuilder<bool>(
@@ -92,33 +152,42 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
       final index = _store.navIndex;
       if (index >= 0) _navIndex = index;
       // monitor observable value to show event dialog
+      if (_eventStore.showEventOnHome) _checkShowEvent();
       return BottomNavigationBar(
         onTap: (index) {
-          debugPrint('store state user: ${_store.userStatus}');
+          debugPrint('navigate bar has user: ${_store.hasUser}');
           _itemTapped(index, _store.hasUser);
         },
         currentIndex: _navIndex,
         type: BottomNavigationBarType.fixed,
         selectedFontSize: FontSize.NORMAL.value,
         unselectedFontSize: FontSize.NORMAL.value,
-        unselectedItemColor: Themes.navigationColor,
-        fixedColor: Themes.navigationColorFocus,
-        backgroundColor: Themes.defaultAppbarColor,
+        unselectedItemColor: themeColor.navigationColor,
+        fixedColor: themeColor.navigationColorFocus,
+        backgroundColor: themeColor.defaultAppbarColor,
         items: List.generate(_tabs.length, (index) {
           var itemValue = _tabs[index].value;
-          return _createBarItem(itemValue, labels[index], false, _store);
+          return _createBarItem(
+            itemValue: itemValue,
+            title: labels[index],
+            addBadge: itemValue.id == RouteEnum.MEMBER &&
+                getAppGlobalStreams.hasNewMessage,
+          );
         }),
       );
     });
   }
 
-  BottomNavigationBarItem _createBarItem(RouteListItem itemValue, String title,
-      bool addBadge, FeatureScreenStore store) {
+  BottomNavigationBarItem _createBarItem({
+    @required RouteListItem itemValue,
+    @required String title,
+    @required bool addBadge,
+  }) {
     return BottomNavigationBarItem(
       icon: (addBadge)
           ? Badge(
               showBadge: getAppGlobalStreams.hasNewMessage,
-              badgeColor: Themes.hintHighlightRed,
+              badgeColor: themeColor.hintHighlightRed,
               badgeContent: Container(
                 margin: const EdgeInsets.all(1.0),
                 child: Icon(
@@ -128,14 +197,27 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
                 ),
               ),
               padding: EdgeInsets.zero,
-              position: BadgePosition.topRight(top: -5, right: -6),
+              position: BadgePosition.topEnd(top: -5, end: -6),
               child: Icon(itemValue.iconData, size: 30),
             )
           : Icon(itemValue.iconData, size: 30),
-      title: Padding(
-        padding: EdgeInsets.only(top: 2.0),
-        child:
-            Text(title ?? itemValue.title ?? itemValue.route?.pageTitle ?? '?'),
+      title: Row(
+        children: [
+          Expanded(
+            child: AutoSizeText.rich(
+              TextSpan(
+                  text: title ??
+                      itemValue.title ??
+                      itemValue.route?.pageTitle ??
+                      '?'),
+              style: TextStyle(fontWeight: FontWeight.w500),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              minFontSize: FontSize.SMALL.value - 4.0,
+              maxFontSize: FontSize.NORMAL.value,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -72,16 +72,12 @@ class _BankcardRouteState extends State<BankcardRoute> {
           if (result == null) return;
           if (result.isSuccess) {
             callToastInfo(
-                (result.msg.isNotEmpty && result.msg.hasChinese)
-                    ? result.msg
-                    : localeStr.messageSuccess,
+                MessageMap.getSuccessMessage(result.msg, RouteEnum.BANKCARD),
                 icon: Icons.check_circle_outline);
             _store.getBankcard();
           } else {
-            callToastError((result.msg.isNotEmpty && result.msg.hasChinese)
-                ? result.msg
-                : localeStr
-                    .messageTaskFailed(localeStr.messageErrorBindBankcard));
+            callToastError(
+                MessageMap.getErrorMessage(result.msg, RouteEnum.BANKCARD));
           }
         },
       ),

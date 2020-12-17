@@ -41,10 +41,11 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
       );
       if (dataForm.isValid) {
         debugPrint('bankcard form: ${dataForm.toJson()}');
-        if (widget.store.waitForWithdrawResult)
+        if (widget.store.waitForWithdrawResult) {
           callToast(localeStr.messageWait);
-        else
+        } else {
           widget.store.sendRequest(dataForm);
+        }
       } else {
         callToast(localeStr.messageActionFillForm);
       }
@@ -76,8 +77,8 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                     padding: const EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Themes.memberIconColor,
-                      boxShadow: Themes.roundIconShadow,
+                      color: themeColor.memberIconColor,
+                      boxShadow: ThemeInterface.iconBottomShadow,
                     ),
                     child: Icon(
                       pageItem.value.iconData,
@@ -97,7 +98,7 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
             Padding(
               padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 0.0),
               child: Container(
-                decoration: Themes.layerShadowDecorRoundTop,
+                decoration: ThemeInterface.layerShadowDecorRoundTop,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -130,7 +131,7 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
             Padding(
               padding: const EdgeInsets.fromLTRB(4.0, 2.0, 4.0, 16.0),
               child: Container(
-                decoration: Themes.layerShadowDecorRoundBottom,
+                decoration: ThemeInterface.layerShadowDecorRoundBottom,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -218,13 +219,13 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                       child: RichText(
                         text: TextSpan(
                           style: TextStyle(
-                            color: Themes.defaultTextColor,
+                            color: themeColor.defaultTextColor,
                           ),
                           children: [
                             TextSpan(
                               text: '${localeStr.balanceHintTextTitle}\n',
                               style: TextStyle(
-                                color: Themes.defaultSubtitleColor,
+                                color: themeColor.defaultSubtitleColor,
                                 fontWeight: FontWeight.bold,
                                 height: 3,
                               ),

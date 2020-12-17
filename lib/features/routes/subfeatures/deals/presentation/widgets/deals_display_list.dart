@@ -51,7 +51,8 @@ class DealsDisplayListState extends State<DealsDisplayList> {
         child: Center(child: Text(localeStr.messageWarnNoHistoryData)),
       );
 
-    _borderSide ??= BorderSide(color: Themes.defaultBorderColor, width: 1.5);
+    _borderSide ??=
+        BorderSide(color: themeColor.defaultBorderColor, width: 1.5);
     return ListView.builder(
       primary: false,
       shrinkWrap: true,
@@ -61,17 +62,17 @@ class DealsDisplayListState extends State<DealsDisplayList> {
         List<dynamic> dataTexts = [
           data.id,
           data.date,
-          data.action,
-          data.type,
-          data.status,
-          data.amount
+          getActionLocale(data.action),
+          getTypeLocale(data.type),
+          getStatusLocale(data.status),
+          formatValue(data.amount),
         ];
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 24.0),
           decoration: new BoxDecoration(
             color: (index % 2 == 1)
-                ? Themes.defaultCardColor
-                : Themes.chartBgColor,
+                ? themeColor.defaultCardColor
+                : themeColor.chartBgColor,
             border: (index % 2 == 1)
                 ? null
                 : Border.symmetric(vertical: _borderSide),
@@ -115,5 +116,46 @@ class DealsDisplayListState extends State<DealsDisplayList> {
         ],
       ),
     );
+  }
+
+  String getStatusLocale(String state) {
+    switch (state) {
+      case 'success':
+        return localeStr.dealsViewSpinnerStatus1;
+      case 'processing':
+        return localeStr.dealsViewSpinnerStatus3;
+      case 'newTransaction':
+        return localeStr.dealsViewSpinnerStatus4;
+      default:
+        if (state.contains('reject')) {
+          return state.replaceAll('reject', localeStr.dealsViewSpinnerStatus2);
+        }
+        return state;
+    }
+  }
+
+  String getActionLocale(String action) {
+    switch (action) {
+      case 'deposit':
+        return localeStr.dealsViewSpinnerType1;
+      case 'withdraw':
+        return localeStr.dealsViewSpinnerType2;
+      default:
+        return localeStr.dealsViewSpinnerType3;
+    }
+  }
+
+  String getTypeLocale(String type) {
+    switch (type) {
+      case 'webBank':
+      case 'webbank':
+        return localeStr.memberGridTitleTransfer;
+      case 'adjustDeposit':
+        return localeStr.dealsDetailTypeAdjustDeposit;
+      case 'adjustWithdraw':
+        return localeStr.dealsDetailTypeAdjustWithdraw;
+      default:
+        return type;
+    }
   }
 }

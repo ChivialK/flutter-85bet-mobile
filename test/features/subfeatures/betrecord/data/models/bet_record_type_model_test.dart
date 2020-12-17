@@ -17,7 +17,7 @@ void main() {
     print('decoded map2: $mapList2');
     print('\n\n');
 
-    List<BetRecordType> modelList = new List();
+    List<BetRecordTypeModel> modelList = new List();
     mapList.forEach((value) {
       print('category data: $value');
       BetRecordTypeModel model = BetRecordTypeModel.jsonToBetRecordType(value);

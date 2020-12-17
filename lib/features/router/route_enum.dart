@@ -23,8 +23,10 @@ enum RouteEnum {
   TRANSFER_RECORD,
   DEALS,
   BETS,
-  FLOW,
+  ROLLBACK,
   AGENT,
+  AGENT_LOGIN,
+  AGENT_REGISTER,
 
   ///
   NOTICE,
@@ -69,13 +71,8 @@ extension RouteEnumExtension on RouteEnum {
       case RouteEnum.PROMO:
         return localeStr.pageTitlePromo;
       case RouteEnum.SERVICE:
+      case RouteEnum.SERVICE_WEB:
         return localeStr.pageTitleService;
-
-      /// Home Category Page
-      case RouteEnum.MOVIE_EG:
-        return localeStr.pageTitleMovieEG;
-      case RouteEnum.MOVIE_NEW:
-        return localeStr.pageTitleMovie;
 
       /// Member
       case RouteEnum.MEMBER:
@@ -102,7 +99,7 @@ extension RouteEnumExtension on RouteEnum {
         return localeStr.pageTitleMemberDeals;
       case RouteEnum.BETS:
         return localeStr.pageTitleMemberBets;
-      case RouteEnum.FLOW:
+      case RouteEnum.ROLLBACK:
         return localeStr.pageTitleMemberFlow;
       case RouteEnum.AGENT:
         return localeStr.pageTitleMemberAgent;
@@ -143,7 +140,7 @@ extension RouteEnumExtension on RouteEnum {
       case RouteEnum.LOGIN:
         return localeStr.pageTitleLogin;
       case RouteEnum.REGISTER:
-        return localeStr.pageTitleRegister;
+        return localeStr.pageTitleRegisterMember;
       case RouteEnum.LOGOUT:
         return localeStr.memberGridTitleLogout;
 
@@ -192,7 +189,7 @@ extension RouteEnumExtension on RouteEnum {
         return localeStr.memberGridTitleBet;
       case RouteEnum.DEALS:
         return localeStr.memberGridTitleDeal;
-      case RouteEnum.FLOW:
+      case RouteEnum.ROLLBACK:
         return localeStr.memberGridTitleFlow;
       case RouteEnum.AGENT:
         return localeStr.memberGridTitleAgent;

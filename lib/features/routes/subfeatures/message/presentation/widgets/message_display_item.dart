@@ -1,6 +1,6 @@
 import 'package:configurable_expansion_tile/configurable_expansion_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
 import '../../data/models/message_model.dart';
@@ -47,7 +47,7 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
         borderRadius: BorderRadius.circular(12.0),
         child: Container(
           decoration: new BoxDecoration(
-            color: Themes.defaultCardColor,
+            color: themeColor.defaultCardColor,
             border: Border.symmetric(
                 vertical: BorderSide(
               color: Colors.black12,
@@ -138,18 +138,20 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
                       right: 12.0,
                       top: (headerMultiLine && hasChinese)
                           ? 3
-                          : (hasChinese) ? 2 : 0,
+                          : (hasChinese)
+                              ? 2
+                              : 0,
                     )
                   : const EdgeInsets.symmetric(horizontal: 12.0),
               child: (isRead || isExpanded)
                   ? Icon(
                       Icons.check_box,
-                      color: Themes.iconColorGreen,
+                      color: themeColor.iconColorGreen,
                       size: calc.iconSize,
                     )
                   : Icon(
                       const IconData(0xf086, fontFamily: 'FontAwesome'),
-                      color: Themes.iconColorYellow,
+                      color: themeColor.iconColorYellow,
                       size: calc.iconSize,
                     ),
             ),
@@ -160,7 +162,7 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
               widget.data.title,
               style: TextStyle(
                 fontSize: calc.headerTextSize,
-                color: Themes.defaultCardTitleColor,
+                color: themeColor.defaultCardTitleColor,
               ),
               overflow: TextOverflow.ellipsis,
               maxLines: (isExpanded) ? 2 : 1,

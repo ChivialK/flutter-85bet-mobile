@@ -190,7 +190,7 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
               constraints: BoxConstraints(
                 minHeight: 360.0,
               ),
-              color: Themes.defaultLayerBackgroundColor,
+              color: themeColor.defaultLayeredBackgroundColor,
               margin: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -216,7 +216,7 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
                           child: IconButton(
                             icon: Icon(
                               Icons.arrow_back_ios,
-                              color: Themes.dialogCloseIconColor,
+                              color: themeColor.dialogCloseIconColor,
                               size: 32.0 * Global.device.widthScale,
                             ),
                             visualDensity: VisualDensity.compact,
@@ -224,8 +224,7 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
                                 const EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 0.0),
                             onPressed: () {
                               // clear text field focus
-                              FocusScope.of(context)
-                                  .requestFocus(new FocusNode());
+                              FocusScope.of(context).unfocus();
                               RouterNavigate.navigateBack();
                             },
                           ),
@@ -268,7 +267,7 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
                       ),
                       onPressed: () {
                         // clear text field focus
-                        FocusScope.of(context).requestFocus(new FocusNode());
+                        FocusScope.of(context).unfocus();
                         _validateForm();
                       },
                     ),
@@ -310,7 +309,7 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
 //              child: Text(
 //                localeStr.hintTitleLogin,
 //                textAlign: TextAlign.left,
-//                style: TextStyle(color: Themes.defaultHintColor),
+//                style: TextStyle(color: themeColor.defaultHintColor),
 //              ),
 //            ),
             new CustomizeFieldWidget(
@@ -362,7 +361,7 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
         GestureDetector(
           onTap: () {
             // clear text field focus
-            FocusScope.of(context).requestFocus(new FocusNode());
+            FocusScope.of(context).unfocus();
             showDialog(
               context: context,
               barrierDismissible: true,
@@ -401,7 +400,7 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
         GestureDetector(
           onTap: () {
             // clear text field focus
-            FocusScope.of(context).requestFocus(new FocusNode());
+            FocusScope.of(context).unfocus();
             RouterNavigate.navigateToPage(RoutePage.service);
           },
           child: Row(

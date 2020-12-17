@@ -31,7 +31,7 @@ class BetRecordDisplayList extends StatelessWidget {
   ];
 
   final BorderSide _borderSide =
-      BorderSide(color: Themes.defaultBorderColor, width: 1.5);
+      BorderSide(color: themeColor.defaultBorderColor, width: 1.5);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class BetRecordDisplayList extends StatelessWidget {
         if (data is BetRecordDataAllPlatform) {
           isSumData = data.isSumData();
           dataTexts = [
-            (isSumData) ? localeStr.flowHeaderTextTotal : data.key,
+            (isSumData) ? localeStr.rollbackHeaderTextTotal : data.key,
             formatNum(data.bet),
             formatNum(data.valid),
             formatNum(data.payout),
@@ -55,7 +55,7 @@ class BetRecordDisplayList extends StatelessWidget {
           if (data.isSumData()) {
             isSumData = data.isSumData();
             dataTexts = [
-              localeStr.flowHeaderTextTotal,
+              localeStr.rollbackHeaderTextTotal,
               '',
               '',
               '',
@@ -70,7 +70,7 @@ class BetRecordDisplayList extends StatelessWidget {
               data.site,
               data.type,
               data.bet,
-              data.validBet,
+              data.activeBet,
               data.payout,
             ];
           }
@@ -78,8 +78,8 @@ class BetRecordDisplayList extends StatelessWidget {
         return Container(
           decoration: new BoxDecoration(
             color: (index % 2 == 1)
-                ? Themes.defaultCardColor
-                : Themes.chartBgColor,
+                ? themeColor.defaultCardColor
+                : themeColor.chartBgColor,
             border: (index % 2 == 1)
                 ? null
                 : Border.symmetric(vertical: _borderSide),

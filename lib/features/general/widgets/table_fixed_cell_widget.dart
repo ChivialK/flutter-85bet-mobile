@@ -1,11 +1,13 @@
 part of 'table_fixed_widget.dart';
 
+enum TableCellBgColor { PRIMARY, SECONDARY, CONTENT }
+
 class TableFixedCellWidget extends StatelessWidget {
   TableFixedCellWidget.legend(
     this.text, {
-    this.textStyle = const TextStyle(color: Themes.chartPrimaryHeaderTextColor),
+    this.textStyle,
     this.cellDimensions = CellDimensions.base,
-    this.colorBg = Themes.chartPrimaryHeaderColor,
+    this.colorBg = TableCellBgColor.PRIMARY,
     this.shrinkPadding = true,
     this.onTap,
   })  : cellWidth = cellDimensions.stickyLegendWidth,
@@ -18,7 +20,7 @@ class TableFixedCellWidget extends StatelessWidget {
     this.text, {
     this.textStyle,
     this.cellDimensions = CellDimensions.base,
-    this.colorBg = Themes.chartSecondaryHeaderColor,
+    this.colorBg = TableCellBgColor.SECONDARY,
     this.shrinkPadding = true,
     this.onTap,
   })  : cellWidth = cellDimensions.contentCellWidth,
@@ -29,9 +31,9 @@ class TableFixedCellWidget extends StatelessWidget {
 
   TableFixedCellWidget.rowHeader(
     this.text, {
-    this.textStyle = const TextStyle(color: Themes.chartPrimaryHeaderTextColor),
+    this.textStyle,
     this.cellDimensions = CellDimensions.base,
-    this.colorBg = Themes.chartPrimaryHeaderColor,
+    this.colorBg = TableCellBgColor.PRIMARY,
     this.shrinkPadding = true,
     this.onTap,
   })  : cellWidth = cellDimensions.stickyLegendWidth,
@@ -44,7 +46,7 @@ class TableFixedCellWidget extends StatelessWidget {
     this.text, {
     this.textStyle,
     this.cellDimensions = CellDimensions.base,
-    this.colorBg = Themes.chartBgColor,
+    this.colorBg = TableCellBgColor.CONTENT,
     this.shrinkPadding = true,
     this.onTap,
   })  : cellWidth = cellDimensions.contentCellWidth,
@@ -65,7 +67,7 @@ class TableFixedCellWidget extends StatelessWidget {
   final bool thinTopBorder;
   final double borderWidth = 0.8;
 
-  final Color colorBg;
+  final TableCellBgColor colorBg;
 
   final TextAlign _textAlign;
   final bool shrinkPadding;
@@ -73,34 +75,46 @@ class TableFixedCellWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color bgColor;
+    switch (colorBg) {
+      case TableCellBgColor.PRIMARY:
+        bgColor = themeColor.chartPrimaryHeaderColor;
+        break;
+      case TableCellBgColor.SECONDARY:
+        bgColor = themeColor.chartSecondaryHeaderColor;
+        break;
+      case TableCellBgColor.CONTENT:
+        bgColor = themeColor.chartBgColor;
+        break;
+    }
     return GestureDetector(
       onTap: onTap,
       child: Container(
         width: cellWidth,
         height: cellHeight,
         decoration: BoxDecoration(
-          color: colorBg,
+          color: bgColor,
           border: (thinTopBorder)
               ? Border(
                   left: BorderSide(
-                    color: Themes.chartBorderColor,
+                    color: themeColor.chartBorderColor,
                     width: borderWidth,
                   ),
                   right: BorderSide(
-                    color: Themes.chartBorderColor,
+                    color: themeColor.chartBorderColor,
                     width: borderWidth,
                   ),
                   bottom: BorderSide(
-                    color: Themes.chartBorderColor,
+                    color: themeColor.chartBorderColor,
                     width: borderWidth,
                   ),
                   top: BorderSide(
-                    color: Themes.chartBorderColor,
+                    color: themeColor.chartBorderColor,
                     width: borderWidth / 2,
                   ),
                 )
               : Border.all(
-                  color: Themes.chartBorderColor,
+                  color: themeColor.chartBorderColor,
                   width: (thinBorder) ? borderWidth / 2 : borderWidth,
                 ),
         ),
@@ -115,7 +129,9 @@ class TableFixedCellWidget extends StatelessWidget {
                         vertical: 6.0, horizontal: 2.0),
                 child: Text(
                   text,
-                  style: textStyle,
+                  style: (colorBg == TableCellBgColor.PRIMARY)
+                      ? TextStyle(color: themeColor.chartPrimaryHeaderTextColor)
+                      : null,
                   maxLines: 2,
                   textAlign: _textAlign,
                 ),

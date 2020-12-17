@@ -76,7 +76,7 @@ class MoreDialog extends StatelessWidget {
 
     return DialogWidget(
       constraints: BoxConstraints.tight(Size(320.0, _height)),
-      customBg: Themes.moreDialogColor,
+      customBg: themeColor.moreDialogColor,
       children: <Widget>[
         Column(
           mainAxisSize: MainAxisSize.max,
@@ -88,7 +88,7 @@ class MoreDialog extends StatelessWidget {
                   child: Container(
                     height: _titleHeight,
                     decoration: BoxDecoration(
-                      color: Themes.dialogTitleBgColor,
+                      color: themeColor.dialogTitleBgColor,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(16.0),
                         topRight: Radius.circular(16.0),
@@ -99,7 +99,7 @@ class MoreDialog extends StatelessWidget {
                       localeStr.pageTitleMore,
                       style: TextStyle(
                         fontSize: FontSize.TITLE.value,
-                        color: Themes.dialogTitleColor,
+                        color: themeColor.dialogTitleColor,
                       ),
                     ),
                   ),
@@ -163,7 +163,7 @@ class MoreDialog extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: Themes.moreGridColor,
+        color: themeColor.moreGridColor,
         borderRadius: cornerBorder,
       ),
       margin: const EdgeInsets.fromLTRB(0.5, 0.5, 0.0, 0.5),
@@ -184,16 +184,16 @@ class MoreDialog extends StatelessWidget {
                           child: (itemValue.imageName.startsWith('assets/'))
                               ? Image.asset(
                                   itemValue.imageName,
-                                  color: Themes.defaultAccentColor,
+                                  color: themeColor.defaultAccentColor,
                                 )
                               : networkImageBuilder(
                                   itemValue.imageName,
-                                  imgColor: Themes.defaultAccentColor,
+                                  imgColor: themeColor.defaultAccentColor,
                                 ),
                         )
                       : Icon(
                           itemValue.iconData,
-                          color: Themes.defaultAccentColor,
+                          color: themeColor.defaultAccentColor,
                           size: 32.0,
                         ),
                 ),
@@ -204,7 +204,7 @@ class MoreDialog extends StatelessWidget {
                     itemValue.title ?? itemValue.route?.pageTitle ?? '?',
                     style: TextStyle(
                       fontSize: FontSize.SUBTITLE.value - 1,
-                      color: Themes.defaultGridTextColor,
+                      color: themeColor.defaultGridTextColor,
                     ),
                     maxLines: 2,
                     textAlign: TextAlign.center,

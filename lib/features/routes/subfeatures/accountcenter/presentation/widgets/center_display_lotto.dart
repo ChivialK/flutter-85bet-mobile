@@ -140,7 +140,7 @@ class _CenterDisplayLottoState extends State<CenterDisplayLotto> {
                   style: TextStyle(
                     fontSize: FontSize.SUBTITLE.value,
                     fontWeight: FontWeight.bold,
-                    color: Themes.defaultHintColor,
+                    color: themeColor.defaultHintColor,
                   ),
                 ),
               ],
@@ -190,7 +190,7 @@ class _CenterDisplayLottoState extends State<CenterDisplayLotto> {
                   padding: const EdgeInsets.only(top: 3.0),
                   child: Icon(
                     Icons.info,
-                    color: Themes.defaultHintColor,
+                    color: themeColor.defaultHintColor,
                     size: 16.0,
                   ),
                 ),
@@ -198,7 +198,7 @@ class _CenterDisplayLottoState extends State<CenterDisplayLotto> {
                   child: Text(
                     localeStr.centerLuckyHint,
                     style: TextStyle(
-                      color: Themes.defaultHintColor,
+                      color: themeColor.defaultHintColor,
                     ),
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
@@ -256,16 +256,17 @@ class _CenterDisplayLottoState extends State<CenterDisplayLotto> {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: new Border.all(
-          color: Themes.defaultAccentColor,
+          color: themeColor.defaultAccentColor,
           width: 3.0,
         ),
-        color: Themes.defaultBackgroundColor,
+        color: themeColor.defaultBackgroundColor,
       ),
       child: Center(
         child: Text(
           '$number',
           style: TextStyle(
-              fontWeight: FontWeight.bold, color: Themes.secondaryTextColor1),
+              fontWeight: FontWeight.bold,
+              color: themeColor.secondaryTextColor1),
         ),
       ),
     );

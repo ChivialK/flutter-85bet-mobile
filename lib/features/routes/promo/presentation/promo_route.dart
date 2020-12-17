@@ -6,7 +6,7 @@ import 'state/promo_store.dart';
 import 'widgets/promo_tab_display.dart';
 
 ///
-/// Main View of [Router.promoRoute]
+/// Main View of [FeatureRouter.promoRoute]
 ///@author H.C.CHIANG
 ///@version 2020/6/9
 ///

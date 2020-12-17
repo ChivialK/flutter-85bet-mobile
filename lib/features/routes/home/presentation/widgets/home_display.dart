@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/event/presentation/state/event_store.dart';
 import 'package:flutter_85bet_mobile/features/event/presentation/widgets/ad_dialog.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
+import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
 import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
 import 'package:flutter_85bet_mobile/features/update/presentation/state/update_store.dart';
 import 'package:flutter_85bet_mobile/injection_container.dart';
@@ -78,6 +79,79 @@ class _HomeDisplayState extends State<HomeDisplay> {
         }
       });
     }
+  }
+
+  void _widgetUrlCheck(String url) {
+    debugPrint('home widget url check: $url');
+    _widgetUrlNavigate(
+      url.contains('/api/open/'),
+      url
+          .substring(
+              url.indexOf(Global.DOMAIN_NAME) + Global.DOMAIN_NAME.length)
+          .replaceAll('/api/open/', ''),
+    );
+  }
+
+  void _widgetUrlNavigate(bool openGame, String url) {
+    debugPrint('home widget url: $url, isGame: $openGame');
+    if (openGame) {
+      if (!getAppGlobalStreams.hasUser) {
+        callToastInfo(localeStr.messageErrorNotLogin);
+        return;
+      } else {
+        _openGame(url);
+      }
+
+      /// Show game category view
+    } else if (url.startsWith('/gamelist/')) {
+      String className = url.replaceAll('/gamelist/', '').replaceAll('/', '-');
+      debugPrint('searching platform name: $className');
+      _tabsWidgetKey.currentState?.findPage(className.split('-')[1]);
+      _store.showSearchPlatform(className);
+    } else if (url.startsWith('/promo/')) {
+      int promoId =
+          url.substring(url.lastIndexOf('/') + 1, url.length).strToInt;
+      debugPrint('url promo id: $promoId');
+      RouterNavigate.navigateToPage(
+        RoutePage.promo,
+        arg: (promoId > 0) ? PromoRouteArguments(openPromoId: promoId) : null,
+      );
+
+      /// Jump to route page if path name exist
+    } else {
+      RoutePage newRoute = url.urlToRoutePage;
+      debugPrint('checking url to app route: $newRoute');
+      if (newRoute != null) {
+        RouterNavigate.navigateToPage(newRoute);
+      } else {
+        callToast(localeStr.urlActionNotSupported);
+        MyLogger.debug(msg: 'Found unsupported Route URL: $url');
+      }
+    }
+  }
+
+  void _openGame(String url) {
+    final gameParam = url.split('/');
+    debugPrint('game url query: $gameParam');
+
+    /// Open game's web page if game can be found in stored map
+    if (gameParam.length == 3 &&
+        _store.hasGameInMap(
+          gameParam.take(2).join('/0'),
+          gameParam.last.strToInt,
+        )) {
+      final gameUrl = url.substring(url.indexOf('.com/') + 4);
+      debugPrint('opening game: $gameUrl');
+      _store.getGameUrl(gameUrl);
+      return;
+
+      /// Jump to game platform page
+    } else if (gameParam.length == 2) {
+      return;
+    }
+
+    callToast(localeStr.urlActionNotSupported);
+    MyLogger.debug(msg: 'Found unsupported Game URL: $url');
   }
 
   @override
@@ -160,28 +234,11 @@ class _HomeDisplayState extends State<HomeDisplay> {
                             banners = _store.banners;
                             _bannerWidget = HomeDisplayBanner(
                               banners: banners,
-                              onBannerClicked: (openGame, url) {
-                                if (openGame) {
-                                  debugPrint('opening banner game: $url');
-                                  if (_store.hasUser)
-                                    _store.getGameUrl(url);
-                                  else
-                                    callToastInfo(
-                                        localeStr.messageErrorNotLogin);
-                                } else if (url.startsWith('/gamelist/')) {
-                                  debugPrint('search banner platform: $url');
-                                  String className = url
-                                      .replaceAll('/gamelist/', '')
-                                      .replaceAll('/', '-');
-                                  debugPrint('banner platform: $className');
-                                  _tabsWidgetKey.currentState
-                                      ?.findPage(className.split('-')[1]);
-                                  _store.showSearchPlatform(className);
-                                }
-                              },
+                              onBannerClicked: (url) => _widgetUrlCheck(url),
                             );
                           }
-                          _bannerWidget ??= HomeDisplayBanner();
+                          _bannerWidget ??=
+                              HomeDisplayBanner(onBannerClicked: (_) {});
                           return _bannerWidget;
                         },
                       ),
@@ -192,8 +249,10 @@ class _HomeDisplayState extends State<HomeDisplay> {
                           builder: (ctx, _) {
                             if (marquees != _store.marquees) {
                               marquees = _store.marquees;
-                              _marqueeWidget =
-                                  HomeDisplayMarquee(marquees: marquees);
+                              _marqueeWidget = HomeDisplayMarquee(
+                                marquees: marquees,
+                                onMarqueeClicked: (url) => _widgetUrlCheck(url),
+                              );
                             }
                             _marqueeWidget ??= HomeDisplayMarquee();
                             return _marqueeWidget;
@@ -305,7 +364,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
               children: [
                 Transform(
                     transform: Matrix4.diagonal3Values(Global.device.widthScale,
-                        Global.device.ratio - 0.15, 1.0),
+                        Global.device.ratio - 0.25, 1.0),
                     child: Image.asset(
                       Res.shadow,
                       color: Color(0xD0000000),

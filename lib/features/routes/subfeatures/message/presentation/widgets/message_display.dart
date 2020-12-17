@@ -79,8 +79,8 @@ class _MessageDisplayState extends State<MessageDisplay> {
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Themes.memberIconColor,
-                    boxShadow: Themes.roundIconShadow,
+                    color: themeColor.memberIconColor,
+                    boxShadow: ThemeInterface.iconBottomShadow,
                   ),
                   child: Icon(
                     pageItem.value.iconData,

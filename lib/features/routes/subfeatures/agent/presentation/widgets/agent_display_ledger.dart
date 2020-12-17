@@ -64,7 +64,7 @@ class _AgentDisplayLedgerState extends State<AgentDisplayLedger>
   void initState() {
     _dateSelected = _selectorValues[0];
     tableMaxHeight = widget.availableHeight -
-        Themes.fieldHeight * 2 -
+        ThemeInterface.fieldHeight * 2 -
         Global.device.comfortButtonHeight -
         136;
     super.initState();

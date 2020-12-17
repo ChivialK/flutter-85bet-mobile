@@ -41,8 +41,12 @@ abstract class _MemberCreditStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg(
-          {String msg, bool showOnce = false, FailureType type, int code}) =>
+  void setErrorMsg({
+    String msg,
+    bool showOnce = false,
+    FailureType type,
+    int code,
+  }) =>
       errorMessage = getErrorMsg(
           from: FailureType.MEMBER,
           msg: msg,
@@ -76,7 +80,7 @@ abstract class _MemberCreditStore with Store {
       await _infoRepository.updateCredit().then(
             (result) => result.fold(
               (failure) {
-                setErrorMsg(msg: failure.message, showOnce: true);
+                setErrorMsg(msg: failure.message);
                 getAppGlobalStreams.resetCredit();
               },
               (value) {

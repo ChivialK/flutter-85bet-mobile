@@ -1,4 +1,6 @@
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
+import 'package:flutter_85bet_mobile/features/general/data/error/error_message_map.dart';
+import 'package:flutter_85bet_mobile/features/router/route_enum.dart';
 
 import '../../data/form/withdraw_form.dart';
 import '../../data/models/withdraw_model.dart';
@@ -34,8 +36,12 @@ abstract class _WithdrawStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg(
-          {String msg, bool showOnce = false, FailureType type, int code}) =>
+  void setErrorMsg({
+    String msg,
+    bool showOnce = false,
+    FailureType type,
+    int code,
+  }) =>
       errorMessage = getErrorMsg(
           from: FailureType.WITHDRAW,
           msg: msg,
@@ -131,12 +137,10 @@ abstract class _WithdrawStore with Store {
         debugPrint('withdraw result: $result');
         result.fold(
           (failure) {
-            if (failure.message == 'amountMoreThanBalance')
-              errorMessage = localeStr.messageInvalidWithdrawAmount;
-            else if (failure.message == 'wrongPassword')
-              errorMessage = localeStr.messageInvalidWithdrawPassword;
-            else
-              setErrorMsg(msg: failure.message, showOnce: true);
+            setErrorMsg(
+              msg: MessageMap.getErrorMessage(
+                  failure.message, RouteEnum.WITHDRAW),
+            );
           },
           (data) => withdrawResult = data,
         );

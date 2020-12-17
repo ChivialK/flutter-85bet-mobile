@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
+typedef HorizontalRadioFunction = Function(Object value);
+
 class HorizontalRadioGroupWidget extends StatefulWidget {
   final List<String> radioLabels;
   final List<dynamic> radioValues;
   final int initIndex;
   final EdgeInsets horizontalPadding;
   final EdgeInsets horizontalTextPadding;
+  final HorizontalRadioFunction callback;
   final bool debug;
 
   HorizontalRadioGroupWidget(
@@ -15,6 +18,7 @@ class HorizontalRadioGroupWidget extends StatefulWidget {
     this.initIndex = 0,
     this.horizontalPadding = EdgeInsets.zero,
     this.horizontalTextPadding = EdgeInsets.zero,
+    this.callback,
     this.debug = false,
   }) : super(key: key);
 
@@ -52,6 +56,9 @@ class HorizontalRadioGroupWidgetState
                   _selected = value;
                   if (widget.debug) debugPrint('selected type: $_selected');
                   setState(() {});
+                  if (widget.callback != null) {
+                    widget.callback(_selected);
+                  }
                 },
               ),
               Padding(

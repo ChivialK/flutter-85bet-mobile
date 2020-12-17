@@ -115,8 +115,8 @@ class _BalanceDisplayState extends State<BalanceDisplay> {
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Themes.memberIconColor,
-                    boxShadow: Themes.roundIconShadow,
+                    color: themeColor.memberIconColor,
+                    boxShadow: ThemeInterface.iconBottomShadow,
                   ),
                   child: Icon(
                     pageItem.value.iconData,
@@ -192,12 +192,12 @@ class _BalanceDisplayState extends State<BalanceDisplay> {
                 Expanded(
                   child: RichText(
                     text: TextSpan(
-                      style: TextStyle(color: Themes.defaultTextColor),
+                      style: TextStyle(color: themeColor.defaultTextColor),
                       children: [
                         TextSpan(
                           text: '${localeStr.balanceHintTextTitle}\n',
                           style: TextStyle(
-                            color: Themes.defaultSubtitleColor,
+                            color: themeColor.defaultSubtitleColor,
                             fontWeight: FontWeight.bold,
                             height: 3,
                           ),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/dialog_widget.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
 import '../../data/models/promo_freezed.dart';
 
@@ -27,91 +26,106 @@ class _PromoDetailState extends State<PromoDetail> {
   final double dialogWidth = Global.device.width - 24;
   final double dialogHeight = Global.device.height - 32;
 
-  final String htmlBgColor = Themes.dialogBgColor.toHexNoAlpha();
-  final String htmlTextColor = Themes.dialogTextColor.toHexNoAlpha();
-  final String htmlTitleColor = Themes.dialogTitleColor.toHexNoAlpha();
-  final String htmlBorderColor = Themes.defaultDisabledColor.toHexNoAlpha();
+  final String htmlBgColor = themeColor.dialogBgColor.toHexNoAlpha();
+  final String htmlTextColor = themeColor.dialogTextColor.toHexNoAlpha();
+  final String htmlTitleColor = themeColor.dialogTitleColor.toHexNoAlpha();
+  final String htmlBorderColor = themeColor.defaultDisabledColor.toHexNoAlpha();
 
-  WebViewController _controller;
-  double _viewHeight = 1;
-  double _viewMinHeight = 0;
-  bool _pageLoaded = false;
-  int _stackIndex = 0;
+  String html;
 
   @override
   Widget build(BuildContext context) {
-    String html = _buildHtmlText();
+    html ??= _buildHtmlText();
     return DialogWidget(
       key: _dialogKey,
-      heightFactor: (_stackIndex == 1) ? 0.85 : 0.25,
+      // heightFactor: (_stackIndex == 1) ? 0.85 : 0.25,
+      heightFactor: 0.85,
       children: [
-        if (_stackIndex == 0)
-          Container(
-            alignment: Alignment.center,
-            child: SizedBox(
-              width: 30.0,
-              height: 30.0,
-              child: CircularProgressIndicator(
-                strokeWidth: 3.0,
-              ),
-            ),
-          ),
-        if (html.isNotEmpty)
-          Container(
-            margin: const EdgeInsets.fromLTRB(8.0, 24.0, 30.0, 4.0),
-            constraints: BoxConstraints(
-              maxWidth: Global.device.width - 64,
-              minHeight: _viewMinHeight,
-              maxHeight: _viewHeight,
-            ),
-            alignment: Alignment.center,
-            /* Use Stack to hide web view on create */
-            child: IndexedStack(
-              index: _stackIndex,
-              children: [
-                SizedBox.shrink(),
-                WebView(
-                  javascriptMode: JavascriptMode.unrestricted,
-                  onWebViewCreated: (WebViewController controller) async {
-                    _controller = controller;
-                    _controller.loadUrl(Uri.dataFromString(
-                      html,
-                      mimeType: Global.WEB_MIMETYPE,
-                      encoding: Global.webEncoding,
-                    ).toString());
-                  },
-                  onPageFinished: (_) async {
-                    if (!_pageLoaded) {
-                      // set container height when web page was loaded
-                      double height = double.parse(
-                          await _controller.evaluateJavascript(
-                              "document.documentElement.scrollHeight;"));
-                      _viewMinHeight = dialogHeight / 3;
-                      _viewHeight = (height > dialogHeight)
-                          ? dialogHeight
-                          : (height < _viewMinHeight) ? _viewMinHeight : height;
-                      debugPrint('view height: $_viewHeight');
-                      Future.delayed(
-                        Duration(milliseconds: 150),
-                        () => setState(() {
-                          _stackIndex = 1;
-                          _dialogKey.currentState.updateHeightFactor(0.85);
-                        }),
-                      );
-                      // set to true when ready to change ui widget
-                      _pageLoaded = true;
-                    }
-                  },
-                ),
-              ],
-            ),
-          ),
         if (html.isEmpty)
           WarningDisplay(
             message:
-                Failure.internal(FailureCode(type: FailureType.PROMO, code: 11))
-                    .message,
+                Failure.internal(FailureCode(type: FailureType.PROMO)).message,
+            widthFactor: 1.2,
           ),
+        if (html.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16.0, 20.0, 16.0, 16.0),
+            child: ListView(
+              shrinkWrap: true,
+              physics: BouncingScrollPhysics(),
+              children: [
+                HtmlWidget(html),
+              ],
+            ),
+          ),
+
+        ///
+        /// Old way using [WebView]
+        /// use stack index to avoid white screen while loading
+        ///
+        // if (_stackIndex == 0)
+        //   Container(
+        //     alignment: Alignment.center,
+        //     child: SizedBox(
+        //       width: 30.0,
+        //       height: 30.0,
+        //       child: CircularProgressIndicator(
+        //         strokeWidth: 3.0,
+        //       ),
+        //     ),
+        //   ),
+        // if (html.isNotEmpty)
+        //   Container(
+        //     margin: const EdgeInsets.fromLTRB(8.0, 24.0, 30.0, 4.0),
+        //     constraints: BoxConstraints(
+        //       maxWidth: Global.device.width - 64,
+        //       minHeight: _viewMinHeight,
+        //       maxHeight: _viewHeight,
+        //     ),
+        //     alignment: Alignment.center,
+        //     /* Use Stack to hide web view on create */
+        //     child: IndexedStack(
+        //       index: _stackIndex,
+        //       children: [
+        //         SizedBox.shrink(),
+        //         WebView(
+        //           javascriptMode: JavascriptMode.unrestricted,
+        //           onWebViewCreated: (WebViewController controller) async {
+        //             _controller = controller;
+        //             _controller.loadUrl(Uri.dataFromString(
+        //               html,
+        //               mimeType: Global.WEB_MIMETYPE,
+        //               encoding: Global.webEncoding,
+        //             ).toString());
+        //           },
+        //           onPageFinished: (_) async {
+        //             if (!_pageLoaded) {
+        //               // set container height when web page was loaded
+        //               double height = double.parse(
+        //                   await _controller.evaluateJavascript(
+        //                       "document.documentElement.scrollHeight;"));
+        //               _viewMinHeight = dialogHeight / 3;
+        //               _viewHeight = (height > dialogHeight)
+        //                   ? dialogHeight
+        //                   : (height < _viewMinHeight)
+        //                       ? _viewMinHeight
+        //                       : height;
+        //               debugPrint('view height: $_viewHeight');
+        //               Future.delayed(
+        //                 Duration(milliseconds: 300),
+        //                 () => setState(() {
+        //                   _stackIndex = 1;
+        //                   _dialogKey.currentState.updateHeightFactor(0.85);
+        //                 }),
+        //               );
+        //               // set to true when ready to change ui widget
+        //               _pageLoaded = true;
+        //             }
+        //           },
+        //         ),
+        //       ],
+        //     ),
+        //   ),
       ],
     );
   }
