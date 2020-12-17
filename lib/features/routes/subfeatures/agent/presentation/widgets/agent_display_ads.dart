@@ -60,11 +60,11 @@ class _AgentDisplayAdsState extends State<AgentDisplayAds>
                   padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   child: RaisedButton(
                     color: (_tabIndex == index)
-                        ? Themes.buttonPrimaryColor
-                        : Themes.buttonSecondaryColor,
+                        ? themeColor.buttonPrimaryColor
+                        : themeColor.buttonSecondaryColor,
                     textColor: (_tabIndex == index)
-                        ? Themes.buttonTextPrimaryColor
-                        : Themes.defaultTextColor,
+                        ? themeColor.buttonTextPrimaryColor
+                        : themeColor.defaultTextColor,
                     child: Text(tabs[index]),
                     onPressed: () {
                       if (_tabIndex == index) return;
@@ -156,9 +156,10 @@ class _AgentDisplayAdsState extends State<AgentDisplayAds>
     return GestureDetector(
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(width: 8.0, color: Themes.defaultDisabledColor),
+          border:
+              Border.all(width: 8.0, color: themeColor.defaultDisabledColor),
           borderRadius: const BorderRadius.all(const Radius.circular(16.0)),
-          color: Themes.defaultDisabledColor,
+          color: themeColor.defaultDisabledColor,
         ),
         margin: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 6.0),
         child: Column(

@@ -1,4 +1,4 @@
-import 'package:dataclass/dataclass.dart';
+import 'package:flutter_85bet_mobile/builders/dataclass/dataclass.dart';
 
 part 'about_data.g.dart';
 

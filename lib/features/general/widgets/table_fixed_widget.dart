@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customized_scroll_with_scrollbar.dart';
 
 part 'table_fixed_cell_widget.dart';

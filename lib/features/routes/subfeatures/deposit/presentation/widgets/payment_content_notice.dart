@@ -15,7 +15,8 @@ class PaymentContentNotice extends StatelessWidget {
     return RichText(
       text: TextSpan(
         style: TextStyle(
-            color: Themes.defaultTextColor, fontSize: FontSize.SUBTITLE.value),
+            color: themeColor.defaultTextColor,
+            fontSize: FontSize.SUBTITLE.value),
         children: _buildNoticeList,
       ),
     );
@@ -30,7 +31,7 @@ class PaymentContentNotice extends StatelessWidget {
           TextSpan(text: localeStr.depositHintTextInfo('2.')),
           TextSpan(
             text: '${localeStr.depositHintTextService}\n',
-            style: TextStyle(color: Themes.hintHyperLink),
+            style: TextStyle(color: themeColor.hintHyperLink),
             //TODO add link
             recognizer: new TapGestureRecognizer()
               ..onTap = () => debugPrint('Tapped'),
@@ -47,7 +48,7 @@ class PaymentContentNotice extends StatelessWidget {
           TextSpan(text: localeStr.depositHintTextInfo('2.')),
           TextSpan(
             text: '${localeStr.depositHintTextService}\n',
-            style: TextStyle(color: Themes.hintHyperLink),
+            style: TextStyle(color: themeColor.hintHyperLink),
             recognizer: new TapGestureRecognizer()
               ..onTap = () => debugPrint('Tapped'),
           ),
@@ -62,7 +63,7 @@ class PaymentContentNotice extends StatelessWidget {
           TextSpan(text: localeStr.depositHintTextInfo('2.')),
           TextSpan(
             text: '${localeStr.depositHintTextService}\n',
-            style: TextStyle(color: Themes.hintHyperLink),
+            style: TextStyle(color: themeColor.hintHyperLink),
             recognizer: new TapGestureRecognizer()
               ..onTap = () => debugPrint('Tapped'),
           ),
@@ -75,13 +76,13 @@ class PaymentContentNotice extends StatelessWidget {
         return [
           TextSpan(
             text: localeStr.depositHintTextAli('1.'),
-            style: TextStyle(color: Themes.hintHighlightRed),
+            style: TextStyle(color: themeColor.hintHighlightRed),
           ),
           TextSpan(text: localeStr.depositHintTextMaxExceed('2.')),
           TextSpan(text: localeStr.depositHintTextInfo('3.')),
           TextSpan(
             text: '${localeStr.depositHintTextService}\n',
-            style: TextStyle(color: Themes.hintHyperLink),
+            style: TextStyle(color: themeColor.hintHyperLink),
             recognizer: new TapGestureRecognizer()
               ..onTap = () => debugPrint('Tapped'),
           ),
@@ -95,7 +96,7 @@ class PaymentContentNotice extends StatelessWidget {
           TextSpan(text: localeStr.depositHintTextInfo('2.')),
           TextSpan(
             text: '${localeStr.depositHintTextService}\n',
-            style: TextStyle(color: Themes.hintHyperLink),
+            style: TextStyle(color: themeColor.hintHyperLink),
             recognizer: new TapGestureRecognizer()
               ..onTap = () => debugPrint('Tapped'),
           ),
@@ -114,7 +115,7 @@ class PaymentContentNotice extends StatelessWidget {
           TextSpan(text: localeStr.depositHintTextInfo('2.')),
           TextSpan(
             text: '${localeStr.depositHintTextService}\n',
-            style: TextStyle(color: Themes.hintHyperLink),
+            style: TextStyle(color: themeColor.hintHyperLink),
             recognizer: new TapGestureRecognizer()
               ..onTap = () => debugPrint('Tapped'),
           ),

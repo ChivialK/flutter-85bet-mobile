@@ -8,14 +8,17 @@ part 'route_list_item.freezed.dart';
 @freezed
 abstract class RouteListItem with _$RouteListItem {
   const factory RouteListItem({
-    @required RouteEnum id,
+    RouteEnum routeId,
     IconData iconData, // IconData need to be constant
     String imageName,
+    String imageSubName,
     RoutePage route,
-    @Default(false) bool isUserOnly,
+    bool userOnly,
   }) = _RouteListItem;
 }
 
 extension RouteListItemExtension on RouteListItem {
+  RouteEnum get id => routeId ?? route.value.id;
   String get title => id.title;
+  bool get isUserOnly => userOnly ?? route?.value?.isUserOnly ?? false;
 }

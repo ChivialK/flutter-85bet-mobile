@@ -94,9 +94,9 @@ mixin _$PaymentTypeData {
   dynamic get key;
 
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result other(
+        TResult other(
             String amount,
             @JsonKey(name: 'amountoption') List<String> amountOption,
             @JsonKey(name: 'amounttype') int amountType,
@@ -110,7 +110,7 @@ mixin _$PaymentTypeData {
             String type,
             dynamic key),
     @required
-        Result local(
+        TResult local(
             @JsonKey(name: 'bankaccountid') int bankAccountId,
             @JsonKey(name: 'bankaccountno') String bankAccountNo,
             @JsonKey(name: 'bankindex') int bankIndex,
@@ -121,8 +121,8 @@ mixin _$PaymentTypeData {
             dynamic key),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result other(
+  TResult maybeWhen<TResult extends Object>({
+    TResult other(
         String amount,
         @JsonKey(name: 'amountoption') List<String> amountOption,
         @JsonKey(name: 'amounttype') int amountType,
@@ -135,7 +135,7 @@ mixin _$PaymentTypeData {
         List<int> sb,
         String type,
         dynamic key),
-    Result local(
+    TResult local(
         @JsonKey(name: 'bankaccountid') int bankAccountId,
         @JsonKey(name: 'bankaccountno') String bankAccountNo,
         @JsonKey(name: 'bankindex') int bankIndex,
@@ -144,18 +144,18 @@ mixin _$PaymentTypeData {
         String payment,
         String type,
         dynamic key),
-    @required Result orElse(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result other(PaymentTypeOnlineData value),
-    @required Result local(PaymentTypeLocalData value),
+  TResult map<TResult extends Object>({
+    @required TResult other(PaymentTypeOnlineData value),
+    @required TResult local(PaymentTypeLocalData value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result other(PaymentTypeOnlineData value),
-    Result local(PaymentTypeLocalData value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult other(PaymentTypeOnlineData value),
+    TResult local(PaymentTypeLocalData value),
+    @required TResult orElse(),
   });
   Map<String, dynamic> toJson();
   $PaymentTypeDataCopyWith<PaymentTypeData> get copyWith;
@@ -381,9 +381,9 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result other(
+        TResult other(
             String amount,
             @JsonKey(name: 'amountoption') List<String> amountOption,
             @JsonKey(name: 'amounttype') int amountType,
@@ -397,7 +397,7 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
             String type,
             dynamic key),
     @required
-        Result local(
+        TResult local(
             @JsonKey(name: 'bankaccountid') int bankAccountId,
             @JsonKey(name: 'bankaccountno') String bankAccountNo,
             @JsonKey(name: 'bankindex') int bankIndex,
@@ -415,8 +415,8 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result other(
+  TResult maybeWhen<TResult extends Object>({
+    TResult other(
         String amount,
         @JsonKey(name: 'amountoption') List<String> amountOption,
         @JsonKey(name: 'amounttype') int amountType,
@@ -429,7 +429,7 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
         List<int> sb,
         String type,
         dynamic key),
-    Result local(
+    TResult local(
         @JsonKey(name: 'bankaccountid') int bankAccountId,
         @JsonKey(name: 'bankaccountno') String bankAccountNo,
         @JsonKey(name: 'bankindex') int bankIndex,
@@ -438,7 +438,7 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
         String payment,
         String type,
         dynamic key),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (other != null) {
@@ -450,9 +450,9 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result other(PaymentTypeOnlineData value),
-    @required Result local(PaymentTypeLocalData value),
+  TResult map<TResult extends Object>({
+    @required TResult other(PaymentTypeOnlineData value),
+    @required TResult local(PaymentTypeLocalData value),
   }) {
     assert(other != null);
     assert(local != null);
@@ -461,10 +461,10 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result other(PaymentTypeOnlineData value),
-    Result local(PaymentTypeLocalData value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult other(PaymentTypeOnlineData value),
+    TResult local(PaymentTypeLocalData value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (other != null) {
@@ -666,9 +666,9 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result other(
+        TResult other(
             String amount,
             @JsonKey(name: 'amountoption') List<String> amountOption,
             @JsonKey(name: 'amounttype') int amountType,
@@ -682,7 +682,7 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
             String type,
             dynamic key),
     @required
-        Result local(
+        TResult local(
             @JsonKey(name: 'bankaccountid') int bankAccountId,
             @JsonKey(name: 'bankaccountno') String bankAccountNo,
             @JsonKey(name: 'bankindex') int bankIndex,
@@ -700,8 +700,8 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result other(
+  TResult maybeWhen<TResult extends Object>({
+    TResult other(
         String amount,
         @JsonKey(name: 'amountoption') List<String> amountOption,
         @JsonKey(name: 'amounttype') int amountType,
@@ -714,7 +714,7 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
         List<int> sb,
         String type,
         dynamic key),
-    Result local(
+    TResult local(
         @JsonKey(name: 'bankaccountid') int bankAccountId,
         @JsonKey(name: 'bankaccountno') String bankAccountNo,
         @JsonKey(name: 'bankindex') int bankIndex,
@@ -723,7 +723,7 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
         String payment,
         String type,
         dynamic key),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (local != null) {
@@ -735,9 +735,9 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result other(PaymentTypeOnlineData value),
-    @required Result local(PaymentTypeLocalData value),
+  TResult map<TResult extends Object>({
+    @required TResult other(PaymentTypeOnlineData value),
+    @required TResult local(PaymentTypeLocalData value),
   }) {
     assert(other != null);
     assert(local != null);
@@ -746,10 +746,10 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result other(PaymentTypeOnlineData value),
-    Result local(PaymentTypeLocalData value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult other(PaymentTypeOnlineData value),
+    TResult local(PaymentTypeLocalData value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (local != null) {

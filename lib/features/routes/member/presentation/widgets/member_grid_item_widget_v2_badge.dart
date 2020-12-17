@@ -1,6 +1,5 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
 
@@ -37,7 +36,7 @@ class _MemberGridItemWidgetV2BadgeState
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Themes.defaultGridColor,
+        color: themeColor.defaultGridColor,
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
       ),
       margin: const EdgeInsets.all(2.0),
@@ -50,7 +49,7 @@ class _MemberGridItemWidgetV2BadgeState
             child: Observer(
               builder: (_) => Badge(
                 showBadge: widget.store.hasNewMessage,
-                badgeColor: Themes.hintHighlightRed,
+                badgeColor: themeColor.hintHighlightRed,
                 badgeContent: Container(
                   margin: const EdgeInsets.all(1.0),
                   child: Icon(
@@ -60,11 +59,11 @@ class _MemberGridItemWidgetV2BadgeState
                   ),
                 ),
                 padding: EdgeInsets.zero,
-                position: BadgePosition.topRight(top: -2, right: -6),
+                position: BadgePosition.topEnd(top: -2, end: -6),
                 child: networkImageBuilder(
                   itemData.imageName,
                   imgScale: 2.0,
-                  imgColor: Themes.memberIconColor,
+                  imgColor: themeColor.memberIconColor,
                 ),
               ),
             ),
@@ -76,7 +75,7 @@ class _MemberGridItemWidgetV2BadgeState
               itemData.title ?? itemData.route?.pageTitle ?? '?',
               style: TextStyle(
                 fontSize: FontSize.SUBTITLE.value - 1,
-                color: Themes.iconTextColor,
+                color: themeColor.iconTextColor,
               ),
               maxLines: 2,
               textAlign: TextAlign.center,

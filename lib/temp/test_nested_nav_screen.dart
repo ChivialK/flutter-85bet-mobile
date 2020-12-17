@@ -1,6 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_85bet_mobile/builders/autoroute/auto_route.dart';
 import 'package:flutter_85bet_mobile/temp/test_router.gr.dart';
 
 class TestNestedNavScreen extends StatefulWidget {

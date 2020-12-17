@@ -39,8 +39,7 @@ class MemberDisplayHeaderState extends State<MemberDisplayHeader> {
 
   @override
   void initState() {
-    headerMaxHeight =
-        (Global.device.height - Global.APP_BAR_HEIGHT * 2) / 7 * 2 + 8.0;
+    headerMaxHeight = Global.device.featureContentHeight / 7 * 2 + 8.0;
     debugPrint('header height, max: $headerMaxHeight, min: $headerMinHeight');
     if (headerMaxHeight > 208) headerMaxHeight = 208;
     if (headerMaxHeight < headerMinHeight) headerMaxHeight = headerMinHeight;
@@ -58,7 +57,7 @@ class MemberDisplayHeaderState extends State<MemberDisplayHeader> {
         maxHeight: headerMaxHeight,
         maxWidth: Global.device.width,
       ),
-      decoration: Themes.layerShadowDecorRound,
+      decoration: ThemeInterface.layerShadowDecorRoundLight,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,

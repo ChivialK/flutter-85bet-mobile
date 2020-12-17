@@ -4,7 +4,7 @@ import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'state/member_credit_store.dart';
 import 'widgets/member_display.dart';
 
-/// Main View of [Router.memberRoute]
+/// Main View of [FeatureRouter.memberRoute]
 /// @author H.C.CHIANG
 /// @version 2020/5/15
 class MemberRoute extends StatefulWidget {

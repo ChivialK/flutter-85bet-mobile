@@ -1,7 +1,9 @@
 import 'dart:collection' show HashMap;
 
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
+import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
+import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
 import '../../data/entity/banner_entity.dart';
 import '../../data/entity/game_entity.dart';
@@ -95,6 +97,10 @@ abstract class _HomeStore with Store {
   bool hasPlatformGames(String key) =>
       _homeGamesMap != null && _homeGamesMap.containsKey(key);
 
+  bool hasGameInMap(String key, int gameId) =>
+      _homeGamesMap.containsKey(key) &&
+      _homeGamesMap[key].any((game) => game.gameUrl.endsWith('/$gameId'));
+
   List<GameEntity> getPlatformGames(String key) =>
       (_homeGamesMap.containsKey(key)) ? _homeGamesMap[key] : [];
 
@@ -128,8 +134,12 @@ abstract class _HomeStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg(
-          {String msg, bool showOnce = false, FailureType type, int code}) =>
+  void setErrorMsg({
+    String msg,
+    bool showOnce = false,
+    FailureType type,
+    int code,
+  }) =>
       errorMessage = getErrorMsg(
           from: FailureType.HOME,
           msg: msg,
@@ -233,7 +243,18 @@ abstract class _HomeStore with Store {
                 // creates a new list then add to stream
                 // otherwise the data will lost after navigate
                 if (list.isNotEmpty) {
-                  _marqueeController.sink.add(List.from(list));
+                  int textCount = 0;
+                  list.forEach(
+                      (element) => textCount += element.content.countLength);
+                  // debugPrint('home store marquee text count: $textCount \n' +
+                  //     'home store marquee width: ${Global.device.width} \n' +
+                  //     'home store marquee text expect size: ${textCount * FontSize.NORMAL.value}');
+                  if (list.length < 2 ||
+                      textCount * FontSize.NORMAL.value < Global.device.width) {
+                    _marqueeController.sink.add(List.from(list + list));
+                  } else {
+                    _marqueeController.sink.add(List.from(list));
+                  }
                 } else {
                   _marqueeController.sink.add([
 //                    MarqueeEntity(
@@ -429,7 +450,7 @@ abstract class _HomeStore with Store {
           .getGameUrl(param)
           .then(
             (result) => result.fold(
-              (failure) => setErrorMsg(msg: failure.message, showOnce: true),
+              (failure) => setErrorMsg(msg: failure.message),
               (data) {
                 debugPrint('home store game url: $data');
                 gameUrl = data;

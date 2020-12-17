@@ -120,7 +120,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
       borderRadius: BorderRadius.circular(6.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Themes.balanceCardBackground,
+          color: themeColor.balanceCardBackground,
           borderRadius: BorderRadius.circular(6.0),
           boxShadow: [
             BoxShadow(
@@ -141,7 +141,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
               Text(
                 widget.platform.toUpperCase(),
                 style: TextStyle(
-                  color: Themes.balanceCardTitleColor,
+                  color: themeColor.balanceCardTitleColor,
                   fontWeight: FontWeight.bold,
                   fontSize: FontSize.HEADER.value,
                 ),
@@ -178,7 +178,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
                     child: Text(
                       (isMaintaining) ? _maintenanceText : 'VDK $_credit',
                       style: TextStyle(
-                        color: Themes.balanceCardTextColor,
+                        color: themeColor.balanceCardTextColor,
                         fontWeight: FontWeight.bold,
                         fontSize: FontSize.TITLE.value,
                       ),
@@ -190,8 +190,8 @@ class BalanceGridItemState extends State<BalanceGridItem>
                       child: Icon(
                         Icons.refresh,
                         color: (canRefresh)
-                            ? Themes.defaultHintColor
-                            : Themes.defaultHintSubColor,
+                            ? themeColor.defaultHintColor
+                            : themeColor.defaultHintSubColor,
                         size: 20,
                       ),
                     ),
@@ -220,8 +220,8 @@ class BalanceGridItemState extends State<BalanceGridItem>
         _btn1Text,
         style: TextStyle(
           color: (canTransferOut)
-              ? Themes.balanceAction2TextColor
-              : Themes.balanceActionDisableTextColor,
+              ? themeColor.balanceAction2TextColor
+              : themeColor.balanceActionDisableTextColor,
           fontWeight: FontWeight.bold,
           fontSize: FontSize.SUBTITLE.value,
         ),
@@ -252,8 +252,8 @@ class BalanceGridItemState extends State<BalanceGridItem>
         _btn2Text,
         style: TextStyle(
           color: (canTransferIn)
-              ? Themes.balanceActionTextColor
-              : Themes.balanceActionDisableTextColor,
+              ? themeColor.balanceActionTextColor
+              : themeColor.balanceActionDisableTextColor,
           fontWeight: FontWeight.bold,
           fontSize: FontSize.SUBTITLE.value,
         ),
@@ -283,8 +283,8 @@ class BalanceGridItemState extends State<BalanceGridItem>
       ' / ',
       style: TextStyle(
         color: (canTransferOut || canTransferIn)
-            ? Themes.balanceActionTextColor
-            : Themes.balanceActionDisableTextColor,
+            ? themeColor.balanceActionTextColor
+            : themeColor.balanceActionDisableTextColor,
         fontWeight: FontWeight.bold,
       ),
     );

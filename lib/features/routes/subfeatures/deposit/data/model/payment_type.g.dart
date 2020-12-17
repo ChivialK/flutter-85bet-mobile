@@ -14,7 +14,6 @@ abstract class _$PaymentType {
   bool operator ==(other) {
     if (identical(this, other)) return true;
     if (other is! PaymentType) return false;
-
     return true && this.key == other.key && this.data == other.data;
   }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
 import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 import '../state/agent_store.dart';
 import 'agent_display_chart.dart';
@@ -40,7 +40,7 @@ class _AgentDisplayState extends State<AgentDisplay> {
     if (gridRatio > 1.75) gridRatio = 1.75;
     print('grid item width: $gridItemWidth, gridRatio: $gridRatio');
     contentMaxHeight = Global.device.height -
-        Global.APP_TOOLS_HEIGHT -
+        Global.APP_BARS_HEIGHT -
         24 -
         gridItemWidth / gridRatio;
     super.initState();
@@ -65,14 +65,14 @@ class _AgentDisplayState extends State<AgentDisplay> {
             itemBuilder: (_, index) {
               return RaisedButton(
                 color: (_clicked == index)
-                    ? Themes.buttonPrimaryColor
-                    : Themes.buttonSecondaryColor,
+                    ? themeColor.buttonPrimaryColor
+                    : themeColor.buttonSecondaryColor,
                 child: Text(
                   tabs[index],
                   style: TextStyle(
                       color: (_clicked == index)
-                          ? Themes.buttonTextPrimaryColor
-                          : Themes.defaultTextColor),
+                          ? themeColor.buttonTextPrimaryColor
+                          : themeColor.defaultTextColor),
                 ),
                 onPressed: () {
                   if (_clicked == index) return;

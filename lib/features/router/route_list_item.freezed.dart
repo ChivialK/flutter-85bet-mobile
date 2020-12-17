@@ -15,17 +15,19 @@ class _$RouteListItemTearOff {
 
 // ignore: unused_element
   _RouteListItem call(
-      {@required RouteEnum id,
+      {RouteEnum routeId,
       IconData iconData,
       String imageName,
+      String imageSubName,
       RoutePage route,
-      bool isUserOnly = false}) {
+      bool userOnly}) {
     return _RouteListItem(
-      id: id,
+      routeId: routeId,
       iconData: iconData,
       imageName: imageName,
+      imageSubName: imageSubName,
       route: route,
-      isUserOnly: isUserOnly,
+      userOnly: userOnly,
     );
   }
 }
@@ -36,11 +38,12 @@ const $RouteListItem = _$RouteListItemTearOff();
 
 /// @nodoc
 mixin _$RouteListItem {
-  RouteEnum get id;
+  RouteEnum get routeId;
   IconData get iconData; // IconData need to be constant
   String get imageName;
+  String get imageSubName;
   RoutePage get route;
-  bool get isUserOnly;
+  bool get userOnly;
 
   $RouteListItemCopyWith<RouteListItem> get copyWith;
 }
@@ -51,11 +54,12 @@ abstract class $RouteListItemCopyWith<$Res> {
           RouteListItem value, $Res Function(RouteListItem) then) =
       _$RouteListItemCopyWithImpl<$Res>;
   $Res call(
-      {RouteEnum id,
+      {RouteEnum routeId,
       IconData iconData,
       String imageName,
+      String imageSubName,
       RoutePage route,
-      bool isUserOnly});
+      bool userOnly});
 }
 
 /// @nodoc
@@ -69,19 +73,22 @@ class _$RouteListItemCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
+    Object routeId = freezed,
     Object iconData = freezed,
     Object imageName = freezed,
+    Object imageSubName = freezed,
     Object route = freezed,
-    Object isUserOnly = freezed,
+    Object userOnly = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as RouteEnum,
+      routeId: routeId == freezed ? _value.routeId : routeId as RouteEnum,
       iconData: iconData == freezed ? _value.iconData : iconData as IconData,
       imageName: imageName == freezed ? _value.imageName : imageName as String,
+      imageSubName: imageSubName == freezed
+          ? _value.imageSubName
+          : imageSubName as String,
       route: route == freezed ? _value.route : route as RoutePage,
-      isUserOnly:
-          isUserOnly == freezed ? _value.isUserOnly : isUserOnly as bool,
+      userOnly: userOnly == freezed ? _value.userOnly : userOnly as bool,
     ));
   }
 }
@@ -94,11 +101,12 @@ abstract class _$RouteListItemCopyWith<$Res>
       __$RouteListItemCopyWithImpl<$Res>;
   @override
   $Res call(
-      {RouteEnum id,
+      {RouteEnum routeId,
       IconData iconData,
       String imageName,
+      String imageSubName,
       RoutePage route,
-      bool isUserOnly});
+      bool userOnly});
 }
 
 /// @nodoc
@@ -114,19 +122,22 @@ class __$RouteListItemCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
+    Object routeId = freezed,
     Object iconData = freezed,
     Object imageName = freezed,
+    Object imageSubName = freezed,
     Object route = freezed,
-    Object isUserOnly = freezed,
+    Object userOnly = freezed,
   }) {
     return _then(_RouteListItem(
-      id: id == freezed ? _value.id : id as RouteEnum,
+      routeId: routeId == freezed ? _value.routeId : routeId as RouteEnum,
       iconData: iconData == freezed ? _value.iconData : iconData as IconData,
       imageName: imageName == freezed ? _value.imageName : imageName as String,
+      imageSubName: imageSubName == freezed
+          ? _value.imageSubName
+          : imageSubName as String,
       route: route == freezed ? _value.route : route as RoutePage,
-      isUserOnly:
-          isUserOnly == freezed ? _value.isUserOnly : isUserOnly as bool,
+      userOnly: userOnly == freezed ? _value.userOnly : userOnly as bool,
     ));
   }
 }
@@ -134,29 +145,29 @@ class __$RouteListItemCopyWithImpl<$Res>
 /// @nodoc
 class _$_RouteListItem with DiagnosticableTreeMixin implements _RouteListItem {
   const _$_RouteListItem(
-      {@required this.id,
+      {this.routeId,
       this.iconData,
       this.imageName,
+      this.imageSubName,
       this.route,
-      this.isUserOnly = false})
-      : assert(id != null),
-        assert(isUserOnly != null);
+      this.userOnly});
 
   @override
-  final RouteEnum id;
+  final RouteEnum routeId;
   @override
   final IconData iconData;
   @override // IconData need to be constant
   final String imageName;
   @override
-  final RoutePage route;
-  @JsonKey(defaultValue: false)
+  final String imageSubName;
   @override
-  final bool isUserOnly;
+  final RoutePage route;
+  @override
+  final bool userOnly;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RouteListItem(id: $id, iconData: $iconData, imageName: $imageName, route: $route, isUserOnly: $isUserOnly)';
+    return 'RouteListItem(routeId: $routeId, iconData: $iconData, imageName: $imageName, imageSubName: $imageSubName, route: $route, userOnly: $userOnly)';
   }
 
   @override
@@ -164,40 +175,46 @@ class _$_RouteListItem with DiagnosticableTreeMixin implements _RouteListItem {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'RouteListItem'))
-      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('routeId', routeId))
       ..add(DiagnosticsProperty('iconData', iconData))
       ..add(DiagnosticsProperty('imageName', imageName))
+      ..add(DiagnosticsProperty('imageSubName', imageSubName))
       ..add(DiagnosticsProperty('route', route))
-      ..add(DiagnosticsProperty('isUserOnly', isUserOnly));
+      ..add(DiagnosticsProperty('userOnly', userOnly));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _RouteListItem &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.routeId, routeId) ||
+                const DeepCollectionEquality()
+                    .equals(other.routeId, routeId)) &&
             (identical(other.iconData, iconData) ||
                 const DeepCollectionEquality()
                     .equals(other.iconData, iconData)) &&
             (identical(other.imageName, imageName) ||
                 const DeepCollectionEquality()
                     .equals(other.imageName, imageName)) &&
+            (identical(other.imageSubName, imageSubName) ||
+                const DeepCollectionEquality()
+                    .equals(other.imageSubName, imageSubName)) &&
             (identical(other.route, route) ||
                 const DeepCollectionEquality().equals(other.route, route)) &&
-            (identical(other.isUserOnly, isUserOnly) ||
+            (identical(other.userOnly, userOnly) ||
                 const DeepCollectionEquality()
-                    .equals(other.isUserOnly, isUserOnly)));
+                    .equals(other.userOnly, userOnly)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(routeId) ^
       const DeepCollectionEquality().hash(iconData) ^
       const DeepCollectionEquality().hash(imageName) ^
+      const DeepCollectionEquality().hash(imageSubName) ^
       const DeepCollectionEquality().hash(route) ^
-      const DeepCollectionEquality().hash(isUserOnly);
+      const DeepCollectionEquality().hash(userOnly);
 
   @override
   _$RouteListItemCopyWith<_RouteListItem> get copyWith =>
@@ -206,22 +223,25 @@ class _$_RouteListItem with DiagnosticableTreeMixin implements _RouteListItem {
 
 abstract class _RouteListItem implements RouteListItem {
   const factory _RouteListItem(
-      {@required RouteEnum id,
+      {RouteEnum routeId,
       IconData iconData,
       String imageName,
+      String imageSubName,
       RoutePage route,
-      bool isUserOnly}) = _$_RouteListItem;
+      bool userOnly}) = _$_RouteListItem;
 
   @override
-  RouteEnum get id;
+  RouteEnum get routeId;
   @override
   IconData get iconData;
   @override // IconData need to be constant
   String get imageName;
   @override
+  String get imageSubName;
+  @override
   RoutePage get route;
   @override
-  bool get isUserOnly;
+  bool get userOnly;
   @override
   _$RouteListItemCopyWith<_RouteListItem> get copyWith;
 }

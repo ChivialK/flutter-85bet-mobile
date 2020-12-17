@@ -48,7 +48,7 @@ class AgentDisplayAdDialog extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: FontSize.TITLE.value,
-                                    color: Themes.defaultAccentColor,
+                                    color: themeColor.defaultAccentColor,
                                   ),
                                 ),
                               ),

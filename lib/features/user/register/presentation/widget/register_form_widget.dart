@@ -49,8 +49,6 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
   Color _fieldPrefixBg;
 
   RegisterStore _store;
-  List<ReactionDisposer> _disposers;
-  CancelFunc _toastDismiss;
 
   bool _showAccountError = false;
   bool _showPasswordError = false;
@@ -80,68 +78,18 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
   @override
   void initState() {
     _fieldInset = widget.parentPadding + 32.0;
-    _fieldPrefixBg =
-        (widget.transparent) ? Colors.transparent : Themes.fieldPrefixBgColor;
-    _phoneCodeContainerHeight =
-        ((Global.device.isIos) ? Themes.fieldHeight + 8 : Themes.fieldHeight) -
-            Themes.minusSize;
+    _fieldPrefixBg = (widget.transparent)
+        ? Colors.transparent
+        : themeColor.fieldPrefixBgColor;
+    _phoneCodeContainerHeight = ((Global.device.isIos)
+            ? ThemeInterface.fieldHeight + 8
+            : ThemeInterface.fieldHeight) -
+        ThemeInterface.minusSize;
     _valueTextPadding = (Global.device.width.roundToDouble() - _fieldInset) *
-            Themes.prefixTextWidthFactor -
-        Themes.minusSize +
+            ThemeInterface.prefixTextWidthFactor -
+        ThemeInterface.minusSize +
         24.0;
     super.initState();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _disposers ??= [
-      /* Reaction on register action */
-      reaction(
-        // Observe in page
-        // Tell the reaction which observable to observe
-        (_) => _store.waitForRegister,
-        // Run some logic with the content of the observed field
-        (bool wait) {
-          debugPrint('reaction on wait register: $wait');
-          if (wait) {
-            _toastDismiss = callToastLoading();
-          } else if (_toastDismiss != null) {
-            _toastDismiss();
-            _toastDismiss = null;
-          }
-        },
-      ),
-      /* Reaction on register result changed */
-      reaction(
-        // Observe in page
-        // Tell the reaction which observable to observe
-        (_) => _store.registerResult,
-        // Run some logic with the content of the observed field
-        (result) {
-          debugPrint('reaction on register result: $result');
-          if (result == null) return;
-          if (result.isSuccess) {
-            callToastInfo(localeStr.messageSuccess,
-                icon: Icons.check_circle_outline);
-          } else {
-            callToastError(result.msg);
-          }
-        },
-      ),
-    ];
-  }
-
-  @override
-  void dispose() {
-    try {
-      if (_toastDismiss != null) {
-        _toastDismiss();
-        _toastDismiss = null;
-      }
-      _disposers.forEach((d) => d());
-    } on Exception {}
-    super.dispose();
   }
 
   @override
@@ -170,14 +118,13 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                 ///
                 /// Account Field
                 ///
-                ///
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
                   child: new CustomizeTitledContainer(
                     prefixText: localeStr.registerFieldTitleAccount,
                     prefixTextSize: FontSize.SUBTITLE.value,
                     prefixBgColor: _fieldPrefixBg,
-                    backgroundColor: Themes.fieldPrefixBgColor,
+                    backgroundColor: themeColor.fieldPrefixBgColor,
                     horizontalInset: _fieldInset,
                     requiredInput: true,
                     child: new CustomizeFieldWidget(
@@ -208,7 +155,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                         visible: _showAccountError,
                         child: Text(
                           localeStr.messageInvalidAccount,
-                          style: TextStyle(color: Themes.defaultErrorColor),
+                          style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
                     ),
@@ -255,7 +202,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                         visible: _showPasswordError,
                         child: Text(
                           localeStr.messageInvalidPasswordNew,
-                          style: TextStyle(color: Themes.defaultErrorColor),
+                          style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
                     ),
@@ -298,8 +245,8 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       child: Visibility(
                         visible: _showConfirmError,
                         child: Text(
-                          localeStr.messageInvalidAccount,
-                          style: TextStyle(color: Themes.defaultErrorColor),
+                          localeStr.messageInvalidConfirmPassword,
+                          style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
                     ),
@@ -326,7 +273,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                         Container(
                           width: 64.0,
                           height: _phoneCodeContainerHeight,
-                          color: Themes.fieldInputBgColor,
+                          color: themeColor.fieldInputBgColor,
                           alignment: Alignment.center,
                           child: Text(
                             '+84',
@@ -366,7 +313,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                         visible: _showPhoneError,
                         child: Text(
                           localeStr.messageInvalidPhone(InputLimit.PHONE_MAX),
-                          style: TextStyle(color: Themes.defaultErrorColor),
+                          style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
                     ),
@@ -382,7 +329,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                     prefixText: localeStr.registerFieldTitleRecommend,
                     prefixTextSize: FontSize.SUBTITLE.value,
                     prefixBgColor: _fieldPrefixBg,
-                    backgroundColor: Themes.fieldPrefixBgColor,
+                    backgroundColor: themeColor.fieldPrefixBgColor,
                     horizontalInset: _fieldInset,
                     child: new CustomizeFieldWidget(
                       key: _introFieldKey,
@@ -414,7 +361,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
             widgetPadding: EdgeInsets.zero,
             textPadding: const EdgeInsets.only(left: 8.0),
             label: localeStr.registerCheckButtonNews,
-            boxBackgroundColor: Themes.fieldInputBgColor,
+            boxBackgroundColor: themeColor.fieldInputBgColor,
             textSize: FontSize.SUBTITLE.value,
             scale: 1.75,
           ),
@@ -429,11 +376,12 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
             key: _termsCheckKey,
             widgetPadding: EdgeInsets.zero,
             textPadding: const EdgeInsets.only(left: 8.0),
+            boxBackgroundColor: themeColor.fieldInputBgColor,
             label: localeStr.registerCheckButtonTerms,
-            boxBackgroundColor: Themes.fieldInputBgColor,
             textSize: FontSize.SUBTITLE.value,
             maxLines: 2,
             scale: 1.75,
+            mustCheck: true,
           ),
         ),
 
@@ -451,7 +399,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                   child: Text(localeStr.btnRegister),
                   onPressed: () {
                     // clear text field focus
-                    FocusScope.of(context).requestFocus(new FocusNode());
+                    FocusScope.of(context).unfocus();
                     // validate and send request
                     _validateForm();
                   },
@@ -475,10 +423,14 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                 padding: EdgeInsets.zero,
                 icon: Icon(
                   const IconData(0xe967, fontFamily: 'IconMoon'),
-                  color: Themes.defaultTextColor,
+                  color: themeColor.defaultTextColor,
                 ),
                 onPressed: () {
                   RouterNavigate.navigateToPage(RoutePage.service);
+                  if (widget.isDialog) {
+                    Future.delayed(Duration(milliseconds: 100),
+                        () => Navigator.of(context).pop());
+                  }
                 },
               ),
               Expanded(

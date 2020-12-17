@@ -15,55 +15,57 @@ enum FieldType {
 
 final _dateInputRegex = RegExp("-|[0-9]");
 
-// 中文、注音、二聲、四聲、三聲、輕聲
-final _chineseInputRegex = RegExp(
-    "[\u4e00-\u9fa5]|[\u3105-\u3129]|[\u02CA]|[\u02CB]|[\u02C7]|[\u02C9]");
+// // 中文、注音、二聲、四聲、三聲、輕聲
+// final _chineseInputRegex = RegExp(
+//     "[\u4e00-\u9fa5]|[\u3105-\u3129]|[\u02CA]|[\u02CB]|[\u02C7]|[\u02C9]");
 
 final _symbolsInputRegex = RegExp("[\$&+,:;=?@#|'<>.-^*()%!_ ]");
 
 final _engInputRegex = RegExp("[a-zA-Z]");
 
-final _engSpaceInputRegex = RegExp("[a-zA-Z ]");
+final _engLowerInputRegex = RegExp("[a-z]");
+
+// final _engSpaceInputRegex = RegExp("[a-zA-Z ]");
 
 final _numInputRegex = RegExp("[0-9]");
 
-final _chineseInputFormatter =
-    WhitelistingTextInputFormatter(_chineseInputRegex);
+// final _chineseInputFormatter =
+//     FilteringTextInputFormatter.allow(_chineseInputRegex);
 
-final _numbersInputFormatter = WhitelistingTextInputFormatter.digitsOnly;
+final _numbersInputFormatter = FilteringTextInputFormatter.digitsOnly;
 
-final _dateInputFormatter = WhitelistingTextInputFormatter(_dateInputRegex);
+final _dateInputFormatter = FilteringTextInputFormatter.allow(_dateInputRegex);
 
-final _textOnlyInputFormatter = WhitelistingTextInputFormatter(
-  RegExp("${_engSpaceInputRegex.pattern}|"
-      "${_chineseInputRegex.pattern}"),
-);
+// final _textOnlyInputFormatter = FilteringTextInputFormatter.allow(
+//   RegExp("${_engSpaceInputRegex.pattern}|"
+//       "${_chineseInputRegex.pattern}"),
+// );
 
-final _accountInputFormatter = WhitelistingTextInputFormatter(
-  RegExp("${_engInputRegex.pattern}|"
+final _accountInputFormatter = FilteringTextInputFormatter.allow(
+  RegExp("${_engLowerInputRegex.pattern}|"
       "${_numInputRegex.pattern}|[!#_\$%&*+-=?^@]"),
 );
 
-final _emailInputFormatter = WhitelistingTextInputFormatter(
+final _emailInputFormatter = FilteringTextInputFormatter.allow(
   RegExp("${_engInputRegex.pattern}|"
       "${_numInputRegex.pattern}|[!#\$%&'*+-/=?^_`{|}~.@]"),
 );
 
-final _withoutEngInputFormatter = WhitelistingTextInputFormatter(
-  RegExp("${_numInputRegex.pattern}|"
-      "${_symbolsInputRegex.pattern}|"
-      "${_chineseInputRegex.pattern}"),
-);
+// final _withoutEngInputFormatter = FilteringTextInputFormatter.allow(
+//   RegExp("${_numInputRegex.pattern}|"
+//       "${_symbolsInputRegex.pattern}|"
+//       "${_chineseInputRegex.pattern}"),
+// );
 
-final _withoutChineseInputFormatter = WhitelistingTextInputFormatter(
+final _withoutChineseInputFormatter = FilteringTextInputFormatter.allow(
   RegExp("${_engInputRegex.pattern}|"
       "${_numInputRegex.pattern}|"
       "${_symbolsInputRegex.pattern}"),
 );
 
-final _normalInputFormatter = WhitelistingTextInputFormatter(
-  RegExp("${_engInputRegex.pattern}|"
-      "${_numInputRegex.pattern}|"
-      "${_symbolsInputRegex.pattern}|"
-      "${_chineseInputRegex.pattern}"),
-);
+// final _normalInputFormatter = FilteringTextInputFormatter.allow(
+//   RegExp("${_engInputRegex.pattern}|"
+//       "${_numInputRegex.pattern}|"
+//       "${_symbolsInputRegex.pattern}|"
+//       "${_chineseInputRegex.pattern}"),
+// );

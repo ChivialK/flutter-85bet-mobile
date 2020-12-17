@@ -86,7 +86,7 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
     }
 
     _widgetBorder ??= BorderSide(
-      color: Themes.homeBoxDividerColor,
+      color: themeColor.homeBoxDividerColor,
       style: BorderStyle.solid,
     );
 
@@ -101,7 +101,7 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
         maxWidth: Global.device.width,
         maxHeight: _areaHeight,
       ),
-      color: Themes.homeBoxBgColor,
+      color: themeColor.homeBoxBgColor,
       child: _contentWidget,
     );
   }
@@ -136,14 +136,14 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
             padding: const EdgeInsets.only(top: 8.0),
             child: Text(
               '${_userData.currentUser.account}',
-              style: TextStyle(color: Themes.homeBoxInfoTextColor),
+              style: TextStyle(color: themeColor.homeBoxInfoTextColor),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 6.0),
             child: Text(
               '${localeStr.homeHintMemberCreditLeft}',
-              style: TextStyle(color: Themes.homeBoxInfoTextColor),
+              style: TextStyle(color: themeColor.homeBoxInfoTextColor),
               textAlign: TextAlign.center,
             ),
           ),
@@ -172,7 +172,7 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
             if (_currentCredit.contains('-')) {
               return Text(
                 _currentCredit,
-                style: TextStyle(color: Themes.homeBoxInfoTextColor),
+                style: TextStyle(color: themeColor.homeBoxInfoTextColor),
                 textAlign: TextAlign.center,
               );
             } else {
@@ -182,7 +182,7 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
                 child: Text(
                   formatValue(_currentCredit,
                       floorIfZero: false, creditSign: false),
-                  style: TextStyle(color: Themes.homeBoxInfoTextColor),
+                  style: TextStyle(color: themeColor.homeBoxInfoTextColor),
                   textAlign: TextAlign.center,
                 ),
               );
@@ -236,7 +236,7 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
                 ),
                 child: FittedBox(
                     child: Icon(item.value.iconData,
-                        color: Themes.homeBoxIconColor))),
+                        color: themeColor.homeBoxIconColor))),
             Container(
               padding: EdgeInsets.only(top: (label.hasChinese) ? 4.0 : 6.0),
               height: (_singleLine)
@@ -253,7 +253,7 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
                     fontSize: (label.countLength >= 8)
                         ? FontSize.SMALLER.value
                         : FontSize.NORMAL.value,
-                    color: Themes.homeBoxIconTextColor,
+                    color: themeColor.homeBoxIconTextColor,
                   ),
                 ),
               ),

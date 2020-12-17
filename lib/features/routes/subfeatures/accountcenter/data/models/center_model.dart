@@ -45,8 +45,8 @@ abstract class CenterModel with _$CenterModel {
     @JsonKey(name: 'sportgame') int sportGame,
     @JsonKey(name: 'sportgame_level') int sportGameLevel,
     @JsonKey(name: 'sportgame_value') int sportGameValue,
-    @JsonKey(name: 'vip_option') var vipOption,
-    @JsonKey(name: 'vip_setting') var vipSetting,
+    @JsonKey(name: 'vip_option') dynamic vipOption,
+    @JsonKey(name: 'vip_setting') dynamic vipSetting,
   }) = _CenterModel;
 
   static CenterModel jsonToCenterModel(Map<String, dynamic> jsonMap) =>

@@ -51,7 +51,7 @@ class _ScreenMenuBarActionState extends State<ScreenMenuBarAction> {
 //                localeStr.pageTitleLogin,
 //                style: TextStyle(
 //                  fontSize: FontSize.NORMAL.value + 1,
-//                  color: Themes.buttonTextPrimaryColor,
+//                  color: themeColor.buttonTextPrimaryColor,
 //                ),
 //              ),
 //              visualDensity: VisualDensity(horizontal: -3.0),
@@ -64,7 +64,7 @@ class _ScreenMenuBarActionState extends State<ScreenMenuBarAction> {
                 localeStr.pageTitleRegister,
                 style: TextStyle(
                   fontSize: FontSize.NORMAL.value + 1,
-                  color: Themes.buttonTextPrimaryColor,
+                  color: themeColor.buttonTextPrimaryColor,
                 ),
               ),
               visualDensity: VisualDensity(horizontal: -3.0),

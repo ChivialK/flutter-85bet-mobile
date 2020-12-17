@@ -15,7 +15,6 @@ abstract class _$AboutData {
   bool operator ==(other) {
     if (identical(this, other)) return true;
     if (other is! AboutData) return false;
-
     return true &&
         this.title == other.title &&
         this.subtitles == other.subtitles &&

@@ -48,7 +48,7 @@ class DepositRepositoryImpl implements DepositRepository {
 //    debugPrint('test response type: ${result.runtimeType}, data: $result');
     return result.fold(
       (failure) => Left(failure),
-      (data) => Right(decodePaymentTypes(data)),
+      (data) => (data is Map) ? Right(decodePaymentTypes(data)) : Right([]),
     );
   }
 

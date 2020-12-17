@@ -60,7 +60,7 @@ class _AgentDisplayCommissionState extends State<AgentDisplayCommission>
 
   TableRow updateTotalRow() {
     _totalRowTexts = [
-      localeStr.flowHeaderTextTotal,
+      localeStr.rollbackHeaderTextTotal,
       formatValue(totalDirectFee),
       formatValue(totalTeamFee),
       formatValue(totalFee),
@@ -166,12 +166,12 @@ class _AgentDisplayCommissionState extends State<AgentDisplayCommission>
       /// No Data UI
       return SingleChildScrollView(
         child: ColoredBox(
-          color: Themes.chartBgColor,
+          color: themeColor.chartBgColor,
           child: Table(
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
             columnWidths: _tableWidthMap,
             border: TableBorder.all(
-              color: Themes.chartBorderColor,
+              color: themeColor.chartBorderColor,
               width: 2.0,
               style: BorderStyle.solid,
             ),
@@ -184,12 +184,12 @@ class _AgentDisplayCommissionState extends State<AgentDisplayCommission>
       /// Normal UI
       return SingleChildScrollView(
         child: ColoredBox(
-          color: Themes.chartBgColor,
+          color: themeColor.chartBgColor,
           child: Table(
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
             columnWidths: _tableWidthMap,
             border: TableBorder.all(
-              color: Themes.chartBorderColor,
+              color: themeColor.chartBorderColor,
               width: 2.0,
               style: BorderStyle.solid,
             ),

@@ -18,22 +18,26 @@ class _$RouteInfoTearOff {
       {@required RouteEnum id,
       @required String route,
       Object routeArg,
-      String parentRoute = Routes.homeRoute,
+      String root = Routes.homeRoute,
       bool isFeature = false,
+      bool isUserOnly = false,
       bool showDrawer = false,
-      bool disableLanguageDropDown = false,
+      bool hideLanguageOption = false,
       bool hideAppbarActions = true,
-      int bottomNavIndex = -1}) {
+      int bottomNavIndex = -1,
+      String webPageName}) {
     return _RouteInfo(
       id: id,
       route: route,
       routeArg: routeArg,
-      parentRoute: parentRoute,
+      root: root,
       isFeature: isFeature,
+      isUserOnly: isUserOnly,
       showDrawer: showDrawer,
-      disableLanguageDropDown: disableLanguageDropDown,
+      hideLanguageOption: hideLanguageOption,
       hideAppbarActions: hideAppbarActions,
       bottomNavIndex: bottomNavIndex,
+      webPageName: webPageName,
     );
   }
 }
@@ -47,23 +51,29 @@ mixin _$RouteInfo {
   RouteEnum get id;
   String get route;
   Object get routeArg;
-  String get parentRoute;
+  String get root;
 
   /// 1. effect the navigation action
   /// 2. if true, shows the side menu action bar
   bool get isFeature;
 
+  /// if true, check the user login status before navigate
+  bool get isUserOnly;
+
   /// if true, shows the top navigator drawer icon
   bool get showDrawer;
 
   /// if true, shows the widget on the left side (lang...etc)
-  bool get disableLanguageDropDown;
+  bool get hideLanguageOption;
 
   /// if true, shows the widget on the right side (logout, register...etc)
   bool get hideAppbarActions;
 
   /// sets the bottom navigator index to highlight icon
   int get bottomNavIndex;
+
+  /// for promo and banner to find nav destination
+  String get webPageName;
 
   $RouteInfoCopyWith<RouteInfo> get copyWith;
 }
@@ -76,12 +86,14 @@ abstract class $RouteInfoCopyWith<$Res> {
       {RouteEnum id,
       String route,
       Object routeArg,
-      String parentRoute,
+      String root,
       bool isFeature,
+      bool isUserOnly,
       bool showDrawer,
-      bool disableLanguageDropDown,
+      bool hideLanguageOption,
       bool hideAppbarActions,
-      int bottomNavIndex});
+      int bottomNavIndex,
+      String webPageName});
 }
 
 /// @nodoc
@@ -97,31 +109,36 @@ class _$RouteInfoCopyWithImpl<$Res> implements $RouteInfoCopyWith<$Res> {
     Object id = freezed,
     Object route = freezed,
     Object routeArg = freezed,
-    Object parentRoute = freezed,
+    Object root = freezed,
     Object isFeature = freezed,
+    Object isUserOnly = freezed,
     Object showDrawer = freezed,
-    Object disableLanguageDropDown = freezed,
+    Object hideLanguageOption = freezed,
     Object hideAppbarActions = freezed,
     Object bottomNavIndex = freezed,
+    Object webPageName = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as RouteEnum,
       route: route == freezed ? _value.route : route as String,
       routeArg: routeArg == freezed ? _value.routeArg : routeArg,
-      parentRoute:
-          parentRoute == freezed ? _value.parentRoute : parentRoute as String,
+      root: root == freezed ? _value.root : root as String,
       isFeature: isFeature == freezed ? _value.isFeature : isFeature as bool,
+      isUserOnly:
+          isUserOnly == freezed ? _value.isUserOnly : isUserOnly as bool,
       showDrawer:
           showDrawer == freezed ? _value.showDrawer : showDrawer as bool,
-      disableLanguageDropDown: disableLanguageDropDown == freezed
-          ? _value.disableLanguageDropDown
-          : disableLanguageDropDown as bool,
+      hideLanguageOption: hideLanguageOption == freezed
+          ? _value.hideLanguageOption
+          : hideLanguageOption as bool,
       hideAppbarActions: hideAppbarActions == freezed
           ? _value.hideAppbarActions
           : hideAppbarActions as bool,
       bottomNavIndex: bottomNavIndex == freezed
           ? _value.bottomNavIndex
           : bottomNavIndex as int,
+      webPageName:
+          webPageName == freezed ? _value.webPageName : webPageName as String,
     ));
   }
 }
@@ -136,12 +153,14 @@ abstract class _$RouteInfoCopyWith<$Res> implements $RouteInfoCopyWith<$Res> {
       {RouteEnum id,
       String route,
       Object routeArg,
-      String parentRoute,
+      String root,
       bool isFeature,
+      bool isUserOnly,
       bool showDrawer,
-      bool disableLanguageDropDown,
+      bool hideLanguageOption,
       bool hideAppbarActions,
-      int bottomNavIndex});
+      int bottomNavIndex,
+      String webPageName});
 }
 
 /// @nodoc
@@ -158,31 +177,36 @@ class __$RouteInfoCopyWithImpl<$Res> extends _$RouteInfoCopyWithImpl<$Res>
     Object id = freezed,
     Object route = freezed,
     Object routeArg = freezed,
-    Object parentRoute = freezed,
+    Object root = freezed,
     Object isFeature = freezed,
+    Object isUserOnly = freezed,
     Object showDrawer = freezed,
-    Object disableLanguageDropDown = freezed,
+    Object hideLanguageOption = freezed,
     Object hideAppbarActions = freezed,
     Object bottomNavIndex = freezed,
+    Object webPageName = freezed,
   }) {
     return _then(_RouteInfo(
       id: id == freezed ? _value.id : id as RouteEnum,
       route: route == freezed ? _value.route : route as String,
       routeArg: routeArg == freezed ? _value.routeArg : routeArg,
-      parentRoute:
-          parentRoute == freezed ? _value.parentRoute : parentRoute as String,
+      root: root == freezed ? _value.root : root as String,
       isFeature: isFeature == freezed ? _value.isFeature : isFeature as bool,
+      isUserOnly:
+          isUserOnly == freezed ? _value.isUserOnly : isUserOnly as bool,
       showDrawer:
           showDrawer == freezed ? _value.showDrawer : showDrawer as bool,
-      disableLanguageDropDown: disableLanguageDropDown == freezed
-          ? _value.disableLanguageDropDown
-          : disableLanguageDropDown as bool,
+      hideLanguageOption: hideLanguageOption == freezed
+          ? _value.hideLanguageOption
+          : hideLanguageOption as bool,
       hideAppbarActions: hideAppbarActions == freezed
           ? _value.hideAppbarActions
           : hideAppbarActions as bool,
       bottomNavIndex: bottomNavIndex == freezed
           ? _value.bottomNavIndex
           : bottomNavIndex as int,
+      webPageName:
+          webPageName == freezed ? _value.webPageName : webPageName as String,
     ));
   }
 }
@@ -193,18 +217,21 @@ class _$_RouteInfo implements _RouteInfo {
       {@required this.id,
       @required this.route,
       this.routeArg,
-      this.parentRoute = Routes.homeRoute,
+      this.root = Routes.homeRoute,
       this.isFeature = false,
+      this.isUserOnly = false,
       this.showDrawer = false,
-      this.disableLanguageDropDown = false,
+      this.hideLanguageOption = false,
       this.hideAppbarActions = true,
-      this.bottomNavIndex = -1})
+      this.bottomNavIndex = -1,
+      this.webPageName})
       : assert(id != null),
         assert(route != null),
-        assert(parentRoute != null),
+        assert(root != null),
         assert(isFeature != null),
+        assert(isUserOnly != null),
         assert(showDrawer != null),
-        assert(disableLanguageDropDown != null),
+        assert(hideLanguageOption != null),
         assert(hideAppbarActions != null),
         assert(bottomNavIndex != null);
 
@@ -216,7 +243,7 @@ class _$_RouteInfo implements _RouteInfo {
   final Object routeArg;
   @JsonKey(defaultValue: Routes.homeRoute)
   @override
-  final String parentRoute;
+  final String root;
   @JsonKey(defaultValue: false)
   @override
 
@@ -226,13 +253,18 @@ class _$_RouteInfo implements _RouteInfo {
   @JsonKey(defaultValue: false)
   @override
 
+  /// if true, check the user login status before navigate
+  final bool isUserOnly;
+  @JsonKey(defaultValue: false)
+  @override
+
   /// if true, shows the top navigator drawer icon
   final bool showDrawer;
   @JsonKey(defaultValue: false)
   @override
 
   /// if true, shows the widget on the left side (lang...etc)
-  final bool disableLanguageDropDown;
+  final bool hideLanguageOption;
   @JsonKey(defaultValue: true)
   @override
 
@@ -243,10 +275,14 @@ class _$_RouteInfo implements _RouteInfo {
 
   /// sets the bottom navigator index to highlight icon
   final int bottomNavIndex;
+  @override
+
+  /// for promo and banner to find nav destination
+  final String webPageName;
 
   @override
   String toString() {
-    return 'RouteInfo(id: $id, route: $route, routeArg: $routeArg, parentRoute: $parentRoute, isFeature: $isFeature, showDrawer: $showDrawer, disableLanguageDropDown: $disableLanguageDropDown, hideAppbarActions: $hideAppbarActions, bottomNavIndex: $bottomNavIndex)';
+    return 'RouteInfo(id: $id, route: $route, routeArg: $routeArg, root: $root, isFeature: $isFeature, isUserOnly: $isUserOnly, showDrawer: $showDrawer, hideLanguageOption: $hideLanguageOption, hideAppbarActions: $hideAppbarActions, bottomNavIndex: $bottomNavIndex, webPageName: $webPageName)';
   }
 
   @override
@@ -260,25 +296,29 @@ class _$_RouteInfo implements _RouteInfo {
             (identical(other.routeArg, routeArg) ||
                 const DeepCollectionEquality()
                     .equals(other.routeArg, routeArg)) &&
-            (identical(other.parentRoute, parentRoute) ||
-                const DeepCollectionEquality()
-                    .equals(other.parentRoute, parentRoute)) &&
+            (identical(other.root, root) ||
+                const DeepCollectionEquality().equals(other.root, root)) &&
             (identical(other.isFeature, isFeature) ||
                 const DeepCollectionEquality()
                     .equals(other.isFeature, isFeature)) &&
+            (identical(other.isUserOnly, isUserOnly) ||
+                const DeepCollectionEquality()
+                    .equals(other.isUserOnly, isUserOnly)) &&
             (identical(other.showDrawer, showDrawer) ||
                 const DeepCollectionEquality()
                     .equals(other.showDrawer, showDrawer)) &&
-            (identical(
-                    other.disableLanguageDropDown, disableLanguageDropDown) ||
-                const DeepCollectionEquality().equals(
-                    other.disableLanguageDropDown, disableLanguageDropDown)) &&
+            (identical(other.hideLanguageOption, hideLanguageOption) ||
+                const DeepCollectionEquality()
+                    .equals(other.hideLanguageOption, hideLanguageOption)) &&
             (identical(other.hideAppbarActions, hideAppbarActions) ||
                 const DeepCollectionEquality()
                     .equals(other.hideAppbarActions, hideAppbarActions)) &&
             (identical(other.bottomNavIndex, bottomNavIndex) ||
                 const DeepCollectionEquality()
-                    .equals(other.bottomNavIndex, bottomNavIndex)));
+                    .equals(other.bottomNavIndex, bottomNavIndex)) &&
+            (identical(other.webPageName, webPageName) ||
+                const DeepCollectionEquality()
+                    .equals(other.webPageName, webPageName)));
   }
 
   @override
@@ -287,12 +327,14 @@ class _$_RouteInfo implements _RouteInfo {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(route) ^
       const DeepCollectionEquality().hash(routeArg) ^
-      const DeepCollectionEquality().hash(parentRoute) ^
+      const DeepCollectionEquality().hash(root) ^
       const DeepCollectionEquality().hash(isFeature) ^
+      const DeepCollectionEquality().hash(isUserOnly) ^
       const DeepCollectionEquality().hash(showDrawer) ^
-      const DeepCollectionEquality().hash(disableLanguageDropDown) ^
+      const DeepCollectionEquality().hash(hideLanguageOption) ^
       const DeepCollectionEquality().hash(hideAppbarActions) ^
-      const DeepCollectionEquality().hash(bottomNavIndex);
+      const DeepCollectionEquality().hash(bottomNavIndex) ^
+      const DeepCollectionEquality().hash(webPageName);
 
   @override
   _$RouteInfoCopyWith<_RouteInfo> get copyWith =>
@@ -304,12 +346,14 @@ abstract class _RouteInfo implements RouteInfo {
       {@required RouteEnum id,
       @required String route,
       Object routeArg,
-      String parentRoute,
+      String root,
       bool isFeature,
+      bool isUserOnly,
       bool showDrawer,
-      bool disableLanguageDropDown,
+      bool hideLanguageOption,
       bool hideAppbarActions,
-      int bottomNavIndex}) = _$_RouteInfo;
+      int bottomNavIndex,
+      String webPageName}) = _$_RouteInfo;
 
   @override
   RouteEnum get id;
@@ -318,7 +362,7 @@ abstract class _RouteInfo implements RouteInfo {
   @override
   Object get routeArg;
   @override
-  String get parentRoute;
+  String get root;
   @override
 
   /// 1. effect the navigation action
@@ -326,12 +370,16 @@ abstract class _RouteInfo implements RouteInfo {
   bool get isFeature;
   @override
 
+  /// if true, check the user login status before navigate
+  bool get isUserOnly;
+  @override
+
   /// if true, shows the top navigator drawer icon
   bool get showDrawer;
   @override
 
   /// if true, shows the widget on the left side (lang...etc)
-  bool get disableLanguageDropDown;
+  bool get hideLanguageOption;
   @override
 
   /// if true, shows the widget on the right side (logout, register...etc)
@@ -340,6 +388,10 @@ abstract class _RouteInfo implements RouteInfo {
 
   /// sets the bottom navigator index to highlight icon
   int get bottomNavIndex;
+  @override
+
+  /// for promo and banner to find nav destination
+  String get webPageName;
   @override
   _$RouteInfoCopyWith<_RouteInfo> get copyWith;
 }

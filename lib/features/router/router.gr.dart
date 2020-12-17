@@ -6,7 +6,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:auto_route/auto_route.dart';
+import 'package:flutter_85bet_mobile/builders/autoroute/auto_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/home/presentation/home_route.dart';
 import 'package:flutter_85bet_mobile/features/router/my_static_page_transition.dart';
 import 'package:flutter_85bet_mobile/features/user/login/presentation/login_route.dart';
@@ -27,8 +27,7 @@ import 'package:flutter_85bet_mobile/features/routes/subfeatures/accountcenter/p
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/transactions/presentation/transaction_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/betrecord/presentation/bet_record_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/deals/presentation/deals_route.dart';
-import 'package:flutter_85bet_mobile/features/routes/subfeatures/flows/presentation/flows_route.dart';
-import 'package:flutter_85bet_mobile/features/routes/subfeatures/agent/presentation/agent_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/rollback/presentation/rollback_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/about/presentation/about_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/downloadarea/download_area_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/notice/presentation/notice_route.dart';
@@ -58,9 +57,7 @@ abstract class Routes {
   static const transactionRoute = '/transaction-route';
   static const betRecordRoute = '/bet-record-route';
   static const dealsRoute = '/deals-route';
-  static const flowsRoute = '/flows-route';
-  static const agentRoute = '/agent-route';
-  static const agentFeatureRoute = '/agent-feature-route';
+  static const rollbackRoute = '/rollback-route';
   static const moreWebPage = '/more-web-page';
   static const aboutRoute = '/about-route';
   static const downloadAreaRoute = '/download-area-route';
@@ -90,9 +87,7 @@ abstract class Routes {
     transactionRoute,
     betRecordRoute,
     dealsRoute,
-    flowsRoute,
-    agentRoute,
-    agentFeatureRoute,
+    rollbackRoute,
     moreWebPage,
     aboutRoute,
     downloadAreaRoute,
@@ -102,13 +97,13 @@ abstract class Routes {
   };
 }
 
-class Router extends RouterBase {
+class FeatureRouter extends RouterBase {
   @override
   Set<String> get allRoutes => Routes.all;
 
   @Deprecated('call ExtendedNavigator.ofRouter<Router>() directly')
   static ExtendedNavigatorState get navigator =>
-      ExtendedNavigator.ofRouter<Router>();
+      ExtendedNavigator.ofRouter<FeatureRouter>();
 
   @override
   Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -162,7 +157,9 @@ class Router extends RouterBase {
         final typedArgs = args as WebRouteArguments;
         return PageRouteBuilder<dynamic>(
           pageBuilder: (context, animation, secondaryAnimation) => WebRoute(
-              startUrl: typedArgs.startUrl, hideBars: typedArgs.hideBars),
+              startUrl: typedArgs.startUrl,
+              showUrl: typedArgs.showUrl,
+              hideHtmlBars: typedArgs.hideHtmlBars),
           settings: settings,
           transitionsBuilder: MyStaticPageTransition.slide,
           transitionDuration: const Duration(milliseconds: 400),
@@ -215,7 +212,9 @@ class Router extends RouterBase {
         final typedArgs = args as WebRouteArguments;
         return PageRouteBuilder<dynamic>(
           pageBuilder: (context, animation, secondaryAnimation) => WebRoute(
-              startUrl: typedArgs.startUrl, hideBars: typedArgs.hideBars),
+              startUrl: typedArgs.startUrl,
+              showUrl: typedArgs.showUrl,
+              hideHtmlBars: typedArgs.hideHtmlBars),
           settings: settings,
           transitionsBuilder: MyStaticPageTransition.slide,
           transitionDuration: const Duration(milliseconds: 400),
@@ -306,7 +305,9 @@ class Router extends RouterBase {
         final typedArgs = args as WebRouteArguments;
         return PageRouteBuilder<dynamic>(
           pageBuilder: (context, animation, secondaryAnimation) => WebRoute(
-              startUrl: typedArgs.startUrl, hideBars: typedArgs.hideBars),
+              startUrl: typedArgs.startUrl,
+              showUrl: typedArgs.showUrl,
+              hideHtmlBars: typedArgs.hideHtmlBars),
           settings: settings,
           transitionsBuilder: MyStaticPageTransition.slide,
           transitionDuration: const Duration(milliseconds: 400),
@@ -334,23 +335,10 @@ class Router extends RouterBase {
           transitionsBuilder: MyStaticPageTransition.slide,
           transitionDuration: const Duration(milliseconds: 400),
         );
-      case Routes.flowsRoute:
+      case Routes.rollbackRoute:
         return PageRouteBuilder<dynamic>(
-          pageBuilder: (context, animation, secondaryAnimation) => FlowsRoute(),
-          settings: settings,
-          transitionsBuilder: MyStaticPageTransition.slide,
-          transitionDuration: const Duration(milliseconds: 400),
-        );
-      case Routes.agentRoute:
-        return PageRouteBuilder<dynamic>(
-          pageBuilder: (context, animation, secondaryAnimation) => AgentRoute(),
-          settings: settings,
-          transitionsBuilder: MyStaticPageTransition.slide,
-          transitionDuration: const Duration(milliseconds: 400),
-        );
-      case Routes.agentFeatureRoute:
-        return PageRouteBuilder<dynamic>(
-          pageBuilder: (context, animation, secondaryAnimation) => AgentRoute(),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              RollbackRoute(),
           settings: settings,
           transitionsBuilder: MyStaticPageTransition.slide,
           transitionDuration: const Duration(milliseconds: 400),
@@ -362,7 +350,9 @@ class Router extends RouterBase {
         final typedArgs = args as WebRouteArguments;
         return PageRouteBuilder<dynamic>(
           pageBuilder: (context, animation, secondaryAnimation) => WebRoute(
-              startUrl: typedArgs.startUrl, hideBars: typedArgs.hideBars),
+              startUrl: typedArgs.startUrl,
+              showUrl: typedArgs.showUrl,
+              hideHtmlBars: typedArgs.hideHtmlBars),
           settings: settings,
           transitionsBuilder: MyStaticPageTransition.slide,
           transitionDuration: const Duration(milliseconds: 400),
@@ -433,8 +423,12 @@ class RegisterRouteArguments {
 //WebRoute arguments holder class
 class WebRouteArguments {
   final String startUrl;
-  final bool hideBars;
-  const WebRouteArguments({@required this.startUrl, this.hideBars = false});
+  final bool showUrl;
+  final bool hideHtmlBars;
+  const WebRouteArguments(
+      {@required this.startUrl,
+      this.showUrl = false,
+      this.hideHtmlBars = false});
 }
 
 //MemberRoute arguments holder class

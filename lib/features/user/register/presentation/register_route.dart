@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_85bet_mobile/core/network/handler/request_status_model.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/dialog_widget.dart';
 
@@ -19,6 +20,7 @@ class RegisterRoute extends StatefulWidget {
 class _RegisterRouteState extends State<RegisterRoute> {
   RegisterStore _store;
   List<ReactionDisposer> _disposers;
+  CancelFunc _toastDismiss;
 
   @override
   void initState() {
@@ -41,12 +43,51 @@ class _RegisterRouteState extends State<RegisterRoute> {
           }
         },
       ),
+      /* Reaction on register action */
+      reaction(
+        // Observe in page
+        // Tell the reaction which observable to observe
+        (_) => _store.waitForRegister,
+        // Run some logic with the content of the observed field
+        (bool wait) {
+          debugPrint('reaction on wait register: $wait');
+          if (wait) {
+            _toastDismiss = callToastLoading();
+          } else if (_toastDismiss != null) {
+            _toastDismiss();
+            _toastDismiss = null;
+          }
+        },
+      ),
+      /* Reaction on register result changed */
+      reaction(
+        // Observe in page
+        // Tell the reaction which observable to observe
+        (_) => _store.registerResult,
+        // Run some logic with the content of the observed field
+        (RequestStatusModel result) {
+          debugPrint('reaction on register result: $result');
+          if (result == null) return;
+          if (result.isSuccess) {
+            callToastInfo(
+                MessageMap.getSuccessMessage(result.msg, RouteEnum.REGISTER),
+                icon: Icons.check_circle_outline);
+          } else {
+            callToastError(
+                MessageMap.getErrorMessage(result.msg, RouteEnum.REGISTER));
+          }
+        },
+      ),
     ];
   }
 
   @override
   void dispose() {
     try {
+      if (_toastDismiss != null) {
+        _toastDismiss();
+        _toastDismiss = null;
+      }
       _store.closeStreams();
       _disposers.forEach((d) => d());
     } on Exception {}

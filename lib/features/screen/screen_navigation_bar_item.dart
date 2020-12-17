@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart' show IconData, Icons;
 import 'package:flutter_85bet_mobile/features/router/route_list_item.dart';
 import 'package:flutter_85bet_mobile/features/router/route_page.dart';
+import 'package:flutter_85bet_mobile/features/themes/icon_code.dart';
 import 'package:vnum/vnum.dart';
 
 export 'package:flutter_85bet_mobile/features/router/route_list_item.dart';
@@ -9,52 +9,38 @@ export 'package:flutter_85bet_mobile/features/router/route_list_item.dart';
 class ScreenNavigationBarItem extends Vnum<RouteListItem> {
   static ScreenNavigationBarItem home =
       ScreenNavigationBarItem.define(RouteListItem(
-    id: RouteEnum.HOME,
-//    iconData: const IconData(0xf015, fontFamily: 'FontAwesome'),
-    iconData: const IconData(0xe95f, fontFamily: 'IconMoon'),
+    iconData: IconCode.navHome,
     route: RoutePage.home,
   ));
   static ScreenNavigationBarItem deposit =
       ScreenNavigationBarItem.define(RouteListItem(
-    id: RouteEnum.DEPOSIT,
-//    iconData: const IconData(0xf09d, fontFamily: 'FontAwesome'),
-    iconData: const IconData(0xe95e, fontFamily: 'IconMoon'),
+    iconData: IconCode.navDeposit,
     route: RoutePage.depositFeature,
-    isUserOnly: true,
   ));
-  static ScreenNavigationBarItem agent =
-      ScreenNavigationBarItem.define(RouteListItem(
-    id: RouteEnum.AGENT,
-    iconData: const IconData(0xf2b5, fontFamily: 'FontAwesome'),
-    route: RoutePage.agentFeature,
-    isUserOnly: true,
-  ));
-  static ScreenNavigationBarItem promo =
-      ScreenNavigationBarItem.define(RouteListItem(
-    id: RouteEnum.PROMO,
-//    iconData: const IconData(0xf06b, fontFamily: 'FontAwesome'),
-    iconData: const IconData(0xe966, fontFamily: 'IconMoon'),
-    route: RoutePage.promo,
-  ));
+  // static ScreenNavigationBarItem agent =
+  //     ScreenNavigationBarItem.define(RouteListItem(
+  //   iconData: IconCode.navAgent,
+  //   route: RoutePage.agentLogin,
+  // ));
+  // static ScreenNavigationBarItem promo =
+  //     ScreenNavigationBarItem.define(RouteListItem(
+  //   // iconData: IconCode.navPromo,
+  //   route: RoutePage.promo,
+  // ));
   static ScreenNavigationBarItem service =
       ScreenNavigationBarItem.define(RouteListItem(
-    id: RouteEnum.SERVICE,
-//    iconData: const IconData(0xf27a, fontFamily: 'FontAwesome'),
-    iconData: const IconData(0xe968, fontFamily: 'IconMoon'),
+    iconData: IconCode.navService,
     route: RoutePage.service,
   ));
   static ScreenNavigationBarItem member =
       ScreenNavigationBarItem.define(RouteListItem(
-    id: RouteEnum.MEMBER,
-//    iconData: const IconData(0xf2bd, fontFamily: 'FontAwesome'),
-    iconData: const IconData(0xe962, fontFamily: 'IconMoon'),
+    iconData: IconCode.navMember,
     route: RoutePage.member,
-    isUserOnly: true,
   ));
   static ScreenNavigationBarItem more =
       ScreenNavigationBarItem.define(RouteListItem(
-    id: RouteEnum.MORE,
-    iconData: Icons.more_horiz,
+    routeId: RouteEnum.MORE,
+    iconData: IconCode.navMore,
   ));
 
   /// Used for defining cases

@@ -90,8 +90,8 @@ class _PromoDisplayState extends State<PromoDisplay>
         Container(
           padding: const EdgeInsets.only(right: 6.0, left: 5.0),
           child: TabBar(
-            unselectedLabelColor: Themes.promoTabTextColor,
-            labelColor: Themes.promoTabSelectedTextColor,
+            unselectedLabelColor: themeColor.promoTabTextColor,
+            labelColor: themeColor.promoTabSelectedTextColor,
             labelStyle: TextStyle(fontSize: FontSize.SUBTITLE.value),
             labelPadding: const EdgeInsets.only(top: 4.0),
             indicatorColor: Colors.transparent,
@@ -107,8 +107,8 @@ class _PromoDisplayState extends State<PromoDisplay>
                 height: (tabItemWidth < 72) ? tabItemWidth * 1.14 : 72,
                 decoration: BoxDecoration(
                   color: c == _current
-                      ? Themes.promoTabSelectedBgColor
-                      : Themes.promoTabBgColor,
+                      ? themeColor.promoTabSelectedBgColor
+                      : themeColor.promoTabBgColor,
                 ),
                 margin: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Stack(
@@ -123,8 +123,8 @@ class _PromoDisplayState extends State<PromoDisplay>
                                 ? 6.0
                                 : 3.0,
                             color: c == _current
-                                ? Themes.promoTabSelectedIconColor
-                                : Themes.promoTabIconColor,
+                                ? themeColor.promoTabSelectedIconColor
+                                : themeColor.promoTabIconColor,
                             loadStateChanged: (ExtendedImageState state) {
                               switch (state.extendedImageLoadState) {
                                 case LoadState.completed:
@@ -132,7 +132,7 @@ class _PromoDisplayState extends State<PromoDisplay>
                                 case LoadState.failed:
                                   return Icon(
                                     Icons.broken_image,
-                                    color: Themes.promoTabIconColor,
+                                    color: themeColor.promoTabIconColor,
                                   );
                                 default:
                                   return null;
@@ -156,7 +156,7 @@ class _PromoDisplayState extends State<PromoDisplay>
                         height: 2,
                         width: tabItemWidth,
                         child: ColoredBox(
-                          color: Themes.defaultAccentColor,
+                          color: themeColor.defaultAccentColor,
                         ),
                       ),
                     ),

@@ -18,6 +18,7 @@ class TestNestedNavScreenView extends StatefulWidget {
 class _TestNestedNavScreenViewState extends State<TestNestedNavScreenView> {
   DeviceOrientation _deviceOrientation;
   DeviceOrientation _targetOrientation;
+
 //  StreamSubscription<DeviceOrientation> subscription;
   bool _lockAutoRotate = true;
   bool _sensorBind = false;
@@ -71,6 +72,11 @@ class _TestNestedNavScreenViewState extends State<TestNestedNavScreenView> {
     return ListView(
       shrinkWrap: true,
       children: <Widget>[
+        Row(
+          children: [
+            Expanded(child: Text(Global.device.appVersionOrigin)),
+          ],
+        ),
         Padding(
           padding: const EdgeInsets.only(top: 12.0),
           child: RaisedButton(

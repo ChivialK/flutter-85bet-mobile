@@ -65,15 +65,11 @@ class _BalanceRouteState extends State<BalanceRoute> {
           if (result == null) return;
           if (result.isSuccess) {
             callToastInfo(
-                (result.msg.isNotEmpty && result.msg.hasChinese)
-                    ? result.msg
-                    : localeStr.messageSuccess,
+                MessageMap.getSuccessMessage(result.msg, RouteEnum.BALANCE),
                 icon: Icons.check_circle_outline);
           } else {
-            callToastError((result.msg.isNotEmpty && result.msg.hasChinese)
-                ? result.msg
-                : localeStr
-                    .messageTaskFailed(localeStr.transferResultAlertTitle));
+            callToastError(
+                MessageMap.getErrorMessage(result.msg, RouteEnum.BALANCE));
           }
         },
       ),

@@ -173,8 +173,8 @@ class _TransactionRouteState extends State<TransactionRoute> {
                               padding: const EdgeInsets.all(10.0),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Themes.memberIconColor,
-                                boxShadow: Themes.roundIconShadow,
+                                color: themeColor.memberIconColor,
+                                boxShadow: ThemeInterface.iconBottomShadow,
                               ),
                               child: Icon(
                                 pageItem.value.iconData,
@@ -197,7 +197,7 @@ class _TransactionRouteState extends State<TransactionRoute> {
                         padding:
                             const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 16.0),
                         child: Container(
-                          decoration: Themes.layerShadowDecorRound,
+                          decoration: ThemeInterface.layerShadowDecorRound,
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,

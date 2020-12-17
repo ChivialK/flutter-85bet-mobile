@@ -3,31 +3,48 @@ import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  String tyRoute7Url = 'https://www.vip66725.com/';
-  String tyRoute6Url = 'https://www.vip66656.com/';
-  String tyRoute4Url = 'https://www.vip66432.com/';
+  test('test router regex', () {
+    expect("[7]".replaceAll(RegExp(r'[\u005b|\u005d]'), ''), '7');
+  });
 
   test('test router regex', () {
+    String tyRoute7Url = 'https://www.vip66725.com/';
+    String tyRoute6Url = 'https://www.vip66656.com/';
+    String tyRoute4Url = 'https://www.vip66432.com/';
     expect('${Global.CURRENT_BASE}'.isRouteUrl, true);
     expect(tyRoute7Url.testTyRouteUrl, true);
     expect(tyRoute6Url.testTyRouteUrl, true);
     expect(tyRoute4Url.testTyRouteUrl, false);
   });
 
-  String openGameUrl = 'https://eg990.com/api/open/eg/casino/0';
-  String openGameUrl2 = 'https://eg990.com/api/openUrl/eg/slot/candy';
+  test('test url regex', () {
+    String openUrl = 'https://www.youtube.com/';
+    String openUrl2 = 'https://85bet.com/api/open/sb365/sport/0';
+    expect(openUrl.isUrl, true);
+    expect(
+        openUrl2.substring(
+            openUrl2.indexOf(Global.DOMAIN_NAME) + Global.DOMAIN_NAME.length),
+        '/api/open/sb365/sport/0');
+    expect(
+        openUrl2
+            .substring(openUrl2.indexOf(Global.DOMAIN_NAME) +
+                Global.DOMAIN_NAME.length)
+            .replaceAll('/api/open/', ''),
+        'sb365/sport/0');
+  });
 
   test('test game regex', () {
+    String openGameUrl = 'https://eg990.com/api/open/eg/casino/0';
+    String openGameUrl2 = 'https://eg990.com/api/openUrl/eg/slot/candy';
     expect(openGameUrl.isRouteUrl, true);
     expect(openGameUrl.isGameUrl, true);
     expect(openGameUrl2.isGameAutoUrl, true);
   });
 
-  String imageUrl = 'https://eg990.com/images/nav.png';
-  String imageUrl2 = 'https://eg990.com/images/nav';
-  String imageUrl3 = 'https://eg990.com/image/nav.png';
-
   test('test regex', () {
+    String imageUrl = 'https://eg990.com/images/nav.png';
+    String imageUrl2 = 'https://eg990.com/images/nav';
+    String imageUrl3 = 'https://eg990.com/image/nav.png';
     expect(imageUrl.isImageUrl, true);
     expect(imageUrl2.isImageUrl, false);
     expect(imageUrl3.isImageUrl, false);
@@ -35,7 +52,7 @@ void main() {
 
   test('test date regex', () {
     String date = '1990-01-01';
-    expect(date.isDate, true);
+    expect(date.isValidDate, true);
   });
 
   test('test chinese regex', () {

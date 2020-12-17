@@ -8,7 +8,7 @@ import 'failure_code.dart';
 
 export 'failure_code.dart';
 
-part 'failures.g.dart';
+part 'failures.super.dart';
 
 @superEnum
 enum _Failure {
@@ -56,23 +56,24 @@ extension FailureExtension on Failure {
       case _Failure.JsonFormat:
         return localeStr.messageErrorServerData;
       case _Failure.Login:
-        return localeStr.messageLoginFailed + '(${this.props.first.msg})';
+        return localeStr.messageLoginFailed +
+            '(${(this.props.first as RequestStatusModel).msg})';
       case _Failure.Token:
         return localeStr.messageErrorToken +
-            '(code: ${this.props.first.value})';
+            '(code: ${(this.props.first as FailureType).value})';
       case _Failure.Event:
         return localeStr.messageErrorEvent;
       case _Failure.CachedFile:
         return localeStr.messageErrorCachedFile;
       case _Failure.Internal:
         return localeStr.messageErrorInternal +
-            '(${this.props.first.errorCode})';
+            '(${(this.props.first as FailureCode).errorCode})';
       case _Failure.ErrorMessage:
         return '${this.props.first}';
       case _Failure.ErrorStatus:
-        return '${this.props.first.msg}';
+        return '${(this.props.first as RequestStatusModel).msg}';
       case _Failure.ErrorCode:
-        return '${this.props.first.msg}(code: ${this.props.first.code})';
+        return '${(this.props.first as RequestCodeModel).msg}(code: ${(this.props.first as RequestCodeModel).code})';
       case _Failure.DataType:
         return localeStr.messageErrorServerData;
       default:

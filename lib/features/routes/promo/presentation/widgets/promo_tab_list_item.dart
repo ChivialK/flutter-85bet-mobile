@@ -17,9 +17,9 @@ class PromoTabListItem extends StatelessWidget {
     double screenScale = (Global.device.width / 360).ceilToDouble();
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(width: 8.0, color: Themes.defaultCardColor),
+        border: Border.all(width: 8.0, color: themeColor.defaultCardColor),
         borderRadius: const BorderRadius.all(const Radius.circular(8.0)),
-        color: Themes.defaultCardColor,
+        color: themeColor.defaultCardColor,
       ),
       margin: const EdgeInsets.all(6.0),
       child: Container(
@@ -45,7 +45,7 @@ class PromoTabListItem extends StatelessWidget {
                       promo.name,
                       style: TextStyle(
                         fontSize: FontSize.SUBTITLE.value,
-                        color: Themes.dialogTitleColor,
+                        color: themeColor.dialogTitleColor,
                       ),
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/style.dart' as HtmlStyle;
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
 import '../../data/model/deposit_info.dart';
 import '../../data/model/payment_promo.dart';
@@ -93,7 +92,7 @@ class PaymentContentState extends State<PaymentContent> {
     _typeContent ??= SizedBox.shrink();
     return Container(
       constraints: BoxConstraints(minHeight: 100),
-      decoration: Themes.layerShadowDecorRoundBottom,
+      decoration: ThemeInterface.layerShadowDecorRoundBottom,
       padding: const EdgeInsets.all(24.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -108,7 +107,7 @@ class PaymentContentState extends State<PaymentContent> {
                 Text(
                   '${localeStr.depositHintTextTitle}：',
                   style: TextStyle(
-                    color: Themes.defaultTextColor,
+                    color: themeColor.defaultTextColor,
                     fontSize: FontSize.TITLE.value,
                   ),
                 ),
@@ -131,42 +130,9 @@ class PaymentContentState extends State<PaymentContent> {
         widget.rules.isNotEmpty &&
         widget.rules.containsKey(typeId)) {
 //      debugPrint('rules content: ${widget.rules[typeId]}');
-      List<String> spanTexts = """${widget.rules[typeId]}""".split('<p>');
-      List<Widget> spanTextWidgets = new List();
-      spanTexts.forEach((text) {
-        if (text.isNotEmpty)
-          spanTextWidgets.add(_buildHtmlText(text.replaceAll("<\/p>", '')));
-      });
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: spanTextWidgets,
-      );
+      return HtmlWidget(widget.rules[typeId]);
     } else {
       return SizedBox.shrink();
     }
-  }
-
-  Widget _buildHtmlText(String text) {
-//    debugPrint('parsing html texts: $text');
-    if (text.contains('color: #e03e2d;'))
-      return Html(
-        data: """$text""",
-        style: {
-          "span": HtmlStyle.Style(
-            fontSize: HtmlStyle.FontSize.medium,
-            color: Themes.hintHighlightDarkRed,
-          ),
-        },
-      );
-    else
-      return Html(
-        data: """<span>$text</span>""",
-        style: {
-          "span": HtmlStyle.Style(
-            fontSize: HtmlStyle.FontSize.medium,
-            color: Themes.defaultHintSubColor,
-          ),
-        },
-      );
   }
 }

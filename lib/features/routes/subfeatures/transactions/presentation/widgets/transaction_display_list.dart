@@ -56,7 +56,8 @@ class TransactionDisplayListState extends State<TransactionDisplayList> {
         child: Center(child: Text(localeStr.messageWarnNoHistoryData)),
       );
 
-    _borderSide ??= BorderSide(color: Themes.defaultBorderColor, width: 1.5);
+    _borderSide ??=
+        BorderSide(color: themeColor.defaultBorderColor, width: 1.5);
     return ListView.builder(
       primary: false,
       shrinkWrap: true,
@@ -74,8 +75,8 @@ class TransactionDisplayListState extends State<TransactionDisplayList> {
           margin: const EdgeInsets.symmetric(horizontal: 24.0),
           decoration: new BoxDecoration(
             color: (index % 2 == 1)
-                ? Themes.defaultCardColor
-                : Themes.chartBgColor,
+                ? themeColor.defaultCardColor
+                : themeColor.chartBgColor,
             border: (index % 2 == 1)
                 ? null
                 : Border.symmetric(vertical: _borderSide),

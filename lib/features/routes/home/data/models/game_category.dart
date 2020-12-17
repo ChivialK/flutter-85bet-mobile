@@ -177,10 +177,6 @@ extension HomeCategoryExtension on HomeCategoryInfo {
         return localeStr.gameCategoryGift;
       case HomeCategoryEnum.COCKFIGHTING:
         return localeStr.gameCategoryCockFighting;
-      case HomeCategoryEnum.EG_MOVIE:
-        return localeStr.homeUserTabCategoryEgMovie;
-      case HomeCategoryEnum.NEW_MOVIE:
-        return localeStr.homeUserTabCategoryNewMovie;
       case HomeCategoryEnum.RECOMMEND:
         return localeStr.homeUserTabCategoryRecommend;
       case HomeCategoryEnum.FAVORITE:

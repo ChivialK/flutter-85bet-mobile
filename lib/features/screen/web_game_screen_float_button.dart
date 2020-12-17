@@ -50,8 +50,8 @@ class WebGameScreenFloatButtonState extends State<WebGameScreenFloatButton> {
       expendedBackgroundColor: Colors.white,
       withChild: ButtonTheme(
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        buttonColor: Themes.pagerButtonColor,
-        disabledColor: Themes.buttonDisabledColorDark,
+        buttonColor: themeColor.pagerButtonColor,
+        disabledColor: themeColor.buttonDisabledColorDark,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.max,
@@ -64,7 +64,7 @@ class WebGameScreenFloatButtonState extends State<WebGameScreenFloatButton> {
                   scale: _expandIconScale,
                   child: Icon(
                     Icons.home,
-                    color: Themes.iconSubColor3,
+                    color: themeColor.iconSubColor3,
                   ),
                 ),
               ),
@@ -78,7 +78,7 @@ class WebGameScreenFloatButtonState extends State<WebGameScreenFloatButton> {
                 fit: BoxFit.contain,
                 child: Icon(
                   Icons.screen_rotation,
-                  color: Themes.iconSubColor3,
+                  color: themeColor.iconSubColor3,
                 ),
               ),
               visualDensity: VisualDensity.compact,
@@ -94,7 +94,7 @@ class WebGameScreenFloatButtonState extends State<WebGameScreenFloatButton> {
                   fit: BoxFit.contain,
                   child: Icon(
                     Icons.screen_lock_rotation,
-                    color: Themes.iconSubColor3,
+                    color: themeColor.iconSubColor3,
                   ),
                 ),
                 visualDensity: VisualDensity.compact,
@@ -108,7 +108,7 @@ class WebGameScreenFloatButtonState extends State<WebGameScreenFloatButton> {
                   scale: _expandArrowIconScale,
                   child: Icon(
                     Icons.chevron_right,
-                    color: Themes.iconSubColor3,
+                    color: themeColor.iconSubColor3,
                   ),
                 ),
               ),

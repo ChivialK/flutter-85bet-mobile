@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 class WarningDisplay extends StatelessWidget {
   final String message;
@@ -40,9 +40,14 @@ class WarningDisplay extends StatelessWidget {
             padding: const EdgeInsets.only(left: 12.0),
             child: Icon(
               Icons.warning,
-              size: (largerText) ? 28 : (smallerText) ? 18 : 24,
-              color:
-                  (highlight) ? Themes.defaultErrorColor : Themes.iconSubColor1,
+              size: (largerText)
+                  ? 28
+                  : (smallerText)
+                      ? 18
+                      : 24,
+              color: (highlight)
+                  ? themeColor.defaultErrorColor
+                  : themeColor.iconSubColor1,
             ),
           ),
           Expanded(
@@ -60,8 +65,8 @@ class WarningDisplay extends StatelessWidget {
                             ? FontSize.SMALLER.value
                             : FontSize.NORMAL.value,
                     color: (highlight)
-                        ? Themes.defaultMessageColor
-                        : Themes.defaultTextColor,
+                        ? themeColor.defaultMessageColor
+                        : themeColor.defaultTextColor,
                   ),
                 ),
               ),

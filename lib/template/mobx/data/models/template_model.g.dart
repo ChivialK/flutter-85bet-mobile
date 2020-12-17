@@ -18,7 +18,6 @@ abstract class _$TemplateModel {
   bool operator ==(other) {
     if (identical(this, other)) return true;
     if (other is! TemplateModel) return false;
-
     return true &&
         this.vip1 == other.vip1 &&
         this.vip2 == other.vip2 &&

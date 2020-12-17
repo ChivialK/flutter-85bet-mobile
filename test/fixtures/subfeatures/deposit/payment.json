@@ -1,73 +1,32 @@
 {
-  "code": 0,
-  "data": {
-    "8": {
-      "47": {
-        "bankaccountid": 16,
-        "amounttype": 3,
-        "amountoption": [
-          "666",
-          "777"
-        ],
-        "pgindex": 2,
-        "gateway": 8,
-        "amount": "1443.00",
-        "min": 50,
-        "max": 30000,
-        "sb": [
-          47
-        ],
-        "payment": 8,
-        "type": "CGP"
-      },
-      "48": {
-        "bankaccountid": 24291,
-        "amounttype": 3,
-        "amountoption": [
-          "100",
-          "200",
-          "300",
-          "400",
-          "500",
-          "600",
-          "700",
-          "800",
-          "900",
-          "1000"
-        ],
-        "pgindex": 35,
-        "gateway": 8,
-        "amount": "0.00",
-        "min": 100,
-        "max": 1000,
-        "sb": [
-          48
-        ],
-        "payment": 8,
-        "type": "\u8d2d\u5b9d\u652f\u4ed8"
-      }
-    },
-    "1": {
-      "1": {
-        "bankindex": 1,
-        "bankaccountno": "168",
-        "min": "1.00",
-        "max": 10000,
-        "bankaccountid": 2,
-        "payment": "localbank",
-        "type": "中国农业银行"
-      },
-      "20": {
-        "bankindex": 20,
-        "bankaccountno": "1991",
-        "min": "1.00",
-        "max": "30000.00",
-        "bankaccountid": 35,
-        "payment": "localbank",
-        "type": "中国工商银行"
-      }
+  "1": {
+    "9": {
+      "bankaccountid": 1427,
+      "amounttype": 0,
+      "amountoption": [],
+      "pgindex": 6,
+      "gateway": "[1]",
+      "amount": "0.00",
+      "min": 200,
+      "max": 50000,
+      "sb": [
+        9
+      ],
+      "payment": 1,
+      "type": "AGRIbank"
     }
   },
-  "msg": ""
+  "7": {
+    "38": {
+      "bankindex": 38,
+      "bankaccountno": "0938372841",
+      "min": 200,
+      "max": 20000,
+      "bankaccountid": 1051,
+      "bankcode": "Momo-NGUYEN VAN CUONG",
+      "gateway": "[7]",
+      "type": "MOMO",
+      "payment": 7
+    }
+  }
 }
-

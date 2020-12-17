@@ -18,6 +18,7 @@ class _TestHomeSizeCalcState extends State<TestHomeSizeCalc>
 
   Device device;
   HomeDisplaySizeCalc calc;
+
 //  WebGameScreenStore _store;
 //
 //  Future<void> _floatFuture;
@@ -93,10 +94,10 @@ class _TestHomeSizeCalcState extends State<TestHomeSizeCalc>
             children: [
               Expanded(
                 child: Container(
-                  height: Global.APP_BAR_HEIGHT,
+                  height: Global.APP_MENU_HEIGHT,
                   color: Colors.black26,
                   alignment: Alignment.topCenter,
-                  child: Text('app bar height: ${Global.APP_BAR_HEIGHT}'),
+                  child: Text('app bar height: ${Global.APP_MENU_HEIGHT}'),
                 ),
               ),
             ],
@@ -190,11 +191,10 @@ class _TestHomeSizeCalcState extends State<TestHomeSizeCalc>
             children: [
               Expanded(
                 child: Container(
-                  height: Global.APP_TOOLS_HEIGHT - Global.APP_BAR_HEIGHT,
+                  height: Global.APP_NAV_HEIGHT,
                   color: Colors.black26,
                   alignment: Alignment.topCenter,
-                  child: Text(
-                      'nav bar height: ${Global.APP_TOOLS_HEIGHT - Global.APP_BAR_HEIGHT}'),
+                  child: Text('nav bar height: ${Global.APP_NAV_HEIGHT}'),
                 ),
               ),
             ],

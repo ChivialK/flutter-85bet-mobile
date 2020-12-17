@@ -12,51 +12,64 @@ class NoticeDisplayContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: Themes.layerShadowDecorRoundBottom,
+      decoration: ThemeInterface.layerShadowDecorRoundBottom,
       constraints: BoxConstraints(minHeight: 60),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: dataList.length,
-            itemBuilder: (_, index) {
-              NoticeData data = dataList[index];
-              return Container(
-                margin: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 4.0),
-                      child: Text(
-                        data.date.replaceAll(' ~ ', ' ~ \n'),
-                        style: TextStyle(
-                          color: Themes.defaultAccentColor,
-                          fontSize: FontSize.TITLE.value,
-                        ),
-                      ),
+      child: ListView.builder(
+        primary: true,
+        shrinkWrap: true,
+        physics: const BouncingScrollPhysics(),
+        itemCount: dataList.length,
+        itemBuilder: (_, index) {
+          NoticeData data = dataList[index];
+          String content = '';
+          switch (Global.lang) {
+            case 'zh':
+              content = data.content;
+              break;
+            case 'en':
+              content = data.contentEN;
+              break;
+            case 'th':
+              content = data.contentTH;
+              break;
+            case 'vi':
+              content = data.contentVI;
+              break;
+          }
+          if (content.isEmpty && Global.lang != 'zh') {
+            content = data.content ?? 'ERROR';
+          }
+          return Container(
+            margin: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 4.0),
+                  child: Text(
+                    data.date.replaceAll(' ~ ', ' ~ \n'),
+                    style: TextStyle(
+                      color: themeColor.defaultAccentColor,
+                      fontSize: FontSize.TITLE.value,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: 16.0),
-                      child: Text(
-                        data.content,
-                        style: TextStyle(fontSize: FontSize.SUBTITLE.value),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 8.0),
-                      child: DotSeparator(color: Themes.defaultBorderColor),
-                    ),
-                  ],
+                  ),
                 ),
-              );
-            },
-          ),
-        ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 16.0),
+                  child: Text(
+                    content,
+                    style: TextStyle(fontSize: FontSize.SUBTITLE.value),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 8.0),
+                  child: DotSeparator(color: themeColor.defaultBorderColor),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

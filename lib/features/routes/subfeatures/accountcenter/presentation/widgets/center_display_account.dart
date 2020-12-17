@@ -62,7 +62,7 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
       );
     }
     return Container(
-      decoration: Themes.layerShadowDecorRoundBottom,
+      decoration: ThemeInterface.layerShadowDecorRoundBottom,
       constraints: BoxConstraints(minHeight: 60),
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: InkWell(
@@ -139,10 +139,12 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
                         String birth = date.toDateString;
 //                        print('birth date: $birth');
                         checkAndPost(context, () {
-                          if (birth.isDate)
+                          if (birth.isDate &&
+                              checkDateRange(birth, getDateString())) {
                             _store.bindBirth(birth);
-                          else
+                          } else {
                             callToast(localeStr.messageInvalidFormat);
+                          }
                         });
                       }
                     },

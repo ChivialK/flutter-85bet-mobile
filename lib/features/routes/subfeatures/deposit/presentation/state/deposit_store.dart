@@ -44,8 +44,12 @@ abstract class _DepositStore with Store {
 
   bool _errorState = false;
 
-  void setErrorMsg(
-          {String msg, bool showOnce = false, FailureType type, int code}) =>
+  void setErrorMsg({
+    String msg,
+    bool showOnce = false,
+    FailureType type,
+    int code,
+  }) =>
       errorMessage = getErrorMsg(
           from: FailureType.DEPOSIT,
           msg: msg,
@@ -98,7 +102,7 @@ abstract class _DepositStore with Store {
       // Fetch from the repository and wrap the regular Future into an observable.
       // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
       await _repository.getPayment().then((result) {
-//        debugPrint('payment store type result: $result');
+        debugPrint('payment store type result: $result');
         result.fold(
           (failure) {
             setErrorMsg(msg: failure.message, showOnce: true);
@@ -160,11 +164,13 @@ abstract class _DepositStore with Store {
                   .firstWhere((type) => type.key == 1, orElse: () => null)
                   ?.data;
               // filtered out unavailable bank options
-              infoList = List.of(list)
-                ..removeWhere((info) =>
+              infoList = List.of(list);
+              if (types != null) {
+                infoList.removeWhere((info) =>
                     types.any(
                         (data) => data.bankAccountId == info.bankAccountId) ==
                     false);
+              }
             }
 //            debugPrint('deposit info: $infoList');
           },

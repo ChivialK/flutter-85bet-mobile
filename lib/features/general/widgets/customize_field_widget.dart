@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'
     show
+        FilteringTextInputFormatter,
         LengthLimitingTextInputFormatter,
-        TextInputFormatter,
-        WhitelistingTextInputFormatter;
+        TextInputFormatter;
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 part '../enum/input_field_type.dart';
 
@@ -13,13 +13,14 @@ typedef ValidCondition = bool Function(String);
 typedef SuffixTapCall = void Function(String);
 
 ///
-///
+/// TODO integrate customized widget
 /// TODO separate prefix and suffix widget
 ///
 class CustomizeFieldWidget extends StatefulWidget {
   /* Field Settings */
   final FieldType fieldType;
   final double fieldTextSize;
+  final Color fieldTextColor;
   final String hint;
   final bool persistHint;
   final bool coloredHint;
@@ -67,6 +68,7 @@ class CustomizeFieldWidget extends StatefulWidget {
     Key key,
     this.fieldType = FieldType.Normal,
     this.fieldTextSize,
+    this.fieldTextColor,
     this.hint = '',
     this.persistHint = true,
     this.coloredHint = false,
@@ -78,23 +80,23 @@ class CustomizeFieldWidget extends StatefulWidget {
     this.maxLines = 1,
     this.validCondition,
     this.errorMsg,
-    this.horizontalInset = Themes.horizontalInset,
-    this.minusHeight = Themes.minusSize,
-    this.minusPrefixWidth = Themes.minusSize,
+    this.horizontalInset = ThemeInterface.horizontalInset,
+    this.minusHeight = ThemeInterface.minusSize,
+    this.minusPrefixWidth = ThemeInterface.minusSize,
     this.padding,
     this.prefixText,
     this.prefixTextSize,
     this.prefixTextMaxLines,
     this.prefixIconData,
-    this.prefixItemColor = Themes.fieldPrefixColor,
-    this.prefixBgColor = Themes.fieldPrefixBgColor,
+    this.prefixItemColor,
+    this.prefixBgColor,
     this.suffixText,
     this.suffixIconData,
     this.suffixAction,
     this.suffixAction2,
-    this.titleLetterSpacing = Themes.prefixTextSpacing,
-    this.titleWidthFactor = Themes.prefixTextWidthFactor,
-    this.iconWidthFactor = Themes.prefixIconWidthFactor,
+    this.titleLetterSpacing = ThemeInterface.prefixTextSpacing,
+    this.titleWidthFactor = ThemeInterface.prefixTextWidthFactor,
+    this.iconWidthFactor = ThemeInterface.prefixIconWidthFactor,
     this.suffixLetterWidth = 2.4,
     this.roundCorner = false,
     this.onInputChanged,
@@ -125,6 +127,9 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
   int _currentMaxLines;
   int _currentPrefixMaxLines;
   bool _isValid = true;
+
+  Color _prefixColor;
+  Color _prefixBgColor;
 
   String get getInput => _controller.text;
 
@@ -185,31 +190,35 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
   }
 
   void _updateFieldStyle() {
-    Color textColor = (widget.useSameBgColor)
-        ? Themes.fieldInputHintSubColor
-        : (widget.readOnly)
-            ? Themes.defaultTextColor
-            : (widget.subTheme)
-                ? Themes.fieldInputSubColor
-                : Themes.fieldInputColor;
+    Color textColor = (widget.fieldTextColor != null)
+        ? widget.fieldTextColor
+        : (widget.useSameBgColor)
+            ? themeColor.fieldInputHintSubColor
+            : (widget.readOnly)
+                ? themeColor.defaultTextColor
+                : (widget.subTheme)
+                    ? themeColor.fieldInputSubColor
+                    : themeColor.fieldInputColor;
 
     _fieldTextStyle = TextStyle(
       fontSize: (widget.fieldTextSize != null)
           ? widget.fieldTextSize
-          : (widget.readOnly) ? FontSize.NORMAL.value : FontSize.SUBTITLE.value,
+          : (widget.readOnly)
+              ? FontSize.NORMAL.value
+              : FontSize.SUBTITLE.value,
       color: textColor,
       decorationColor: textColor,
     );
 
     _fieldColor = (widget.useSameBgColor)
-        ? widget.prefixBgColor
+        ? widget.prefixBgColor ?? themeColor.fieldPrefixBgColor
         : (widget.subTheme)
             ? (widget.readOnly)
-                ? Themes.fieldReadOnlySubBgColor
-                : Themes.fieldInputSubBgColor
+                ? themeColor.fieldReadOnlySubBgColor
+                : themeColor.fieldInputSubBgColor
             : (widget.readOnly)
-                ? Themes.fieldReadOnlyBgColor
-                : Themes.fieldInputBgColor;
+                ? themeColor.fieldReadOnlyBgColor
+                : themeColor.fieldInputBgColor;
   }
 
   @override
@@ -228,9 +237,10 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
     _currentPrefixMaxLines =
         widget.prefixTextMaxLines ?? (Global.lang == 'zh') ? 1 : 2;
 
-    _smallWidgetHeight =
-        ((Global.device.isIos) ? Themes.fieldHeight + 8 : Themes.fieldHeight) -
-            widget.minusHeight;
+    _smallWidgetHeight = ((Global.device.isIos)
+            ? ThemeInterface.fieldHeight + 8
+            : ThemeInterface.fieldHeight) -
+        widget.minusHeight;
     if (widget.prefixIconData != null) _smallWidgetHeight += 8.0;
 
     double fieldInsetHeight =
@@ -249,6 +259,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
     }
 
     super.initState();
+    _prefixColor = widget.prefixItemColor ?? themeColor.fieldPrefixColor;
+    _prefixBgColor = widget.prefixBgColor ?? themeColor.fieldPrefixBgColor;
     if (widget.onInputChanged != null) {
       _controller.addListener(() {
         widget.onInputChanged(_controller.text);
@@ -272,8 +284,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
     if (widget.maxLines != _currentMaxLines) {
       _currentMaxLines = widget.maxLines;
       _smallWidgetHeight = ((Global.device.isIos)
-              ? Themes.fieldHeight + 8
-              : Themes.fieldHeight) -
+              ? ThemeInterface.fieldHeight + 8
+              : ThemeInterface.fieldHeight) -
           widget.minusHeight;
       _prefixConstraints = BoxConstraints(
         minWidth: _prefixWidth,
@@ -335,8 +347,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
             onChanged: (value) => _onInputChanged(value),
             style: _fieldTextStyle,
             cursorColor: (widget.subTheme)
-                ? Themes.fieldCursorSubColor
-                : Themes.defaultAccentColor,
+                ? themeColor.fieldCursorSubColor
+                : themeColor.defaultAccentColor,
             textAlign:
                 (widget.centerFieldText) ? TextAlign.center : TextAlign.start,
             textAlignVertical: TextAlignVertical.center,
@@ -344,8 +356,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
               labelText: (widget.persistHint) ? widget.hint : null,
               hintText: (widget.persistHint) ? null : widget.hint,
               hintStyle: (widget.coloredHint)
-                  ? TextStyle(color: Themes.hintHighlight)
-                  : null,
+                  ? TextStyle(color: themeColor.hintHighlight)
+                  : TextStyle(color: themeColor.fieldInputHintColor),
               fillColor: _fieldColor,
               isDense: true,
               contentPadding: _fieldInset,
@@ -379,8 +391,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
             onChanged: (value) => _onInputChanged(value),
             style: _fieldTextStyle,
             cursorColor: (widget.subTheme)
-                ? Themes.fieldCursorSubColor
-                : Themes.defaultAccentColor,
+                ? themeColor.fieldCursorSubColor
+                : themeColor.defaultAccentColor,
             textAlign:
                 (widget.centerFieldText) ? TextAlign.center : TextAlign.start,
             textAlignVertical: TextAlignVertical.center,
@@ -388,8 +400,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
               labelText: (widget.persistHint) ? widget.hint : null,
               hintText: (widget.persistHint) ? null : widget.hint,
               hintStyle: (widget.coloredHint)
-                  ? TextStyle(color: Themes.hintHighlight)
-                  : null,
+                  ? TextStyle(color: themeColor.hintHighlight)
+                  : TextStyle(color: themeColor.fieldInputHintColor),
               isDense: true,
               fillColor: _fieldColor,
               contentPadding: _fieldInset,
@@ -399,7 +411,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
               prefixIcon: (_prefixWidget != null)
                   ? Container(
                       margin: const EdgeInsets.only(right: 8.0),
-                      color: widget.prefixBgColor,
+                      color: _prefixBgColor,
                       child: _prefixWidget,
                     )
                   : SizedBox.shrink(),
@@ -427,8 +439,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
             padding: const EdgeInsets.symmetric(horizontal: 2.0),
             child: Icon(
               widget.prefixIconData,
-              size: Themes.fieldIconSize,
-              color: widget.prefixItemColor,
+              size: ThemeInterface.fieldIconSize,
+              color: _prefixColor,
             ),
           ),
           Padding(
@@ -442,7 +454,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
                     fontSize: widget.prefixTextSize ?? FontSize.NORMAL.value,
                     wordSpacing: widget.titleLetterSpacing / 2,
                     letterSpacing: widget.titleLetterSpacing / 4,
-                    color: widget.prefixItemColor,
+                    color: _prefixColor,
                   ),
                   children: [
                     TextSpan(text: widget.prefixText),
@@ -452,7 +464,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
                         style: TextStyle(
                           fontSize:
                               widget.prefixTextSize ?? FontSize.NORMAL.value,
-                          color: Themes.hintHighlightRed,
+                          color: themeColor.hintHighlightRed,
                         ),
                       ),
                   ],
@@ -464,9 +476,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
       );
     } else if (widget.prefixText != null) {
       _prefixWidget = Padding(
-        padding: (_currentPrefixMaxLines > 1)
-            ? EdgeInsets.only(left: 4.0, right: 4.0)
-            : EdgeInsets.only(right: 4.0),
+        padding: const EdgeInsets.symmetric(horizontal: 4.0),
         child: Align(
           alignment: Alignment.centerLeft,
           child: RichText(
@@ -477,7 +487,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
                 fontSize: widget.prefixTextSize ?? FontSize.NORMAL.value,
                 wordSpacing: widget.titleLetterSpacing,
                 letterSpacing: widget.titleLetterSpacing,
-                color: widget.prefixItemColor,
+                color: _prefixColor,
               ),
               children: [
                 TextSpan(text: widget.prefixText),
@@ -486,7 +496,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
                     text: ' *',
                     style: TextStyle(
                       fontSize: widget.prefixTextSize ?? FontSize.NORMAL.value,
-                      color: Themes.hintHighlightRed,
+                      color: themeColor.hintHighlightRed,
                     ),
                   ),
               ],
@@ -498,8 +508,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
       _prefixWidget = Center(
         child: Icon(
           widget.prefixIconData,
-          size: Themes.fieldIconSize,
-          color: widget.prefixItemColor,
+          size: ThemeInterface.fieldIconSize,
+          color: _prefixColor,
         ),
       );
     }
@@ -517,8 +527,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
                 widget.suffixText,
                 style: TextStyle(
                   color: (widget.useSameBgColor)
-                      ? Themes.fieldInputSubColor
-                      : Themes.fieldSuffixColor,
+                      ? themeColor.fieldInputSubColor
+                      : themeColor.fieldSuffixColor,
                 ),
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.visible,
@@ -533,10 +543,10 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
               child: GestureDetector(
                 child: Icon(
                   widget.suffixIconData,
-                  size: Themes.fieldIconSize * 0.625,
+                  size: ThemeInterface.fieldIconSize * 0.625,
                   color: (widget.useSameBgColor)
-                      ? Themes.fieldInputSubColor
-                      : Themes.fieldSuffixColor,
+                      ? themeColor.fieldInputSubColor
+                      : themeColor.fieldSuffixColor,
                 ),
                 onTap: () => (widget.suffixAction2 != null)
                     ? widget.suffixAction2(_controller.text)
@@ -551,10 +561,10 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
         child: GestureDetector(
           child: Icon(
             widget.suffixIconData,
-            size: Themes.fieldIconSize * 0.625,
+            size: ThemeInterface.fieldIconSize * 0.625,
             color: (widget.useSameBgColor)
-                ? Themes.fieldInputSubColor
-                : Themes.fieldSuffixColor,
+                ? themeColor.fieldInputSubColor
+                : themeColor.fieldSuffixColor,
           ),
           onTap: () => (widget.suffixAction != null)
               ? widget.suffixAction(_controller.text)
@@ -570,8 +580,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
               widget.suffixText,
               style: TextStyle(
                 color: (widget.useSameBgColor)
-                    ? Themes.fieldInputSubColor
-                    : Themes.fieldSuffixColor,
+                    ? themeColor.fieldInputSubColor
+                    : themeColor.fieldSuffixColor,
               ),
               textAlign: TextAlign.center,
               overflow: TextOverflow.visible,
@@ -601,21 +611,6 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
 
   List<TextInputFormatter> _formatterList() {
     switch (widget.fieldType) {
-      case FieldType.ChineseOnly:
-        return [
-          _chineseInputFormatter,
-          LengthLimitingTextInputFormatter(widget.maxInputLength ~/ 2),
-        ];
-      case FieldType.NoEnglish:
-        return [
-          _withoutEngInputFormatter,
-          LengthLimitingTextInputFormatter(widget.maxInputLength ~/ 2),
-        ];
-      case FieldType.TextOnly:
-        return [
-          _textOnlyInputFormatter,
-          LengthLimitingTextInputFormatter(widget.maxInputLength),
-        ];
       case FieldType.Numbers:
         return [
           _numbersInputFormatter,
@@ -636,7 +631,6 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
           _accountInputFormatter,
           LengthLimitingTextInputFormatter(widget.maxInputLength),
         ];
-      case FieldType.NoChinese:
       case FieldType.Password:
         return [
           _withoutChineseInputFormatter,
@@ -644,7 +638,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
         ];
       default:
         return [
-          _normalInputFormatter,
+//          _normalInputFormatter,
           LengthLimitingTextInputFormatter(widget.maxInputLength),
         ];
     }

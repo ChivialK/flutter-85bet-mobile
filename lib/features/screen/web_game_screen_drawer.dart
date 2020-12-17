@@ -66,7 +66,7 @@ class _WebGameScreenDrawerState extends State<WebGameScreenDrawer>
                   height: (isCollapsed) ? 100 : 144,
                   child: DrawerHeader(
                     decoration:
-                        BoxDecoration(color: Themes.defaultBackgroundColor),
+                        BoxDecoration(color: themeColor.defaultBackgroundColor),
                     margin: const EdgeInsets.only(bottom: 4.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -145,7 +145,7 @@ class _WebGameScreenDrawerState extends State<WebGameScreenDrawer>
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: AnimatedIcon(
                     icon: AnimatedIcons.view_list,
-                    color: Themes.iconSubColor1,
+                    color: themeColor.iconSubColor1,
                     progress: _animationController,
                     size: 30.0,
                   ),

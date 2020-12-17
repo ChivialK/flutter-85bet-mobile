@@ -34,7 +34,7 @@ class RegisterDisplayDialog extends StatelessWidget {
                     icon: Icon(
                       Icons.chevron_left,
                       size: FontSize.XLARGE.value * 2,
-                      color: Themes.defaultTextColor,
+                      color: themeColor.defaultTextColor,
                     ),
                     onPressed: () => Navigator.of(context).pop(),
                   ),

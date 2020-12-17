@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/font_size.dart';
 import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/table_fixed_widget.dart';
+import 'package:flutter_85bet_mobile/features/themes/font_size.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart';
 
 import '../../data/models/agent_chart_model.dart';
@@ -36,7 +35,7 @@ class AgentDisplayChartTableState extends State<AgentDisplayChartTable> {
   ];
 
   List<String> rowHeaders = [
-    localeStr.flowHeaderTextTotal,
+    localeStr.rollbackHeaderTextTotal,
   ];
 
   AgentChartModel tableData;
@@ -54,9 +53,9 @@ class AgentDisplayChartTableState extends State<AgentDisplayChartTable> {
 
       if (widget.showAll)
         rowHeaders = tableData.dataList.map((e) => e.key).toList()
-          ..add(localeStr.flowHeaderTextTotal);
+          ..add(localeStr.rollbackHeaderTextTotal);
       else
-        rowHeaders = [localeStr.flowHeaderTextTotal];
+        rowHeaders = [localeStr.rollbackHeaderTextTotal];
 
       sumRow = tableData.sumEachColumn;
       setState(() {});

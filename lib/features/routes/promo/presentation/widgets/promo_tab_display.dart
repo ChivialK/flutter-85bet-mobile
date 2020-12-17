@@ -1,7 +1,7 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/types_grid_widget.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 import '../../data/models/promo_category.dart';
 import '../../data/models/promo_freezed.dart';
@@ -23,15 +23,7 @@ class PromoTabDisplay extends StatefulWidget {
 
 class _PromoTabDisplayState extends State<PromoTabDisplay>
     with AfterLayoutMixin {
-  final List<PromoCategoryEnum> categories = [
-    PromoCategoryEnum.all,
-    PromoCategoryEnum.fish,
-    PromoCategoryEnum.slot,
-    PromoCategoryEnum.live,
-    PromoCategoryEnum.sport,
-    PromoCategoryEnum.lottery,
-    PromoCategoryEnum.other
-  ];
+  List<PromoCategoryEnum> _categories;
 
   List<PromoEntity> _contentList;
 
@@ -49,8 +41,19 @@ class _PromoTabDisplayState extends State<PromoTabDisplay>
 
   @override
   void initState() {
-    _contentList = widget.promos;
+    _contentList ??= widget.promos;
     super.initState();
+    _categories ??= [
+      PromoCategoryEnum.fish,
+      PromoCategoryEnum.slot,
+      PromoCategoryEnum.live,
+      PromoCategoryEnum.sport,
+      PromoCategoryEnum.lottery,
+      PromoCategoryEnum.other
+    ];
+    _categories.removeWhere((cat) => !(widget.promos
+        .any((promo) => promo.categoryStr == cat.value.category)));
+    _categories.insert(0, PromoCategoryEnum.all);
   }
 
   @override
@@ -63,19 +66,19 @@ class _PromoTabDisplayState extends State<PromoTabDisplay>
         Padding(
           padding: const EdgeInsets.fromLTRB(12.0, 16.0, 12.0, 0.0),
           child: TypesGridWidget<PromoCategoryEnum>(
-            types: categories,
+            types: _categories,
             titleKey: 'label',
             onTypeGridTap: (_, type) => updateContent(type),
-            tabsPerRow: 4,
+            tabsPerRow: 5,
             itemSpace: 2.0,
-            expectTabHeight: 30.0,
+            expectTabHeight: 36.0,
           ),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 8.0),
           child: Container(
             constraints: BoxConstraints(minHeight: 100),
-            decoration: Themes.layerShadowDecorRoundBottom,
+            decoration: ThemeInterface.layerShadowDecorRoundBottom,
             padding: const EdgeInsets.all(24.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,

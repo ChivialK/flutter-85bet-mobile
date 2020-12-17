@@ -77,7 +77,7 @@ class EventDialogSigned extends StatelessWidget {
                           TextSpan(
                             text: localeStr.eventSignUpHint1,
                             style: TextStyle(
-                              color: Themes.secondaryTextColor2,
+                              color: themeColor.secondaryTextColor2,
                               fontSize: FontSize.SUBTITLE.value,
                             ),
                           ),
@@ -91,7 +91,7 @@ class EventDialogSigned extends StatelessWidget {
                           TextSpan(
                             text: localeStr.eventSignUpHint2,
                             style: TextStyle(
-                              color: Themes.secondaryTextColor2,
+                              color: themeColor.secondaryTextColor2,
                               fontSize: FontSize.SUBTITLE.value,
                             ),
                           ),

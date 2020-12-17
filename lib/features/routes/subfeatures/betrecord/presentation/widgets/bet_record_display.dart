@@ -14,7 +14,6 @@ import '../../data/form/bet_record_form.dart';
 import '../../data/models/bet_record_model.dart';
 import '../../data/models/bet_record_type_model.dart';
 import '../state/bet_record_store.dart';
-import 'bet_record_display_table.dart';
 
 class BetRecordDisplay extends StatefulWidget {
   final BetRecordStore store;
@@ -253,8 +252,8 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Themes.memberIconColor,
-                    boxShadow: Themes.roundIconShadow,
+                    color: themeColor.memberIconColor,
+                    boxShadow: ThemeInterface.iconBottomShadow,
                   ),
                   child: Icon(
                     pageItem.value.iconData,
@@ -282,14 +281,14 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
                 switchCategory(type);
               },
               tabsPerRow: tabsPerRow,
-              itemSpace: 6.0,
+              itemSpace: 4.0,
               itemSpaceHorFactor: 1.5,
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 16.0),
             child: Container(
-              decoration: Themes.layerShadowDecorRound,
+              decoration: ThemeInterface.layerShadowDecorRound,
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -309,7 +308,7 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
                       defaultValueIndex: _allPlatformIndex,
                       changeNotify: (data) {
                         // clear text field focus
-                        FocusScope.of(context).requestFocus(new FocusNode());
+                        FocusScope.of(context).unfocus();
                         // set selected data
                         _platform = data;
                       },
@@ -327,7 +326,7 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
                           BetRecordTimeEnum.list.map((e) => e.label).toList(),
                       changeNotify: (data) {
                         // clear text field focus
-                        FocusScope.of(context).requestFocus(new FocusNode());
+                        FocusScope.of(context).unfocus();
                         // set selected data
                         _timeSelected = data;
                       },

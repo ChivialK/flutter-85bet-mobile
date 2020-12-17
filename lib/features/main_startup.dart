@@ -3,6 +3,7 @@ import 'dart:io' show Platform;
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_85bet_mobile/builders/autoroute/auto_route.dart';
 import 'package:flutter_85bet_mobile/core/internal/device.dart';
 import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';

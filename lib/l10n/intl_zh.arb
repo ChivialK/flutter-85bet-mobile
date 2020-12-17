@@ -7,16 +7,17 @@
     "type": "text",
     "placeholders": {}
   },
+  "appVersion": "版本号 {value}",
+  "@appVersion": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "1.0.0"
+      }
+    }
+  },
   "pageTitleHome": "首页",
   "@pageTitleHome": {
-    "type": "text"
-  },
-  "pageTitleMovieEG": "EG影城",
-  "@pageTitleMovieEG": {
-    "type": "text"
-  },
-  "pageTitleMovie": "新影城",
-  "@pageTitleMovie": {
     "type": "text"
   },
   "pageTitleDownload": "APP下载区",
@@ -196,6 +197,10 @@
   "@themeColorLight": {
     "type": "text"
   },
+  "urlActionNotSupported": "无法跳转至目的地网址",
+  "@urlActionNotSupported": {
+    "type": "text"
+  },
   "workInProgress": "功能即将上线!",
   "@workInProgress": {
     "type": "text"
@@ -214,6 +219,26 @@
   },
   "gameToolHintRestore": "双击可恢复显示",
   "@gameToolHintRestore": {
+    "type": "text"
+  },
+  "actionNotify": "通知",
+  "@actionNotify": {
+    "type": "text"
+  },
+  "actionSetting": "设置",
+  "@actionSetting": {
+    "type": "text"
+  },
+  "actionSearch": "搜寻",
+  "@actionSearch": {
+    "type": "text"
+  },
+  "actionHelp": "教程",
+  "@actionHelp": {
+    "type": "text"
+  },
+  "actionBack": "返回",
+  "@actionBack": {
     "type": "text"
   },
   "btnMenu": "选单",
@@ -258,6 +283,10 @@
   },
   "btnConfirmSend": "确定送出",
   "@btnConfirmSend": {
+    "type": "text"
+  },
+  "btnOpenGame": "开启",
+  "@btnOpenGame": {
     "type": "text"
   },
   "btnLogin": "登入",
@@ -354,6 +383,10 @@
   },
   "hintActionSelect": "请选择",
   "@hintActionSelect": {
+    "type": "text"
+  },
+  "hintActionSearchGame": "请输入游戏名称",
+  "@hintActionSearchGame": {
     "type": "text"
   },
   "hintActionLogin": "请先登入",
@@ -548,12 +581,24 @@
   "@messageInvalidFormat": {
     "type": "text"
   },
+  "messageInvalidDate": "日期错误",
+  "@messageInvalidDate": {
+    "type": "text"
+  },
   "messageInvalidName": "名称格式错误",
   "@messageInvalidName": {
     "type": "text"
   },
   "messageInvalidEmail": "信箱格式错误",
   "@messageInvalidEmail": {
+    "type": "text"
+  },
+  "messageInvalidBirthDate": "生日日期错误",
+  "@messageInvalidBirthDate": {
+    "type": "text"
+  },
+  "messageRepeatPhone": "手机号重复",
+  "@messageRepeatPhone": {
     "type": "text"
   },
   "messageInvalidPhone": "电话格式错误({num}碼)",
@@ -573,6 +618,10 @@
   "@messageInvalidWechat": {
     "type": "text"
   },
+  "messageInvalidZalo": "Zalo格式错误",
+  "@messageInvalidZalo": {
+    "type": "text"
+  },
   "messageInvalidVerify": "请输入验证码",
   "@messageInvalidVerify": {
     "type": "text"
@@ -586,7 +635,7 @@
       }
     }
   },
-  "messageInvalidAccount": "帐号为6~12个字",
+  "messageInvalidAccount": "帐号为6~12个小写英文/数字",
   "@messageInvalidAccount": {
     "type": "text"
   },
@@ -602,6 +651,14 @@
   "@messageInvalidConfirmPassword": {
     "type": "text"
   },
+  "messageInvalidPasswordFive": "密码不符合，错误五次将锁定帐号",
+  "@messageInvalidPasswordFive": {
+    "type": "text"
+  },
+  "messageInvalidPasswordLocked": "帐号已锁定，请联系客服",
+  "@messageInvalidPasswordLocked": {
+    "type": "text"
+  },
   "messageInvalidDepositAmount": "金额输入错误",
   "@messageInvalidDepositAmount": {
     "type": "text"
@@ -615,6 +672,10 @@
       }
     }
   },
+  "messageInvalidDepositAmountMax": "超过单笔最大提现金额(请参考会员等级制度)",
+  "@messageInvalidDepositAmountMax": {
+    "type": "text"
+  },
   "messageInvalidDepositName": "帐号名称错误",
   "@messageInvalidDepositName": {
     "type": "text"
@@ -623,7 +684,7 @@
   "@messageInvalidCardOwner": {
     "type": "text"
   },
-  "messageInvalidCardNumber": "卡号为5~19个字",
+  "messageInvalidCardNumber": "卡号为5~20个字",
   "@messageInvalidCardNumber": {
     "type": "text"
   },
@@ -637,6 +698,10 @@
   },
   "messageInvalidWithdrawAmount": "超过帐户余额",
   "@messageInvalidWithdrawAmount": {
+    "type": "text"
+  },
+  "messageInvalidWithdrawUnderAmount": "低于最低提款金额",
+  "@messageInvalidWithdrawUnderAmount": {
     "type": "text"
   },
   "messageWarnUsingCellular": "您正在使用移动网络",
@@ -753,16 +818,28 @@
   "@messageErrorAccount": {
     "type": "text"
   },
+  "messageErrorAccountIsLocked": "帐号已锁定，请联系客服",
+  "@messageErrorAccountIsLocked": {
+    "type": "text"
+  },
   "messageRepeatAccount": "帐号重复注册",
   "@messageRepeatAccount": {
+    "type": "text"
+  },
+  "messageErrorMobile": "手机号码错误",
+  "@messageErrorMobile": {
+    "type": "text"
+  },
+  "messageRepeatMobile": "手机号码重复注册",
+  "@messageRepeatMobile": {
     "type": "text"
   },
   "messageErrorPassword": "密码错误",
   "@messageErrorPassword": {
     "type": "text"
   },
-  "messageErrorPasswordHint": "密码不符合，错误5次将锁定帐号",
-  "@messageErrorPasswordHint": {
+  "messageErrorReferral": "推荐码无效",
+  "@messageErrorReferral": {
     "type": "text"
   },
   "messageErrorWithdraw": "提款失败",
@@ -834,20 +911,16 @@
   "@homeUserTabCategoryMovie": {
     "type": "text"
   },
-  "homeUserTabCategoryEgMovie": "EG影城",
-  "@homeUserTabCategoryEgMovie": {
-    "type": "text"
-  },
-  "homeUserTabCategoryNewMovie": "新影城",
-  "@homeUserTabCategoryNewMovie": {
-    "type": "text"
-  },
   "homeUserTabCategoryRecommend": "站长推荐",
   "@homeUserTabCategoryRecommend": {
     "type": "text"
   },
   "homeUserTabCategoryFavorite": "我的最爱",
   "@homeUserTabCategoryFavorite": {
+    "type": "text"
+  },
+  "homeUserTabCategoryGames": "游戏",
+  "@homeUserTabCategoryGames": {
     "type": "text"
   },
   "gameCategoryCasino": "真人",
@@ -1195,6 +1268,14 @@
       }
     }
   },
+  "bankcardViewTitleNew": "添加银行卡",
+  "@bankcardViewTitleNew": {
+    "type": "text"
+  },
+  "bankcardViewHintNew": "请先绑定一张银行卡，用于收款",
+  "@bankcardViewHintNew": {
+    "type": "text"
+  },
   "bankcardViewTitleOwner": "帐户姓名",
   "@bankcardViewTitleOwner": {
     "type": "text"
@@ -1275,6 +1356,10 @@
   "@withdrawViewHint2": {
     "type": "text"
   },
+  "walletViewTitle": "中心钱包",
+  "@walletViewTitle": {
+    "type": "text"
+  },
   "walletViewTitleMy": "我的钱包",
   "@walletViewTitleMy": {
     "type": "text"
@@ -1313,6 +1398,10 @@
   },
   "walletViewMessageSetting": "更改钱包设置",
   "@walletViewMessageSetting": {
+    "type": "text"
+  },
+  "messageNoMessages": "目前没有站内信息",
+  "@messageNoMessages": {
     "type": "text"
   },
   "centerViewTitleData": "个人资料",
@@ -1584,6 +1673,14 @@
   "@dealsHeaderAmount": {
     "type": "text"
   },
+  "dealsDetailTypeAdjustDeposit": "调整存款",
+  "@dealsDetailTypeAdjustDeposit": {
+    "type": "text"
+  },
+  "dealsDetailTypeAdjustWithdraw": "调整取款",
+  "@dealsDetailTypeAdjustWithdraw": {
+    "type": "text"
+  },
   "depositPaymentNoData": "查無可使用的充值方式",
   "@depositPaymentNoData": {
     "type": "text"
@@ -1622,6 +1719,10 @@
   },
   "depositPaymentTitleAtm": "网银转帐",
   "@depositPaymentTitleAtm": {
+    "type": "text"
+  },
+  "depositPaymentTitleQr": "QR扫码",
+  "@depositPaymentTitleQr": {
     "type": "text"
   },
   "depositPaymentSpinnerTitlePromo": "选择优惠",
@@ -2018,44 +2119,56 @@
   "@balanceHintText4": {
     "type": "text"
   },
-  "flowHeaderTextTime": "时间区间",
-  "@flowHeaderTextTime": {
+  "rollbackHeaderTextTime": "时间区间",
+  "@rollbackHeaderTextTime": {
     "type": "text"
   },
-  "flowHeaderTextCode": "交易码",
-  "@flowHeaderTextCode": {
+  "rollbackHeaderTextCode": "交易码",
+  "@rollbackHeaderTextCode": {
     "type": "text"
   },
-  "flowHeaderTextType": "类型",
-  "@flowHeaderTextType": {
+  "rollbackHeaderTextType": "类型",
+  "@rollbackHeaderTextType": {
     "type": "text"
   },
-  "flowHeaderTextAmount": "金额",
-  "@flowHeaderTextAmount": {
+  "rollbackHeaderTextAmount": "金额",
+  "@rollbackHeaderTextAmount": {
     "type": "text"
   },
-  "flowHeaderTextMultiple": "倍数",
-  "@flowHeaderTextMultiple": {
+  "rollbackHeaderTextMultiple": "倍数",
+  "@rollbackHeaderTextMultiple": {
     "type": "text"
   },
-  "flowHeaderTextPromo": "现金优惠",
-  "@flowHeaderTextPromo": {
+  "rollbackHeaderTextPromo": "现金优惠",
+  "@rollbackHeaderTextPromo": {
     "type": "text"
   },
-  "flowHeaderTextRequire": "注额须求",
-  "@flowHeaderTextRequire": {
+  "rollbackHeaderTextRequire": "注额须求",
+  "@rollbackHeaderTextRequire": {
     "type": "text"
   },
-  "flowHeaderTextCurrent": "当前注额",
-  "@flowHeaderTextCurrent": {
+  "rollbackHeaderTextCurrent": "当前注额",
+  "@rollbackHeaderTextCurrent": {
     "type": "text"
   },
-  "flowHeaderTextNeed": "注额须求剩馀",
-  "@flowHeaderTextNeed": {
+  "rollbackHeaderTextNeed": "注额须求剩馀",
+  "@rollbackHeaderTextNeed": {
     "type": "text"
   },
-  "flowHeaderTextTotal": "合计",
-  "@flowHeaderTextTotal": {
+  "rollbackHeaderTextTotal": "合计",
+  "@rollbackHeaderTextTotal": {
+    "type": "text"
+  },
+  "rollbackIndexPromo": "优惠",
+  "@rollbackIndexPromo": {
+    "type": "text"
+  },
+  "rollbackIndexDeposit": "存款",
+  "@rollbackIndexDeposit": {
+    "type": "text"
+  },
+  "rollbackIndexRollback": "退水",
+  "@rollbackIndexRollback": {
     "type": "text"
   },
   "agentActionLoginHint": "请先登入您的代理帐号",
@@ -3000,7 +3113,7 @@
   "@aboutDataDesc53": {
     "type": "text"
   },
-  "serviceRouteHint": "帮助或联系我们",
+  "serviceRouteHint": "需要帮助或联系我们",
   "@serviceRouteHint": {
     "type": "text"
   },
@@ -3038,6 +3151,30 @@
   },
   "serviceTitleFacebook": "Facebook",
   "@serviceTitleFacebook": {
+    "type": "text"
+  },
+  "downloadAndroidCgpay": "CGPAY Android版",
+  "@downloadAndroidCgpay": {
+    "type": "text"
+  },
+  "downloadIosCgpay": "CGPAY IOS版",
+  "@downloadIosCgpay": {
+    "type": "text"
+  },
+  "downloadAndroidDns": "DNS修复 Android版",
+  "@downloadAndroidDns": {
+    "type": "text"
+  },
+  "downloadIosDns": "DNS修复 IOS版",
+  "@downloadIosDns": {
+    "type": "text"
+  },
+  "downloadHintPlatformAndroid": "(安卓适用)",
+  "@downloadHintPlatformAndroid": {
+    "type": "text"
+  },
+  "downloadHintPlatformIos": "(苹果适用)",
+  "@downloadHintPlatformIos": {
     "type": "text"
   }
 }

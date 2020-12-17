@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'
     show
+        FilteringTextInputFormatter,
         LengthLimitingTextInputFormatter,
-        TextInputFormatter,
-        WhitelistingTextInputFormatter;
+        TextInputFormatter;
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 typedef ValidCondition = bool Function(String);
 typedef SuffixTapCall = void Function(String);
@@ -53,10 +53,10 @@ class SingleInputWidget extends StatefulWidget {
     this.widgetPadding,
     this.fieldContentInset,
     this.prefixTitle,
-    this.titleWidthFactor = Themes.prefixTextWidthFactor,
+    this.titleWidthFactor = ThemeInterface.prefixTextWidthFactor,
     this.spacing = 12.0,
     this.prefixIconData,
-    this.iconWidthFactor = Themes.prefixIconWidthFactor,
+    this.iconWidthFactor = ThemeInterface.prefixIconWidthFactor,
     this.suffixIconData,
     this.suffixText,
     this.suffixAction,
@@ -103,7 +103,7 @@ class SingleInputWidgetState extends State<SingleInputWidget> {
         ? viewWidth * (widget.iconWidthFactor * 0.65)
         : FontSize.NORMAL.value * 2.4;
 
-    smallWidgetHeight = Themes.fieldHeight + 2;
+    smallWidgetHeight = ThemeInterface.fieldHeight + 2;
     double fieldInsetHeight =
         (widget.persistHint) ? 8 : (smallWidgetHeight - 21.6) / 2;
     fieldInset =
@@ -187,7 +187,7 @@ class SingleInputWidgetState extends State<SingleInputWidget> {
             prefixIcon: (prefixWidget != null)
                 ? Container(
                     margin: const EdgeInsets.only(right: 8.0),
-                    color: Themes.defaultWidgetBgColor,
+                    color: themeColor.defaultWidgetBgColor,
                     child: prefixWidget,
                   )
                 : SizedBox.shrink(),
@@ -213,8 +213,8 @@ class SingleInputWidgetState extends State<SingleInputWidget> {
             padding: const EdgeInsets.symmetric(horizontal: 2.0),
             child: Icon(
               widget.prefixIconData,
-              size: Themes.fieldIconSize,
-              color: Themes.iconSubColor1,
+              size: ThemeInterface.fieldIconSize,
+              color: themeColor.iconSubColor1,
             ),
           ),
           Padding(
@@ -254,8 +254,8 @@ class SingleInputWidgetState extends State<SingleInputWidget> {
       prefixWidget = Center(
         child: Icon(
           widget.prefixIconData,
-          size: Themes.fieldIconSize,
-          color: Themes.iconSubColor1,
+          size: ThemeInterface.fieldIconSize,
+          color: themeColor.iconSubColor1,
         ),
       );
     }
@@ -267,8 +267,8 @@ class SingleInputWidgetState extends State<SingleInputWidget> {
         child: GestureDetector(
           child: Icon(
             widget.suffixIconData,
-            size: Themes.fieldIconSize * 0.625,
-            color: Themes.dialogTitleColor,
+            size: ThemeInterface.fieldIconSize * 0.625,
+            color: themeColor.dialogTitleColor,
           ),
           onTap: () => (widget.suffixAction != null)
               ? widget.suffixAction(_controller.text)
@@ -282,7 +282,7 @@ class SingleInputWidgetState extends State<SingleInputWidget> {
           child: GestureDetector(
             child: Text(
               widget.suffixText,
-              style: TextStyle(color: Themes.dialogTitleColor),
+              style: TextStyle(color: themeColor.dialogTitleColor),
               overflow: TextOverflow.visible,
               maxLines: 2,
             ),
@@ -312,28 +312,28 @@ class SingleInputWidgetState extends State<SingleInputWidget> {
     switch (widget.fieldType) {
       case FieldType.ChineseOnly:
         return [
-          WhitelistingTextInputFormatter(RegExp("[\u4e00-\u9fa5]")),
+          FilteringTextInputFormatter.allow(RegExp("[\u4e00-\u9fa5]")),
           LengthLimitingTextInputFormatter(widget.maxInputLength ~/ 2),
         ];
       case FieldType.NoEnglish:
         return [
-          WhitelistingTextInputFormatter(RegExp("[\u4e00-\u9fa5]|[0-9]")),
+          FilteringTextInputFormatter.allow(RegExp("[\u4e00-\u9fa5]|[0-9]")),
           LengthLimitingTextInputFormatter(widget.maxInputLength ~/ 2),
         ];
       case FieldType.Numbers:
         return [
-          WhitelistingTextInputFormatter.digitsOnly,
+          FilteringTextInputFormatter.digitsOnly,
           LengthLimitingTextInputFormatter(widget.maxInputLength),
         ];
       case FieldType.NoChinese:
       case FieldType.Password:
         return [
-          WhitelistingTextInputFormatter(RegExp("[a-zA-Z]|[0-9]")),
+          FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]|[0-9]")),
           LengthLimitingTextInputFormatter(widget.maxInputLength),
         ];
       default:
         return [
-          WhitelistingTextInputFormatter(
+          FilteringTextInputFormatter.allow(
               RegExp("[a-zA-Z]|[\u4e00-\u9fa5]|[0-9]")),
           LengthLimitingTextInputFormatter(widget.maxInputLength),
         ];

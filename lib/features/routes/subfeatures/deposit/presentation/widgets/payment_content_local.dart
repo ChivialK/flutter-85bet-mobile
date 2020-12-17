@@ -115,7 +115,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
   void initState() {
     _valueTextPadding = (Global.device.width.roundToDouble() - _fieldInset) *
             _titleWidthFactor -
-        Themes.minusSize;
+        ThemeInterface.minusSize;
 
     _selectedBankInfo = widget.infoList.first;
     _bankSelected = widget.bankMap.keys.first;
@@ -163,7 +163,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                   widget.infoList.map((item) => item.bankAccountName).toList(),
               changeNotify: (data) {
                 // clear text field focus
-                FocusScope.of(context).requestFocus(new FocusNode());
+                FocusScope.of(context).unfocus();
                 // set selected data
                 if (_selectedBankInfo == data) return;
                 setState(() {
@@ -188,7 +188,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                       style: TextStyle(
-                        color: Themes.hintDarkRed,
+                        color: themeColor.hintDarkRed,
                         fontSize: FontSize.MESSAGE.value,
                         fontWeight: FontWeight.w500,
                         height: 1.5,
@@ -198,14 +198,16 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                             text: '${localeStr.bankcardViewTitleOwner}:\r\r'),
                         TextSpan(
                           text: '${_selectedBankInfo.accountName}\n',
-                          style: TextStyle(color: Themes.hintHighlightDarkRed),
+                          style:
+                              TextStyle(color: themeColor.hintHighlightDarkRed),
                         ),
                         TextSpan(
                             text:
                                 '${localeStr.bankcardViewTitleCardNumber}:\r\r'),
                         TextSpan(
                           text: '${_selectedBankInfo.bankAccountNo}\n',
-                          style: TextStyle(color: Themes.hintHighlightDarkRed),
+                          style:
+                              TextStyle(color: themeColor.hintHighlightDarkRed),
                         ),
                         TextSpan(
                             text: '${localeStr.bankcardViewTitleBank}:\r\r'),
@@ -232,7 +234,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                 optionStrings: promos.map((item) => item.promoDesc).toList(),
                 changeNotify: (data) {
                   // clear text field focus
-                  FocusScope.of(context).requestFocus(new FocusNode());
+                  FocusScope.of(context).unfocus();
                   // set selected data
                   if (data is PaymentPromoData) _promoSelected = data.promoId;
                 },
@@ -253,7 +255,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                 optionValues: [1, 2],
                 changeNotify: (data) {
                   // clear text field focus
-                  FocusScope.of(context).requestFocus(new FocusNode());
+                  FocusScope.of(context).unfocus();
                   // set selected data
                   _methodSelected = data;
                 },
@@ -274,7 +276,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                 optionStrings: _bankNames,
                 changeNotify: (data) {
                   // clear text field focus
-                  FocusScope.of(context).requestFocus(new FocusNode());
+                  FocusScope.of(context).unfocus();
                   debugPrint(
                       'selected bank: $data, label: ${widget.bankMap[data]}');
                   _bankSelected = data;
@@ -371,7 +373,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
               child: Text(
                 localeStr.depositPaymentEditTitleAmountHintVND(_amountVnd),
                 style: TextStyle(
-                  color: Themes.defaultHintColor,
+                  color: themeColor.defaultHintColor,
                   fontSize: FontSize.SUBTITLE.value,
                 ),
               ),

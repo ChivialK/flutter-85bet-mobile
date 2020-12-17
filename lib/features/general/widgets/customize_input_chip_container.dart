@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 typedef ChipTapCall = void Function(dynamic);
 
@@ -38,17 +38,17 @@ class CustomizeInputChipContainer extends StatefulWidget {
     this.padding,
     this.horizontalInset = 32.0,
     this.heightFactor = 1,
-    this.roundCorner = true,
-    this.backgroundColor = Themes.fieldInputBgColor,
+    this.roundCorner = false,
+    this.backgroundColor,
     this.prefixTitle,
     this.prefixTextSize,
     this.prefixTextMaxLines = 1,
     this.prefixIconData,
-    this.prefixItemColor = Themes.fieldPrefixColor,
-    this.prefixBgColor = Themes.defaultWidgetBgColor,
-    this.titleWidthFactor = Themes.prefixTextWidthFactor,
-    this.titleLetterSpacing = Themes.prefixTextSpacing,
-    this.iconWidthFactor = Themes.prefixIconWidthFactor,
+    this.prefixItemColor,
+    this.prefixBgColor,
+    this.titleWidthFactor = ThemeInterface.prefixTextWidthFactor,
+    this.titleLetterSpacing = ThemeInterface.prefixTextSpacing,
+    this.iconWidthFactor = ThemeInterface.prefixIconWidthFactor,
     this.roundChip = true,
   }) : super(key: key);
 
@@ -60,6 +60,18 @@ class CustomizeInputChipContainer extends StatefulWidget {
 class _CustomizeInputChipContainerState
     extends State<CustomizeInputChipContainer> {
   List<Widget> chips;
+
+  Color _fieldBgColor;
+  Color _prefixBgColor;
+  Color _prefixColor;
+
+  @override
+  void initState() {
+    super.initState();
+    _fieldBgColor = widget.backgroundColor ?? themeColor.fieldInputBgColor;
+    _prefixColor = widget.prefixItemColor ?? themeColor.fieldPrefixColor;
+    _prefixBgColor = widget.prefixBgColor ?? themeColor.defaultWidgetBgColor;
+  }
 
   @override
   void didUpdateWidget(CustomizeInputChipContainer oldWidget) {
@@ -84,19 +96,27 @@ class _CustomizeInputChipContainerState
       horizontalInset: widget.horizontalInset,
       heightFactor: widget.heightFactor,
       roundCorner: widget.roundCorner,
-      backgroundColor: widget.backgroundColor,
+      backgroundColor: _fieldBgColor,
       prefixText: widget.prefixTitle,
       prefixTextSize: widget.prefixTextSize,
       prefixTextMaxLines: widget.prefixTextMaxLines,
-      prefixItemColor: widget.prefixItemColor,
-      prefixBgColor: widget.prefixBgColor,
+      prefixItemColor: _prefixColor,
+      prefixBgColor: _prefixBgColor,
       prefixIconData: widget.prefixIconData,
       titleWidthFactor: widget.titleWidthFactor,
       titleLetterSpacing: widget.titleLetterSpacing,
       iconWidthFactor: widget.iconWidthFactor,
-      child: Wrap(
-        spacing: widget.chipSpacing,
-        children: chips,
+      childAlignment: Alignment.topLeft,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 6.0),
+        child: ListView.builder(
+          physics: BouncingScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 1,
+          itemBuilder: (context, index) {
+            return Wrap(spacing: widget.chipSpacing, children: chips);
+          },
+        ),
       ),
     );
   }
@@ -105,13 +125,14 @@ class _CustomizeInputChipContainerState
     if (widget.roundChip == false)
       return InputChip(
         visualDensity: VisualDensity.compact,
-        label: Text(labelText),
+        label:
+            Text(labelText, style: TextStyle(fontSize: FontSize.SMALLER.value)),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.horizontal(
           left: Radius.circular(4.0),
           right: Radius.circular(4.0),
         )),
-        backgroundColor: Themes.fieldInputBgColor,
+        backgroundColor: themeColor.fieldInputBgColor,
         onPressed: () => (widget.chipTapCall != null)
             ? widget.chipTapCall(returnOnPress)
             : {},
@@ -119,7 +140,8 @@ class _CustomizeInputChipContainerState
     else
       return InputChip(
         visualDensity: VisualDensity.compact,
-        label: Text(labelText),
+        label:
+            Text(labelText, style: TextStyle(fontSize: FontSize.SMALLER.value)),
         onPressed: () => (widget.chipTapCall != null)
             ? widget.chipTapCall(returnOnPress)
             : {},

@@ -7,16 +7,17 @@
     "type": "text",
     "placeholders": {}
   },
+  "appVersion": "Phiên bản {value}",
+  "@appVersion": {
+    "type": "text",
+    "placeholders": {
+      "value": {
+        "example": "1.0.0"
+      }
+    }
+  },
   "pageTitleHome": "Trang Chủ",
   "@pageTitleHome": {
-    "type": "text"
-  },
-  "pageTitleMovieEG": "Rạp chiếu phim 1",
-  "@pageTitleMovieEG": {
-    "type": "text"
-  },
-  "pageTitleMovie": "Rạp chiếu phim 2",
-  "@pageTitleMovie": {
     "type": "text"
   },
   "pageTitleDownload": "Khu vực tải ứng dụng",
@@ -47,7 +48,7 @@
   "@pageTitleSign": {
     "type": "text"
   },
-  "pageTitleRoller": "Vòng xoay may mắn",
+  "pageTitleRoller": "Vòng xoay",
   "@pageTitleRoller": {
     "type": "text"
   },
@@ -59,7 +60,7 @@
   "@pageTitleDeposit": {
     "type": "text"
   },
-  "pageTitlePromo": "KHUYẾN MÃI",
+  "pageTitlePromo": "Ưu Đãi",
   "@pageTitlePromo": {
     "type": "text"
   },
@@ -95,7 +96,7 @@
   "@pageTitleRegisterMember": {
     "type": "text"
   },
-  "pageTitleMemberTransfer": "Chuyển khoản nhanh",
+  "pageTitleMemberTransfer": "Chuyển khoản",
   "@pageTitleMemberTransfer": {
     "type": "text"
   },
@@ -188,12 +189,16 @@
   "@themeColorDefault": {
     "type": "text"
   },
-  "themeColorDark": "Trắng",
+  "themeColorDark": "Đen",
   "@themeColorDark": {
     "type": "text"
   },
-  "themeColorLight": "Màu sáng",
+  "themeColorLight": "Trắng",
   "@themeColorLight": {
+    "type": "text"
+  },
+  "urlActionNotSupported": "Không thể chuyển đến URL đích",
+  "@urlActionNotSupported": {
     "type": "text"
   },
   "workInProgress": "Sắp có!",
@@ -214,6 +219,26 @@
   },
   "gameToolHintRestore": "Nhấp đúp để khôi phục màn hình",
   "@gameToolHintRestore": {
+    "type": "text"
+  },
+  "actionNotify": "Thông báo",
+  "@actionNotify": {
+    "type": "text"
+  },
+  "actionSetting": "Cài đặt",
+  "@actionSetting": {
+    "type": "text"
+  },
+  "actionSearch": "Tìm kiếm",
+  "@actionSearch": {
+    "type": "text"
+  },
+  "actionHelp": "Hướng dẫn",
+  "@actionHelp": {
+    "type": "text"
+  },
+  "actionBack": "Quay lại",
+  "@actionBack": {
     "type": "text"
   },
   "btnMenu": "Thực đơn",
@@ -258,6 +283,10 @@
   },
   "btnConfirmSend": "Xác định",
   "@btnConfirmSend": {
+    "type": "text"
+  },
+  "btnOpenGame": "Bật",
+  "@btnOpenGame": {
     "type": "text"
   },
   "btnLogin": "Đăng nhập",
@@ -356,6 +385,10 @@
   "@hintActionSelect": {
     "type": "text"
   },
+  "hintActionSearchGame": "Vui lòng nhập tên trò chơi",
+  "@hintActionSearchGame": {
+    "type": "text"
+  },
   "hintActionLogin": "Vui lòng đăng nhập vào tài khoản trước",
   "@hintActionLogin": {
     "type": "text"
@@ -404,7 +437,7 @@
   "@hintPassword": {
     "type": "text"
   },
-  "hintConfirmed": "Độ dài từ 8 đến 18 ký tự",
+  "hintConfirmed": "Độ dài từ 8 ~ 18 ký tự",
   "@hintConfirmed": {
     "type": "text"
   },
@@ -425,11 +458,11 @@
   "@messageWelcome": {
     "type": "text"
   },
-  "messageWelcomeHint": "Vui lòng Đăng nhập / Đăng ký",
+  "messageWelcomeHint": "Chào Mừng! Vui lòng Đăng nhập / Đăng ký",
   "@messageWelcomeHint": {
     "type": "text"
   },
-  "messageLoginHint": "Vui lòng Đăng nhập /Đăng ký",
+  "messageLoginHint": "Vui lòng Đăng nhập / Đăng ký",
   "@messageWelcomeHintShort": {
     "type": "text"
   },
@@ -548,12 +581,24 @@
   "@messageInvalidFormat": {
     "type": "text"
   },
+  "messageInvalidDate": "Nhầm cuộc hẹn",
+  "@messageInvalidDate": {
+    "type": "text"
+  },
   "messageInvalidName": "Định dạng tên không chính xác",
   "@messageInvalidName": {
     "type": "text"
   },
   "messageInvalidEmail": "Định dạng hộp thư không chính xác",
   "@messageInvalidEmail": {
+    "type": "text"
+  },
+  "messageInvalidBirthDate": "Ngày sinh nhật sai",
+  "@messageInvalidBirthDate": {
+    "type": "text"
+  },
+  "messageRepeatPhone": "Số điện thoại trùng lặp",
+  "@messageRepeatPhone": {
     "type": "text"
   },
   "messageInvalidPhone": "Lỗi định dạng điện thoại({num})",
@@ -573,6 +618,10 @@
   "@messageInvalidWechat": {
     "type": "text"
   },
+  "messageInvalidZalo": "Lỗi định dạng zalo",
+  "@messageInvalidZalo": {
+    "type": "text"
+  },
   "messageInvalidVerify": "vui lòng nhập mã xác nhận",
   "@messageInvalidVerify": {
     "type": "text"
@@ -586,7 +635,7 @@
       }
     }
   },
-  "messageInvalidAccount": "Số tài khoản là 6 ~ 12 ký tự",
+  "messageInvalidAccount": "Số tài khoản là 6 ~ 12 chữ thường tiếng Anh / chữ số",
   "@messageInvalidAccount": {
     "type": "text"
   },
@@ -602,6 +651,14 @@
   "@messageInvalidConfirmPassword": {
     "type": "text"
   },
+  "messageInvalidPasswordFive": "Mật khẩu không khớp, tài khoản sẽ bị khóa vì năm lỗi",
+  "@messageInvalidPasswordFive": {
+    "type": "text"
+  },
+  "messageInvalidPasswordLocked": "Tài khoản bị khóa, vui lòng liên hệ với bộ phận chăm sóc khách hàng",
+  "@messageInvalidPasswordLocked": {
+    "type": "text"
+  },
   "messageInvalidDepositAmount": "Số tiền nhập không chính xác",
   "@messageInvalidDepositAmount": {
     "type": "text"
@@ -614,6 +671,10 @@
         "example": "0"
       }
     }
+  },
+  "messageInvalidDepositAmountMax": "Vượt quá số tiền rút tối đa của một giao dịch (vui lòng tham khảo hệ thống cấp độ thành viên)",
+  "@messageInvalidDepositAmountMax": {
+    "type": "text"
   },
   "messageInvalidDepositName": "Tên tài khoản không chính xác",
   "@messageInvalidDepositName": {
@@ -637,6 +698,10 @@
   },
   "messageInvalidWithdrawAmount": "Vượt quá số dư tài khoản",
   "@messageInvalidWithdrawAmount": {
+    "type": "text"
+  },
+  "messageInvalidWithdrawUnderAmount": "Dưới số tiền rút tối thiểu",
+  "@messageInvalidWithdrawUnderAmount": {
     "type": "text"
   },
   "messageWarnUsingCellular": "Bạn đang sử dụng mạng di động",
@@ -753,16 +818,28 @@
   "@messageErrorAccount": {
     "type": "text"
   },
+  "messageErrorAccountIsLocked": "Tài khoản bị khóa, vui lòng liên hệ với bộ phận chăm sóc khách hàng",
+  "@messageErrorAccountIsLocked": {
+    "type": "text"
+  },
   "messageRepeatAccount": "Đăng ký tài khoản trùng lặp",
   "@messageRepeatAccount": {
+    "type": "text"
+  },
+  "messageErrorMobile": "Lỗi số điện thoại di động",
+  "@messageErrorMobile": {
+    "type": "text"
+  },
+  "messageRepeatMobile": "Đăng ký nhiều lần số điện thoại di động",
+  "@messageRepeatMobile": {
     "type": "text"
   },
   "messageErrorPassword": "sai mật khẩu",
   "@messageErrorPassword": {
     "type": "text"
   },
-  "messageErrorPasswordHint": "Mật khẩu không khớp, tài khoản sẽ bị khóa sau 5 lỗi",
-  "@messageErrorPasswordHint": {
+  "messageErrorReferral": "Mã giới thiệu không hợp lệ",
+  "@messageErrorReferral": {
     "type": "text"
   },
   "messageErrorWithdraw": "Rút tiền không thành công",
@@ -818,7 +895,7 @@
       }
     }
   },
-  "homeHintFreeUsage": "Dùng miễn phí",
+  "homeHintFreeUsage": "Sử dụng miễn phí",
   "@homeHintFreeUsage": {
     "type": "text"
   },
@@ -834,20 +911,16 @@
   "@homeUserTabCategoryMovie": {
     "type": "text"
   },
-  "homeUserTabCategoryEgMovie": "Rạp chiếu phim EG",
-  "@homeUserTabCategoryEgMovie": {
-    "type": "text"
-  },
-  "homeUserTabCategoryNewMovie": "Rạp chiếu phim mới",
-  "@homeUserTabCategoryNewMovie": {
-    "type": "text"
-  },
   "homeUserTabCategoryRecommend": "giới thiệu",
   "@homeUserTabCategoryRecommend": {
     "type": "text"
   },
   "homeUserTabCategoryFavorite": "Yêu thích",
   "@homeUserTabCategoryFavorite": {
+    "type": "text"
+  },
+  "homeUserTabCategoryGames": "trò chơi",
+  "@homeUserTabCategoryGames": {
     "type": "text"
   },
   "gameCategoryCasino": "SÒNG BẠC",
@@ -1087,7 +1160,7 @@
   "@memberGridTitleDeposit": {
     "type": "text"
   },
-  "memberGridTitleTransfer": "Chuyển khoản nhanh",
+  "memberGridTitleTransfer": "Chuyển khoản",
   "@memberGridTitleTransfer": {
     "type": "text"
   },
@@ -1195,6 +1268,14 @@
       }
     }
   },
+  "bankcardViewTitleNew": "Thêm thẻ ngân hàng",
+  "@bankcardViewTitleNew": {
+    "type": "text"
+  },
+  "bankcardViewHintNew": "Vui lòng liên kết thẻ ngân hàng để nhận thanh toán",
+  "@bankcardViewHintNew": {
+    "type": "text"
+  },
   "bankcardViewTitleOwner": "Tên tài khoản",
   "@bankcardViewTitleOwner": {
     "type": "text"
@@ -1275,6 +1356,10 @@
   "@withdrawViewHint2": {
     "type": "text"
   },
+  "walletViewTitle": "Ví trung tâm",
+  "@walletViewTitle": {
+    "type": "text"
+  },
   "walletViewTitleMy": "Túi của tôi",
   "@walletViewTitleMy": {
     "type": "text"
@@ -1313,6 +1398,10 @@
   },
   "walletViewMessageSetting": "Thay đổi cài đặt ví",
   "@walletViewMessageSetting": {
+    "type": "text"
+  },
+  "messageNoMessages": "Hiện tại không có thông tin trạm",
+  "@messageNoMessages": {
     "type": "text"
   },
   "centerViewTitleData": "Thông tin khách hàng",
@@ -1391,11 +1480,11 @@
   "@centerHintNoName": {
     "type": "text"
   },
-  "centerLuckyTitle": "Xin vui lòng trong 7 ô trống sau đây，Điền vào các số 01 ~ 49",
+  "centerLuckyTitle": "Xin vui lòng trong 7 ô trống sau đây，Điền vào các số 01~49",
   "@centerLuckyTitle": {
     "type": "text"
   },
-  "centerLuckyNumberError": "Dải số: 01 ~ 49",
+  "centerLuckyNumberError": "Dải số: 01~49",
   "@centerLuckyNumberError": {
     "type": "text"
   },
@@ -1439,15 +1528,15 @@
   "@transactionViewSpinnerTitle": {
     "type": "text"
   },
-  "transactionHeaderSerial": "Số sêri",
+  "transactionHeaderSerial": "Số",
   "@transactionHeaderSerial": {
     "type": "text"
   },
-  "transactionHeaderDate": "Ngày tháng",
+  "transactionHeaderDate": "Ngày",
   "@transactionHeaderDate": {
     "type": "text"
   },
-  "transactionHeaderType": "Thể loại",
+  "transactionHeaderType": "Các loại",
   "@transactionHeaderType": {
     "type": "text"
   },
@@ -1584,6 +1673,14 @@
   "@dealsHeaderAmount": {
     "type": "text"
   },
+  "dealsDetailTypeAdjustDeposit": "Số tiền điều chỉnh",
+  "@dealsDetailTypeAdjustDeposit": {
+    "type": "text"
+  },
+  "dealsDetailTypeAdjustWithdraw": "Điều chỉnh việc rút tiền",
+  "@dealsDetailTypeAdjustWithdraw": {
+    "type": "text"
+  },
   "depositPaymentNoData": "Kiểm tra xem không có phương thức nạp tiền nào",
   "@depositPaymentNoData": {
     "type": "text"
@@ -1622,6 +1719,10 @@
   },
   "depositPaymentTitleAtm": "Chuyển khoản ngân hàng trực tuyến",
   "@depositPaymentTitleAtm": {
+    "type": "text"
+  },
+  "depositPaymentTitleQr": "Mã quét QR",
+  "@depositPaymentTitleQr": {
     "type": "text"
   },
   "depositPaymentSpinnerTitlePromo": "Chọn ưu đãi",
@@ -2018,44 +2119,56 @@
   "@balanceHintText4": {
     "type": "text"
   },
-  "flowHeaderTextTime": "Khoảng thời gian",
-  "@flowHeaderTextTime": {
+  "rollbackHeaderTextTime": "Khoảng thời gian",
+  "@rollbackHeaderTextTime": {
     "type": "text"
   },
-  "flowHeaderTextCode": "Mã giao dịch",
-  "@flowHeaderTextCode": {
+  "rollbackHeaderTextCode": "Mã giao dịch",
+  "@rollbackHeaderTextCode": {
     "type": "text"
   },
-  "flowHeaderTextType": "Loại hình",
-  "@flowHeaderTextType": {
+  "rollbackHeaderTextType": "Loại hình",
+  "@rollbackHeaderTextType": {
     "type": "text"
   },
-  "flowHeaderTextAmount": "Số tiền",
-  "@flowHeaderTextAmount": {
+  "rollbackHeaderTextAmount": "Số tiền",
+  "@rollbackHeaderTextAmount": {
     "type": "text"
   },
-  "flowHeaderTextMultiple": "Yêu cầu vòng cược",
-  "@flowHeaderTextMultiple": {
+  "rollbackHeaderTextMultiple": "Yêu cầu vòng cược",
+  "@rollbackHeaderTextMultiple": {
     "type": "text"
   },
-  "flowHeaderTextPromo": "Tên ưu đãi",
-  "@flowHeaderTextPromo": {
+  "rollbackHeaderTextPromo": "Tên ưu đãi",
+  "@rollbackHeaderTextPromo": {
     "type": "text"
   },
-  "flowHeaderTextRequire": "Doanh thu yêu cầu",
-  "@flowHeaderTextRequire": {
+  "rollbackHeaderTextRequire": "Doanh thu yêu cầu",
+  "@rollbackHeaderTextRequire": {
     "type": "text"
   },
-  "flowHeaderTextCurrent": "Tổng cược",
-  "@flowHeaderTextCurrent": {
+  "rollbackHeaderTextCurrent": "Tổng cược",
+  "@rollbackHeaderTextCurrent": {
     "type": "text"
   },
-  "flowHeaderTextNeed": "Tổng cược hợp lệ",
-  "@flowHeaderTextNeed": {
+  "rollbackHeaderTextNeed": "Tổng cược hợp lệ",
+  "@rollbackHeaderTextNeed": {
     "type": "text"
   },
-  "flowHeaderTextTotal": "Tổng cộng",
-  "@flowHeaderTextTotal": {
+  "rollbackHeaderTextTotal": "Tổng cộng",
+  "@rollbackHeaderTextTotal": {
+    "type": "text"
+  },
+  "rollbackIndexPromo": "Giảm giá",
+  "@rollbackIndexPromo": {
+    "type": "text"
+  },
+  "rollbackIndexDeposit": "tiền gửi",
+  "@rollbackIndexDeposit": {
+    "type": "text"
+  },
+  "rollbackIndexRollback": "Rút lui",
+  "@rollbackIndexRollback": {
     "type": "text"
   },
   "agentActionLoginHint": "Đăng nhập đại lý",
@@ -2828,178 +2941,6 @@
       }
     }
   },
-  "aboutCertTitle": "giấy phép",
-  "@aboutCertTitle": {
-    "type": "text"
-  },
-  "aboutCertTitleGC": "Ủy ban GC supervisory của anh",
-  "@aboutCertTitleGC": {
-    "type": "text"
-  },
-  "aboutCertTitleMGA": "Giấy phép cá cược Malta (MGA)",
-  "@aboutCertTitleMGA": {
-    "type": "text"
-  },
-  "aboutCertTitlePGC": "Giấy phép game cá cược Philippines (PAGCOR)",
-  "@aboutCertTitlePGC": {
-    "type": "text"
-  },
-  "aboutCertTitleBVI": "Giấy phép Quần đảo Virgin Anh (BVI)",
-  "@aboutCertTitleBVI": {
-    "type": "text"
-  },
-  "aboutDataTitle1": "Giới thiệu Nhà cái 85BET",
-  "@aboutDataTitle1": {
-    "type": "text"
-  },
-  "aboutDataDesc10": "85BET được cấp phép bởi Isle of Man và Khu kinh tế Cagayan và Freeport. Đây là một công ty đa quốc gia có hoạt động tại khu vực Châu Á - Thái Bình Dương.\n\n",
-  "@aboutDataDesc10": {
-    "type": "text"
-  },
-  "aboutDataDesc11": "85bet dựa vào kinh nghiệm và danh tiếng phong phú của mình để cung cấp dịch vụ cho hơn mười triệu người chơi, điều này chứng tỏ tính hợp pháp và hợp pháp lâu dài và hoàn toàn đáng tin cậy.\n\n",
-  "@aboutDataDesc11": {
-    "type": "text"
-  },
-  "aboutDataDesc12": "Là công ty trò chơi trực thuộc M.A.N Entertainment Group, có trụ sở chính tại Manila, Philippines. Đây được coi là tập đoàn lớn nhất trong thị trường cờ bạc trực tuyến châu Á với lực lượng lao động đông đảo. Với sự tự tin cao đã được công nhận, 85bet hiện đã trở thành một trong những nhà cái cá cược được xác minh và cấp phép đầy đủ nhất của Hiệp hội Trò chơi Trực tuyến Quốc tế.\n\n",
-  "@aboutDataDesc12": {
-    "type": "text"
-  },
-  "aboutDataTitle2": "THÔNG TIN",
-  "@aboutDataTitle2": {
-    "type": "text"
-  },
-  "aboutDataSubtitle20": "Đăng Ký",
-  "@aboutDataSubtitle20": {
-    "type": "text"
-  },
-  "aboutDataDesc20": "Mở một tài khoản Việt Nam 85bet để tham gia trực tuyến tất cả các chương trình khuyến mãi cá cược trực tuyến của chúng tôi chơi game Trang web giải trí chất lượng cao với giá trị đặc biệt tốt. Chúng tôi tin rằng trong phần điểm thưởng khách hàng sẽ có cơ hội nhận được những phần quà có giá trị và những KHUYẾN MÃI khi tham gia các chương trình khuyến mãi.",
-  "@aboutDataDesc20": {
-    "type": "text"
-  },
-  "aboutDataDesc21": "Trở thành tốt nhất đối tác của chúng tôi và hưởng mức hoa hồng hấp dẫn mỗi tháng bằng cách giới thiệu người chơi đến 85bet.",
-  "@aboutDataDesc21": {
-    "type": "text"
-  },
-  "aboutDataSubtitle21": "Đại Lý",
-  "@aboutDataSubtitle21": {
-    "type": "text"
-  },
-  "aboutDataSubtitle22": "Cá Cược Có Trách Nhiệm",
-  "@aboutDataSubtitle22": {
-    "type": "text"
-  },
-  "aboutDataDesc22": "85bet tỷ lệ cá cược bóng đá phấn đấu để cung cấp một kênh giải trí cho khách hàng của chúng tôi một cách tích cực. Chúng tôi có biện pháp bảo vệ chủ yếu thúc đẩy và đảm bảo cá cược có trách nhiệm.",
-  "@aboutDataDesc22": {
-    "type": "text"
-  },
-  "aboutDataSubtitle23": "Bảo Mật",
-  "@aboutDataSubtitle23": {
-    "type": "text"
-  },
-  "aboutDataDesc23": "Với hệ thống cược vững vàng và an toàn. Sự riêng tư của Quý Khách là ưu tiên hàng đầu của chúng tôi vì vậy chúng tôi luôn luôn tuân thủ nghiêm ngặt các chính sách bảo mật.",
-  "@aboutDataDesc23": {
-    "type": "text"
-  },
-  "aboutDataTitle3": "SẢN PHẨM",
-  "@aboutDataTitle3": {
-    "type": "text"
-  },
-  "aboutDataSubtitle30": "Cá Cược Thể Thao Và Cá Cược Trực Tuyến tỷ lệ cá cược bóng đá",
-  "@aboutDataSubtitle30": {
-    "type": "text"
-  },
-  "aboutDataDesc30": "tỷ lệ cá cược bóng đá Chúng tôi cung cấp những giải đấu lớn như: Ngoại hạng Anh, vô địch Tây Ban Nha La Liga, Serie A Ý, Vô địch UEFA, Vô địch quốc gia Pháp, Đức, NFL, NBA, NCAA, Bóng rổ Nữ, Quần vợt, Đua xe F1 Chúng tôi hân hạnh được đưa đến cho Quý Khách hơn 4,000 trận đấu mỗi tháng.",
-  "@aboutDataDesc30": {
-    "type": "text"
-  },
-  "aboutDataSubtitle31": "Trò Chơi Trực Tuyến",
-  "@aboutDataSubtitle31": {
-    "type": "text"
-  },
-  "aboutDataDesc31": "Các trò chơi trực tuyến với nhiều cơ hội thắng giải Jackpots trong các trò chơi: Roulette, Blackjack, Poker, Slots. Nhiều giải thưởng Jackpot lũy tiến và cơ hội thắng cao hơn trong 85bet.",
-  "@aboutDataDesc31": {
-    "type": "text"
-  },
-  "aboutDataSubtitle32": "Casino Trực Tuyến",
-  "@aboutDataSubtitle32": {
-    "type": "text"
-  },
-  "aboutDataDesc32": "Ngoài ra chúng tôi còn cung cấp nhiều loại hình trò chơi trực tuyến khác, đặc biệt: Casino trực tuyến với những người chia bài nóng bỏng trong Baccarat, Sicbo, Rồng/hổ, Roulette và Casino Slots trực tuyến, cách chơi dễ dàng.",
-  "@aboutDataDesc32": {
-    "type": "text"
-  },
-  "aboutDataTitle4": "TRUNG TÂM THÔNG TIN",
-  "@aboutDataTitle4": {
-    "type": "text"
-  },
-  "aboutDataSubtitle40": "Khuyến Mãi",
-  "@aboutDataSubtitle40": {
-    "type": "text"
-  },
-  "aboutDataDesc40": "Khuyến mãi tiền thưởng dành cho thành viên mới. Tiền thưởng cho những lần Chuyển Tiền tiếp theo và hoàn trả dành cho thành viên hiện tại.",
-  "@aboutDataDesc40": {
-    "type": "text"
-  },
-  "aboutDataSubtitle41": "Trung Tâm Hỗ Trợ",
-  "@aboutDataSubtitle41": {
-    "type": "text"
-  },
-  "aboutDataDesc41": "Xem thêm mục những câu hỏi thường gặp dành cho thể thao và các trò chơi khác. Hỗ trợ đăng ký tài khoản, Chuyển Tiền, rút tiền và các thông tin kỹ thuật khác.",
-  "@aboutDataDesc41": {
-    "type": "text"
-  },
-  "aboutDataSubtitle42": "Phương Thức Thanh Toán",
-  "@aboutDataSubtitle42": {
-    "type": "text"
-  },
-  "aboutDataDesc42": "Chúng tôi cung cấp sự lựa chọn tuyệt vời cho khách hàng gửi và rút tiền thông qua NETELLER, Moneybookers, chuyển giao Ngân hàng Quốc tế, Western Union. Chúng tôi có tất cả, hãy bắt đầu ngay với 85bet.",
-  "@aboutDataDesc42": {
-    "type": "text"
-  },
-  "aboutDataSubtitle43": "Liên Hệ",
-  "@aboutDataSubtitle43": {
-    "type": "text"
-  },
-  "aboutDataDesc43": "Nếu Quý Khách cần bất cứ sự giúp đỡ hoặc thắc mắc về cá cược trực tuyến tỷ lệ cá cược bóng đá hoặc casino trực tuyến, chúng tôi luôn hỗ trợ 24/7 thông qua Live Chat, Điện thoại và email.",
-  "@aboutDataDesc43": {
-    "type": "text"
-  },
-  "aboutDataTitle5": "THÔNG TIN CÁ CƯỢC",
-  "@aboutDataTitle5": {
-    "type": "text"
-  },
-  "aboutDataSubtitle50": "Kết Quả Thể Thao",
-  "@aboutDataSubtitle50": {
-    "type": "text"
-  },
-  "aboutDataDesc50": "Việt Nam tỷ lệ cá cược bóng đá Cung cấp kết quả của tất cả trận và giải đấu thể thao.tốt nhất Việt Nam hiện nay .",
-  "@aboutDataDesc50": {
-    "type": "text"
-  },
-  "aboutDataSubtitle51": "Thống Kê Đặt Cược",
-  "@aboutDataSubtitle51": {
-    "type": "text"
-  },
-  "aboutDataDesc51": "Hơn 200 giải đấu đa dạng với nhiều bộ môn thể thao, hình thức thi đấu, đội thi đấu và thi đấu cá nhân, lịch thi đấu, đội hình, đội tuyển, thời gian cộng thêm và trận đấu hoãn.",
-  "@aboutDataDesc51": {
-    "type": "text"
-  },
-  "aboutDataSubtitle52": "Cá Cược Thể Thao",
-  "@aboutDataSubtitle52": {
-    "type": "text"
-  },
-  "aboutDataDesc52": "Toàn bộ các Quy tắc thể thao của chúng tôi đều tuân thủ nghiêm ngặt theo Quy tắc chính thức của ban tổ chức. tốt nhất Việt Nam hiện nay.",
-  "@aboutDataDesc52": {
-    "type": "text"
-  },
-  "aboutDataSubtitle53": "Cá Cược Casino",
-  "@aboutDataSubtitle53": {
-    "type": "text"
-  },
-  "aboutDataDesc53": "Casino trực tuyến hiển thị đầy đủ: giới hạn cược, Kết quả và chi tiết lịch sử cược. Tất cả những thông tin cược của Quý Khách đều được tích hợp trên màn hình để tiện nhất cho sự giải trí của Quý Khách. Quý Khách có thể kiểm tra lại bất cứ thông tin cược nào trong bất cứ thời điểm nào.",
-  "@aboutDataDesc53": {
-    "type": "text"
-  },
   "serviceRouteHint": "Cần giúp đỡ hoặc liên hệ với chúng tôi",
   "@serviceRouteHint": {
     "type": "text"
@@ -3038,6 +2979,30 @@
   },
   "serviceTitleFacebook": "Facebook",
   "@serviceTitleFacebook": {
+    "type": "text"
+  },
+  "downloadAndroidCgpay": "CGPAY cho Android",
+  "@downloadAndroidCgpay": {
+    "type": "text"
+  },
+  "downloadIosCgpay": "CGPAY cho IOS",
+  "@downloadIosCgpay": {
+    "type": "text"
+  },
+  "downloadAndroidDns": "Sửa chữa DNS cho Android",
+  "@downloadAndroidDns": {
+    "type": "text"
+  },
+  "downloadIosDns": "Sửa chữa DNS cho IOS",
+  "@downloadIosDns": {
+    "type": "text"
+  },
+  "downloadHintPlatformAndroid": "(Chỉ dành cho Android)",
+  "@downloadHintPlatformAndroid": {
+    "type": "text"
+  },
+  "downloadHintPlatformIos": "(Chỉ dành cho iOS)",
+  "@downloadHintPlatformIos": {
     "type": "text"
   }
 }

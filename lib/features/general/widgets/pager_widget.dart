@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 typedef PagerAction = void Function(int);
 
@@ -66,8 +66,8 @@ class PagerWidgetState extends State<PagerWidget> {
                 child: ButtonTheme(
                   minWidth: btnSize,
                   height: btnSize,
-                  buttonColor: Themes.pagerButtonColor,
-                  disabledColor: Themes.buttonDisabledColorDark,
+                  buttonColor: themeColor.pagerButtonColor,
+                  disabledColor: themeColor.buttonDisabledColorDark,
                   child: RaisedButton(
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     padding: const EdgeInsets.all(6.0),
@@ -104,8 +104,8 @@ class PagerWidgetState extends State<PagerWidget> {
                         minWidth: btnSize,
                         height: btnSize,
                         buttonColor: (currentPage == page)
-                            ? Themes.pagerButtonSelectedColor
-                            : Themes.pagerButtonColor,
+                            ? themeColor.pagerButtonSelectedColor
+                            : themeColor.pagerButtonColor,
                         child: RaisedButton(
                           materialTapTargetSize:
                               MaterialTapTargetSize.shrinkWrap,
@@ -117,7 +117,13 @@ class PagerWidgetState extends State<PagerWidget> {
                           onPressed: (widget.onAction == null)
                               ? null
                               : () => widget.onAction(page),
-                          child: Text('$page'),
+                          child: Text(
+                            '$page',
+                            style: TextStyle(
+                                color: (currentPage == page)
+                                    ? themeColor.secondaryTextColor1
+                                    : themeColor.defaultTextColor),
+                          ),
                         ),
                       ),
                     );
@@ -136,8 +142,8 @@ class PagerWidgetState extends State<PagerWidget> {
                 child: ButtonTheme(
                   minWidth: btnSize,
                   height: btnSize,
-                  buttonColor: Themes.pagerButtonColor,
-                  disabledColor: Themes.buttonDisabledColorDark,
+                  buttonColor: themeColor.pagerButtonColor,
+                  disabledColor: themeColor.buttonDisabledColorDark,
                   child: RaisedButton(
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     padding: const EdgeInsets.all(6.0),

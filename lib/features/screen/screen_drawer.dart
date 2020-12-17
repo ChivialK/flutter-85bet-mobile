@@ -40,7 +40,7 @@ class ScreenDrawer extends StatelessWidget {
       // open web page
       RouterNavigate.replacePage(route);
       return true;
-    } else if (route.page != RouterNavigate.current) {
+    } else if (route.pageName != RouterNavigate.current) {
       RouterNavigate.navigateToPage(route);
       return true;
     }
@@ -104,8 +104,8 @@ class ScreenDrawer extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: RaisedButton(
-                              color: Themes.buttonPrimaryColor,
-                              textColor: Themes.buttonTextPrimaryColor,
+                              color: themeColor.buttonPrimaryColor,
+                              textColor: themeColor.buttonTextPrimaryColor,
                               child: Text(
                                 localeStr.pageTitleLogin,
                                 style: TextStyle(
@@ -123,8 +123,8 @@ class ScreenDrawer extends StatelessWidget {
                             ),
                           ),
                           RaisedButton(
-                            color: Themes.buttonPrimaryColor,
-                            textColor: Themes.buttonTextPrimaryColor,
+                            color: themeColor.buttonPrimaryColor,
+                            textColor: themeColor.buttonTextPrimaryColor,
                             child: Text(
                               localeStr.pageTitleRegister,
                               style:
@@ -146,11 +146,13 @@ class ScreenDrawer extends StatelessWidget {
                             },
                           ),
                           Container(
-                            width: 160,
-                            height: 160,
+                            width: 144,
+                            height: 144,
                             margin: const EdgeInsets.symmetric(vertical: 30.0),
-                            child:
-                                networkImageBuilder('images/member-star.png'),
+                            child: networkImageBuilder(
+                              'images/member-star.png',
+                              imgScale: 0.85,
+                            ),
                           ),
                         ],
                       ),
@@ -166,11 +168,13 @@ class ScreenDrawer extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Container(
-                            width: 160,
-                            height: 160,
-                            margin: const EdgeInsets.symmetric(vertical: 12.0),
-                            child:
-                                networkImageBuilder('images/member-star.png'),
+                            width: 144,
+                            height: 144,
+                            margin: const EdgeInsets.symmetric(vertical: 24.0),
+                            child: networkImageBuilder(
+                              'images/member-star.png',
+                              imgScale: 0.85,
+                            ),
                           ),
                           Center(
                             child: Text(
@@ -233,7 +237,7 @@ class ScreenDrawer extends StatelessWidget {
                       'version: ${Global.device.appVersionSide}',
                       style: TextStyle(
                         fontSize: FontSize.SMALL.value,
-                        color: Themes.defaultHintSubColor,
+                        color: themeColor.defaultHintSubColor,
                       ),
                     ),
                   ],
@@ -260,7 +264,7 @@ class ScreenDrawer extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Themes.sideMenuIconBgColor,
+              color: themeColor.sideMenuIconBgColor,
             ),
             padding: const EdgeInsets.all(4.0),
             child: Transform.scale(
@@ -271,7 +275,7 @@ class ScreenDrawer extends StatelessWidget {
                     : EdgeInsets.zero,
                 child: Icon(
                   itemValue.iconData,
-                  color: Themes.sideMenuIconColor,
+                  color: themeColor.sideMenuIconColor,
                   size: 36.0,
                 ),
               ),
@@ -283,7 +287,7 @@ class ScreenDrawer extends StatelessWidget {
               title ?? itemValue.title ?? itemValue.route?.pageTitle ?? '?',
               style: TextStyle(
                 fontSize: FontSize.MESSAGE.value,
-                color: Themes.sideMenuIconTextColor,
+                color: themeColor.sideMenuIconTextColor,
               ),
             ),
           ),

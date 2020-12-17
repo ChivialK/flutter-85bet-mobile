@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/font_size.dart';
+import 'package:flutter_85bet_mobile/features/themes/font_size.dart';
 import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/dialog_widget.dart';
 

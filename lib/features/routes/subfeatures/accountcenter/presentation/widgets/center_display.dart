@@ -51,8 +51,8 @@ class _CenterDisplayState extends State<CenterDisplay> {
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Themes.memberIconColor,
-                    boxShadow: Themes.roundIconShadow,
+                    color: themeColor.memberIconColor,
+                    boxShadow: ThemeInterface.iconBottomShadow,
                   ),
                   child: Icon(
                     pageItem.value.iconData,
@@ -94,8 +94,8 @@ class _CenterDisplayState extends State<CenterDisplay> {
                     child: Container(
                       decoration: BoxDecoration(
                         color: (_clicked == index)
-                            ? Themes.buttonTextPrimaryColor
-                            : Themes.walletBoxButtonColor,
+                            ? themeColor.buttonTextPrimaryColor
+                            : themeColor.walletBoxButtonColor,
                         borderRadius:
                             BorderRadius.vertical(top: Radius.circular(6.0)),
                       ),
@@ -106,8 +106,8 @@ class _CenterDisplayState extends State<CenterDisplay> {
                           tabs[index],
                           style: TextStyle(
                             color: (_clicked == index)
-                                ? Themes.walletBoxButtonColor
-                                : Themes.buttonTextPrimaryColor,
+                                ? themeColor.walletBoxButtonColor
+                                : themeColor.buttonTextPrimaryColor,
                             fontSize: FontSize.SUBTITLE.value,
                           ),
                           maxLines: 2,

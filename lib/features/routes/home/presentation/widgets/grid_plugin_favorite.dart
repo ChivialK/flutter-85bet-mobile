@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 import 'package:flutter_85bet_mobile/res.dart';
 
 typedef PluginTapAction = void Function(bool);
@@ -45,7 +45,7 @@ class _GridPluginFavoriteState extends State<GridPluginFavorite> {
       child: IconButton(
         icon: Image.asset(
           Res.tbico_fav,
-          color: (checked) ? Colors.pinkAccent : Themes.homeFavoriteColor,
+          color: (checked) ? Colors.pinkAccent : themeColor.homeFavoriteColor,
         ),
         iconSize: 18.0,
         visualDensity: VisualDensity.compact,

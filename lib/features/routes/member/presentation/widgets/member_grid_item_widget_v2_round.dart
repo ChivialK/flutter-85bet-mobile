@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 import '../data/member_grid_item_v2.dart';
 
@@ -18,7 +18,7 @@ class MemberGridItemWidgetV2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Themes.defaultGridColor,
+        color: themeColor.defaultGridColor,
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
       ),
       margin: const EdgeInsets.all(2.0),
@@ -31,7 +31,7 @@ class MemberGridItemWidgetV2 extends StatelessWidget {
               child: networkImageBuilder(
                 itemData.imageName,
                 imgScale: 2.0,
-                imgColor: Themes.memberIconColor,
+                imgColor: themeColor.memberIconColor,
               )),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 2.0),
@@ -40,7 +40,7 @@ class MemberGridItemWidgetV2 extends StatelessWidget {
               itemData.title ?? itemData.route?.pageTitle ?? '?',
               style: TextStyle(
                 fontSize: FontSize.SUBTITLE.value - 1,
-                color: Themes.iconTextColor,
+                color: themeColor.iconTextColor,
               ),
               maxLines: 2,
               textAlign: TextAlign.center,

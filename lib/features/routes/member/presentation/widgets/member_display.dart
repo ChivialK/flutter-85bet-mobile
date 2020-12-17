@@ -7,6 +7,7 @@ import '../data/member_grid_item.dart';
 import '../state/member_credit_store.dart';
 import 'member_display_header.dart';
 import 'member_grid_item_widget.dart';
+import 'member_grid_item_widget_badge.dart';
 
 class MemberDisplay extends StatefulWidget {
   final MemberCreditStore store;
@@ -39,7 +40,8 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
     MemberGridItem.transferRecord,
     MemberGridItem.betRecord,
     MemberGridItem.dealRecord,
-    MemberGridItem.flowRecord,
+    MemberGridItem.rollback,
+    MemberGridItem.vip,
   ];
 
   void _itemTapped(MemberGridItem item) {
@@ -130,8 +132,8 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
                 padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Themes.memberIconColor,
-                  boxShadow: Themes.roundIconShadow,
+                  color: themeColor.memberIconColor,
+                  boxShadow: ThemeInterface.iconBottomShadow,
                 ),
                 child: Icon(
                   const IconData(0xe962, fontFamily: 'IconMoon'),
@@ -159,7 +161,7 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
         ),
         /* Features Grid */
         Padding(
-          padding: const EdgeInsets.only(top: 12.0, bottom: 4.0),
+          padding: const EdgeInsets.only(top: 12.0, bottom: 8.0),
           child: GridView.count(
             primary: false,
             physics: BouncingScrollPhysics(),
@@ -169,11 +171,19 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
             childAspectRatio: _gridRatio,
             shrinkWrap: true,
             children: _gridItems
-                .map((item) => MemberGridItemWidget(
-                      item: item,
-                      iconSize: _iconSize,
-                      onItemTap: (gridItem) => _itemTapped(gridItem),
-                    ))
+                .map((item) => (item.value.id == RouteEnum.MESSAGE)
+                    ? MemberGridItemWidgetBadge(
+                        item: item,
+                        iconSize: _iconSize,
+                        store: widget.store,
+                        type: MemberGridItemBadgeType.NEW_MESSAGE,
+                        onItemTap: (value) => _itemTapped(value),
+                      )
+                    : MemberGridItemWidget(
+                        item: item,
+                        iconSize: _iconSize,
+                        onItemTap: (gridItem) => _itemTapped(gridItem),
+                      ))
                 .toList(),
           ),
         ),

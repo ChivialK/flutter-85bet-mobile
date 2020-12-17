@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
 import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/table_cell_text_widget.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart';
 
 import '../../data/models/bet_record_model.dart';
@@ -55,12 +55,12 @@ class BetRecordDisplayTable extends StatelessWidget {
       constraints: BoxConstraints(
         maxWidth: _availableWidth,
       ),
-      color: Themes.chartBgColor,
+      color: themeColor.chartBgColor,
       child: Table(
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
         columnWidths: _tableWidthMap,
         border: TableBorder.all(
-          color: Themes.chartBorderColor,
+          color: themeColor.chartBorderColor,
           width: 2.0,
           style: BorderStyle.solid,
         ),
@@ -89,7 +89,7 @@ class BetRecordDisplayTable extends StatelessWidget {
       if (data is BetRecordDataAllPlatform) {
         if (data.isSumData()) sumRowIndex = index;
         dataTexts = [
-          (data.isSumData()) ? localeStr.flowHeaderTextTotal : data.key,
+          (data.isSumData()) ? localeStr.rollbackHeaderTextTotal : data.key,
           formatNum(data.bet),
           formatNum(data.payout),
         ];
@@ -97,7 +97,7 @@ class BetRecordDisplayTable extends StatelessWidget {
         if (data.isSumData()) {
           sumRowIndex = index;
           dataTexts = [
-            localeStr.flowHeaderTextTotal,
+            localeStr.rollbackHeaderTextTotal,
             '',
             '',
             '',

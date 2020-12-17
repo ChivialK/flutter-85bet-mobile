@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/font_size.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 import '../data/member_grid_data.dart';
 import '../data/member_grid_item.dart';
@@ -24,7 +23,7 @@ class MemberGridItemWidget extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.all(4.0),
         child: DecoratedBox(
-          decoration: Themes.gridItemShadowDecor,
+          decoration: ThemeInterface.gridItemShadowDecor,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -34,7 +33,7 @@ class MemberGridItemWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: itemData.iconDecorColor ?? Themes.memberIconColor,
+                  color: itemData.iconDecorColor ?? themeColor.memberIconColor,
                 ),
                 child: Icon(itemData.iconData, size: iconSize ?? 24.0),
               ),

@@ -80,7 +80,7 @@ class _CenterDisplayVipState extends State<CenterDisplayVip> {
       );
     }
     return Container(
-      decoration: Themes.layerShadowDecorRoundBottom,
+      decoration: ThemeInterface.layerShadowDecorRoundBottom,
       constraints: BoxConstraints(minHeight: 60),
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: InkWell(
@@ -289,10 +289,10 @@ class _CenterDisplayVipState extends State<CenterDisplayVip> {
                 width: progressBarHeight,
                 height: 10,
                 child: LinearProgressIndicator(
-                  backgroundColor: Themes.vipProgressColor,
+                  backgroundColor: themeColor.vipProgressColor,
                   value: progress,
                   valueColor:
-                      AlwaysStoppedAnimation(Themes.vipProgressCircleColor),
+                      AlwaysStoppedAnimation(themeColor.vipProgressCircleColor),
                 ),
               ),
             )
@@ -319,11 +319,11 @@ class _CenterDisplayVipState extends State<CenterDisplayVip> {
               constraints: BoxConstraints.tight(circleSize),
               decoration: BoxDecoration(
                 color: (current >= required)
-                    ? Themes.vipProgressBorderColor
-                    : Themes.vipProgressCircleColor,
+                    ? themeColor.vipProgressBorderColor
+                    : themeColor.vipProgressCircleColor,
                 shape: BoxShape.circle,
                 border: new Border.all(
-                  color: Themes.vipProgressBorderColor,
+                  color: themeColor.vipProgressBorderColor,
                   width: 6.0,
                 ),
 //                boxShadow: <BoxShadow>[
@@ -341,9 +341,9 @@ class _CenterDisplayVipState extends State<CenterDisplayVip> {
                   style: TextStyle(
                     fontSize: FontSize.SUBTITLE.value,
 //                    color: (current >= required)
-//                        ? Themes.vipIconTextColor
-//                        : Themes.vipTextColor,
-                    color: Themes.vipIconTextColor,
+//                        ? themeColor.vipIconTextColor
+//                        : themeColor.vipTextColor,
+                    color: themeColor.vipIconTextColor,
                   ),
                 ),
               ),

@@ -9,6 +9,7 @@ part of 'center_model.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$CenterModelTearOff {
   const _$CenterModelTearOff();
 
@@ -25,7 +26,7 @@ class _$CenterModelTearOff {
       @JsonKey(name: 'auto_transfer', defaultValue: '-1') String autoTransfer,
       @JsonKey(name: 'cGP_wallet', defaultValue: '') String cgpWallet,
       @JsonKey(name: 'cPW_wallet', defaultValue: '') String cpwWallet,
-      @JsonKey(name: 'address', fromJson: _jsonList) dynamic lotto,
+      @JsonKey(name: 'address', fromJson: _jsonList) List<dynamic> lotto,
       @JsonKey(name: 'allgame') int allGame,
       @JsonKey(name: 'allgame_level') int allGameLevel,
       @JsonKey(name: 'allgame_value') int allGameValue,
@@ -47,8 +48,8 @@ class _$CenterModelTearOff {
       @JsonKey(name: 'sportgame') int sportGame,
       @JsonKey(name: 'sportgame_level') int sportGameLevel,
       @JsonKey(name: 'sportgame_value') int sportGameValue,
-      @JsonKey(name: 'vip_option') var vipOption,
-      @JsonKey(name: 'vip_setting') var vipSetting}) {
+      @JsonKey(name: 'vip_option') dynamic vipOption,
+      @JsonKey(name: 'vip_setting') dynamic vipSetting}) {
     return _CenterModel(
       accountCode: accountCode,
       accountId: accountId,
@@ -89,9 +90,11 @@ class _$CenterModelTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CenterModel = _$CenterModelTearOff();
 
+/// @nodoc
 mixin _$CenterModel {
   @JsonKey(name: 'accountcode', defaultValue: '')
   String get accountCode;
@@ -113,7 +116,7 @@ mixin _$CenterModel {
   @JsonKey(name: 'cPW_wallet', defaultValue: '')
   String get cpwWallet;
   @JsonKey(name: 'address', fromJson: _jsonList)
-  dynamic get lotto;
+  List<dynamic> get lotto;
   @JsonKey(name: 'allgame')
   int get allGame;
   @JsonKey(name: 'allgame_level')
@@ -164,6 +167,7 @@ mixin _$CenterModel {
   $CenterModelCopyWith<CenterModel> get copyWith;
 }
 
+/// @nodoc
 abstract class $CenterModelCopyWith<$Res> {
   factory $CenterModelCopyWith(
           CenterModel value, $Res Function(CenterModel) then) =
@@ -180,7 +184,7 @@ abstract class $CenterModelCopyWith<$Res> {
       @JsonKey(name: 'auto_transfer', defaultValue: '-1') String autoTransfer,
       @JsonKey(name: 'cGP_wallet', defaultValue: '') String cgpWallet,
       @JsonKey(name: 'cPW_wallet', defaultValue: '') String cpwWallet,
-      @JsonKey(name: 'address', fromJson: _jsonList) dynamic lotto,
+      @JsonKey(name: 'address', fromJson: _jsonList) List<dynamic> lotto,
       @JsonKey(name: 'allgame') int allGame,
       @JsonKey(name: 'allgame_level') int allGameLevel,
       @JsonKey(name: 'allgame_value') int allGameValue,
@@ -202,10 +206,11 @@ abstract class $CenterModelCopyWith<$Res> {
       @JsonKey(name: 'sportgame') int sportGame,
       @JsonKey(name: 'sportgame_level') int sportGameLevel,
       @JsonKey(name: 'sportgame_value') int sportGameValue,
-      @JsonKey(name: 'vip_option') var vipOption,
-      @JsonKey(name: 'vip_setting') var vipSetting});
+      @JsonKey(name: 'vip_option') dynamic vipOption,
+      @JsonKey(name: 'vip_setting') dynamic vipSetting});
 }
 
+/// @nodoc
 class _$CenterModelCopyWithImpl<$Res> implements $CenterModelCopyWith<$Res> {
   _$CenterModelCopyWithImpl(this._value, this._then);
 
@@ -266,7 +271,7 @@ class _$CenterModelCopyWithImpl<$Res> implements $CenterModelCopyWith<$Res> {
           : autoTransfer as String,
       cgpWallet: cgpWallet == freezed ? _value.cgpWallet : cgpWallet as String,
       cpwWallet: cpwWallet == freezed ? _value.cpwWallet : cpwWallet as String,
-      lotto: lotto == freezed ? _value.lotto : lotto as dynamic,
+      lotto: lotto == freezed ? _value.lotto : lotto as List<dynamic>,
       allGame: allGame == freezed ? _value.allGame : allGame as int,
       allGameLevel:
           allGameLevel == freezed ? _value.allGameLevel : allGameLevel as int,
@@ -315,12 +320,14 @@ class _$CenterModelCopyWithImpl<$Res> implements $CenterModelCopyWith<$Res> {
       sportGameValue: sportGameValue == freezed
           ? _value.sportGameValue
           : sportGameValue as int,
-      vipOption: vipOption == freezed ? _value.vipOption : vipOption,
-      vipSetting: vipSetting == freezed ? _value.vipSetting : vipSetting,
+      vipOption: vipOption == freezed ? _value.vipOption : vipOption as dynamic,
+      vipSetting:
+          vipSetting == freezed ? _value.vipSetting : vipSetting as dynamic,
     ));
   }
 }
 
+/// @nodoc
 abstract class _$CenterModelCopyWith<$Res>
     implements $CenterModelCopyWith<$Res> {
   factory _$CenterModelCopyWith(
@@ -339,7 +346,7 @@ abstract class _$CenterModelCopyWith<$Res>
       @JsonKey(name: 'auto_transfer', defaultValue: '-1') String autoTransfer,
       @JsonKey(name: 'cGP_wallet', defaultValue: '') String cgpWallet,
       @JsonKey(name: 'cPW_wallet', defaultValue: '') String cpwWallet,
-      @JsonKey(name: 'address', fromJson: _jsonList) dynamic lotto,
+      @JsonKey(name: 'address', fromJson: _jsonList) List<dynamic> lotto,
       @JsonKey(name: 'allgame') int allGame,
       @JsonKey(name: 'allgame_level') int allGameLevel,
       @JsonKey(name: 'allgame_value') int allGameValue,
@@ -361,10 +368,11 @@ abstract class _$CenterModelCopyWith<$Res>
       @JsonKey(name: 'sportgame') int sportGame,
       @JsonKey(name: 'sportgame_level') int sportGameLevel,
       @JsonKey(name: 'sportgame_value') int sportGameValue,
-      @JsonKey(name: 'vip_option') var vipOption,
-      @JsonKey(name: 'vip_setting') var vipSetting});
+      @JsonKey(name: 'vip_option') dynamic vipOption,
+      @JsonKey(name: 'vip_setting') dynamic vipSetting});
 }
 
+/// @nodoc
 class __$CenterModelCopyWithImpl<$Res> extends _$CenterModelCopyWithImpl<$Res>
     implements _$CenterModelCopyWith<$Res> {
   __$CenterModelCopyWithImpl(
@@ -476,12 +484,14 @@ class __$CenterModelCopyWithImpl<$Res> extends _$CenterModelCopyWithImpl<$Res>
       sportGameValue: sportGameValue == freezed
           ? _value.sportGameValue
           : sportGameValue as int,
-      vipOption: vipOption == freezed ? _value.vipOption : vipOption,
-      vipSetting: vipSetting == freezed ? _value.vipSetting : vipSetting,
+      vipOption: vipOption == freezed ? _value.vipOption : vipOption as dynamic,
+      vipSetting:
+          vipSetting == freezed ? _value.vipSetting : vipSetting as dynamic,
     ));
   }
 }
 
+/// @nodoc
 class _$_CenterModel implements _CenterModel {
   const _$_CenterModel(
       {@JsonKey(name: 'accountcode', defaultValue: '') this.accountCode,
@@ -558,7 +568,7 @@ class _$_CenterModel implements _CenterModel {
   final String cpwWallet;
   @override
   @JsonKey(name: 'address', fromJson: _jsonList)
-  final dynamic lotto;
+  final List<dynamic> lotto;
   @override
   @JsonKey(name: 'allgame')
   final int allGame;
@@ -775,7 +785,7 @@ abstract class _CenterModel implements CenterModel {
       @JsonKey(name: 'auto_transfer', defaultValue: '-1') String autoTransfer,
       @JsonKey(name: 'cGP_wallet', defaultValue: '') String cgpWallet,
       @JsonKey(name: 'cPW_wallet', defaultValue: '') String cpwWallet,
-      @JsonKey(name: 'address', fromJson: _jsonList) dynamic lotto,
+      @JsonKey(name: 'address', fromJson: _jsonList) List<dynamic> lotto,
       @JsonKey(name: 'allgame') int allGame,
       @JsonKey(name: 'allgame_level') int allGameLevel,
       @JsonKey(name: 'allgame_value') int allGameValue,
@@ -797,8 +807,8 @@ abstract class _CenterModel implements CenterModel {
       @JsonKey(name: 'sportgame') int sportGame,
       @JsonKey(name: 'sportgame_level') int sportGameLevel,
       @JsonKey(name: 'sportgame_value') int sportGameValue,
-      @JsonKey(name: 'vip_option') var vipOption,
-      @JsonKey(name: 'vip_setting') var vipSetting}) = _$_CenterModel;
+      @JsonKey(name: 'vip_option') dynamic vipOption,
+      @JsonKey(name: 'vip_setting') dynamic vipSetting}) = _$_CenterModel;
 
   @override
   @JsonKey(name: 'accountcode', defaultValue: '')
@@ -832,7 +842,7 @@ abstract class _CenterModel implements CenterModel {
   String get cpwWallet;
   @override
   @JsonKey(name: 'address', fromJson: _jsonList)
-  dynamic get lotto;
+  List<dynamic> get lotto;
   @override
   @JsonKey(name: 'allgame')
   int get allGame;

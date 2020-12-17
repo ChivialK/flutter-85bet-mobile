@@ -58,8 +58,9 @@ abstract class _FeatureScreenStore with Store {
       ? pageInfo.bottomNavIndex
       : -1;
 
-  bool get showMenuDrawer =>
-      (pageInfo != null) ? pageInfo.isFeature || pageInfo.showDrawer : true;
+  bool get showMenuDrawer => (pageInfo != null)
+      ? pageInfo.bottomNavIndex >= 0 || pageInfo.showDrawer
+      : true;
 
   /// User
   /* observe user change */

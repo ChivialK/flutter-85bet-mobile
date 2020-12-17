@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 import 'package:flutter_85bet_mobile/features/general/toast_widget_export.dart';
 
 class SingleInputChipWidget extends StatefulWidget {
@@ -12,7 +12,7 @@ class _SingleInputChipWidgetState extends State<SingleInputChipWidget> {
   Widget build(BuildContext context) {
     return InputChip(
       avatar: CircleAvatar(
-        backgroundColor: Themes.hintHyperLink,
+        backgroundColor: themeColor.hintHyperLink,
         child: Text('B'),
       ),
       label: Text('Button'),

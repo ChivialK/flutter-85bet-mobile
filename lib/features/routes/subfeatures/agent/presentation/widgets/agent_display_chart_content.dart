@@ -1,7 +1,7 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
-import 'package:flutter_85bet_mobile/core/internal/themes.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 import '../../data/models/agent_chart_model.dart';
 import 'agent_display_chart_table.dart';
@@ -72,14 +72,14 @@ class _AgentDisplayChartContentState extends State<AgentDisplayChartContent>
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: RaisedButton(
                       color: (_clicked == index)
-                          ? Themes.buttonPrimaryColor
-                          : Themes.buttonSecondaryColor,
+                          ? themeColor.buttonPrimaryColor
+                          : themeColor.buttonSecondaryColor,
                       child: Text(
                         tabs[index],
                         style: TextStyle(
                             color: (_clicked == index)
-                                ? Themes.buttonTextPrimaryColor
-                                : Themes.defaultTextColor),
+                                ? themeColor.buttonTextPrimaryColor
+                                : themeColor.defaultTextColor),
                       ),
                       onPressed: () {
                         if (_clicked == index) return;
