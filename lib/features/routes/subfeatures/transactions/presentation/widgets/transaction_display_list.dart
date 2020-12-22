@@ -68,7 +68,7 @@ class TransactionDisplayListState extends State<TransactionDisplayList> {
           data.key,
           data.date,
           ('${data.type}'.toLowerCase() == 'in') ? _textIn : _textOut,
-          localeStr.transferMessage(data.from, data.to),
+          _localeTransferDesc(data.from, data.to),
           data.amount,
         ];
         return Container(
@@ -120,5 +120,11 @@ class TransactionDisplayListState extends State<TransactionDisplayList> {
         ],
       ),
     );
+  }
+
+  String _localeTransferDesc(String from, String to) {
+    final _from = (from == 'centerWallet') ? localeStr.walletViewTitle : from;
+    final _to = (to == 'centerWallet') ? localeStr.walletViewTitle : to;
+    return localeStr.transferMessage(_from, _to);
   }
 }

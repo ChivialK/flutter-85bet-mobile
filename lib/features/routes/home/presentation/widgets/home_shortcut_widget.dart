@@ -63,7 +63,7 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
 
   @override
   void initState() {
-    _singleLine = (Global.lang == 'vi')
+    _singleLine = (Global.localeCode == 'vi')
         ? Global.device.width >= 442.0
         : Global.device.width >= 360.0;
     _areaHeight = widget.sizeCalc.shortcutMaxHeight;
@@ -124,7 +124,7 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Res.homeBoxUserAreaBg),
+          image: AssetImage(Res.index_member),
           fit: BoxFit.fill,
         ),
       ),

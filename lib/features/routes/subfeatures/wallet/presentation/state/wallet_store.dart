@@ -199,6 +199,13 @@ abstract class _WalletStore with Store {
     }
   }
 
+  @action
+  Future<void> cancelWalletTransfer() async {
+    if (transferSuccess == null) {
+      await _repository.cancelTransferAll();
+    }
+  }
+
   Future<void> closeStream() async {
     try {
       if (_progressController.isClosed == false) {

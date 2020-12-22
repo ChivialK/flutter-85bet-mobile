@@ -31,13 +31,7 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
   void _itemTapped(int index, bool hasUser) {
     var item = _tabs[index];
     debugPrint('tapped item: ${item.value}');
-    if (item.value.id == RouteEnum.MORE) {
-      showDialog(
-        context: context,
-        barrierDismissible: true,
-        builder: (context) => new MoreDialog(_store),
-      );
-    } else if (item.value.route == null) {
+    if (item.value.route == null) {
       callToastInfo(localeStr.workInProgress);
     } else {
       var value = item.value;
@@ -105,7 +99,7 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
 
   @override
   void initState() {
-    _locale = Global.lang;
+    _locale = Global.localeCode;
     super.initState();
   }
 
@@ -135,9 +129,9 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
           stream: _store.loginStateStream,
           initialData: false,
           builder: (context, snapshot) {
-            if (_barWidget != null && _locale != Global.lang) {
+            if (_barWidget != null && _locale != Global.localeCode) {
               _barWidget = _buildWidget(snapshot.data);
-              _locale = Global.lang;
+              _locale = Global.localeCode;
             }
             _barWidget ??= _buildWidget(snapshot.data);
             return _barWidget;

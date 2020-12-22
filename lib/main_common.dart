@@ -3,8 +3,6 @@ import 'dart:io' show Platform;
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_85bet_mobile/core/internal/orientation_helper.dart';
-import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:hive/hive.dart';
 import 'package:logging/logging.dart';
 import 'package:path_provider/path_provider.dart';
@@ -13,28 +11,28 @@ import 'package:permission_handler/permission_handler.dart';
 import 'core/data/hive_actions.dart';
 import 'core/data/hive_adapters_export.dart';
 import 'core/internal/global.dart';
+import 'core/internal/language_code.dart';
+import 'core/internal/orientation_helper.dart';
 import 'env/config_reader.dart';
 import 'env/environment.dart';
+import 'features/export_internal_file.dart';
 import 'features/main_app.dart';
 import 'features/main_app_with_firebase.dart';
-import 'injection_container.dart' as di;
 import 'ga_interface.dart';
+import 'injection_container.dart' as di;
 
 Future<void> mainCommon(Environment env) async {
   // Always call this if the main method is asynchronous
   WidgetsFlutterBinding.ensureInitialized();
+
   // Load the JSON config into memory
   await ConfigReader.initialize();
-
   switch (env) {
-    case Environment.DEV:
-      debugPrint(
-          'DEV Config Version: ${ConfigReader.getVersion()}, add analytics: ${Global.addAnalytics}');
+    case Environment.FIREBASE:
+      GaInterface.setAnalytics = new FirebaseAnalytics();
       break;
-
-    case Environment.RELEASE:
-      debugPrint(
-          'RELEASE Config Version: ${ConfigReader.getVersion()}, add analytics: ${Global.addAnalytics}');
+    default:
+      // debugPrint('DEV Config Version: ${ConfigReader.getVersion()}');
       break;
   }
 
@@ -77,28 +75,28 @@ Future<void> mainCommon(Environment env) async {
     if (box.containsKey(Global.CACHE_APP_DATA_KEY_LANG)) {
       if (Global.lockLanguage == false) {
         // set language as user preference
-        Global.setLanguage =
-            box.get(Global.CACHE_APP_DATA_KEY_LANG, defaultValue: 'zh');
-      } else if (box.get(Global.CACHE_APP_DATA_KEY_LANG) != Global.lang) {
+        Global.setLocale = box.get(
+          Global.CACHE_APP_DATA_KEY_LANG,
+          defaultValue: defaultLocale.value.code,
+        );
+      } else if (box.get(Global.CACHE_APP_DATA_KEY_LANG) != Global.localeCode) {
         // override language if language is locked and different as default
-        box.put(Global.CACHE_APP_DATA_KEY_LANG, Global.lang);
+        box.put(Global.CACHE_APP_DATA_KEY_LANG, Global.localeCode);
       }
     } else {
-      box.put(Global.CACHE_APP_DATA_KEY_LANG, Global.lang);
+      box.put(Global.CACHE_APP_DATA_KEY_LANG, Global.localeCode);
     }
   } catch (e) {
     debugPrint('read app language setting has error!! $e');
   } finally {
-    debugPrint('app language: ${Global.lang}');
+    debugPrint('app language: ${Global.localeCode}');
   }
 
   // hide keyboard and wait for 500ms to get the correct viewInset
   await SystemChannels.textInput.invokeMethod('TextInput.hide');
   await Future.delayed(Duration(milliseconds: 500));
 
-  if (Global.addAnalytics) {
-    final FirebaseAnalytics _analytics = FirebaseAnalytics();
-    GaInterface.setAnalytics = _analytics;
+  if (env == Environment.FIREBASE) {
     // run application with Firebase
     runApp(new MainAppWithFirebase());
   } else {

@@ -14,9 +14,11 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
   FeatureScreenInheritedWidget _viewState;
   List<ReactionDisposer> _disposers;
   EventStore _eventStore;
+  UpdateStore _updateStore;
 
   bool _hideActions = false;
   bool _hideLangOption = false;
+  bool _showingAds = false;
 
   void initDisposers() {
     _disposers = [
@@ -55,17 +57,17 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
     ];
   }
 
-//  @override
-//  void didUpdateWidget(ScreenMenuBar oldWidget) {
-//    _viewState = null;
-//    _eventStore = null;
-//    if (_disposers != null) {
-//      _disposers.forEach((d) => d());
-//      _disposers.clear();
-//      _disposers = null;
-//    }
-//    super.didUpdateWidget(oldWidget);
-//  }
+  @override
+  void didUpdateWidget(ScreenMenuBar oldWidget) {
+    _viewState = null;
+    _eventStore = null;
+    if (_disposers != null) {
+      _disposers.forEach((d) => d());
+      _disposers.clear();
+      _disposers = null;
+    }
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   void dispose() {
@@ -77,33 +79,46 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
   Widget build(BuildContext context) {
     _viewState ??= FeatureScreenInheritedWidget.of(context);
     _eventStore ??= _viewState?.eventStore;
+    _updateStore ??= sl.get<UpdateStore>();
     if (_disposers == null) initDisposers();
     return AppBar(
       /* App bar Icon */
-      title: Image.asset(Res.iconBarLogo, scale: 2.5),
+      title: Container(
+          width: Global.device.width * 0.225,
+          height: Global.APP_MENU_HEIGHT,
+          child: Image.asset(Res.icon_bar_logo, scale: 2.5)),
       titleSpacing: 0,
       centerTitle: false,
       /* Appbar Title */
-//      flexibleSpace: FlexibleSpaceBar(
-//        centerTitle: true,
-//        title: Observer(builder: (_) {
-//          final page = viewState.store.pageInfo ?? RoutePage.template.value;
-//          return Container(
-//            width: Global.device.width / 5,
-//            height: Global.APP_BAR_HEIGHT / 2,
-//            child: FittedBox(
-//              child: Text(
-//                page.title,
-//                style: TextStyle(fontSize: FontSize.MESSAGE.value),
-//              ),
-//            ),
-//          );
-//        }),
-//        titlePadding: EdgeInsetsDirectional.only(
-//          start: Global.APP_BAR_HEIGHT / 3,
-//          bottom: (Global.APP_BAR_HEIGHT / 3) - 4,
-//        ),
-//      ),
+      flexibleSpace: FlexibleSpaceBar(
+        centerTitle: true,
+        title: SizedBox(
+          width: Global.device.width * 0.275,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Observer(builder: (_) {
+                final page = _viewState.store.pageInfo ?? RoutePage.home.value;
+                return AutoSizeText.rich(
+                  TextSpan(
+                    text: (page.id == RouteEnum.HOME) ? '' : page.id.title,
+                    style: TextStyle(fontSize: FontSize.MESSAGE.value),
+                  ),
+                  maxLines: (Global.localeCode == 'zh') ? 1 : 2,
+                  maxFontSize: FontSize.MESSAGE.value,
+                  minFontSize: FontSize.SMALLER.value,
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.visible,
+                );
+              }),
+            ],
+          ),
+        ),
+        titlePadding: EdgeInsetsDirectional.only(
+          start: Global.APP_MENU_HEIGHT / 3,
+        ),
+      ),
       /* App bar Left Actions */
       leading: Observer(
         builder: (_) {
@@ -121,7 +136,10 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
                   Icon(Icons.arrow_back, color: themeColor.drawerIconSubColor),
               tooltip: localeStr.btnBack,
               onPressed: () {
-                RouterNavigate.navigateBack();
+                Future.delayed(
+                  Duration(milliseconds: 100),
+                  () => RouterNavigate.navigateBack(),
+                );
               },
             );
           }
@@ -130,38 +148,25 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
       /* App bar Right Actions */
       actions: <Widget>[
         if (_eventStore != null)
-          Container(
-//            padding: const EdgeInsets.only(right: 12.0),
-            decoration: BoxDecoration(shape: BoxShape.circle),
-            child: Transform.scale(
-              scale: 0.5,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(36.0),
-                child: GestureDetector(
-                  onTap: () {
-                    if (_eventStore.canShowAds) {
-                      showDialog(
-                        context: context,
-                        barrierDismissible: false,
-                        builder: (context) => new AdDialog(
-                          ads: _eventStore.ads,
-                          initCheck: _eventStore.checkSkip,
-                          onClose: (skipNextTime) {
-                            debugPrint('ads dialog close, skip=$skipNextTime');
-                            _eventStore.setSkipAd(skipNextTime);
-                            _eventStore.adsDialogClose();
-                          },
-                        ),
-                      );
-                    }
-                  },
-                  child: networkImageBuilder(
-                    'images/AD_ICON2.png',
-                    imgScale: 3.0,
-                  ),
-                ),
-              ),
-            ),
+          StreamBuilder<List>(
+            stream: _eventStore.adsStream,
+            initialData: _eventStore.ads ?? [],
+            builder: (ctx, snapshot) {
+              if (snapshot.data != null &&
+                  snapshot.data.isNotEmpty &&
+                  _eventStore.autoShowAds &&
+                  _eventStore.checkSkip == false) {
+                debugPrint('stream home ads: ${snapshot.data.length}');
+                final ads = new List.from(snapshot.data);
+                Timer.periodic(Duration(seconds: 1), (timer) {
+                  if (mounted && !_updateStore.showingUpdateDialog) {
+                    timer?.cancel();
+                    showAdsDialog(ads);
+                  }
+                });
+              }
+              return SizedBox.shrink();
+            },
           ),
         Visibility(
           visible: !_hideLangOption,
@@ -180,6 +185,26 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
           ),
         ),
       ],
+    );
+  }
+
+  void showAdsDialog(List list) {
+    if (_showingAds || RouterNavigate.current != '/') return;
+    _showingAds = true;
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => new AdDialog(
+        ads: new List.from(list),
+        initCheck: _eventStore.checkSkip,
+        onClose: (skipNextTime) {
+          debugPrint('ads dialog close, skip=$skipNextTime');
+          _showingAds = false;
+          _eventStore.setAutoShowAds = false;
+          _eventStore.setSkipAd(skipNextTime);
+          _eventStore.adsDialogClose();
+        },
+      ),
     );
   }
 }

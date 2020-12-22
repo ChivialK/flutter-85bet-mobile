@@ -9,9 +9,6 @@ class Global {
   /// Device Relative
   static Device device;
 
-  /// BuildType
-  static bool addAnalytics = false;
-
   /// APP Language
   static bool initLocale = false;
 
@@ -19,12 +16,12 @@ class Global {
 
   static LanguageCode _locale = defaultLocale;
 
-  static String get jsonContentKey => _locale.value.contentKey;
+  static String get localeJsonKey => _locale.value.contentKey;
 
-  static String get lang => _locale.value.code;
+  static String get localeCode => _locale.value.code;
 
-  static set setLanguage(String langCode) =>
-      _locale = LanguageCode.getByCode(langCode);
+  static set setLocale(String localeCode) =>
+      _locale = LanguageCode.getByCode(localeCode);
 
   /// Web Service
   static const bool HAS_FLEX_ROUTE = false;

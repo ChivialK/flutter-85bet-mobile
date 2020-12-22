@@ -1,3 +1,5 @@
+import 'package:flutter_85bet_mobile/core/internal/input_limit.dart';
+import 'package:flutter_85bet_mobile/utils/value_util.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'register_form.freezed.dart';
@@ -32,5 +34,10 @@ extension RegisterFormExtension on RegisterForm {
       password.isNotEmpty &&
       confirmPassword.isNotEmpty &&
       password == confirmPassword &&
-      mobileno.isNotEmpty;
+      mobileno.isNotEmpty &&
+      !rangeCheck(
+        value: mobileno.length,
+        min: InputLimit.PHONE_MIN,
+        max: InputLimit.PHONE_MAX,
+      );
 }

@@ -50,7 +50,7 @@ class _MainAppWithFirebaseState extends State<MainAppWithFirebase>
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     if (GaInterface.isAnalyzing) {
-      firebaseObserver = FirebaseAnalyticsObserver(analytics: GaInterface.log);
+      firebaseObserver = GaInterface.getObserver;
     }
   }
 
@@ -90,10 +90,10 @@ class _MainAppWithFirebaseState extends State<MainAppWithFirebase>
             ],
             supportedLocales: S.delegate.supportedLocales,
             localeResolutionCallback: (deviceLocale, supportedLocales) {
-              return Locale.fromSubtags(languageCode: Global.lang);
+              return Locale.fromSubtags(languageCode: Global.localeCode);
             },
             localeListResolutionCallback: (deviceLocales, supportedLocales) {
-              return Locale.fromSubtags(languageCode: Global.lang);
+              return Locale.fromSubtags(languageCode: Global.localeCode);
             },
             theme: ThemeInterface.theme.data,
             builder: BotToastInit(),

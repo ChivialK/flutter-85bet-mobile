@@ -51,7 +51,11 @@ class MessageMap {
       case 'belowTheMinimum':
         return localeStr.messageInvalidDepositAmountMin(100);
       case 'aboveTheCeiling':
-        return localeStr.messageInvalidDepositAmountMax;
+        return localeStr.messageInvalidWithdrawExceedAmount;
+      case 'amountExceedsTheUpperLimit':
+        return localeStr.messageInvalidDepositAmountMaxLimit;
+      case 'amountIsBelowTheLowerLimit':
+        return localeStr.messageInvalidDepositAmountMinLimit;
       case 'NoRecordsYet':
         return localeStr.messageWarnNoHistoryData;
       default:
@@ -66,6 +70,8 @@ class MessageMap {
         return localeStr.messageTaskFailed(localeStr.messageErrorBindBankcard);
       case RouteEnum.WITHDRAW:
         return localeStr.messageErrorWithdraw;
+      case RouteEnum.DEPOSIT:
+        return localeStr.depositMessageFailed;
       case RouteEnum.BALANCE:
         return localeStr.messageTaskFailed(localeStr.transferResultAlertTitle);
       default:

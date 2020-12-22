@@ -64,7 +64,7 @@ class _BalanceDisplayState extends State<BalanceDisplay> {
     double gridItemWidth =
         ((Global.device.width - 32) - _itemSpace * (_itemPerRow + 2) - 32) /
             _itemPerRow;
-    _gridRatio = gridItemWidth / 108;
+    _gridRatio = gridItemWidth / 128;
     debugPrint('grid item width: $gridItemWidth, gridRatio: $_gridRatio');
     super.initState();
     widget.store.getCreditLimit();

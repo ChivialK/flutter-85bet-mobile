@@ -126,7 +126,7 @@ class GameCategory extends Vnum<HomeCategoryInfo> {
   static const GameCategory about = const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.ABOUT,
     imageUrl: '',
-    assetPath: Res.iconAbout,
+    assetPath: Res.icon_about,
     pageType: GamePageType.About,
   ));
   static const GameCategory undefined =

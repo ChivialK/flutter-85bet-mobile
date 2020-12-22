@@ -28,7 +28,7 @@ class ServiceDisplay extends StatelessWidget {
       ),
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(Res.wallpaper), fit: BoxFit.fill)),
+              image: AssetImage(Res.content_bg), fit: BoxFit.fill)),
       alignment: Alignment.topCenter,
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 6.0),
       child: ListView(

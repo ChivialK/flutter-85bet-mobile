@@ -37,6 +37,7 @@ class _WalletDialogState extends State<WalletDialog> {
       transparentBg: themeColor.isDarkTheme,
       onClose: () {
         widget.store.showingDialog = false;
+        widget.store.cancelWalletTransfer();
         widget.store.closeStream();
       },
       children: <Widget>[
@@ -94,6 +95,7 @@ class _WalletDialogState extends State<WalletDialog> {
                 try {
                   if (widget.store.showingDialog) {
                     widget.store.showingDialog = false;
+                    widget.store.cancelWalletTransfer();
                     widget.store.closeStream();
                     Navigator.of(context).pop();
                   }

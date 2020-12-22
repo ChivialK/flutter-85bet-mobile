@@ -23,7 +23,7 @@ extension DepositDataFormExtension on DepositDataForm {
   /// This method is not reversible
   Map<String, dynamic> toJson() {
     String amt = this.amount;
-    if (Global.lang == 'zh' && !amt.contains('.')) amt += ".00";
+    if (Global.localeCode == 'zh' && !amt.contains('.')) amt += ".00";
     return <String, dynamic>{
       'bankaccountid': this.bankId,
       'deposit_method': this.methodId.toString(),

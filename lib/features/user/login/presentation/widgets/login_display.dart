@@ -320,7 +320,10 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
               prefixText: localeStr.hintAccount,
               prefixTextSize: FontSize.SUBTITLE.value,
               maxInputLength: InputLimit.ACCOUNT_MAX,
-              errorMsg: localeStr.messageInvalidAccount,
+              errorMsg: localeStr.messageInvalidAccount(
+                InputLimit.ACCOUNT_MIN,
+                InputLimit.ACCOUNT_MAX,
+              ),
               validCondition: (value) => rangeCheck(
                   value: value.length,
                   min: InputLimit.ACCOUNT_MIN,
@@ -335,7 +338,10 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
               prefixText: localeStr.hintAccountPassword,
               prefixTextSize: FontSize.SUBTITLE.value,
               maxInputLength: InputLimit.PASSWORD_MAX,
-              errorMsg: localeStr.messageInvalidPasswordNew,
+              errorMsg: localeStr.messageInvalidPassword(
+                InputLimit.PASSWORD_MIN_OLD,
+                InputLimit.PASSWORD_MAX,
+              ),
               validCondition: (value) => rangeCheck(
                   value: value.length,
                   min: InputLimit.PASSWORD_MIN_OLD,
