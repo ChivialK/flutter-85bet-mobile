@@ -610,6 +610,18 @@
       }
     }
   },
+  "messageInvalidPhone2": "电话格式错误({min}~{max}碼)",
+  "@messageInvalidPhone2": {
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "10"
+      },
+      "max": {
+        "example": "10"
+      }
+    }
+  },
   "messageInvalidPostCode": "邮递区号错误(5~8碼)",
   "@messageInvalidPostCode": {
     "type": "text"
@@ -635,17 +647,29 @@
       }
     }
   },
-  "messageInvalidAccount": "帐号为6~12个小写英文/数字",
+  "messageInvalidAccount": "帐号为{min}~{max}个小写英文/数字",
   "@messageInvalidAccount": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "6"
+      },
+      "max": {
+        "example": "12"
+      }
+    }
   },
-  "messageInvalidPassword": "密码为8~18个字",
+  "messageInvalidPassword": "密码为{min}~{max}个字",
   "@messageInvalidPassword": {
-    "type": "text"
-  },
-  "messageInvalidPasswordNew": "密码为8~18个字",
-  "@messageInvalidPasswordNew": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "8"
+      },
+      "max": {
+        "example": "20"
+      }
+    }
   },
   "messageInvalidConfirmPassword": "密码不符合",
   "@messageInvalidConfirmPassword": {
@@ -672,8 +696,12 @@
       }
     }
   },
-  "messageInvalidDepositAmountMax": "超过单笔最大提现金额(请参考会员等级制度)",
-  "@messageInvalidDepositAmountMax": {
+  "messageInvalidDepositAmountMaxLimit": "充值金额超过上限",
+  "@messageInvalidDepositAmountMaxLimit": {
+    "type": "text"
+  },
+  "messageInvalidDepositAmountMinLimit": "充值金额低于下限",
+  "@messageInvalidDepositAmountMinLimit": {
     "type": "text"
   },
   "messageInvalidDepositName": "帐号名称错误",
@@ -702,6 +730,10 @@
   },
   "messageInvalidWithdrawUnderAmount": "低于最低提款金额",
   "@messageInvalidWithdrawUnderAmount": {
+    "type": "text"
+  },
+  "messageInvalidWithdrawExceedAmount": "超过单笔最大提现金额(请参考会员等级制度)",
+  "@messageInvalidWithdrawExceedAmount": {
     "type": "text"
   },
   "messageWarnUsingCellular": "您正在使用移动网络",
@@ -836,6 +868,10 @@
   },
   "messageErrorPassword": "密码错误",
   "@messageErrorPassword": {
+    "type": "text"
+  },
+  "messageErrorPasswordHint": "密码不符合，错误5次将锁定帐号",
+  "@messageErrorPasswordHint": {
     "type": "text"
   },
   "messageErrorReferral": "推荐码无效",

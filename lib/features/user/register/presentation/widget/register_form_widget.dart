@@ -154,7 +154,10 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       child: Visibility(
                         visible: _showAccountError,
                         child: Text(
-                          localeStr.messageInvalidAccount,
+                          localeStr.messageInvalidAccount(
+                            InputLimit.ACCOUNT_MIN,
+                            InputLimit.ACCOUNT_MAX,
+                          ),
                           style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
@@ -201,7 +204,10 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       child: Visibility(
                         visible: _showPasswordError,
                         child: Text(
-                          localeStr.messageInvalidPasswordNew,
+                          localeStr.messageInvalidPassword(
+                            InputLimit.PASSWORD_MIN_OLD,
+                            InputLimit.PASSWORD_MAX,
+                          ),
                           style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
@@ -414,35 +420,37 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
         ///
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              IconButton(
-                visualDensity: VisualDensity.compact,
-                padding: EdgeInsets.zero,
-                icon: Icon(
-                  const IconData(0xe967, fontFamily: 'IconMoon'),
-                  color: themeColor.defaultTextColor,
+          child: RichText(
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              text: TextSpan(children: [
+                WidgetSpan(
+                  alignment: PlaceholderAlignment.middle,
+                  child: IconButton(
+                    visualDensity: VisualDensity.compact,
+                    padding: EdgeInsets.zero,
+                    icon: Icon(
+                      const IconData(0xe967, fontFamily: 'IconMoon'),
+                      color: themeColor.defaultTextColor,
+                    ),
+                    onPressed: () {
+                      RouterNavigate.navigateToPage(RoutePage.service);
+                      if (widget.isDialog) {
+                        Future.delayed(Duration(milliseconds: 100),
+                            () => Navigator.of(context).pop());
+                      }
+                    },
+                  ),
                 ),
-                onPressed: () {
-                  RouterNavigate.navigateToPage(RoutePage.service);
-                  if (widget.isDialog) {
-                    Future.delayed(Duration(milliseconds: 100),
-                        () => Navigator.of(context).pop());
-                  }
-                },
-              ),
-              Expanded(
-                child: Text(
-                  localeStr.registerButtonServiceHint,
-                  style: TextStyle(fontSize: FontSize.SUBTITLE.value),
-                  maxLines: 3,
-                  overflow: TextOverflow.visible,
+                TextSpan(
+                  text: localeStr.registerButtonServiceHint,
+                  style: TextStyle(
+                    fontSize: FontSize.SUBTITLE.value,
+                    color: themeColor.defaultTextColor,
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ])),
         ),
 
         ///

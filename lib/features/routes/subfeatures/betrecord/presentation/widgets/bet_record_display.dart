@@ -286,10 +286,11 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 16.0),
+            padding: const EdgeInsets.only(bottom: 16.0),
             child: Container(
-              decoration: ThemeInterface.layerShadowDecorRound,
+              decoration: ThemeInterface.layerShadowDecorRoundLight,
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              margin: const EdgeInsets.only(right: 8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

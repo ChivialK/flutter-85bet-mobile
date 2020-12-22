@@ -104,9 +104,9 @@ class TransactionDisplayTableState extends State<TransactionDisplayTable> {
                     (index) {
                       TransactionData data = _dataList[index];
                       String explanation =
-                          (data.type == localeStr.transferViewTitleIn)
-                              ? '${data.type} ${data.to}'
-                              : '${data.from} ${data.type}';
+                          (data.type == localeStr.transferViewTitleOut)
+                              ? '${data.from} ${data.type}'
+                              : '${data.type} ${data.to}';
                       List<dynamic> dataTexts = [
                         data.key,
                         data.date,

@@ -59,7 +59,7 @@ Future<Widget> networkImageWidget(
                 MyLogger.warn(msg: 'load image failed: $imageUrl');
                 Future.sync(() => clearDiskCachedImage(imageUrl)).then(
                     (value) => debugPrint('clean image cache result: $value'));
-                if (addPendingIconOnError) return Image.asset(Res.iconPending);
+                if (addPendingIconOnError) return Image.asset(Res.icon_pending);
                 return Icon(
                   Icons.broken_image,
                   color: themeColor.iconSubColor1,

@@ -143,7 +143,10 @@ class _CenterDisplayAccountPasswordState
                                     horizontalInset: _fieldInset,
                                     titleWidthFactor: 0.35,
                                     maxInputLength: InputLimit.PASSWORD_MAX,
-                                    errorMsg: localeStr.messageInvalidPassword,
+                                    errorMsg: localeStr.messageInvalidPassword(
+                                      InputLimit.PASSWORD_MIN_OLD,
+                                      InputLimit.PASSWORD_MAX,
+                                    ),
                                     validCondition: (value) => rangeCheck(
                                       value: value.length,
                                       min: InputLimit.PASSWORD_MIN_OLD,
@@ -163,8 +166,10 @@ class _CenterDisplayAccountPasswordState
                                     horizontalInset: _fieldInset,
                                     titleWidthFactor: 0.35,
                                     maxInputLength: InputLimit.PASSWORD_MAX,
-                                    errorMsg:
-                                        localeStr.messageInvalidPasswordNew,
+                                    errorMsg: localeStr.messageInvalidPassword(
+                                      InputLimit.PASSWORD_MIN,
+                                      InputLimit.PASSWORD_MAX,
+                                    ),
                                     validCondition: (value) => rangeCheck(
                                       value: value.length,
                                       min: InputLimit.PASSWORD_MIN,

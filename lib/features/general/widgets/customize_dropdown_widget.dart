@@ -153,7 +153,7 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
     // update text max lines
     _currentPrefixMaxLines = (widget.prefixTextMaxLines != null)
         ? widget.prefixTextMaxLines
-        : (Global.lang == 'zh')
+        : (Global.localeCode == 'zh')
             ? 1
             : 2;
 

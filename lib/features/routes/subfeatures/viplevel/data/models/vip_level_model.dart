@@ -63,7 +63,7 @@ abstract class VipLevelOption with _$VipLevelOption {
     if (jsonMap.containsKey('ch'))
       labelKey = 'ch';
     else
-      labelKey = Global.jsonContentKey;
+      labelKey = Global.localeJsonKey;
     return _$_VipLevelOption(
       key: jsonMap['key'] as String,
       name: jsonMap['name'] as String,

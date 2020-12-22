@@ -76,6 +76,7 @@ class _TypesGridWidgetState extends State<TypesGridWidget>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     if (widget.types == null || widget.types.isEmpty) return SizedBox.shrink();
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -97,64 +98,67 @@ class _TypesGridWidgetState extends State<TypesGridWidget>
             });
             widget.onTypeGridTap(index, type);
           },
-          child: Container(
-            decoration: ShapeDecoration(
-                color: (_clicked == index)
-                    ? themeColor.defaultTabSelectedColor
-                    : themeColor.defaultTabUnselectedColor,
-                shadows: <BoxShadow>[
-                  BoxShadow(
-                    color: Colors.black26,
-                    spreadRadius: 1.15,
-                    blurRadius: 2.0,
-                    offset: Offset(2, 3), // changes position of shadow
-                  ),
-                ],
-                shape: (widget.borderless)
-                    ? RoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(
-                            top: (widget.round)
-                                ? Radius.circular(6.0)
-                                : Radius.circular(0.0)),
-                      )
-                    : CustomRoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(
-                            top: (widget.round)
-                                ? Radius.circular(6.0)
-                                : Radius.circular(0.0)),
-                        leftSide: borderSide,
-                        topLeftCornerSide: borderSide,
-                        bottomLeftCornerSide: borderSide,
-                        rightSide: borderSide,
-                        topRightCornerSide: borderSide,
-                        bottomRightCornerSide: borderSide,
-                        topSide: borderSide,
-                        bottomSide: borderSideTrans,
-                      )),
-            margin: (index > 0 && (index + 1) % widget.tabsPerRow == 0)
-                ? const EdgeInsets.only(right: 2.0)
-                : EdgeInsets.zero,
-            alignment: Alignment.center,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: AutoSizeText(
-                      type[widget.titleKey],
-                      style: TextStyle(
-                        color: (_clicked == index)
-                            ? themeColor.defaultTabSelectedTextColor
-                            : themeColor.defaultTabSelectedColor,
-                        fontSize: FontSize.SUBTITLE.value,
-                      ),
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      minFontSize: FontSize.SMALL.value - 4.0,
-                      maxFontSize: FontSize.SUBTITLE.value,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 2.0),
+            child: Container(
+              decoration: ShapeDecoration(
+                  color: (_clicked == index)
+                      ? themeColor.defaultTabSelectedColor
+                      : themeColor.defaultTabUnselectedColor,
+                  shadows: <BoxShadow>[
+                    BoxShadow(
+                      color: Colors.black26,
+                      spreadRadius: 1.15,
+                      blurRadius: 2.0,
+                      offset: Offset(1, 2), // changes position of shadow
                     ),
-                  ),
-                ],
+                  ],
+                  shape: (widget.borderless)
+                      ? RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                              top: (widget.round)
+                                  ? Radius.circular(6.0)
+                                  : Radius.circular(0.0)),
+                        )
+                      : CustomRoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                              top: (widget.round)
+                                  ? Radius.circular(6.0)
+                                  : Radius.circular(0.0)),
+                          leftSide: borderSide,
+                          topLeftCornerSide: borderSide,
+                          bottomLeftCornerSide: borderSide,
+                          rightSide: borderSide,
+                          topRightCornerSide: borderSide,
+                          bottomRightCornerSide: borderSide,
+                          topSide: borderSide,
+                          bottomSide: borderSideTrans,
+                        )),
+              margin: (index > 0 && (index + 1) % widget.tabsPerRow == 0)
+                  ? const EdgeInsets.only(right: 2.0)
+                  : EdgeInsets.zero,
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: AutoSizeText(
+                        type[widget.titleKey],
+                        style: TextStyle(
+                          color: (_clicked == index)
+                              ? themeColor.defaultTabSelectedTextColor
+                              : themeColor.defaultTabSelectedColor,
+                          fontSize: FontSize.SUBTITLE.value,
+                        ),
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
+                        minFontSize: FontSize.SMALL.value - 4.0,
+                        maxFontSize: FontSize.SUBTITLE.value,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

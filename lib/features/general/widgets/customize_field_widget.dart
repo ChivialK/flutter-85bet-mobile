@@ -234,8 +234,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
     if (Global.device.isIos) _suffixWidth += 8.0;
 
     _currentMaxLines = widget.maxLines;
-    _currentPrefixMaxLines =
-        widget.prefixTextMaxLines ?? (Global.lang == 'zh') ? 1 : 2;
+    _currentPrefixMaxLines = widget.prefixTextMaxLines ?? 2;
 
     _smallWidgetHeight = ((Global.device.isIos)
             ? ThemeInterface.fieldHeight + 8
@@ -298,8 +297,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
         minHeight: _smallWidgetHeight,
       );
     }
-    _currentPrefixMaxLines =
-        widget.prefixTextMaxLines ?? (Global.lang == 'zh') ? 1 : 2;
+    _currentPrefixMaxLines = widget.prefixTextMaxLines ?? 2;
     _updateFieldStyle();
     super.didUpdateWidget(oldWidget);
   }

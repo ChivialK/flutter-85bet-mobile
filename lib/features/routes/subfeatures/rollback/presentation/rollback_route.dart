@@ -148,7 +148,7 @@ class _RollbackRouteState extends State<RollbackRoute> with AfterLayoutMixin {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 0.0),
+                padding: const EdgeInsets.fromLTRB(4.0, 20.0, 8.0, 16.0),
                 child: Container(
                   decoration: ThemeInterface.layerShadowDecorRound,
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),

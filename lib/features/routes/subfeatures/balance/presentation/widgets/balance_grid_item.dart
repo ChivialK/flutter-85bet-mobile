@@ -76,7 +76,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
   }
 
   void updateVariables(bool state) {
-    _verticalActionLayout = Global.lang != 'zh';
+    _verticalActionLayout = Global.localeCode != 'zh';
     _btn1Text = localeStr.balanceTransferOutText;
     _btn2Text = localeStr.balanceTransferInText;
     _maintenanceText = localeStr.balanceStatusMaintenance;

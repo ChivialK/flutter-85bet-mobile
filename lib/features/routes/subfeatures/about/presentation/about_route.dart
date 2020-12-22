@@ -64,10 +64,10 @@ class AboutRoute extends StatelessWidget {
   ]);
 
   final List<String> _certImages = [
-    Res.certGc,
-    Res.certMga,
-    Res.certPagcor,
-    Res.certBvi,
+    Res.cert_gc,
+    Res.cert_mga,
+    Res.cert_pagcor,
+    Res.cert_bvi,
   ];
 
   final List<String> _certLabel = [
@@ -78,13 +78,13 @@ class AboutRoute extends StatelessWidget {
   ];
 
   final List<String> _teamsImages = [
-    Res.teamsMcu,
-    Res.teamsFra1,
-    Res.teamsFcb,
-    Res.teamsLcc,
-    Res.teamsAfa,
+    Res.teams_mcu,
+    Res.teams_fra1,
+    Res.teams_fcb,
+    Res.teams_lcc,
+    Res.teams_afa,
 //    Res.teamsIta1,
-    Res.teamsHbsc,
+    Res.teams_hbsc,
   ];
 
   @override
@@ -113,7 +113,7 @@ class AboutRoute extends StatelessWidget {
             width: Global.device.width,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(Res.wallpaper), fit: BoxFit.fill)),
+                    image: AssetImage(Res.content_bg), fit: BoxFit.fill)),
             padding:
                 const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             child: ListView(
@@ -134,7 +134,7 @@ class AboutRoute extends StatelessWidget {
                         child: SizedBox(
                             width: 32 * Global.device.widthScale,
                             height: 32 * Global.device.widthScale,
-                            child: Image.asset(Res.iconAbout,
+                            child: Image.asset(Res.icon_about,
                                 color: themeColor.iconColor)),
                       ),
                       Padding(

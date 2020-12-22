@@ -210,7 +210,7 @@ class _DealsRouteState extends State<DealsRoute> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 16.0),
+                            const EdgeInsets.fromLTRB(4.0, 20.0, 8.0, 16.0),
                         child: Container(
                           decoration: ThemeInterface.layerShadowDecorRound,
                           child: Column(
