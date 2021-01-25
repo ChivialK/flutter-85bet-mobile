@@ -2,6 +2,7 @@ import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/loading_widget.dart';
+import 'package:super_enum/super_enum.dart';
 
 import '../../data/entity/game_entity.dart';
 import '../../data/form/platform_game_form.dart';
@@ -61,6 +62,7 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
   List<GameEntity> _games;
   bool _twoLineText = true;
 
+  StreamSubscription _searchSubscript;
   String _searched;
   GamePlatformEntity _searchPlatform;
 
@@ -113,7 +115,9 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
   }
 
   void _openGame(String url) {
-    if (_store.hasUser == false)
+    _store.checkUser();
+    debugPrint('home store has user = ${_store.hasUser}');
+    if (!_store.hasUser)
       callToastInfo(localeStr.messageErrorNotLogin);
     else if (_store != null) _store.getGameUrl(url);
   }
@@ -122,7 +126,9 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
   void initState() {
     _plusGrid = (Global.device.widthScale > 2.0)
         ? 2
-        : (Global.device.widthScale > 1.5) ? 1 : 0;
+        : (Global.device.widthScale > 1.5)
+            ? 1
+            : 0;
 
     _platformItemSize =
         widget.pageMaxWidth / (_platformsPerRow + _plusGrid) * 1.05;
@@ -150,6 +156,14 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
   void didChangeDependencies() {
     debugPrint("change game-page=${widget.category}");
     super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    try {
+      _searchSubscript.cancel();
+    } on Exception {}
+    super.dispose();
   }
 
   @override
@@ -336,7 +350,7 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
         _searched = _store.searchPlatform;
         if (_searched != null) findPlatform();
       }
-      _store.showPlatformStream.listen((event) {
+      _searchSubscript ??= _store.showPlatformStream.listen((event) {
         if (event.contains(widget.category) == false) return;
         debugPrint('page ${widget.category} received search $event');
         _searched = event;
@@ -352,8 +366,10 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
     );
     debugPrint('search platform: $_searchPlatform');
     if (_searchPlatform != null) {
-      _onItemTap(_searchPlatform, search: true);
-      _store.clearSearch();
+      Future.delayed(Duration(milliseconds: 1500), () {
+        _onItemTap(_searchPlatform, search: true);
+        _store.clearSearch();
+      });
     }
   }
 }

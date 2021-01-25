@@ -103,8 +103,8 @@ class Device {
   String get appVersion => _version;
   String get appVersionOrigin =>
       'Version:${packageInfo.version} Build:${packageInfo.buildNumber}';
-  String get appVersionSide =>
-      (Global.addAnalytics) ? '$_version (GA)' : _version;
+  String get appVersionSide => _version;
+  // '$_version${(GaInterface.isAnalyzing) ? ' (GA)' : ''}';
 
   /// device's current orientation
   Orientation get orientation => _mediaQueryData.orientation;
@@ -123,6 +123,9 @@ class Device {
 
   /// device's width scale
   double get widthScale => _screenWidthScale;
+
+  /// device's width half scale
+  double get widthScaleHalf => (1 + _screenWidthScale) / 2;
 
   /// device's height
   double get heightScale => _screenHeightScale;

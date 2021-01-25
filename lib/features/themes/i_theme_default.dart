@@ -6,9 +6,9 @@ import 'theme_data.dart';
 
 class ThemeDefault implements ThemeColorInterface {
   @override
-  bool isDarkTheme = false;
+  bool isDarkTheme = true;
 
-  ThemeData get data => MyThemeData(this, Brightness.light).getData();
+  ThemeData get data => MyThemeData(this, Brightness.dark).getData();
 
   /*******************************************************************
    * General Color                                                   *
@@ -18,34 +18,34 @@ class ThemeDefault implements ThemeColorInterface {
   /// Main color
   ///
   @override
-  Color defaultBackgroundColor = Color(0xffeaeaea);
+  Color defaultBackgroundColor = Color(0xff02283d);
 
   @override
-  Color defaultLayeredBackgroundColor = Color(0xffffffff);
+  Color defaultLayeredBackgroundColor = Color(0xff012637);
 
   @override
-  Color defaultLayeredBackgroundColorAlpha = Color(0x80ffffff);
+  Color defaultLayeredBackgroundColorAlpha = Color(0xccf5f5f5);
 
   @override
-  Color defaultPrimaryColor = Color(0xff38394b);
+  Color defaultPrimaryColor = Color(0xffeaeaea);
 
   @override
-  Color defaultAccentColor = Color(0xff1a77df);
+  Color defaultAccentColor = Color(0xff21a1ba);
 
   @override
-  Color defaultBorderColor = Color(0xff606084);
+  Color defaultBorderColor = Color(0xff21a2b9);
 
   @override
-  Color defaultDividerColor = Color(0xff4a4a4a);
+  Color defaultDividerColor = Color(0xff94d8ce);
 
   @override
-  Color defaultAppbarColor = Color(0xff38394b);
+  Color defaultAppbarColor = Color(0xff154760);
 
   @override
-  Color navigationColor = Color(0x80f0f0f0);
+  Color navigationColor = Color(0xfff5f5f5);
 
   @override
-  Color navigationColorFocus = Color(0xffffffff);
+  Color navigationColorFocus = Color(0xffffbe38);
 
   ///
   /// Widget color
@@ -54,79 +54,82 @@ class ThemeDefault implements ThemeColorInterface {
   Color defaultWidgetColor = Color(0xfff5f5f5);
 
   @override
-  Color defaultWidgetBgColor = Color(0xff1a77df);
+  Color defaultWidgetBgColor = Color(0xff383838);
 
   @override
-  Color defaultSelectableWidgetColor = Color(0xff1a77df);
+  Color defaultSelectableWidgetColor = Color(0xffaaaaaa);
 
   @override
-  Color defaultDisabledColor = Color(0xff989898);
+  Color defaultActiveWidgetColor = Color(0xff21a1ba);
 
   @override
-  Color defaultChipColor = Color(0xffedd1a2);
+  Color defaultDisabledColor = Color(0xff575757);
 
   @override
-  Color defaultGridColor = Color(0x99FFFFFF);
+  Color defaultChipColor = Color(0xffeaeaea);
 
   @override
-  Color defaultGridTextColor = Color(0xff424242);
+  Color defaultGridColor = Color(0x73000000);
 
   @override
-  Color defaultCardColor = Color(0x99FFFFFF);
+  Color defaultGridTextColor = Color(0xfff0f0f0);
 
   @override
-  Color defaultCardTitleColor = Color(0xff2a60ba);
+  Color defaultCardColor = Color(0xff003a55);
 
   @override
-  Color defaultTabUnselectedColor = Color(0xff09347b);
+  Color defaultCardTitleColor = Color(0xfff0f0f0);
 
   @override
-  Color defaultTabSelectedColor = Color(0xffffffff);
+  Color defaultTabUnselectedColor = Color(0xff21a2b9);
 
   @override
-  Color defaultTabSelectedTextColor = Color(0xff2a60ba);
+  Color defaultTabSelectedColor = Color(0xff012637);
 
   @override
-  Color defaultIndicatorColor = Color(0xff3f3f5a);
+  Color defaultTabSelectedTextColor = Color(0xffeaeaea);
+
+  @override
+  Color defaultIndicatorColor = Color(0xff21a1ba);
 
   ///
   /// Side menu color
   ///
   @override
-  Color drawerIconColor = Color(0xffffffff);
+  Color drawerIconColor = Color(0xfff0f0f0);
 
   @override
-  Color drawerIconSubColor = Color(0xffffffff);
+  Color drawerIconSubColor = Color(0xfff0f0f0);
 
   @override
-  Color sideMenuPrimaryColor = Color(0xffffffff);
+  Color sideMenuPrimaryColor = Color(0xff02283d);
 
   @override
   Color sideMenuSecondaryColor = Color(0xffffffff);
 
   @override
-  Color sideMenuButtonColor = Color(0xffffffff);
+  Color sideMenuButtonColor = Color(0xff000000);
 
   @override
-  Color sideMenuButtonTextColor = Color(0xff383838);
+  Color sideMenuButtonTextColor = Color(0xffffffff);
 
   @override
-  Color sideMenuHeaderTextColor = Color(0xffffffff);
+  Color sideMenuHeaderTextColor = Color(0xfff5f5f5);
 
   @override
-  Color sideMenuIconColor = Color(0xffffffff);
+  Color sideMenuIconColor = Color(0xfff0f0f0);
 
   @override
-  Color sideMenuIconBgColor = Color(0xff1a77df);
+  Color sideMenuIconBgColor = Color(0xff21a1ba);
 
   @override
-  Color sideMenuIconTextColor = Color(0xff383838);
+  Color sideMenuIconTextColor = Color(0xffffffff);
 
   ///
   /// Dialog color
   ///
   @override
-  Color dialogBgColor = Color(0xffeaeaea);
+  Color dialogBgColor = Color(0xff424242);
 
   @override
   Color dialogBgColor0 = Color(0xff606266);
@@ -135,46 +138,46 @@ class ThemeDefault implements ThemeColorInterface {
   Color dialogBgColor1 = Color(0xff2a2a2a);
 
   @override
-  Color dialogBgTransparent = Color(0x66bcbcbc);
+  Color dialogBgTransparent = Color(0xD0000000);
 
   @override
-  Color dialogTextColor = Color(0xff383838);
+  Color dialogTextColor = Color(0xffe6e6e6);
 
   @override
-  Color dialogTitleColor = Color(0xff1561b7);
+  Color dialogTitleColor = Color(0xff21a1ba);
 
   @override
-  Color dialogTitleBgColor = Color(0xffffffff);
+  Color dialogTitleBgColor = Color(0xff808080);
 
   @override
-  Color dialogCloseIconColor = Color(0xff303030);
+  Color dialogCloseIconColor = Color(0xffeaeaea);
 
   ///
   /// Text color
   ///
   @override
-  Color defaultTextColor = Color(0xff383838);
+  Color defaultTextColor = Color(0xffececec);
 
   @override
-  Color secondaryTextColor1 = Color(0xffffffff);
+  Color secondaryTextColor1 = Color(0xfff0f0f0);
 
   @override
-  Color secondaryTextColor2 = Color(0xff303030);
+  Color secondaryTextColor2 = Color(0xff222222);
 
   @override
-  Color defaultTitleColor = Color(0xff303030);
+  Color defaultTitleColor = Color(0xfff5f5f5);
 
   @override
-  Color defaultSubtitleColor = Color(0xff4285f4);
+  Color defaultSubtitleColor = Color(0xff21a1ba);
 
   @override
-  Color defaultHintColor = Color(0xff545454);
+  Color defaultHintColor = Color(0xffa8a8a8);
 
   @override
-  Color defaultHintSubColor = Color(0xffa8a8a8);
+  Color defaultHintSubColor = Color(0xff808080);
 
   @override
-  Color defaultMessageColor = Color(0xff424242);
+  Color defaultMessageColor = Color(0xffcccccc);
 
   @override
   Color defaultErrorColor = Color(0xffe53935);
@@ -183,7 +186,7 @@ class ThemeDefault implements ThemeColorInterface {
   /// Hint text color
   ///
   @override
-  Color hintHighlight = Color(0xffff6975);
+  Color hintHighlight = Color(0xffff7eb8);
 
   @override
   Color hintHighlightDarkRed = Color(0xffe63f3f);
@@ -204,7 +207,7 @@ class ThemeDefault implements ThemeColorInterface {
   Color hintHighlightOrangeStrong = Color(0xffff9e4c);
 
   @override
-  Color hintHyperLink = Color(0xff23538d);
+  Color hintHyperLink = Color(0xff82f8ff);
 
   @override
   Color hintDarkRed = Color(0xff752121);
@@ -219,10 +222,10 @@ class ThemeDefault implements ThemeColorInterface {
   Color iconColor = Color(0xffffffff);
 
   @override
-  Color iconBgColor = Color(0xff4285f4);
+  Color iconBgColor = Color(0xff154760);
 
   @override
-  Color iconSubColor1 = Color(0xffffffff);
+  Color iconSubColor1 = Color(0xffa4a4a4);
 
   @override
   Color iconSubColor2 = Color(0xff606060);
@@ -240,133 +243,142 @@ class ThemeDefault implements ThemeColorInterface {
   Color iconBgColorTrans = Color(0x40a4a4a4);
 
   @override
-  Color iconTextColor = Color(0xff3a3a3a);
+  Color iconTextColor = Color(0xffffffff);
 
   ///
   /// Button color
   ///
   @override
-  Color buttonPrimaryColor = Color(0xff2a60ba);
+  Color buttonPrimaryColor = Color(0xffffbe38);
 
   @override
   Color buttonTextPrimaryColor = Color(0xffffffff);
 
   @override
-  Color buttonSecondaryColor = Color(0xffd2d2d2);
+  Color buttonSecondaryColor = Color(0xcc000000);
 
   @override
-  Color buttonSubColor = Color(0xff969696);
+  Color buttonSubColor = Color(0xfff0f0f0);
 
   @override
-  Color buttonTextSubColor = Color(0xffc8c8c8);
+  Color buttonTextSubColor = Color(0xfff0f0f0);
 
   @override
-  Color buttonDisabledColor = Color(0xff606060);
+  Color buttonDisabledColor = Color(0xffa9a9a9);
 
   @override
-  Color buttonDisabledColorDark = Color(0xff888888);
+  Color buttonDisabledColorDark = Color(0xc03a3a3a);
 
   @override
-  Color buttonDisabledTextColor = Color(0xffa0a0a0);
+  Color buttonDisabledTextColor = Color(0xff575757);
 
   @override
-  Color buttonBorderColor = Color(0xffffffff);
+  Color buttonBorderColor = Color(0xff21a1ba);
 
   @override
   Color buttonLinearLightColor1 = Color(0xfffdeddd);
 
   @override
-  Color buttonLinearLightColor2 = Color(0xff91cbff);
+  Color buttonLinearLightColor2 = Color(0xffdcc4ac);
 
   @override
-  Color buttonLinearColor1 = Color(0xfffceee3);
+  Color buttonLinearColor1 = Color(0xfffdeddd);
 
   @override
-  Color buttonLinearColor2 = Color(0xff409cf3);
+  Color buttonLinearColor2 = Color(0xffdcc4ac);
 
   @override
-  Color pagerButtonColor = Color(0xffc7c7c7);
+  Color pagerButtonColor = Color(0xff4e4e4e);
 
   @override
   Color pagerButtonSelectedColor = Color(0xff3b3b3b);
 
   @override
-  Color centerButtonColor = Color(0xf0ffffff);
+  Color centerButtonColor = Color(0xff222222);
 
   @override
-  Color centerButtonTextColor = Color(0xff3751f3);
+  Color centerButtonShadowColor = Color(0xffd08200);
 
   @override
-  Color centerButtonBorderColor = Color(0xff409cf3);
+  Color centerButtonBorderColor = Color(0xfffec017);
 
   @override
-  Color centerButtonStackColor = Color.fromRGBO(0, 152, 255, 0.1);
+  Color centerButtonStackColor = Color.fromRGBO(255, 152, 0, 0.1);
 
   ///
   /// Input field color
   ///
   @override
-  Color fieldInputColor = Color(0xff303030);
+  Color fieldInputColor = Color(0xff222222);
 
   @override
-  Color fieldInputBgColor = Color(0xffe1e1e1);
+  Color fieldInputSubColor = Color(0xfff0f0f0);
+
+  @override
+  Color fieldInputBgColor = Color(0xffd9d9d9);
+
+  @override
+  Color fieldInputSubBgColor = Color(0xff4e4e4e);
 
   @override
   Color fieldReadOnlyBgColor = Color(0xffd3d3d3);
 
   @override
-  Color fieldInputHintColor = Color(0xff969696);
+  Color fieldReadOnlySubBgColor = Color(0xff404040);
 
   @override
-  Color fieldPrefixBgColor = Color(0xffffffff);
+  Color fieldInputHintColor = Color(0xff606060);
 
   @override
-  Color fieldPrefixColor = Color(0xff383838);
+  Color fieldInputHintSubColor = Color(0xffa4a4a4);
 
   @override
-  Color fieldPrefixSubColor = Color(0xffffffff);
+  Color fieldDropdownColor = Color(0xffd9d9d9);
 
   @override
-  Color fieldSuffixColor = Color(0xff2a60ba);
+  Color fieldDropdownSubColor = Color(0xff4e4e4e);
+
+  @override
+  Color fieldPrefixBgColor = Color(0xff012637);
+
+  @override
+  Color fieldPrefixColor = Color(0xffeaeaea);
+
+  @override
+  Color fieldPrefixSubColor = Color(0xff383838);
+
+  @override
+  Color fieldSuffixColor = Color(0xff21a1ba);
 
   @override
   Color fieldSuffixSubColor = Color(0xffffffff);
 
   @override
-  Color fieldInputSubBgColor = Color(0xff686868);
+  Color fieldCursorColor = Color(0xff222222);
 
   @override
-  Color fieldReadOnlySubBgColor = Color(0xff3f3f3f);
-
-  @override
-  Color fieldInputSubColor = Color(0xffeaeaea);
-
-  @override
-  Color fieldInputHintSubColor = Color(0xffb0b0b0);
-
-  @override
-  Color fieldCursorSubColor = Color(0xff90caf9);
+  Color fieldCursorSubColor = Color(0xffffffff);
 
   ///
   /// Chart table color
   ///
   @override
-  Color chartBorderColor = Color(0xff969696);
+  Color chartBorderColor = Color(0xff909090);
 
   @override
-  Color chartPrimaryHeaderColor = Color(0xff2a60ba);
+  Color chartPrimaryHeaderColor = Color(0xff21a1ba);
 
   @override
-  Color chartPrimaryHeaderTextColor = Color(0xffffffff);
+  Color chartPrimaryHeaderTextColor = Color(0xfff0f0f0);
 
   @override
-  Color chartSecondaryHeaderColor = Color(0xffa0a0a0);
+  Color chartSecondaryHeaderColor = Color(0xff484848);
 
   @override
-  Color chartBgColor = Color(0xffeaeaea);
+  Color chartBgColor = Color(0xff012637);
 
   @override
-  Color chartHeaderBgColor = Color(0xff484848);
+  Color chartHeaderBgColor = Color(0xff222222);
 
   /*******************************************************************
    * Specific Page Color                                             *
@@ -375,19 +387,19 @@ class ThemeDefault implements ThemeColorInterface {
   /// Linear App Bar Color
   ///
   @override
-  Color barLinearColor1 = Color(0xff80a2c0);
+  Color barLinearColor1 = Color(0xff3e3a39);
 
   @override
-  Color barLinearColor2 = Color(0xff3a75aa);
+  Color barLinearColor2 = Color(0xff4D4B4C);
 
   @override
-  Color barLinearColor3 = Color(0xff3a75aa);
+  Color barLinearColor3 = Color(0xff3e3a39);
 
   ///
   /// Home page color
   ///
   @override
-  Color defaultMarqueeBarColor = Color(0xf0797999);
+  Color defaultMarqueeBarColor = Color(0xc021a1ba);
 
   @override
   Color defaultMarqueeTextColor = Color(0xfff0f0f0);
@@ -396,124 +408,124 @@ class ThemeDefault implements ThemeColorInterface {
   Color homeFavoriteColor = Color(0xffffffff);
 
   @override
-  Color homeTabBgColor = Color(0xffffffff);
+  Color homeTabBgColor = Color(0xff000000);
 
   @override
-  Color homeTabDividerColor = Color(0xff1a77df);
+  Color homeTabDividerColor = Color(0xff21a1ba);
 
   @override
   Color homeTabIconColor = Color(0xfff0f0f0);
 
   @override
-  Color homeTabIconBgColor = Color(0xff1a77df);
+  Color homeTabIconBgColor = Color(0xff21a1ba);
 
   @override
-  Color homeTabTextColor = Color(0xff1a77df);
+  Color homeTabTextColor = Color(0xfff0f0f0);
 
   @override
   Color homeTabSelectedTextColor = Color(0xffffffff);
 
   @override
-  Color homeBoxBgColor = Color(0xff515175);
+  Color homeBoxBgColor = Color(0xff000000);
 
   @override
-  Color homeBoxHintBgColor = Color(0xff1a77df);
+  Color homeBoxHintBgColor = Color(0xff21a1ba);
 
   @override
-  Color homeBoxHintTextColor = Color(0xffffffff);
+  Color homeBoxHintTextColor = Color(0xffeaeaea);
 
   @override
-  Color homeBoxInfoTextColor = Color(0xffffffff);
+  Color homeBoxInfoTextColor = Color(0xfff0f0f0);
 
   @override
-  Color homeBoxDividerColor = Color(0xff606084);
+  Color homeBoxDividerColor = Color(0xff21a1ba);
 
   @override
-  Color homeBoxIconColor = Color(0xffffffff);
+  Color homeBoxIconColor = Color(0xfff5f5f5);
 
   @override
-  Color homeBoxIconBgColor = Color(0xff80c0e7);
+  Color homeBoxIconBgColor = Color(0x00000000);
 
   @override
-  Color homeBoxIconTextColor = Color(0xffffffff);
+  Color homeBoxIconTextColor = Color(0xfff5f5f5);
 
   @override
-  Color homeBoxButtonTextColor = Color(0xff383838);
+  Color homeBoxButtonTextColor = Color(0xfff5f5f5);
 
   @override
-  Color homeTabSelectedLinearColor1 = Color(0xff7687ac);
+  Color homeTabSelectedLinearColor1 = Color(0xff786e64);
 
   @override
-  Color homeTabSelectedLinearColor2 = Color(0xff587cb1);
+  Color homeTabSelectedLinearColor2 = Color(0xff49413e);
 
   @override
-  Color homeTabLinearColor1 = Color(0xffddedfd);
+  Color homeTabLinearColor1 = Color(0xff3e3a39);
 
   @override
-  Color homeTabLinearColor2 = Color(0xffacc4dc);
+  Color homeTabLinearColor2 = Color(0xff595758);
 
   ///
   /// Promo page color
   ///
   @override
-  Color promoTabBgColor = Color(0xffffffff);
+  Color promoTabBgColor = Color(0xff000000);
 
   @override
-  Color promoTabIconColor = Color(0xffb5b5b5);
+  Color promoTabIconColor = Color(0xff21a1ba);
 
   @override
   Color promoTabTextColor = Color(0xffb5b5b5);
 
   @override
-  Color promoTabSelectedBgColor = Color(0xff1a77df);
+  Color promoTabSelectedBgColor = Color(0xff21a1ba);
 
   @override
-  Color promoTabSelectedIconColor = Color(0xffffffff);
+  Color promoTabSelectedIconColor = Color(0xff3a3a3a);
 
   @override
-  Color promoTabSelectedTextColor = Color(0xffffffff);
+  Color promoTabSelectedTextColor = Color(0xff000000);
 
   @override
-  Color promoLinearColor1 = Color(0xffddedfd);
+  Color promoLinearColor1 = Color(0xcc3f3b3a);
 
   @override
-  Color promoLinearColor2 = Color(0xff80a2c0);
+  Color promoLinearColor2 = Color(0xff25272c);
 
   ///
   /// Member page color
   ///
   @override
-  Color memberIconColor = Color(0xff2a60ba);
+  Color memberIconColor = Color(0xffffbe38);
 
   @override
-  Color memberIconLabelColor = Color(0xffffffff);
+  Color memberIconLabelColor = Color(0xfff5f5f5);
 
   @override
-  Color memberIconDecorColor = Color(0xff80a2c0);
+  Color memberIconDecorColor = Color(0xff02283d);
 
   @override
-  Color memberLinearColor1 = Color(0xff1f44ba);
+  Color memberLinearColor1 = Color(0xffbb904d);
 
   @override
-  Color memberLinearColor2 = Color(0xff4285f4);
+  Color memberLinearColor2 = Color(0xffe3b977);
 
   @override
-  Color memberLinearColor3 = Color(0xff2a60ba);
+  Color memberLinearColor3 = Color(0xffca9a51);
 
   ///
   /// More dialog color
   ///
   @override
-  Color moreDialogColor = Color(0xffc5c5c5);
+  Color moreDialogColor = Color(0xff2a2a2a);
 
   @override
-  Color moreGridColor = Color(0xfff0f0f0);
+  Color moreGridColor = Color(0xff424242);
 
   ///
   /// Notice page color
   ///
   @override
-  Color noticeTitleColor = Color(0xff2ad1ed);
+  Color noticeTitleColor = Color(0xffedd1a2);
 
   @override
   Color noticeTextColor = Color(0xffffffff);
@@ -525,127 +537,127 @@ class ThemeDefault implements ThemeColorInterface {
   /// Balance page color
   ///
   @override
-  Color balanceCardBackground = Color(0xfff5f5f5);
+  Color balanceCardBackground = Color(0xff000000);
 
   @override
-  Color balanceCardLinear1Color = Color(0xff587cb1);
+  Color balanceCardLinear1Color = Color(0xcca6886e);
 
   @override
-  Color balanceCardLinear2Color = Color(0xff7687ac);
+  Color balanceCardLinear2Color = Color(0xccf1daa8);
 
   @override
-  Color balanceCardLinear3Color = Color(0xff587cb1);
+  Color balanceCardLinear3Color = Color(0xccce9055);
 
   @override
-  Color balanceCardTitleColor = Color(0xff515175);
+  Color balanceCardTitleColor = Color(0xff21a1ba);
 
   @override
-  Color balanceCardTextColor = Color(0xff2a60ba);
+  Color balanceCardTextColor = Color(0xffffbe38);
 
   @override
-  Color balanceActionTextColor = Color(0xffff9e4c);
+  Color balanceActionTextColor = Color(0xfff5f5f5);
 
   @override
-  Color balanceAction2TextColor = Color(0xffe63f3f);
+  Color balanceAction2TextColor = Color(0xfff5f5f5);
 
   @override
-  Color balanceActionDisableTextColor = Color(0xffb7b7b7);
+  Color balanceActionDisableTextColor = Color(0xffa4a4a4);
 
   @override
-  Color balanceRefreshColor = Color(0xffc0c0c0);
+  Color balanceRefreshColor = Color(0xff21a1ba);
 
   ///
   /// Wallet page color
   ///
   @override
-  Color walletCardBgColor = Color(0xff4285f4);
+  Color walletCardBgColor = Color(0xff3a3a3a);
 
   @override
-  Color walletCardIconBgColor = Color(0xffeeeeee);
+  Color walletCardIconBgColor = Color(0xff575757);
 
   @override
-  Color walletBoxBackgroundColor = Color.fromRGBO(42, 96, 186, 0.1);
+  Color walletBoxBackgroundColor = Color(0xff000000);
 
   @override
-  Color walletBoxBorderColor = Color(0xff2a60ba);
+  Color walletBoxBorderColor = Color(0xff94d8ce);
 
   @override
-  Color walletBoxTitleColor = Color(0xffffffff);
+  Color walletBoxTitleColor = Color(0xff21a1ba);
 
   @override
-  Color walletBoxButtonColor = Color(0xff09347b);
+  Color walletBoxButtonColor = Color(0xffffbe38);
 
   @override
-  Color walletRadioColor = Color(0xff484848);
+  Color walletRadioColor = Color(0xffcccccc);
 
   @override
-  Color walletCreditTitleColor = Color(0xff2a60ba);
+  Color walletCreditTitleColor = Color(0xffeaeaea);
 
   @override
-  Color walletCreditColor = Color(0xff2a60ba);
+  Color walletCreditColor = Color(0xff94d8ce);
 
   ///
   /// VIP level page & Center VIP color
   ///
   @override
-  Color vipCardBackgroundColor = Color(0xffd2d2d2);
+  Color vipCardBackgroundColor = Color(0xff012637);
 
   @override
-  Color vipTitleBackgroundColor = Color(0xff4285f4);
+  Color vipTitleBackgroundColor = Color(0xff154760);
 
   @override
-  Color vipTitleBackgroundSubColor = Color(0xfff5f5f5);
+  Color vipTitleBackgroundSubColor = Color(0xff4e4e4e);
 
   @override
-  Color vipIconBackgroundColor = Color(0xffffffff);
+  Color vipIconBackgroundColor = Color(0xffa4a4a4);
 
   @override
-  Color vipIconColor = Color(0xff4285f4);
+  Color vipIconColor = Color(0xff21a1ba);
 
   @override
-  Color vipIconTextColor = Color(0xffffffff);
+  Color vipIconTextColor = Color(0xfff0f0f0);
 
   @override
-  Color vipIconTextSubColor = Color(0xff000000);
+  Color vipIconTextSubColor = Color(0xff383838);
 
   @override
-  Color vipTitleColor = Color(0xff2a60ba);
+  Color vipTitleColor = Color(0xfff5f5f5);
 
   @override
-  Color vipDescColor = Color(0xff8d8d8d);
+  Color vipDescColor = Color(0xffeaeaea);
 
   @override
-  Color vipLevelTextColor = Color(0xff424242);
+  Color vipLevelTextColor = Color(0xffcccccc);
 
   @override
-  Color vipLinearBgColor1 = Color(0xffffffff);
+  Color vipLinearBgColor1 = Color(0xff585656);
 
   @override
-  Color vipLinearBgColor2 = Color(0xfff5f5f5);
+  Color vipLinearBgColor2 = Color(0xcc3f3a39);
 
   @override
-  Color vipProgressColor = Color(0xffa9a9a9);
+  Color vipProgressColor = Color(0xff989898);
 
   @override
-  Color vipProgressCircleColor = Color(0xff2a60ba);
+  Color vipProgressCircleColor = Color(0xffcccccc);
 
   @override
-  Color vipProgressBorderColor = Color(0xff2a60ba);
+  Color vipProgressBorderColor = Color(0xff21a1ba);
 
   ///
   /// Store page color
   ///
   @override
-  Color storeDialogBackground = Color(0xfff5f5f5);
+  Color storeDialogBackground = Color(0x80000000);
 
   @override
-  Color storeDialogSpanText = Color(0xff424242);
+  Color storeDialogSpanText = Color(0xffeaeaea);
 
   @override
-  Color storeProductBgColor = Color(0xffc4c4c4);
+  Color storeProductBgColor = Color(0xffeaeaea);
 
   @override
-  Color storeProductBorderColor = Color(0xffc4c4c4);
+  Color storeProductBorderColor = Color(0xffcccccc);
 
   @override
   Color storeRuleTitleColor = Color(0xff3598db);
@@ -654,13 +666,13 @@ class ThemeDefault implements ThemeColorInterface {
   Color storeRuleHighlightColor = Color(0xffe03e2d);
 
   @override
-  Color storeRuleTextColor = Color(0xff8d8d8d);
+  Color storeRuleTextColor = Color(0xffcccccc);
 
   @override
-  Color storeButtonColor = Color(0xffcfa972);
+  Color storeButtonColor = Color(0xff21a2b9);
 
   @override
-  Color storeHighlightTextColor = Color(0xffff6975);
+  Color storeHighlightTextColor = Color(0xffffbe38);
 
   ///
   /// Roller page color
@@ -669,16 +681,16 @@ class ThemeDefault implements ThemeColorInterface {
   Color rollerBackgroundBlockTop = Color(0xffd2080e);
 
   @override
-  Color rollerBackgroundBlock = Color(0xffe7c080);
+  Color rollerBackgroundBlock = Color(0xff21a1ba);
+
+  @override
+  Color rollerRuleBackgroundColor = Colors.black45;
 
   @override
   Color rollerRuleTitleColor = Color(0xffe60000);
 
   @override
   Color rollerRuleHighlightColor = Color(0xfff1c04f);
-
-  @override
-  Color rollerRuleBackgroundColor = Colors.black45;
 
   @override
   Color rollerRuleTextColor = Color(0xffecf0f1);

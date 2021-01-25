@@ -56,8 +56,7 @@ class TransactionDisplayListState extends State<TransactionDisplayList> {
         child: Center(child: Text(localeStr.messageWarnNoHistoryData)),
       );
 
-    _borderSide ??=
-        BorderSide(color: themeColor.defaultBorderColor, width: 1.5);
+    _borderSide ??= BorderSide(color: themeColor.chartBorderColor, width: 1.5);
     return ListView.builder(
       primary: false,
       shrinkWrap: true,
@@ -68,18 +67,18 @@ class TransactionDisplayListState extends State<TransactionDisplayList> {
           data.key,
           data.date,
           ('${data.type}'.toLowerCase() == 'in') ? _textIn : _textOut,
-          localeStr.transferMessage(data.from, data.to),
+          _localeTransferDesc(data.from, data.to),
           data.amount,
         ];
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 24.0),
           decoration: new BoxDecoration(
             color: (index % 2 == 1)
-                ? themeColor.defaultCardColor
-                : themeColor.chartBgColor,
+                ? themeColor.chartBgColor
+                : themeColor.defaultCardColor,
             border: (index % 2 == 1)
                 ? null
-                : Border.symmetric(vertical: _borderSide),
+                : Border.symmetric(horizontal: _borderSide),
           ),
           child: Column(
             children: List.generate(_headerTexts.length, (rowIndex) {
@@ -120,5 +119,11 @@ class TransactionDisplayListState extends State<TransactionDisplayList> {
         ],
       ),
     );
+  }
+
+  String _localeTransferDesc(String from, String to) {
+    final _from = (from == 'centerWallet') ? localeStr.walletViewTitle : from;
+    final _to = (to == 'centerWallet') ? localeStr.walletViewTitle : to;
+    return localeStr.transferMessage(_from, _to);
   }
 }

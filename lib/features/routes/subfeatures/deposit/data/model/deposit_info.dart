@@ -10,6 +10,7 @@ abstract class DepositInfo with _$DepositInfo {
     @JsonKey(name: 'bankaccountname') String bankAccountName,
     @JsonKey(name: 'bankaccountno') String bankAccountNo,
     @JsonKey(name: 'bankcode') String bankCode,
+    bool hasBankInfo,
   }) = _DepositInfo;
 
   static DepositInfo jsonToDepositInfo(Map<String, dynamic> jsonMap) =>
@@ -19,5 +20,6 @@ abstract class DepositInfo with _$DepositInfo {
         bankAccountName: jsonMap['bankaccountname'] as String,
         bankAccountNo: jsonMap['bankaccountno'] as String,
         bankCode: jsonMap['bankcode'] as String,
+        hasBankInfo: false,
       );
 }

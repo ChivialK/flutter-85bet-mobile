@@ -1,6 +1,5 @@
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
 import 'package:flutter_85bet_mobile/features/general/data/error/error_message_map.dart';
-import 'package:flutter_85bet_mobile/features/router/route_enum.dart';
 
 import '../../data/form/withdraw_form.dart';
 import '../../data/models/withdraw_model.dart';

@@ -12,6 +12,7 @@ class ScreenDrawer extends StatelessWidget {
     ScreenDrawerItem.tutorial,
     ScreenDrawerItem.vip,
     ScreenDrawerItem.promo,
+    ScreenDrawerItem.store,
     ScreenDrawerItem.website,
     ScreenDrawerItem.logout,
 //    ScreenDrawerItem.testUI,
@@ -27,10 +28,10 @@ class ScreenDrawer extends StatelessWidget {
       launch(Global.CURRENT_BASE);
       return true;
     }
-    if (item == ScreenDrawerItem.test) {
-      ScreenNavigate.switchScreen(screen: ScreenEnum.Test);
-      return true;
-    }
+    // if (item == ScreenDrawerItem.test) {
+    //   ScreenNavigate.switchScreen(screen: ScreenEnum.Test);
+    //   return true;
+    // }
     var route = item.value.route;
     if (route == null) {
       callToastInfo(localeStr.workInProgress);
@@ -84,28 +85,29 @@ class ScreenDrawer extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Center(
-                            child: Text(localeStr.messageWelcome,
-                                style: TextStyle(
-                                  fontSize: FontSize.MESSAGE.value,
-                                )),
-                          ),
-                          Center(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 12.0),
-                              child: Text(
-                                localeStr.messageWelcomeHint,
-                                style: TextStyle(
-                                    fontSize: FontSize.SUBTITLE.value),
-                              ),
-                            ),
+                          RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(children: [
+                              TextSpan(
+                                  text: '${localeStr.messageWelcome}\n',
+                                  style: TextStyle(
+                                    fontSize: FontSize.MESSAGE.value,
+                                    color: themeColor.sideMenuHeaderTextColor,
+                                  )),
+                              TextSpan(
+                                  text: localeStr.messageWelcomeHint,
+                                  style: TextStyle(
+                                    fontSize: FontSize.SUBTITLE.value,
+                                    height: 2.0,
+                                  )),
+                            ]),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            padding:
+                                const EdgeInsets.only(top: 16.0, bottom: 8.0),
                             child: RaisedButton(
-                              color: themeColor.buttonPrimaryColor,
-                              textColor: themeColor.buttonTextPrimaryColor,
+                              color: themeColor.sideMenuButtonColor,
+                              textColor: themeColor.sideMenuButtonTextColor,
                               child: Text(
                                 localeStr.pageTitleLogin,
                                 style: TextStyle(
@@ -123,8 +125,8 @@ class ScreenDrawer extends StatelessWidget {
                             ),
                           ),
                           RaisedButton(
-                            color: themeColor.buttonPrimaryColor,
-                            textColor: themeColor.buttonTextPrimaryColor,
+                            color: themeColor.sideMenuButtonColor,
+                            textColor: themeColor.sideMenuButtonTextColor,
                             child: Text(
                               localeStr.pageTitleRegister,
                               style:
@@ -148,7 +150,8 @@ class ScreenDrawer extends StatelessWidget {
                           Container(
                             width: 144,
                             height: 144,
-                            margin: const EdgeInsets.symmetric(vertical: 30.0),
+                            margin:
+                                const EdgeInsets.only(top: 24.0, bottom: 30.0),
                             child: networkImageBuilder(
                               'images/member-star.png',
                               imgScale: 0.85,
@@ -183,6 +186,7 @@ class ScreenDrawer extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: FontSize.MESSAGE.value,
                                 fontWeight: FontWeight.w600,
+                                color: themeColor.sideMenuHeaderTextColor,
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -193,8 +197,10 @@ class ScreenDrawer extends StatelessWidget {
                                   const EdgeInsets.symmetric(vertical: 12.0),
                               child: Text(
                                 getAppGlobalStreams.getCredit(addSymbol: true),
-                                style:
-                                    TextStyle(fontSize: FontSize.TITLE.value),
+                                style: TextStyle(
+                                  fontSize: FontSize.TITLE.value,
+                                  color: themeColor.sideMenuHeaderTextColor,
+                                ),
                               ),
                             ),
                           ),
@@ -211,9 +217,7 @@ class ScreenDrawer extends StatelessWidget {
                           return SizedBox.shrink();
                         return GestureDetector(
                           onTap: () {
-                            if ((item == ScreenDrawerItem.sign)
-                                ? _itemTapped(item, store: viewState.store)
-                                : _itemTapped(item)) {
+                            if (_itemTapped(item)) {
                               // close the drawer
                               if (viewState.scaffoldKey.currentState
                                   .isDrawerOpen) Navigator.of(context).pop();

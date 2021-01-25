@@ -7,7 +7,6 @@ import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
 import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
 import 'package:flutter_85bet_mobile/features/update/presentation/state/update_store.dart';
 import 'package:flutter_85bet_mobile/injection_container.dart';
-import 'package:flutter_85bet_mobile/res.dart';
 
 import '../../data/models/game_category_model.dart';
 import '../state/home_store.dart';
@@ -81,77 +80,19 @@ class _HomeDisplayState extends State<HomeDisplay> {
     }
   }
 
-  void _widgetUrlCheck(String url) {
-    debugPrint('home widget url check: $url');
-    _widgetUrlNavigate(
-      url.contains('/api/open/'),
-      url
-          .substring(
-              url.indexOf(Global.DOMAIN_NAME) + Global.DOMAIN_NAME.length)
-          .replaceAll('/api/open/', ''),
-    );
-  }
-
-  void _widgetUrlNavigate(bool openGame, String url) {
-    debugPrint('home widget url: $url, isGame: $openGame');
-    if (openGame) {
-      if (!getAppGlobalStreams.hasUser) {
-        callToastInfo(localeStr.messageErrorNotLogin);
-        return;
-      } else {
-        _openGame(url);
-      }
-
-      /// Show game category view
-    } else if (url.startsWith('/gamelist/')) {
-      String className = url.replaceAll('/gamelist/', '').replaceAll('/', '-');
-      debugPrint('searching platform name: $className');
-      _tabsWidgetKey.currentState?.findPage(className.split('-')[1]);
-      _store.showSearchPlatform(className);
-    } else if (url.startsWith('/promo/')) {
-      int promoId =
-          url.substring(url.lastIndexOf('/') + 1, url.length).strToInt;
-      debugPrint('url promo id: $promoId');
-      RouterNavigate.navigateToPage(
-        RoutePage.promo,
-        arg: (promoId > 0) ? PromoRouteArguments(openPromoId: promoId) : null,
-      );
-
-      /// Jump to route page if path name exist
-    } else {
-      RoutePage newRoute = url.urlToRoutePage;
-      debugPrint('checking url to app route: $newRoute');
-      if (newRoute != null) {
-        RouterNavigate.navigateToPage(newRoute);
-      } else {
-        callToast(localeStr.urlActionNotSupported);
-        MyLogger.debug(msg: 'Found unsupported Route URL: $url');
-      }
+  void _setGameTitle(String title) {
+    try {
+      setState(() {
+        gameTitle = title;
+        showGameTitle = gameTitle.isNotEmpty;
+      });
+    } on Exception {
+      Future.delayed(Duration(milliseconds: 500), () {
+        _store.homeGameTitleStream.last.then((value) {
+          if (value == title) _setGameTitle(title);
+        });
+      });
     }
-  }
-
-  void _openGame(String url) {
-    final gameParam = url.split('/');
-    debugPrint('game url query: $gameParam');
-
-    /// Open game's web page if game can be found in stored map
-    if (gameParam.length == 3 &&
-        _store.hasGameInMap(
-          gameParam.take(2).join('/0'),
-          gameParam.last.strToInt,
-        )) {
-      final gameUrl = url.substring(url.indexOf('.com/') + 4);
-      debugPrint('opening game: $gameUrl');
-      _store.getGameUrl(gameUrl);
-      return;
-
-      /// Jump to game platform page
-    } else if (gameParam.length == 2) {
-      return;
-    }
-
-    callToast(localeStr.urlActionNotSupported);
-    MyLogger.debug(msg: 'Found unsupported Game URL: $url');
   }
 
   @override
@@ -164,24 +105,8 @@ class _HomeDisplayState extends State<HomeDisplay> {
   Widget build(BuildContext context) {
     _store ??= HomeStoreInheritedWidget.of(context).store;
     _eventStore ??= sl.get<EventStore>();
-    _updateStore ??= sl.get<UpdateStore>();
     return Stack(
       children: [
-        if (_eventStore != null && _updateStore != null)
-          StreamBuilder<List>(
-            stream: _eventStore.adsStream,
-            initialData: _eventStore.ads ?? [],
-            builder: (ctx, snapshot) {
-              if (snapshot.data != null &&
-                  snapshot.data.isNotEmpty &&
-                  _eventStore.autoShowAds &&
-                  _eventStore.checkSkip == false) {
-                debugPrint('stream home ads: ${snapshot.data.length}');
-                showAdsDialog(new List.from(snapshot.data));
-              }
-              return SizedBox.shrink();
-            },
-          ),
         StreamBuilder<String>(
             stream: _store.homeGameTitleStream,
             initialData: '',
@@ -193,26 +118,14 @@ class _HomeDisplayState extends State<HomeDisplay> {
                 if ((snapshot.data.isEmpty && showGameTitle) ||
                     (snapshot.data.isNotEmpty && !showGameTitle)) {
                   if (mounted) {
-                    Future.delayed(Duration(milliseconds: 200), () {
-                      setState(() {
-                        gameTitle = snapshot.data;
-                        showGameTitle = gameTitle.isNotEmpty;
-                      });
+                    Future.delayed(Duration(milliseconds: 500), () {
+                      _setGameTitle(snapshot.data);
                     });
                   }
                 }
               }
               return SizedBox.shrink();
             }),
-        if (Res.wallpaper.isNotEmpty)
-          Container(
-            constraints: BoxConstraints.tight(Size(
-              Global.device.width,
-              Global.device.featureContentHeight,
-            )),
-            child:
-                FittedBox(fit: BoxFit.fill, child: Image.asset(Res.wallpaper)),
-          ),
         Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -357,22 +270,111 @@ class _HomeDisplayState extends State<HomeDisplay> {
             ),
           ],
         ),
-        if (!showGameTitle)
-          Positioned(
-            top: _sizeCalc.bannerHeight - 6,
-            child: Row(
-              children: [
-                Transform(
-                    transform: Matrix4.diagonal3Values(Global.device.widthScale,
-                        Global.device.ratio - 0.25, 1.0),
-                    child: Image.asset(
-                      Res.shadow,
-                      color: Color(0xD0000000),
-                    )),
-              ],
-            ),
-          ),
       ],
     );
+  }
+
+  void _widgetUrlCheck(String url) {
+    debugPrint('home widget url check: $url');
+    String fixUrl;
+    if (url.contains(Global.DOMAIN_NAME)) {
+      fixUrl = url.substring(
+          url.indexOf(Global.DOMAIN_NAME) + Global.DOMAIN_NAME.length);
+    } else if (!url.startsWith('/')) {
+      fixUrl = '/$url';
+    } else {
+      fixUrl = url;
+    }
+    _widgetUrlNavigate(
+      url.contains('/api/open/'),
+      fixUrl.replaceAll('/api/open/', ''),
+    );
+  }
+
+  void _widgetUrlNavigate(bool openGame, String url) {
+    debugPrint('home widget url: $url, isGame: $openGame');
+    if (url == '/') {
+      callToastInfo(localeStr.pageTitleHome);
+      return;
+    } else if (openGame) {
+      if (!getAppGlobalStreams.hasUser) {
+        callToastInfo(localeStr.messageErrorNotLogin);
+        return;
+      } else {
+        _openGame(url);
+      }
+
+      /// Show game category view
+    } else if (url.startsWith('/gamelist/')) {
+      List<String> plats = url.split('/');
+      debugPrint('platforms: $plats');
+      if (plats.length == 3) {
+        callToast(localeStr.urlActionNotSupported);
+        MyLogger.debug(msg: 'Found unsupported Game URL: $url');
+      } else if (plats.length == 4) {
+        _tabsWidgetKey.currentState?.findPage(plats[3]);
+        Future.delayed(Duration(milliseconds: 1500), () {
+          _store.showSearchPlatform('${plats[2]}-${plats[3]}');
+        });
+      }
+
+      /// Jump to promo page with promo id if provided
+    } else if (url.startsWith('/promo/')) {
+      int itemId = url.substring(url.lastIndexOf('/') + 1, url.length).strToInt;
+      debugPrint('url promo id: $itemId');
+      RouterNavigate.navigateToPage(
+        RoutePage.promo,
+        arg: (itemId > 0) ? PromoRouteArguments(openPromoId: itemId) : null,
+      );
+
+      /// Jump to store page with product id if provided
+    } else if (url.startsWith('/mall/')) {
+      int itemId = url.substring(url.lastIndexOf('/') + 1, url.length).strToInt;
+
+      if (!getAppGlobalStreams.hasUser) {
+        callToastInfo(localeStr.messageErrorNotLogin);
+        return;
+      }
+      debugPrint('url mall id: $itemId');
+      RouterNavigate.navigateToPage(
+        RoutePage.sideStore,
+        arg: (itemId > 0) ? StoreRouteArguments(showProductId: itemId) : null,
+      );
+
+      /// Jump to route page if path name exist
+    } else {
+      RoutePage newRoute = url.urlToRoutePage;
+      debugPrint('checking url to app route: $newRoute');
+      if (newRoute != null) {
+        RouterNavigate.navigateToPage(newRoute);
+      } else {
+        callToast(localeStr.urlActionNotSupported);
+        MyLogger.debug(msg: 'Found unsupported Route URL: $url');
+      }
+    }
+  }
+
+  void _openGame(String url) {
+    final gameParam = url.split('/');
+    debugPrint('game url query: $gameParam');
+
+    /// Open game's web page if game can be found in stored map
+    if (gameParam.length == 3 &&
+        _store.hasGameInMap(
+          gameParam.take(2).join('/0'),
+          gameParam.last.strToInt,
+        )) {
+      final gameUrl = url.substring(url.indexOf('.com/') + 4);
+      debugPrint('opening game: $gameUrl');
+      _store.getGameUrl(gameUrl);
+      return;
+
+      /// Jump to game platform page
+    } else if (gameParam.length == 2) {
+      return;
+    }
+
+    callToast(localeStr.urlActionNotSupported);
+    MyLogger.debug(msg: 'Found unsupported Game URL: $url');
   }
 }

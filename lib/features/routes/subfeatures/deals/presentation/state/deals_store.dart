@@ -41,6 +41,7 @@ abstract class _DealsStore with Store {
   Future getRecord(DealsForm form) async {
     debugPrint('waiting: $waitForPageData');
     if (waitForPageData) return;
+    debugPrint('search form: $form');
     try {
       // Reset the possible previous error message.
       errorMessage = null;

@@ -22,7 +22,7 @@ class NoticeDisplayContent extends StatelessWidget {
         itemBuilder: (_, index) {
           NoticeData data = dataList[index];
           String content = '';
-          switch (Global.lang) {
+          switch (Global.lang.code) {
             case 'zh':
               content = data.content;
               break;
@@ -36,7 +36,7 @@ class NoticeDisplayContent extends StatelessWidget {
               content = data.contentVI;
               break;
           }
-          if (content.isEmpty && Global.lang != 'zh') {
+          if (content.isEmpty && !Global.lang.isChinese) {
             content = data.content ?? 'ERROR';
           }
           return Container(
@@ -59,7 +59,10 @@ class NoticeDisplayContent extends StatelessWidget {
                       vertical: 12.0, horizontal: 16.0),
                   child: Text(
                     content,
-                    style: TextStyle(fontSize: FontSize.SUBTITLE.value),
+                    style: TextStyle(
+                      fontSize: FontSize.SUBTITLE.value,
+                      color: themeColor.defaultTextColor,
+                    ),
                   ),
                 ),
                 Padding(

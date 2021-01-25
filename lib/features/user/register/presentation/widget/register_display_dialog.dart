@@ -24,7 +24,10 @@ class RegisterDisplayDialog extends StatelessWidget {
                 Center(
                   child: Text(
                     pageItem.value.label,
-                    style: TextStyle(fontSize: FontSize.HEADER.value),
+                    style: TextStyle(
+                      fontSize: FontSize.HEADER.value,
+                      color: themeColor.defaultTextColor,
+                    ),
                   ),
                 ),
                 Padding(

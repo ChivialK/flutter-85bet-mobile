@@ -26,6 +26,7 @@ class LoginNavigate extends StatelessWidget {
 
       // update user stream
       if (user != null) {
+        // GaInterface.log?.logLogin(loginMethod: 'App');
         getAppGlobalStreams
             .updateUser(LoginStatus(loggedIn: true, currentUser: user));
         getAppGlobalStreams.setCheck(true);

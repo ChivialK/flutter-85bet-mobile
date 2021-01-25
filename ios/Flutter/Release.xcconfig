@@ -3,6 +3,6 @@
 
 FLUTTER_TARGET=lib/main_release.dart
 
-APP_DISPLAY_NAME = 85Bet Mobile
+APP_DISPLAY_NAME = 79Bet Mobile
 
 CONFIG_FLAG = RELEASE

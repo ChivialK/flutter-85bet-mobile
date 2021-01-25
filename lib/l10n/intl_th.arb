@@ -1,9 +1,9 @@
 {
   "@@last_modified": "2020-09-25T10:54:50+0800",
   "@@locale": "th",
-  "title": "85Bet Mobile",
+  "title": "79Bet Mobile",
   "@title": {
-    "description": "85Bet Demo",
+    "description": "79Bet Demo",
     "type": "text",
     "placeholders": {}
   },
@@ -349,6 +349,14 @@
   "@btnCopy": {
     "type": "text"
   },
+  "btnNextStep": "ขั้นตอนต่อไป",
+  "@btnNextStep": {
+    "type": "text"
+  },
+  "btnPreStep": "ก่อนหน้า",
+  "@btnPreStep": {
+    "type": "text"
+  },
   "sideBtnBackHome": "ย้อนกลับ",
   "@sideBtnBackHome": {
     "type": "text"
@@ -610,6 +618,18 @@
       }
     }
   },
+  "messageInvalidPhone2": "หมายเลขโทรศัพท์ผิดพลาด ({min}~{max})",
+  "@messageInvalidPhone2": {
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "10"
+      },
+      "max": {
+        "example": "10"
+      }
+    }
+  },
   "messageInvalidPostCode": "รหัสโพสต์ผิดพลาด (5~8)",
   "@messageInvalidPostCode": {
     "type": "text"
@@ -635,17 +655,29 @@
       }
     }
   },
-  "messageInvalidAccount": "ชหมายเลขบัญชีคือ 6 ~ 12 ตัวพิมพ์เล็กภาษาอังกฤษ / หลัก",
+  "messageInvalidAccount": "ชหมายเลขบัญชีคือ {min}~{max} ตัวพิมพ์เล็กภาษาอังกฤษ / หลัก",
   "@messageInvalidAccount": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "6"
+      },
+      "max": {
+        "example": "12"
+      }
+    }
   },
-  "messageInvalidPassword": "รหัสผ่านควรมีความยาว 8 ~ 18 คำ",
+  "messageInvalidPassword": "รหัสผ่านควรมีความยาว {min}~{max} คำ",
   "@messageInvalidPassword": {
-    "type": "text"
-  },
-  "messageInvalidPasswordNew": "รหัสผ่านควรมีความยาว 8 ~ 18 คำ",
-  "@messageInvalidPasswordNew": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "8"
+      },
+      "max": {
+        "example": "20"
+      }
+    }
   },
   "messageInvalidConfirmPassword": "รหัสผ่านไม่ตรงกัน",
   "@messageInvalidConfirmPassword": {
@@ -672,8 +704,12 @@
       }
     }
   },
-  "messageInvalidDepositAmountMax": "เกินจำนวนการถอนสูงสุดของการทำธุรกรรมหนึ่งครั้ง (โปรดดูที่ระบบระดับสมาชิก)",
-  "@messageInvalidDepositAmountMax": {
+  "messageInvalidDepositAmountMaxLimit": "จำนวนเงินที่เติมเกินขีด จำกัด ด้านบน",
+  "@messageInvalidDepositAmountMaxLimit": {
+    "type": "text"
+  },
+  "messageInvalidDepositAmountMinLimit": "จำนวนการเติมเงินต่ำกว่าขีด จำกัด ล่าง",
+  "@messageInvalidDepositAmountMinLimit": {
     "type": "text"
   },
   "messageInvalidDepositName": "ชื่อบัญชีไม่ถูกต้อง",
@@ -684,12 +720,43 @@
   "@messageInvalidCardOwner": {
     "type": "text"
   },
-  "messageInvalidCardNumber": "หมายเลขบัตรคือ 5 ~ 20 อักขระ",
+  "messageInvalidCardNumber": "หมายเลขการ์ดคือ {min}~{max} ตัวอักษร",
   "@messageInvalidCardNumber": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "16"
+      },
+      "max": {
+        "example": "19"
+      }
+    }
+  },
+  "messageInvalidCardNumberFixed": "หมายเลขการ์ดคือ {min}~{max} ตัวอักษร (ขึ้นต้นด้วย {fixed})",
+  "@messageInvalidCardNumberFixed": {
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "16"
+      },
+      "max": {
+        "example": "19"
+      },
+      "fixed": {
+        "example": "9704"
+      }
+    }
   },
   "messageInvalidCardBankPoint": "ชื่อต้องมีความยาวมากกว่า 3 อักขระ",
   "@messageInvalidCardBankPoint": {
+    "type": "text"
+  },
+  "messageExceedRemainCredit": "เกินความสมดุล",
+  "@messageExceedRemainCredit": {
+    "type": "text"
+  },
+  "messagePlatformMaintenance": "แพลตฟอร์มอยู่ระหว่างการบำรุงรักษา",
+  "@messagePlatformMaintenance": {
     "type": "text"
   },
   "messageInvalidWithdrawPassword": "รหัสผ่านผิดพลาด! (ค่าเริ่มต้นคือรหัสผ่านเข้าสู่ระบบ)",
@@ -702,6 +769,10 @@
   },
   "messageInvalidWithdrawUnderAmount": "ต่ำกว่าจำนวนเงินถอนขั้นต่ำ",
   "@messageInvalidWithdrawUnderAmount": {
+    "type": "text"
+  },
+  "messageInvalidWithdrawExceedAmount": "เกินจำนวนการถอนสูงสุดของการทำธุรกรรมหนึ่งครั้ง (โปรดดูที่ระบบระดับสมาชิก)",
+  "@messageInvalidWithdrawExceedAmount": {
     "type": "text"
   },
   "messageWarnUsingCellular": "คุณกำลังใช้เครือข่ายมือถือ",
@@ -772,6 +843,10 @@
   "@messageErrorLoadingGame": {
     "type": "text"
   },
+  "messageErrorGamePermission": "คุณไม่ได้รับอนุญาตให้เล่นเกมแพลตฟอร์มนี้โปรดติดต่อฝ่ายบริการลูกค้า",
+  "@messageErrorGamePermission": {
+    "type": "text"
+  },
   "messageErrorLoadingPay": "ข้อผิดพลาดในการโหลดหน้าเว็บโปรดลองอีกครั้งในภายหลัง",
   "@messageErrorLoadingPay": {
     "type": "text"
@@ -836,6 +911,10 @@
   },
   "messageErrorPassword": "รหัสผ่านผิดพลาด",
   "@messageErrorPassword": {
+    "type": "text"
+  },
+  "messageErrorPasswordHint": "รหัสผ่านไม่ตรงกันบัญชีจะถูกล็อกหลังจากมีข้อผิดพลาด 5 ข้อ",
+  "@messageErrorPasswordHint": {
     "type": "text"
   },
   "messageErrorReferral": "รหัสอ้างอิงไม่ถูกต้อง",
@@ -991,7 +1070,7 @@
   "@gameCategoryWeb": {
     "type": "text"
   },
-  "gameCategoryWebHint": "คลิกฉันเพื่อเปิดเว็บไซต์ 85Bet",
+  "gameCategoryWebHint": "คลิกฉันเพื่อเปิดเว็บไซต์ 79Bet",
   "@gameCategoryWebHint": {
     "type": "text"
   },
@@ -1637,7 +1716,7 @@
   "@dealsViewSpinnerStatus1": {
     "type": "text"
   },
-  "dealsViewSpinnerStatus2": "ล้มเหลว",
+  "dealsViewSpinnerStatus2": "ปฏิเสธ",
   "@dealsViewSpinnerStatus2": {
     "type": "text"
   },
@@ -1653,7 +1732,7 @@
   "@dealsHeaderSerial": {
     "type": "text"
   },
-  "dealsHeaderType": "items",
+  "dealsHeaderType": "โครงการ",
   "@dealsHeaderType": {
     "type": "text"
   },
@@ -1671,6 +1750,10 @@
   },
   "dealsHeaderAmount": "จำนวนเงิน",
   "@dealsHeaderAmount": {
+    "type": "text"
+  },
+  "dealsDetailTypeAdjustCash": "จำนวนเงินที่ปรับแล้ว",
+  "@dealsDetailTypeAdjustCash": {
     "type": "text"
   },
   "dealsDetailTypeAdjustDeposit": "จำนวนเงินที่ปรับแล้ว",
@@ -1770,10 +1853,6 @@
       }
     }
   },
-  "depositPaymentEditTitleNote": "หมายเหตุ",
-  "@depositPaymentEditTitleNote": {
-    "type": "text"
-  },
   "depositPaymentEditTitleAmountHintRange": "ช่วง: {num}~{num2}",
   "@depositPaymentEditTitleAmountHintRange": {
     "type": "text",
@@ -1800,6 +1879,18 @@
         "example": "50"
       }
     }
+  },
+  "depositPaymentEditTitleCode": "รหัสธุรกรรม",
+  "@depositPaymentEditTitleCode": {
+    "type": "text"
+  },
+  "depositPaymentEditHintCode": "กรุณากรอกรหัสธุรกรรม",
+  "@depositPaymentEditHintCode": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleNote": "หมายเหตุ",
+  "@depositPaymentEditTitleNote": {
+    "type": "text"
   },
   "depositPaymentButtonTitleTutorial": "บทช่วยสอน",
   "@depositPaymentButtonTitleTutorial": {
@@ -1959,6 +2050,10 @@
   },
   "depositMessageFailed": "การเติมเงินล้มเหลวโปรดลองอีกครั้งในภายหลังหรือติดต่อฝ่ายบริการลูกค้า",
   "@depositMessageFailed": {
+    "type": "text"
+  },
+  "depositMessageFormError": "ข้อมูลการเติมเงินไม่ถูกต้องโปรดเลือกวิธีการเติมเงินใหม่หรือติดต่อฝ่ายบริการลูกค้า",
+  "@depositMessageFormError": {
     "type": "text"
   },
   "depositMessageSuccessLocal": "ขอความสำเร็จหมายเลขคำสั่งซื้อ {value}",

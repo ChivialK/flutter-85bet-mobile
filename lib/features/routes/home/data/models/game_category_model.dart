@@ -3,15 +3,14 @@ import 'package:flutter_85bet_mobile/core/base/data_operator.dart';
 import 'package:flutter_85bet_mobile/core/error/exceptions.dart';
 import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
 import 'package:flutter_85bet_mobile/features/themes/icon_code.dart';
-import 'package:flutter_85bet_mobile/res.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:vnum/vnum.dart';
 
+part '../enum/game_page_type.dart';
 part 'game_category.dart';
 part 'game_category_model.freezed.dart';
 part 'game_category_model.g.dart';
-part '../enum/game_page_type.dart';
 
 @freezed
 abstract class GameCategoryModel with _$GameCategoryModel {

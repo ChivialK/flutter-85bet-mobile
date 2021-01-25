@@ -170,7 +170,7 @@ class _EventDialogState extends State<EventDialog> {
         Padding(
           padding: const EdgeInsets.only(left: 20.0, bottom: 6.0),
           child: Image.asset(
-            Res.eventMoneyForeground,
+            Res.event_money,
             fit: BoxFit.fitWidth,
           ),
         ),

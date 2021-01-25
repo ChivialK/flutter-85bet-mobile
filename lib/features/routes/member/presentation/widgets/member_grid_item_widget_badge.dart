@@ -49,10 +49,6 @@ class _MemberGridItemWidgetBadgeState extends State<MemberGridItemWidgetBadge> {
               Container(
                 margin: const EdgeInsets.only(top: 8.0),
                 padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: itemData.iconDecorColor ?? themeColor.memberIconColor,
-                ),
                 child: Observer(
                   builder: (_) => Badge(
                     showBadge: widget.store.hasNewMessage,
@@ -67,8 +63,11 @@ class _MemberGridItemWidgetBadgeState extends State<MemberGridItemWidgetBadge> {
                     ),
                     padding: EdgeInsets.zero,
                     position: BadgePosition.topEnd(top: -2, end: -6),
-                    child:
-                        Icon(itemData.iconData, size: widget.iconSize ?? 24.0),
+                    child: Icon(
+                      itemData.iconData,
+                      size: widget.iconSize ?? 24.0,
+                      color: themeColor.memberIconColor,
+                    ),
                   ),
                 ),
               ),

@@ -33,7 +33,7 @@ class FlowsDisplayList extends StatelessWidget {
   ];
 
   final BorderSide _borderSide =
-      BorderSide(color: themeColor.defaultBorderColor, width: 1.5);
+      BorderSide(color: themeColor.chartBorderColor, width: 1.5);
 
   List<String> countTotal() {
     double totalAmount = 0;
@@ -78,7 +78,7 @@ class FlowsDisplayList extends StatelessWidget {
           dataTexts = [
             "${data.startTime} ~ ${data.endTime}",
             data.code ?? data.key,
-            data.index,
+            getStatusIndex(data.index),
             formatValue(data.amount, creditSign: true),
             '${data.multiply}',
             '${data.promoSimplified}',
@@ -90,11 +90,11 @@ class FlowsDisplayList extends StatelessWidget {
         return Container(
           decoration: new BoxDecoration(
             color: (index % 2 == 1)
-                ? themeColor.defaultCardColor
-                : themeColor.chartBgColor,
+                ? themeColor.chartBgColor
+                : themeColor.defaultCardColor,
             border: (index % 2 == 1)
                 ? null
-                : Border.symmetric(vertical: _borderSide),
+                : Border.symmetric(horizontal: _borderSide),
           ),
           child: Column(
             children: List.generate(
@@ -142,5 +142,30 @@ class FlowsDisplayList extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String getStatusIndex(String state) {
+    switch (state.toLowerCase()) {
+      case 'webbank':
+        return localeStr.memberGridTitleTransfer;
+      case 'deposit':
+        return localeStr.rollbackIndexDeposit;
+      case 'promo':
+        return localeStr.rollbackIndexPromo;
+      case 'adjust deposit':
+      case 'adjustdeposit':
+        return localeStr.dealsDetailTypeAdjustDeposit;
+      case 'adjust withdraw':
+      case 'adjustwithdraw':
+        return localeStr.dealsDetailTypeAdjustWithdraw;
+      case 'cash adjustment':
+      case 'cashadjustment':
+        return localeStr.dealsDetailTypeAdjustCash;
+      case '退水':
+      case 'rollback':
+        return localeStr.rollbackIndexRollback;
+      default:
+        return state;
+    }
   }
 }

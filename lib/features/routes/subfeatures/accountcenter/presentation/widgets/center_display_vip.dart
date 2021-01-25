@@ -340,10 +340,9 @@ class _CenterDisplayVipState extends State<CenterDisplayVip> {
                   required.toString(),
                   style: TextStyle(
                     fontSize: FontSize.SUBTITLE.value,
-//                    color: (current >= required)
-//                        ? themeColor.vipIconTextColor
-//                        : themeColor.vipTextColor,
-                    color: themeColor.vipIconTextColor,
+                    color: (current >= required)
+                        ? themeColor.vipIconTextColor
+                        : themeColor.vipIconTextSubColor,
                   ),
                 ),
               ),

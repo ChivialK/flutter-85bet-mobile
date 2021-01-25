@@ -122,29 +122,35 @@ class _CustomizeInputChipContainerState
   }
 
   Widget _createChip(String labelText, dynamic returnOnPress) {
-    if (widget.roundChip == false)
+    if (widget.roundChip == false) {
       return InputChip(
         visualDensity: VisualDensity.compact,
-        label:
-            Text(labelText, style: TextStyle(fontSize: FontSize.SMALLER.value)),
+        backgroundColor: themeColor.defaultChipColor,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.horizontal(
           left: Radius.circular(4.0),
           right: Radius.circular(4.0),
         )),
-        backgroundColor: themeColor.fieldInputBgColor,
+        label: Text(labelText,
+            style: TextStyle(
+                fontSize: FontSize.SMALLER.value,
+                color: themeColor.secondaryTextColor2)),
         onPressed: () => (widget.chipTapCall != null)
             ? widget.chipTapCall(returnOnPress)
             : {},
       );
-    else
+    } else {
       return InputChip(
         visualDensity: VisualDensity.compact,
-        label:
-            Text(labelText, style: TextStyle(fontSize: FontSize.SMALLER.value)),
+        backgroundColor: themeColor.defaultChipColor,
+        label: Text(labelText,
+            style: TextStyle(
+                fontSize: FontSize.SMALLER.value,
+                color: themeColor.secondaryTextColor2)),
         onPressed: () => (widget.chipTapCall != null)
             ? widget.chipTapCall(returnOnPress)
             : {},
       );
+    }
   }
 }

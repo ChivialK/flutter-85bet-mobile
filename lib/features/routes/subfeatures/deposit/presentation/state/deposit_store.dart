@@ -163,16 +163,21 @@ abstract class _DepositStore with Store {
               List<PaymentTypeData> types = paymentTypes
                   .firstWhere((type) => type.key == 1, orElse: () => null)
                   ?.data;
-              // filtered out unavailable bank options
-              infoList = List.of(list);
-              if (types != null) {
-                infoList.removeWhere((info) =>
-                    types.any(
-                        (data) => data.bankAccountId == info.bankAccountId) ==
-                    false);
+              // debugPrint('local payment types: $types');
+              // debugPrint('local deposit info: $list');
+              // mark data which has valid bank info
+              if (types == null || types.isEmpty) {
+                infoList = [];
+              } else {
+                infoList = list
+                    .map((e) => e.copyWith(
+                          hasBankInfo: types.any(
+                              (data) => data.bankAccountId == e.bankAccountId),
+                        ))
+                    .toList();
               }
             }
-//            debugPrint('deposit info: $infoList');
+            // debugPrint('deposit info list: $infoList');
           },
         );
       });

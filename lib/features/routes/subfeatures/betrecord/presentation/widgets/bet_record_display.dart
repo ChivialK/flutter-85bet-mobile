@@ -250,11 +250,7 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
               children: [
                 Container(
                   padding: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: themeColor.memberIconColor,
-                    boxShadow: ThemeInterface.iconBottomShadow,
-                  ),
+                  decoration: ThemeInterface.pageIconContainerDecor,
                   child: Icon(
                     pageItem.value.iconData,
                     size: 32 * Global.device.widthScale,
@@ -286,10 +282,11 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 16.0),
+            padding: const EdgeInsets.only(bottom: 16.0),
             child: Container(
-              decoration: ThemeInterface.layerShadowDecorRound,
+              decoration: ThemeInterface.layerShadowDecorRoundLight,
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              margin: const EdgeInsets.only(right: 8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -427,8 +424,9 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
                       },
                     ),
                   ),
-                  SizedBox(
+                  Container(
                     height: (allDataTable) ? 1 : 34,
+                    padding: const EdgeInsets.only(bottom: 8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[

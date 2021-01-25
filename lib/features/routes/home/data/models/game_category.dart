@@ -77,20 +77,6 @@ class GameCategory extends Vnum<HomeCategoryInfo> {
     imageUrl: 'images/phone_nav_cockfighting_Color1.png',
   ));
 
-  /// MOVIES
-  static const GameCategory egMovie =
-      const GameCategory.define(HomeCategoryInfo(
-    id: HomeCategoryEnum.EG_MOVIE,
-    imageUrl: 'images/index/tbico_movie.png',
-    pageType: GamePageType.MovieEg,
-  ));
-  static const GameCategory newMovie =
-      const GameCategory.define(HomeCategoryInfo(
-    id: HomeCategoryEnum.NEW_MOVIE,
-    imageUrl: 'images/index/tbico_movie.png',
-    pageType: GamePageType.MovieNew,
-  ));
-
   /// USER
   static const GameCategory recommend =
       const GameCategory.define(HomeCategoryInfo(
@@ -111,23 +97,11 @@ class GameCategory extends Vnum<HomeCategoryInfo> {
     imageUrl: '',
     pageType: GamePageType.Promo,
   ));
-  static const GameCategory movieWebsite =
-      const GameCategory.define(HomeCategoryInfo(
-    id: HomeCategoryEnum.MOVIE_WEBSITE,
-    imageUrl: '',
-    pageType: GamePageType.MovieWebsite,
-  ));
   static const GameCategory website =
       const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.WEBSITE,
     imageUrl: '',
     pageType: GamePageType.Website,
-  ));
-  static const GameCategory about = const GameCategory.define(HomeCategoryInfo(
-    id: HomeCategoryEnum.ABOUT,
-    imageUrl: '',
-    assetPath: Res.iconAbout,
-    pageType: GamePageType.About,
   ));
   static const GameCategory undefined =
       const GameCategory.define(HomeCategoryInfo(

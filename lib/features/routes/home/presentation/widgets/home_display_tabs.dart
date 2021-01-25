@@ -9,7 +9,6 @@ import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 import '../../data/models/game_category_model.dart';
 import '../state/home_store.dart';
 import 'home_display_size_calc.dart';
-import 'home_display_tab_about.dart';
 import 'home_display_tab_page.dart';
 import 'home_display_tab_promo.dart';
 import 'home_display_tab_website.dart';
@@ -219,21 +218,10 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
                               _pageController?.jumpToPage(0);
                             },
                           );
-                        case GamePageType.MovieWebsite:
-                          return HomeDisplayTabWebsite(
-                            url: Global.BET85_MOVIE_URL,
-                            linkHint: localeStr.gameCategoryMovieWebHint,
-                          );
                         case GamePageType.Website:
                           return HomeDisplayTabWebsite(
                             url: Global.CURRENT_BASE,
                             linkHint: localeStr.gameCategoryWebHint,
-                          );
-                        case GamePageType.About:
-                          return HomeDisplayTabAbout(
-                            onNavigateCallBack: () {
-                              _pageController?.jumpToPage(0);
-                            },
                           );
                         default:
                           return SizedBox.shrink();
@@ -323,9 +311,13 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
                             text: TextSpan(
                                 text: category.label,
                                 style: TextStyle(
-                                  fontSize: (category.label.countLength >= 6)
-                                      ? FontSize.SMALLER.value
-                                      : FontSize.NORMAL.value,
+                                  fontSize: (Global.lang.isChinese)
+                                      ? (category.label.countLength >= 6)
+                                          ? FontSize.NORMAL.value
+                                          : FontSize.SUBTITLE.value
+                                      : (category.label.countLength >= 6)
+                                          ? FontSize.SMALLER.value
+                                          : FontSize.NORMAL.value,
                                   color: (update.data.contains(type))
                                       ? (type == _currentType)
                                           ? themeColor.homeTabSelectedTextColor

@@ -7,13 +7,13 @@ final LanguageCode defaultLocale = LanguageCode.vn;
 class LanguageCode extends Vnum<LanguageData> {
   /// Case Definition
   static const LanguageCode zh = const LanguageCode.define(
-      const LanguageData(code: 'zh', contentKey: 'content_cn'));
+      const LanguageData(code: 'zh', contentKey: 'content_cn', webCode: 'chn'));
   static const LanguageCode en = const LanguageCode.define(
-      const LanguageData(code: 'en', contentKey: 'content_us'));
+      const LanguageData(code: 'en', contentKey: 'content_us', webCode: 'eng'));
   static const LanguageCode vn = const LanguageCode.define(
-      const LanguageData(code: 'vi', contentKey: 'content_vn'));
-  static const LanguageCode th = const LanguageCode.define(
-      const LanguageData(code: 'th', contentKey: 'content_th'));
+      const LanguageData(code: 'vi', contentKey: 'content_vn', webCode: 'vnm'));
+  // static const LanguageCode th = const LanguageCode.define(
+  //     const LanguageData(code: 'th', contentKey: 'content_th'));
 
   /// Used for defining cases
   const LanguageCode.define(LanguageData fromValue) : super.define(fromValue);
@@ -35,9 +35,11 @@ class LanguageCode extends Vnum<LanguageData> {
 class LanguageData {
   final String code;
   final String contentKey;
+  final String webCode;
 
   const LanguageData({
     @required this.code,
     @required this.contentKey,
+    @required this.webCode,
   });
 }

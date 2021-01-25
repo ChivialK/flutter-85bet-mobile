@@ -41,13 +41,6 @@ class RoutePage extends Vnum<RouteInfo> {
     hideAppbarActions: false,
   ));
 
-  static const RoutePage about = const RoutePage.define(RouteInfo(
-    id: RouteEnum.ABOUT,
-    route: Routes.aboutRoute,
-    hideLanguageOption: true,
-    hideAppbarActions: true,
-  ));
-
   static const RoutePage service = const RoutePage.define(RouteInfo(
     id: RouteEnum.SERVICE,
     route: Routes.serviceRoute,
@@ -260,14 +253,14 @@ class RoutePage extends Vnum<RouteInfo> {
   /// * important:
   /// change route name if duplicate
   ///
-  // static const RoutePage sideStore = const RoutePage.define(RouteInfo(
-  //   id: RouteEnum.STORE,
-  //   route: Routes.storeRoute,
-  //   webPageName: ('/mall'),
-  //   showDrawer: true,
-  //   hideLanguageOption: true,
-  //   isUserOnly: true,
-  // ));
+  static const RoutePage sideStore = const RoutePage.define(RouteInfo(
+    id: RouteEnum.STORE,
+    route: Routes.storeRoute,
+    webPageName: ('/mall'),
+    showDrawer: true,
+    hideLanguageOption: true,
+    isUserOnly: true,
+  ));
 
   // static const RoutePage sideRoller = const RoutePage.define(RouteInfo(
   //   id: RouteEnum.ROLLER,

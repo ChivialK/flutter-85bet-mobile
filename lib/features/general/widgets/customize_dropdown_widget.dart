@@ -153,7 +153,7 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
     // update text max lines
     _currentPrefixMaxLines = (widget.prefixTextMaxLines != null)
         ? widget.prefixTextMaxLines
-        : (Global.lang == 'zh')
+        : (Global.lang.isChinese)
             ? 1
             : 2;
 
@@ -202,6 +202,9 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
 
     // update suffix widget
     if (widget.suffixInitText == null && widget.suffixTextStream == null) {
+      _suffixWidget = null;
+    }
+    if (oldWidget.suffixInitText != widget.suffixInitText) {
       _suffixWidget = null;
     }
 
@@ -296,12 +299,12 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
                   style: TextStyle(
                     color: (widget.subTheme)
                         ? themeColor.fieldInputSubColor
-                        : themeColor.defaultTextColor,
+                        : themeColor.fieldInputColor,
                     fontSize: FontSize.NORMAL.value,
                   ),
                   dropdownColor: (widget.subTheme)
-                      ? themeColor.fieldInputSubBgColor
-                      : themeColor.fieldInputBgColor,
+                      ? themeColor.fieldDropdownSubColor
+                      : themeColor.fieldDropdownColor,
                   iconEnabledColor: (widget.subTheme)
                       ? themeColor.iconColor
                       : themeColor.buttonPrimaryColor,
@@ -364,7 +367,7 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
                               ? themeColor.defaultAccentColor
                               : (widget.subTheme)
                                   ? themeColor.secondaryTextColor2
-                                  : themeColor.defaultTextColor,
+                                  : themeColor.fieldInputColor,
                         ),
                       ),
                     );

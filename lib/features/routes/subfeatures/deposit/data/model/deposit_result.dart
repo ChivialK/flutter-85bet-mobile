@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_85bet_mobile/utils/value_util.dart';
 
 part 'deposit_result.freezed.dart';
-part 'deposit_result.g.dart';
 
 @freezed
 abstract class DepositResult with _$DepositResult {
@@ -13,9 +13,14 @@ abstract class DepositResult with _$DepositResult {
     @JsonKey(name: 'ledgerindex', defaultValue: -1) int ledger,
   }) = _DepositResult;
 
-  factory DepositResult.fromJson(Map<String, dynamic> json) =>
-      _$DepositResultFromJson(json);
-
   static DepositResult jsonToDepositResult(Map<String, dynamic> jsonMap) =>
-      DepositResult.fromJson(jsonMap);
+      _$_DepositResult(
+        ss: jsonMap['ss'] as bool,
+        url: jsonMap['url'] as String,
+        msg: jsonMap['msg'] as String ?? '',
+        code: jsonMap['code'] as int,
+        ledger: (jsonMap.containsKey('ledgerindex'))
+            ? '${jsonMap['ledgerindex']}'.strToInt
+            : -1,
+      );
 }

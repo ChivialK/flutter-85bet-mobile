@@ -3,7 +3,6 @@ import 'package:flutter_85bet_mobile/core/internal/global.dart';
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
 import 'package:flutter_85bet_mobile/features/general/data/error/error_message_map.dart';
 import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
-import 'package:flutter_85bet_mobile/features/router/route_enum.dart';
 import 'package:hive/hive.dart';
 
 import '../../../data/entity/login_status.dart';

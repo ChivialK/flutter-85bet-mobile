@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/checkbox_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
 
 import '../../../data/form/login_form.dart';
 import '../../../register/presentation/register_route.dart';
@@ -43,6 +44,10 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
   bool _waitForClose = false;
   int _loadingStack = 0;
   LoginHiveForm _hiveForm;
+
+  double _valueTextPadding;
+  bool _showAccountError = false;
+  bool _showPasswordError = false;
 
   Timer _routeTimer;
   bool _loginSuccess = false;
@@ -100,6 +105,15 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
           });
         _updateFields();
       });
+  }
+
+  @override
+  void initState() {
+    _valueTextPadding = (Global.device.width.roundToDouble() - 48) *
+            ThemeInterface.prefixTextWidthFactor -
+        ThemeInterface.minusSize +
+        8.0;
+    super.initState();
   }
 
   @override
@@ -187,10 +201,8 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
           child: SingleChildScrollView(
             primary: true,
             child: Container(
-              constraints: BoxConstraints(
-                minHeight: 360.0,
-              ),
-              color: themeColor.defaultLayeredBackgroundColor,
+              constraints: BoxConstraints(minHeight: 360.0),
+              decoration: ThemeInterface.layerShadowDecorLight,
               margin: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -208,7 +220,10 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
                         Center(
                           child: Text(
                             localeStr.pageTitleLogin,
-                            style: TextStyle(fontSize: FontSize.TITLE.value),
+                            style: TextStyle(
+                              fontSize: FontSize.TITLE.value,
+                              color: themeColor.defaultTextColor,
+                            ),
                           ),
                         ),
                         Align(
@@ -303,43 +318,103 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
           physics: BouncingScrollPhysics(),
           shrinkWrap: true,
           children: <Widget>[
-//            /* Login Hint Text*/
-//            Padding(
-//              padding: const EdgeInsets.only(bottom: 8.0),
-//              child: Text(
-//                localeStr.hintTitleLogin,
-//                textAlign: TextAlign.left,
-//                style: TextStyle(color: themeColor.defaultHintColor),
-//              ),
-//            ),
-            new CustomizeFieldWidget(
-              key: _accountFieldKey,
-              fieldType: FieldType.Account,
-              persistHint: false,
-              hint: localeStr.hintAccountInput,
-              prefixText: localeStr.hintAccount,
-              prefixTextSize: FontSize.SUBTITLE.value,
-              maxInputLength: InputLimit.ACCOUNT_MAX,
-              errorMsg: localeStr.messageInvalidAccount,
-              validCondition: (value) => rangeCheck(
-                  value: value.length,
-                  min: InputLimit.ACCOUNT_MIN,
-                  max: InputLimit.ACCOUNT_MAX),
+            ///
+            /// Account Field
+            ///
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: new CustomizeTitledContainer(
+                prefixText: localeStr.hintAccount,
+                prefixTextSize: FontSize.SUBTITLE.value,
+                backgroundColor: themeColor.fieldPrefixBgColor,
+                child: new CustomizeFieldWidget(
+                  key: _accountFieldKey,
+                  fieldType: FieldType.Account,
+                  hint: localeStr.hintAccountInput,
+                  persistHint: false,
+                  padding: const EdgeInsets.symmetric(vertical: 0.0),
+                  maxInputLength: InputLimit.ACCOUNT_MAX,
+                  onInputChanged: (input) {
+                    setState(() {
+                      _showAccountError = !rangeCheck(
+                        value: input.length,
+                        min: InputLimit.ACCOUNT_MIN,
+                        max: InputLimit.ACCOUNT_MAX,
+                      );
+                    });
+                  },
+                ),
+              ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: _valueTextPadding),
+                    child: Visibility(
+                      visible: _showAccountError,
+                      child: Text(
+                        localeStr.messageInvalidAccount(
+                          InputLimit.ACCOUNT_MIN,
+                          InputLimit.ACCOUNT_MAX,
+                        ),
+                        style: TextStyle(color: themeColor.defaultErrorColor),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 12.0),
-            new CustomizeFieldWidget(
-              key: _pwdFieldKey,
-              fieldType: FieldType.Password,
-              persistHint: false,
-              hint: localeStr.hintPasswordInput,
-              prefixText: localeStr.hintAccountPassword,
-              prefixTextSize: FontSize.SUBTITLE.value,
-              maxInputLength: InputLimit.PASSWORD_MAX,
-              errorMsg: localeStr.messageInvalidPasswordNew,
-              validCondition: (value) => rangeCheck(
-                  value: value.length,
-                  min: InputLimit.PASSWORD_MIN_OLD,
-                  max: InputLimit.PASSWORD_MAX),
+
+            ///
+            /// Password Field
+            ///
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: new CustomizeTitledContainer(
+                prefixText: localeStr.hintAccountPassword,
+                prefixTextSize: FontSize.SUBTITLE.value,
+                backgroundColor: Colors.transparent,
+                child: new CustomizeFieldWidget(
+                  key: _pwdFieldKey,
+                  fieldType: FieldType.Password,
+                  hint: localeStr.hintAccountPassword,
+                  persistHint: false,
+                  padding: const EdgeInsets.symmetric(vertical: 0.0),
+                  maxInputLength: InputLimit.PASSWORD_MAX,
+                  onInputChanged: (input) {
+                    setState(() {
+                      _showPasswordError = !rangeCheck(
+                        value: input.length,
+                        min: InputLimit.PASSWORD_MIN_OLD,
+                        max: InputLimit.PASSWORD_MAX,
+                      );
+                    });
+                  },
+                ),
+              ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: _valueTextPadding),
+                    child: Visibility(
+                      visible: _showPasswordError,
+                      child: Text(
+                        localeStr.messageInvalidPassword(
+                          InputLimit.PASSWORD_MIN_OLD,
+                          InputLimit.PASSWORD_MAX,
+                        ),
+                        style: TextStyle(color: themeColor.defaultErrorColor),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 8.0),
             /* Login CheckBox */

@@ -2,6 +2,7 @@ import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/screen/feature_screen_inherited_widget.dart';
+import 'package:flutter_85bet_mobile/features/themes/icon_code.dart';
 
 import '../data/member_grid_item.dart';
 import '../state/member_credit_store.dart';
@@ -19,12 +20,14 @@ class MemberDisplay extends StatefulWidget {
 }
 
 class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
-  List<ReactionDisposer> _disposers;
   final GlobalKey<MemberDisplayHeaderState> _headerKey =
       new GlobalKey<MemberDisplayHeaderState>(debugLabel: 'header');
+
   final int _itemPerRow = 3;
   final double _itemSpace = 12.0;
   final double _iconSize = 32 * Global.device.widthScale;
+
+  List<ReactionDisposer> _disposers;
   double _gridRatio;
 
   static final List<MemberGridItem> _gridItems = [
@@ -41,7 +44,6 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
     MemberGridItem.betRecord,
     MemberGridItem.dealRecord,
     MemberGridItem.rollback,
-    MemberGridItem.vip,
   ];
 
   void _itemTapped(MemberGridItem item) {
@@ -130,21 +132,21 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
             children: [
               Container(
                 padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: themeColor.memberIconColor,
-                  boxShadow: ThemeInterface.iconBottomShadow,
-                ),
+                decoration: ThemeInterface.pageIconContainerDecor,
                 child: Icon(
-                  const IconData(0xe962, fontFamily: 'IconMoon'),
-                  size: _iconSize,
+                  IconCode.gridMember,
+                  size: 32 * Global.device.widthScale,
+                  color: themeColor.defaultBackgroundColor,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text(
-                  localeStr.pageTitleCenter,
-                  style: TextStyle(fontSize: FontSize.HEADER.value),
+                  localeStr.pageTitleMember,
+                  style: TextStyle(
+                    fontSize: FontSize.HEADER.value,
+                    color: themeColor.memberIconColor,
+                  ),
                 ),
               )
             ],

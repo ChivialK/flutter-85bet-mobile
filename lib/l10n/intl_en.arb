@@ -1,9 +1,9 @@
 {
   "@@last_modified": "2020-08-06T17:12:17+0800",
   "@@locale": "en",
-  "title": "85Bet Mobile",
+  "title": "79Bet Mobile",
   "@title": {
-    "description": "85Bet Demo",
+    "description": "79Bet Demo",
     "type": "text",
     "placeholders": {}
   },
@@ -349,6 +349,14 @@
   "@btnCopy": {
     "type": "text"
   },
+  "btnNextStep": "Next Step",
+  "@btnNextStep": {
+    "type": "text"
+  },
+  "btnPreStep": "Back",
+  "@btnPreStep": {
+    "type": "text"
+  },
   "sideBtnBackHome": "Return",
   "@sideBtnBackHome": {
     "type": "text"
@@ -610,6 +618,18 @@
       }
     }
   },
+  "messageInvalidPhone2": "Error Phone Number({min}~{max})",
+  "@messageInvalidPhone2": {
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "10"
+      },
+      "max": {
+        "example": "10"
+      }
+    }
+  },
   "messageInvalidPostCode": "Error Post Code(5~8)",
   "@messageInvalidPostCode": {
     "type": "text"
@@ -635,17 +655,29 @@
       }
     }
   },
-  "messageInvalidAccount": "Username should be 6 ~ 12 words (Lowercase)",
+  "messageInvalidAccount": "Username should be {min}~{max} words (Lowercase)",
   "@messageInvalidAccount": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "6"
+      },
+      "max": {
+        "example": "12"
+      }
+    }
   },
-  "messageInvalidPassword": "Password should be 8 ~ 18 words",
+  "messageInvalidPassword": "Password should be {min}~{max} words",
   "@messageInvalidPassword": {
-    "type": "text"
-  },
-  "messageInvalidPasswordNew": "Password should be 8 ~ 18 words",
-  "@messageInvalidPasswordNew": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "8"
+      },
+      "max": {
+        "example": "20"
+      }
+    }
   },
   "messageInvalidConfirmPassword": "Password does not match",
   "@messageInvalidConfirmPassword": {
@@ -672,8 +704,12 @@
       }
     }
   },
-  "messageInvalidDepositAmountMax": "Exceeds the maximum withdrawal amount (please refer to the vip level detail)",
-  "@messageInvalidDepositAmountMax": {
+  "messageInvalidDepositAmountMaxLimit": "Deposit amount exceeds the upper limit",
+  "@messageInvalidDepositAmountMaxLimit": {
+    "type": "text"
+  },
+  "messageInvalidDepositAmountMinLimit": "Deposit amount is lower than minimum limit",
+  "@messageInvalidDepositAmountMinLimit": {
     "type": "text"
   },
   "messageInvalidDepositName": "Incorrect account name",
@@ -684,12 +720,43 @@
   "@messageInvalidCardOwner": {
     "type": "text"
   },
-  "messageInvalidCardNumber": "The card number is 5 ~ 19 characters",
+  "messageInvalidCardNumber": "Card number should be {min}~{max} characters",
   "@messageInvalidCardNumber": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "16"
+      },
+      "max": {
+        "example": "19"
+      }
+    }
+  },
+  "messageInvalidCardNumberFixed": "Card number should be {min}~{max} characters and starts with {fixed}",
+  "@messageInvalidCardNumberFixed": {
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "16"
+      },
+      "max": {
+        "example": "19"
+      },
+      "fixed": {
+        "example": "9704"
+      }
+    }
   },
   "messageInvalidCardBankPoint": "The name must be greater than 3 characters",
   "@messageInvalidCardBankPoint": {
+    "type": "text"
+  },
+  "messageExceedRemainCredit": "Not enough credit",
+  "@messageExceedRemainCredit": {
+    "type": "text"
+  },
+  "messagePlatformMaintenance": "Platform under maintenance",
+  "@messagePlatformMaintenance": {
     "type": "text"
   },
   "messageInvalidWithdrawPassword": "Password Error!(default is login password)",
@@ -702,6 +769,10 @@
   },
   "messageInvalidWithdrawUnderAmount": "Below the minimum amount",
   "@messageInvalidWithdrawUnderAmount": {
+    "type": "text"
+  },
+  "messageInvalidWithdrawExceedAmount": "Exceeds the maximum withdrawal amount (please refer to the vip level detail)",
+  "@messageInvalidWithdrawExceedAmount": {
     "type": "text"
   },
   "messageWarnUsingCellular": "You are using a mobile network",
@@ -772,6 +843,10 @@
   "@messageErrorLoadingGame": {
     "type": "text"
   },
+  "messageErrorGamePermission": "You do not have permission to play on this platform, please contact customer service.",
+  "@messageErrorGamePermission": {
+    "type": "text"
+  },
   "messageErrorLoadingPay": "Page loading error, please try again later",
   "@messageErrorLoadingPay": {
     "type": "text"
@@ -836,6 +911,10 @@
   },
   "messageErrorPassword": "Password Error",
   "@messageErrorPassword": {
+    "type": "text"
+  },
+  "messageErrorPasswordHint": "password not match, account will be locked after 5 errors",
+  "@messageErrorPasswordHint": {
     "type": "text"
   },
   "messageErrorReferral": "Referral Code not valid",
@@ -991,7 +1070,7 @@
   "@gameCategoryWeb": {
     "type": "text"
   },
-  "gameCategoryWebHint": "Click me to open 85Bet website",
+  "gameCategoryWebHint": "Click me to open 79Bet website",
   "@gameCategoryWebHint": {
     "type": "text"
   },
@@ -1232,7 +1311,7 @@
   "@transferViewTitleOption": {
     "type": "text"
   },
-  "transferViewTextOptionAll": "All credits",
+  "transferViewTextOptionAll": "All",
   "@transferViewTextOptionAll": {
     "type": "text"
   },
@@ -1292,15 +1371,15 @@
   "@bankcardViewTitleBankName": {
     "type": "text"
   },
-  "bankcardViewTitleCardNumber": "Account (Card) Number",
+  "bankcardViewTitleCardNumber": "Bank Account",
   "@bankcardViewTitleCardNumber": {
     "type": "text"
   },
-  "bankcardViewTitleBankBranch": "Bank Branch",
+  "bankcardViewTitleBankBranch": "Branch",
   "@bankcardViewTitleBankBranch": {
     "type": "text"
   },
-  "bankcardViewTitleBankProvince": "Open an Account",
+  "bankcardViewTitleBankProvince": "Province",
   "@bankcardViewTitleBankProvince": {
     "type": "text"
   },
@@ -1637,7 +1716,7 @@
   "@ dealsViewSpinnerStatus1": {
     "type": "text"
   },
-  "dealsViewSpinnerStatus2": "Failed",
+  "dealsViewSpinnerStatus2": "Rejected",
   "@ dealsViewSpinnerStatus2": {
     "type": "text"
   },
@@ -1649,19 +1728,19 @@
   "@ dealsViewSpinnerStatus4": {
     "type": "text"
   },
-  "dealsHeaderSerial": "Single Number",
+  "dealsHeaderSerial": "No.",
   "@dealsHeaderSerial": {
     "type": "text"
   },
-  "dealsHeaderType": "items",
+  "dealsHeaderType": "Type",
   "@dealsHeaderType": {
     "type": "text"
   },
-  "dealsHeaderDetail": "Details",
+  "dealsHeaderDetail": "Detail",
   "@dealsHeaderDetail": {
     "type": "text"
   },
-  "dealsHeaderStatus": "Order Status",
+  "dealsHeaderStatus": "Status",
   "@dealsHeaderStatus": {
     "type": "text"
   },
@@ -1671,6 +1750,10 @@
   },
   "dealsHeaderAmount": "Amount",
   "@dealsHeaderAmount": {
+    "type": "text"
+  },
+  "dealsDetailTypeAdjustCash": "Adjust Cash",
+  "@dealsDetailTypeAdjustCash": {
     "type": "text"
   },
   "dealsDetailTypeAdjustDeposit": "Adjust Deposit",
@@ -1770,10 +1853,6 @@
       }
     }
   },
-  "depositPaymentEditTitleNote": "Remarks",
-  "@depositPaymentEditTitleNote": {
-    "type": "text"
-  },
   "depositPaymentEditTitleAmountHintRange": "Range: {num}~{num2}",
   "@depositPaymentEditTitleAmountHintRange": {
     "type": "text",
@@ -1800,6 +1879,18 @@
         "example": "50"
       }
     }
+  },
+  "depositPaymentEditTitleCode": "Transaction Code",
+  "@depositPaymentEditTitleCode": {
+    "type": "text"
+  },
+  "depositPaymentEditHintCode": "please enter the transaction code",
+  "@depositPaymentEditHintCode": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleNote": "Remarks",
+  "@depositPaymentEditTitleNote": {
+    "type": "text"
   },
   "depositPaymentButtonTitleTutorial": "Tutorial",
   "@depositPaymentButtonTitleTutorial": {
@@ -1957,8 +2048,12 @@
       }
     }
   },
-  "depositMessageFailed": "Recharge failed, please try again later or contact customer service",
+  "depositMessageFailed": "Deposit failed, please try again later or contact customer service",
   "@depositMessageFailed": {
+    "type": "text"
+  },
+  "depositMessageFormError": "Deposit info error, please re-select the payment method or contact customer service",
+  "@depositMessageFormError": {
     "type": "text"
   },
   "depositMessageSuccessLocal": "Request Success, Order No.{value}",
@@ -2940,178 +3035,6 @@
         "example": "v1.0"
       }
     }
-  },
-  "aboutCertTitle": "牌照",
-  "@aboutCertTitle": {
-    "type": "text"
-  },
-  "aboutCertTitleGC": "Gambling Commission",
-  "@aboutCertTitleGC": {
-    "type": "text"
-  },
-  "aboutCertTitleMGA": "MGA License",
-  "@aboutCertTitleMGA": {
-    "type": "text"
-  },
-  "aboutCertTitlePGC": "PAGCOR License",
-  "@aboutCertTitlePGC": {
-    "type": "text"
-  },
-  "aboutCertTitleBVI": "BVI Certified",
-  "@aboutCertTitleBVI": {
-    "type": "text"
-  },
-  "aboutDataTitle1": "Introducing the 85BET Dealer",
-  "@aboutDataTitle1": {
-    "type": "text"
-  },
-  "aboutDataDesc10": "85BET is licensed by the Isle of Man and the Cagayan and Freeport Economic Zones. This is a multinational company with operations in the Asia-Pacific region.",
-  "@aboutDataDesc10": {
-    "type": "text"
-  },
-  "aboutDataDesc11": "85bet relies on its rich experience and reputation to service more than ten million players, which demonstrates long-term legitimacy and is completely reliable.",
-  "@aboutDataDesc11": {
-    "type": "text"
-  },
-  "aboutDataDesc12": "Is a game company under M.A.N Entertainment Group, headquartered in Manila, Philippines. This is considered the largest corporation in the Asian online gambling market with a large workforce. With the recognized high confidence, 85bet has now become one of the International Online Games Association's most fully verified and licensed bookmakers.",
-  "@aboutDataDesc12": {
-    "type": "text"
-  },
-  "aboutDataTitle2": "INFORMATION",
-  "@aboutDataTitle2": {
-    "type": "text"
-  },
-  "aboutDataSubtitle20": "Registration",
-  "@aboutDataSubtitle20": {
-    "type": "text"
-  },
-  "aboutDataDesc20": "Open a Vietnamese 85bet account to join online all of our online betting promotions high quality entertainment website with exceptionally good value. We believe that in bonus points, customers will have the opportunity to receive valuable gifts and incentives when participating in promotions.",
-  "@aboutDataDesc20": {
-    "type": "text"
-  },
-  "aboutDataSubtitle21": "Agency",
-  "@aboutDataSubtitle21": {
-    "type": "text"
-  },
-  "aboutDataDesc21": "Become our best partner and enjoy great commissions every month by referring players to 85bet.",
-  "@aboutDataDesc21": {
-    "type": "text"
-  },
-  "aboutDataSubtitle22": "Responsible Betting",
-  "@aboutDataSubtitle22": {
-    "type": "text"
-  },
-  "aboutDataDesc22": "85bet betting odds soccer strives to provide a channel of entertainment to our customers in a positive way. We have safeguards primarily promoting and ensuring responsible betting.",
-  "@aboutDataDesc22": {
-    "type": "text"
-  },
-  "aboutDataSubtitle23": "Security",
-  "@aboutDataSubtitle23": {
-    "type": "text"
-  },
-  "aboutDataDesc23": "With a stable and safe betting system. Your privacy is our top priority so we are always in strict compliance with the privacy policies.",
-  "@aboutDataDesc23": {
-    "type": "text"
-  },
-  "aboutDataTitle3": "PRODUCT",
-  "@aboutDataTitle3": {
-    "type": "text"
-  },
-  "aboutDataSubtitle30": "Sports Betting And Live Betting soccer odds",
-  "@aboutDataSubtitle30": {
-    "type": "text"
-  },
-  "aboutDataDesc30": "Football betting odds We offer major tournaments such as: Premier League, Spanish Championship La Liga, Italian Serie A, UEFA Championship, French National Championship, Germany, NFL, NBA, NCAA, Women's Basketball, Tennis, Racing F1 We are honored to bring you over 4,000 matches per month.",
-  "@aboutDataDesc30": {
-    "type": "text"
-  },
-  "aboutDataSubtitle31": "Game online",
-  "@aboutDataSubtitle31": {
-    "type": "text"
-  },
-  "aboutDataDesc31": "Online games with many opportunities to win Jackpots in games: Roulette, Blackjack, Poker, Slots. More progressive jackpot prizes and higher chances of winning in 85bet.",
-  "@aboutDataDesc31": {
-    "type": "text"
-  },
-  "aboutDataSubtitle32": "Online Casino",
-  "@aboutDataSubtitle32": {
-    "type": "text"
-  },
-  "aboutDataDesc32": "In addition we also offer many other types of online games, especially: Live Casino with hot dealers in Baccarat, Sicbo, Dragon / Tiger, Roulette and Online Casino Slots, easy to play.",
-  "@aboutDataDesc32": {
-    "type": "text"
-  },
-  "aboutDataTitle4": "INFORMATION CENTRE",
-  "@aboutDataTitle4": {
-    "type": "text"
-  },
-  "aboutDataSubtitle40": "Promotion",
-  "@aboutDataSubtitle40": {
-    "type": "text"
-  },
-  "aboutDataDesc40": "Bonus promotions for new members. Bonuses on subsequent Fundings and refunds to existing members.",
-  "@aboutDataDesc40": {
-    "type": "text"
-  },
-  "aboutDataSubtitle41": "Support center",
-  "@aboutDataSubtitle41": {
-    "type": "text"
-  },
-  "aboutDataDesc41": "See also FAQs for sports and other games. Support for account registration, Money Transfer, withdrawals and other technical information.",
-  "@aboutDataDesc41": {
-    "type": "text"
-  },
-  "aboutDataSubtitle42": "Payment methods",
-  "@aboutDataSubtitle42": {
-    "type": "text"
-  },
-  "aboutDataDesc42": "We offer excellent options for customers to deposit and withdraw money through NETELLER, Moneybookers, International Bank Transfer, Western Union. We have it all, let's get started right away with 85bet.",
-  "@aboutDataDesc42": {
-    "type": "text"
-  },
-  "aboutDataSubtitle43": "Contact",
-  "@aboutDataSubtitle43": {
-    "type": "text"
-  },
-  "aboutDataDesc43": "If you need any help or questions about online betting on football odds or online casino, we will provide 24/7 support via Live Chat, Phone and email.",
-  "@aboutDataDesc43": {
-    "type": "text"
-  },
-  "aboutDataTitle5": "Betting information",
-  "@aboutDataTitle5": {
-    "type": "text"
-  },
-  "aboutDataSubtitle50": "Sports Results",
-  "@aboutDataSubtitle50": {
-    "type": "text"
-  },
-  "aboutDataDesc50": "Vietnam football odds Provides the results of all the best sports games and leagues in Vietnam today.",
-  "@aboutDataDesc50": {
-    "type": "text"
-  },
-  "aboutDataSubtitle51": "Bet Statistics",
-  "@aboutDataSubtitle51": {
-    "type": "text"
-  },
-  "aboutDataDesc51": "More than 200 diverse tournaments with a variety of sports, formats, teams and individual matches, fixtures, lineups, teams, extra times and deferred matches.",
-  "@aboutDataDesc51": {
-    "type": "text"
-  },
-  "aboutDataSubtitle52": "Sports Betting",
-  "@aboutDataSubtitle52": {
-    "type": "text"
-  },
-  "aboutDataDesc52": "All of our Sports Rules are strictly followed by the Official Rules of the Best Organizing Committee in Vietnam today.",
-  "@aboutDataDesc52": {
-    "type": "text"
-  },
-  "aboutDataSubtitle53": "Casino Betting",
-  "@aboutDataSubtitle53": {
-    "type": "text"
-  },
-  "aboutDataDesc53": "Live Casino fully displays: bet limit, result and bet history details. All of your betting information is integrated on the screen for your entertainment convenience. You can check any bet information at any time.",
-  "@aboutDataDesc53": {
-    "type": "text"
   },
   "serviceRouteHint": "Need Help? Please contact us",
   "@serviceRouteHint": {

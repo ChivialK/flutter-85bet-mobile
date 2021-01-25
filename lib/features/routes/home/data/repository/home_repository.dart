@@ -236,7 +236,7 @@ class HomeRepositoryImpl implements HomeRepository {
 
     List<Cookie> cookies = DioApiService.loadCookies(
         Uri.parse('${Global.CURRENT_BASE}${HomeApi.LOGIN}'));
-    debugPrint('Cookies: $cookies');
+    // debugPrint('Cookies: $cookies');
 
     Map<String, dynamic> headers = new Map();
     cookies.forEach((element) {
@@ -253,11 +253,13 @@ class HomeRepositoryImpl implements HomeRepository {
       ),
       tag: 'remote-GAME_URL',
     );
+    debugPrint('Game Url result: $result');
 
     return result.fold(
       (failure) => Left(failure),
-      (data) =>
-          (data.isUrl) ? Right(data) : Left(Failure.errorMessage(msg: data)),
+      (data) => (data.isUrl || data.contains('</form>'))
+          ? Right(data)
+          : Left(Failure.errorMessage(msg: data)),
     );
   }
 //

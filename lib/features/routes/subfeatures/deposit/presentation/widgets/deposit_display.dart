@@ -1,6 +1,7 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
+import 'package:flutter_85bet_mobile/features/general/data/error/error_message_map.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/types_grid_widget.dart';
 import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
 
@@ -63,7 +64,7 @@ class _DepositDisplayState extends State<DepositDisplay> with AfterLayoutMixin {
         (DepositResult result) {
           debugPrint('deposit display result: $result');
           if (result == null) return;
-          if (result.code == 0 && result.ledger != null && result.ledger > 0) {
+          if (result.code == 0 && result.ledger >= 0) {
             callToastInfo(
               localeStr.depositMessageSuccessLocal(result.ledger),
               icon: Icons.check_circle_outline,
@@ -75,7 +76,10 @@ class _DepositDisplayState extends State<DepositDisplay> with AfterLayoutMixin {
               arg: WebRouteArguments(startUrl: result.url),
             );
           } else {
-            callToastError(localeStr.depositMessageFailed);
+            callToastError(MessageMap.getErrorMessage(
+              result.msg,
+              RouteEnum.DEPOSIT,
+            ));
           }
         },
       ),
@@ -111,11 +115,7 @@ class _DepositDisplayState extends State<DepositDisplay> with AfterLayoutMixin {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: themeColor.memberIconColor,
-                      boxShadow: ThemeInterface.iconBottomShadow,
-                    ),
+                    decoration: ThemeInterface.pageIconContainerDecor,
                     child: Icon(
                       pageItem.value.iconData,
                       size: 32 * Global.device.widthScale,
@@ -125,7 +125,10 @@ class _DepositDisplayState extends State<DepositDisplay> with AfterLayoutMixin {
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       pageItem.value.label,
-                      style: TextStyle(fontSize: FontSize.HEADER.value),
+                      style: TextStyle(
+                        fontSize: FontSize.HEADER.value,
+                        color: themeColor.defaultTextColor,
+                      ),
                     ),
                   )
                 ],

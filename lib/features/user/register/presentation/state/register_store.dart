@@ -57,6 +57,7 @@ abstract class _RegisterStore with Store {
 //                debugPrint('register result: $model');
                 registerResult = model;
                 if (model.isSuccess) {
+                  // GaInterface.log?.logSignUp(signUpMethod: 'App');
                   Future.delayed(Duration(milliseconds: 500), () {
                     postLogin(LoginForm(
                       account: form.username,

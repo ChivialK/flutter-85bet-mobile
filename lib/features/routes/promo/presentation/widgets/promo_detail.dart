@@ -40,6 +40,7 @@ class _PromoDetailState extends State<PromoDetail> {
       key: _dialogKey,
       // heightFactor: (_stackIndex == 1) ? 0.85 : 0.25,
       heightFactor: 0.85,
+      customBg: themeColor.defaultLayeredBackgroundColor,
       children: [
         if (html.isEmpty)
           WarningDisplay(

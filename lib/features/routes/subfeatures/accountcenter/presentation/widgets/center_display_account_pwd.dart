@@ -94,11 +94,7 @@ class _CenterDisplayAccountPasswordState
                     children: [
                       Container(
                         padding: const EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: themeColor.memberIconColor,
-                          boxShadow: ThemeInterface.iconBottomShadow,
-                        ),
+                        decoration: ThemeInterface.pageIconContainerDecor,
                         child: Icon(
                           pageItem.value.iconData,
                           size: 32 * Global.device.widthScale,
@@ -143,7 +139,10 @@ class _CenterDisplayAccountPasswordState
                                     horizontalInset: _fieldInset,
                                     titleWidthFactor: 0.35,
                                     maxInputLength: InputLimit.PASSWORD_MAX,
-                                    errorMsg: localeStr.messageInvalidPassword,
+                                    errorMsg: localeStr.messageInvalidPassword(
+                                      InputLimit.PASSWORD_MIN_OLD,
+                                      InputLimit.PASSWORD_MAX,
+                                    ),
                                     validCondition: (value) => rangeCheck(
                                       value: value.length,
                                       min: InputLimit.PASSWORD_MIN_OLD,
@@ -163,8 +162,10 @@ class _CenterDisplayAccountPasswordState
                                     horizontalInset: _fieldInset,
                                     titleWidthFactor: 0.35,
                                     maxInputLength: InputLimit.PASSWORD_MAX,
-                                    errorMsg:
-                                        localeStr.messageInvalidPasswordNew,
+                                    errorMsg: localeStr.messageInvalidPassword(
+                                      InputLimit.PASSWORD_MIN,
+                                      InputLimit.PASSWORD_MAX,
+                                    ),
                                     validCondition: (value) => rangeCheck(
                                       value: value.length,
                                       min: InputLimit.PASSWORD_MIN,

@@ -41,16 +41,15 @@ class ScreenDrawerItem extends Vnum<RouteListItem> {
   //   imageName: 'images/aside/85.png',
   //   route: RoutePage.agentLogin,
   // ));
-  static ScreenDrawerItem sign = ScreenDrawerItem.define(RouteListItem(
-    routeId: RouteEnum.SIGN,
-    iconData: IconCode.drawerEvent,
-    userOnly: true,
-  ));
-  // static ScreenDrawerItem store = ScreenDrawerItem.define(RouteListItem(
-  //   imageName: 'images/mobile-mall_Color1.png',
-  //   imageSubName: 'images/mobile-mall.png',
-  //   route: RoutePage.sideStore,
+  // static ScreenDrawerItem sign = ScreenDrawerItem.define(RouteListItem(
+  //   routeId: RouteEnum.SIGN,
+  //   iconData: IconCode.drawerEvent,
+  //   userOnly: true,
   // ));
+  static ScreenDrawerItem store = ScreenDrawerItem.define(RouteListItem(
+    iconData: IconCode.drawerStore,
+    route: RoutePage.sideStore,
+  ));
   // static ScreenDrawerItem roller = ScreenDrawerItem.define(RouteListItem(
   //   imageName: 'images/mobile-turntable_Color1.png',
   //   imageSubName: 'images/mobile-turntable.png',
@@ -65,14 +64,14 @@ class ScreenDrawerItem extends Vnum<RouteListItem> {
     iconData: IconCode.gridLogout,
     userOnly: true,
   ));
-  static ScreenDrawerItem testUI = ScreenDrawerItem.define(RouteListItem(
-    iconData: IconCode.drawerTest,
-    route: RoutePage.testArea,
-  ));
-  static ScreenDrawerItem test = ScreenDrawerItem.define(RouteListItem(
-    routeId: RouteEnum.TEST,
-    iconData: IconCode.drawerTest,
-  ));
+  // static ScreenDrawerItem testUI = ScreenDrawerItem.define(RouteListItem(
+  //   iconData: IconCode.drawerTest,
+  //   route: RoutePage.testArea,
+  // ));
+  // static ScreenDrawerItem test = ScreenDrawerItem.define(RouteListItem(
+  //   routeId: RouteEnum.TEST,
+  //   iconData: IconCode.drawerTest,
+  // ));
 
   /// for web game screen drawer
   static ScreenDrawerItem backHome = ScreenDrawerItem.define(RouteListItem(

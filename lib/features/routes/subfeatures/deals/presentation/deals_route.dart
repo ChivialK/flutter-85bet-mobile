@@ -186,11 +186,7 @@ class _DealsRouteState extends State<DealsRoute> {
                           children: [
                             Container(
                               padding: const EdgeInsets.all(10.0),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: themeColor.memberIconColor,
-                                boxShadow: ThemeInterface.iconBottomShadow,
-                              ),
+                              decoration: ThemeInterface.pageIconContainerDecor,
                               child: Icon(
                                 pageItem.value.iconData,
                                 size: 32 * Global.device.widthScale,
@@ -210,7 +206,7 @@ class _DealsRouteState extends State<DealsRoute> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 16.0),
+                            const EdgeInsets.fromLTRB(4.0, 20.0, 8.0, 16.0),
                         child: Container(
                           decoration: ThemeInterface.layerShadowDecorRound,
                           child: Column(

@@ -6,15 +6,34 @@ import '../../data/models/promo_freezed.dart' show PromoEntity;
 
 /// View for [PromoEntity]
 /// [promo] = view's data
-class PromoTabListItem extends StatelessWidget {
+class PromoTabListItem extends StatefulWidget {
   final PromoEntity promo;
   final Function onShowDetail;
 
   PromoTabListItem(this.promo, this.onShowDetail);
 
   @override
+  _PromoTabListItemState createState() => _PromoTabListItemState();
+}
+
+class _PromoTabListItemState extends State<PromoTabListItem>
+    with AutomaticKeepAliveClientMixin {
+  /// Need to use stateful widget to keep image future state, so
+  /// it will behave properly when scroll up.
+  Future<Widget> imageFuture;
+
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     double screenScale = (Global.device.width / 360).ceilToDouble();
+    imageFuture ??= networkImageWidget(
+      widget.promo.bannerMobile,
+      fit: BoxFit.fill,
+      imgScale: 0.9 / screenScale,
+    );
     return Container(
       decoration: BoxDecoration(
         border: Border.all(width: 8.0, color: themeColor.defaultCardColor),
@@ -23,16 +42,30 @@ class PromoTabListItem extends StatelessWidget {
       ),
       margin: const EdgeInsets.all(6.0),
       child: Container(
-        color: Color(0xfff1f1f1),
+        color: themeColor.defaultCardColor,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             /* Promo Image */
-            networkImageBuilder(
-              promo.bannerMobile,
-              fit: BoxFit.fill,
-              imgScale: 0.9 / screenScale,
-              roundCorner: true,
+            FutureBuilder(
+              future: imageFuture,
+              builder: (_, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done &&
+                    !snapshot.hasError) {
+                  return ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: snapshot.data,
+                  );
+                } else if (snapshot.hasError) {
+                  MyLogger.warn(
+                      msg: 'network image builder error: ${snapshot.error}',
+                      error: snapshot.error);
+                  return Icon(Icons.broken_image,
+                      color: themeColor.iconSubColor1);
+                } else {
+                  return SizedBox.shrink();
+                }
+              },
             ),
             /* Promo Text*/
             Container(
@@ -42,10 +75,10 @@ class PromoTabListItem extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
                     child: Text(
-                      promo.name,
+                      widget.promo.name,
                       style: TextStyle(
                         fontSize: FontSize.SUBTITLE.value,
-                        color: themeColor.dialogTitleColor,
+                        color: themeColor.defaultTextColor,
                       ),
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
@@ -58,8 +91,8 @@ class PromoTabListItem extends StatelessWidget {
                       child: Text(localeStr.promoDetailText),
                       visualDensity: VisualDensity(horizontal: 3.0),
                       onPressed: () {
-                        debugPrint('clicked promo: ${promo.name}');
-                        onShowDetail(promo);
+                        debugPrint('clicked promo: ${widget.promo.name}');
+                        widget.onShowDetail(widget.promo);
                       },
                     ),
                   ),

@@ -63,7 +63,7 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
 
   @override
   void initState() {
-    _singleLine = (Global.lang == 'vi')
+    _singleLine = (Global.lang.code == 'vi')
         ? Global.device.width >= 442.0
         : Global.device.width >= 360.0;
     _areaHeight = widget.sizeCalc.shortcutMaxHeight;
@@ -101,7 +101,15 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
         maxWidth: Global.device.width,
         maxHeight: _areaHeight,
       ),
-      color: themeColor.homeBoxBgColor,
+      margin: const EdgeInsets.all(4.0),
+      decoration: BoxDecoration(
+        color: themeColor.homeBoxBgColor,
+        border: Border.all(
+          color: themeColor.homeBoxDividerColor,
+          style: BorderStyle.solid,
+        ),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
       child: _contentWidget,
     );
   }
@@ -112,7 +120,7 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
         _buildShortcuts(),
         if (isUserContent)
           Expanded(
-            flex: 1,
+            flex: 3,
             child: _buildUserArea(),
           )
       ],
@@ -122,13 +130,14 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
   Widget _buildUserArea() {
     _userCreditWidget ??= _buildUserCreditWidget();
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 2.0),
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Res.homeBoxUserAreaBg),
+          image: AssetImage(Res.index_member),
           fit: BoxFit.fill,
         ),
+        borderRadius: BorderRadius.horizontal(right: Radius.circular(4.0)),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -137,6 +146,8 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
             child: Text(
               '${_userData.currentUser.account}',
               style: TextStyle(color: themeColor.homeBoxInfoTextColor),
+              maxLines: 2,
+              textAlign: TextAlign.center,
             ),
           ),
           Padding(
@@ -195,28 +206,32 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
 
   Widget _buildShortcuts() {
     return Expanded(
-      flex: 4,
+      flex: 8,
       child: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.only(top: 6.0, bottom: 2.0),
         child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: List<Widget>.generate(shortcuts.length, (index) {
-              return Expanded(
-                flex: 1,
-                child: _createIconButton(shortcuts[index]),
-              );
-            })),
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: List<Widget>.generate(shortcuts.length, (index) {
+            return Expanded(
+              flex: 1,
+              child: _createIconButton(
+                  shortcuts[index], index == shortcuts.length - 1),
+            );
+          }),
+        ),
       ),
     );
   }
 
-  Widget _createIconButton(MemberGridItem item) {
+  Widget _createIconButton(MemberGridItem item, bool isLast) {
     final String label = item.value.label;
     return Container(
-      decoration: BoxDecoration(border: Border(right: _widgetBorder)),
-      margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
+      decoration: (!isLast)
+          ? BoxDecoration(border: Border(right: _widgetBorder))
+          : null,
+      margin: const EdgeInsets.symmetric(vertical: 2.0),
       child: GestureDetector(
         onTap: () {
           (item.value.isUserOnly == false)
@@ -250,9 +265,13 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
                 text: TextSpan(
                   text: label,
                   style: TextStyle(
-                    fontSize: (label.countLength >= 8)
-                        ? FontSize.SMALLER.value
-                        : FontSize.NORMAL.value,
+                    fontSize: (Global.lang.isChinese)
+                        ? (label.countLength >= 8)
+                            ? FontSize.NORMAL.value
+                            : FontSize.SUBTITLE.value
+                        : (label.countLength >= 8)
+                            ? FontSize.SMALLER.value
+                            : FontSize.NORMAL.value,
                     color: themeColor.homeBoxIconTextColor,
                   ),
                 ),

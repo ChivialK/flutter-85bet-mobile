@@ -3,40 +3,24 @@ import 'dart:convert' show Encoding;
 import 'package:flutter/material.dart' show kToolbarHeight;
 
 import 'device.dart';
-import 'language_code.dart';
+import 'language.dart';
 
 class Global {
   /// Device Relative
   static Device device;
 
-  /// BuildType
-  static bool addAnalytics = false;
-
   /// APP Language
-  static bool initLocale = false;
-
-  static bool lockLanguage = false;
-
-  static LanguageCode _locale = defaultLocale;
-
-  static String get jsonContentKey => _locale.value.contentKey;
-
-  static String get lang => _locale.value.code;
-
-  static set setLanguage(String langCode) =>
-      _locale = LanguageCode.getByCode(langCode);
+  static Language lang;
 
   /// Web Service
   static const bool HAS_FLEX_ROUTE = false;
-  static const String CURRENT_BASE = BET85_OFFICIAL_URL;
+  static const String CURRENT_BASE = V79_TEST_URL;
 
-  static const String DOMAIN_NAME = "85bet.com";
-  static const String BET85_BASE_URL = "http://10.20.10.11/";
-  static const String BET85_OFFICIAL_URL = "https://85bet.com/";
-  static const String BET85_TEST_URL = "http://192.168.2.87:7315/";
-  static const String BET85_SERVICE_URL =
-      "https://vm.providesupport.com/095ecqycnij4h0q56020owowxq";
-  static const String BET85_MOVIE_URL = "http://web.95vn.com";
+  static const String DOMAIN_NAME = "192.168.2.87:2811";
+  static const String V79_OFFICIAL_URL = "";
+  static const String V79_BASE_URL = "";
+  static const String V79_TEST_URL = "http://192.168.2.87:2811/";
+  static const String CS_SERVICE_URL = "";
 
   /// HIVE table name
   static const String CACHED_COOKIE = 'CACHED_USER_COOKIE';

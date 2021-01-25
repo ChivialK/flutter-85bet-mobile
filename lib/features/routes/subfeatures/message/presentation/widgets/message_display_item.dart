@@ -50,7 +50,7 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
             color: themeColor.defaultCardColor,
             border: Border.symmetric(
                 vertical: BorderSide(
-              color: Colors.black12,
+              color: themeColor.defaultActiveWidgetColor,
               width: 1.5,
             )),
           ),

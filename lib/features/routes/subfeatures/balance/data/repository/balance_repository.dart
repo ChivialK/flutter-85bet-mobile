@@ -2,7 +2,7 @@ import 'package:flutter_85bet_mobile/core/repository_export.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/transfer/data/form/transfer_form.dart';
 
 class BalanceApi {
-  static const String GET_PROMISE = "api/allBlancePromise";
+  static const String GET_PROMISE = "api/allBalancePromise";
   static const String GET_BALANCE = "api/balance";
   static const String POST_TRANSFER = "api/transfer";
 }
@@ -28,7 +28,7 @@ class BalanceRepositoryImpl implements BalanceRepository {
   @override
   Future<Either<Failure, List<String>>> getPromise() async {
     final result = await requestModel<RequestCodeModel>(
-      request: dioApiService.post(
+      request: dioApiService.get(
         BalanceApi.GET_PROMISE,
         userToken: jwtInterface.token,
       ),
@@ -43,10 +43,26 @@ class BalanceRepositoryImpl implements BalanceRepository {
           try {
             // decode list in json format to string list
             List decoded = JsonUtil.decodeArray(model.data, trim: false);
-            MyLogger.print(msg: 'wallet decoded list: $decoded', tag: tag);
-            return Right(decoded.map((e) => e.toString()).toList());
+            MyLogger.print(
+                msg: 'balance platform decoded list: $decoded', tag: tag);
+            if (decoded.isNotEmpty) {
+              if (decoded.first is String) {
+                return Right(decoded.map((e) => e.toString()).toList());
+              } else if (decoded.first is Map) {
+                List<String> list = decoded.map((e) {
+                  Map itemMap = e as Map;
+                  return (itemMap.containsKey('name'))
+                      ? '${itemMap['name']}'
+                      : '';
+                }).toList()
+                  ..removeWhere((element) => element.isEmpty);
+                // debugPrint('balance platform list: $list');
+                return Right(list);
+              }
+            }
           } on Exception catch (e) {
-            MyLogger.error(msg: 'wallet map error!!', error: e, tag: tag);
+            MyLogger.error(
+                msg: 'balance platform map error!!', error: e, tag: tag);
           }
         }
         return Right([]);

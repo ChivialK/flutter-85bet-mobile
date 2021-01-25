@@ -103,7 +103,7 @@ class _RegisterRouteState extends State<RegisterRoute> {
           Global.device.height,
         )),
         padding: EdgeInsets.zero,
-        customBg: const Color(0xc9ffffff),
+        transparentBg: true,
         roundParam: 0.0,
         canClose: false,
         children: [

@@ -44,6 +44,7 @@ class _ScreenMenuBarActionState extends State<ScreenMenuBarAction> {
         shape: RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(4.0),
         ),
+        buttonColor: themeColor.buttonPrimaryColor,
         child: Row(
           children: <Widget>[
 //            RaisedButton(
@@ -60,6 +61,7 @@ class _ScreenMenuBarActionState extends State<ScreenMenuBarAction> {
 //            ),
 //            SizedBox(width: 4.0),
             RaisedButton(
+              color: themeColor.buttonSecondaryColor,
               child: new Text(
                 localeStr.pageTitleRegister,
                 style: TextStyle(
@@ -68,8 +70,8 @@ class _ScreenMenuBarActionState extends State<ScreenMenuBarAction> {
                 ),
               ),
               visualDensity: VisualDensity(horizontal: -3.0),
-//                onPressed: () =>
-//                    RouterNavigate.navigateToPage(RoutePage.register),
+              // onPressed: () =>
+              //     RouterNavigate.navigateToPage(RoutePage.register),
               onPressed: () {
                 showDialog(
                   context: context,

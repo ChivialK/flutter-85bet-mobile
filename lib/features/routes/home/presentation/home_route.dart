@@ -39,7 +39,15 @@ class _HomeRouteState extends State<HomeRoute> with AfterLayoutMixin {
         // Run some logic with the content of the observed field
         (String message) {
           if (message != null && message.isNotEmpty) {
-            callToastError(message, delayedMilli: 200);
+            if (message.contains('code')) {
+              callToastError(message, delayedMilli: 200);
+            } else {
+              callToastError(
+                message,
+                delayedMilli: 200,
+                duration: ToastDuration.LONG,
+              );
+            }
           }
         },
       ),

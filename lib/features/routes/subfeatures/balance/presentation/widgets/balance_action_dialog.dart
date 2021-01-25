@@ -20,9 +20,11 @@ class BalanceActionDialog extends StatelessWidget {
         ? localeStr.balanceTransferInText
         : localeStr.balanceTransferOutText;
     return DialogWidget(
-      heightFactor: 0.175,
-      minHeight: 120,
-      maxHeight: 180,
+      constraints: BoxConstraints(
+        minHeight: 120,
+        maxHeight: 180,
+        maxWidth: (Global.device.width > 360) ? 360 : Global.device.width - 32,
+      ),
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.fromLTRB(16.0, 14.0, 16.0, 12.0),
@@ -37,6 +39,7 @@ class BalanceActionDialog extends StatelessWidget {
                       localeStr.balanceTransferAlertTitle,
                       style: TextStyle(
                         fontSize: FontSize.MESSAGE.value,
+                        color: themeColor.dialogTitleColor,
                       ),
                     ),
                   ),
@@ -49,6 +52,10 @@ class BalanceActionDialog extends StatelessWidget {
                       localeStr.balanceTransferAlertMsg(
                         actionText.toLowerCase(),
                         targetPlatform.toUpperCase(),
+                      ),
+                      style: TextStyle(
+                        fontSize: FontSize.SUBTITLE.value,
+                        color: themeColor.dialogTextColor,
                       ),
                     ),
                   ),

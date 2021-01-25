@@ -2,6 +2,7 @@ import 'dart:collection' show HashMap;
 
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
+import 'package:flutter_85bet_mobile/features/general/data/error/error_message_map.dart';
 import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
 import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
@@ -345,9 +346,7 @@ abstract class _HomeStore with Store {
     customizePlatformMap();
     homeTabs.add(cockfightingCategory);
     homeTabs.add(promoCategory);
-    homeTabs.add(movieWebCategory);
     homeTabs.add(websiteCategory);
-    homeTabs.add(aboutCategory);
 
 //    homePlatformMap.keys.forEach((key) => MyLogger.debugPrint(
 //        msg: '$key: ${homePlatformMap[key]}\n', tag: 'HomePlatformMap'));
@@ -377,12 +376,17 @@ abstract class _HomeStore with Store {
     }
   }
 
-  void checkHomeTabs() {
+  bool checkUser() {
     if (hasUser != getAppGlobalStreams.hasUser) {
       hasUser = getAppGlobalStreams.hasUser;
-//      debugPrint('home store has user = $hasUser');
-      getGameTypes();
+      debugPrint('home store has user = $hasUser');
+      return true;
     }
+    return false;
+  }
+
+  void checkHomeTabs() {
+    if (checkUser()) getGameTypes();
     if (hasUser) {
       _tabController.sink.add(homeUserTabs);
     } else {
@@ -450,7 +454,13 @@ abstract class _HomeStore with Store {
           .getGameUrl(param)
           .then(
             (result) => result.fold(
-              (failure) => setErrorMsg(msg: failure.message),
+              (failure) {
+                String msg = MessageMap.getErrorMessage(
+                  failure.message,
+                  RouteEnum.HOME,
+                );
+                return setErrorMsg(msg: msg, type: FailureType.GAMES);
+              },
               (data) {
                 debugPrint('home store game url: $data');
                 gameUrl = data;

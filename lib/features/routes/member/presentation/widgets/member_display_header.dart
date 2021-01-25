@@ -57,7 +57,11 @@ class MemberDisplayHeaderState extends State<MemberDisplayHeader> {
         maxHeight: headerMaxHeight,
         maxWidth: Global.device.width,
       ),
-      decoration: ThemeInterface.layerShadowDecorRoundLight,
+      decoration: BoxDecoration(
+        color: themeColor.defaultAccentColor,
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        boxShadow: ThemeInterface.layerShadowLight,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -108,6 +112,7 @@ class MemberDisplayHeaderState extends State<MemberDisplayHeader> {
                     localeStr.btnRefresh,
                     style: TextStyle(fontSize: FontSize.MESSAGE.value),
                   ),
+                  color: themeColor.buttonSubColor,
                   onPressed: () => widget.onRefresh(),
                 ),
                 RaisedButton(
@@ -115,6 +120,7 @@ class MemberDisplayHeaderState extends State<MemberDisplayHeader> {
                     localeStr.memberGridTitleLogout,
                     style: TextStyle(fontSize: FontSize.MESSAGE.value),
                   ),
+                  color: themeColor.buttonSubColor,
                   onPressed: () => getAppGlobalStreams.logout(),
                 ),
               ],

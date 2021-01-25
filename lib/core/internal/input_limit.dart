@@ -13,7 +13,7 @@ class InputLimit {
   static const int AGENT_ACCOUNT_MIN = 3;
   static const int AGENT_ACCOUNT_MAX = 12;
 
-  static const int PHONE_MIN = 10;
+  static const int PHONE_MIN = 9;
   static const int PHONE_MAX = 10;
 
   static const int NAME_MIN = 2;
@@ -26,7 +26,7 @@ class InputLimit {
 
   // vn365, 85bet: 5~20, va: 5~19, kk:6~18, bkk:16~19
   static const int CARD_MIN = 5;
-  static const int CARD_MAX = 20; 
+  static const int CARD_MAX = 20;
 
   static const int RECOMMEND = 6;
   static const int VERIFY = 8;

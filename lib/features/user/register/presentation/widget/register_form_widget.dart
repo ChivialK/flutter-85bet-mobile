@@ -4,6 +4,7 @@ import 'package:flutter_85bet_mobile/features/general/widgets/checkbox_widget.da
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
 import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
+import 'package:flutter_85bet_mobile/features/themes/icon_code.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/user_entity.dart';
 import 'package:flutter_85bet_mobile/features/user/login/presentation/widgets/login_navigate.dart';
 
@@ -68,10 +69,12 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
         mobileno: _phoneFieldKey.currentState.getInput,
         intro: _introFieldKey.currentState.getInput,
       );
-      if (regForm.isValid && _termsCheckKey.currentState.boxChecked)
+      debugPrint('register form: $regForm, valid: ${regForm.isValid}');
+      if (regForm.isValid && _termsCheckKey.currentState.boxChecked) {
         _store.postRegister(regForm);
-      else
+      } else {
         callToast(localeStr.messageActionFillForm);
+      }
     }
   }
 
@@ -154,7 +157,10 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       child: Visibility(
                         visible: _showAccountError,
                         child: Text(
-                          localeStr.messageInvalidAccount,
+                          localeStr.messageInvalidAccount(
+                            InputLimit.ACCOUNT_MIN,
+                            InputLimit.ACCOUNT_MAX,
+                          ),
                           style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
@@ -201,7 +207,10 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       child: Visibility(
                         visible: _showPasswordError,
                         child: Text(
-                          localeStr.messageInvalidPasswordNew,
+                          localeStr.messageInvalidPassword(
+                            InputLimit.PASSWORD_MIN_OLD,
+                            InputLimit.PASSWORD_MAX,
+                          ),
                           style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
@@ -277,7 +286,10 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                           alignment: Alignment.center,
                           child: Text(
                             '+84',
-                            style: TextStyle(fontSize: FontSize.SUBTITLE.value),
+                            style: TextStyle(
+                              fontSize: FontSize.SUBTITLE.value,
+                              color: themeColor.fieldInputColor,
+                            ),
                           ),
                         ),
                         SizedBox(width: 8.0),
@@ -312,7 +324,10 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       child: Visibility(
                         visible: _showPhoneError,
                         child: Text(
-                          localeStr.messageInvalidPhone(InputLimit.PHONE_MAX),
+                          localeStr.messageInvalidPhone2(
+                            InputLimit.PHONE_MIN,
+                            InputLimit.PHONE_MAX,
+                          ),
                           style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
@@ -414,35 +429,37 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
         ///
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              IconButton(
-                visualDensity: VisualDensity.compact,
-                padding: EdgeInsets.zero,
-                icon: Icon(
-                  const IconData(0xe967, fontFamily: 'IconMoon'),
-                  color: themeColor.defaultTextColor,
+          child: RichText(
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              text: TextSpan(children: [
+                WidgetSpan(
+                  alignment: PlaceholderAlignment.middle,
+                  child: IconButton(
+                    visualDensity: VisualDensity.compact,
+                    padding: EdgeInsets.zero,
+                    icon: Icon(
+                      IconCode.csService,
+                      color: themeColor.defaultTextColor,
+                    ),
+                    onPressed: () {
+                      RouterNavigate.navigateToPage(RoutePage.service);
+                      if (widget.isDialog) {
+                        Future.delayed(Duration(milliseconds: 100),
+                            () => Navigator.of(context).pop());
+                      }
+                    },
+                  ),
                 ),
-                onPressed: () {
-                  RouterNavigate.navigateToPage(RoutePage.service);
-                  if (widget.isDialog) {
-                    Future.delayed(Duration(milliseconds: 100),
-                        () => Navigator.of(context).pop());
-                  }
-                },
-              ),
-              Expanded(
-                child: Text(
-                  localeStr.registerButtonServiceHint,
-                  style: TextStyle(fontSize: FontSize.SUBTITLE.value),
-                  maxLines: 3,
-                  overflow: TextOverflow.visible,
+                TextSpan(
+                  text: localeStr.registerButtonServiceHint,
+                  style: TextStyle(
+                    fontSize: FontSize.SUBTITLE.value,
+                    color: themeColor.defaultTextColor,
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ])),
         ),
 
         ///
