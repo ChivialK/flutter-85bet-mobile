@@ -4,7 +4,6 @@ import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart'
     show getAppGlobalStreams;
 import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/login_status.dart';
-import 'package:flutter_85bet_mobile/features/user/data/entity/user_entity.dart';
 
 part 'feature_screen_store.g.dart';
 
@@ -27,17 +26,18 @@ abstract class _FeatureScreenStore with Store {
     // initialize user status observe
     _streamUser = ObservableStream(getAppGlobalStreams.userStream);
     _streamUser.listen((data) async {
-      userStatus = data;
-      _loginStateController.sink.add(userStatus.loggedIn);
-      if (userStatus.loggedIn) {
+      userLoggedIn = data.loggedIn;
+      _loginStateController.sink.add(userLoggedIn);
+      if (userLoggedIn) {
         getNewMessageCount();
+      } else {
+        getAppGlobalStreams.updateMessageState(false);
       }
     });
 
     if (getAppGlobalStreams.hasUser) {
-      userStatus = getAppGlobalStreams.lastStatus;
+      userLoggedIn = true;
     }
-    userStatus ??= LoginStatus(loggedIn: false);
   }
 
   @observable
@@ -67,23 +67,21 @@ abstract class _FeatureScreenStore with Store {
   @observable
   ObservableStream<LoginStatus> _streamUser;
 
-  /* current user status */
-  @observable
-  LoginStatus userStatus;
-
-  /* current user */
-  UserEntity get user => userStatus.currentUser;
-
   /* login state changed notifier */
   Stream<bool> get loginStateStream => _loginStateController.stream;
 
-  @computed
-  bool get hasUser => (userStatus != null) ? userStatus.loggedIn : false;
+  /* current user status */
+  @observable
+  bool userLoggedIn = false;
+
+  bool get hasUser => userLoggedIn;
 
   Future<void> getWebsiteList() async => await _eventStore.getWebsiteList();
 
   Future<void> getNewMessageCount() async =>
       await _eventStore.getNewMessageCount();
+
+  Future<void> getUserCredit() async => await _eventStore.getUserCredit();
 
   Future<void> getAds() async => await _eventStore.getAds();
 

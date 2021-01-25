@@ -6,6 +6,7 @@ import 'package:flutter_85bet_mobile/core/network/util/network_info.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/screen/feature_screen_inherited_widget.dart';
 import 'package:flutter_85bet_mobile/features/screen/network_changed_dialog.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_color_enum.dart';
 import 'package:flutter_85bet_mobile/utils/platform_util.dart';
 
 import '../routes/home/presentation/state/home_store.dart';
@@ -34,6 +35,7 @@ class _FeatureScreenState extends State<FeatureScreen> {
   ConnectivityResult _currentNetworkType;
   bool isShowingDialog = false;
 
+  ThemeColorEnum currentTheme;
   String locale;
   int closeAppCount = 0;
 
@@ -89,11 +91,12 @@ class _FeatureScreenState extends State<FeatureScreen> {
   @override
   void initState() {
     MyLogger.debug(msg: 'init feature screen', tag: tag);
-    locale = Global.lang;
+    locale = Global.localeCode;
+    currentTheme = ThemeInterface.theme.colorEnum;
     super.initState();
     if (_store != null) {
       _store.getWebsiteList();
-      _store.getAds();
+      // _store.getAds();
     }
     setNetworkListener();
   }
@@ -103,6 +106,12 @@ class _FeatureScreenState extends State<FeatureScreen> {
     MyLogger.debug(msg: 'update feature screen', tag: tag);
     super.didUpdateWidget(oldWidget);
     if (networkSubscript == null) setNetworkListener();
+
+    // Update widgets if app theme changed
+    if (currentTheme != ThemeInterface.theme.colorEnum) {
+      currentTheme = ThemeInterface.theme.colorEnum;
+      updateScreen();
+    }
   }
 
   @override
@@ -117,7 +126,7 @@ class _FeatureScreenState extends State<FeatureScreen> {
     return WillPopScope(
       child: StreamBuilder<String>(
           stream: getAppGlobalStreams.languageStream,
-          initialData: Global.lang,
+          initialData: Global.localeCode,
           builder: (context, snapshot) {
             locale ??= snapshot.data;
             if (snapshot.data != locale) {

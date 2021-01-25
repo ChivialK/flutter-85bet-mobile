@@ -98,7 +98,7 @@ class CustomizeFieldWidget extends StatefulWidget {
     this.titleWidthFactor = ThemeInterface.prefixTextWidthFactor,
     this.iconWidthFactor = ThemeInterface.prefixIconWidthFactor,
     this.suffixLetterWidth = 2.4,
-    this.roundCorner = false,
+    this.roundCorner = true,
     this.onInputChanged,
     this.requiredInput = false,
     this.debug = false,
@@ -234,8 +234,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
     if (Global.device.isIos) _suffixWidth += 8.0;
 
     _currentMaxLines = widget.maxLines;
-    _currentPrefixMaxLines =
-        widget.prefixTextMaxLines ?? (Global.lang == 'zh') ? 1 : 2;
+    _currentPrefixMaxLines = widget.prefixTextMaxLines ?? 2;
 
     _smallWidgetHeight = ((Global.device.isIos)
             ? ThemeInterface.fieldHeight + 8
@@ -298,8 +297,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
         minHeight: _smallWidgetHeight,
       );
     }
-    _currentPrefixMaxLines =
-        widget.prefixTextMaxLines ?? (Global.lang == 'zh') ? 1 : 2;
+    _currentPrefixMaxLines = widget.prefixTextMaxLines ?? 2;
     _updateFieldStyle();
     super.didUpdateWidget(oldWidget);
   }
@@ -603,6 +601,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
       case FieldType.Email:
         return TextInputType.emailAddress;
       case FieldType.Date:
+      case FieldType.DateWithoutHelper:
         return TextInputType.datetime;
       default:
         return TextInputType.text;
@@ -617,6 +616,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
           LengthLimitingTextInputFormatter(widget.maxInputLength),
         ];
       case FieldType.Date:
+      case FieldType.DateWithoutHelper:
         return [
           _dateInputFormatter,
           LengthLimitingTextInputFormatter(widget.maxInputLength),

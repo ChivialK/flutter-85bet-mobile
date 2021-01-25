@@ -62,7 +62,7 @@ class _WithdrawDisplayState extends State<WithdrawDisplay> {
         (_) => _store.withdrawResult,
         // Run some logic with the content of the observed field
         (WithdrawModel result) {
-          debugPrint('reaction on withdraw result: $result');
+          debugPrint('withdraw result: $result');
           if (result == null) return;
           if (result.code == 0) {
             callToastInfo(

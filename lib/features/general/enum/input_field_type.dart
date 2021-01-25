@@ -9,6 +9,7 @@ enum FieldType {
   Numbers,
   Email,
   Date,
+  DateWithoutHelper,
   Password,
   Account
 }
@@ -23,7 +24,7 @@ final _symbolsInputRegex = RegExp("[\$&+,:;=?@#|'<>.-^*()%!_ ]");
 
 final _engInputRegex = RegExp("[a-zA-Z]");
 
-final _engLowerInputRegex = RegExp("[a-z]");
+final _engLowercaseInputRegex = RegExp("[a-z]");
 
 // final _engSpaceInputRegex = RegExp("[a-zA-Z ]");
 
@@ -42,7 +43,7 @@ final _dateInputFormatter = FilteringTextInputFormatter.allow(_dateInputRegex);
 // );
 
 final _accountInputFormatter = FilteringTextInputFormatter.allow(
-  RegExp("${_engLowerInputRegex.pattern}|"
+  RegExp("${_engLowercaseInputRegex.pattern}|"
       "${_numInputRegex.pattern}|[!#_\$%&*+-=?^@]"),
 );
 

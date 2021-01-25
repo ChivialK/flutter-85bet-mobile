@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter/widgets.dart'
     show EdgeInsets, MediaQueryData, Orientation;
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
+import 'package:flutter_85bet_mobile/ga_interface.dart';
 import 'package:package_info/package_info.dart';
 import 'package:uuid/uuid.dart';
 
@@ -104,7 +105,7 @@ class Device {
   String get appVersionOrigin =>
       'Version:${packageInfo.version} Build:${packageInfo.buildNumber}';
   String get appVersionSide =>
-      (Global.addAnalytics) ? '$_version (GA)' : _version;
+      '$_version${(GaInterface.isAnalyzing) ? ' (GA)' : ''}';
 
   /// device's current orientation
   Orientation get orientation => _mediaQueryData.orientation;
@@ -123,6 +124,9 @@ class Device {
 
   /// device's width scale
   double get widthScale => _screenWidthScale;
+
+  /// half of the device's width scale
+  double get widthScaleHalf => (1 + _screenWidthScale) / 2;
 
   /// device's height
   double get heightScale => _screenHeightScale;

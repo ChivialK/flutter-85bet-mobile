@@ -35,12 +35,12 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `85Bet Mobile`
+  /// `VN365S Mobile`
   String get title {
     return Intl.message(
-      '85Bet Mobile',
+      'VN365S Mobile',
       name: 'title',
-      desc: '85Bet Demo',
+      desc: 'VN365S Demo',
       args: [],
     );
   }
@@ -875,6 +875,26 @@ class S {
     );
   }
 
+  /// `Next Step`
+  String get btnNextStep {
+    return Intl.message(
+      'Next Step',
+      name: 'btnNextStep',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get btnPreStep {
+    return Intl.message(
+      'Back',
+      name: 'btnPreStep',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Return`
   String get sideBtnBackHome {
     return Intl.message(
@@ -1185,10 +1205,10 @@ class S {
     );
   }
 
-  /// `Please fill the form`
+  /// `Please check your input and fill in all the required info`
   String get messageActionFillForm {
     return Intl.message(
-      'Please fill the form',
+      'Please check your input and fill in all the required info',
       name: 'messageActionFillForm',
       desc: '',
       args: [],
@@ -1395,6 +1415,16 @@ class S {
     );
   }
 
+  /// `Error Phone Number({min}~{max})`
+  String messageInvalidPhone2(Object min, Object max) {
+    return Intl.message(
+      'Error Phone Number($min~$max)',
+      name: 'messageInvalidPhone2',
+      desc: '',
+      args: [min, max],
+    );
+  }
+
   /// `Error Post Code(5~8)`
   String get messageInvalidPostCode {
     return Intl.message(
@@ -1445,33 +1475,23 @@ class S {
     );
   }
 
-  /// `Username should be 6 ~ 12 words (Lowercase)`
-  String get messageInvalidAccount {
+  /// `Username should be {min}~{max} words (Lowercase)`
+  String messageInvalidAccount(Object min, Object max) {
     return Intl.message(
-      'Username should be 6 ~ 12 words (Lowercase)',
+      'Username should be $min~$max words (Lowercase)',
       name: 'messageInvalidAccount',
       desc: '',
-      args: [],
+      args: [min, max],
     );
   }
 
-  /// `Password should be 8 ~ 18 words`
-  String get messageInvalidPassword {
+  /// `Password should be {min}~{max} words`
+  String messageInvalidPassword(Object min, Object max) {
     return Intl.message(
-      'Password should be 8 ~ 18 words',
+      'Password should be $min~$max words',
       name: 'messageInvalidPassword',
       desc: '',
-      args: [],
-    );
-  }
-
-  /// `Password should be 8 ~ 18 words`
-  String get messageInvalidPasswordNew {
-    return Intl.message(
-      'Password should be 8 ~ 18 words',
-      name: 'messageInvalidPasswordNew',
-      desc: '',
-      args: [],
+      args: [min, max],
     );
   }
 
@@ -1525,11 +1545,21 @@ class S {
     );
   }
 
-  /// `Exceeds the maximum withdrawal amount (please refer to the vip level detail)`
-  String get messageInvalidDepositAmountMax {
+  /// `Deposit amount exceeds the upper limit`
+  String get messageInvalidDepositAmountMaxLimit {
     return Intl.message(
-      'Exceeds the maximum withdrawal amount (please refer to the vip level detail)',
-      name: 'messageInvalidDepositAmountMax',
+      'Deposit amount exceeds the upper limit',
+      name: 'messageInvalidDepositAmountMaxLimit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deposit amount is lower than minimum limit`
+  String get messageInvalidDepositAmountMinLimit {
+    return Intl.message(
+      'Deposit amount is lower than minimum limit',
+      name: 'messageInvalidDepositAmountMinLimit',
       desc: '',
       args: [],
     );
@@ -1555,13 +1585,23 @@ class S {
     );
   }
 
-  /// `The card number is 5 ~ 19 characters`
-  String get messageInvalidCardNumber {
+  /// `Card number should be {min}~{max} characters`
+  String messageInvalidCardNumber(Object min, Object max) {
     return Intl.message(
-      'The card number is 5 ~ 19 characters',
+      'Card number should be $min~$max characters',
       name: 'messageInvalidCardNumber',
       desc: '',
-      args: [],
+      args: [min, max],
+    );
+  }
+
+  /// `Card number should be {min}~{max} characters and starts with {fixed}`
+  String messageInvalidCardNumberFixed(Object min, Object max, Object fixed) {
+    return Intl.message(
+      'Card number should be $min~$max characters and starts with $fixed',
+      name: 'messageInvalidCardNumberFixed',
+      desc: '',
+      args: [min, max, fixed],
     );
   }
 
@@ -1600,6 +1640,16 @@ class S {
     return Intl.message(
       'Below the minimum amount',
       name: 'messageInvalidWithdrawUnderAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exceeds the maximum withdrawal amount (please refer to the vip level detail)`
+  String get messageInvalidWithdrawExceedAmount {
+    return Intl.message(
+      'Exceeds the maximum withdrawal amount (please refer to the vip level detail)',
+      name: 'messageInvalidWithdrawExceedAmount',
       desc: '',
       args: [],
     );
@@ -1910,6 +1960,16 @@ class S {
     return Intl.message(
       'Password Error',
       name: 'messageErrorPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `password not match, account will be locked after 5 errors`
+  String get messageErrorPasswordHint {
+    return Intl.message(
+      'password not match, account will be locked after 5 errors',
+      name: 'messageErrorPasswordHint',
       desc: '',
       args: [],
     );
@@ -2285,10 +2345,10 @@ class S {
     );
   }
 
-  /// `Click me to open 85Bet website`
+  /// `Click me to open VN365S website`
   String get gameCategoryWebHint {
     return Intl.message(
-      'Click me to open 85Bet website',
+      'Click me to open VN365S website',
       name: 'gameCategoryWebHint',
       desc: '',
       args: [],
@@ -4175,16 +4235,6 @@ class S {
     );
   }
 
-  /// `Remarks`
-  String get depositPaymentEditTitleNote {
-    return Intl.message(
-      'Remarks',
-      name: 'depositPaymentEditTitleNote',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Range: {num}~{num2}`
   String depositPaymentEditTitleAmountHintRange(Object num, Object num2) {
     return Intl.message(
@@ -4202,6 +4252,36 @@ class S {
       name: 'depositPaymentEditTitleAmountHintRangeStep',
       desc: '',
       args: [num, num2, num3],
+    );
+  }
+
+  /// `Transaction Code`
+  String get depositPaymentEditTitleCode {
+    return Intl.message(
+      'Transaction Code',
+      name: 'depositPaymentEditTitleCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `please enter the transaction code`
+  String get depositPaymentEditHintCode {
+    return Intl.message(
+      'please enter the transaction code',
+      name: 'depositPaymentEditHintCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remarks`
+  String get depositPaymentEditTitleNote {
+    return Intl.message(
+      'Remarks',
+      name: 'depositPaymentEditTitleNote',
+      desc: '',
+      args: [],
     );
   }
 
@@ -4445,11 +4525,21 @@ class S {
     );
   }
 
-  /// `Recharge failed, please try again later or contact customer service`
+  /// `Deposit failed, please try again later or contact customer service`
   String get depositMessageFailed {
     return Intl.message(
-      'Recharge failed, please try again later or contact customer service',
+      'Deposit failed, please try again later or contact customer service',
       name: 'depositMessageFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deposit info error, please re-select the payment method or contact customer service`
+  String get depositMessageFormError {
+    return Intl.message(
+      'Deposit info error, please re-select the payment method or contact customer service',
+      name: 'depositMessageFormError',
       desc: '',
       args: [],
     );
@@ -6655,10 +6745,10 @@ class S {
     );
   }
 
-  /// `牌照`
+  /// `Certifact`
   String get aboutCertTitle {
     return Intl.message(
-      '牌照',
+      'Certifact',
       name: 'aboutCertTitle',
       desc: '',
       args: [],

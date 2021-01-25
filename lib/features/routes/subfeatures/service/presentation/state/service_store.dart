@@ -25,12 +25,8 @@ abstract class _ServiceStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg({
-    String msg,
-    bool showOnce = false,
-    FailureType type,
-    int code,
-  }) =>
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
       errorMessage = getErrorMsg(
           from: FailureType.SERVICE,
           msg: msg,
@@ -62,9 +58,10 @@ abstract class _ServiceStore with Store {
       _dataFuture = ObservableFuture(_repository.getWebsiteList());
       await _dataFuture.then((result) {
         debugPrint('service data result: $result');
-        result.fold(
-            (failure) => setErrorMsg(msg: failure.message, showOnce: true),
-            (model) {
+        result.fold((failure) {
+          setErrorMsg(msg: failure.message, showOnce: true);
+          data = ServiceModel();
+        }, (model) {
           ServiceData.data = model;
           data = model;
         });

@@ -3,6 +3,7 @@ import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_dropdown_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_input_chip_container.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
 
 import '../../data/form/transfer_form.dart';
 import '../../data/models/transfer_platform_model.dart';
@@ -23,9 +24,11 @@ class _TransferDisplayState extends State<TransferDisplay> {
 
   static final GlobalKey<FormState> _formKey =
       new GlobalKey(debugLabel: 'form');
+
   // Fields
   final GlobalKey<CustomizeFieldWidgetState> _amountFieldKey =
       new GlobalKey(debugLabel: 'amount');
+
   // Dropdowns
   final GlobalKey<CustomizeDropdownWidgetState> _site1Key =
       new GlobalKey(debugLabel: 'site1');
@@ -44,7 +47,8 @@ class _TransferDisplayState extends State<TransferDisplay> {
   List<TransferPlatformModel> _site2List = [];
 
   final double _fieldInset = 72.0;
-  double _valueTextPadding;
+
+//  double _valueTextPadding;
   String _valueInitText;
   String _site1Selected;
   String _site2Selected;
@@ -117,10 +121,10 @@ class _TransferDisplayState extends State<TransferDisplay> {
 
   @override
   void initState() {
-    _valueTextPadding = (Global.device.width.roundToDouble() - _fieldInset) *
-            ThemeInterface.prefixTextWidthFactor -
-        ThemeInterface.minusSize +
-        16.0;
+//    _valueTextPadding = (Global.device.width.roundToDouble() - _fieldInset) *
+//            themeColor.prefixTextWidthFactor -
+//        themeColor.minusSize +
+//        16.0;
     _valueInitText = localeStr.transferViewSiteHint;
     chipLabels = [
       '100',
@@ -164,11 +168,7 @@ class _TransferDisplayState extends State<TransferDisplay> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: themeColor.memberIconColor,
-                      boxShadow: ThemeInterface.iconBottomShadow,
-                    ),
+                    decoration: ThemeInterface.pageIconContainerDecor,
                     child: Icon(
                       pageItem.value.iconData,
                       size: 32 * Global.device.widthScale,
@@ -178,7 +178,9 @@ class _TransferDisplayState extends State<TransferDisplay> {
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       pageItem.value.label,
-                      style: TextStyle(fontSize: FontSize.HEADER.value),
+                      style: TextStyle(
+                          fontSize: FontSize.HEADER.value,
+                          color: themeColor.defaultTitleColor),
                     ),
                   )
                 ],
@@ -203,120 +205,161 @@ class _TransferDisplayState extends State<TransferDisplay> {
                             ///
                             /// From Site Option
                             ///
-                            CustomizeDropdownWidget(
-                              key: _site1Key,
+                            new CustomizeTitledContainer(
                               prefixText: localeStr.transferViewTitleOut,
                               prefixTextSize: FontSize.SUBTITLE.value,
+                              prefixBgColor: themeColor.fieldPrefixBgColor,
+                              backgroundColor: themeColor.fieldPrefixBgColor,
                               horizontalInset: _fieldInset,
-                              optionValues: widget.store.platforms
-                                  .map((e) => e.site)
-                                  .toList(),
-                              optionStrings: widget.store.platforms
-                                  .map((e) => e.name)
-                                  .toList(),
-                              clearValueOnMenuChanged: true,
-                              changeNotify: (data) => _setSite1(data),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      _valueTextPadding, 4.0, 0.0, 6.0),
-                                  child: StreamBuilder<String>(
-                                    stream: widget.store.site1ValueStream,
-                                    initialData: _valueInitText,
-                                    builder: (context, snapshot) {
-                                      bool reset = snapshot.data == null ||
-                                          snapshot.data.isEmpty ||
-                                          widget.store.site1.strToInt == -1;
-                                      String text = (reset)
-                                          ? _valueInitText
-                                          : snapshot.data;
-                                      debugPrint('site1 reset: $reset');
-                                      return GestureDetector(
-                                        onTap: () {
-                                          if (_site1Selected == null) return;
-                                          widget.store.setSite1Value('');
-                                          widget.store
-                                              .getBalance(_site1Selected);
-                                        },
-                                        child: Text(text,
-                                            style: TextStyle(
-                                                color: themeColor
-                                                    .fieldSuffixColor)),
-                                      );
-                                    },
+                              roundCorner: false,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: CustomizeDropdownWidget(
+                                      key: _site1Key,
+                                      horizontalInset: _fieldInset,
+                                      padding: EdgeInsets.zero,
+                                      roundCorner: false,
+                                      optionValues: widget.store.platforms
+                                          .map((e) => e.site)
+                                          .toList(),
+                                      optionStrings: widget.store.platforms
+                                          .map((e) => e.name)
+                                          .toList(),
+                                      clearValueOnMenuChanged: true,
+                                      changeNotify: (data) => _setSite1(data),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Expanded(
+                                    flex: 5,
+                                    child: Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          8.0, 4.0, 0.0, 6.0),
+                                      child: StreamBuilder<String>(
+                                        stream: widget.store.site1ValueStream,
+                                        initialData: _valueInitText,
+                                        builder: (context, snapshot) {
+                                          bool reset = snapshot.data == null ||
+                                              snapshot.data.isEmpty ||
+                                              widget.store.site1.strToInt == -1;
+                                          String text = (reset)
+                                              ? _valueInitText
+                                              : snapshot.data;
+                                          debugPrint('site1 reset: $reset');
+                                          return GestureDetector(
+                                            onTap: () {
+                                              if (_site1Selected == null)
+                                                return;
+                                              widget.store.setSite1Value('');
+                                              widget.store
+                                                  .getBalance(_site1Selected);
+                                            },
+                                            child: Text(text,
+                                                style: TextStyle(
+                                                  color: themeColor
+                                                      .fieldSuffixColor,
+                                                )),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
 
                             ///
                             /// To Site Option
                             ///
-                            CustomizeDropdownWidget(
-                              key: _site2Key,
+                            new CustomizeTitledContainer(
                               prefixText: localeStr.transferViewTitleIn,
                               prefixTextSize: FontSize.SUBTITLE.value,
+                              prefixBgColor: themeColor.fieldPrefixBgColor,
+                              backgroundColor: themeColor.fieldPrefixBgColor,
                               horizontalInset: _fieldInset,
-                              optionValues:
-                                  _site2List.map((e) => e.site).toList(),
-                              optionStrings:
-                                  _site2List.map((e) => e.name).toList(),
-                              clearValueOnMenuChanged: true,
-                              changeNotify: (data) => _setSite2(data),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      _valueTextPadding, 4.0, 0.0, 6.0),
-                                  child: StreamBuilder<String>(
-                                    stream: widget.store.site2ValueStream,
-                                    initialData: _valueInitText,
-                                    builder: (context, snapshot) {
-                                      bool reset = snapshot.data == null ||
-                                          snapshot.data.isEmpty ||
-                                          widget.store.site1.strToInt == -1;
-                                      String text = (reset)
-                                          ? _valueInitText
-                                          : snapshot.data;
-                                      debugPrint('site2 reset: $reset');
-                                      return GestureDetector(
-                                        onTap: () {
-                                          if (_site2Selected == null) return;
-                                          widget.store.setSite2Value('');
-                                          widget.store
-                                              .getBalance(_site2Selected);
-                                        },
-                                        child: Text(text,
-                                            style: TextStyle(
-                                              color:
-                                                  themeColor.fieldSuffixColor,
-                                            )),
-                                      );
-                                    },
+                              roundCorner: false,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: CustomizeDropdownWidget(
+                                      key: _site2Key,
+                                      horizontalInset: _fieldInset,
+                                      padding: EdgeInsets.zero,
+                                      roundCorner: false,
+                                      optionValues: _site2List
+                                          .map((e) => e.site)
+                                          .toList(),
+                                      optionStrings: _site2List
+                                          .map((e) => e.name)
+                                          .toList(),
+                                      clearValueOnMenuChanged: true,
+                                      changeNotify: (data) => _setSite2(data),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Expanded(
+                                    flex: 5,
+                                    child: Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          8.0, 4.0, 0.0, 6.0),
+                                      child: StreamBuilder<String>(
+                                        stream: widget.store.site2ValueStream,
+                                        initialData: _valueInitText,
+                                        builder: (context, snapshot) {
+                                          bool reset = snapshot.data == null ||
+                                              snapshot.data.isEmpty ||
+                                              widget.store.site1.strToInt == -1;
+                                          String text = (reset)
+                                              ? _valueInitText
+                                              : snapshot.data;
+                                          debugPrint('site2 reset: $reset');
+                                          return GestureDetector(
+                                            onTap: () {
+                                              if (_site2Selected == null)
+                                                return;
+                                              widget.store.setSite2Value('');
+                                              widget.store
+                                                  .getBalance(_site2Selected);
+                                            },
+                                            child: Text(text,
+                                                style: TextStyle(
+                                                  color: themeColor
+                                                      .fieldSuffixColor,
+                                                )),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
 
                             ///
                             /// Amount Input Field
                             ///
-                            new CustomizeFieldWidget(
-                              key: _amountFieldKey,
-                              fieldType: FieldType.Numbers,
-                              persistHint: false,
-                              hint: 'VDK',
+                            new CustomizeTitledContainer(
                               prefixText: localeStr.transferViewTitleAmount,
                               prefixTextSize: FontSize.SUBTITLE.value,
-                              maxInputLength: InputLimit.AMOUNT,
+                              prefixBgColor: themeColor.fieldPrefixBgColor,
+                              backgroundColor: themeColor.fieldPrefixBgColor,
                               horizontalInset: _fieldInset,
+                              roundCorner: false,
+                              child: new CustomizeFieldWidget(
+                                key: _amountFieldKey,
+                                fieldType: FieldType.Numbers,
+                                persistHint: false,
+                                hint: 'VDK',
+                                maxInputLength: 10,
+                                horizontalInset: _fieldInset,
+                                padding: EdgeInsets.zero,
+                                roundCorner: false,
+                              ),
                             ),
 
                             ///
@@ -377,7 +420,8 @@ class _TransferDisplayState extends State<TransferDisplay> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
-                            child: RaisedButton(
+                            child: GradientButton(
+                              expand: true,
                               child: Text(localeStr.btnConfirm),
                               onPressed: () => _validateForm(),
                             ),

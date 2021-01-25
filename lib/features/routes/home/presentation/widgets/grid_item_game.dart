@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
-import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
+
+import 'corner_clipper.dart';
+
+const _gameBgColor1 = Color(0xfffeeedf);
+const _gameBgColor2 = Color(0xfffffdfa);
+
+const _gameBgSubColor1 = Color(0xff3e3a39);
+const _gameBgSubColor2 = Color(0xff595758);
 
 class GridItemGame extends StatelessWidget {
   final String imgUrl;
   final String label;
   final double itemSize;
   final double fontSize;
-  final bool twoLineText;
+  final int maxLines;
   final bool isIos;
 
   GridItemGame({
@@ -15,42 +23,63 @@ class GridItemGame extends StatelessWidget {
     @required this.label,
     @required this.itemSize,
     @required this.fontSize,
-    @required this.twoLineText,
+    @required this.maxLines,
     @required this.isIos,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      alignment: Alignment.center,
-      children: [
-        Container(
-          constraints: BoxConstraints.tight(Size(itemSize, itemSize)),
-          child: (imgUrl != null)
-              ? networkImageBuilder(imgUrl, addPendingIconOnError: true)
-              : Center(child: Icon(Icons.broken_image)),
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: (ThemeInterface.theme.isDefaultColor)
+              ? [_gameBgColor1, _gameBgColor2]
+              : [_gameBgSubColor1, _gameBgSubColor2],
         ),
-        Positioned(
-          bottom: 0,
-          child: Container(
-            color: Color(0xc01a77df),
-            alignment: Alignment.center,
-            width: itemSize,
-            height: (twoLineText) ? fontSize * 2.5 + 12 : fontSize * 1.5 + 12,
-            padding: const EdgeInsets.all(6.0),
-            child: Text(
-              label,
-              maxLines: (twoLineText) ? 2 : 1,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: fontSize,
-                color: themeColor.homeTabSelectedTextColor,
+      ),
+      child: Stack(
+        children: [
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ConstrainedBox(
+                constraints: BoxConstraints.tightFor(width: itemSize),
+                child: (imgUrl != null)
+                    ? networkImageBuilder(imgUrl, addPendingIconOnError: true)
+                    : Center(child: Icon(Icons.broken_image)),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: RichText(
+                  maxLines: maxLines,
+                  textAlign: TextAlign.start,
+                  text: TextSpan(
+                    text: label,
+                    style: TextStyle(color: themeColor.homeBoxIconTextColor),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Positioned(
+            right: 0,
+            bottom: 0,
+            child: ClipPath(
+              clipper: new CornerClipper(),
+              clipBehavior: Clip.antiAlias,
+              child: Container(
+                width: itemSize / 4,
+                height: 16.0,
+                color: cornerColor,
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

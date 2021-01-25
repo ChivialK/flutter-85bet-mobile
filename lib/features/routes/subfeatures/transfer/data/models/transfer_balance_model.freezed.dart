@@ -8,9 +8,6 @@ part of 'transfer_balance_model.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-TransferBalanceModel _$TransferBalanceModelFromJson(Map<String, dynamic> json) {
-  return _TransferBalanceModel.fromJson(json);
-}
 
 /// @nodoc
 class _$TransferBalanceModelTearOff {
@@ -22,11 +19,6 @@ class _$TransferBalanceModelTearOff {
       balance: balance,
     );
   }
-
-// ignore: unused_element
-  TransferBalanceModel fromJson(Map<String, Object> json) {
-    return TransferBalanceModel.fromJson(json);
-  }
 }
 
 /// @nodoc
@@ -37,7 +29,6 @@ const $TransferBalanceModel = _$TransferBalanceModelTearOff();
 mixin _$TransferBalanceModel {
   String get balance;
 
-  Map<String, dynamic> toJson();
   $TransferBalanceModelCopyWith<TransferBalanceModel> get copyWith;
 }
 
@@ -99,14 +90,9 @@ class __$TransferBalanceModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
 class _$_TransferBalanceModel implements _TransferBalanceModel {
   const _$_TransferBalanceModel({this.balance});
-
-  factory _$_TransferBalanceModel.fromJson(Map<String, dynamic> json) =>
-      _$_$_TransferBalanceModelFromJson(json);
 
   @override
   final String balance;
@@ -132,19 +118,11 @@ class _$_TransferBalanceModel implements _TransferBalanceModel {
   _$TransferBalanceModelCopyWith<_TransferBalanceModel> get copyWith =>
       __$TransferBalanceModelCopyWithImpl<_TransferBalanceModel>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$_$_TransferBalanceModelToJson(this);
-  }
 }
 
 abstract class _TransferBalanceModel implements TransferBalanceModel {
   const factory _TransferBalanceModel({String balance}) =
       _$_TransferBalanceModel;
-
-  factory _TransferBalanceModel.fromJson(Map<String, dynamic> json) =
-      _$_TransferBalanceModel.fromJson;
 
   @override
   String get balance;

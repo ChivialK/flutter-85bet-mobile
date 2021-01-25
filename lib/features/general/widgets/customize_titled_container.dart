@@ -49,7 +49,7 @@ class CustomizeTitledContainer extends StatefulWidget {
     this.padding,
     this.horizontalInset = ThemeInterface.horizontalInset,
     this.heightFactor = 1,
-    this.roundCorner = false,
+    this.roundCorner = true,
     this.backgroundColor,
     this.prefixText,
     this.prefixTextSize,
@@ -111,7 +111,7 @@ class _CustomizeTitledContainerState extends State<CustomizeTitledContainer> {
     // update text max lines
     _currentPrefixMaxLines = (widget.prefixTextMaxLines != null)
         ? widget.prefixTextMaxLines
-        : (Global.lang == 'zh')
+        : (Global.localeCode == 'zh')
             ? 1
             : 2;
 

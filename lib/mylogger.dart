@@ -5,6 +5,7 @@ class MyLogger {
   const MyLogger();
 
   static MyLogger _instance;
+
   static MyLogger getInstance() {
     if (_instance == null) _instance = new MyLogger();
     return _instance;

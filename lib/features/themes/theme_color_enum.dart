@@ -1,9 +1,9 @@
 import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
+import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_dark.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_light.dart';
 import 'package:vnum/vnum.dart';
 
-import 'i_theme_dark.dart';
-import 'i_theme_default.dart';
-import 'i_theme_light.dart';
 import 'theme_color_interface.dart';
 
 @VnumDefinition
@@ -32,7 +32,7 @@ class ThemeColorEnum extends Vnum<String> {
       );
 
   /// Set app theme default value
-  static ThemeColorEnum get getSelectorDefault => ThemeColorEnum.DEFAULT;
+  static ThemeColorEnum get getSelectorDefault => ThemeColorEnum.LIGHT;
 
   String get label {
     switch (value) {
@@ -41,7 +41,7 @@ class ThemeColorEnum extends Vnum<String> {
       case 'light':
         return localeStr.themeColorLight;
       default:
-        return localeStr.themeColorDefault;
+        return getSelectorDefault.label;
     }
   }
 
@@ -52,7 +52,7 @@ class ThemeColorEnum extends Vnum<String> {
       case 'light':
         return ThemeLight();
       default:
-        return ThemeDefault();
+        return getSelectorDefault.interface;
     }
   }
 }

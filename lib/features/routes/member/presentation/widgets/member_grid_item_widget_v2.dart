@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
 import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
 
 import '../data/member_grid_item_v2.dart';
 

@@ -21,12 +21,8 @@ abstract class _RollbackStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg({
-    String msg,
-    bool showOnce = false,
-    FailureType type,
-    int code,
-  }) =>
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
       errorMessage = getErrorMsg(
           from: FailureType.ROLLBACK,
           msg: msg,

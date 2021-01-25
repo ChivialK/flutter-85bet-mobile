@@ -50,7 +50,6 @@ class _PaymentContentOnlineState extends State<PaymentContentOnline>
         bankId: _bankSelectedId,
         amount: _amountFieldKey.currentState?.getInput ?? '',
         gateway: _onlineData.gateway.toString(),
-        remark: '',
         methodId: 3,
       );
       if (dataForm.amount == '') {
@@ -125,6 +124,7 @@ class _PaymentContentOnlineState extends State<PaymentContentOnline>
             ///
             CustomizeDropdownWidget(
               key: _bankOptionKey,
+              roundCorner: false,
               prefixText: localeStr.depositPaymentSpinnerTitleBank,
               prefixTextSize: FontSize.SUBTITLE.value,
               horizontalInset: _fieldInset,
@@ -156,6 +156,7 @@ class _PaymentContentOnlineState extends State<PaymentContentOnline>
               child: new CustomizeFieldWidget(
                 key: _amountFieldKey,
                 fieldType: FieldType.Numbers,
+                roundCorner: false,
                 hint: localeStr.depositPaymentEditTitleAmountHintRange(
                   _onlineData.min ?? 1,
                   _onlineData.max,

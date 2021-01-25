@@ -26,7 +26,7 @@ mixin _$ServiceStore on _ServiceStore, Store {
   }
 
   @override
-  set _dataFuture(ObservableFuture<Either<dynamic, ServiceModel>> value) {
+  set _dataFuture(ObservableFuture<Either<Failure, ServiceModel>> value) {
     _$_dataFutureAtom.reportWrite(value, super._dataFuture, () {
       super._dataFuture = value;
     });

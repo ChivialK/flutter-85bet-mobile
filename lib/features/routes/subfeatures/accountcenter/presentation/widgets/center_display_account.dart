@@ -28,7 +28,6 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
   Widget contentWidget;
 
   double maxFieldWidth;
-  TextStyle _textStyle = TextStyle(fontSize: FontSize.SUBTITLE.value);
 
   int _selectedYear;
   int _selectedMonth;
@@ -77,7 +76,7 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
           key: _streamKey,
           stream: _store.accountStream,
           builder: (context, snapshot) {
-//        print('account stream snapshot: $snapshot');
+//        debugPrint('account stream snapshot: $snapshot');
             if (_storeData != _store.accountEntity) {
               _storeData = _store.accountEntity;
               contentWidget = _buildContent();
@@ -98,7 +97,7 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
       children: [
         _buildRow(
           localeStr.centerTextTitleAccount,
-          Text('${_storeData.accountCode}', style: _textStyle),
+          Text('${_storeData.accountCode}'),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0),
             child: GestureDetector(
@@ -115,14 +114,23 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
         _buildRow(
           localeStr.centerTextTitleName,
           (_storeData.firstName.isNotEmpty)
-              ? Text('${_storeData.firstName}', style: _textStyle)
-              : Text('${_storeData.accountCode}', style: _textStyle),
+              ? Text(
+                  '${_storeData.firstName}',
+                  style: TextStyle(fontSize: FontSize.SUBTITLE.value),
+                )
+              : Text(
+                  '${_storeData.accountCode}',
+                  style: TextStyle(fontSize: FontSize.SUBTITLE.value),
+                ),
         ),
         _buildRow(
           localeStr.centerTextTitleBirth,
           (_storeData.canBindBirthDate)
               ? _buildDateSelector()
-              : Text('${_storeData.birthDate}', style: _textStyle),
+              : Text(
+                  '${_storeData.birthDate}',
+                  style: TextStyle(fontSize: FontSize.SUBTITLE.value),
+                ),
           child: (_storeData.canBindBirthDate)
               ? Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
@@ -133,18 +141,16 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
                       if (_selectedYear != null &&
                           _selectedMonth != null &&
                           _selectedDay != null) {
-//                        print('request bind birth date: $_selectedYear-$_selectedMonth-$_selectedDay');
+//                        debugPrint('request bind birth date: $_selectedYear-$_selectedMonth-$_selectedDay');
                         DateTime date = DateTime(
                             _selectedYear, _selectedMonth, _selectedDay);
                         String birth = date.toDateString;
-//                        print('birth date: $birth');
+//                        debugPrint('birth date: $birth');
                         checkAndPost(context, () {
-                          if (birth.isDate &&
-                              checkDateRange(birth, getDateString())) {
+                          if (birth.isValidDate)
                             _store.bindBirth(birth);
-                          } else {
+                          else
                             callToast(localeStr.messageInvalidFormat);
-                          }
                         });
                       }
                     },
@@ -155,7 +161,10 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
         ),
         _buildRow(
           localeStr.centerTextTitlePhone,
-          Text('${_storeData.phone}', style: _textStyle),
+          Text(
+            '${_storeData.phone}',
+            style: TextStyle(fontSize: FontSize.SUBTITLE.value),
+          ),
         ),
         _buildRow(
           localeStr.centerTextTitleMail,
@@ -167,7 +176,16 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
                   horizontalInset: Global.device.width - maxFieldWidth,
                   maxInputLength: InputLimit.ADDRESS_MAX,
                 )
-              : Text('${_storeData.email}', style: _textStyle),
+              : RichText(
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text: '${_storeData.email}',
+                    style: TextStyle(
+                        fontSize: FontSize.SUBTITLE.value,
+                        color: themeColor.defaultTextColor),
+                  ),
+                ),
           child: (_storeData.canBindMail)
               ? Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
@@ -209,7 +227,7 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
             flex: 2,
             child: Text(
               '$title:',
-              style: _textStyle,
+              style: TextStyle(fontSize: FontSize.SUBTITLE.value),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
@@ -225,7 +243,7 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
                     ],
                   )
                 : Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                    padding: const EdgeInsets.only(left: 4.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -246,22 +264,25 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
     return Container(
       constraints: BoxConstraints(
         minHeight: Global.device.comfortButtonHeight * 0.75,
-        maxHeight: Global.device.comfortButtonHeight,
+        maxHeight: (Global.localeCode == 'zh')
+            ? Global.device.comfortButtonHeight * 0.75
+            : Global.device.comfortButtonHeight,
         minWidth: Global.device.comfortButtonHeight,
-        maxWidth: maxFieldWidth * 0.4,
+        maxWidth: (Global.localeCode == 'zh')
+            ? maxFieldWidth * 0.3
+            : maxFieldWidth * 0.4,
       ),
       decoration: BoxDecoration(
-        color: Color(0xf0ffffff),
-        border: Border.all(color: Color(0xfffec017)),
+        color: themeColor.centerButtonColor,
+        border: Border.all(color: themeColor.centerButtonBorderColor),
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(8.0),
           bottomLeft: Radius.circular(8.0),
         ),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Color(0xffd08200),
-            spreadRadius: 1.15,
-            blurRadius: 3.0,
+            color: themeColor.centerButtonTextColor,
+            blurRadius: 1.0,
             offset: Offset(1, 1), // changes position of shadow
           ),
         ],
@@ -271,7 +292,7 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
           /// use stack to apply foreground color
           DecoratedBox(
             decoration: BoxDecoration(
-              color: Color.fromRGBO(243, 152, 0, 0.1),
+              color: themeColor.centerButtonStackColor,
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(8.0),
                 bottomLeft: Radius.circular(8.0),
@@ -281,7 +302,7 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
           Center(
               child: Text(
             text,
-            style: _textStyle,
+            style: TextStyle(color: themeColor.centerButtonTextColor),
             maxLines: 2,
             textAlign: TextAlign.center,
           )),

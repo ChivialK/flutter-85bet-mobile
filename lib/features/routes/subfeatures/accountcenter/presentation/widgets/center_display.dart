@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/types_grid_widget.dart';
 import 'package:flutter_85bet_mobile/features/routes/member/presentation/data/member_grid_item.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/accountcenter/data/models/center_category.dart';
 
 import 'center_display_account.dart';
 import 'center_display_vip.dart';
@@ -12,10 +14,10 @@ class CenterDisplay extends StatefulWidget {
 
 class _CenterDisplayState extends State<CenterDisplay> {
   final MemberGridItem pageItem = MemberGridItem.accountCenter;
-  final List<String> tabs = [
-    localeStr.centerViewTitleData,
-//    localeStr.centerViewTitleLotto,
-    localeStr.centerViewTitleVipRank,
+  final List<CenterCategoryEnum> tabs = [
+    CenterCategoryEnum.info,
+//    CenterCategoryEnum.lotto,
+    CenterCategoryEnum.vip,
   ];
 
   final int tabsPerRow = 3;
@@ -29,7 +31,7 @@ class _CenterDisplayState extends State<CenterDisplay> {
     double gridItemWidth =
         (Global.device.width - 6 * (tabsPerRow + 2) - 48) / tabsPerRow;
     gridRatio = gridItemWidth / expectTabHeight;
-    print('grid item width: $gridItemWidth, gridRatio: $gridRatio');
+    debugPrint('grid item width: $gridItemWidth, gridRatio: $gridRatio');
     if (gridRatio > 4.16) gridRatio = 4.16;
     super.initState();
   }
@@ -49,11 +51,7 @@ class _CenterDisplayState extends State<CenterDisplay> {
               children: [
                 Container(
                   padding: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: themeColor.memberIconColor,
-                    boxShadow: ThemeInterface.iconBottomShadow,
-                  ),
+                  decoration: ThemeInterface.pageIconContainerDecor,
                   child: Icon(
                     pageItem.value.iconData,
                     size: 32 * Global.device.widthScale,
@@ -63,7 +61,9 @@ class _CenterDisplayState extends State<CenterDisplay> {
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
                     pageItem.value.label,
-                    style: TextStyle(fontSize: FontSize.HEADER.value),
+                    style: TextStyle(
+                        fontSize: FontSize.HEADER.value,
+                        color: themeColor.defaultTitleColor),
                   ),
                 )
               ],
@@ -71,53 +71,20 @@ class _CenterDisplayState extends State<CenterDisplay> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(12.0, 16.0, 12.0, 0.0),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: tabsPerRow,
-                crossAxisSpacing: 2.0,
-                childAspectRatio: gridRatio,
-              ),
-              physics: BouncingScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: tabs.length,
-              itemBuilder: (_, index) {
-                return GestureDetector(
-                  onTap: () {
-                    if (_clicked == index) return;
-                    setState(() {
-                      _clicked = index;
-                    });
-                  },
-                  child: Material(
-                    color: Colors.transparent,
-                    elevation: 8.0,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: (_clicked == index)
-                            ? themeColor.buttonTextPrimaryColor
-                            : themeColor.walletBoxButtonColor,
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(6.0)),
-                      ),
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        child: Text(
-                          tabs[index],
-                          style: TextStyle(
-                            color: (_clicked == index)
-                                ? themeColor.walletBoxButtonColor
-                                : themeColor.buttonTextPrimaryColor,
-                            fontSize: FontSize.SUBTITLE.value,
-                          ),
-                          maxLines: 2,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
+            child: TypesGridWidget<CenterCategoryEnum>(
+              types: tabs,
+              titleKey: 'label',
+              onTypeGridTap: (_, type) {
+                int index = tabs.indexOf(type);
+                if (index != _clicked) {
+                  setState(() {
+                    _clicked = index;
+                  });
+                }
               },
+              tabsPerRow: tabsPerRow,
+              itemSpace: 0,
+              expectTabHeight: expectTabHeight,
             ),
           ),
           Padding(

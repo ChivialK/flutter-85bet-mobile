@@ -1,9 +1,7 @@
 import 'package:flutter_85bet_mobile/core/data/hive_actions.dart';
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
-import 'package:flutter_85bet_mobile/features/general/data/error/error_message_map.dart';
 import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
-import 'package:flutter_85bet_mobile/features/router/route_enum.dart';
 import 'package:hive/hive.dart';
 
 import '../../../data/entity/login_status.dart';
@@ -45,12 +43,8 @@ abstract class _LoginStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg({
-    String msg,
-    bool showOnce = false,
-    FailureType type,
-    int code,
-  }) =>
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
       errorMessage = getErrorMsg(
           from: FailureType.LOGIN,
           msg: msg,
@@ -117,10 +111,14 @@ abstract class _LoginStore with Store {
       await _loginFuture.then((value) => value.fold(
             (failure) {
               waitForLogin = false;
-              setErrorMsg(
-                msg: MessageMap.getErrorMessage(
-                    failure.message, RouteEnum.LOGIN),
-              );
+              if (failure.message == 'accountError')
+                errorMessage = localeStr.messageErrorAccount;
+              else if (failure.message == 'pwdError')
+                errorMessage = localeStr.messageErrorPassword;
+              else if (failure.message == 'pwdErrorFive')
+                errorMessage = localeStr.messageErrorPasswordHint;
+              else
+                setErrorMsg(msg: failure.message, showOnce: true);
             },
             (model) async {
               if (saveForm)

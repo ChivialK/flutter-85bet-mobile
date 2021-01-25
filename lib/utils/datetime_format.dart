@@ -1,4 +1,3 @@
-import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
 import 'package:intl/intl.dart';
 
 final DateFormat _datetimeFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
@@ -8,34 +7,6 @@ final DateFormat _dateEndFormat = DateFormat("yyyy-MM-dd 23:59:59");
 
 /// Get [DateTime.now] as String
 String getDateTime() => DateTime.now().toDatetimeString;
-String getDateString() => DateTime.now().toDateString;
-
-List<String> getDayRange({int beforeDays = 0}) {
-  DateTime dayTime = DateTime.now().subtract(Duration(days: beforeDays));
-  debugPrint('$beforeDays days before: $dayTime');
-  debugPrint('range: ${dayTime.toDateString} - ${dayTime.toDateString}');
-  return [dayTime.toDateString, dayTime.toDateString];
-}
-
-List<String> getMonthRange() {
-  DateTime now = DateTime.now();
-  int year = now.year;
-  int month = now.month;
-  DateTime thisMonthStart = DateTime.parse('$year${month}01');
-  DateTime thisMonthEnd = ((month < 12)
-      ? DateTime.parse('$year${month + 1}01')
-      : DateTime.parse('${year + 1}0101'))
-    ..subtract(Duration(days: 1));
-  debugPrint('month range: $thisMonthStart - $thisMonthEnd');
-  return [thisMonthStart.toDateString, thisMonthEnd.toDateString];
-}
-
-List<String> getWideRange() {
-  DateTime start = DateTime.parse('20000101');
-  DateTime end = DateTime.now();
-  debugPrint('wide time range: $start - $end');
-  return [start.toDateString, end.toDateString];
-}
 
 /// return true if current time is between [start] and [end] time
 bool checkDateRange(String start, String end) {
@@ -45,10 +16,9 @@ bool checkDateRange(String start, String end) {
     DateTime now = DateTime.now();
     DateTime startTime = start.toDatetime();
     DateTime endTime = end.toDatetime();
-    return (startTime == endTime) ||
-        (startTime.isBefore(now) &&
-            endTime.isBefore(now) &&
-            startTime.isBefore(endTime));
+    return startTime.isBefore(now) &&
+        endTime.isBefore(now) &&
+        startTime.isBefore(endTime);
   } on Exception {
     return false;
   }

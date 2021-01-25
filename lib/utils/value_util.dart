@@ -57,7 +57,7 @@ String doubleToStr(double value,
     formatValue(value,
         floor: floor, floorIfInt: floorIfInt, creditSign: creditSign);
 
-int stringToInt(String str, {bool printErrorStack = true}) {
+int stringToInt(String str, {bool printStack = true}) {
   try {
     if (str == null || str.isEmpty) return -1;
     if (str.contains('.'))
@@ -65,11 +65,11 @@ int stringToInt(String str, {bool printErrorStack = true}) {
     else
       return int.parse(str.replaceAll(replaceRegex, '').trim());
   } catch (e, s) {
-    MyLogger.warn(
-        msg: (printErrorStack)
-            ? 'parse value has exception, str: $str\nstack:\n$s'
-            : 'parse value has exception, str: $str',
-        tag: 'strToInt');
+    if (printStack) {
+      MyLogger.warn(
+          msg: 'parse value has exception, str: $str\nstack:\n$s',
+          tag: 'strToInt');
+    }
     return -1;
   }
 }
@@ -122,7 +122,7 @@ String formatValue(
 extension ValueUtilExtension on String {
   int get strToInt => stringToInt(this);
 
-  int get strToIntNoErrorStack => stringToInt(this, printErrorStack: false);
+  int get strToIntSilent => stringToInt(this, printStack: false);
 
   double get strToDouble => stringToDouble(this);
 

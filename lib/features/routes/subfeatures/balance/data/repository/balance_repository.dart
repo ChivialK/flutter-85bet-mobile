@@ -2,14 +2,19 @@ import 'package:flutter_85bet_mobile/core/repository_export.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/transfer/data/form/transfer_form.dart';
 
 class BalanceApi {
-  static const String GET_PROMISE = "api/allBlancePromise";
+  static const String GET_PROMISE = "api/allBalancePromise";
   static const String GET_BALANCE = "api/balance";
+  static const String GET_LIMIT = "api/get_account/creditlimit";
   static const String POST_TRANSFER = "api/transfer";
 }
 
 abstract class BalanceRepository {
   Future<Either<Failure, List<String>>> getPromise();
+
   Future<Either<Failure, String>> getBalance(String platform);
+
+  Future<Either<Failure, String>> getLimit();
+
   Future<Either<Failure, RequestStatusModel>> postTransfer(TransferForm form);
 }
 
@@ -18,22 +23,20 @@ class BalanceRepositoryImpl implements BalanceRepository {
   final JwtInterface jwtInterface;
   final tag = 'BalanceRepository';
 
-  BalanceRepositoryImpl({
-    @required this.dioApiService,
-    @required this.jwtInterface,
-  }) {
+  BalanceRepositoryImpl(
+      {@required this.dioApiService, @required this.jwtInterface}) {
     Future.sync(() => jwtInterface.checkJwt('/'));
   }
 
   @override
   Future<Either<Failure, List<String>>> getPromise() async {
     final result = await requestModel<RequestCodeModel>(
-      request: dioApiService.post(
+      request: dioApiService.get(
         BalanceApi.GET_PROMISE,
         userToken: jwtInterface.token,
       ),
       jsonToModel: RequestCodeModel.jsonToCodeModel,
-      tag: 'remote-BALANCE_PROMISE',
+      tag: 'remote-PROMISE',
     );
 //    debugPrint('test response type: ${result.runtimeType}, data: $result');
     return result.fold(
@@ -43,10 +46,26 @@ class BalanceRepositoryImpl implements BalanceRepository {
           try {
             // decode list in json format to string list
             List decoded = JsonUtil.decodeArray(model.data, trim: false);
-            MyLogger.print(msg: 'wallet decoded list: $decoded', tag: tag);
-            return Right(decoded.map((e) => e.toString()).toList());
+            MyLogger.print(
+                msg: 'balance platform decoded list: $decoded', tag: tag);
+            if (decoded.isNotEmpty) {
+              if (decoded.first is String) {
+                return Right(decoded.map((e) => e.toString()).toList());
+              } else if (decoded.first is Map) {
+                List<String> list = decoded.map((e) {
+                  Map itemMap = e as Map;
+                  return (itemMap.containsKey('name'))
+                      ? '${itemMap['name']}'
+                      : '';
+                }).toList()
+                  ..removeWhere((element) => element.isEmpty);
+                // debugPrint('balance platform list: $list');
+                return Right(list);
+              }
+            }
           } on Exception catch (e) {
-            MyLogger.error(msg: 'wallet map error!!', error: e, tag: tag);
+            MyLogger.error(
+                msg: 'balance platform map error!!', error: e, tag: tag);
           }
         }
         return Right([]);
@@ -79,6 +98,37 @@ class BalanceRepositoryImpl implements BalanceRepository {
           }
         } catch (e) {
           debugPrint('balance error: $platform');
+          return Right('');
+        }
+      },
+    );
+  }
+
+  @override
+  Future<Either<Failure, String>> getLimit() async {
+    final result = await requestDataString(
+      request: dioApiService.get(
+        BalanceApi.GET_LIMIT,
+        userToken: jwtInterface.token,
+      ),
+      allowJsonString: true,
+      tag: 'remote-LIMIT',
+    );
+//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+    return result.fold(
+      (failure) => Left(failure),
+      (data) {
+        try {
+          var map = jsonDecode(data);
+          if (map.containsKey('creditlimit')) {
+            debugPrint('decoded limit: ${map['creditlimit']}');
+            return Right(map['creditlimit']);
+          } else {
+            debugPrint('decoded: $map');
+            return Right('-1');
+          }
+        } catch (e) {
+          debugPrint('credit limit error: $e');
           return Right('');
         }
       },

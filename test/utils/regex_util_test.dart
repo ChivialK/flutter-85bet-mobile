@@ -19,7 +19,7 @@ void main() {
 
   test('test url regex', () {
     String openUrl = 'https://www.youtube.com/';
-    String openUrl2 = 'https://85bet.com/api/open/sb365/sport/0';
+    String openUrl2 = 'https://www.vn365s.com/api/open/sb365/sport/0';
     expect(openUrl.isUrl, true);
     expect(
         openUrl2.substring(

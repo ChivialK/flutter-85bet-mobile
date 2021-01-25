@@ -8,6 +8,7 @@ class UserInfoApi {
 
 abstract class UserInfoRepository {
   Future<Either<Failure, String>> updateCredit();
+
   Future<Either<Failure, bool>> checkNewMessage();
 }
 

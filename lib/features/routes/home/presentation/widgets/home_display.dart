@@ -2,12 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/event/presentation/state/event_store.dart';
 import 'package:flutter_85bet_mobile/features/event/presentation/widgets/ad_dialog.dart';
-import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
-import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
-import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
+import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
 import 'package:flutter_85bet_mobile/features/update/presentation/state/update_store.dart';
-import 'package:flutter_85bet_mobile/injection_container.dart';
-import 'package:flutter_85bet_mobile/res.dart';
 
 import '../../data/models/game_category_model.dart';
 import '../state/home_store.dart';
@@ -81,14 +78,202 @@ class _HomeDisplayState extends State<HomeDisplay> {
     }
   }
 
+  @override
+  void initState() {
+    _sizeCalc = HomeDisplaySizeCalc();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _store ??= HomeStoreInheritedWidget.of(context).store;
+    _eventStore ??= sl.get<EventStore>();
+    _shortcutWidget ??= HomeShortcutWidget(
+      key: _shortcutWidgetKey,
+      sizeCalc: _sizeCalc,
+    );
+    return Stack(
+      children: [
+        StreamBuilder<String>(
+            stream: _store.homeGameTitleStream,
+            initialData: '',
+            builder: (context, snapshot) {
+              if (snapshot != null &&
+                  snapshot.data != null &&
+                  gameTitle != snapshot.data) {
+                debugPrint('home display stream game title: $snapshot');
+                if ((snapshot.data.isEmpty && showGameTitle) ||
+                    (snapshot.data.isNotEmpty && !showGameTitle)) {
+                  if (mounted) {
+                    Future.delayed(Duration(milliseconds: 200), () {
+                      gameTitle = snapshot.data;
+                      showGameTitle = gameTitle.isNotEmpty;
+                      _sizeCalc.updatePageHeight(!showGameTitle);
+                      setState(() {});
+                    });
+                  }
+                }
+              }
+              return SizedBox.shrink();
+            }),
+        Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ConstrainedBox(
+              constraints: BoxConstraints.tight(
+                  Size(_screenWidth, _sizeCalc.bannerHeight)),
+              // constraints: (showGameTitle)
+              //     ? BoxConstraints.tight(
+              //         Size(_screenWidth, _sizeCalc.bannerHeight),
+              //       )
+              //     : BoxConstraints.tight(
+              //         Size(_screenWidth, _sizeCalc.expandedBannerHeight),
+              //       ),
+              child: IndexedStack(
+                index: (showGameTitle) ? 1 : 0,
+                children: [
+                  Stack(
+                    children: [
+                      StreamBuilder(
+                        stream: _store.bannerStream,
+                        builder: (ctx, _) {
+                          if (banners != _store.banners) {
+                            banners = _store.banners;
+                            _bannerWidget = HomeDisplayBanner(
+                              banners: banners,
+                              onBannerClicked: (url) => _widgetUrlCheck(url),
+                            );
+                          }
+                          _bannerWidget ??=
+                              HomeDisplayBanner(onBannerClicked: (_) {});
+                          return _bannerWidget;
+                        },
+                      ),
+                      Positioned(
+                        // bottom: _sizeCalc.shortcutMaxHeight + 12.0,
+                        bottom: 10.0,
+                        child: StreamBuilder(
+                          stream: _store.marqueeStream,
+                          builder: (ctx, _) {
+                            if (marquees != _store.marquees) {
+                              marquees = _store.marquees;
+                              _marqueeWidget = HomeDisplayMarquee(
+                                marquees: marquees,
+                                onMarqueeClicked: (url) => _widgetUrlCheck(url),
+                              );
+                            }
+                            _marqueeWidget ??= HomeDisplayMarquee();
+                            return _marqueeWidget;
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  if (showGameTitle)
+                    ShaderMask(
+                      shaderCallback: (rect) {
+                        return LinearGradient(
+                          begin: Alignment.center,
+                          end: Alignment.bottomCenter,
+                          stops: [0.7, 1.0],
+                          colors: [Colors.black, Colors.transparent],
+                        ).createShader(
+                            Rect.fromLTRB(0, 0, rect.width, rect.height));
+                      },
+                      blendMode: BlendMode.dstIn,
+                      child: SizedBox(
+                        height: _sizeCalc.bannerHeight,
+                        child: networkImageBuilder(gameTitle, fit: BoxFit.fill),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            if (!showGameTitle)
+              Container(
+                constraints: BoxConstraints.tight(
+                    Size(_screenWidth, _sizeCalc.shortcutMaxHeight)),
+                padding: const EdgeInsets.only(bottom: 6.0),
+                child: _shortcutWidget,
+              ),
+            Container(
+              constraints: BoxConstraints.tight(
+                Size(_screenWidth, _sizeCalc.pageMaxHeight),
+              ),
+              child: Column(
+                children: [
+                  if (!showGameTitle)
+                    StreamBuilder<bool>(
+                      stream: RouterNavigate.routerStreams.recheckUserStream,
+                      initialData: false,
+                      builder: (context, snapshot) {
+                        if (snapshot.data) {
+                          _store.checkHomeTabs();
+                          _eventStore.getUserCredit();
+                          RouterNavigate.resetCheckUser();
+                        }
+                        return SizedBox.shrink();
+                      },
+                    ),
+                  if (showGameTitle)
+                    Container(
+                      constraints: BoxConstraints(
+                        maxHeight: _sizeCalc.shortcutMaxHeight + 8.0,
+                        maxWidth: Global.device.width,
+                      ),
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: HomeSearchWidget(
+                        onSearch: (searchStr) =>
+                            _store.searchGame(searchKey: searchStr),
+                      ),
+                    ),
+                  Expanded(
+                    child: StreamBuilder(
+                      stream: _store.tabStream,
+                      initialData: (_store.hasUser)
+                          ? _store.homeUserTabs
+                          : _store.homeTabs,
+                      builder: (ctx, snapshot) {
+                        if (tabs != snapshot.data) {
+//                              debugPrint('update display tabs: ${snapshot.data}');
+                          tabs =
+                              new List<GameCategoryModel>.from(snapshot.data);
+                          // use different widget to avoid tab controller's dispose error
+                          _contentWidget = new HomeDisplayTabs(
+                            key: _tabsWidgetKey,
+                            tabs: tabs,
+                            sizeCalc: _sizeCalc,
+                          );
+                        }
+                        _contentWidget ??= HomeDisplayTabs(
+                            key: _tabsWidgetKey, sizeCalc: _sizeCalc);
+                        return _contentWidget;
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
   void _widgetUrlCheck(String url) {
     debugPrint('home widget url check: $url');
+    String fixUrl;
+    if (url.contains(Global.DOMAIN_NAME)) {
+      fixUrl = url.substring(
+          url.indexOf(Global.DOMAIN_NAME) + Global.DOMAIN_NAME.length);
+    } else if (!url.startsWith('/')) {
+      fixUrl = '/$url';
+    }
     _widgetUrlNavigate(
       url.contains('/api/open/'),
-      url
-          .substring(
-              url.indexOf(Global.DOMAIN_NAME) + Global.DOMAIN_NAME.length)
-          .replaceAll('/api/open/', ''),
+      fixUrl.replaceAll('/api/open/', ''),
     );
   }
 
@@ -104,17 +289,30 @@ class _HomeDisplayState extends State<HomeDisplay> {
 
       /// Show game category view
     } else if (url.startsWith('/gamelist/')) {
-      String className = url.replaceAll('/gamelist/', '').replaceAll('/', '-');
-      debugPrint('searching platform name: $className');
-      _tabsWidgetKey.currentState?.findPage(className.split('-')[1]);
-      _store.showSearchPlatform(className);
+      callToast(localeStr.urlActionNotSupported);
+      MyLogger.debug(msg: 'Found unsupported Game URL: $url');
+
+      /// Jump to promo page with promo id if provided
     } else if (url.startsWith('/promo/')) {
-      int promoId =
-          url.substring(url.lastIndexOf('/') + 1, url.length).strToInt;
-      debugPrint('url promo id: $promoId');
+      int itemId = url.substring(url.lastIndexOf('/') + 1, url.length).strToInt;
+      debugPrint('url promo id: $itemId');
       RouterNavigate.navigateToPage(
         RoutePage.promo,
-        arg: (promoId > 0) ? PromoRouteArguments(openPromoId: promoId) : null,
+        arg: (itemId > 0) ? PromoRouteArguments(openPromoId: itemId) : null,
+      );
+
+      /// Jump to store page with product id if provided
+    } else if (url.startsWith('/mall/')) {
+      int itemId = url.substring(url.lastIndexOf('/') + 1, url.length).strToInt;
+
+      if (!getAppGlobalStreams.hasUser) {
+        callToastInfo(localeStr.messageErrorNotLogin);
+        return;
+      }
+      debugPrint('url mall id: $itemId');
+      RouterNavigate.navigateToPage(
+        RoutePage.sideStore,
+        arg: (itemId > 0) ? StoreRouteArguments(showProductId: itemId) : null,
       );
 
       /// Jump to route page if path name exist
@@ -152,227 +350,5 @@ class _HomeDisplayState extends State<HomeDisplay> {
 
     callToast(localeStr.urlActionNotSupported);
     MyLogger.debug(msg: 'Found unsupported Game URL: $url');
-  }
-
-  @override
-  void initState() {
-    _sizeCalc = HomeDisplaySizeCalc();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    _store ??= HomeStoreInheritedWidget.of(context).store;
-    _eventStore ??= sl.get<EventStore>();
-    _updateStore ??= sl.get<UpdateStore>();
-    return Stack(
-      children: [
-        if (_eventStore != null && _updateStore != null)
-          StreamBuilder<List>(
-            stream: _eventStore.adsStream,
-            initialData: _eventStore.ads ?? [],
-            builder: (ctx, snapshot) {
-              if (snapshot.data != null &&
-                  snapshot.data.isNotEmpty &&
-                  _eventStore.autoShowAds &&
-                  _eventStore.checkSkip == false) {
-                debugPrint('stream home ads: ${snapshot.data.length}');
-                showAdsDialog(new List.from(snapshot.data));
-              }
-              return SizedBox.shrink();
-            },
-          ),
-        StreamBuilder<String>(
-            stream: _store.homeGameTitleStream,
-            initialData: '',
-            builder: (context, snapshot) {
-              if (snapshot != null &&
-                  snapshot.data != null &&
-                  gameTitle != snapshot.data) {
-                debugPrint('home display stream game title: $snapshot');
-                if ((snapshot.data.isEmpty && showGameTitle) ||
-                    (snapshot.data.isNotEmpty && !showGameTitle)) {
-                  if (mounted) {
-                    Future.delayed(Duration(milliseconds: 200), () {
-                      setState(() {
-                        gameTitle = snapshot.data;
-                        showGameTitle = gameTitle.isNotEmpty;
-                      });
-                    });
-                  }
-                }
-              }
-              return SizedBox.shrink();
-            }),
-        if (Res.wallpaper.isNotEmpty)
-          Container(
-            constraints: BoxConstraints.tight(Size(
-              Global.device.width,
-              Global.device.featureContentHeight,
-            )),
-            child:
-                FittedBox(fit: BoxFit.fill, child: Image.asset(Res.wallpaper)),
-          ),
-        Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ConstrainedBox(
-              constraints: BoxConstraints.tight(
-                Size(_screenWidth, _sizeCalc.bannerHeight),
-              ),
-              child: IndexedStack(
-                index: (showGameTitle) ? 1 : 0,
-                children: [
-                  Stack(
-                    children: [
-                      StreamBuilder(
-                        stream: _store.bannerStream,
-                        builder: (ctx, _) {
-                          if (banners != _store.banners) {
-                            banners = _store.banners;
-                            _bannerWidget = HomeDisplayBanner(
-                              banners: banners,
-                              onBannerClicked: (url) => _widgetUrlCheck(url),
-                            );
-                          }
-                          _bannerWidget ??=
-                              HomeDisplayBanner(onBannerClicked: (_) {});
-                          return _bannerWidget;
-                        },
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        child: StreamBuilder(
-                          stream: _store.marqueeStream,
-                          builder: (ctx, _) {
-                            if (marquees != _store.marquees) {
-                              marquees = _store.marquees;
-                              _marqueeWidget = HomeDisplayMarquee(
-                                marquees: marquees,
-                                onMarqueeClicked: (url) => _widgetUrlCheck(url),
-                              );
-                            }
-                            _marqueeWidget ??= HomeDisplayMarquee();
-                            return _marqueeWidget;
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  if (showGameTitle)
-                    ShaderMask(
-                      shaderCallback: (rect) {
-                        return LinearGradient(
-                          begin: Alignment.center,
-                          end: Alignment.bottomCenter,
-                          stops: [0.7, 1.0],
-                          colors: [Colors.black, Colors.transparent],
-                        ).createShader(
-                            Rect.fromLTRB(0, 0, rect.width, rect.height));
-                      },
-                      blendMode: BlendMode.dstIn,
-                      child: SizedBox(
-                          height: _sizeCalc.bannerHeight,
-                          child:
-                              networkImageBuilder(gameTitle, fit: BoxFit.fill)),
-                    ),
-                ],
-              ),
-            ),
-            Container(
-              constraints: BoxConstraints.tight(
-                Size(
-                  _screenWidth,
-                  Global.device.featureContentHeight - _sizeCalc.bannerHeight,
-                ),
-              ),
-              child: Stack(
-                children: [
-                  Column(
-                    children: [
-                      if (!showGameTitle)
-                        Container(
-                          child: StreamBuilder<bool>(
-                            stream:
-                                RouterNavigate.routerStreams.recheckUserStream,
-                            initialData: false,
-                            builder: (context, snapshot) {
-//                debugPrint('checking shortcut widget: ${getRouteUserStreams.lastUser}');
-                              if (_shortcutWidget == null) {
-                                _shortcutWidget = HomeShortcutWidget(
-                                  key: _shortcutWidgetKey,
-                                  sizeCalc: _sizeCalc,
-                                  eventStore: _eventStore,
-                                );
-                              } else if (snapshot.data) {
-                                _shortcutWidgetKey.currentState.updateUser();
-                                _store.checkHomeTabs();
-                                RouterNavigate.resetCheckUser();
-                              }
-                              return _shortcutWidget;
-                            },
-                          ),
-                        ),
-                      if (showGameTitle)
-                        ConstrainedBox(
-                          constraints: BoxConstraints(
-                            maxHeight: _sizeCalc.shortcutMaxHeight,
-                            maxWidth: Global.device.width,
-                          ),
-                          child: HomeSearchWidget(
-                            onSearch: (searchStr) =>
-                                _store.searchGame(searchKey: searchStr),
-                          ),
-                        ),
-                      Expanded(
-                        child: StreamBuilder(
-                          stream: _store.tabStream,
-                          initialData: (_store.hasUser)
-                              ? _store.homeUserTabs
-                              : _store.homeTabs,
-                          builder: (ctx, snapshot) {
-                            if (tabs != snapshot.data) {
-//                              debugPrint('update display tabs: ${snapshot.data}');
-                              tabs = new List<GameCategoryModel>.from(
-                                  snapshot.data);
-                              // use different widget to avoid tab controller's dispose error
-                              _contentWidget = new HomeDisplayTabs(
-                                key: _tabsWidgetKey,
-                                tabs: tabs,
-                                sizeCalc: _sizeCalc,
-                              );
-                            }
-                            _contentWidget ??= HomeDisplayTabs(
-                                key: _tabsWidgetKey, sizeCalc: _sizeCalc);
-                            return _contentWidget;
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        if (!showGameTitle)
-          Positioned(
-            top: _sizeCalc.bannerHeight - 6,
-            child: Row(
-              children: [
-                Transform(
-                    transform: Matrix4.diagonal3Values(Global.device.widthScale,
-                        Global.device.ratio - 0.25, 1.0),
-                    child: Image.asset(
-                      Res.shadow,
-                      color: Color(0xD0000000),
-                    )),
-              ],
-            ),
-          ),
-      ],
-    );
   }
 }

@@ -8,12 +8,12 @@ class LanguageCode extends Vnum<LanguageData> {
   /// Case Definition
   static const LanguageCode zh = const LanguageCode.define(
       const LanguageData(code: 'zh', contentKey: 'content_cn'));
-  static const LanguageCode en = const LanguageCode.define(
-      const LanguageData(code: 'en', contentKey: 'content_us'));
+  // static const LanguageCode en = const LanguageCode.define(
+  //     const LanguageData(code: 'en', contentKey: 'content_us'));
   static const LanguageCode vn = const LanguageCode.define(
       const LanguageData(code: 'vi', contentKey: 'content_vn'));
-  static const LanguageCode th = const LanguageCode.define(
-      const LanguageData(code: 'th', contentKey: 'content_th'));
+  // static const LanguageCode th = const LanguageCode.define(
+  //     const LanguageData(code: 'th', contentKey: 'content_th'));
 
   /// Used for defining cases
   const LanguageCode.define(LanguageData fromValue) : super.define(fromValue);

@@ -15,13 +15,11 @@ class _$DepositInfoTearOff {
 
 // ignore: unused_element
   _DepositInfo call(
-      {@JsonKey(name: 'accountname') String accountName,
-      @JsonKey(name: 'bankaccountid') int bankAccountId,
+      {@JsonKey(name: 'bankaccountid') int bankAccountId,
       @JsonKey(name: 'bankaccountname') String bankAccountName,
       @JsonKey(name: 'bankaccountno') String bankAccountNo,
       @JsonKey(name: 'bankcode') String bankCode}) {
     return _DepositInfo(
-      accountName: accountName,
       bankAccountId: bankAccountId,
       bankAccountName: bankAccountName,
       bankAccountNo: bankAccountNo,
@@ -36,8 +34,6 @@ const $DepositInfo = _$DepositInfoTearOff();
 
 /// @nodoc
 mixin _$DepositInfo {
-  @JsonKey(name: 'accountname')
-  String get accountName;
   @JsonKey(name: 'bankaccountid')
   int get bankAccountId;
   @JsonKey(name: 'bankaccountname')
@@ -56,8 +52,7 @@ abstract class $DepositInfoCopyWith<$Res> {
           DepositInfo value, $Res Function(DepositInfo) then) =
       _$DepositInfoCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'accountname') String accountName,
-      @JsonKey(name: 'bankaccountid') int bankAccountId,
+      {@JsonKey(name: 'bankaccountid') int bankAccountId,
       @JsonKey(name: 'bankaccountname') String bankAccountName,
       @JsonKey(name: 'bankaccountno') String bankAccountNo,
       @JsonKey(name: 'bankcode') String bankCode});
@@ -73,15 +68,12 @@ class _$DepositInfoCopyWithImpl<$Res> implements $DepositInfoCopyWith<$Res> {
 
   @override
   $Res call({
-    Object accountName = freezed,
     Object bankAccountId = freezed,
     Object bankAccountName = freezed,
     Object bankAccountNo = freezed,
     Object bankCode = freezed,
   }) {
     return _then(_value.copyWith(
-      accountName:
-          accountName == freezed ? _value.accountName : accountName as String,
       bankAccountId: bankAccountId == freezed
           ? _value.bankAccountId
           : bankAccountId as int,
@@ -104,8 +96,7 @@ abstract class _$DepositInfoCopyWith<$Res>
       __$DepositInfoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'accountname') String accountName,
-      @JsonKey(name: 'bankaccountid') int bankAccountId,
+      {@JsonKey(name: 'bankaccountid') int bankAccountId,
       @JsonKey(name: 'bankaccountname') String bankAccountName,
       @JsonKey(name: 'bankaccountno') String bankAccountNo,
       @JsonKey(name: 'bankcode') String bankCode});
@@ -123,15 +114,12 @@ class __$DepositInfoCopyWithImpl<$Res> extends _$DepositInfoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object accountName = freezed,
     Object bankAccountId = freezed,
     Object bankAccountName = freezed,
     Object bankAccountNo = freezed,
     Object bankCode = freezed,
   }) {
     return _then(_DepositInfo(
-      accountName:
-          accountName == freezed ? _value.accountName : accountName as String,
       bankAccountId: bankAccountId == freezed
           ? _value.bankAccountId
           : bankAccountId as int,
@@ -149,15 +137,11 @@ class __$DepositInfoCopyWithImpl<$Res> extends _$DepositInfoCopyWithImpl<$Res>
 /// @nodoc
 class _$_DepositInfo implements _DepositInfo {
   const _$_DepositInfo(
-      {@JsonKey(name: 'accountname') this.accountName,
-      @JsonKey(name: 'bankaccountid') this.bankAccountId,
+      {@JsonKey(name: 'bankaccountid') this.bankAccountId,
       @JsonKey(name: 'bankaccountname') this.bankAccountName,
       @JsonKey(name: 'bankaccountno') this.bankAccountNo,
       @JsonKey(name: 'bankcode') this.bankCode});
 
-  @override
-  @JsonKey(name: 'accountname')
-  final String accountName;
   @override
   @JsonKey(name: 'bankaccountid')
   final int bankAccountId;
@@ -173,16 +157,13 @@ class _$_DepositInfo implements _DepositInfo {
 
   @override
   String toString() {
-    return 'DepositInfo(accountName: $accountName, bankAccountId: $bankAccountId, bankAccountName: $bankAccountName, bankAccountNo: $bankAccountNo, bankCode: $bankCode)';
+    return 'DepositInfo(bankAccountId: $bankAccountId, bankAccountName: $bankAccountName, bankAccountNo: $bankAccountNo, bankCode: $bankCode)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _DepositInfo &&
-            (identical(other.accountName, accountName) ||
-                const DeepCollectionEquality()
-                    .equals(other.accountName, accountName)) &&
             (identical(other.bankAccountId, bankAccountId) ||
                 const DeepCollectionEquality()
                     .equals(other.bankAccountId, bankAccountId)) &&
@@ -200,7 +181,6 @@ class _$_DepositInfo implements _DepositInfo {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(accountName) ^
       const DeepCollectionEquality().hash(bankAccountId) ^
       const DeepCollectionEquality().hash(bankAccountName) ^
       const DeepCollectionEquality().hash(bankAccountNo) ^
@@ -213,15 +193,11 @@ class _$_DepositInfo implements _DepositInfo {
 
 abstract class _DepositInfo implements DepositInfo {
   const factory _DepositInfo(
-      {@JsonKey(name: 'accountname') String accountName,
-      @JsonKey(name: 'bankaccountid') int bankAccountId,
+      {@JsonKey(name: 'bankaccountid') int bankAccountId,
       @JsonKey(name: 'bankaccountname') String bankAccountName,
       @JsonKey(name: 'bankaccountno') String bankAccountNo,
       @JsonKey(name: 'bankcode') String bankCode}) = _$_DepositInfo;
 
-  @override
-  @JsonKey(name: 'accountname')
-  String get accountName;
   @override
   @JsonKey(name: 'bankaccountid')
   int get bankAccountId;

@@ -13,8 +13,11 @@ class WithdrawApi {
 
 abstract class WithdrawRepository {
   Future<Either<Failure, String>> getCgpWallet();
+
   Future<Either<Failure, String>> getCpwWallet();
+
   Future<Either<Failure, String>> getRollback();
+
   Future<Either<Failure, WithdrawModel>> postWithdraw(WithdrawForm form);
 }
 

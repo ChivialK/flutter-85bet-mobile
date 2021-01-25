@@ -38,7 +38,7 @@ class CustomizeInputChipContainer extends StatefulWidget {
     this.padding,
     this.horizontalInset = 32.0,
     this.heightFactor = 1,
-    this.roundCorner = false,
+    this.roundCorner = true,
     this.backgroundColor,
     this.prefixTitle,
     this.prefixTextSize,

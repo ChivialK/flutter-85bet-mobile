@@ -75,7 +75,9 @@ abstract class _CenterStore with Store {
   List<String> cpwUrl;
 
   Stream<CenterAccountEntity> get accountStream => _accountController.stream;
+
   Stream<List<int>> get lottoStream => _lottoController.stream;
+
   Stream<CenterVipEntity> get vipStream => _vipController.stream;
 
   CenterStoreAction currentRequest;
@@ -91,12 +93,8 @@ abstract class _CenterStore with Store {
 
   bool _errorState = false;
 
-  void setErrorMsg({
-    String msg,
-    bool showOnce = false,
-    FailureType type,
-    int code,
-  }) =>
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
       errorMessage = getErrorMsg(
           from: FailureType.CENTER,
           msg: msg,

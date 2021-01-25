@@ -8,9 +8,9 @@ abstract class BankcardForm with _$BankcardForm {
     @required @JsonKey(name: 'bankname') String owner,
     @required @JsonKey(name: 'bankindex') String bankId,
     @required @JsonKey(name: 'bankaccno') String card,
-    @required @JsonKey(name: 'bankaddress') String branch,
-    @required @JsonKey(name: 'bankprovince') String province,
-    @required @JsonKey(name: 'bankcity') String area,
+    @JsonKey(name: 'bankaddress') String branch,
+    @JsonKey(name: 'bankprovince') String province,
+    @JsonKey(name: 'bankcity') String area,
   }) = _BankcardForm;
 }
 
@@ -19,8 +19,7 @@ extension BankcardFormExtension on BankcardForm {
       owner.isNotEmpty &&
       bankId.isNotEmpty &&
       card.isNotEmpty &&
-      branch.isNotEmpty &&
-      province.isNotEmpty;
+      card.startsWith('9704');
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{

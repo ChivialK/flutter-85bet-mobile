@@ -61,6 +61,7 @@ class _$GamePlatformTearOff {
       @HiveField(4)
       @JsonKey(name: 'type', required: true)
           String category,
+      String gameCategory = '',
       String favorite = '0'}) {
     return GamePlatformEntity(
       id: id,
@@ -68,6 +69,7 @@ class _$GamePlatformTearOff {
       ch: ch,
       site: site,
       category: category,
+      gameCategory: gameCategory,
       favorite: favorite,
     );
   }
@@ -121,6 +123,7 @@ mixin _$GamePlatform {
             @HiveField(4)
             @JsonKey(name: 'type', required: true)
                 String category,
+            String gameCategory,
             String favorite),
   });
   @optionalTypeArgs
@@ -153,6 +156,7 @@ mixin _$GamePlatform {
         @HiveField(4)
         @JsonKey(name: 'type', required: true)
             String category,
+        String gameCategory,
         String favorite),
     @required TResult orElse(),
   });
@@ -405,6 +409,7 @@ class _$GamePlatformModel implements GamePlatformModel {
             @HiveField(4)
             @JsonKey(name: 'type', required: true)
                 String category,
+            String gameCategory,
             String favorite),
   }) {
     assert(model != null);
@@ -444,6 +449,7 @@ class _$GamePlatformModel implements GamePlatformModel {
         @HiveField(4)
         @JsonKey(name: 'type', required: true)
             String category,
+        String gameCategory,
         String favorite),
     @required TResult orElse(),
   }) {
@@ -543,6 +549,7 @@ abstract class $GamePlatformEntityCopyWith<$Res>
       @HiveField(4)
       @JsonKey(name: 'type', required: true)
           String category,
+      String gameCategory,
       String favorite});
 }
 
@@ -564,6 +571,7 @@ class _$GamePlatformEntityCopyWithImpl<$Res>
     Object ch = freezed,
     Object site = freezed,
     Object category = freezed,
+    Object gameCategory = freezed,
     Object favorite = freezed,
   }) {
     return _then(GamePlatformEntity(
@@ -572,6 +580,9 @@ class _$GamePlatformEntityCopyWithImpl<$Res>
       ch: ch == freezed ? _value.ch : ch as String,
       site: site == freezed ? _value.site : site as String,
       category: category == freezed ? _value.category : category as String,
+      gameCategory: gameCategory == freezed
+          ? _value.gameCategory
+          : gameCategory as String,
       favorite: favorite == freezed ? _value.favorite : favorite as String,
     ));
   }
@@ -598,9 +609,11 @@ class _$GamePlatformEntity implements GamePlatformEntity {
       @HiveField(4)
       @JsonKey(name: 'type', required: true)
           this.category,
+      this.gameCategory = '',
       this.favorite = '0'})
       : assert(id != null),
         assert(site != null),
+        assert(gameCategory != null),
         assert(favorite != null);
 
   @override
@@ -621,13 +634,16 @@ class _$GamePlatformEntity implements GamePlatformEntity {
   @HiveField(4)
   @JsonKey(name: 'type', required: true)
   final String category;
+  @JsonKey(defaultValue: '')
+  @override
+  final String gameCategory;
   @JsonKey(defaultValue: '0')
   @override
   final String favorite;
 
   @override
   String toString() {
-    return 'GamePlatform.entity(id: $id, className: $className, ch: $ch, site: $site, category: $category, favorite: $favorite)';
+    return 'GamePlatform.entity(id: $id, className: $className, ch: $ch, site: $site, category: $category, gameCategory: $gameCategory, favorite: $favorite)';
   }
 
   @override
@@ -646,6 +662,9 @@ class _$GamePlatformEntity implements GamePlatformEntity {
             (identical(other.category, category) ||
                 const DeepCollectionEquality()
                     .equals(other.category, category)) &&
+            (identical(other.gameCategory, gameCategory) ||
+                const DeepCollectionEquality()
+                    .equals(other.gameCategory, gameCategory)) &&
             (identical(other.favorite, favorite) ||
                 const DeepCollectionEquality()
                     .equals(other.favorite, favorite)));
@@ -659,6 +678,7 @@ class _$GamePlatformEntity implements GamePlatformEntity {
       const DeepCollectionEquality().hash(ch) ^
       const DeepCollectionEquality().hash(site) ^
       const DeepCollectionEquality().hash(category) ^
+      const DeepCollectionEquality().hash(gameCategory) ^
       const DeepCollectionEquality().hash(favorite);
 
   @override
@@ -698,11 +718,12 @@ class _$GamePlatformEntity implements GamePlatformEntity {
             @HiveField(4)
             @JsonKey(name: 'type', required: true)
                 String category,
+            String gameCategory,
             String favorite),
   }) {
     assert(model != null);
     assert(entity != null);
-    return entity(id, className, ch, site, category, favorite);
+    return entity(id, className, ch, site, category, gameCategory, favorite);
   }
 
   @override
@@ -736,12 +757,13 @@ class _$GamePlatformEntity implements GamePlatformEntity {
         @HiveField(4)
         @JsonKey(name: 'type', required: true)
             String category,
+        String gameCategory,
         String favorite),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (entity != null) {
-      return entity(id, className, ch, site, category, favorite);
+      return entity(id, className, ch, site, category, gameCategory, favorite);
     }
     return orElse();
   }
@@ -794,6 +816,7 @@ abstract class GamePlatformEntity implements GamePlatform, DataOperator {
       @HiveField(4)
       @JsonKey(name: 'type', required: true)
           String category,
+      String gameCategory,
       String favorite}) = _$GamePlatformEntity;
 
   @override
@@ -814,6 +837,7 @@ abstract class GamePlatformEntity implements GamePlatform, DataOperator {
   @HiveField(4)
   @JsonKey(name: 'type', required: true)
   String get category;
+  String get gameCategory;
   @override
   String get favorite;
   @override

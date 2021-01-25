@@ -127,11 +127,7 @@ class _RollbackRouteState extends State<RollbackRoute> with AfterLayoutMixin {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: themeColor.memberIconColor,
-                        boxShadow: ThemeInterface.iconBottomShadow,
-                      ),
+                      decoration: ThemeInterface.pageIconContainerDecor,
                       child: Icon(
                         pageItem.value.iconData,
                         size: 32 * Global.device.widthScale,
@@ -141,14 +137,16 @@ class _RollbackRouteState extends State<RollbackRoute> with AfterLayoutMixin {
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Text(
                         pageItem.value.label,
-                        style: TextStyle(fontSize: FontSize.HEADER.value),
+                        style: TextStyle(
+                            fontSize: FontSize.HEADER.value,
+                            color: themeColor.defaultTitleColor),
                       ),
                     )
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 0.0),
+                padding: const EdgeInsets.fromLTRB(4.0, 20.0, 8.0, 16.0),
                 child: Container(
                   decoration: ThemeInterface.layerShadowDecorRound,
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),

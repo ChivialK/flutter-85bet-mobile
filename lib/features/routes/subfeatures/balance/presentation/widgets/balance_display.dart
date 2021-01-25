@@ -17,7 +17,7 @@ class _BalanceDisplayState extends State<BalanceDisplay> {
   final MemberGridItem pageItem = MemberGridItem.balance;
 
   final GlobalKey progressTextKey = new GlobalKey();
-  final int _itemPerRow = 2;
+  final int _itemPerRow = 3;
   final double _itemSpace = 12.0;
   double _gridRatio;
 
@@ -64,7 +64,7 @@ class _BalanceDisplayState extends State<BalanceDisplay> {
     double gridItemWidth =
         ((Global.device.width - 32) - _itemSpace * (_itemPerRow + 2) - 32) /
             _itemPerRow;
-    _gridRatio = gridItemWidth / 108;
+    _gridRatio = gridItemWidth / 128;
     debugPrint('grid item width: $gridItemWidth, gridRatio: $_gridRatio');
     super.initState();
     widget.store.getCreditLimit();
@@ -113,11 +113,7 @@ class _BalanceDisplayState extends State<BalanceDisplay> {
               children: [
                 Container(
                   padding: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: themeColor.memberIconColor,
-                    boxShadow: ThemeInterface.iconBottomShadow,
-                  ),
+                  decoration: ThemeInterface.pageIconContainerDecor,
                   child: Icon(
                     pageItem.value.iconData,
                     size: 32 * Global.device.widthScale,
@@ -127,7 +123,9 @@ class _BalanceDisplayState extends State<BalanceDisplay> {
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
                     pageItem.value.label,
-                    style: TextStyle(fontSize: FontSize.HEADER.value),
+                    style: TextStyle(
+                        fontSize: FontSize.HEADER.value,
+                        color: themeColor.defaultTitleColor),
                   ),
                 )
               ],

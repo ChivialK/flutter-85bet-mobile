@@ -1,13 +1,14 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
+import 'package:flutter_85bet_mobile/features/routes/member/presentation/widgets/member_grid_item_widget_bage.dart';
 import 'package:flutter_85bet_mobile/features/screen/feature_screen_inherited_widget.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_color_enum.dart';
 
 import '../data/member_grid_item.dart';
 import '../state/member_credit_store.dart';
 import 'member_display_header.dart';
 import 'member_grid_item_widget.dart';
-import 'member_grid_item_widget_badge.dart';
 
 class MemberDisplay extends StatefulWidget {
   final MemberCreditStore store;
@@ -24,7 +25,13 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
       new GlobalKey<MemberDisplayHeaderState>(debugLabel: 'header');
   final int _itemPerRow = 3;
   final double _itemSpace = 12.0;
-  final double _iconSize = 32 * Global.device.widthScale;
+
+  ThemeColorEnum _themeEnum;
+  Gradient _itemGradient;
+  Gradient _headerGradient;
+
+  double _iconSize;
+  double _textHeight;
   double _gridRatio;
 
   static final List<MemberGridItem> _gridItems = [
@@ -53,14 +60,68 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
     }
   }
 
+  void _updateColor() {
+    _themeEnum = ThemeInterface.theme.colorEnum;
+    if (ThemeInterface.theme.isDefaultColor) {
+      _headerGradient = LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          themeColor.memberLinearColor3,
+          themeColor.memberLinearColor2,
+          themeColor.memberLinearColor1,
+        ],
+        stops: [0.1, 0.5, 1.0],
+        tileMode: TileMode.clamp,
+      );
+      _itemGradient = _headerGradient;
+    } else {
+      _headerGradient = RadialGradient(
+        colors: [
+          themeColor.memberLinearColor2,
+          themeColor.memberLinearColor3,
+        ],
+        stops: [0.1, 1.0],
+        radius: 1.3,
+        focal: Alignment.topCenter,
+        focalRadius: 0.05,
+        center: Alignment(0.0, -0.7),
+        tileMode: TileMode.clamp,
+      );
+      _itemGradient = RadialGradient(
+        colors: [
+          themeColor.memberLinearColor2,
+          themeColor.memberLinearColor3,
+        ],
+        stops: [0.3, 0.9],
+        radius: 1.5,
+        center: Alignment(0.7, -1.05),
+        tileMode: TileMode.clamp,
+      );
+    }
+  }
+
   @override
   void initState() {
     double gridItemWidth =
         ((Global.device.width - 32) - _itemSpace * (_itemPerRow + 2) - 12) /
             _itemPerRow;
-    _gridRatio = gridItemWidth / (_iconSize * 3);
+    _iconSize = 32 * Global.device.widthScale;
+    _textHeight = (Global.localeCode == 'zh')
+        ? (FontSize.SUBTITLE.value - 1) * 1.5
+        : (FontSize.SUBTITLE.value - 1) * 2.75;
+    _gridRatio = gridItemWidth / (_iconSize * 1.75 + _textHeight + 16.0);
     debugPrint('grid item width: $gridItemWidth, gridRatio: $_gridRatio');
     super.initState();
+    _updateColor();
+  }
+
+  @override
+  void didUpdateWidget(MemberDisplay oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (ThemeInterface.theme.colorEnum != _themeEnum) {
+      _updateColor();
+    }
   }
 
   @override
@@ -130,21 +191,20 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
             children: [
               Container(
                 padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: themeColor.memberIconColor,
-                  boxShadow: ThemeInterface.iconBottomShadow,
-                ),
+                decoration: ThemeInterface.pageIconContainerDecor,
                 child: Icon(
-                  const IconData(0xe962, fontFamily: 'IconMoon'),
+                  const IconData(0xe947, fontFamily: 'IconMoon'),
                   size: _iconSize,
+                  color: themeColor.iconColor,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text(
                   localeStr.pageTitleCenter,
-                  style: TextStyle(fontSize: FontSize.HEADER.value),
+                  style: TextStyle(
+                      fontSize: FontSize.HEADER.value,
+                      color: themeColor.defaultTitleColor),
                 ),
               )
             ],
@@ -157,11 +217,12 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
             userName: widget.store.user.account,
             vipLevel: widget.store.user.vip,
             onRefresh: () => widget.store.getUserCredit(),
+            headerGradient: _headerGradient,
           ),
         ),
         /* Features Grid */
         Padding(
-          padding: const EdgeInsets.only(top: 12.0, bottom: 8.0),
+          padding: const EdgeInsets.only(top: 12.0, bottom: 4.0),
           child: GridView.count(
             primary: false,
             physics: BouncingScrollPhysics(),
@@ -172,17 +233,21 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
             shrinkWrap: true,
             children: _gridItems
                 .map((item) => (item.value.id == RouteEnum.MESSAGE)
-                    ? MemberGridItemWidgetBadge(
-                        item: item,
-                        iconSize: _iconSize,
+                    ? MemberGridItemBadgeWidget(
                         store: widget.store,
                         type: MemberGridItemBadgeType.NEW_MESSAGE,
-                        onItemTap: (value) => _itemTapped(value),
+                        item: item,
+                        iconSize: _iconSize,
+                        textHeight: _textHeight,
+                        onItemTap: (gridItem) => _itemTapped(gridItem),
+                        itemGradient: _itemGradient,
                       )
                     : MemberGridItemWidget(
                         item: item,
                         iconSize: _iconSize,
+                        textHeight: _textHeight,
                         onItemTap: (gridItem) => _itemTapped(gridItem),
+                        itemGradient: _itemGradient,
                       ))
                 .toList(),
           ),

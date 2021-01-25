@@ -20,7 +20,7 @@ class _$MarqueeModelTearOff {
       @required String url,
       @JsonKey(name: 'created_at', required: true) String createdAt,
       @JsonKey(name: 'updated_at', required: true) String updatedAt,
-      @required String showDate}) {
+      String showDate}) {
     return _MarqueeModel(
       id: id,
       content: content,
@@ -147,10 +147,9 @@ class _$_MarqueeModel implements _MarqueeModel {
       @required this.url,
       @JsonKey(name: 'created_at', required: true) this.createdAt,
       @JsonKey(name: 'updated_at', required: true) this.updatedAt,
-      @required this.showDate})
+      this.showDate})
       : assert(id != null),
-        assert(url != null),
-        assert(showDate != null);
+        assert(url != null);
 
   @override
   final int id;
@@ -217,7 +216,7 @@ abstract class _MarqueeModel implements MarqueeModel {
       @required String url,
       @JsonKey(name: 'created_at', required: true) String createdAt,
       @JsonKey(name: 'updated_at', required: true) String updatedAt,
-      @required String showDate}) = _$_MarqueeModel;
+      String showDate}) = _$_MarqueeModel;
 
   @override
   int get id;

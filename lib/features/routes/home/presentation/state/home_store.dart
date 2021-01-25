@@ -1,9 +1,7 @@
 import 'dart:collection' show HashMap;
 
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
-import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
-import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
 import '../../data/entity/banner_entity.dart';
 import '../../data/entity/game_entity.dart';
@@ -91,32 +89,32 @@ abstract class _HomeStore with Store {
 
   // Key = category
   HashMap<String, List<GamePlatformEntity>> homePlatformMap;
+
   // Key = site/category
   HashMap<String, List<GameEntity>> _homeGamesMap;
 
   bool hasPlatformGames(String key) =>
       _homeGamesMap != null && _homeGamesMap.containsKey(key);
 
+  List<GameEntity> getPlatformGames(String key) =>
+      (_homeGamesMap.containsKey(key)) ? _homeGamesMap[key] : [];
+
   bool hasGameInMap(String key, int gameId) =>
       _homeGamesMap.containsKey(key) &&
       _homeGamesMap[key].any((game) => game.gameUrl.endsWith('/$gameId'));
 
-  List<GameEntity> getPlatformGames(String key) =>
-      (_homeGamesMap.containsKey(key)) ? _homeGamesMap[key] : [];
-
   /// home tab tab categories
   List<GameCategoryModel> homeTabs;
 
-  bool hasUser = false;
+  String searchPlatform = '';
 
   @computed
   List<GameCategoryModel> get homeUserTabs => homeTabs;
+
 //      new List.from(
 //        [recommendCategory, favoriteCategory] + homeTabs,
 //           + [movieEgCategory, movieNewCategory],
 //      );
-
-  String searchPlatform = '';
 
   @observable
   bool waitForGameUrl = false;
@@ -124,6 +122,10 @@ abstract class _HomeStore with Store {
   @observable
   String gameUrl;
 
+  /// Shortcut Type
+  bool hasUser = false;
+
+  /// Store Internal
   bool waitForInitializeData = false;
   bool waitForBanner = false;
   bool waitForMarquee = false;
@@ -134,12 +136,8 @@ abstract class _HomeStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg({
-    String msg,
-    bool showOnce = false,
-    FailureType type,
-    int code,
-  }) =>
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
       errorMessage = getErrorMsg(
           from: FailureType.HOME,
           msg: msg,
@@ -243,18 +241,7 @@ abstract class _HomeStore with Store {
                 // creates a new list then add to stream
                 // otherwise the data will lost after navigate
                 if (list.isNotEmpty) {
-                  int textCount = 0;
-                  list.forEach(
-                      (element) => textCount += element.content.countLength);
-                  // debugPrint('home store marquee text count: $textCount \n' +
-                  //     'home store marquee width: ${Global.device.width} \n' +
-                  //     'home store marquee text expect size: ${textCount * FontSize.NORMAL.value}');
-                  if (list.length < 2 ||
-                      textCount * FontSize.NORMAL.value < Global.device.width) {
-                    _marqueeController.sink.add(List.from(list + list));
-                  } else {
-                    _marqueeController.sink.add(List.from(list));
-                  }
+                  _marqueeController.sink.add(List.from(list));
                 } else {
                   _marqueeController.sink.add([
 //                    MarqueeEntity(
@@ -344,10 +331,9 @@ abstract class _HomeStore with Store {
 
     customizePlatformMap();
     homeTabs.add(cockfightingCategory);
-    homeTabs.add(promoCategory);
-    homeTabs.add(movieWebCategory);
-    homeTabs.add(websiteCategory);
-    homeTabs.add(aboutCategory);
+//    homeTabs.add(promoCategory);
+//    homeTabs.add(movieWebCategory);
+//    homeTabs.add(websiteCategory);
 
 //    homePlatformMap.keys.forEach((key) => MyLogger.debugPrint(
 //        msg: '$key: ${homePlatformMap[key]}\n', tag: 'HomePlatformMap'));
@@ -357,7 +343,9 @@ abstract class _HomeStore with Store {
 
   void customizePlatformMap() {
     List<String> classNames = ['s128-sport'];
+    List<String> removeClassNames = ['allbet-fish'];
     try {
+      /// add cock-fighting platform
 //      debugPrint('sport platforms: ${homePlatformMap['sport'].length}');
       var cockfightingGames = homePlatformMap['sport']
               ?.where((element) => classNames.contains(element.className))
@@ -366,8 +354,18 @@ abstract class _HomeStore with Store {
 //      debugPrint('found cockfighting games: ${cockfightingGames.length}');
       homePlatformMap['sport']
           .removeWhere((element) => classNames.contains(element.className));
+      // replace category name and add category key to map
       homePlatformMap.putIfAbsent(
-          cockfightingCategory.type, () => cockfightingGames);
+          cockfightingCategory.type,
+          () => cockfightingGames
+              .map((e) => e.copyWith(
+                  category: cockfightingCategory.type,
+                  gameCategory: e.category))
+              .toList());
+
+      /// remove platform
+      homePlatformMap['fish'].removeWhere(
+          (element) => removeClassNames.contains(element.className));
     } catch (e) {
       debugPrint(e);
     } finally {
@@ -406,7 +404,7 @@ abstract class _HomeStore with Store {
             (result) => result.fold(
               (failure) => setErrorMsg(msg: failure.message, showOnce: true),
               (list) {
-                debugPrint('home store platform games: $list');
+                debugPrint('home store platform games: ${list.length}');
                 _homeGamesMap[key] = new List.from(list);
                 _gamesRetrieveController.sink.add(key);
               },
@@ -424,7 +422,7 @@ abstract class _HomeStore with Store {
       searchGame(clear: true);
     } else if (platform != null) {
       _gameTitleController.sink.add(
-          'images/games/gameTitle/${platform.category}_game_${platform.site.toLowerCase()}.png');
+          'images/games/gameTitle/${platform.category}_game_${platform.site.toLowerCase()}_w.jpg');
     }
   }
 

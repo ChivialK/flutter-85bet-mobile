@@ -25,7 +25,7 @@ class _ScreenMenuLangWidgetState extends State<ScreenMenuLangWidget> {
 
   @override
   void initState() {
-    _currentLang = Global.lang;
+    _currentLang = Global.localeCode;
     super.initState();
   }
 
@@ -72,22 +72,23 @@ class _ScreenMenuLangWidgetState extends State<ScreenMenuLangWidget> {
       value: _currentLang,
       onChanged: (value) {
         debugPrint('selected lang: $value');
-        if (Global.lang != value) {
+        if (Global.localeCode != value) {
           String newLang = value;
           try {
             sl.get<LocalStrings>()?.setLanguage(newLang);
             Future.microtask(() async {
               Box box = await Future.value(getHiveBox(Global.CACHE_APP_DATA));
               if (box != null) {
-                await box.put('lang', newLang);
-                debugPrint('box lang: ${box.get('lang')}');
+                await box.put(Global.CACHE_APP_DATA_KEY_LANG, newLang);
+                debugPrint(
+                    'box lang: ${box.get(Global.CACHE_APP_DATA_KEY_LANG)}');
               }
             });
           } catch (e) {
             MyLogger.error(
                 msg: 'Localize File not initialized', tag: 'LocalStrings');
           } finally {
-            Global.setLanguage = newLang;
+            Global.setLocale = newLang;
             if (mounted) {
               _currentLang = newLang;
             }

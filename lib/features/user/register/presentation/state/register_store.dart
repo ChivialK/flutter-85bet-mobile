@@ -1,8 +1,10 @@
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
 import 'package:flutter_85bet_mobile/core/network/handler/request_status_model.dart';
 import 'package:flutter_85bet_mobile/features/user/data/form/login_form.dart';
+import 'package:flutter_85bet_mobile/features/user/data/form/mobile_verify_form.dart';
 import 'package:flutter_85bet_mobile/features/user/data/models/user_model.dart';
 import 'package:flutter_85bet_mobile/features/user/data/repository/user_repository.dart';
+import 'package:flutter_85bet_mobile/ga_interface.dart';
 
 import '../../../data/form/register_form.dart';
 
@@ -24,15 +26,15 @@ abstract class _RegisterStore with Store {
   @observable
   bool waitForRegister = false;
 
+  bool _lockVerify = false;
+
+  bool get lockVerify => _lockVerify;
+
   @observable
   String errorMessage;
 
-  void setErrorMsg({
-    String msg,
-    bool showOnce = false,
-    FailureType type,
-    int code,
-  }) =>
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
       errorMessage = getErrorMsg(
           from: FailureType.REGISTER,
           msg: msg,
@@ -52,11 +54,12 @@ abstract class _RegisterStore with Store {
           .postRegister(form)
           .then(
             (result) => result.fold(
-              (failure) => setErrorMsg(msg: failure.message),
+              (failure) => setErrorMsg(msg: failure.message, showOnce: true),
               (model) {
 //                debugPrint('register result: $model');
                 registerResult = model;
                 if (model.isSuccess) {
+                  GaInterface.log?.logSignUp(signUpMethod: 'App');
                   Future.delayed(Duration(milliseconds: 500), () {
                     postLogin(LoginForm(
                       account: form.username,
@@ -95,6 +98,41 @@ abstract class _RegisterStore with Store {
     } on Exception {
       //errorMessage = "Couldn't fetch description. Is the device online?";
       setErrorMsg(code: 2);
+    }
+  }
+
+  @action
+  Future<bool> sendVerify(MobileVerifyForm form) async {
+    try {
+      // Reset the possible previous error message.
+      errorMessage = null;
+      _lockVerify = true;
+      // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
+      return await _repository.getMobileVerify(form).then(
+            (result) => result.fold(
+              (failure) {
+                setErrorMsg(msg: failure.message);
+                _lockVerify = false;
+                return false;
+              },
+              (data) {
+                debugPrint('send verify success = ${data.code == 0}');
+                if (data.isSuccess) {
+                  _lockVerify = false;
+                  return true;
+                } else {
+                  setErrorMsg(msg: data.msg);
+                  _lockVerify = false;
+                  return false;
+                }
+              },
+            ),
+          );
+    } on Exception {
+      //errorMessage = "Couldn't fetch description. Is the device online?";
+      setErrorMsg(code: 3);
+      _lockVerify = false;
+      return false;
     }
   }
 

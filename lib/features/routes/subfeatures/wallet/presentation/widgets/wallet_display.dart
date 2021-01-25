@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 
 import '../enum/wallet_type.dart';
@@ -127,11 +128,7 @@ class _WalletDisplayState extends State<WalletDisplay> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: themeColor.memberIconColor,
-                      boxShadow: ThemeInterface.iconBottomShadow,
-                    ),
+                    decoration: ThemeInterface.pageIconContainerDecor,
                     child: Icon(
                       pageItem.value.iconData,
                       size: 32 * Global.device.widthScale,
@@ -141,7 +138,9 @@ class _WalletDisplayState extends State<WalletDisplay> {
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       pageItem.value.label,
-                      style: TextStyle(fontSize: FontSize.HEADER.value),
+                      style: TextStyle(
+                          fontSize: FontSize.HEADER.value,
+                          color: themeColor.defaultTitleColor),
                     ),
                   )
                 ],
@@ -162,104 +161,97 @@ class _WalletDisplayState extends State<WalletDisplay> {
                     /// Wallet Box
                     ///
                     Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 3.0,
-                          color: themeColor.walletBoxBorderColor,
-                        ),
-                      ),
                       margin: const EdgeInsets.all(30.0),
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                          color: themeColor.walletBoxBackgroundColor,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        border: Border.all(
+                          width: 1.0,
+                          color: themeColor.walletBoxBorderColor,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 12.0),
-                              child: Text(
-                                localeStr.walletViewTitleMy,
-                                style:
-                                    TextStyle(fontSize: FontSize.LARGE.value),
+                        color: themeColor.walletBoxBackgroundColor,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Text(
+                              localeStr.walletViewTitleMy,
+                              style: TextStyle(
+                                  fontSize: FontSize.LARGE.value,
+                                  color: themeColor.walletBoxTitleColor),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 2.0),
+                            child: Text(
+                              localeStr.walletViewTitleRemain,
+                              style: TextStyle(
+                                fontSize: FontSize.TITLE.value,
+                                color: themeColor.walletCreditTitleColor,
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 4.0),
-                              child: Text(
-                                localeStr.walletViewTitleRemain,
-                                style: TextStyle(
-                                  fontSize: FontSize.TITLE.value,
-                                  color: themeColor.walletCreditTitleColor,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4.0),
+                            child: Center(
+                              child: FlatButton(
+                                onPressed: () => widget.store.updateCredit(),
+                                child: Text(
+                                  _credit,
+                                  style: TextStyle(
+                                    fontSize: FontSize.LARGE.value * 1.5,
+                                    fontWeight: FontWeight.w700,
+                                    color: themeColor.walletCreditTitleColor,
+                                  ),
+                                  overflow: TextOverflow.visible,
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 8.0),
-                              child: Center(
-                                child: FlatButton(
-                                  onPressed: () => widget.store.updateCredit(),
+                          ),
+
+                          ///
+                          /// Transfer Button
+                          ///
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              GradientButton(
+                                colorType: GradientButtonColor.GOLD,
+                                child: FittedBox(
                                   child: Text(
-                                    _credit,
-                                    style: TextStyle(
-                                      fontSize: FontSize.LARGE.value * 1.5,
-                                      fontWeight: FontWeight.w700,
-                                      color: themeColor.walletCreditTitleColor,
-                                    ),
-                                    overflow: TextOverflow.visible,
+                                    localeStr.walletViewButtonOneClick,
+                                    textAlign: TextAlign.center,
                                   ),
                                 ),
+                                onPressed: () {
+                                  if (widget.store.waitForTransfer != true)
+                                    widget.store.postWalletTransfer();
+                                },
                               ),
-                            ),
+                            ],
+                          ),
 
-                            ///
-                            /// Transfer Button
-                            ///
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
+                          /// Transfer Hint
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 12.0, horizontal: 24.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                RaisedButton(
-                                  visualDensity: VisualDensity(horizontal: 2.0),
-                                  color: themeColor.walletBoxButtonColor,
-                                  child: FittedBox(
-                                    child: Text(
-                                      localeStr.walletViewButtonOneClick,
-                                      textAlign: TextAlign.center,
-                                    ),
+                                Expanded(
+                                  child: Text(
+                                    localeStr.walletViewHintOneClick,
+                                    textAlign: TextAlign.center,
                                   ),
-                                  onPressed: () {
-                                    if (widget.store.waitForTransfer != true)
-                                      widget.store.postWalletTransfer();
-                                  },
                                 ),
                               ],
                             ),
-
-                            /// Transfer Hint
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 12.0, horizontal: 24.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      localeStr.walletViewHintOneClick,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
 
@@ -282,16 +274,19 @@ class _WalletDisplayState extends State<WalletDisplay> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
-                            child: RaisedButton(
-                              visualDensity:
-                                  VisualDensity.adaptivePlatformDensity,
-                              child: Text(localeStr.btnConfirm),
+                            child: GradientButton(
+                              expand: true,
+                              child: Text(localeStr.btnConfirm,
+                                  style: TextStyle(color: Colors.black)),
+                              colorType: GradientButtonColor.LIGHT,
+                              changeByTheme: false,
                               onPressed: () {
                                 if (widget.store.waitForTypeChange) {
                                   callToast(localeStr.messageWait);
                                 } else if (_walletType != _selected) {
                                   if (_selected == WalletType.SINGLE)
-                                    widget.store.postWalletType(true);
+                                    widget.store
+                                        .postWalletTransfer(toSingle: true);
                                   else
                                     widget.store.postWalletType(false);
                                 }
@@ -332,7 +327,8 @@ class _WalletDisplayState extends State<WalletDisplay> {
                 (index == 0) ? WalletType.SINGLE : WalletType.MULTI;
             return Row(
               /// Radio Options
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Radio(
                   visualDensity: VisualDensity.compact,
@@ -345,24 +341,28 @@ class _WalletDisplayState extends State<WalletDisplay> {
                     debugPrint('selected: $_selected');
                   },
                 ),
-                Text(
-                  radioLabel,
-                  style: TextStyle(
-                    fontSize: FontSize.TITLE.value,
-                    color: (_selected == radioValue)
-                        ? themeColor.defaultAccentColor
-                        : themeColor.walletRadioColor,
+                ConstrainedBox(
+                  constraints: BoxConstraints(minWidth: 80.0),
+                  child: Text(
+                    radioLabel,
+                    style: TextStyle(
+                      fontSize: FontSize.TITLE.value,
+                      color: themeColor.walletRadioColor,
+                    ),
                   ),
                 ),
-                if (_walletType == radioValue)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 2.0, left: 2.0),
-                    child: Icon(
-                      Icons.check_circle,
-                      color: themeColor.defaultSelectableWidgetColor,
-                      size: 14,
-                    ),
-                  )
+                (_walletType == radioValue)
+                    ? Padding(
+                        padding: const EdgeInsets.only(top: 2.0, left: 2.0),
+                        child: Icon(
+                          Icons.check_circle,
+                          color: themeColor.defaultSelectableWidgetColor,
+                          size: 14,
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.only(top: 2.0, left: 2.0),
+                        child: SizedBox(width: 14.0)),
               ],
             );
             break;
@@ -371,18 +371,10 @@ class _WalletDisplayState extends State<WalletDisplay> {
             String radioHint = (index == 1)
                 ? localeStr.walletViewHintWalletSingle
                 : localeStr.walletViewHintWalletMulti;
-            return Padding(
-              /// Radio Hints
-              padding: const EdgeInsets.only(
-                bottom: 16.0,
-                left: 36.0,
-                right: 6.0,
-              ),
+            return Center(
               child: Text(
                 radioHint,
-                style: TextStyle(
-                  color: themeColor.defaultHintSubColor,
-                ),
+                style: TextStyle(color: themeColor.defaultHintSubColor),
               ),
             );
             break;

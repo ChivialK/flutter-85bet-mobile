@@ -1,14 +1,10 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/features/event/event_inject.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
-import 'package:flutter_85bet_mobile/features/general/widgets/warning_display.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/login_status.dart';
-import 'package:flutter_85bet_mobile/res.dart';
-import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
-import '../state/home_store.dart';
 import 'home_display_size_calc.dart';
-import 'home_store_inherit_widget.dart';
 
 ///
 /// Creates a widget to show member info under Marquee
@@ -17,12 +13,10 @@ import 'home_store_inherit_widget.dart';
 ///
 class HomeShortcutWidget extends StatefulWidget {
   final HomeDisplaySizeCalc sizeCalc;
-  final EventStore eventStore;
 
   HomeShortcutWidget({
     Key key,
     @required this.sizeCalc,
-    @required this.eventStore,
   }) : super(key: key);
 
   @override
@@ -30,32 +24,13 @@ class HomeShortcutWidget extends StatefulWidget {
 }
 
 class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
-  final List<MemberGridItem> shortcuts = [
-    MemberGridItem.deposit,
-    MemberGridItem.withdraw,
-    MemberGridItem.transfer,
-    MemberGridItem.vip,
-  ];
-
-  HomeStore _store;
   LoginStatus _userData;
   bool isUserContent = false;
-  String _currentCredit;
 
+  double _iconScale;
   double _areaHeight;
   BorderSide _widgetBorder;
   Widget _contentWidget;
-  Widget _userCreditWidget;
-  bool _singleLine = false;
-
-  void updateUser() {
-    debugPrint('updating member area data...');
-    setState(() {
-      _userData = getAppGlobalStreams.lastStatus;
-      debugPrint('member area user: $_userData');
-      if (_userData.loggedIn) widget.eventStore?.getUserCredit();
-    });
-  }
 
   void toastLogin() {
     callToastInfo(localeStr.messageErrorNotLogin);
@@ -63,9 +38,8 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
 
   @override
   void initState() {
-    _singleLine = (Global.lang == 'vi')
-        ? Global.device.width >= 442.0
-        : Global.device.width >= 360.0;
+    _iconScale =
+        (Global.device.widthScale > 1.0) ? Global.device.widthScale : 1.0;
     _areaHeight = widget.sizeCalc.shortcutMaxHeight;
     _userData = getAppGlobalStreams.lastStatus;
     debugPrint('updating member area height: $_areaHeight');
@@ -74,17 +48,6 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _store ??= HomeStoreInheritedWidget.of(context).store;
-    if (_store == null) {
-      return Center(
-        child: WarningDisplay(
-          message:
-              Failure.internal(FailureCode(type: FailureType.HOME, code: 11))
-                  .message,
-        ),
-      );
-    }
-
     _widgetBorder ??= BorderSide(
       color: themeColor.homeBoxDividerColor,
       style: BorderStyle.solid,
@@ -98,10 +61,23 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
 
     return Container(
       constraints: BoxConstraints(
-        maxWidth: Global.device.width,
+        maxWidth: Global.device.width - 20,
         maxHeight: _areaHeight,
       ),
-      color: themeColor.homeBoxBgColor,
+      decoration: BoxDecoration(
+        color: themeColor.homeBoxBgColor,
+        border: Border.all(color: themeColor.defaultBorderColor, width: 1.0),
+        borderRadius: BorderRadius.all(Radius.circular(2.0)),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black26,
+            spreadRadius: 2.15,
+            blurRadius: 6.0,
+            offset: Offset(1, 1), // changes position of shadow
+          ),
+        ],
+      ),
+      margin: const EdgeInsets.symmetric(horizontal: 10.0),
       child: _contentWidget,
     );
   }
@@ -110,85 +86,11 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
     return Row(
       children: <Widget>[
         _buildShortcuts(),
-        if (isUserContent)
-          Expanded(
-            flex: 1,
-            child: _buildUserArea(),
-          )
-      ],
-    );
-  }
-
-  Widget _buildUserArea() {
-    _userCreditWidget ??= _buildUserCreditWidget();
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(Res.homeBoxUserAreaBg),
-          fit: BoxFit.fill,
-        ),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Text(
-              '${_userData.currentUser.account}',
-              style: TextStyle(color: themeColor.homeBoxInfoTextColor),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 6.0),
-            child: Text(
-              '${localeStr.homeHintMemberCreditLeft}',
-              style: TextStyle(color: themeColor.homeBoxInfoTextColor),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: _userCreditWidget,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildUserCreditWidget() {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        StreamBuilder<String>(
-          stream: getAppGlobalStreams.creditStream,
-          initialData: getAppGlobalStreams.getCredit(addSymbol: false),
-          builder: (_, snapshot) {
-            if (_currentCredit != snapshot.data) {
-              _currentCredit = snapshot?.data ?? '';
-              debugPrint('home page user credit updated: $_currentCredit');
-            }
-            if (_currentCredit.contains('-')) {
-              return Text(
-                _currentCredit,
-                style: TextStyle(color: themeColor.homeBoxInfoTextColor),
-                textAlign: TextAlign.center,
-              );
-            } else {
-              return FittedBox(
-                fit:
-                    (_currentCredit.length > 12) ? BoxFit.contain : BoxFit.none,
-                child: Text(
-                  formatValue(_currentCredit,
-                      floorIfZero: false, creditSign: false),
-                  style: TextStyle(color: themeColor.homeBoxInfoTextColor),
-                  textAlign: TextAlign.center,
-                ),
-              );
-            }
-          },
-        ),
+//        if (isUserContent)
+//          Expanded(
+//            flex: 1,
+//            child: _buildUserArea(),
+//          )
       ],
     );
   }
@@ -198,63 +100,117 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
       flex: 4,
       child: Container(
         alignment: Alignment.center,
-        padding: const EdgeInsets.only(top: 6.0, bottom: 2.0),
+        padding: const EdgeInsets.symmetric(vertical: 4.0),
         child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: List<Widget>.generate(shortcuts.length, (index) {
-              return Expanded(
-                flex: 1,
-                child: _createIconButton(shortcuts[index]),
-              );
-            })),
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: _createIconButton(
+                  page: RoutePage.sideTutorial,
+                  imageUrl: themeColor.isDarkTheme
+                      ? 'images/box1.jpg'
+                      : 'images/box1_Color1.jpg'),
+            ),
+            Expanded(
+              flex: 1,
+              child: _createIconButton(
+                  replaceLabel: localeStr.homeHintFreeUsage,
+                  imageUrl: themeColor.isDarkTheme
+                      ? 'images/box2.jpg'
+                      : 'images/box2_Color1.jpg'),
+            ),
+            Expanded(
+              flex: 1,
+              child: _createIconButton(
+                  page: RoutePage.promo,
+                  imageUrl: themeColor.isDarkTheme
+                      ? 'images/box6.jpg'
+                      : 'images/box6_Color1.jpg',
+                  isLast: true),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _createIconButton(MemberGridItem item) {
-    final String label = item.value.label;
+  Widget _createIconButton({
+    RoutePage page,
+    bool isUserOnly = false,
+    String replaceLabel,
+    String imageUrl,
+    IconData iconData,
+    bool isLast = false,
+  }) {
     return Container(
-      decoration: BoxDecoration(border: Border(right: _widgetBorder)),
-      margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
+      decoration:
+          BoxDecoration(border: (isLast) ? null : Border(right: _widgetBorder)),
+      margin: const EdgeInsets.fromLTRB(8.0, 2.0, 2.0, 2.0),
       child: GestureDetector(
         onTap: () {
-          (item.value.isUserOnly == false)
-              ? RouterNavigate.navigateToPage(item.value.route)
-              : (item.value.isUserOnly && isUserContent)
-                  ? RouterNavigate.navigateToPage(item.value.route)
-                  : toastLogin();
+          if (isUserOnly && !isUserContent && page != null) {
+            toastLogin();
+          } else if (page != null) {
+            RouterNavigate.navigateToPage(page);
+          } else {
+            callToastInfo(localeStr.workInProgress);
+          }
         },
-        child: Column(
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            ConstrainedBox(
-                constraints: BoxConstraints.tightFor(
-                  height: (_areaHeight >= widget.sizeCalc.shortcutMaxHeight)
-                      ? widget.sizeCalc.shortcutMaxIconSize
-                      : widget.sizeCalc.shortcutMinIconSize,
-                ),
-                child: FittedBox(
-                    child: Icon(item.value.iconData,
-                        color: themeColor.homeBoxIconColor))),
-            Container(
-              padding: EdgeInsets.only(top: (label.hasChinese) ? 4.0 : 6.0),
-              height: (_singleLine)
-                  ? widget.sizeCalc.shortcutMinTextHeight
-                  : widget.sizeCalc.shortcutMaxTextHeight,
-//              alignment: Alignment.center,
-              child: RichText(
-                maxLines: 2,
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.visible,
-                text: TextSpan(
-                  text: label,
-                  style: TextStyle(
-                    fontSize: (label.countLength >= 8)
-                        ? FontSize.SMALLER.value
-                        : FontSize.NORMAL.value,
-                    color: themeColor.homeBoxIconTextColor,
+            (imageUrl != null)
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(36.0),
+                    child: Container(
+                        constraints: BoxConstraints.tight(Size(
+                                widget.sizeCalc.shortcutMaxIconSize,
+                                widget.sizeCalc.shortcutMaxIconSize) *
+                            _iconScale),
+                        child: networkImageBuilder(imageUrl)),
+                  )
+                : Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: themeColor.homeBoxIconBgColor,
+                    ),
+                    constraints: BoxConstraints.tight(Size(
+                            widget.sizeCalc.shortcutMinIconSize,
+                            widget.sizeCalc.shortcutMinIconSize) *
+                        _iconScale),
+                    padding: const EdgeInsets.all(6.0),
+                    child: Transform.scale(
+                      scale: 0.75,
+                      child: (iconData != null)
+                          ? Icon(
+                              iconData,
+                              color: themeColor.homeBoxIconColor,
+                            )
+                          : Icon(
+                              Icons.broken_image,
+                              color: themeColor.homeBoxIconColor,
+                            ),
+                    ),
                   ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: AutoSizeText.rich(
+                  TextSpan(
+                    text: replaceLabel ?? page.pageTitle ?? '',
+                    style: TextStyle(
+                      fontSize: FontSize.SMALLER.value,
+                      color: themeColor.homeBoxIconTextColor,
+                    ),
+                  ),
+                  minFontSize: FontSize.SMALLER.value - 4.0,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.left,
                 ),
               ),
             ),

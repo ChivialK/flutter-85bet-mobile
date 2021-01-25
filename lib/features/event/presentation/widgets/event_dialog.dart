@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/dialog_widget.dart';
-import 'package:flutter_85bet_mobile/res.dart';
 
 import '../../data/models/event_model.dart';
 
@@ -91,9 +90,7 @@ class _EventDialogState extends State<EventDialog> {
                                 child: Text(
                                   localeStr.btnSignUp,
                                   style: TextStyle(
-                                    color: themeColor.buttonTextPrimaryColor,
-                                    fontSize: FontSize.SUBTITLE.value,
-                                  ),
+                                      color: themeColor.buttonTextPrimaryColor),
                                 ),
                                 onPressed: () async {
                                   final result = await widget.onSign();
@@ -140,9 +137,7 @@ class _EventDialogState extends State<EventDialog> {
                           TextSpan(
                             text: localeStr.eventSignUpHint1,
                             style: TextStyle(
-                              color: themeColor.secondaryTextColor2,
-                              fontSize: FontSize.SUBTITLE.value,
-                            ),
+                                color: themeColor.secondaryTextColor2),
                           ),
                           TextSpan(
                             text: ' $count ',
@@ -154,9 +149,7 @@ class _EventDialogState extends State<EventDialog> {
                           TextSpan(
                             text: localeStr.eventSignUpHint2,
                             style: TextStyle(
-                              color: themeColor.secondaryTextColor2,
-                              fontSize: FontSize.SUBTITLE.value,
-                            ),
+                                color: themeColor.secondaryTextColor2),
                           ),
                         ],
                       ),
@@ -167,13 +160,13 @@ class _EventDialogState extends State<EventDialog> {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20.0, bottom: 6.0),
-          child: Image.asset(
-            Res.eventMoneyForeground,
-            fit: BoxFit.fitWidth,
-          ),
-        ),
+//        Padding(
+//          padding: const EdgeInsets.only(left: 20.0, bottom: 6.0),
+//          child: Image.asset(
+//            Res.eventMoneyForeground,
+//            fit: BoxFit.fitWidth,
+//          ),
+//        ),
         Positioned(
           bottom: 0,
           left: (dialogWidth + 60) / 2 - 25,

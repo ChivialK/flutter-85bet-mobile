@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_dropdown_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/pager_widget.dart';
@@ -78,14 +79,14 @@ class _TransactionRouteState extends State<TransactionRoute> {
         (_) => _store.waitForPageData,
         // Run some logic with the content of the observed field
         (bool wait) {
-          debugPrint('reaction on wait transaction: $wait');
+          print('reaction on wait transaction: $wait');
           if (wait) {
             toastDismiss = callToastLoading();
           } else if (toastDismiss != null) {
             toastDismiss();
             toastDismiss = null;
             if (_store.dataModel != null) {
-              debugPrint(
+              print(
                   'updating transaction record, page: ${_store.dataModel.currentPage}');
               try {
                 if (_store.dataModel.total > 0) {
@@ -135,7 +136,7 @@ class _TransactionRouteState extends State<TransactionRoute> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        debugPrint('pop transactions route');
+        print('pop transactions route');
         Future.delayed(
             Duration(milliseconds: 100), () => RouterNavigate.navigateBack());
         return Future(() => true);
@@ -171,11 +172,7 @@ class _TransactionRouteState extends State<TransactionRoute> {
                           children: [
                             Container(
                               padding: const EdgeInsets.all(10.0),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: themeColor.memberIconColor,
-                                boxShadow: ThemeInterface.iconBottomShadow,
-                              ),
+                              decoration: ThemeInterface.pageIconContainerDecor,
                               child: Icon(
                                 pageItem.value.iconData,
                                 size: 32 * Global.device.widthScale,
@@ -195,7 +192,7 @@ class _TransactionRouteState extends State<TransactionRoute> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 16.0),
+                            const EdgeInsets.fromLTRB(4.0, 20.0, 8.0, 16.0),
                         child: Container(
                           decoration: ThemeInterface.layerShadowDecorRound,
                           child: Column(
@@ -218,7 +215,7 @@ class _TransactionRouteState extends State<TransactionRoute> {
                                   optionStrings: _selectorStrings,
                                   changeNotify: (data) {
                                     _selected = data;
-                                    debugPrint('selected: $data');
+                                    print('selected: $data');
                                   },
                                 ),
                               ),
@@ -233,7 +230,8 @@ class _TransactionRouteState extends State<TransactionRoute> {
                                       child: SizedBox(
                                         height:
                                             Global.device.comfortButtonHeight,
-                                        child: RaisedButton(
+                                        child: GradientButton(
+                                          expand: true,
                                           child: Text(localeStr.btnQueryNow),
                                           onPressed: () => getPageData(1),
                                         ),
@@ -254,7 +252,7 @@ class _TransactionRouteState extends State<TransactionRoute> {
                                   children: <Widget>[
                                     PagerWidget(
                                       pagerKey,
-                                      horizontalInset: 20.0,
+                                      horizontalInset: 36.0,
                                       onAction: (page) => getPageData(page),
                                     ),
                                   ],

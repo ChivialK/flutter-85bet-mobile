@@ -2,6 +2,7 @@ import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/loading_widget.dart';
+import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
 import '../../data/entity/game_entity.dart';
 import '../../data/form/platform_game_form.dart';
@@ -40,7 +41,7 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
   final bool _isIos = Global.device.isIos;
   final int _platformsPerRow = 2;
   final int _gamesPerRow = 2;
-  final FontSize _gFontSize = FontSize.MESSAGE;
+  final FontSize _gFontSize = FontSize.NORMAL;
 
   HomeStore _store;
   List<GamePlatformEntity> _platforms;
@@ -52,14 +53,17 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
 
   double _platformGridRatio;
   double _platformItemSize;
+  double _platformItemHeight;
 
+  double _gameGridRatio;
   double _gameItemSize;
+  double _gameItemHeight;
   double _gBaseTextSize;
   int _gAvailableCharacters;
 
   GamePlatformEntity _currentPlatform;
   List<GameEntity> _games;
-  bool _twoLineText = true;
+  int _gameTextMaxLines = 2;
 
   String _searched;
   GamePlatformEntity _searchPlatform;
@@ -82,13 +86,14 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
   String _onItemTap(dynamic itemData, {bool search = false}) {
     debugPrint('onItemTap page: $itemData');
     if (itemData is GamePlatformEntity) {
-      if (search)
+      if (search) {
         _setGridContent(_buildGamesView(itemData));
-      else if (_isGameGrid) {
+      } else if (_isGameGrid) {
 //        debugPrint('clicked back');
         _setGridContent(_createPlatformGrid());
-      } else if (itemData.isGameHall == false) {
-//        debugPrint('clicked platform: ${itemData.className}, data: $itemData');
+      } else if (itemData.isGameHall == false &&
+          itemData.isCustomCategory == false) {
+        // debugPrint('clicked platform: ${itemData.className}, data: $itemData');
         _setGridContent(_buildGamesView(itemData));
       } else {
         debugPrint('clicked game platform: ${itemData.gameUrl}');
@@ -122,20 +127,25 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
   void initState() {
     _plusGrid = (Global.device.widthScale > 2.0)
         ? 2
-        : (Global.device.widthScale > 1.5) ? 1 : 0;
+        : (Global.device.widthScale > 1.5)
+            ? 1
+            : 0;
 
     _platformItemSize =
         widget.pageMaxWidth / (_platformsPerRow + _plusGrid) * 1.05;
-    _platformGridRatio = _platformItemSize / 128 / Global.device.widthScale;
+//    _platformGridRatio = _platformItemSize / 128 / Global.device.widthScale;
+    _platformItemHeight = _platformItemSize + 8.0;
+    _platformGridRatio = _platformItemSize / _platformItemHeight;
     debugPrint(
         'platform item size: $_platformItemSize, ratio: $_platformGridRatio');
-//
+
     _gameItemSize = widget.pageMaxWidth / (_gamesPerRow + _plusGrid);
 //    gameGridRatio = gameItemSize / 115 / Global.device.widthScale;
 //    debugPrint('game item size: $gameItemSize, ratio: $gameGridRatio');
 
     _gBaseTextSize = (_isIos) ? _gFontSize.value + 2 : _gFontSize.value;
-    _gAvailableCharacters = (_gameItemSize * 0.9 / _gBaseTextSize).floor();
+    _gAvailableCharacters =
+        ((_gameItemSize * 0.9 - 8.0) / _gBaseTextSize).floor();
     debugPrint('game item available characters: $_gAvailableCharacters');
     super.initState();
   }
@@ -178,7 +188,7 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
       physics: BouncingScrollPhysics(),
       padding: const EdgeInsets.only(bottom: 2.0),
       crossAxisCount: _platformsPerRow + _plusGrid,
-      childAspectRatio: _platformGridRatio + (_plusGrid * 0.075),
+      childAspectRatio: _platformGridRatio,
       mainAxisSpacing: 0.0,
       shrinkWrap: true,
       children: _platforms.map((entity) => _createGridItem(entity)).toList(),
@@ -203,7 +213,7 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
         // action button to show platform grid
         Container(
           alignment: Alignment.bottomRight,
-          padding: EdgeInsets.only(right: 8.0, bottom: 8.0),
+          padding: const EdgeInsets.only(right: 8.0, bottom: 8.0),
           child: FloatingActionButton(
             backgroundColor: Colors.black54,
             mini: true,
@@ -249,10 +259,17 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
 
   Widget _createGamesGrid(List<GameEntity> list) {
     _games = List.from(list);
-    _twoLineText =
-        _games.any((element) => element.isLongText(_gAvailableCharacters));
-    debugPrint(
-        '${_currentPlatform.className} game grid two line text: $_twoLineText');
+    _games.forEach((element) {
+      int lines = (element.cname.countLength / _gAvailableCharacters).ceil();
+      if (lines > _gameTextMaxLines) _gameTextMaxLines = lines;
+    });
+    _gameItemHeight =
+        _gameItemSize + _gBaseTextSize * _gameTextMaxLines * 1.5 + 8.0;
+    _gameGridRatio = _gameItemSize / _gameItemHeight;
+    debugPrint('${_currentPlatform.className} '
+        'game text lines: $_gameTextMaxLines, '
+        'grid ratio: $_gameGridRatio');
+
     return StreamBuilder<String>(
         stream: _store.searchGameStream,
         initialData: '',
@@ -261,8 +278,8 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
           return new GridView.count(
             physics: BouncingScrollPhysics(),
             crossAxisCount: _gamesPerRow + _plusGrid,
-            childAspectRatio: 1.0,
-            mainAxisSpacing: 0.0,
+            childAspectRatio: _gameGridRatio,
+            mainAxisSpacing: 8.0,
             shrinkWrap: true,
             children: (searchKey.isEmpty)
                 ? _games.map((entity) => _createGridItem(entity)).toList()
@@ -296,14 +313,9 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
     }
 
     return Container(
-      padding:
-          (!_isGameGrid) ? const EdgeInsets.only(top: 6.0) : EdgeInsets.zero,
       constraints: (!_isGameGrid)
-          ? BoxConstraints.tight(Size(
-              _platformItemSize,
-              _platformItemSize + textHeight,
-            ))
-          : BoxConstraints.expand(),
+          ? BoxConstraints.tight(Size(_platformItemSize, _platformItemSize))
+          : BoxConstraints.tight(Size(_gameItemSize, _gameItemHeight)),
       child: GestureDetector(
         onTap: () {
           String url = _onItemTap(entity);
@@ -314,7 +326,7 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
                 imgUrl: imgUrl,
                 label: label,
                 itemSize: _platformItemSize,
-                textHeight: textHeight,
+                textHeight: 0.0,
                 isIos: _isIos,
               )
             : GridItemGame(
@@ -322,7 +334,7 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
                 label: label,
                 itemSize: _gameItemSize,
                 fontSize: textHeight,
-                twoLineText: _twoLineText,
+                maxLines: _gameTextMaxLines,
                 isIos: _isIos,
               ),
       ),

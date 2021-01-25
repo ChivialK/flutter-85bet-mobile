@@ -22,6 +22,7 @@ class BalanceGridItem extends StatefulWidget {
 
 class BalanceGridItemState extends State<BalanceGridItem>
     with TickerProviderStateMixin {
+  Gradient _cardLinearGradient;
   bool _verticalActionLayout;
   String _btn1Text;
   String _btn2Text;
@@ -66,7 +67,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
 
   void stopAnim() {
     if (_controller.isAnimating) {
-      debugPrint('stop anim');
+      print('stop anim');
       _controller.forward(from: 0);
       _controller.stop(canceled: true);
     }
@@ -76,7 +77,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
   }
 
   void updateVariables(bool state) {
-    _verticalActionLayout = Global.lang != 'zh';
+    _verticalActionLayout = Global.localeCode != 'zh';
     _btn1Text = localeStr.balanceTransferOutText;
     _btn2Text = localeStr.balanceTransferInText;
     _maintenanceText = localeStr.balanceStatusMaintenance;
@@ -105,6 +106,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
   @override
   void didUpdateWidget(BalanceGridItem oldWidget) {
     debugPrint('update balance grid item: ${widget.platform}');
+    _cardLinearGradient = null;
     super.didUpdateWidget(oldWidget);
   }
 
@@ -116,12 +118,23 @@ class BalanceGridItemState extends State<BalanceGridItem>
 
   @override
   Widget build(BuildContext context) {
+    _cardLinearGradient ??= LinearGradient(
+      begin: Alignment.bottomLeft,
+      end: Alignment.topRight,
+      colors: [
+        themeColor.balanceCardLinear1Color,
+        themeColor.balanceCardLinear2Color,
+        themeColor.balanceCardLinear3Color,
+      ],
+      stops: [0.0, 0.48, 1.0],
+      tileMode: TileMode.clamp,
+    );
     return ClipRRect(
       borderRadius: BorderRadius.circular(6.0),
       child: Container(
         decoration: BoxDecoration(
-          color: themeColor.balanceCardBackground,
           borderRadius: BorderRadius.circular(6.0),
+          gradient: _cardLinearGradient,
           boxShadow: [
             BoxShadow(
               color: Colors.black54,
@@ -171,41 +184,41 @@ class BalanceGridItemState extends State<BalanceGridItem>
                         _transferInWidget(),
                       ],
                     ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  Expanded(
-                    child: Text(
-                      (isMaintaining) ? _maintenanceText : 'VDK $_credit',
-                      style: TextStyle(
-                        color: themeColor.balanceCardTextColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: FontSize.TITLE.value,
-                      ),
+              Padding(
+                padding: const EdgeInsets.only(top: 4.0),
+                child: RichText(
+                  maxLines: 2,
+                  textAlign: TextAlign.start,
+                  text: TextSpan(
+                    text: (isMaintaining) ? _maintenanceText : 'VDK $_credit',
+                    style: TextStyle(
+                      color: themeColor.balanceCardTextColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: FontSize.MESSAGE.value,
                     ),
                   ),
-                  GestureDetector(
-                    child: RotationTransition(
-                      turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
-                      child: Icon(
-                        Icons.refresh,
-                        color: (canRefresh)
-                            ? themeColor.defaultHintColor
-                            : themeColor.defaultHintSubColor,
-                        size: 20,
-                      ),
-                    ),
-                    onTap: () {
-                      if (widget.onTapAction != null && canRefresh) {
-                        startAnim();
-                        widget.onTapAction(
-                          BalanceGridAction.refresh,
-                          widget.platform,
-                        );
-                      }
-                    },
+                ),
+              ),
+              GestureDetector(
+                child: RotationTransition(
+                  turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
+                  child: Icon(
+                    Icons.refresh,
+                    color: (canRefresh)
+                        ? themeColor.balanceRefreshColor
+                        : themeColor.defaultHintSubColor,
+                    size: 20,
                   ),
-                ],
+                ),
+                onTap: () {
+                  if (widget.onTapAction != null && canRefresh) {
+                    startAnim();
+                    widget.onTapAction(
+                      BalanceGridAction.refresh,
+                      widget.platform,
+                    );
+                  }
+                },
               ),
             ],
           ),
@@ -223,7 +236,6 @@ class BalanceGridItemState extends State<BalanceGridItem>
               ? themeColor.balanceAction2TextColor
               : themeColor.balanceActionDisableTextColor,
           fontWeight: FontWeight.bold,
-          fontSize: FontSize.SUBTITLE.value,
         ),
       ),
       onTap: () {
@@ -255,7 +267,6 @@ class BalanceGridItemState extends State<BalanceGridItem>
               ? themeColor.balanceActionTextColor
               : themeColor.balanceActionDisableTextColor,
           fontWeight: FontWeight.bold,
-          fontSize: FontSize.SUBTITLE.value,
         ),
       ),
       onTap: () {

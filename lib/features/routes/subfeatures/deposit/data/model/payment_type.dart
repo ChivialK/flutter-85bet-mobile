@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_85bet_mobile/builders/dataclass/dataclass.dart';
 import 'package:flutter_85bet_mobile/core/base/data_operator.dart';
 import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
+import 'package:flutter_85bet_mobile/features/themes/icon_code.dart';
 import 'package:flutter_85bet_mobile/utils/json_util.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart';
 
@@ -40,25 +42,41 @@ extension PaymentTypeExtension on PaymentType {
   String get label {
     switch (key) {
       case 1:
-        return localeStr?.depositPaymentTitleBank ?? 'Bank';
+        return localeStr?.depositPaymentTitleOnline;
       case 2:
-        return localeStr?.depositPaymentTitleOnline ?? 'Online';
+        return localeStr?.depositPaymentTitleAtm;
+      case 3:
+        return localeStr?.depositPaymentTitleBank;
       case 6:
-        return localeStr?.depositPaymentTitleQr ?? 'QR';
+        return 'Zalo Pay';
+      case 7:
+        return 'MOMO';
+      case 8:
+        return 'Viettel PAY';
       default:
-//        var firstData;
-//        if (data is List && data.isNotEmpty)
-//          firstData = data.first;
-//        else if (data is Map && data.isNotEmpty) firstData = data.values.first;
-//
-//        if (firstData != null &&
-//            firstData is Map &&
-//            firstData.containsKey('type'))
-//          return firstData['type'];
         if (data != null && data.isNotEmpty)
-          return data.first.type;
+          return data.first?.type ?? 'Unknown';
         else
           return 'Unknown';
+    }
+  }
+
+  IconData get icon {
+    switch (key) {
+      case 1:
+        return IconCode.payCard;
+      case 2:
+        return IconCode.payAtm;
+      case 3:
+        return IconCode.payLocal;
+      case 6:
+        return IconCode.payZalo;
+      case 7:
+        return IconCode.payMomo;
+      case 8:
+        return IconCode.payViet;
+      default:
+        return IconCode.payOther;
     }
   }
 }

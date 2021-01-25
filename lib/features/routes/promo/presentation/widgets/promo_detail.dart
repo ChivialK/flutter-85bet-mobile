@@ -31,7 +31,18 @@ class _PromoDetailState extends State<PromoDetail> {
   final String htmlTitleColor = themeColor.dialogTitleColor.toHexNoAlpha();
   final String htmlBorderColor = themeColor.defaultDisabledColor.toHexNoAlpha();
 
+  // WebViewController _controller;
+  // double _viewHeight = 1;
+  // double _viewMinHeight = 0;
+  // bool _pageLoaded = false;
+  // int _stackIndex = 1;
+
   String html;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -138,9 +149,8 @@ class _PromoDetailState extends State<PromoDetail> {
       _htmlPromoRules(),
     ].join('<br>');
     debugPrint('promo detail:\n$detail');
-
     return '<html>'
-        '<head><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"></head>'
+        '<head><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,viewport-fit=cover"></head>'
         '<body bgcolor="$htmlBgColor" text="$htmlTextColor" style="line-height:1.2;">'
         '$detail'
         '</html>';

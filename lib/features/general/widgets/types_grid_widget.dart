@@ -7,6 +7,19 @@ import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
 typedef OnTypeGridTap = void Function(int, dynamic);
 
+//const LinearGradient _itemLinearColor = const LinearGradient(
+//  begin: Alignment.bottomLeft,
+//  end: Alignment.topRight,
+//  colors: [
+//    Color.fromRGBO(255, 255, 255, 0.56),
+//    Color.fromRGBO(255, 255, 255, 0.58),
+//    Color.fromRGBO(197, 171, 139, 0.7),
+//    Color.fromRGBO(255, 255, 255, 0.54),
+//  ],
+//  stops: [0.0, 0.14, 0.48, 0.98],
+//  tileMode: TileMode.clamp,
+//);
+
 /// Grid View for [PaymentEnum]
 ///@author H.C.CHIANG
 ///@version 2020/3/26
@@ -19,7 +32,6 @@ class TypesGridWidget<T extends DataOperator> extends StatefulWidget {
   final double itemSpaceHorFactor;
   final double expectTabHeight;
   final double horizontalInset;
-  final bool borderless;
   final bool round;
 
   TypesGridWidget({
@@ -32,8 +44,7 @@ class TypesGridWidget<T extends DataOperator> extends StatefulWidget {
     this.itemSpaceHorFactor = 2.0,
     this.expectTabHeight = 42.0,
     this.horizontalInset = 48.0,
-    this.borderless = true,
-    this.round = true,
+    this.round = false,
   }) : super(key: key);
 
   @override
@@ -46,8 +57,8 @@ class _TypesGridWidgetState extends State<TypesGridWidget>
       BorderSide(color: themeColor.defaultBorderColor);
   final BorderSide borderSideTrans = BorderSide(color: Colors.transparent);
 
-  int _clicked = 0;
   double _gridRatio;
+  int _clicked = 0;
 
   @override
   bool get wantKeepAlive => true;
@@ -76,6 +87,7 @@ class _TypesGridWidgetState extends State<TypesGridWidget>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     if (widget.types == null || widget.types.isEmpty) return SizedBox.shrink();
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -105,34 +117,27 @@ class _TypesGridWidgetState extends State<TypesGridWidget>
                 shadows: <BoxShadow>[
                   BoxShadow(
                     color: Colors.black26,
-                    spreadRadius: 1.15,
-                    blurRadius: 2.0,
+                    spreadRadius: 2.15,
+                    blurRadius: 3.0,
                     offset: Offset(2, 3), // changes position of shadow
                   ),
                 ],
-                shape: (widget.borderless)
-                    ? RoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(
-                            top: (widget.round)
-                                ? Radius.circular(6.0)
-                                : Radius.circular(0.0)),
-                      )
-                    : CustomRoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(
-                            top: (widget.round)
-                                ? Radius.circular(6.0)
-                                : Radius.circular(0.0)),
-                        leftSide: borderSide,
-                        topLeftCornerSide: borderSide,
-                        bottomLeftCornerSide: borderSide,
-                        rightSide: borderSide,
-                        topRightCornerSide: borderSide,
-                        bottomRightCornerSide: borderSide,
-                        topSide: borderSide,
-                        bottomSide: borderSideTrans,
-                      )),
+                shape: CustomRoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                      top: (widget.round)
+                          ? Radius.circular(6.0)
+                          : Radius.circular(0.0)),
+                  leftSide: borderSide,
+                  topLeftCornerSide: borderSide,
+                  bottomLeftCornerSide: borderSide,
+                  rightSide: borderSide,
+                  topRightCornerSide: borderSide,
+                  bottomRightCornerSide: borderSide,
+                  topSide: borderSide,
+                  bottomSide: borderSideTrans,
+                )),
             margin: (index > 0 && (index + 1) % widget.tabsPerRow == 0)
-                ? const EdgeInsets.only(right: 2.0)
+                ? const EdgeInsets.only(right: 5.0)
                 : EdgeInsets.zero,
             alignment: Alignment.center,
             child: Padding(
@@ -145,7 +150,7 @@ class _TypesGridWidgetState extends State<TypesGridWidget>
                       style: TextStyle(
                         color: (_clicked == index)
                             ? themeColor.defaultTabSelectedTextColor
-                            : themeColor.defaultTabSelectedColor,
+                            : themeColor.defaultTextColor,
                         fontSize: FontSize.SUBTITLE.value,
                       ),
                       maxLines: 2,

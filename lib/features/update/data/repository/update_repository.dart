@@ -19,6 +19,7 @@ class UpdateRepositoryImpl implements UpdateRepository {
   final tag = 'UpdateRepository';
 
   UpdateRepositoryImpl(this.dioApiService);
+
 //
 //  @override
 //  Future<Either<Failure, RequestCodeModel>> postVersion(

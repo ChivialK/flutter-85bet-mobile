@@ -3,7 +3,6 @@ import 'package:flutter_85bet_mobile/builders/autoroute/auto_route_annotations.d
 import '../routes/home/presentation/home_route.dart';
 import '../routes/member/presentation/member_route.dart';
 import '../routes/promo/presentation/promo_route.dart';
-import '../routes/subfeatures/about/presentation/about_route.dart';
 import '../routes/subfeatures/accountcenter/presentation/center_route.dart';
 import '../routes/subfeatures/accountcenter/presentation/widgets/center_display_account_pwd.dart';
 import '../routes/subfeatures/balance/presentation/balance_route.dart';
@@ -15,7 +14,9 @@ import '../routes/subfeatures/downloadarea/download_area_route.dart';
 import '../routes/subfeatures/rollback/presentation/rollback_route.dart';
 import '../routes/subfeatures/message/presentation/message_route.dart';
 import '../routes/subfeatures/notice/presentation/notice_route.dart';
+import '../routes/subfeatures/roller/presentation/roller_route.dart';
 import '../routes/subfeatures/service/presentation/service_route.dart';
+import '../routes/subfeatures/store/presentation/store_route.dart';
 import '../routes/subfeatures/transactions/presentation/transaction_route.dart';
 import '../routes/subfeatures/transfer/presentation/transfer_route.dart';
 import '../routes/subfeatures/viplevel/presentation/vip_level_route.dart';
@@ -59,11 +60,13 @@ class $FeatureRouter {
   // AgentRegisterRoute agentRegisterRoute;
   // AgentRoute agentRoute;
   WebRoute moreWebPage;
-  AboutRoute aboutRoute;
+  // AboutRoute aboutRoute;
 
   /// side menu route
   DownloadAreaRoute downloadAreaRoute;
   NoticeRoute noticeRoute;
+  StoreRoute storeRoute;
+  RollerRoute rollerRoute;
   VipLevelRoute levelRoute;
 
   /// test route

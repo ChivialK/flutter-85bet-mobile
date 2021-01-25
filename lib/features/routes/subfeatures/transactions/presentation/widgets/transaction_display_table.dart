@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/global.dart';
-import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/table_cell_text_widget.dart';
 
@@ -104,9 +102,9 @@ class TransactionDisplayTableState extends State<TransactionDisplayTable> {
                     (index) {
                       TransactionData data = _dataList[index];
                       String explanation =
-                          (data.type == localeStr.transferViewTitleIn)
-                              ? '${data.type} ${data.to}'
-                              : '${data.from} ${data.type}';
+                          (data.type == localeStr.transferViewTitleOut)
+                              ? '${data.from} ${data.type}'
+                              : '${data.type} ${data.to}';
                       List<dynamic> dataTexts = [
                         data.key,
                         data.date,

@@ -19,15 +19,24 @@ class CenterApi {
 
 abstract class CenterRepository {
   Future<Either<Failure, CenterModel>> getAccount();
+
   Future<Either<Failure, List<String>>> getCgpBindUrl();
+
   Future<Either<Failure, List<String>>> getCpwBindUrl();
+
   Future<Either<Failure, RequestStatusModel>> postPassword(
       CenterPasswordForm form);
+
   Future<Either<Failure, RequestStatusModel>> postBirth(String dateOfBirth);
+
   Future<Either<Failure, RequestStatusModel>> postEmail(String email);
+
   Future<Either<Failure, RequestStatusModel>> postWechat(String wechatId);
+
   Future<Either<Failure, RequestStatusModel>> postLucky(List<int> numbers);
+
   Future<Either<Failure, RequestCodeModel>> postVerifyRequest(String mobile);
+
   Future<Either<Failure, RequestCodeModel>> postVerify(
       String mobile, String code);
 }
@@ -41,6 +50,7 @@ class CenterRepositoryImpl implements CenterRepository {
       {@required this.dioApiService, @required this.jwtInterface}) {
     Future.sync(() => jwtInterface.checkJwt('/'));
   }
+
   @override
   Future<Either<Failure, CenterModel>> getAccount() async {
     final result = await requestModel<CenterModel>(

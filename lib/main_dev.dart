@@ -8,5 +8,6 @@ import 'main_dev.reflectable.dart';
 Future<void> main() async {
   // setup reflectable support (build target defined in build.yaml)
   initializeReflectable();
+  // Global.addAnalytics = false;
   await mainCommon(Environment.DEV);
 }

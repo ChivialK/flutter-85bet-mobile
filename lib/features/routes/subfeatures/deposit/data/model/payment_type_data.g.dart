@@ -14,7 +14,7 @@ _$PaymentTypeOnlineData _$_$PaymentTypeOnlineDataFromJson(
         (json['amountoption'] as List)?.map((e) => e as String)?.toList(),
     amountType: json['amounttype'] as int,
     bankAccountId: json['bankaccountid'] as int,
-    gateway: json['gateway'] as int,
+    gateway: json['gateway'].toString(),
     max: json['max'] as int,
     min: json['min'] as int,
     payment: json['payment'] as int,
@@ -47,10 +47,11 @@ _$PaymentTypeLocalData _$_$PaymentTypeLocalDataFromJson(
   return _$PaymentTypeLocalData(
     bankAccountId: json['bankaccountid'] as int,
     bankAccountNo: json['bankaccountno'] as String,
+    bankCode: json['bankcode'] as String,
     bankIndex: json['bankindex'] as int,
     max: JsonUtil.getRawJson(json['max']),
     min: JsonUtil.getRawJson(json['min']),
-    payment: json['payment'] as String,
+    payment: (json.containsKey('payment')) ? '${json['payment']}' : null,
     type: json['type'] as String,
     key: json['key'],
   );
@@ -61,6 +62,7 @@ Map<String, dynamic> _$_$PaymentTypeLocalDataToJson(
     <String, dynamic>{
       'bankaccountid': instance.bankAccountId,
       'bankaccountno': instance.bankAccountNo,
+      'bankcode': instance.bankCode,
       'bankindex': instance.bankIndex,
       'max': instance.max,
       'min': instance.min,

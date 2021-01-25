@@ -126,7 +126,7 @@ class CheckboxWidgetState extends State<CheckboxWidget> {
                         children: [
                           if (widget.mustCheck)
                             TextSpan(
-                              text: '* ',
+                              text: ' *',
                               style: TextStyle(
                                 fontSize:
                                     widget.textSize ?? FontSize.NORMAL.value,

@@ -18,12 +18,15 @@ class HomeDisplayBanner extends StatelessWidget {
   final List<BannerEntity> banners;
   final OnBannerClicked onBannerClicked;
 
-  HomeDisplayBanner({this.banners, this.onBannerClicked});
+  HomeDisplayBanner({this.banners, @required this.onBannerClicked});
 
   @override
   Widget build(BuildContext context) {
     if (banners != null && banners.isNotEmpty) {
-      return _buildCarousel();
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 6.0),
+        child: _buildCarousel(),
+      );
     } else {
       return Container(
         color: themeColor.defaultBackgroundColor,
@@ -59,7 +62,7 @@ class HomeDisplayBanner extends StatelessWidget {
       onImageTap: (index) {
         String url = bannerUrls[index];
         debugPrint('clicked image $index, url: $url');
-        if (url.contains(Global.DOMAIN_NAME)) {
+        if (url.contains(Global.DOMAIN_NAME) || !url.isUrl) {
           if (onBannerClicked != null) {
             onBannerClicked(url);
           }

@@ -1,4 +1,5 @@
 import 'package:flutter_85bet_mobile/core/repository_export.dart';
+import 'package:flutter_85bet_mobile/features/user/data/form/mobile_verify_form.dart';
 
 import '../form/login_form.dart';
 import '../form/register_form.dart';
@@ -7,6 +8,7 @@ import '../models/user_model.dart';
 class UserApi {
   static const String LOGIN = "api/login";
   static const String GET_ACCOUNT = "api/get_account";
+  static const String GET_MOBILE_VERIFY = "api/sendMobile";
   static const String POST_REGISTER = "api/reg";
   static const String JWT_CHECK_HREF = "/myaccount";
   static const String LOGOUT = "api/logout";
@@ -18,6 +20,9 @@ abstract class UserRepository {
 
   /// Register new user
   Future<Either<Failure, RequestStatusModel>> postRegister(RegisterForm form);
+
+  Future<Either<Failure, RequestCodeModel>> getMobileVerify(
+      MobileVerifyForm form);
 }
 
 class UserRepositoryImpl implements UserRepository {
@@ -47,7 +52,7 @@ class UserRepositoryImpl implements UserRepository {
       (data) async {
         debugPrint('data response type: ${data.runtimeType}');
         try {
-          if (data.toString().contains('token_mobile')) {
+          if (data.toString().contains('vn_token')) {
             // extract token from response data
             final token =
                 data.substring(data.indexOf('=') + 1, data.indexOf(';'));
@@ -126,7 +131,25 @@ class UserRepositoryImpl implements UserRepository {
       jsonToModel: RequestStatusModel.jsonToStatusModel,
       tag: 'remote-REGISTER',
     );
-//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+//    print('test response type: ${result.runtimeType}, data: $result');
+    return result.fold(
+      (failure) => Left(failure),
+      (data) => Right(data),
+    );
+  }
+
+  @override
+  Future<Either<Failure, RequestCodeModel>> getMobileVerify(
+      MobileVerifyForm form) async {
+    final result = await requestModel<RequestCodeModel>(
+      request: dioApiService.post(
+        UserApi.GET_MOBILE_VERIFY,
+        data: form.toJson(),
+      ),
+      jsonToModel: RequestCodeModel.jsonToCodeModel,
+      tag: 'remote-REGISTER',
+    );
+//    print('test response type: ${result.runtimeType}, data: $result');
     return result.fold(
       (failure) => Left(failure),
       (data) => Right(data),

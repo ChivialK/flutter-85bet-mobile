@@ -18,26 +18,22 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
     ScreenNavigationBarItem.member,
     ScreenNavigationBarItem.service,
   ];
+  final Size _iconSize = (Global.device.widthScale > 1)
+      ? Size(30.0, 30.0) * Global.device.widthScaleHalf
+      : Size(34.0, 34.0);
 
   FeatureScreenStore _store;
-  String _locale;
-
   EventStore _eventStore;
-  bool _showingEventDialog = false;
-
   Widget _barWidget;
+  String _locale;
   int _navIndex = 0;
+
+  Map<RouteEnum, Widget> _navImage;
 
   void _itemTapped(int index, bool hasUser) {
     var item = _tabs[index];
     debugPrint('tapped item: ${item.value}');
-    if (item.value.id == RouteEnum.MORE) {
-      showDialog(
-        context: context,
-        barrierDismissible: true,
-        builder: (context) => new MoreDialog(_store),
-      );
-    } else if (item.value.route == null) {
+    if (item.value.route == null) {
       callToastInfo(localeStr.workInProgress);
     } else {
       var value = item.value;
@@ -49,63 +45,9 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
     }
   }
 
-  void _checkShowEvent() {
-    _eventStore.debugEvent();
-    if (_eventStore.forceShowEvent && _eventStore.hasEvent == false) {
-      Future.delayed(Duration(milliseconds: 200), () {
-        callToastInfo(localeStr.messageNoEvent);
-      });
-      // set to false so it will not pop on other pages
-      _eventStore.setForceShowEvent = false;
-      return;
-    }
-    if (_eventStore.showEventOnHome && !_showingEventDialog) {
-      _showingEventDialog = true;
-      Future.delayed(Duration(milliseconds: 1200), () {
-        // will not show
-        if (_store.hasUser == false ||
-            (_store.navIndex != 0 && _eventStore.forceShowEvent == false)) {
-          _stopEventAutoShow();
-          return;
-        } else {
-          // set to false so it will not pop on other pages
-          _eventStore.setForceShowEvent = false;
-        }
-        _showEventDialog();
-      });
-    }
-  }
-
-  void _showEventDialog() {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (_) => (_eventStore.hasSignedEvent == false)
-          ? new EventDialog(
-              event: _eventStore.event.eventData,
-              signCount: _eventStore.event.signData.times,
-              onSign: () => _eventStore.signEvent(),
-              onSignError: () => _eventStore.getEventError(),
-              onDialogClose: () => _stopEventAutoShow(),
-            )
-          : new EventDialogSigned(
-              event: _eventStore.event.eventData,
-              signCount: _eventStore.event.signData.times,
-              onDialogClose: () => _stopEventAutoShow(),
-            ),
-    );
-  }
-
-  void _stopEventAutoShow() {
-    if (_store == null) return;
-    _showingEventDialog = false;
-    // set to false so it will not pop again when return to home page
-    _eventStore.setShowEvent = false;
-  }
-
   @override
   void initState() {
-    _locale = Global.lang;
+    _locale = Global.localeCode;
     super.initState();
   }
 
@@ -113,6 +55,7 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
   void didUpdateWidget(ScreenNavigationBar oldWidget) {
     _store = null;
     _eventStore = null;
+    _navImage = null;
     _barWidget = null;
     super.didUpdateWidget(oldWidget);
   }
@@ -135,9 +78,9 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
           stream: _store.loginStateStream,
           initialData: false,
           builder: (context, snapshot) {
-            if (_barWidget != null && _locale != Global.lang) {
+            if (_barWidget != null && _locale != Global.localeCode) {
               _barWidget = _buildWidget(snapshot.data);
-              _locale = Global.lang;
+              _locale = Global.localeCode;
             }
             _barWidget ??= _buildWidget(snapshot.data);
             return _barWidget;
@@ -152,24 +95,22 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
       final index = _store.navIndex;
       if (index >= 0) _navIndex = index;
       // monitor observable value to show event dialog
-      if (_eventStore.showEventOnHome) _checkShowEvent();
-      return BottomNavigationBar(
+      return GradientBottomNavigationBar(
+        gradient: ThemeInterface.navBarGradient,
         onTap: (index) {
           debugPrint('navigate bar has user: ${_store.hasUser}');
           _itemTapped(index, _store.hasUser);
         },
         currentIndex: _navIndex,
         type: BottomNavigationBarType.fixed,
-        selectedFontSize: FontSize.NORMAL.value,
-        unselectedFontSize: FontSize.NORMAL.value,
-        unselectedItemColor: themeColor.navigationColor,
-        fixedColor: themeColor.navigationColorFocus,
-        backgroundColor: themeColor.defaultAppbarColor,
+        unselectedFontSize: FontSize.SMALL.value,
+        selectedFontSize: FontSize.SMALLER.value,
         items: List.generate(_tabs.length, (index) {
           var itemValue = _tabs[index].value;
           return _createBarItem(
             itemValue: itemValue,
             title: labels[index],
+            store: _store,
             addBadge: itemValue.id == RouteEnum.MEMBER &&
                 getAppGlobalStreams.hasNewMessage,
           );
@@ -181,8 +122,25 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
   BottomNavigationBarItem _createBarItem({
     @required RouteListItem itemValue,
     @required String title,
+    @required FeatureScreenStore store,
     @required bool addBadge,
   }) {
+    _navImage ??= new Map();
+    if (_navImage.containsKey(itemValue.id) == false) {
+      Widget icon = (itemValue.imageName != null)
+          ? FittedBox(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(36.0),
+                child: Container(
+                  constraints: BoxConstraints.tight(_iconSize),
+                  child: networkImageBuilder(itemValue.imageName),
+                ),
+              ),
+            )
+          : Icon(itemValue.iconData, size: _iconSize.width);
+      _navImage[itemValue.id] = icon;
+    }
+
     return BottomNavigationBarItem(
       icon: (addBadge)
           ? Badge(
@@ -197,27 +155,22 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
                 ),
               ),
               padding: EdgeInsets.zero,
-              position: BadgePosition.topEnd(top: -5, end: -6),
-              child: Icon(itemValue.iconData, size: 30),
+              position: BadgePosition.topEnd(top: -1, end: -1),
+              child: _navImage[itemValue.id],
             )
-          : Icon(itemValue.iconData, size: 30),
-      title: Row(
-        children: [
-          Expanded(
-            child: AutoSizeText.rich(
-              TextSpan(
-                  text: title ??
-                      itemValue.title ??
-                      itemValue.route?.pageTitle ??
-                      '?'),
-              style: TextStyle(fontWeight: FontWeight.w500),
-              textAlign: TextAlign.center,
-              maxLines: 1,
-              minFontSize: FontSize.SMALL.value - 4.0,
-              maxFontSize: FontSize.NORMAL.value,
-            ),
-          ),
-        ],
+          : _navImage[itemValue.id],
+      title: AutoSizeText.rich(
+        TextSpan(
+          text: title ?? itemValue.title ?? itemValue.route?.pageTitle ?? '?',
+        ),
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          color: themeColor.navigationColorFocus,
+        ),
+        textAlign: TextAlign.center,
+        maxLines: 1,
+        minFontSize: FontSize.SMALL.value - 4.0,
+        maxFontSize: FontSize.NORMAL.value,
       ),
     );
   }

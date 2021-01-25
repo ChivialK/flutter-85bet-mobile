@@ -4,11 +4,13 @@ import 'package:after_layout/after_layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/background_video_player_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/checkbox_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/gradient_button.dart';
 
 import '../../../data/form/login_form.dart';
-import '../../../register/presentation/register_route.dart';
 import '../state/login_store.dart';
 import 'login_navigate.dart';
 
@@ -31,6 +33,8 @@ class LoginDisplay extends StatefulWidget {
 class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
   static final GlobalKey<FormState> _formKey =
       new GlobalKey(debugLabel: 'form');
+  final GlobalKey<BackgroundVideoPlayerWidgetState> _playerKey =
+      new GlobalKey(debugLabel: 'player');
   final GlobalKey<CustomizeFieldWidgetState> _accountFieldKey =
       new GlobalKey(debugLabel: 'name');
   final GlobalKey<CustomizeFieldWidgetState> _pwdFieldKey =
@@ -47,6 +51,10 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
   Timer _routeTimer;
   bool _loginSuccess = false;
   Widget formWidget;
+
+  double _errorTextPadding;
+  bool _showAccountError = false;
+  bool _showPasswordError = false;
 
   void _validateForm() {
     final form = _formKey.currentState;
@@ -103,6 +111,14 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
   }
 
   @override
+  void initState() {
+    _errorTextPadding = (Global.device.width.roundToDouble() - 32.0) *
+            ThemeInterface.prefixTextWidthFactor -
+        ThemeInterface.minusSize;
+    super.initState();
+  }
+
+  @override
   void didChangeDependencies() {
     debugPrint('didChangeDependencies');
     super.didChangeDependencies();
@@ -149,6 +165,8 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
 
   @override
   void dispose() {
+    _playerKey.currentState?.pauseVideo();
+    _playerKey.currentState?.dispose();
     _disposers.forEach((d) => d());
     super.dispose();
   }
@@ -159,6 +177,8 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
     formWidget ??= _buildFormWidget();
     return Stack(
       children: [
+        BackgroundVideoPlayerWidget(key: _playerKey),
+
         /// loading icon
         Positioned(
           top: 32,
@@ -188,10 +208,11 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
             primary: true,
             child: Container(
               constraints: BoxConstraints(
-                minHeight: 360.0,
+                minHeight: 376.0,
               ),
-              color: themeColor.defaultLayeredBackgroundColor,
-              margin: const EdgeInsets.symmetric(horizontal: 24.0),
+              decoration: ThemeInterface.layerShadowDecorRoundAlpha,
+              margin:
+                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -224,7 +245,8 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
                                 const EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 0.0),
                             onPressed: () {
                               // clear text field focus
-                              FocusScope.of(context).unfocus();
+                              FocusScope.of(context)
+                                  .requestFocus(new FocusNode());
                               RouterNavigate.navigateBack();
                             },
                           ),
@@ -260,10 +282,13 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
                   ///
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 24.0),
-                    child: RaisedButton(
-                      child: Text(localeStr.btnLogin),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4.0),
+                    child: GradientButton(
+                      colorType: GradientButtonColor.LIGHT,
+                      changeByTheme: false,
+                      expand: true,
+                      child: Text(
+                        localeStr.btnLogin,
+                        style: TextStyle(color: Colors.black),
                       ),
                       onPressed: () {
                         // clear text field focus
@@ -303,50 +328,112 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
           physics: BouncingScrollPhysics(),
           shrinkWrap: true,
           children: <Widget>[
-//            /* Login Hint Text*/
-//            Padding(
-//              padding: const EdgeInsets.only(bottom: 8.0),
-//              child: Text(
-//                localeStr.hintTitleLogin,
-//                textAlign: TextAlign.left,
-//                style: TextStyle(color: themeColor.defaultHintColor),
-//              ),
-//            ),
-            new CustomizeFieldWidget(
-              key: _accountFieldKey,
-              fieldType: FieldType.Account,
-              persistHint: false,
-              hint: localeStr.hintAccountInput,
+            ///
+            /// Account Field
+            ///
+            new CustomizeTitledContainer(
+              backgroundColor: Colors.transparent,
+              prefixBgColor: Colors.transparent,
               prefixText: localeStr.hintAccount,
-              prefixTextSize: FontSize.SUBTITLE.value,
-              maxInputLength: InputLimit.ACCOUNT_MAX,
-              errorMsg: localeStr.messageInvalidAccount,
-              validCondition: (value) => rangeCheck(
-                  value: value.length,
-                  min: InputLimit.ACCOUNT_MIN,
-                  max: InputLimit.ACCOUNT_MAX),
+              titleLetterSpacing: 0,
+              child: new CustomizeFieldWidget(
+                key: _accountFieldKey,
+                fieldType: FieldType.Account,
+                hint: localeStr.hintAccountInput,
+                persistHint: false,
+                padding: const EdgeInsets.symmetric(vertical: 0.0),
+                roundCorner: false,
+                maxInputLength: InputLimit.ACCOUNT_MAX,
+                onInputChanged: (input) {
+                  setState(() {
+                    _showAccountError = !rangeCheck(
+                      value: input.length,
+                      min: InputLimit.ACCOUNT_MIN,
+                      max: InputLimit.ACCOUNT_MAX,
+                    );
+                  });
+                },
+              ),
             ),
-            SizedBox(height: 12.0),
-            new CustomizeFieldWidget(
-              key: _pwdFieldKey,
-              fieldType: FieldType.Password,
-              persistHint: false,
-              hint: localeStr.hintPasswordInput,
-              prefixText: localeStr.hintAccountPassword,
-              prefixTextSize: FontSize.SUBTITLE.value,
-              maxInputLength: InputLimit.PASSWORD_MAX,
-              errorMsg: localeStr.messageInvalidPasswordNew,
-              validCondition: (value) => rangeCheck(
-                  value: value.length,
-                  min: InputLimit.PASSWORD_MIN_OLD,
-                  max: InputLimit.PASSWORD_MAX),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: _errorTextPadding),
+                    child: Visibility(
+                      visible: _showAccountError,
+                      child: Text(
+                        localeStr.messageInvalidAccount(
+                          InputLimit.ACCOUNT_MIN,
+                          InputLimit.ACCOUNT_MAX,
+                        ),
+                        style: TextStyle(color: themeColor.defaultErrorColor),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            SizedBox(height: 8.0),
-            /* Login CheckBox */
-            CheckboxWidget(
-              key: _fastKey,
-              label: localeStr.btnFastLogin,
-              initValue: _hiveForm?.fastLogin ?? false,
+
+            ///
+            /// Password Field
+            ///
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: new CustomizeTitledContainer(
+                prefixText: localeStr.hintAccountPassword,
+                backgroundColor: Colors.transparent,
+                prefixBgColor: Colors.transparent,
+                child: new CustomizeFieldWidget(
+                  key: _pwdFieldKey,
+                  fieldType: FieldType.Password,
+                  hint: localeStr.hintAccountPassword,
+                  persistHint: false,
+                  padding: const EdgeInsets.symmetric(vertical: 0.0),
+                  roundCorner: false,
+                  maxInputLength: InputLimit.PASSWORD_MAX,
+                  onInputChanged: (input) {
+                    setState(() {
+                      _showPasswordError = !rangeCheck(
+                        value: input.length,
+                        min: InputLimit.PASSWORD_MIN,
+                        max: InputLimit.PASSWORD_MAX,
+                      );
+                    });
+                  },
+                ),
+              ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: _errorTextPadding),
+                    child: Visibility(
+                      visible: _showPasswordError,
+                      child: Text(
+                        localeStr.messageInvalidPassword(
+                          InputLimit.PASSWORD_MIN,
+                          InputLimit.PASSWORD_MAX,
+                        ),
+                        style: TextStyle(color: themeColor.defaultErrorColor),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            /// Login CheckBox
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: CheckboxWidget(
+                key: _fastKey,
+                label: localeStr.btnFastLogin,
+                initValue: _hiveForm?.fastLogin ?? false,
+              ),
             ),
           ],
         ),
@@ -358,45 +445,45 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        GestureDetector(
-          onTap: () {
-            // clear text field focus
-            FocusScope.of(context).unfocus();
-            showDialog(
-              context: context,
-              barrierDismissible: true,
-              builder: (_) => new RegisterRoute(isDialog: true),
-            );
-          },
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  localeStr.btnRegister,
-                  style: TextStyle(
-                    fontSize: FontSize.SUBTITLE.value,
-                    color: Color(0xfffec017),
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              Container(
-                constraints: BoxConstraints.tight(Size(24, 24)),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0xfffec017),
-                ),
-                child: Icon(
-                  const IconData(0xf234, fontFamily: 'FontAwesome'),
-                  color: Colors.white,
-                  size: 16.0,
-                ),
-              )
-            ],
-          ),
-        ),
-        SizedBox(width: 6.0),
+        // GestureDetector(
+        //   onTap: () {
+        //     // clear text field focus
+        //     FocusScope.of(context).unfocus();
+        //     showDialog(
+        //       context: context,
+        //       barrierDismissible: true,
+        //       builder: (_) => new RegisterRoute(isDialog: true),
+        //     );
+        //   },
+        //   child: Row(
+        //     children: [
+        //       Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: Text(
+        //           localeStr.btnRegister,
+        //           style: TextStyle(
+        //             fontSize: FontSize.SUBTITLE.value,
+        //             color: Color(0xfffec017),
+        //             decoration: TextDecoration.underline,
+        //           ),
+        //         ),
+        //       ),
+        //       Container(
+        //         constraints: BoxConstraints.tight(Size(24, 24)),
+        //         decoration: BoxDecoration(
+        //           shape: BoxShape.circle,
+        //           color: Color(0xfffec017),
+        //         ),
+        //         child: Icon(
+        //           const IconData(0xf234, fontFamily: 'FontAwesome'),
+        //           color: Colors.white,
+        //           size: 16.0,
+        //         ),
+        //       )
+        //     ],
+        //   ),
+        // ),
+        // SizedBox(width: 6.0),
         GestureDetector(
           onTap: () {
             // clear text field focus

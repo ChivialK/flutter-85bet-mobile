@@ -39,5 +39,6 @@ extension GameEntityExtension on GameEntity {
   }
 
   String get imageUrl => '/images/games/game/$id.jpg';
+
   bool isLongText(int limit) => cname.countLength > limit;
 }

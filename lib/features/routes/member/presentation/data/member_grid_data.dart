@@ -14,7 +14,6 @@ abstract class MemberGridData with _$MemberGridData {
     Color iconDecorColorStart,
     Color iconDecorColorEnd,
     RoutePage route,
-    @Default(true) bool isUserOnly,
   }) = _MemberGridData;
 }
 

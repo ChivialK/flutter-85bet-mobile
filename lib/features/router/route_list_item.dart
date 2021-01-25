@@ -20,5 +20,5 @@ abstract class RouteListItem with _$RouteListItem {
 extension RouteListItemExtension on RouteListItem {
   RouteEnum get id => routeId ?? route.value.id;
   String get title => id.title;
-  bool get isUserOnly => userOnly ?? route?.value?.isUserOnly ?? false;
+  bool get isUserOnly => userOnly ?? route.value.isUserOnly;
 }

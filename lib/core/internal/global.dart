@@ -9,34 +9,30 @@ class Global {
   /// Device Relative
   static Device device;
 
-  /// BuildType
-  static bool addAnalytics = false;
-
   /// APP Language
   static bool initLocale = false;
 
-  static bool lockLanguage = false;
+  static bool lockLanguage = true;
 
   static LanguageCode _locale = defaultLocale;
 
-  static String get jsonContentKey => _locale.value.contentKey;
+  static String get localeJsonKey => _locale.value.contentKey;
 
-  static String get lang => _locale.value.code;
+  static String get localeCode => _locale.value.code;
 
-  static set setLanguage(String langCode) =>
-      _locale = LanguageCode.getByCode(langCode);
+  static set setLocale(String localeCode) =>
+      _locale = LanguageCode.getByCode(localeCode);
 
   /// Web Service
   static const bool HAS_FLEX_ROUTE = false;
-  static const String CURRENT_BASE = BET85_OFFICIAL_URL;
+  static const String CURRENT_BASE = VN365_OFFICIAL_URL;
+  static String currentService = VN365_SERVICE_URL;
 
-  static const String DOMAIN_NAME = "85bet.com";
-  static const String BET85_BASE_URL = "http://10.20.10.11/";
-  static const String BET85_OFFICIAL_URL = "https://85bet.com/";
-  static const String BET85_TEST_URL = "http://192.168.2.87:7315/";
-  static const String BET85_SERVICE_URL =
-      "https://vm.providesupport.com/095ecqycnij4h0q56020owowxq";
-  static const String BET85_MOVIE_URL = "http://web.95vn.com";
+  static const String DOMAIN_NAME = "vn365s.com";
+  static const String VN365_TEST_URL = "http://192.168.2.87:1743/";
+  static const String VN365_BASE_URL = "http://10.20.2.77/";
+  static const String VN365_OFFICIAL_URL = "https://vn365s.com/";
+  static const String VN365_SERVICE_URL = '';
 
   /// HIVE table name
   static const String CACHED_COOKIE = 'CACHED_USER_COOKIE';

@@ -44,7 +44,7 @@ class _BetRecordRouteState extends State<BetRecordRoute> {
         (_) => _store.waitForRecordResponse,
         // Run some logic with the content of the observed field
         (bool wait) {
-          debugPrint('reaction on wait bet record: $wait');
+          debugPrint('reaction on wait record: $wait');
           if (wait) {
             toastDismiss = callToastLoading();
           } else if (toastDismiss != null) {

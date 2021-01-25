@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/core/internal/global.dart';
-import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
+import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/table_cell_text_widget.dart';
-import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart';
 
 import '../../data/models/bet_record_model.dart';

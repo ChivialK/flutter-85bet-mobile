@@ -117,13 +117,7 @@ class PagerWidgetState extends State<PagerWidget> {
                           onPressed: (widget.onAction == null)
                               ? null
                               : () => widget.onAction(page),
-                          child: Text(
-                            '$page',
-                            style: TextStyle(
-                                color: (currentPage == page)
-                                    ? themeColor.secondaryTextColor1
-                                    : themeColor.defaultTextColor),
-                          ),
+                          child: Text('$page'),
                         ),
                       ),
                     );

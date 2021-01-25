@@ -17,6 +17,8 @@ extension LoginFormExtension on LoginForm {
         'accountcode': this.account,
         'password': this.password,
       };
+
+  bool get isValid => this.account.isNotEmpty && this.password.isNotEmpty;
 }
 
 @freezed

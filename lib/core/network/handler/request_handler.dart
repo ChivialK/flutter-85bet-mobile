@@ -58,15 +58,12 @@ Future _makeRequest({
     final response = await request;
     if (response == null ||
         response.statusCode == null ||
-        response.statusCode != 200) {
-      throw ResponseException();
-    }
-    final String resp = '${response.data}';
-    if (resp.startsWith('<!DOCTYPE html>')) {
+        response.statusCode != 200) throw ResponseException();
+    if ('${response.data}'.contains('Repeat token') ||
+        '${response.data}'.contains('route.query.forRefresh') ||
+        response.statusCode == 302) throw TokenException();
+    if ('${response.data}'.startsWith('<!DOCTYPE html>'))
       throw RequestTypeErrorException();
-    } else if (resp.contains('Repeat token') || resp.contains('RepeatToken')) {
-      throw TokenException();
-    }
     return response.data;
   }, tag);
   MyLogger.debug(

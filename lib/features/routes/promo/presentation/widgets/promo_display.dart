@@ -143,7 +143,7 @@ class _PromoDisplayState extends State<PromoDisplay>
                           child: Padding(
                             padding: const EdgeInsets.only(top: 3.0),
                             child: Text(
-                              c.value.label,
+                              c.label,
                               style: TextStyle(fontSize: FontSize.NORMAL.value),
                             ),
                           ),

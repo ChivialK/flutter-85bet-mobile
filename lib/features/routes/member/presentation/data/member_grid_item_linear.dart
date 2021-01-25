@@ -100,7 +100,7 @@ class MemberGridItemLinear extends Vnum<MemberGridData> {
   static MemberGridItemLinear flowRecord =
       MemberGridItemLinear.define(MemberGridData(
     id: RouteEnum.ROLLBACK,
-    iconData: IconCode.gridRollback,
+    iconData: IconCode.gridFlows,
     iconDecorColorStart: HexColor.fromHex('#ed6b72'),
     iconDecorColorEnd: HexColor.fromHex('#b72541'),
     route: RoutePage.rollback,

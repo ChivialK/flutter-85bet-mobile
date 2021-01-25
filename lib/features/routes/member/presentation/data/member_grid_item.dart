@@ -65,7 +65,7 @@ class MemberGridItem extends Vnum<MemberGridData> {
   ));
   static MemberGridItem rollback = MemberGridItem.define(MemberGridData(
     id: RouteEnum.ROLLBACK,
-    iconData: IconCode.gridRollback,
+    iconData: IconCode.gridFlows,
     route: RoutePage.rollback,
   ));
 

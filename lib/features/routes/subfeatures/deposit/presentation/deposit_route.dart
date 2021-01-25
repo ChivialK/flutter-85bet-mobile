@@ -3,7 +3,9 @@ import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/warning_display.dart';
 
 import 'state/deposit_store.dart';
-import 'widgets/deposit_display.dart';
+import 'widgets_new/deposit_page_display.dart';
+import 'widgets_new/deposit_page_storage.dart';
+import 'widgets_new/deposit_pages_inherited_widget.dart';
 
 /// Main View of [FeatureRouter.promoRoute]
 ///@author H.C.CHIANG
@@ -14,7 +16,11 @@ class DepositRoute extends StatefulWidget {
 }
 
 class _DepositRouteState extends State<DepositRoute> {
+  final Key _inheritKey = new UniqueKey();
+  final Key _displayKey = new UniqueKey();
+
   DepositStore _store;
+  DepositPageStorage _storage;
   List<ReactionDisposer> _disposers;
 
   @override
@@ -44,6 +50,7 @@ class _DepositRouteState extends State<DepositRoute> {
   @override
   void initState() {
     _store ??= sl.get<DepositStore>();
+    _storage ??= new DepositPageStorage();
     super.initState();
     _store.getInitializeData();
   }
@@ -59,14 +66,19 @@ class _DepositRouteState extends State<DepositRoute> {
       },
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
           child: Observer(
             builder: (_) {
               switch (_store.state) {
                 case DepositStoreState.loading:
                   return LoadingWidget();
                 case DepositStoreState.loaded:
-                  return DepositDisplay(store: _store);
+                  return DepositPagesInheritedWidget(
+                    key: _inheritKey,
+                    store: _store,
+                    storage: _storage,
+                    child: DepositPageDisplay(key: _displayKey),
+                  );
                 case DepositStoreState.error:
                   return Center(
                       child: WarningDisplay(

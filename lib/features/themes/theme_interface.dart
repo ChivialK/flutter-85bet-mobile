@@ -20,7 +20,7 @@ abstract class ThemeInterface {
   /// Input Field Settings
   static const double fieldHeight = 53.6;
   static const double fieldIconSize = 24.0;
-  static const double prefixTextWidthFactor = 0.3;
+  static const double prefixTextWidthFactor = 0.35;
   static const double prefixTextSpacing = 0.0;
   static const double prefixIconWidthFactor = 0.166;
   static const double suffixWidthFactor = 0.314;
@@ -47,11 +47,6 @@ abstract class ThemeInterface {
       color: themeColor.defaultLayeredBackgroundColor,
       borderRadius: BorderRadius.all(Radius.circular(4.0)),
       boxShadow: ThemeInterface.layerShadow);
-
-  static BoxDecoration get layerShadowDecorRoundLight => BoxDecoration(
-      color: themeColor.defaultLayeredBackgroundColor,
-      borderRadius: BorderRadius.all(Radius.circular(4.0)),
-      boxShadow: ThemeInterface.layerShadowLight);
 
   static BoxDecoration get layerShadowDecorRoundAlpha => BoxDecoration(
       color: themeColor.defaultLayeredBackgroundColorAlpha,
@@ -88,7 +83,7 @@ abstract class ThemeInterface {
       color: Color(0x61000000),
       spreadRadius: 2.15,
       blurRadius: 3.0,
-      offset: Offset(3, 3), // changes position of shadow
+      offset: Offset(3, 2), // changes position of shadow
     ),
   ];
 

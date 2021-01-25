@@ -28,6 +28,7 @@ abstract class _WebGameScreenStore with Store {
   bool _lockAutoRotate = true;
 
   get isLockRotate => _lockAutoRotate;
+
   set lockRotate(bool value) => _lockAutoRotate = value;
 
   bool get isScreenPortrait =>

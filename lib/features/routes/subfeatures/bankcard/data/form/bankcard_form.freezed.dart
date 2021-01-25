@@ -18,9 +18,9 @@ class _$BankcardFormTearOff {
       {@required @JsonKey(name: 'bankname') String owner,
       @required @JsonKey(name: 'bankindex') String bankId,
       @required @JsonKey(name: 'bankaccno') String card,
-      @required @JsonKey(name: 'bankaddress') String branch,
-      @required @JsonKey(name: 'bankprovince') String province,
-      @required @JsonKey(name: 'bankcity') String area}) {
+      @JsonKey(name: 'bankaddress') String branch,
+      @JsonKey(name: 'bankprovince') String province,
+      @JsonKey(name: 'bankcity') String area}) {
     return _BankcardForm(
       owner: owner,
       bankId: bankId,
@@ -148,15 +148,12 @@ class _$_BankcardForm implements _BankcardForm {
       {@required @JsonKey(name: 'bankname') this.owner,
       @required @JsonKey(name: 'bankindex') this.bankId,
       @required @JsonKey(name: 'bankaccno') this.card,
-      @required @JsonKey(name: 'bankaddress') this.branch,
-      @required @JsonKey(name: 'bankprovince') this.province,
-      @required @JsonKey(name: 'bankcity') this.area})
+      @JsonKey(name: 'bankaddress') this.branch,
+      @JsonKey(name: 'bankprovince') this.province,
+      @JsonKey(name: 'bankcity') this.area})
       : assert(owner != null),
         assert(bankId != null),
-        assert(card != null),
-        assert(branch != null),
-        assert(province != null),
-        assert(area != null);
+        assert(card != null);
 
   @override
   @JsonKey(name: 'bankname')
@@ -221,9 +218,9 @@ abstract class _BankcardForm implements BankcardForm {
       {@required @JsonKey(name: 'bankname') String owner,
       @required @JsonKey(name: 'bankindex') String bankId,
       @required @JsonKey(name: 'bankaccno') String card,
-      @required @JsonKey(name: 'bankaddress') String branch,
-      @required @JsonKey(name: 'bankprovince') String province,
-      @required @JsonKey(name: 'bankcity') String area}) = _$_BankcardForm;
+      @JsonKey(name: 'bankaddress') String branch,
+      @JsonKey(name: 'bankprovince') String province,
+      @JsonKey(name: 'bankcity') String area}) = _$_BankcardForm;
 
   @override
   @JsonKey(name: 'bankname')

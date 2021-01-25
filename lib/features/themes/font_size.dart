@@ -2,7 +2,7 @@ import 'package:vnum/vnum.dart';
 
 @VnumDefinition
 class FontSize extends Vnum<double> {
-  static const minus = 2;
+  static const minus = 0;
 
   /// font size = 12
   static const FontSize SMALL = const FontSize.define(12.0);

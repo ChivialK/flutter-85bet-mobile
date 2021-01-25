@@ -11,7 +11,6 @@ import 'package:flutter_85bet_mobile/injection_container.dart';
 import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'general/toast_widget_export.dart';
 import 'router/app_navigate.dart';
 import 'screen/web_game_screen_store.dart';
 import 'update/presentation/state/update_store.dart';
@@ -70,8 +69,7 @@ class _MainStartupState extends State<MainStartup> with AfterLayoutMixin {
       child: WillPopScope(
         onWillPop: () async {
           MyLogger.debug(
-              msg:
-                  'pop screen ${ScreenNavigate.screenIndex} route: ${RouterNavigate.current}',
+              msg: 'pop screen ${ScreenNavigate.screenIndex}',
               tag: 'MainStartup');
           if (ScreenNavigate.screenIndex == 1) {
             // Stop rotate sensor and clear web view cache
@@ -79,10 +77,8 @@ class _MainStartupState extends State<MainStartup> with AfterLayoutMixin {
             ScreenNavigate.switchScreen(screen: ScreenEnum.Feature);
           } else if (ScreenNavigate.screenIndex == 2) {
             ScreenNavigate.switchScreen();
-          } else if (RouterNavigate.current == '/') {
-            return Future(() => true);
           } else {
-            RouterNavigate.navigateBack();
+            return Future(() => true);
           }
           return Future(() => false);
         },
@@ -104,6 +100,7 @@ class _MainStartupState extends State<MainStartup> with AfterLayoutMixin {
   @override
   void afterFirstLayout(BuildContext context) {
     if (updateStore != null) {
+      // updateStore.dialogClosed();
       updateFuture ??=
           Future.delayed(Duration(seconds: 5), () => updateStore.getVersion());
       updateFuture.then((hasUpdate) {

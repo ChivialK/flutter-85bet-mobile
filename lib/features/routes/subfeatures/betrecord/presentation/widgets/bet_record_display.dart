@@ -5,7 +5,6 @@ import 'package:flutter_85bet_mobile/features/general/widgets/customize_dropdown
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/pager_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/types_grid_widget.dart';
-import 'package:flutter_85bet_mobile/features/routes/subfeatures/betrecord/presentation/widgets/bet_record_display_list.dart';
 import 'package:flutter_85bet_mobile/utils/datetime_format.dart';
 import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
@@ -14,6 +13,7 @@ import '../../data/form/bet_record_form.dart';
 import '../../data/models/bet_record_model.dart';
 import '../../data/models/bet_record_type_model.dart';
 import '../state/bet_record_store.dart';
+import 'bet_record_display_list.dart';
 
 class BetRecordDisplay extends StatefulWidget {
   final BetRecordStore store;
@@ -40,11 +40,10 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
   final GlobalKey<CustomizeFieldWidgetState> _endTimeKey =
       new GlobalKey(debugLabel: 'end');
 
-  final int tabsPerRow = 5;
+  final int tabsPerRow = 4;
   double gridRatio;
-  List<BetRecordType> _categories;
-  List<String> _platforms;
-  List<String> _platformStrings;
+  List<BetRecordType> categories;
+  List<String> platforms;
 
   /// current tab
   BetRecordType _category;
@@ -65,10 +64,10 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
   int tablePage;
 
   /// widget as variable, rebuild when data change
-  Widget _tableWidget;
+  Widget tableWidget;
 
-  /// current [_tableWidget]'s data
-  dynamic currentTableData;
+  /// current [tableWidget]'s data
+  dynamic _currentTableData;
 
   /// true after first layout has finished,
   /// global widget state should be initialized
@@ -91,38 +90,22 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
       );
       return;
     }
-    List<String> timeRange = _getTimeString(_timeSelected);
     BetRecordForm form = BetRecordForm(
       categoryId: _category.categoryId,
-      platform: (_platform == _platforms[_allPlatformIndex])
+      platform: (_platform == platforms[_allPlatformIndex])
           ? 'all'
           : _platform.toLowerCase(),
       time: _timeSelected,
       page: page,
-      startTime: (timeRange == null) ? null : timeRange[0],
-      endTime: (timeRange == null) ? null : timeRange[1],
+      startTime: (_timeSelected == BetRecordTimeEnum.custom)
+          ? _startTimeKey.currentState.getInput
+          : null,
+      endTime: (_timeSelected == BetRecordTimeEnum.custom)
+          ? _endTimeKey.currentState.getInput
+          : null,
     );
     debugPrint('bet query form: $form');
     widget.store.getRecord(form);
-  }
-
-  List<String> _getTimeString(BetRecordTimeEnum timeEnum) {
-    switch (timeEnum.value) {
-      case 0:
-        return getDayRange();
-      case 1:
-        return getDayRange(beforeDays: 1);
-      case 2:
-        return getMonthRange();
-      case 3:
-        return getWideRange();
-      case 4:
-        return [
-          _startTimeKey.currentState.getInput,
-          _endTimeKey.currentState.getInput
-        ];
-    }
-    return null;
   }
 
   /// update drop down values when tab change
@@ -131,11 +114,12 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
     // set selected category
     _category = selected;
 
-    // reset platform drop down
-    _platform = null;
-    _allPlatformIndex = null;
-    if (_platformKey.currentState != null)
-      _platformKey.currentState.setSelected = _platform;
+    // reset platform drop down if category changed
+    if (!force) {
+      _platform = null;
+      _allPlatformIndex = null;
+      _platformKey.currentState?.setSelected = _platform;
+    }
 
     _createPlatformList(!force);
 
@@ -146,44 +130,47 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
   void _createPlatformList(bool resetSelected) {
     // find category's platform list
     Map platformMap = _category.platformMap;
-    _platforms = (platformMap != null && platformMap.isNotEmpty)
+    platforms = (platformMap != null && platformMap.isNotEmpty)
         ? platformMap.values.map((value) => '$value').toList()
         : [];
-    debugPrint('${_category.categoryType} platform values: $_platforms');
 
-    // set platform ALL translate
-    if (_platforms.isNotEmpty && _platforms.contains('ALL')) {
-      _allPlatformIndex = _platforms.indexOf('ALL');
-      _platformStrings = _platforms.map((e) => e).toList();
-      if (_allPlatformIndex >= 0) {
-        _platformStrings.replaceRange(_allPlatformIndex, _allPlatformIndex + 1,
-            [localeStr.betsSpinnerOptionAllPlatform]);
+    if (_allPlatformIndex == null) {
+      // set platform to ALL
+      if (platforms.isNotEmpty && platforms.contains('ALL')) {
+        var allIndex = platforms.indexOf('ALL');
+        platforms.removeAt(allIndex);
+        platforms.insert(allIndex, localeStr.betsSpinnerOptionAllPlatform);
+        _allPlatformIndex = allIndex;
+        debugPrint('$_category platforms: ${platforms.length}');
+//      debugPrint('$_category platform: $platforms');
       }
     }
-    debugPrint('${_category.categoryType} platform strings: $_platformStrings');
 
-    if (_platform == null || resetSelected) {
-      _platform = _platforms[_allPlatformIndex ?? 0];
+    if ((_platform == null && _allPlatformIndex != null) ||
+        _platform == platforms[_allPlatformIndex]) {
+      // set selected to ALL
+      _platform = platforms[_allPlatformIndex];
+      debugPrint(
+          'reset selected platform: $_platform, index: $_allPlatformIndex');
     }
-    // update drop down value after view had rebuild
-    if (_platforms.isNotEmpty && _platformKey.currentState != null)
-      Future.delayed(Duration(milliseconds: 100), () {
-        _platformKey.currentState.setSelected = _platform;
-      });
 
-    // update view
-    setState(() {});
+    // update drop down value after view had rebuild
+    if (_platform != null) {
+      Future.delayed(Duration(milliseconds: 100), () {
+        _platformKey.currentState?.setSelected = _platform;
+      });
+    }
   }
 
   /// update table and pager height when table type changes
   void checkTableHeight() {
-    if (_platform == _platforms[_allPlatformIndex] && !allDataTable) {
+    if (_platform == platforms[_allPlatformIndex] && !allDataTable) {
       allDataTable = true;
       Future.delayed(Duration(milliseconds: 100), () {
         debugPrint('update state');
         setState(() {});
       });
-    } else if (_platform != _platforms[_allPlatformIndex] &&
+    } else if (_platform != platforms[_allPlatformIndex] &&
         allDataTable != false) {
       allDataTable = false;
       Future.delayed(Duration(milliseconds: 100), () {
@@ -193,19 +180,27 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
     }
   }
 
-  @override
-  void initState() {
+  void updateCategories(bool force) {
     if (widget.store != null) {
-      _categories = widget.store.typeList ?? [];
-      debugPrint('bet categories: ${_categories.length}');
-      if (_categories.isNotEmpty) {
+      categories = widget.store.typeList ?? [];
+      debugPrint('bet categories: ${categories.length}');
+      if (categories.isNotEmpty) {
         if (_category != null) {
-          switchCategory(_category, force: true);
+          switchCategory(_category, force: force);
         } else {
-          switchCategory(_categories.first, force: true);
+          switchCategory(categories.first, force: force);
         }
       }
     }
+    if (_allPlatformIndex != null) {
+      platforms.replaceRange(_allPlatformIndex, _allPlatformIndex + 1,
+          [localeStr.betsSpinnerOptionAllPlatform]);
+    }
+  }
+
+  @override
+  void initState() {
+    updateCategories(false);
     _timeSelected = BetRecordTimeEnum.today;
 
     double gridItemWidth =
@@ -219,26 +214,38 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
 
   @override
   void didUpdateWidget(BetRecordDisplay oldWidget) {
-    _tableWidget = null;
-    _platformStrings.replaceRange(_allPlatformIndex, _allPlatformIndex + 1,
-        [localeStr.betsSpinnerOptionAllPlatform]);
+    updateCategories(true);
     super.didUpdateWidget(oldWidget);
+    if (_currentTableData is BetRecordModel) {
+      tableWidget = _buildRecordList(_currentTableData.data);
+    } else if (_currentTableData is List) {
+      tableWidget = _buildRecordList(_currentTableData);
+    } else {
+      tableWidget = null;
+    }
+    _timeKey.currentState?.setSelected = _timeSelected;
   }
 
   @override
   Widget build(BuildContext context) {
-    if (widget.store == null || _categories == null || _categories.isEmpty) {
+    if (widget.store == null || categories == null || categories.isEmpty) {
       return Center(
         child: WarningDisplay(
           message:
-              Failure.internal(FailureCode(type: FailureType.INHERIT)).message,
+              Failure.internal(FailureCode(type: FailureType.BETS, code: 10))
+                  .message,
         ),
       );
     }
-    _tableWidget ??= _buildRecordList([]);
-    return Container(
-      padding: const EdgeInsets.only(bottom: 4.0),
-      alignment: Alignment.topCenter,
+    tableWidget ??= _buildRecordList([]);
+    return InkWell(
+      // to dismiss the keyboard when the user tabs out of the TextField
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
       child: ListView(
         primary: true,
         shrinkWrap: true,
@@ -250,11 +257,7 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
               children: [
                 Container(
                   padding: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: themeColor.memberIconColor,
-                    boxShadow: ThemeInterface.iconBottomShadow,
-                  ),
+                  decoration: ThemeInterface.pageIconContainerDecor,
                   child: Icon(
                     pageItem.value.iconData,
                     size: 32 * Global.device.widthScale,
@@ -264,7 +267,9 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
                     pageItem.value.label,
-                    style: TextStyle(fontSize: FontSize.HEADER.value),
+                    style: TextStyle(
+                        fontSize: FontSize.HEADER.value,
+                        color: themeColor.defaultTitleColor),
                   ),
                 )
               ],
@@ -272,24 +277,24 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
           ),
           /* Category Tabs */
           Padding(
-            padding: const EdgeInsets.only(top: 4.0),
+            padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 0.0),
             child: TypesGridWidget<BetRecordType>(
-              types: _categories,
-              round: true,
+              types: categories,
               titleKey: 'label',
               onTypeGridTap: (_, type) {
                 switchCategory(type);
               },
               tabsPerRow: tabsPerRow,
-              itemSpace: 4.0,
-              itemSpaceHorFactor: 1.5,
+              itemSpace: 0,
+              expectTabHeight: 36.0,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 16.0),
+            padding: const EdgeInsets.only(bottom: 16.0),
             child: Container(
               decoration: ThemeInterface.layerShadowDecorRound,
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              margin: const EdgeInsets.only(right: 8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -297,14 +302,13 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
                 children: <Widget>[
                   SizedBox(height: 24.0),
                   /* Platform Option */
-                  if (_platforms != null && _platforms.isNotEmpty)
+                  if (platforms != null && platforms.isNotEmpty)
                     CustomizeDropdownWidget(
                       key: _platformKey,
                       horizontalInset: 56.0,
                       prefixText: localeStr.betsSpinnerTitlePlatform,
                       prefixTextSize: FontSize.SUBTITLE.value,
-                      optionValues: _platforms,
-                      optionStrings: _platformStrings,
+                      optionValues: platforms,
                       defaultValueIndex: _allPlatformIndex,
                       changeNotify: (data) {
                         // clear text field focus
@@ -345,7 +349,7 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
                       prefixTextSize: FontSize.SUBTITLE.value,
                       maxInputLength: InputLimit.DATE,
                       errorMsg: localeStr.messageInvalidFormat,
-                      validCondition: (input) => input.isDate,
+                      validCondition: (input) => input.isValidDate,
                     ),
                   if (_timeSelected == BetRecordTimeEnum.custom)
                     /* End Date Field */
@@ -360,7 +364,7 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
                       prefixTextSize: FontSize.SUBTITLE.value,
                       maxInputLength: InputLimit.DATE,
                       errorMsg: localeStr.messageInvalidFormat,
-                      validCondition: (input) => input.isDate,
+                      validCondition: (input) => input.isValidDate,
                     ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -371,7 +375,8 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
                         Expanded(
                           child: SizedBox(
                             height: Global.device.comfortButtonHeight,
-                            child: RaisedButton(
+                            child: GradientButton(
+                              expand: true,
                               child: Text(localeStr.btnQueryNow),
                               onPressed: () => getPageData(1, true),
                             ),
@@ -389,12 +394,12 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
 //                debugPrint(snapshot.data);
                         if (snapshot != null &&
                             snapshot.data != null &&
-                            snapshot.data != currentTableData) {
+                            snapshot.data != _currentTableData) {
                           debugPrint(
                               'building table, type: ${snapshot.data.runtimeType}');
-                          currentTableData = snapshot.data;
+                          _currentTableData = snapshot.data;
                           if (snapshot.data == null) {
-                            _tableWidget = _buildRecordList([]);
+                            tableWidget = _buildRecordList([]);
                           } else if (snapshot.data is List) {
                             totalPage = 0;
                             tablePage = 0;
@@ -405,7 +410,7 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
                               });
                             }
                             checkTableHeight();
-                            _tableWidget = _buildRecordList(snapshot.data);
+                            tableWidget = _buildRecordList(snapshot.data);
                           } else if (snapshot.data is BetRecordModel) {
                             totalPage = snapshot.data.lastPage;
                             tablePage = snapshot.data.currentPage;
@@ -420,20 +425,21 @@ class _BetRecordDisplayState extends State<BetRecordDisplay>
                               });
                             }
                             checkTableHeight();
-                            _tableWidget = _buildRecordList(snapshot.data.data);
+                            tableWidget = _buildRecordList(snapshot.data.data);
                           }
                         }
-                        return _tableWidget;
+                        return tableWidget;
                       },
                     ),
                   ),
-                  SizedBox(
-                    height: (allDataTable) ? 1 : 34,
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         PagerWidget(
                           pagerKey,
+                          horizontalInset: 20.0,
                           onAction: (page) => getPageData(page, false),
                         ),
                       ],

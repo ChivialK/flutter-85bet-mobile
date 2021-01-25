@@ -5,7 +5,7 @@ import 'package:flutter_85bet_mobile/features/themes/font_size.dart';
 class HomeDisplaySizeCalc {
   final double _bannerImageScale = 600.0 / Global.device.width;
   // final double _expectBannerHeight = 231.0;
-  final double marqueeHeight = 36.0;
+  final double marqueeHeight = 30.0;
   final double shortcutTitleHeight = 0;
   final double shortcutMaxIconSize = 28.0;
   final double shortcutMinIconSize = 20.0;
@@ -48,11 +48,8 @@ class HomeDisplaySizeCalc {
     debugPrint('----');
 
     /// Shortcut
-    _shortcutMaxHeight = shortcutMaxIconSize +
-        shortcutMaxTextHeight +
-        shortcutTitleHeight +
-        16.0;
-    // _shortcutMaxHeight = shortcutMaxTextHeight + shortcutTitleHeight + 24.0;
+//    _shortcutMaxHeight = shortcutMaxIconSize + shortcutMaxTextHeight + shortcutTitleHeight + 10 + 16;
+    _shortcutMaxHeight = shortcutMaxTextHeight + shortcutTitleHeight + 24.0;
     _shortcutMinHeight = _shortcutMaxHeight - 16.0;
     debugPrint('shortcut box height: $_shortcutMinHeight~$_shortcutMaxHeight');
     debugPrint('shortcut box title height: $shortcutTitleHeight');

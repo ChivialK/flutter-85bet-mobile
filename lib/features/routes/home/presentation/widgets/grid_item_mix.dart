@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/features/themes/font_size.dart';
-import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
 import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
 import 'package:relative_layout/relative_layout.dart';
 
 import 'grid_plugin_favorite.dart';

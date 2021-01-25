@@ -241,7 +241,7 @@ class HomeRepositoryImpl implements HomeRepository {
     Map<String, dynamic> headers = new Map();
     cookies.forEach((element) {
       headers[element.name] = element.value;
-      if (element.name == 'token_mobile')
+      if (element.name == 'token_mobile' || element.name == 'vn_token')
         headers.putIfAbsent('JWT-TOKEN', () => element.value);
     });
     debugPrint('Mapped Cookies: $headers');

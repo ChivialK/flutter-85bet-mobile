@@ -24,9 +24,12 @@ class InputLimit {
   static const int ADDRESS_MAX = 100;
   static const int NOTE_MAX = 30;
 
-  // vn365, 85bet: 5~20, va: 5~19, kk:6~18, bkk:16~19
+  // 85bet:5~20   kk:6~18   vn365,bkk:16~19
   static const int CARD_MIN = 5;
-  static const int CARD_MAX = 20; 
+  static const int CARD_MAX = 20;
+
+  static const int CARD_FIXED_MIN = 16;
+  static const int CARD_FIXED_MAX = 19;
 
   static const int RECOMMEND = 6;
   static const int VERIFY = 8;

@@ -82,7 +82,7 @@ class _CenterDialogMobileState extends State<CenterDialogMobile>
                       hint: '',
                       persistHint: false,
                       prefixText: localeStr.userVerifyFieldTitle,
-                      maxInputLength: InputLimit.VERIFY,
+                      maxInputLength: 12,
                     ),
                   ],
                 ),

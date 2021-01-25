@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
 
@@ -8,13 +9,13 @@ import '../state/member_credit_store.dart';
 
 typedef onMemberGridItemV2Tap = void Function(MemberGridItemV2);
 
-enum MemberGridItemBadgeType { NEW_MESSAGE }
+enum MemberGridItemV2BadgeType { NEW_MESSAGE }
 
 class MemberGridItemWidgetV2Badge extends StatefulWidget {
   final MemberGridItemV2 item;
   final onMemberGridItemV2Tap onItemTap;
   final MemberCreditStore store;
-  final MemberGridItemBadgeType type;
+  final MemberGridItemV2BadgeType type;
 
   MemberGridItemWidgetV2Badge({
     @required this.item,

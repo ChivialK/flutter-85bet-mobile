@@ -41,8 +41,10 @@ abstract class BannerModel with _$BannerModel {
 extension BannerModelExtension on BannerModel {
   BannerEntity get entity => BannerEntity(
       id: id,
-      pic: picMobile,
-      noPromo: urlBlank,
-      promoUrl: mobileUrl,
+      pic: (picMobile.isNotEmpty && picMobile.endsWith('0.jpg') == false)
+          ? picMobile
+          : pic,
+      noPromo: url.isEmpty || url == '#',
+      promoUrl: (mobileUrl.isNotEmpty && mobileUrl != '#') ? mobileUrl : url,
       sort: sort);
 }

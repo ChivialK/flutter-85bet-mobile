@@ -1,4 +1,5 @@
 import 'package:flutter_85bet_mobile/utils/json_util.dart';
+import 'package:flutter_85bet_mobile/utils/value_util.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'payment_type_data.freezed.dart';
@@ -11,12 +12,12 @@ abstract class PaymentTypeData with _$PaymentTypeData {
     @JsonKey(name: 'amountoption') List<String> amountOption,
     @JsonKey(name: 'amounttype') int amountType,
     @JsonKey(name: 'bankaccountid') int bankAccountId,
-    int gateway,
+    String gateway,
     int max,
     int min,
     int payment,
     @JsonKey(name: 'pgindex') int pgIndex,
-    @required List<int> sb,
+    List<int> sb,
     String type,
     dynamic key,
   }) = PaymentTypeOnlineData;
@@ -24,6 +25,7 @@ abstract class PaymentTypeData with _$PaymentTypeData {
   const factory PaymentTypeData.local({
     @JsonKey(name: 'bankaccountid') int bankAccountId,
     @JsonKey(name: 'bankaccountno') String bankAccountNo,
+    @JsonKey(name: 'bankcode') String bankCode,
     @JsonKey(name: 'bankindex') int bankIndex,
     @JsonKey(fromJson: JsonUtil.getRawJson) String max,
     @JsonKey(fromJson: JsonUtil.getRawJson) String min,
@@ -37,7 +39,7 @@ abstract class PaymentTypeData with _$PaymentTypeData {
 
   @override
   factory PaymentTypeData.fromJson(Map<String, dynamic> json) {
-    if (json.keys.contains('payment') && json['payment'] == 'localbank')
+    if (json.keys.contains('bankcode'))
       json['runtimeType'] = 'local';
     else
       json['runtimeType'] = 'other';

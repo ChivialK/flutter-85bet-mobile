@@ -34,12 +34,8 @@ abstract class _BetRecordStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg({
-    String msg,
-    bool showOnce = false,
-    FailureType type,
-    int code,
-  }) =>
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
       errorMessage = getErrorMsg(
           from: FailureType.BETS,
           msg: msg,
@@ -78,7 +74,8 @@ abstract class _BetRecordStore with Store {
         ),
       );
     } on Exception {
-      setErrorMsg(code: 1);
+      //errorMessage = "Couldn't fetch description. Is the device online?";
+      setErrorMsg(code: 2);
     }
   }
 
@@ -118,8 +115,9 @@ abstract class _BetRecordStore with Store {
             .whenComplete(() => waitForRecordResponse = false);
       }
     } on Exception {
+      //errorMessage = "Couldn't fetch description. Is the device online?";
       waitForRecordResponse = false;
-      setErrorMsg(code: 2);
+      setErrorMsg(code: 3);
     }
   }
 

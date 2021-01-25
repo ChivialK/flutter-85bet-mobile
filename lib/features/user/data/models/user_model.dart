@@ -18,7 +18,7 @@ abstract class UserModel with _$UserModel {
     $checkKeys(jsonMap, requiredKeys: const ['accountcode', 'creditlimit']);
     return _$_UserModel(
       account: jsonMap['accountcode'] as String,
-      credit: '${jsonMap['creditlimit']}',
+      credit: jsonMap['creditlimit'] as String,
       status: jsonMap['status'] as String,
       vip: jsonMap['vip'] as int,
       vipName: jsonMap['vip_name'] as String,

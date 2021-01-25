@@ -9,6 +9,7 @@ import 'package:flutter_85bet_mobile/features/user/data/entity/user_entity.dart'
 import 'package:flutter_85bet_mobile/features/user/data/repository/jwt_interface.dart';
 import 'package:flutter_85bet_mobile/features/user/data/repository/user_repository.dart'
     show UserApi;
+import 'package:flutter_85bet_mobile/ga_interface.dart';
 import 'package:flutter_85bet_mobile/injection_container.dart';
 import 'package:flutter_85bet_mobile/mylogger.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart';
@@ -101,8 +102,8 @@ class AppGlobalStreams {
   String getCredit({bool addSymbol = false}) {
     if (_userCredit.contains('-') == false) {
       return formatValue(_userCredit, creditSign: addSymbol);
-    } else if (addSymbol && _userCredit.startsWith(creditSymbol) == false) {
-      return '$creditSymbol$_userCredit';
+    } else {
+      if (addSymbol) return '$creditSymbol$_userCredit';
     }
     return _userCredit;
   }

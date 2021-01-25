@@ -34,6 +34,7 @@ abstract class GamePlatform with _$GamePlatform {
     @HiveField(2) @JsonKey(fromJson: decodePlatformChName) String ch,
     @HiveField(3) @required String site,
     @HiveField(4) @JsonKey(name: 'type', required: true) String category,
+    @Default('') String gameCategory,
     @Default('0') String favorite,
   }) = GamePlatformEntity;
 
@@ -101,10 +102,20 @@ extension GamePlatformModelExtension on GamePlatformModel {
 }
 
 extension GamePlatformEntityExtension on GamePlatformEntity {
-  bool get isGameHall => ['casino', 'sport', 'lottery'].contains(category);
+  bool get isGameHall =>
+      ['casino', 'sport', 'lottery', 'card'].contains(category) &&
+      !(category == 'card' && site == 'rich88');
+
+  bool get isCustomCategory => ['cockfighting'].contains(category);
+
   String get iconUrl => '/images/index/logo/${site.toUpperCase()}.png';
-  String get imageUrl => '/images/nav/nav_${category}_$site.png';
-  String get gameUrl => '$site/$category/0';
+
+  String get imageUrl =>
+      '/images/nav/nav_${category}_${site.toUpperCase()}.png';
+
+  String get gameUrl =>
+      (gameCategory.isNotEmpty) ? '$site/$gameCategory/0' : '$site/$category/0';
+
   String get label {
     switch (category) {
       case 'casino':

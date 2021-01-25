@@ -6,7 +6,6 @@ import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_wi
 
 import '../../data/form/deposit_form.dart';
 import '../../data/model/deposit_info.dart';
-import '../../data/model/payment_promo.dart';
 import '../../data/model/payment_type_data.dart';
 
 /// Content View for [PaymentEnum.bank]
@@ -14,14 +13,12 @@ import '../../data/model/payment_type_data.dart';
 ///@version 2020/3/26
 class PaymentContentLocal extends StatefulWidget {
   final List<PaymentTypeData> dataList;
-  final List<PaymentPromoData> promoList;
   final List<DepositInfo> infoList;
   final Map<int, String> bankMap;
   final Function depositFuncCall;
 
   PaymentContentLocal({
     @required this.dataList,
-    @required this.promoList,
     @required this.infoList,
     @required this.bankMap,
     @required this.depositFuncCall,
@@ -36,14 +33,10 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
   static final GlobalKey<FormState> _formKey =
       new GlobalKey(debugLabel: 'form');
 
-  final GlobalKey<CustomizeFieldWidgetState> _nameFieldKey =
-      new GlobalKey(debugLabel: 'name');
   final GlobalKey<CustomizeFieldWidgetState> _accountFieldKey =
       new GlobalKey(debugLabel: 'account');
   final GlobalKey<CustomizeFieldWidgetState> _amountFieldKey =
       new GlobalKey(debugLabel: 'amount');
-  final GlobalKey<CustomizeFieldWidgetState> _noteFieldKey =
-      new GlobalKey(debugLabel: 'note');
 
   final double _fieldInset = 56.0;
   final double _titleWidthFactor = 0.35;
@@ -55,8 +48,6 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
   PaymentTypeLocalData _localData;
   DepositInfo _selectedBankInfo;
   int _bankSelected = -1;
-  int _promoSelected = -1;
-  int _methodSelected = 1;
   int _amountVnd = 0;
 
   void _validateForm() {
@@ -68,16 +59,13 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
         DepositDataForm dataForm = DepositDataForm(
           bankIndex: _localData.bankIndex,
           bankId: _localData.bankAccountId,
-          methodId: _methodSelected,
-          name: _nameFieldKey.currentState.getInput,
+          methodId: 1,
           amount: _amountFieldKey.currentState.getInput,
           localBank: _bankSelected,
           localBankCard: _accountFieldKey.currentState.getInput,
-          promoId: _promoSelected,
-          gateway: '1',
-          remark: _noteFieldKey.currentState.getInput,
+          gateway: _localData.payment,
         );
-        if (dataForm.isValid == false) {
+        if (!dataForm.isOnlinePayValid) {
           callToast(localeStr.messageActionFillForm);
           return;
         }
@@ -98,7 +86,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
   void _generateBankDataList() {
     debugPrint('bank map: ${widget.bankMap}');
     _bankNames = widget.bankMap.values.toList()..sort();
-    debugPrint('bank names sorted: $_bankNames\n\n');
+    // debugPrint('bank names sorted: $_bankNames\n\n');
     _bankIds = _bankNames
         .map((value) =>
             widget.bankMap.entries
@@ -108,7 +96,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
             -1)
         .toList()
           ..removeWhere((element) => element == -1);
-    debugPrint('bank ids sorted: $_bankIds\n\n');
+    // debugPrint('bank ids sorted: $_bankIds\n\n');
   }
 
   @override
@@ -133,17 +121,6 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
         ),
       );
     } else {
-      List<String> methods = [
-        localeStr.depositPaymentMethodLocal1,
-        localeStr.depositPaymentMethodLocal2,
-      ];
-      List<PaymentPromoData> promos = [
-        PaymentPromoData(
-          promoId: -1,
-          promoDesc: localeStr.depositPaymentNoPromo,
-        ),
-      ];
-      if (widget.promoList != null) promos.addAll(widget.promoList);
       return new Form(
         key: _formKey,
         child: Column(
@@ -157,8 +134,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
               prefixTextSize: FontSize.SUBTITLE.value,
               titleWidthFactor: _titleWidthFactor,
               horizontalInset: _fieldInset,
-              optionValues:
-                  widget.infoList.map((item) => item.bankAccountId).toList(),
+              optionValues: widget.infoList,
               optionStrings:
                   widget.infoList.map((item) => item.bankAccountName).toList(),
               changeNotify: (data) {
@@ -195,13 +171,6 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                            text: '${localeStr.bankcardViewTitleOwner}:\r\r'),
-                        TextSpan(
-                          text: '${_selectedBankInfo.accountName}\n',
-                          style:
-                              TextStyle(color: themeColor.hintHighlightDarkRed),
-                        ),
-                        TextSpan(
                             text:
                                 '${localeStr.bankcardViewTitleCardNumber}:\r\r'),
                         TextSpan(
@@ -211,54 +180,11 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                         ),
                         TextSpan(
                             text: '${localeStr.bankcardViewTitleBank}:\r\r'),
-                        TextSpan(
-                            text: '${_selectedBankInfo.bankAccountName}\n'),
+                        TextSpan(text: '${_selectedBankInfo.bankCode}\n'),
                       ],
                     ),
                   ),
                 ),
-              ),
-            ),
-
-            ///
-            /// Promo Option
-            ///
-            Padding(
-              padding: const EdgeInsets.only(top: 24.0),
-              child: CustomizeDropdownWidget(
-                prefixText: localeStr.depositPaymentSpinnerTitlePromo,
-                prefixTextSize: FontSize.SUBTITLE.value,
-                titleWidthFactor: _titleWidthFactor,
-                horizontalInset: _fieldInset,
-                optionValues: promos.map((item) => item.promoId).toList(),
-                optionStrings: promos.map((item) => item.promoDesc).toList(),
-                changeNotify: (data) {
-                  // clear text field focus
-                  FocusScope.of(context).unfocus();
-                  // set selected data
-                  if (data is PaymentPromoData) _promoSelected = data.promoId;
-                },
-              ),
-            ),
-
-            ///
-            /// Method Option
-            ///
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: CustomizeDropdownWidget(
-                prefixText: localeStr.depositPaymentSpinnerTitleMethod,
-                prefixTextSize: FontSize.SUBTITLE.value,
-                titleWidthFactor: _titleWidthFactor,
-                horizontalInset: _fieldInset,
-                optionStrings: methods,
-                optionValues: [1, 2],
-                changeNotify: (data) {
-                  // clear text field focus
-                  FocusScope.of(context).unfocus();
-                  // set selected data
-                  _methodSelected = data;
-                },
               ),
             ),
 
@@ -268,6 +194,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: CustomizeDropdownWidget(
+                roundCorner: false,
                 prefixText: localeStr.depositPaymentSpinnerTitleAccountBank,
                 prefixTextSize: FontSize.SUBTITLE.value,
                 titleWidthFactor: _titleWidthFactor,
@@ -285,34 +212,13 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
             ),
 
             ///
-            /// Name Input Field
-            ///
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: new CustomizeFieldWidget(
-                key: _nameFieldKey,
-                hint: localeStr.depositPaymentEditTitleNameHint,
-                persistHint: false,
-                prefixText: localeStr.depositPaymentEditTitleName,
-                prefixTextSize: FontSize.SUBTITLE.value,
-                titleWidthFactor: _titleWidthFactor,
-                horizontalInset: _fieldInset,
-                maxInputLength: InputLimit.NAME_MAX,
-                errorMsg: localeStr.messageInvalidDepositName,
-                validCondition: (value) => rangeCheck(
-                    value: value.length,
-                    min: InputLimit.NAME_MIN,
-                    max: InputLimit.NAME_MAX),
-              ),
-            ),
-
-            ///
             /// Account Input Field
             ///
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: new CustomizeFieldWidget(
                 key: _accountFieldKey,
+                roundCorner: false,
                 hint: localeStr.depositPaymentEditTitleAccountHint,
                 persistHint: false,
                 prefixText: localeStr.depositPaymentEditTitleAccount,
@@ -320,7 +226,10 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                 titleWidthFactor: _titleWidthFactor,
                 horizontalInset: _fieldInset,
                 maxInputLength: InputLimit.CARD_MAX,
-                errorMsg: localeStr.messageInvalidCardNumber,
+                errorMsg: localeStr.messageInvalidCardNumber(
+                  InputLimit.CARD_MIN,
+                  InputLimit.CARD_MAX,
+                ),
                 validCondition: (value) => rangeCheck(
                   value: value.length,
                   min: InputLimit.CARD_MIN,
@@ -337,6 +246,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
               child: new CustomizeFieldWidget(
                 key: _amountFieldKey,
                 fieldType: FieldType.Numbers,
+                roundCorner: false,
                 hint: localeStr.depositPaymentEditTitleAmountHintRange(
                   _localData.min?.strToInt ?? 1,
                   _localData.max.strToInt,
@@ -376,26 +286,6 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                   color: themeColor.defaultHintColor,
                   fontSize: FontSize.SUBTITLE.value,
                 ),
-              ),
-            ),
-
-            ///
-            /// Note Input Field
-            ///
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: new CustomizeFieldWidget(
-                key: _noteFieldKey,
-                hint: localeStr.depositPaymentEditTitleNote,
-                persistHint: false,
-                prefixText: localeStr.depositPaymentEditTitleNote,
-                prefixTextSize: FontSize.SUBTITLE.value,
-                titleWidthFactor: _titleWidthFactor,
-                horizontalInset: _fieldInset,
-                maxInputLength: InputLimit.NOTE_MAX,
-                errorMsg: localeStr.messageInvalidFormat,
-                validCondition: (value) => rangeCheck(
-                    value: value.length, min: 0, max: InputLimit.NOTE_MAX),
               ),
             ),
 

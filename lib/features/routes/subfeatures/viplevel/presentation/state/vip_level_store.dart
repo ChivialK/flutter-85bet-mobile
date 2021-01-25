@@ -22,19 +22,14 @@ abstract class _VipLevelStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg({
-    String msg,
-    bool showOnce = false,
-    FailureType type,
-    int code,
-  }) =>
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
       errorMessage = getErrorMsg(
           from: FailureType.VIP_LEVEL,
           msg: msg,
           showOnce: showOnce,
           type: type,
           code: code);
-
   @computed
   VipLevelStoreState get state {
     // If the user has not yet triggered a action or there has been an error

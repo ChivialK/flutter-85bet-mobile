@@ -23,11 +23,7 @@ class MessageMap {
       case 'dobBefore':
         return localeStr.messageInvalidBirthDate;
       case 'mobileRepeat':
-        return localeStr.messageRepeatMobile;
-      case 'mobileError':
-        return localeStr.messageErrorMobile;
-      case 'agentCodeError':
-        return localeStr.messageErrorReferral;
+        return localeStr.messageRegisterFailed;
       case 'repeatAccount':
       case 'RepeatAccount':
       case 'accountRepeat':
@@ -51,21 +47,27 @@ class MessageMap {
       case 'belowTheMinimum':
         return localeStr.messageInvalidDepositAmountMin(100);
       case 'aboveTheCeiling':
-        return localeStr.messageInvalidDepositAmountMax;
+        return localeStr.messageInvalidWithdrawExceedAmount;
+      case 'amountExceedsTheUpperLimit':
+        return localeStr.messageInvalidDepositAmountMaxLimit;
+      case 'amountIsBelowTheLowerLimit':
+        return localeStr.messageInvalidDepositAmountMinLimit;
+      case 'DepositTooFast':
+        return localeStr.messageActionTooFrequent;
       case 'NoRecordsYet':
         return localeStr.messageWarnNoHistoryData;
       default:
         break;
     }
     switch (from) {
-      case RouteEnum.LOGIN:
-        return localeStr.messageLoginFailed;
       case RouteEnum.REGISTER:
         return localeStr.messageRegisterFailed;
       case RouteEnum.BANKCARD:
         return localeStr.messageTaskFailed(localeStr.messageErrorBindBankcard);
       case RouteEnum.WITHDRAW:
         return localeStr.messageErrorWithdraw;
+      case RouteEnum.DEPOSIT:
+        return localeStr.depositMessageFailed;
       case RouteEnum.BALANCE:
         return localeStr.messageTaskFailed(localeStr.transferResultAlertTitle);
       default:

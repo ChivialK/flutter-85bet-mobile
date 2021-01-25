@@ -85,7 +85,10 @@ class WebGameScreenArguments {
 // **************************************************************************
 
 extension ScreenRouterNavigationHelperMethods on ExtendedNavigatorState {
-  Future pushFeatureScreen() => pushNamed(ScreenRoutes.featureScreen);
+  Future pushFeatureScreen() => pushNamedAndRemoveUntil(
+        ScreenRoutes.featureScreen,
+        (route) => false, // true => same as push, false => push and clear stack
+      );
 
   Future pushWebGameScreen({
     String startUrl = Global.CURRENT_BASE,

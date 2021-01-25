@@ -1,6 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
-import 'package:flutter_85bet_mobile/features/user/register/presentation/register_route.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/gradient_button.dart';
 
 import 'feature_screen_inherited_widget.dart';
 
@@ -38,48 +39,46 @@ class _ScreenMenuBarActionState extends State<ScreenMenuBarAction> {
   Widget _createButtons() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
-      child: ButtonTheme(
-        height: 30,
-        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        shape: RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(4.0),
-        ),
-        child: Row(
-          children: <Widget>[
-//            RaisedButton(
-//              child: new Text(
-//                localeStr.pageTitleLogin,
-//                style: TextStyle(
-//                  fontSize: FontSize.NORMAL.value + 1,
-//                  color: themeColor.buttonTextPrimaryColor,
-//                ),
-//              ),
-//              visualDensity: VisualDensity(horizontal: -3.0),
-//              onPressed: () => RouterNavigate.navigateToPage(RoutePage.login,
-//                  arg: LoginRouteArguments(returnHomeAfterLogin: true)),
-//            ),
-//            SizedBox(width: 4.0),
-            RaisedButton(
-              child: new Text(
-                localeStr.pageTitleRegister,
-                style: TextStyle(
-                  fontSize: FontSize.NORMAL.value + 1,
-                  color: themeColor.buttonTextPrimaryColor,
-                ),
+      child: Row(
+        children: <Widget>[
+          GradientButton(
+            colorType: GradientButtonColor.NORMAL,
+            changeByTheme: false,
+            height: Global.device.comfortButtonHeight - 8.0,
+            child: AutoSizeText(
+              localeStr.pageTitleLogin,
+              style: TextStyle(
+                fontSize: FontSize.NORMAL.value + 1,
+                color: themeColor.buttonTextPrimaryColor,
               ),
-              visualDensity: VisualDensity(horizontal: -3.0),
-//                onPressed: () =>
-//                    RouterNavigate.navigateToPage(RoutePage.register),
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  barrierDismissible: true,
-                  builder: (_) => new RegisterRoute(isDialog: true),
-                );
-              },
+              maxLines: 1,
+              minFontSize: FontSize.SMALL.value - 4.0,
             ),
-          ],
-        ),
+            onPressed: () => RouterNavigate.navigateToPage(RoutePage.login),
+          ),
+          // SizedBox(width: 6.0),
+          // GradientButton(
+          //   colorType: GradientButtonColor.NORMAL,
+          //   changeByTheme: false,
+          //   height: Global.device.comfortButtonHeight - 8.0,
+          //   child: AutoSizeText(
+          //     localeStr.pageTitleRegister,
+          //     style: TextStyle(
+          //       fontSize: FontSize.NORMAL.value + 1,
+          //       color: themeColor.buttonTextPrimaryColor,
+          //     ),
+          //     maxLines: 1,
+          //     minFontSize: FontSize.SMALL.value - 4.0,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: true,
+          //       builder: (_) => new RegisterRoute(isDialog: true),
+          //     );
+          //   },
+          // ),
+        ],
       ),
     );
   }

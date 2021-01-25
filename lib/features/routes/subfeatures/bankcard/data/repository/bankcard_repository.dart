@@ -13,9 +13,13 @@ class BankcardApi {
 
 abstract class BankcardRepository {
   Future<Either<Failure, BankcardModel>> getBankcard();
+
   Future<Either<Failure, RequestCodeModel>> postBankcard(BankcardForm form);
+
   Future<Either<Failure, Map<String, String>>> getBanks();
+
   Future<Either<Failure, Map<String, String>>> getProvinces();
+
   Future<Either<Failure, Map<String, String>>> getMapByCode(String code);
 }
 
@@ -45,15 +49,16 @@ class BankcardRepositoryImpl implements BankcardRepository {
       (data) {
         if (data.isSuccess && data.data.toString().isNotEmpty) {
           MyLogger.print(msg: 'bankcard map: ${data.data}', tag: tag);
-          if (data.data is Map)
+          if (data.data is Map) {
             return Right(BankcardModel.jsonToBankcardModel(data.data)
                 .copyWith(hasCard: true));
-          else if (data.data is String)
+          } else if (data.data is String) {
             return Right(
                 BankcardModel.jsonToBankcardModel(jsonDecode(data.data))
                     .copyWith(hasCard: true));
-          else
+          } else {
             return Left(Failure.dataType());
+          }
         } else {
           return Right(BankcardModel(hasCard: false));
         }

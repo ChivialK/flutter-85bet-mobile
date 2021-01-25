@@ -47,12 +47,8 @@ abstract class _WalletStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg({
-    String msg,
-    bool showOnce = false,
-    FailureType type,
-    int code,
-  }) =>
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
       errorMessage = getErrorMsg(
           from: FailureType.WALLET,
           msg: msg,
@@ -149,7 +145,7 @@ abstract class _WalletStore with Store {
   }
 
   @action
-  Future postWalletTransfer() async {
+  Future postWalletTransfer({bool toSingle = false}) async {
     try {
       // Reset the possible previous error message.
       transferErrorList = null;
@@ -187,7 +183,11 @@ abstract class _WalletStore with Store {
                     msg:
                         'wallet transfer error: ${transferErrorList.toString()}',
                     tag: 'Wallet');
-                updateCredit();
+                if (toSingle)
+                  Future.delayed(
+                      Duration(milliseconds: 500), () => postWalletType(true));
+                else
+                  updateCredit();
               },
             ),
           )
@@ -196,6 +196,13 @@ abstract class _WalletStore with Store {
     } on Exception {
       waitForTypeChange = false;
       setErrorMsg(code: 4);
+    }
+  }
+
+  @action
+  Future<void> cancelWalletTransfer() async {
+    if (transferSuccess == null) {
+      await _repository.cancelTransferAll();
     }
   }
 

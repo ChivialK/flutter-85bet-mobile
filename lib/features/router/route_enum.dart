@@ -37,7 +37,6 @@ enum RouteEnum {
   STORE,
   SIGN,
   WEBSITE,
-  ABOUT,
 
   ///
   MORE,

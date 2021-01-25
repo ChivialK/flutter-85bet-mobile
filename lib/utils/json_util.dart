@@ -157,6 +157,11 @@ class JsonUtil {
     } else {
       map = str;
     }
+
+    if (map.containsKey('msg') && map['msg'] == 'RepeatToken') {
+      throw TokenException();
+    }
+
     // transfer decoded data to model data
     try {
       return jsonToModel(map) as T;

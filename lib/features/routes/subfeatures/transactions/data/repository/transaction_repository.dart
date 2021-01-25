@@ -38,6 +38,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
         break;
       case TransactionDateSelected.yesterday:
         startDate = now.subtract(Duration(days: 1)).toDateStartString;
+        endDate = now.subtract(Duration(days: 1)).toDateEndString;
         break;
       case TransactionDateSelected.month:
         var lastMonth = now.subtract(Duration(days: 30));
@@ -55,7 +56,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
       jsonToModel: TransactionModel.jsonToTransactionModel,
       tag: 'remote-TRANSACTION',
     );
-//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+//    print('test response type: ${result.runtimeType}, data: $result');
     return result.fold(
       (failure) => Left(failure),
       (model) => Right(model),

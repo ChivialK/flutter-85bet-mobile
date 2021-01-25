@@ -6,6 +6,7 @@ import 'register_form_widget.dart';
 
 class RegisterDisplay extends StatelessWidget {
   final MemberGridItem pageItem = MemberGridItem.register;
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -19,11 +20,7 @@ class RegisterDisplay extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: themeColor.memberIconColor,
-                  boxShadow: ThemeInterface.iconBottomShadow,
-                ),
+                decoration: ThemeInterface.pageIconContainerDecor,
                 child: Icon(
                   pageItem.value.iconData,
                   size: 32 * Global.device.widthScale,
@@ -33,7 +30,9 @@ class RegisterDisplay extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text(
                   pageItem.value.label,
-                  style: TextStyle(fontSize: FontSize.HEADER.value),
+                  style: TextStyle(
+                      fontSize: FontSize.HEADER.value,
+                      color: themeColor.defaultTitleColor),
                 ),
               )
             ],

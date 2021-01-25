@@ -1,9 +1,7 @@
 import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
 import 'package:flutter_85bet_mobile/core/network/handler/request_status_model.dart';
-import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/transfer/data/form/transfer_form.dart';
-import 'package:flutter_85bet_mobile/features/user/data/repository/user_info_repository.dart';
 import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart'
     show ValueUtilExtension;
@@ -19,12 +17,11 @@ enum BalanceStoreState { initial, loading, loaded }
 
 abstract class _BalanceStore with Store {
   final BalanceRepository _repository;
-  final UserInfoRepository _infoRepository;
 
   final StreamController<String> _loadingController =
       StreamController<String>.broadcast();
 
-  _BalanceStore(this._repository, this._infoRepository);
+  _BalanceStore(this._repository);
 
   @observable
   ObservableFuture<Either<Failure, List<String>>> _promiseFuture;
@@ -53,12 +50,8 @@ abstract class _BalanceStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg({
-    String msg,
-    bool showOnce = false,
-    FailureType type,
-    int code,
-  }) =>
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
       errorMessage = getErrorMsg(
           from: FailureType.BALANCE,
           msg: msg,
@@ -172,17 +165,11 @@ abstract class _BalanceStore with Store {
       // Reset the possible previous error message.
       errorMessage = null;
       // Fetch from the repository and wrap the regular Future into an observable.
-      await _infoRepository.updateCredit().then(
+      await _repository.getLimit().then(
         (result) {
           result.fold(
-            (failure) {
-              setErrorMsg(msg: failure.message, showOnce: true);
-              getAppGlobalStreams.resetCredit();
-            },
-            (value) {
-              getAppGlobalStreams.updateCredit(value);
-              creditLimit = value.strToDouble;
-            },
+            (failure) => setErrorMsg(msg: failure.message, showOnce: true),
+            (data) => creditLimit = data.strToDouble,
           );
         },
       ).whenComplete(() => debugPrint('credit limit: $creditLimit'));

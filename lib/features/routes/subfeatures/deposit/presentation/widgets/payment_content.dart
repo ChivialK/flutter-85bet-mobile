@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/deposit/data/model/payment_type_data.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
 import '../../data/model/deposit_info.dart';
@@ -50,12 +51,10 @@ class PaymentContentState extends State<PaymentContent> {
   }
 
   void updateContent(PaymentType type) {
-    _typeContent = (type.key == 1)
+    debugPrint('update content: $type');
+    _typeContent = (type.data.first is PaymentTypeLocalData)
         ? new PaymentContentLocal(
             dataList: type.data,
-            promoList: (widget.promos.containsKey(type.key))
-                ? widget.promos[type.key]
-                : [],
             infoList: widget.infoList,
             bankMap: widget.banks,
             depositFuncCall: widget.depositCall,

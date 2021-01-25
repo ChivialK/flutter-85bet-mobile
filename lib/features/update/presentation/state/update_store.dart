@@ -71,12 +71,10 @@ abstract class _UpdateStore with Store {
     // if contains chars that have not been replaced, current will be -1
     int current = Global.device.appVersion
         .replaceAll(RegExp(r'[.|+|R]'), '')
-        .strToIntNoErrorStack;
+        .strToIntSilent;
     debugPrint('current version as int: $current');
-    int server = _updateVersion
-        .replaceAll('.', '')
-        .replaceAll('+', '')
-        .strToIntNoErrorStack;
+    int server =
+        _updateVersion.replaceAll('.', '').replaceAll('+', '').strToIntSilent;
     debugPrint('server version as int: $server');
     return (current == -1 || server == -1) ? false : current < server;
   }

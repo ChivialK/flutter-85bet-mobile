@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_dropdown_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/pager_widget.dart';
@@ -186,11 +187,7 @@ class _DealsRouteState extends State<DealsRoute> {
                           children: [
                             Container(
                               padding: const EdgeInsets.all(10.0),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: themeColor.memberIconColor,
-                                boxShadow: ThemeInterface.iconBottomShadow,
-                              ),
+                              decoration: ThemeInterface.pageIconContainerDecor,
                               child: Icon(
                                 pageItem.value.iconData,
                                 size: 32 * Global.device.widthScale,
@@ -210,7 +207,7 @@ class _DealsRouteState extends State<DealsRoute> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 16.0),
+                            const EdgeInsets.fromLTRB(4.0, 20.0, 8.0, 16.0),
                         child: Container(
                           decoration: ThemeInterface.layerShadowDecorRound,
                           child: Column(
@@ -273,7 +270,8 @@ class _DealsRouteState extends State<DealsRoute> {
                                       child: SizedBox(
                                         height:
                                             Global.device.comfortButtonHeight,
-                                        child: RaisedButton(
+                                        child: GradientButton(
+                                          expand: true,
                                           child: Text(localeStr.btnQueryNow),
                                           onPressed: () => getPageData(1),
                                         ),

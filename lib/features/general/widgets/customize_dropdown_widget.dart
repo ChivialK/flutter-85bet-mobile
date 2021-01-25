@@ -80,7 +80,7 @@ class CustomizeDropdownWidget extends StatefulWidget {
     this.clearValueOnMenuChanged = false,
     this.subTheme = false,
     this.scaleText = false,
-    this.roundCorner = false,
+    this.roundCorner = true,
     this.requiredInput = false,
     this.debug = false,
   }) : super(key: key);
@@ -153,7 +153,7 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
     // update text max lines
     _currentPrefixMaxLines = (widget.prefixTextMaxLines != null)
         ? widget.prefixTextMaxLines
-        : (Global.lang == 'zh')
+        : (Global.localeCode == 'zh')
             ? 1
             : 2;
 
@@ -261,10 +261,12 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
               constraints: _prefixConstraints,
               decoration: BoxDecoration(
                 color: _prefixBgColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(4.0),
-                  bottomLeft: Radius.circular(4.0),
-                ),
+                borderRadius: (widget.roundCorner)
+                    ? BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        bottomLeft: Radius.circular(4.0),
+                      )
+                    : BorderRadius.zero,
               ),
               child: _prefixWidget,
             ),

@@ -12,7 +12,9 @@ class TransferApi {
 
 abstract class TransferRepository {
   Future<Either<Failure, TransferPlatformList>> getPlatform();
+
   Future<Either<Failure, TransferBalanceModel>> getBalance(String platform);
+
   Future<Either<Failure, RequestStatusModel>> postTransfer(TransferForm form);
 }
 

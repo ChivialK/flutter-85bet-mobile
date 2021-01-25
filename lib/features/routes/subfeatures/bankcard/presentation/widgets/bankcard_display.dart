@@ -30,10 +30,6 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
       new GlobalKey(debugLabel: 'name');
   final GlobalKey<CustomizeFieldWidgetState> _accountFieldKey =
       new GlobalKey(debugLabel: 'account');
-  final GlobalKey<CustomizeFieldWidgetState> _branchFieldKey =
-      new GlobalKey(debugLabel: 'branch');
-  final GlobalKey<CustomizeFieldWidgetState> _provinceFieldKey =
-      new GlobalKey(debugLabel: 'branch');
 
   List<ReactionDisposer> _disposers;
   Map<String, String> bankMap;
@@ -47,12 +43,9 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
         owner: _nameFieldKey.currentState.getInput,
         bankId: _bankSelected ?? '',
         card: _accountFieldKey.currentState.getInput,
-        branch: _branchFieldKey.currentState.getInput,
-        province: _provinceFieldKey.currentState.getInput,
-        area: '',
       );
       if (dataForm.isValid) {
-        debugPrint('bankcard form: ${dataForm.toJson()}');
+        // print('bankcard form: ${dataForm.toJson()}');
         if (widget.store.waitForNewCardResult)
           callToast(localeStr.messageWait);
         else
@@ -79,7 +72,7 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
         (_) => widget.store.banksMap,
         // Run some logic with the content of the observed field
         (map) {
-          debugPrint('bank map changed, size: ${map.keys.length}');
+          print('bank map changed, size: ${map.keys.length}');
           setState(() {
             bankMap = map;
           });
@@ -117,11 +110,7 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: themeColor.memberIconColor,
-                      boxShadow: ThemeInterface.iconBottomShadow,
-                    ),
+                    decoration: ThemeInterface.pageIconContainerDecor,
                     child: Icon(
                       pageItem.value.iconData,
                       size: 32 * Global.device.widthScale,
@@ -131,7 +120,9 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       pageItem.value.label,
-                      style: TextStyle(fontSize: FontSize.HEADER.value),
+                      style: TextStyle(
+                          fontSize: FontSize.HEADER.value,
+                          color: themeColor.defaultTitleColor),
                     ),
                   )
                 ],
@@ -159,6 +150,7 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                             new CustomizeFieldWidget(
                               key: _nameFieldKey,
                               hint: '',
+                              fieldType: FieldType.TextOnly,
                               persistHint: false,
                               prefixText: localeStr.bankcardViewTitleOwner,
                               prefixTextSize: FontSize.SUBTITLE.value,
@@ -167,7 +159,7 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                               errorMsg: localeStr.messageInvalidCardOwner,
                               validCondition: (value) => rangeCheck(
                                   value: value.length,
-                                  min: 2,
+                                  min: InputLimit.NAME_MIN,
                                   max: InputLimit.NAME_MAX),
                             ),
 
@@ -202,65 +194,26 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                               child: new CustomizeFieldWidget(
                                 key: _accountFieldKey,
                                 fieldType: FieldType.Numbers,
-                                hint: '',
+                                hint: '9704xxxxxxxxxxxx',
                                 persistHint: false,
                                 prefixText:
                                     localeStr.bankcardViewTitleCardNumber,
                                 prefixTextSize: FontSize.SUBTITLE.value,
-                                maxInputLength: InputLimit.CARD_MAX,
+                                maxInputLength: InputLimit.CARD_FIXED_MAX,
                                 horizontalInset: _fieldInset,
-                                errorMsg: localeStr.messageInvalidCardNumber,
-                                validCondition: (value) => rangeCheck(
-                                  value: value.length,
-                                  min: InputLimit.CARD_MIN,
-                                  max: InputLimit.CARD_MAX,
+                                errorMsg:
+                                    localeStr.messageInvalidCardNumberFixed(
+                                  InputLimit.CARD_FIXED_MIN,
+                                  InputLimit.CARD_FIXED_MAX,
+                                  '9704',
                                 ),
-                              ),
-                            ),
-
-                            ///
-                            /// Branch Input Field
-                            ///
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 6.0),
-                              child: new CustomizeFieldWidget(
-                                key: _branchFieldKey,
-                                hint: '',
-                                persistHint: false,
-                                prefixText:
-                                    localeStr.bankcardViewTitleBankBranch,
-                                prefixTextSize: FontSize.SUBTITLE.value,
-                                maxInputLength: InputLimit.NAME_MAX,
-                                horizontalInset: _fieldInset,
-                                errorMsg: localeStr.messageInvalidCardBankPoint,
-                                validCondition: (value) => rangeCheck(
-                                    value: value.length,
-                                    min: 3,
-                                    max: InputLimit.NAME_MAX),
-                              ),
-                            ),
-
-                            ///
-                            /// Bank Province Field
-                            ///
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 6.0),
-                              child: new CustomizeFieldWidget(
-                                key: _provinceFieldKey,
-                                hint: '',
-                                persistHint: false,
-                                prefixText:
-                                    localeStr.bankcardViewTitleBankProvince,
-                                prefixTextSize: FontSize.SUBTITLE.value,
-                                maxInputLength: InputLimit.NAME_MAX,
-                                horizontalInset: _fieldInset,
-                                errorMsg: localeStr.messageInvalidCardBankPoint,
-                                validCondition: (value) => rangeCheck(
-                                    value: value.length,
-                                    min: 3,
-                                    max: InputLimit.NAME_MAX),
+                                validCondition: (value) =>
+                                    rangeCheck(
+                                      value: value.length,
+                                      min: InputLimit.CARD_FIXED_MIN,
+                                      max: InputLimit.CARD_FIXED_MAX,
+                                    ) &&
+                                    value.startsWith('9704'),
                               ),
                             ),
                           ],

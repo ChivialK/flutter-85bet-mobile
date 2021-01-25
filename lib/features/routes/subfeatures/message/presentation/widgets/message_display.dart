@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/event/event_inject.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
-import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart'
-    show getAppGlobalStreams;
 import 'package:flutter_85bet_mobile/features/screen/feature_screen_inherited_widget.dart';
 
 import '../state/message_store.dart';
@@ -40,7 +38,6 @@ class _MessageDisplayState extends State<MessageDisplay> {
     }
 
     _eventStore = FeatureScreenInheritedWidget.of(context)?.eventStore;
-    debugPrint('screen has new message: ${getAppGlobalStreams.hasNewMessage}');
 
     _itemSizeCalc ??= new MessageItemSizeCalc();
     _itemKeys ??= new List();
@@ -72,16 +69,12 @@ class _MessageDisplayState extends State<MessageDisplay> {
         physics: BouncingScrollPhysics(),
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 12.0),
+            padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 0.0),
             child: Row(
               children: [
                 Container(
                   padding: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: themeColor.memberIconColor,
-                    boxShadow: ThemeInterface.iconBottomShadow,
-                  ),
+                  decoration: ThemeInterface.pageIconContainerDecor,
                   child: Icon(
                     pageItem.value.iconData,
                     size: 32 * Global.device.widthScale,
@@ -91,14 +84,16 @@ class _MessageDisplayState extends State<MessageDisplay> {
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
                     pageItem.value.label,
-                    style: TextStyle(fontSize: FontSize.HEADER.value),
+                    style: TextStyle(
+                        fontSize: FontSize.HEADER.value,
+                        color: themeColor.defaultTitleColor),
                   ),
                 )
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 8.0),
+            padding: const EdgeInsets.fromLTRB(16.0, 20.0, 16.0, 8.0),
             child: ListView.builder(
               primary: false,
               shrinkWrap: true,

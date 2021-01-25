@@ -162,34 +162,34 @@ class MyThemeData {
                 width: 2.0,
                 style: BorderStyle.solid)),
       ),
-
-      ///
-      /// Slider Theme
-      ///
-      sliderTheme: SliderThemeData(
-        trackHeight: 3.0,
-        activeTrackColor: Color(0xff1976e0),
-        inactiveTrackColor: Color(0x3d1976e0),
-        disabledActiveTrackColor: Color(0x520f498a),
-        disabledInactiveTrackColor: Color(0x1f0f498a),
-        activeTickMarkColor: Color(0x8ad1e4fa),
-        inactiveTickMarkColor: Color(0x8a1976e0),
-        disabledActiveTickMarkColor: Color(0x1fd1e4fa),
-        disabledInactiveTickMarkColor: Color(0x1f0f498a),
-        thumbColor: Color(0xff1976e0),
-        disabledThumbColor: Color(0x520f498a),
-        thumbShape: RoundSliderThumbShape(),
-        overlayColor: Color(0x291976e0),
-        valueIndicatorColor: Color(0xff1976e0),
-        valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-        showValueIndicator: ShowValueIndicator.onlyForDiscrete,
-        valueIndicatorTextStyle: TextStyle(
-          color: Color(0xffffffff),
-          fontSize: 14.0,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
-        ),
-      ),
+//
+//      ///
+//      /// Slider Theme
+//      ///
+//      sliderTheme: SliderThemeData(
+//        trackHeight: 3.0,
+//        activeTrackColor: Color(0xff1976e0),
+//        inactiveTrackColor: Color(0x3d1976e0),
+//        disabledActiveTrackColor: Color(0x520f498a),
+//        disabledInactiveTrackColor: Color(0x1f0f498a),
+//        activeTickMarkColor: Color(0x8ad1e4fa),
+//        inactiveTickMarkColor: Color(0x8a1976e0),
+//        disabledActiveTickMarkColor: Color(0x1fd1e4fa),
+//        disabledInactiveTickMarkColor: Color(0x1f0f498a),
+//        thumbColor: Color(0xff1976e0),
+//        disabledThumbColor: Color(0x520f498a),
+//        thumbShape: RoundSliderThumbShape(),
+//        overlayColor: Color(0x291976e0),
+//        valueIndicatorColor: Color(0xff1976e0),
+//        valueIndicatorShape: PaddleSliderValueIndicatorShape(),
+//        showValueIndicator: ShowValueIndicator.onlyForDiscrete,
+//        valueIndicatorTextStyle: TextStyle(
+//          color: Color(0xffffffff),
+//          fontSize: 14.0,
+//          fontWeight: FontWeight.w400,
+//          fontStyle: FontStyle.normal,
+//        ),
+//      ),
     );
   }
 }

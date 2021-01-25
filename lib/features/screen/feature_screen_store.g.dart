@@ -16,12 +16,6 @@ mixin _$FeatureScreenStore on _FeatureScreenStore, Store {
       (_$navIndexComputed ??= Computed<int>(() => super.navIndex,
               name: '_FeatureScreenStore.navIndex'))
           .value;
-  Computed<bool> _$hasUserComputed;
-
-  @override
-  bool get hasUser => (_$hasUserComputed ??= Computed<bool>(() => super.hasUser,
-          name: '_FeatureScreenStore.hasUser'))
-      .value;
 
   final _$errorMessageAtom = Atom(name: '_FeatureScreenStore.errorMessage');
 
@@ -83,18 +77,18 @@ mixin _$FeatureScreenStore on _FeatureScreenStore, Store {
     });
   }
 
-  final _$userStatusAtom = Atom(name: '_FeatureScreenStore.userStatus');
+  final _$userLoggedInAtom = Atom(name: '_FeatureScreenStore.userLoggedIn');
 
   @override
-  LoginStatus get userStatus {
-    _$userStatusAtom.reportRead();
-    return super.userStatus;
+  bool get userLoggedIn {
+    _$userLoggedInAtom.reportRead();
+    return super.userLoggedIn;
   }
 
   @override
-  set userStatus(LoginStatus value) {
-    _$userStatusAtom.reportWrite(value, super.userStatus, () {
-      super.userStatus = value;
+  set userLoggedIn(bool value) {
+    _$userLoggedInAtom.reportWrite(value, super.userLoggedIn, () {
+      super.userLoggedIn = value;
     });
   }
 
@@ -103,9 +97,8 @@ mixin _$FeatureScreenStore on _FeatureScreenStore, Store {
     return '''
 errorMessage: ${errorMessage},
 pageInfo: ${pageInfo},
-userStatus: ${userStatus},
-navIndex: ${navIndex},
-hasUser: ${hasUser}
+userLoggedIn: ${userLoggedIn},
+navIndex: ${navIndex}
     ''';
   }
 }

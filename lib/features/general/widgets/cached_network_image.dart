@@ -28,7 +28,6 @@ Future<Widget> networkImageWidget(
   double imgScale = 1.0,
   Color imgColor,
   bool addPendingIconOnError = false,
-  bool cacheImage = true,
 }) async {
   String imageUrl = (url.startsWith('http://') || url.startsWith('https://'))
       ? url
@@ -50,7 +49,6 @@ Future<Widget> networkImageWidget(
           fit: fit,
           scale: imgScale,
           color: imgColor,
-          cache: cacheImage,
           loadStateChanged: (ExtendedImageState state) {
             switch (state.extendedImageLoadState) {
               case LoadState.completed:
@@ -59,7 +57,7 @@ Future<Widget> networkImageWidget(
                 MyLogger.warn(msg: 'load image failed: $imageUrl');
                 Future.sync(() => clearDiskCachedImage(imageUrl)).then(
                     (value) => debugPrint('clean image cache result: $value'));
-                if (addPendingIconOnError) return Image.asset(Res.iconPending);
+                if (addPendingIconOnError) return Image.asset(Res.icon_pending);
                 return Icon(
                   Icons.broken_image,
                   color: themeColor.iconSubColor1,
@@ -86,7 +84,6 @@ FutureBuilder networkImageBuilder(
   bool roundCorner = false,
   double roundParam = 6.0,
   bool addPendingIconOnError = false,
-  bool cacheImage = true,
 }) {
   return FutureBuilder(
     future: networkImageWidget(
@@ -95,19 +92,17 @@ FutureBuilder networkImageBuilder(
       imgScale: imgScale,
       imgColor: imgColor,
       addPendingIconOnError: addPendingIconOnError,
-      cacheImage: cacheImage,
     ),
     builder: (_, snapshot) {
       if (snapshot.connectionState == ConnectionState.done &&
           !snapshot.hasError) {
-        if (roundCorner) {
+        if (roundCorner)
           return ClipRRect(
             borderRadius: BorderRadius.circular(roundParam),
             child: snapshot.data,
           );
-        } else {
+        else
           return snapshot.data;
-        }
       } else if (snapshot.hasError) {
         MyLogger.warn(
             msg: 'network image builder error: ${snapshot.error}',

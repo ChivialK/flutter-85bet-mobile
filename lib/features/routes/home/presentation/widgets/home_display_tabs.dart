@@ -4,16 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/tabs_page_control_widget.dart';
-import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
 import '../../data/models/game_category_model.dart';
 import '../state/home_store.dart';
 import 'home_display_size_calc.dart';
-import 'home_display_tab_about.dart';
 import 'home_display_tab_page.dart';
 import 'home_display_tab_promo.dart';
 import 'home_display_tab_website.dart';
 import 'home_store_inherit_widget.dart';
+import 'home_tab_item.dart';
 
 /// Main view of the game area
 /// Creates a [TabBar] widget to switch between each game category
@@ -45,6 +44,8 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
   PageController _pageController;
   Widget _tabBar;
 
+  Map<String, GlobalKey<HomeTabItemState>> _tabKeyMap;
+  Map<String, HomeTabItem> _tabItemMap;
   int _currentIndex;
   String _preType;
   String _currentType;
@@ -148,8 +149,10 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
   }
 
   Widget _buildTabBar(HomeStore store) {
+    _tabKeyMap = new Map();
+    _tabItemMap = new Map();
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 6.0),
+      margin: const EdgeInsets.symmetric(horizontal: 4.0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -165,7 +168,7 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
                 minWidth: widget.sizeCalc.barMinWidth,
                 maxWidth: widget.sizeCalc.barMaxWidth,
               ),
-              margin: const EdgeInsets.symmetric(vertical: 4.0),
+//              margin: const EdgeInsets.only(top: 4.0),
               /* Rotate to vertical */
               child: RotatedBox(
                 quarterTurns: 1,
@@ -190,7 +193,7 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
 
           /// platform page control
           Container(
-            margin: const EdgeInsets.only(top: 6.0, bottom: 4.0),
+            margin: const EdgeInsets.only(top: 2.5, bottom: 1.0),
             constraints: BoxConstraints(
 //              minWidth: widget.sizeCalc.pageMinWidth,
               maxWidth: widget.sizeCalc.pageMaxWidth,
@@ -219,21 +222,10 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
                               _pageController?.jumpToPage(0);
                             },
                           );
-                        case GamePageType.MovieWebsite:
-                          return HomeDisplayTabWebsite(
-                            url: Global.BET85_MOVIE_URL,
-                            linkHint: localeStr.gameCategoryMovieWebHint,
-                          );
                         case GamePageType.Website:
                           return HomeDisplayTabWebsite(
                             url: Global.CURRENT_BASE,
                             linkHint: localeStr.gameCategoryWebHint,
-                          );
-                        case GamePageType.About:
-                          return HomeDisplayTabAbout(
-                            onNavigateCallBack: () {
-                              _pageController?.jumpToPage(0);
-                            },
                           );
                         default:
                           return SizedBox.shrink();
@@ -250,6 +242,24 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
   }
 
   Widget _createTab(GameCategoryModel category) {
+    GlobalKey<HomeTabItemState> key;
+    if (_tabKeyMap.containsKey(category.type)) {
+      key = _tabKeyMap[category.type];
+    } else {
+      key = new GlobalKey<HomeTabItemState>(debugLabel: category.type);
+      _tabKeyMap[category.type] = key;
+      _tabItemMap[category.type] = (themeColor.isDarkTheme)
+          ? new HomeTabItem.dark(
+              key: key,
+              category: category,
+              itemWidth: widget.sizeCalc.barItemWidth,
+            )
+          : new HomeTabItem.light(
+              key: key,
+              category: category,
+              itemWidth: widget.sizeCalc.barItemWidth,
+            );
+    }
 //    debugPrint('creating tab: $category');
     return RotatedBox(
       quarterTurns: 3, // rotate back to normal display
@@ -261,85 +271,29 @@ class HomeDisplayTabsState extends State<HomeDisplayTabs>
             width: widget.sizeCalc.barItemWidth,
             // vertical space between tabs
             margin: const EdgeInsets.symmetric(vertical: 3.0),
-            decoration: BoxDecoration(
-              border:
-                  Border.all(width: 2.0, color: themeColor.homeTabDividerColor),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    color: themeColor.homeTabIconBgColor,
-                    padding: const EdgeInsets.all(4.0),
-                    child: SizedBox(
-                      width: 24.0,
-                      height: 20.0,
-                      child: (category.iconUrl.isNotEmpty)
-                          ? networkImageBuilder(
-                              category.iconUrl,
-                              imgColor: themeColor.homeTabIconColor,
-                            )
-                          : (category.assetPath != null)
-                              ? Image.asset(
-                                  category.assetPath,
-                                  color: themeColor.homeTabIconColor,
-                                )
-                              : (category.iconCode != null)
-                                  ? Icon(
-                                      category.iconCode,
-                                      color: themeColor.homeTabIconColor,
-                                    )
-                                  : Icon(
-                                      Icons.add,
-                                      color: themeColor.homeTabIconColor,
-                                    ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: StreamBuilder<List<String>>(
-                    stream: _updateController.stream,
-                    initialData: [_currentType],
-                    builder: (ctx, update) {
-                      String type = category.type;
-                      return Container(
-                        alignment: Alignment.centerLeft,
-                        color: (update.data.contains(type))
-                            ? (type == _currentType)
-                                ? themeColor.homeTabIconBgColor
-                                : themeColor.homeTabBgColor
-                            : themeColor.homeTabBgColor,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          child: RichText(
-                            maxLines: 2,
-                            textAlign: TextAlign.start,
-                            overflow: TextOverflow.visible,
-                            text: TextSpan(
-                                text: category.label,
-                                style: TextStyle(
-                                  fontSize: (category.label.countLength >= 6)
-                                      ? FontSize.SMALLER.value
-                                      : FontSize.NORMAL.value,
-                                  color: (update.data.contains(type))
-                                      ? (type == _currentType)
-                                          ? themeColor.homeTabSelectedTextColor
-                                          : themeColor.homeTabTextColor
-                                      : themeColor.homeTabTextColor,
-                                )),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
+            child: StreamBuilder<List<String>>(
+                stream: _updateController.stream,
+                initialData: [_currentType],
+                builder: (context, update) {
+                  String type = category.type;
+                  if (update.data.contains(type)) {
+                    bool selected = _currentType == type;
+                    if (key.currentState == null) {
+                      Future.delayed(Duration(milliseconds: 150), () {
+                        if (mounted) {
+                          key.currentState?.setSelected = selected;
+                          debugPrint(
+                              'set category tab $type selected to $selected');
+                        }
+                      });
+                    } else {
+                      key.currentState?.setSelected = selected;
+                      debugPrint(
+                          'set category tab $type selected to $selected');
+                    }
+                  }
+                  return _tabItemMap[type];
+                }),
           ),
         ),
       ),

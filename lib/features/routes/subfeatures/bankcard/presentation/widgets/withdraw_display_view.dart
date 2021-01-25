@@ -41,11 +41,10 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
       );
       if (dataForm.isValid) {
         debugPrint('bankcard form: ${dataForm.toJson()}');
-        if (widget.store.waitForWithdrawResult) {
+        if (widget.store.waitForWithdrawResult)
           callToast(localeStr.messageWait);
-        } else {
+        else
           widget.store.sendRequest(dataForm);
-        }
       } else {
         callToast(localeStr.messageActionFillForm);
       }
@@ -75,11 +74,7 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: themeColor.memberIconColor,
-                      boxShadow: ThemeInterface.iconBottomShadow,
-                    ),
+                    decoration: ThemeInterface.pageIconContainerDecor,
                     child: Icon(
                       pageItem.value.iconData,
                       size: 32 * Global.device.widthScale,
@@ -89,16 +84,18 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Text(
                       pageItem.value.label,
-                      style: TextStyle(fontSize: FontSize.HEADER.value),
+                      style: TextStyle(
+                          fontSize: FontSize.HEADER.value,
+                          color: themeColor.defaultTitleColor),
                     ),
                   )
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 0.0),
+              padding: const EdgeInsets.fromLTRB(4.0, 20.0, 8.0, 0.0),
               child: Container(
-                decoration: ThemeInterface.layerShadowDecorRoundTop,
+                decoration: ThemeInterface.layerShadowDecorRound,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -129,9 +126,9 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(4.0, 2.0, 4.0, 16.0),
+              padding: const EdgeInsets.fromLTRB(4.0, 6.0, 8.0, 16.0),
               child: Container(
-                decoration: ThemeInterface.layerShadowDecorRoundBottom,
+                decoration: ThemeInterface.layerShadowDecorRound,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -181,7 +178,7 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                                     localeStr.messageInvalidWithdrawPassword,
                                 validCondition: (value) => rangeCheck(
                                   value: value.length,
-                                  min: InputLimit.PASSWORD_MIN_OLD,
+                                  min: InputLimit.PASSWORD_MIN,
                                   max: InputLimit.PASSWORD_MAX,
                                 ),
                               ),
@@ -261,13 +258,13 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
               flex: 3,
               child: Text(
                 '$title:',
-                style: TextStyle(fontSize: FontSize.TITLE.value),
+                style: TextStyle(fontSize: FontSize.SUBTITLE.value),
               )),
           Expanded(
             flex: 5,
             child: Text(
               '\r\r$content',
-              style: TextStyle(fontSize: FontSize.TITLE.value),
+              style: TextStyle(fontSize: FontSize.SUBTITLE.value),
             ),
           ),
         ],

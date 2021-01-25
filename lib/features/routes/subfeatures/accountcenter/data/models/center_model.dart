@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart' show debugPrint;
+import 'package:flutter_85bet_mobile/mylogger.dart';
 import 'package:flutter_85bet_mobile/utils/json_util.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart'
     show ValueUtilExtension;
@@ -24,25 +24,25 @@ abstract class CenterModel with _$CenterModel {
     @JsonKey(name: 'cGP_wallet', defaultValue: '') String cgpWallet,
     @JsonKey(name: 'cPW_wallet', defaultValue: '') String cpwWallet,
     @JsonKey(name: 'address', fromJson: _jsonList) List lotto,
-    @JsonKey(name: 'allgame') int allGame,
+    @JsonKey(name: 'allgame') num allGame,
     @JsonKey(name: 'allgame_level') int allGameLevel,
     @JsonKey(name: 'allgame_value') int allGameValue,
-    @JsonKey(name: 'cardgame') int cardGame,
+    @JsonKey(name: 'cardgame') num cardGame,
     @JsonKey(name: 'cardgame_level') int cardGameLevel,
     @JsonKey(name: 'cardgame_value') int cardGameValue,
-    @JsonKey(name: 'casinogame') int casinoGame,
+    @JsonKey(name: 'casinogame') num casinoGame,
     @JsonKey(name: 'casinogame_level') int casinoGameLevel,
     @JsonKey(name: 'casinogame_value') int casinoGameValue,
-    @JsonKey(name: 'fishgame') int fishGame,
+    @JsonKey(name: 'fishgame') num fishGame,
     @JsonKey(name: 'fishgame_level') int fishGameLevel,
     @JsonKey(name: 'fishgame_value') int fishGameValue,
-    @JsonKey(name: 'lotterygame') int lotteryGame,
+    @JsonKey(name: 'lotterygame') num lotteryGame,
     @JsonKey(name: 'lotterygame_level') int lotteryGameLevel,
     @JsonKey(name: 'lotterygame_value') int lotteryGameValue,
-    @JsonKey(name: 'slotgame') int slotGame,
+    @JsonKey(name: 'slotgame') num slotGame,
     @JsonKey(name: 'slotgame_level') int slotGameLevel,
     @JsonKey(name: 'slotgame_value') int slotGameValue,
-    @JsonKey(name: 'sportgame') int sportGame,
+    @JsonKey(name: 'sportgame') num sportGame,
     @JsonKey(name: 'sportgame_level') int sportGameLevel,
     @JsonKey(name: 'sportgame_value') int sportGameValue,
     @JsonKey(name: 'vip_option') dynamic vipOption,
@@ -63,29 +63,29 @@ abstract class CenterModel with _$CenterModel {
         cgpWallet: jsonMap['cGP_wallet'] as String ?? '',
         cpwWallet: jsonMap['cPW_wallet'] as String ?? '',
         lotto: _jsonList(jsonMap['address']),
-        allGame: jsonMap['allgame'] as int,
-        allGameLevel: jsonMap['allgame_level'] as int,
-        allGameValue: jsonMap['allgame_value'] as int,
-        cardGame: jsonMap['cardgame'] as int,
-        cardGameLevel: jsonMap['cardgame_level'] as int,
-        cardGameValue: jsonMap['cardgame_value'] as int,
-        casinoGame: jsonMap['casinogame'] as int,
-        casinoGameLevel: jsonMap['casinogame_level'] as int,
-        casinoGameValue: jsonMap['casinogame_value'] as int,
-        fishGame: jsonMap['fishgame'] as int,
-        fishGameLevel: jsonMap['fishgame_level'] as int,
-        fishGameValue: jsonMap['fishgame_value'] as int,
-        lotteryGame: jsonMap['lotterygame'] as int,
-        lotteryGameLevel: jsonMap['lotterygame_level'] as int,
-        lotteryGameValue: jsonMap['lotterygame_value'] as int,
-        slotGame: jsonMap['slotgame'] as int,
-        slotGameLevel: jsonMap['slotgame_level'] as int,
-        slotGameValue: jsonMap['slotgame_value'] as int,
-        sportGame: jsonMap['sportgame'] as int,
-        sportGameLevel: jsonMap['sportgame_level'] as int,
-        sportGameValue: jsonMap['sportgame_value'] as int,
-        vipOption: jsonMap['vip_option'],
-        vipSetting: jsonMap['vip_setting'],
+        allGame: jsonMap['allgame'] as num,
+        allGameLevel: _jsonToInt(jsonMap['allgame_level']),
+        allGameValue: _jsonToInt(jsonMap['allgame_value']),
+        cardGame: jsonMap['cardgame'] as num,
+        cardGameLevel: _jsonToInt(jsonMap['cardgame_level']),
+        cardGameValue: _jsonToInt(jsonMap['cardgame_value']),
+        casinoGame: jsonMap['casinogame'] as num,
+        casinoGameLevel: _jsonToInt(jsonMap['casinogame_level']),
+        casinoGameValue: _jsonToInt(jsonMap['casinogame_value']),
+        fishGame: jsonMap['fishgame'] as num,
+        fishGameLevel: _jsonToInt(jsonMap['fishgame_level']),
+        fishGameValue: _jsonToInt(jsonMap['fishgame_value']),
+        lotteryGame: jsonMap['lotterygame'] as num,
+        lotteryGameLevel: _jsonToInt(jsonMap['lotterygame_level']),
+        lotteryGameValue: _jsonToInt(jsonMap['lotterygame_value']),
+        slotGame: jsonMap['slotgame'] as num,
+        slotGameLevel: _jsonToInt(jsonMap['slotgame_level']),
+        slotGameValue: _jsonToInt(jsonMap['slotgame_value']),
+        sportGame: jsonMap['sportgame'] as num,
+        sportGameLevel: _jsonToInt(jsonMap['sportgame_level']),
+        sportGameValue: _jsonToInt(jsonMap['sportgame_value']),
+        vipOption: jsonMap['vip_option'] as dynamic,
+        vipSetting: jsonMap['vip_setting'] as dynamic,
       );
 }
 
@@ -94,7 +94,7 @@ extension CenterModelExtension on CenterModel {
     try {
       return List.castFrom<dynamic, int>(this.lotto);
     } catch (e) {
-      debugPrint(e);
+      print(e);
       return lotto.map((e) => e.toString().strToInt).toList();
     }
   }
@@ -115,7 +115,7 @@ extension CenterModelExtension on CenterModel {
         cpwWallet: cpwWallet,
       );
     } on Exception catch (e) {
-      print('center account data error: $e');
+      MyLogger.debug(msg: 'center account data error: $e');
       return null;
     }
   }
@@ -156,3 +156,14 @@ extension CenterModelExtension on CenterModel {
 
 List _jsonList(dynamic jsonStr) =>
     JsonUtil.decodeArray(jsonStr, returnNullOnError: true);
+
+int _jsonToInt(dynamic jsonStr) {
+  if (jsonStr == null)
+    return -1;
+  else if (jsonStr is String)
+    return jsonStr.strToInt;
+  else if (jsonStr is num)
+    return '$jsonStr'.strToInt;
+  else
+    return -1;
+}

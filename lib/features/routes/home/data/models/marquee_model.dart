@@ -13,17 +13,23 @@ abstract class MarqueeModel with _$MarqueeModel {
     @required String url,
     @JsonKey(name: 'created_at', required: true) String createdAt,
     @JsonKey(name: 'updated_at', required: true) String updatedAt,
-    @required String showDate,
+    String showDate,
   }) = _MarqueeModel;
 
   static MarqueeModel jsonToMarqueeModel(Map<String, dynamic> jsonMap) =>
       _$_MarqueeModel(
         id: jsonMap['id'] as int,
-        content: jsonMap[Global.jsonContentKey] as String,
+        content: (jsonMap.containsKey(Global.localeJsonKey))
+            ? jsonMap[Global.localeJsonKey] as String
+            : (jsonMap.containsKey('content'))
+                ? jsonMap['content'] as String
+                : '',
         url: jsonMap['url'] as String,
         createdAt: jsonMap['created_at'] as String,
         updatedAt: jsonMap['updated_at'] as String,
-        showDate: jsonMap['showDate'] as String,
+        showDate: (jsonMap.containsKey('showDate'))
+            ? jsonMap['showDate'] as String
+            : jsonMap['updated_at'] as String,
       );
 }
 

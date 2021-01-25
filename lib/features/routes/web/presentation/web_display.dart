@@ -80,25 +80,22 @@ class _WebDisplayState extends State<WebDisplay> {
                 debugPrint('hiding web page bars');
                 _controller.evaluateJavascript(
                     source:
-                        "document.getElementsByClassName('el-header')[0].remove();");
+                        "document.getElementsByClassName('el-header')[0].style.display='none';");
                 _controller.evaluateJavascript(
                     source:
-                        "document.getElementsByClassName('el-footer')[0].remove();");
+                        "document.getElementsByClassName('el-footer')[0].style.display='none';");
                 _controller.evaluateJavascript(
                     source:
-                        "document.getElementsByClassName('footer_bg')[0].remove();");
+                        "document.getElementsByClassName('footer_bg')[0].style.display = 'none';");
                 _controller.evaluateJavascript(
                     source:
-                        "document.getElementsByClassName('header_bg')[0].remove();");
+                        "document.getElementsByClassName('header_bg')[0].style.display = 'none';");
                 _controller.evaluateJavascript(
                     source:
-                        "document.getElementsByClassName('aside_bars')[0].remove();");
+                        "document.getElementsByClassName('aside_bars')[0].style.display='none';");
                 _controller.evaluateJavascript(
                     source:
                         "document.getElementsByClassName('page_title')[0].remove();");
-                _controller.evaluateJavascript(
-                    source:
-                        "document.getElementsByClassName('content')[0].style.paddingTop = '0';");
               }
             },
             onLoadError: (InAppWebViewController controller, String url,

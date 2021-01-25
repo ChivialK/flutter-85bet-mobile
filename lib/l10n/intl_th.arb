@@ -1,9 +1,9 @@
 {
   "@@last_modified": "2020-09-25T10:54:50+0800",
   "@@locale": "th",
-  "title": "85Bet Mobile",
+  "title": "VN365S Mobile",
   "@title": {
-    "description": "85Bet Demo",
+    "description": "VN365S Demo",
     "type": "text",
     "placeholders": {}
   },
@@ -349,6 +349,14 @@
   "@btnCopy": {
     "type": "text"
   },
+  "btnNextStep": "ขั้นตอนต่อไป",
+  "@btnNextStep": {
+    "type": "text"
+  },
+  "btnPreStep": "ก่อนหน้า",
+  "@btnPreStep": {
+    "type": "text"
+  },
   "sideBtnBackHome": "ย้อนกลับ",
   "@sideBtnBackHome": {
     "type": "text"
@@ -478,7 +486,7 @@
   "@messageActionFailed": {
     "type": "text"
   },
-  "messageActionFillForm": "กรุณากรอกแบบฟอร์ม",
+  "messageActionFillForm": "โปรดยืนยันข้อมูลฟิลด์และกรอกข้อมูลให้ครบถ้วน",
   "@messageActionFillForm": {
     "type": "text"
   },
@@ -610,6 +618,18 @@
       }
     }
   },
+  "messageInvalidPhone2": "หมายเลขโทรศัพท์ผิดพลาด ({min}~{max})",
+  "@messageInvalidPhone2": {
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "10"
+      },
+      "max": {
+        "example": "10"
+      }
+    }
+  },
   "messageInvalidPostCode": "รหัสโพสต์ผิดพลาด (5~8)",
   "@messageInvalidPostCode": {
     "type": "text"
@@ -635,17 +655,29 @@
       }
     }
   },
-  "messageInvalidAccount": "ชหมายเลขบัญชีคือ 6 ~ 12 ตัวพิมพ์เล็กภาษาอังกฤษ / หลัก",
+  "messageInvalidAccount": "ชหมายเลขบัญชีคือ {min}~{max} ตัวพิมพ์เล็กภาษาอังกฤษ / หลัก",
   "@messageInvalidAccount": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "6"
+      },
+      "max": {
+        "example": "12"
+      }
+    }
   },
-  "messageInvalidPassword": "รหัสผ่านควรมีความยาว 8 ~ 18 คำ",
+  "messageInvalidPassword": "รหัสผ่านควรมีความยาว {min}~{max} คำ",
   "@messageInvalidPassword": {
-    "type": "text"
-  },
-  "messageInvalidPasswordNew": "รหัสผ่านควรมีความยาว 8 ~ 18 คำ",
-  "@messageInvalidPasswordNew": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "8"
+      },
+      "max": {
+        "example": "20"
+      }
+    }
   },
   "messageInvalidConfirmPassword": "รหัสผ่านไม่ตรงกัน",
   "@messageInvalidConfirmPassword": {
@@ -672,8 +704,12 @@
       }
     }
   },
-  "messageInvalidDepositAmountMax": "เกินจำนวนการถอนสูงสุดของการทำธุรกรรมหนึ่งครั้ง (โปรดดูที่ระบบระดับสมาชิก)",
-  "@messageInvalidDepositAmountMax": {
+  "messageInvalidDepositAmountMaxLimit": "จำนวนเงินที่เติมเกินขีด จำกัด ด้านบน",
+  "@messageInvalidDepositAmountMaxLimit": {
+    "type": "text"
+  },
+  "messageInvalidDepositAmountMinLimit": "จำนวนการเติมเงินต่ำกว่าขีด จำกัด ล่าง",
+  "@messageInvalidDepositAmountMinLimit": {
     "type": "text"
   },
   "messageInvalidDepositName": "ชื่อบัญชีไม่ถูกต้อง",
@@ -684,9 +720,32 @@
   "@messageInvalidCardOwner": {
     "type": "text"
   },
-  "messageInvalidCardNumber": "หมายเลขบัตรคือ 5 ~ 20 อักขระ",
+  "messageInvalidCardNumber": "หมายเลขการ์ดคือ {min}~{max} ตัวอักษร",
   "@messageInvalidCardNumber": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "16"
+      },
+      "max": {
+        "example": "19"
+      }
+    }
+  },
+  "messageInvalidCardNumberFixed": "หมายเลขการ์ดคือ {min}~{max} ตัวอักษร (ขึ้นต้นด้วย {fixed})",
+  "@messageInvalidCardNumberFixed": {
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "16"
+      },
+      "max": {
+        "example": "19"
+      },
+      "fixed": {
+        "example": "9704"
+      }
+    }
   },
   "messageInvalidCardBankPoint": "ชื่อต้องมีความยาวมากกว่า 3 อักขระ",
   "@messageInvalidCardBankPoint": {
@@ -702,6 +761,10 @@
   },
   "messageInvalidWithdrawUnderAmount": "ต่ำกว่าจำนวนเงินถอนขั้นต่ำ",
   "@messageInvalidWithdrawUnderAmount": {
+    "type": "text"
+  },
+  "messageInvalidWithdrawExceedAmount": "เกินจำนวนการถอนสูงสุดของการทำธุรกรรมหนึ่งครั้ง (โปรดดูที่ระบบระดับสมาชิก)",
+  "@messageInvalidWithdrawExceedAmount": {
     "type": "text"
   },
   "messageWarnUsingCellular": "คุณกำลังใช้เครือข่ายมือถือ",
@@ -836,6 +899,10 @@
   },
   "messageErrorPassword": "รหัสผ่านผิดพลาด",
   "@messageErrorPassword": {
+    "type": "text"
+  },
+  "messageErrorPasswordHint": "รหัสผ่านไม่ตรงกันบัญชีจะถูกล็อกหลังจากมีข้อผิดพลาด 5 ข้อ",
+  "@messageErrorPasswordHint": {
     "type": "text"
   },
   "messageErrorReferral": "รหัสอ้างอิงไม่ถูกต้อง",
@@ -991,7 +1058,7 @@
   "@gameCategoryWeb": {
     "type": "text"
   },
-  "gameCategoryWebHint": "คลิกฉันเพื่อเปิดเว็บไซต์ 85Bet",
+  "gameCategoryWebHint": "คลิกฉันเพื่อเปิดเว็บไซต์ VN365S",
   "@gameCategoryWebHint": {
     "type": "text"
   },
@@ -1770,10 +1837,6 @@
       }
     }
   },
-  "depositPaymentEditTitleNote": "หมายเหตุ",
-  "@depositPaymentEditTitleNote": {
-    "type": "text"
-  },
   "depositPaymentEditTitleAmountHintRange": "ช่วง: {num}~{num2}",
   "@depositPaymentEditTitleAmountHintRange": {
     "type": "text",
@@ -1800,6 +1863,18 @@
         "example": "50"
       }
     }
+  },
+  "depositPaymentEditTitleCode": "รหัสธุรกรรม",
+  "@depositPaymentEditTitleCode": {
+    "type": "text"
+  },
+  "depositPaymentEditHintCode": "กรุณากรอกรหัสธุรกรรม",
+  "@depositPaymentEditHintCode": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleNote": "หมายเหตุ",
+  "@depositPaymentEditTitleNote": {
+    "type": "text"
   },
   "depositPaymentButtonTitleTutorial": "บทช่วยสอน",
   "@depositPaymentButtonTitleTutorial": {
@@ -1959,6 +2034,10 @@
   },
   "depositMessageFailed": "การเติมเงินล้มเหลวโปรดลองอีกครั้งในภายหลังหรือติดต่อฝ่ายบริการลูกค้า",
   "@depositMessageFailed": {
+    "type": "text"
+  },
+  "depositMessageFormError": "ข้อมูลการเติมเงินไม่ถูกต้องโปรดเลือกวิธีการเติมเงินใหม่หรือติดต่อฝ่ายบริการลูกค้า",
+  "@depositMessageFormError": {
     "type": "text"
   },
   "depositMessageSuccessLocal": "ขอความสำเร็จหมายเลขคำสั่งซื้อ {value}",
@@ -2940,6 +3019,178 @@
         "example": "v1.0"
       }
     }
+  },
+  "aboutCertTitle": "ใบอนุญาต",
+  "@aboutCertTitle": {
+    "type": "text"
+  },
+  "aboutCertTitleGC": "คณะกรรมการกำกับดูแล GC ของอังกฤษ",
+  "@aboutCertTitleGC": {
+    "type": "text"
+  },
+  "aboutCertTitleMGA": "Malta Gaming License (MGA) Certification",
+  "@aboutCertTitleMGA": {
+    "type": "text"
+  },
+  "aboutCertTitlePGC": "การ์ดเกมภายใต้การดูแลของฟิลิปปินส์ (PAGCOR)",
+  "@aboutCertTitlePGC": {
+    "type": "text"
+  },
+  "aboutCertTitleBVI": "การรับรองหมู่เกาะบริติชเวอร์จิน (BVI)",
+  "@aboutCertTitleBVI": {
+    "type": "text"
+  },
+  "aboutDataTitle1": "แนะนำตัวแทนจำหน่าย 85BET",
+  "@ aboutDataTitle1": {
+    "type": "text"
+  },
+  "aboutDataDesc10": "85BET ได้รับใบอนุญาตจาก Isle of Man, Cagayan และ Freeport Economic Zone ซึ่งเป็น บริษัท ข้ามชาติที่ดำเนินงานในภูมิภาคเอเชียแปซิฟิก\n\n",
+  "@ aboutDataDesc10": {
+    "type": "text"
+  },
+  "aboutDataDesc11": "85bet อาศัยประสบการณ์และชื่อเสียงอันยาวนานในการให้บริการแก่ผู้เล่นมากกว่า 10 ล้านคนซึ่งแสดงให้เห็นถึงความชอบธรรมและความชอบธรรมในระยะยาวและมีความน่าเชื่อถืออย่างสมบูรณ์",
+  "@ aboutDataDesc11": {
+    "type": "text"
+  },
+  "aboutDataDesc12": "เป็น บริษัท เกมภายใต้ MAN Entertainment Group ซึ่งมีสำนักงานใหญ่อยู่ในกรุงมะนิลาประเทศฟิลิปปินส์ซึ่งถือได้ว่าเป็น บริษัท ที่ใหญ่ที่สุดในตลาดการพนันออนไลน์ในเอเชียที่มีพนักงานจำนวนมาก 85bet มีความเชื่อมั่นสูงเป็นที่ยอมรับและปัจจุบันได้กลายเป็นสมาคมเกมออนไลน์ระดับนานาชาติ เจ้ามือรับแทงที่ผ่านการตรวจสอบและได้รับใบอนุญาตอย่างสมบูรณ์ที่สุดแห่งหนึ่ง ",
+  "@ aboutDataDesc12": {
+    "type": "text"
+  },
+  "aboutDataTitle2": "ข้อมูล",
+  "@ aboutDataTitle2": {
+    "type": "text"
+  },
+  "aboutDataSubtitle20": "ลงทะเบียน",
+  "@ aboutDataSubtitle20": {
+    "type": "text"
+  },
+  "aboutDataDesc20": "เปิดบัญชี 85bet เวียดนามและเข้าร่วมเว็บไซต์ความบันเทิงคุณภาพสูงโปรโมชั่นเดิมพันออนไลน์ทั้งหมดของเราในราคาสุดคุ้มเราเชื่อว่าในคะแนนโบนัสลูกค้าจะมีโอกาสได้รับสิ่งที่มีค่าเมื่อเข้าร่วมกิจกรรมส่งเสริมการขาย ของขวัญและรางวัล ",
+  "@ aboutDataDesc20": {
+    "type": "text"
+  },
+  "aboutDataSubtitle21": "องค์กร",
+  "@ aboutDataSubtitle21": {
+    "type": "text"
+  },
+  "aboutDataDesc21": "เป็นพันธมิตรที่ดีที่สุดของเราและเพลิดเพลินไปกับค่าคอมมิชชั่นรายเดือนมากมายโดยแนะนำผู้เล่นให้เข้าสู่ 85bet",
+  "@ aboutDataDesc21": {
+    "type": "text"
+  },
+  "aboutDataSubtitle22": "การเล่นเกมอย่างมีความรับผิดชอบ",
+  "@ aboutDataSubtitle22": {
+    "type": "text"
+  },
+  "aboutDataDesc22": "85bet Odds Odds Football มุ่งมั่นที่จะจัดหาช่องทางความบันเทิงให้กับลูกค้าของเราในทางบวกเรามีการป้องกันเพื่อส่งเสริมและรับรองการพนันอย่างมีความรับผิดชอบ",
+  "@ aboutDataDesc22": {
+    "type": "text"
+  },
+  "aboutDataSubtitle23": "ความปลอดภัย",
+  "@ aboutDataSubtitle23": {
+    "type": "text"
+  },
+  "aboutDataDesc23": "ระบบการเดิมพันที่มั่นคงและปลอดภัยความเป็นส่วนตัวของคุณเป็นสิ่งสำคัญสูงสุดของเราดังนั้นเราจึงปฏิบัติตามนโยบายความเป็นส่วนตัวอย่างเคร่งครัดเสมอ",
+  "@ aboutDataDesc23": {
+    "type": "text"
+  },
+  "aboutDataTitle3": "ผลิตภัณฑ์",
+  "@ aboutDataTitle3": {
+    "type": "text"
+  },
+  "aboutDataSubtitle30": "การพนันกีฬาและอัตราเดิมพันฟุตบอลสด",
+  "@ aboutDataSubtitle30": {
+    "type": "text"
+  },
+  "aboutDataDesc30": "ราคาต่อรองการพนันฟุตบอลเราจัดให้มีเหตุการณ์สำคัญดังต่อไปนี้: พรีเมียร์ลีก, แชมป์ลาลีกาสเปน, กัลโช่เซเรียอาอิตาลี, ยูฟ่าแชมเปี้ยนส์ลีก, แชมป์แห่งชาติฝรั่งเศส, เยอรมนี, NFL, NBA, ซีเอ, บาสเก็ตบอลหญิง, เทนนิส, แข่ง F1 เรารู้สึกเป็นเกียรติที่ได้นำเสนอเกมมากกว่า 4,000 เกมต่อเดือน ",
+  "@ aboutDataDesc30": {
+    "type": "text"
+  },
+  "aboutDataSubtitle31": "เกมออนไลน์",
+  "@ aboutDataSubtitle31": {
+    "type": "text"
+  },
+  "aboutDataDesc31": "เกมออนไลน์มีโอกาสมากมายที่จะชนะรางวัลใหญ่ในเกม: รูเล็ตแบล็คแจ็คโป๊กเกอร์สล็อตแมชชีนแจ็คพอตมากขึ้นและโอกาสในการชนะ 85bet สูงขึ้น",
+  "@ aboutDataDesc31": {
+    "type": "text"
+  },
+  "aboutDataSubtitle32": "คาสิโนออนไลน์",
+  "@ aboutDataSubtitle32": {
+    "type": "text"
+  },
+  "aboutDataDesc32": "นอกจากนี้เรายังให้บริการเกมออนไลน์ประเภทอื่น ๆ อีกมากมายโดยเฉพาะ: คาสิโนสดซึ่งมีให้บริการในผู้จำหน่ายเกมยอดนิยมเช่นบาคาร่า sic bo มังกร / เสือรูเล็ตและเครื่องสล็อตคาสิโนออนไลน์ เล่นง่ายมาก ",
+  "@ aboutDataDesc32": {
+    "type": "text"
+  },
+  "aboutDataTitle4": "ศูนย์ข้อมูล",
+  "@ aboutDataTitle4": {
+    "type": "text"
+  },
+  "aboutDataSubtitle40": "โปรโมชัน",
+  "@ aboutDataSubtitle40": {
+    "type": "text"
+  },
+  "aboutDataDesc40": "โปรโมชั่นโบนัสสำหรับสมาชิกใหม่โบนัสสำหรับเงินที่ตามมาและการคืนเงินให้กับสมาชิกที่มีอยู่",
+  "@ aboutDataDesc40": {
+    "type": "text"
+  },
+  "aboutDataSubtitle41": "ศูนย์สนับสนุน",
+  "@ aboutDataSubtitle41": {
+    "type": "text"
+  },
+  "aboutDataDesc41": "โปรดดูคำถามที่พบบ่อยเกี่ยวกับกีฬาและเกมอื่น ๆ การลงทะเบียนบัญชีการโอนเงินการถอนเงินและข้อมูลทางเทคนิคอื่น ๆ ได้รับการสนับสนุน",
+  "@ aboutDataDesc41": {
+    "type": "text"
+  },
+  "aboutDataSubtitle42": "วิธีการชำระเงิน",
+  "@ aboutDataSubtitle42": {
+    "type": "text"
+  },
+  "aboutDataDesc42": "เราให้บริการลูกค้าด้วยตัวเลือกที่ยอดเยี่ยมสำหรับการเติมเงินและถอนเงินผ่าน NETELLER, Moneybookers, การโอนเงินผ่านธนาคารระหว่างประเทศ, Western Union เรามีทุกอย่างให้เราเริ่ม 85bet ทันที",
+  "@ aboutDataDesc42": {
+    "type": "text"
+  },
+  "aboutDataSubtitle43": "ติดต่อ",
+  "@ aboutDataSubtitle43": {
+    "type": "text"
+  },
+  "aboutDataDesc43": "หากคุณต้องการความช่วยเหลือหรือคำถามใด ๆ เกี่ยวกับอัตราต่อรองฟุตบอลหรือการเดิมพันออนไลน์ในคาสิโนออนไลน์เราจะให้การสนับสนุนตลอด 24 ชั่วโมงทุกวันทางแชทสดทางโทรศัพท์และอีเมล",
+  "@ aboutDataDesc43": {
+    "type": "text"
+  },
+  "aboutDataTitle5": "ข้อมูลการเดิมพัน",
+  "@ aboutDataTitle5": {
+    "type": "text"
+  },
+  "aboutDataSubtitle50": "ผลการแข่งขันกีฬา",
+  "@ aboutDataSubtitle50": {
+    "type": "text"
+  },
+  "aboutDataDesc50": "ราคาบอลเวียดนามให้ผลลัพธ์ของเกมกีฬาและลีกที่ดีที่สุดทั้งหมดในเวียดนามในปัจจุบัน",
+  "@ aboutDataDesc50": {
+    "type": "text"
+  },
+  "aboutDataSubtitle51": "สถิติการเดิมพัน",
+  "@ aboutDataSubtitle51": {
+    "type": "text"
+  },
+  "aboutDataDesc51": "เกมที่แตกต่างกันมากกว่า 200 เกมซึ่งรวมถึงกีฬารูปแบบทีมและเกมเดี่ยวการแข่งขันผู้เล่นตัวจริงทีมงานล่วงเวลาและเกมที่เลื่อนออกไป",
+  "@ aboutDataDesc51": {
+    "type": "text"
+  },
+  "aboutDataSubtitle52": "การพนันกีฬา",
+  "@ aboutDataSubtitle52": {
+    "type": "text"
+  },
+  "aboutDataDesc52": "กฎกีฬาทั้งหมดของเราปฏิบัติตามกฎอย่างเป็นทางการของคณะกรรมการจัดการแข่งขันที่ดีที่สุดของเวียดนามในปัจจุบัน",
+  "@ aboutDataDesc52": {
+    "type": "text"
+  },
+  "aboutDataSubtitle53": "การเล่นเกมคาสิโน",
+  "@ aboutDataSubtitle53": {
+    "type": "text"
+  },
+  "aboutDataDesc53": "คาสิโนสดจะแสดงอย่างครบถ้วน: ขีด จำกัด การเดิมพันผลลัพธ์และรายละเอียดประวัติการเดิมพันข้อมูลการเดิมพันทั้งหมดของคุณรวมอยู่บนหน้าจอเพื่อความบันเทิงที่สะดวกสบายคุณสามารถดูข้อมูลการเดิมพันได้ตลอดเวลา",
+  "@ aboutDataDesc53": {
+    "type": "text"
   },
   "serviceRouteHint": "ต้องการความช่วยเหลือหรือติดต่อเรา",
   "@serviceRouteHint": {

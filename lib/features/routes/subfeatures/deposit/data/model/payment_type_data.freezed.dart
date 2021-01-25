@@ -30,12 +30,12 @@ class _$PaymentTypeDataTearOff {
       @JsonKey(name: 'amountoption') List<String> amountOption,
       @JsonKey(name: 'amounttype') int amountType,
       @JsonKey(name: 'bankaccountid') int bankAccountId,
-      int gateway,
+      String gateway,
       int max,
       int min,
       int payment,
       @JsonKey(name: 'pgindex') int pgIndex,
-      @required List<int> sb,
+      List<int> sb,
       String type,
       dynamic key}) {
     return PaymentTypeOnlineData(
@@ -58,6 +58,7 @@ class _$PaymentTypeDataTearOff {
   PaymentTypeLocalData local(
       {@JsonKey(name: 'bankaccountid') int bankAccountId,
       @JsonKey(name: 'bankaccountno') String bankAccountNo,
+      @JsonKey(name: 'bankcode') String bankCode,
       @JsonKey(name: 'bankindex') int bankIndex,
       @JsonKey(fromJson: JsonUtil.getRawJson) String max,
       @JsonKey(fromJson: JsonUtil.getRawJson) String min,
@@ -67,6 +68,7 @@ class _$PaymentTypeDataTearOff {
     return PaymentTypeLocalData(
       bankAccountId: bankAccountId,
       bankAccountNo: bankAccountNo,
+      bankCode: bankCode,
       bankIndex: bankIndex,
       max: max,
       min: min,
@@ -101,7 +103,7 @@ mixin _$PaymentTypeData {
             @JsonKey(name: 'amountoption') List<String> amountOption,
             @JsonKey(name: 'amounttype') int amountType,
             @JsonKey(name: 'bankaccountid') int bankAccountId,
-            int gateway,
+            String gateway,
             int max,
             int min,
             int payment,
@@ -113,6 +115,7 @@ mixin _$PaymentTypeData {
         TResult local(
             @JsonKey(name: 'bankaccountid') int bankAccountId,
             @JsonKey(name: 'bankaccountno') String bankAccountNo,
+            @JsonKey(name: 'bankcode') String bankCode,
             @JsonKey(name: 'bankindex') int bankIndex,
             @JsonKey(fromJson: JsonUtil.getRawJson) String max,
             @JsonKey(fromJson: JsonUtil.getRawJson) String min,
@@ -127,7 +130,7 @@ mixin _$PaymentTypeData {
         @JsonKey(name: 'amountoption') List<String> amountOption,
         @JsonKey(name: 'amounttype') int amountType,
         @JsonKey(name: 'bankaccountid') int bankAccountId,
-        int gateway,
+        String gateway,
         int max,
         int min,
         int payment,
@@ -138,6 +141,7 @@ mixin _$PaymentTypeData {
     TResult local(
         @JsonKey(name: 'bankaccountid') int bankAccountId,
         @JsonKey(name: 'bankaccountno') String bankAccountNo,
+        @JsonKey(name: 'bankcode') String bankCode,
         @JsonKey(name: 'bankindex') int bankIndex,
         @JsonKey(fromJson: JsonUtil.getRawJson) String max,
         @JsonKey(fromJson: JsonUtil.getRawJson) String min,
@@ -209,7 +213,7 @@ abstract class $PaymentTypeOnlineDataCopyWith<$Res>
       @JsonKey(name: 'amountoption') List<String> amountOption,
       @JsonKey(name: 'amounttype') int amountType,
       @JsonKey(name: 'bankaccountid') int bankAccountId,
-      int gateway,
+      String gateway,
       int max,
       int min,
       int payment,
@@ -254,7 +258,7 @@ class _$PaymentTypeOnlineDataCopyWithImpl<$Res>
       bankAccountId: bankAccountId == freezed
           ? _value.bankAccountId
           : bankAccountId as int,
-      gateway: gateway == freezed ? _value.gateway : gateway as int,
+      gateway: gateway == freezed ? _value.gateway : gateway as String,
       max: max == freezed ? _value.max : max as int,
       min: min == freezed ? _value.min : min as int,
       payment: payment == freezed ? _value.payment : payment as int,
@@ -280,10 +284,9 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
       this.min,
       this.payment,
       @JsonKey(name: 'pgindex') this.pgIndex,
-      @required this.sb,
+      this.sb,
       this.type,
-      this.key})
-      : assert(sb != null);
+      this.key});
 
   factory _$PaymentTypeOnlineData.fromJson(Map<String, dynamic> json) =>
       _$_$PaymentTypeOnlineDataFromJson(json);
@@ -300,7 +303,7 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
   @JsonKey(name: 'bankaccountid')
   final int bankAccountId;
   @override
-  final int gateway;
+  final String gateway;
   @override
   final int max;
   @override
@@ -388,7 +391,7 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
             @JsonKey(name: 'amountoption') List<String> amountOption,
             @JsonKey(name: 'amounttype') int amountType,
             @JsonKey(name: 'bankaccountid') int bankAccountId,
-            int gateway,
+            String gateway,
             int max,
             int min,
             int payment,
@@ -400,6 +403,7 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
         TResult local(
             @JsonKey(name: 'bankaccountid') int bankAccountId,
             @JsonKey(name: 'bankaccountno') String bankAccountNo,
+            @JsonKey(name: 'bankcode') String bankCode,
             @JsonKey(name: 'bankindex') int bankIndex,
             @JsonKey(fromJson: JsonUtil.getRawJson) String max,
             @JsonKey(fromJson: JsonUtil.getRawJson) String min,
@@ -421,7 +425,7 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
         @JsonKey(name: 'amountoption') List<String> amountOption,
         @JsonKey(name: 'amounttype') int amountType,
         @JsonKey(name: 'bankaccountid') int bankAccountId,
-        int gateway,
+        String gateway,
         int max,
         int min,
         int payment,
@@ -432,6 +436,7 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
     TResult local(
         @JsonKey(name: 'bankaccountid') int bankAccountId,
         @JsonKey(name: 'bankaccountno') String bankAccountNo,
+        @JsonKey(name: 'bankcode') String bankCode,
         @JsonKey(name: 'bankindex') int bankIndex,
         @JsonKey(fromJson: JsonUtil.getRawJson) String max,
         @JsonKey(fromJson: JsonUtil.getRawJson) String min,
@@ -485,12 +490,12 @@ abstract class PaymentTypeOnlineData implements PaymentTypeData {
       @JsonKey(name: 'amountoption') List<String> amountOption,
       @JsonKey(name: 'amounttype') int amountType,
       @JsonKey(name: 'bankaccountid') int bankAccountId,
-      int gateway,
+      String gateway,
       int max,
       int min,
       int payment,
       @JsonKey(name: 'pgindex') int pgIndex,
-      @required List<int> sb,
+      List<int> sb,
       String type,
       dynamic key}) = _$PaymentTypeOnlineData;
 
@@ -505,7 +510,7 @@ abstract class PaymentTypeOnlineData implements PaymentTypeData {
   @override
   @JsonKey(name: 'bankaccountid')
   int get bankAccountId;
-  int get gateway;
+  String get gateway;
   int get max;
   int get min;
   int get payment;
@@ -530,6 +535,7 @@ abstract class $PaymentTypeLocalDataCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'bankaccountid') int bankAccountId,
       @JsonKey(name: 'bankaccountno') String bankAccountNo,
+      @JsonKey(name: 'bankcode') String bankCode,
       @JsonKey(name: 'bankindex') int bankIndex,
       @JsonKey(fromJson: JsonUtil.getRawJson) String max,
       @JsonKey(fromJson: JsonUtil.getRawJson) String min,
@@ -553,6 +559,7 @@ class _$PaymentTypeLocalDataCopyWithImpl<$Res>
   $Res call({
     Object bankAccountId = freezed,
     Object bankAccountNo = freezed,
+    Object bankCode = freezed,
     Object bankIndex = freezed,
     Object max = freezed,
     Object min = freezed,
@@ -567,6 +574,7 @@ class _$PaymentTypeLocalDataCopyWithImpl<$Res>
       bankAccountNo: bankAccountNo == freezed
           ? _value.bankAccountNo
           : bankAccountNo as String,
+      bankCode: bankCode == freezed ? _value.bankCode : bankCode as String,
       bankIndex: bankIndex == freezed ? _value.bankIndex : bankIndex as int,
       max: max == freezed ? _value.max : max as String,
       min: min == freezed ? _value.min : min as String,
@@ -584,6 +592,7 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
   const _$PaymentTypeLocalData(
       {@JsonKey(name: 'bankaccountid') this.bankAccountId,
       @JsonKey(name: 'bankaccountno') this.bankAccountNo,
+      @JsonKey(name: 'bankcode') this.bankCode,
       @JsonKey(name: 'bankindex') this.bankIndex,
       @JsonKey(fromJson: JsonUtil.getRawJson) this.max,
       @JsonKey(fromJson: JsonUtil.getRawJson) this.min,
@@ -600,6 +609,9 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
   @override
   @JsonKey(name: 'bankaccountno')
   final String bankAccountNo;
+  @override
+  @JsonKey(name: 'bankcode')
+  final String bankCode;
   @override
   @JsonKey(name: 'bankindex')
   final int bankIndex;
@@ -618,7 +630,7 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
 
   @override
   String toString() {
-    return 'PaymentTypeData.local(bankAccountId: $bankAccountId, bankAccountNo: $bankAccountNo, bankIndex: $bankIndex, max: $max, min: $min, payment: $payment, type: $type, key: $key)';
+    return 'PaymentTypeData.local(bankAccountId: $bankAccountId, bankAccountNo: $bankAccountNo, bankCode: $bankCode, bankIndex: $bankIndex, max: $max, min: $min, payment: $payment, type: $type, key: $key)';
   }
 
   @override
@@ -631,6 +643,9 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
             (identical(other.bankAccountNo, bankAccountNo) ||
                 const DeepCollectionEquality()
                     .equals(other.bankAccountNo, bankAccountNo)) &&
+            (identical(other.bankCode, bankCode) ||
+                const DeepCollectionEquality()
+                    .equals(other.bankCode, bankCode)) &&
             (identical(other.bankIndex, bankIndex) ||
                 const DeepCollectionEquality()
                     .equals(other.bankIndex, bankIndex)) &&
@@ -652,6 +667,7 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(bankAccountId) ^
       const DeepCollectionEquality().hash(bankAccountNo) ^
+      const DeepCollectionEquality().hash(bankCode) ^
       const DeepCollectionEquality().hash(bankIndex) ^
       const DeepCollectionEquality().hash(max) ^
       const DeepCollectionEquality().hash(min) ^
@@ -673,7 +689,7 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
             @JsonKey(name: 'amountoption') List<String> amountOption,
             @JsonKey(name: 'amounttype') int amountType,
             @JsonKey(name: 'bankaccountid') int bankAccountId,
-            int gateway,
+            String gateway,
             int max,
             int min,
             int payment,
@@ -685,6 +701,7 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
         TResult local(
             @JsonKey(name: 'bankaccountid') int bankAccountId,
             @JsonKey(name: 'bankaccountno') String bankAccountNo,
+            @JsonKey(name: 'bankcode') String bankCode,
             @JsonKey(name: 'bankindex') int bankIndex,
             @JsonKey(fromJson: JsonUtil.getRawJson) String max,
             @JsonKey(fromJson: JsonUtil.getRawJson) String min,
@@ -694,8 +711,8 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
   }) {
     assert(other != null);
     assert(local != null);
-    return local(
-        bankAccountId, bankAccountNo, bankIndex, max, min, payment, type, key);
+    return local(bankAccountId, bankAccountNo, bankCode, bankIndex, max, min,
+        payment, type, key);
   }
 
   @override
@@ -706,7 +723,7 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
         @JsonKey(name: 'amountoption') List<String> amountOption,
         @JsonKey(name: 'amounttype') int amountType,
         @JsonKey(name: 'bankaccountid') int bankAccountId,
-        int gateway,
+        String gateway,
         int max,
         int min,
         int payment,
@@ -717,6 +734,7 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
     TResult local(
         @JsonKey(name: 'bankaccountid') int bankAccountId,
         @JsonKey(name: 'bankaccountno') String bankAccountNo,
+        @JsonKey(name: 'bankcode') String bankCode,
         @JsonKey(name: 'bankindex') int bankIndex,
         @JsonKey(fromJson: JsonUtil.getRawJson) String max,
         @JsonKey(fromJson: JsonUtil.getRawJson) String min,
@@ -727,8 +745,8 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
   }) {
     assert(orElse != null);
     if (local != null) {
-      return local(bankAccountId, bankAccountNo, bankIndex, max, min, payment,
-          type, key);
+      return local(bankAccountId, bankAccountNo, bankCode, bankIndex, max, min,
+          payment, type, key);
     }
     return orElse();
   }
@@ -768,6 +786,7 @@ abstract class PaymentTypeLocalData implements PaymentTypeData {
   const factory PaymentTypeLocalData(
       {@JsonKey(name: 'bankaccountid') int bankAccountId,
       @JsonKey(name: 'bankaccountno') String bankAccountNo,
+      @JsonKey(name: 'bankcode') String bankCode,
       @JsonKey(name: 'bankindex') int bankIndex,
       @JsonKey(fromJson: JsonUtil.getRawJson) String max,
       @JsonKey(fromJson: JsonUtil.getRawJson) String min,
@@ -783,6 +802,8 @@ abstract class PaymentTypeLocalData implements PaymentTypeData {
   int get bankAccountId;
   @JsonKey(name: 'bankaccountno')
   String get bankAccountNo;
+  @JsonKey(name: 'bankcode')
+  String get bankCode;
   @JsonKey(name: 'bankindex')
   int get bankIndex;
   @JsonKey(fromJson: JsonUtil.getRawJson)

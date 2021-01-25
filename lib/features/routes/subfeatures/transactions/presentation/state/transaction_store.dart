@@ -24,12 +24,8 @@ abstract class _TransactionStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg({
-    String msg,
-    bool showOnce = false,
-    FailureType type,
-    int code,
-  }) =>
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
       errorMessage = getErrorMsg(
           from: FailureType.TRANSACTIONS,
           msg: msg,
@@ -55,7 +51,7 @@ abstract class _TransactionStore with Store {
             (result) => result.fold(
               (failure) => setErrorMsg(msg: failure.message, showOnce: true),
               (model) {
-                debugPrint('transaction data result: $model');
+                print('transaction data result: $model');
                 dataModel = model;
                 dataList = model.data;
               },

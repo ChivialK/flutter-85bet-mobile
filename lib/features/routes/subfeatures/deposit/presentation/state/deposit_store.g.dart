@@ -16,6 +16,14 @@ mixin _$DepositStore on _DepositStore, Store {
       (_$stateComputed ??= Computed<DepositStoreState>(() => super.state,
               name: '_DepositStore.state'))
           .value;
+  Computed<List<DepositInfo>> _$getLocalDepositInfoListComputed;
+
+  @override
+  List<DepositInfo> get getLocalDepositInfoList =>
+      (_$getLocalDepositInfoListComputed ??= Computed<List<DepositInfo>>(
+              () => super.getLocalDepositInfoList,
+              name: '_DepositStore.getLocalDepositInfoList'))
+          .value;
 
   final _$_initFutureAtom = Atom(name: '_DepositStore._initFuture');
 
@@ -29,21 +37,6 @@ mixin _$DepositStore on _DepositStore, Store {
   set _initFuture(ObservableFuture<void> value) {
     _$_initFutureAtom.reportWrite(value, super._initFuture, () {
       super._initFuture = value;
-    });
-  }
-
-  final _$infoListAtom = Atom(name: '_DepositStore.infoList');
-
-  @override
-  List<DepositInfo> get infoList {
-    _$infoListAtom.reportRead();
-    return super.infoList;
-  }
-
-  @override
-  set infoList(List<DepositInfo> value) {
-    _$infoListAtom.reportWrite(value, super.infoList, () {
-      super.infoList = value;
     });
   }
 
@@ -98,7 +91,7 @@ mixin _$DepositStore on _DepositStore, Store {
       AsyncAction('_DepositStore.getInitializeData');
 
   @override
-  Future<dynamic> getInitializeData() {
+  Future<void> getInitializeData() {
     return _$getInitializeDataAsyncAction.run(() => super.getInitializeData());
   }
 
@@ -108,14 +101,6 @@ mixin _$DepositStore on _DepositStore, Store {
   @override
   Future<void> getPaymentTypes() {
     return _$getPaymentTypesAsyncAction.run(() => super.getPaymentTypes());
-  }
-
-  final _$getPaymentPromoAsyncAction =
-      AsyncAction('_DepositStore.getPaymentPromo');
-
-  @override
-  Future<void> getPaymentPromo() {
-    return _$getPaymentPromoAsyncAction.run(() => super.getPaymentPromo());
   }
 
   final _$getDepositInfoAsyncAction =
@@ -142,6 +127,14 @@ mixin _$DepositStore on _DepositStore, Store {
     return _$getDepositRuleAsyncAction.run(() => super.getDepositRule());
   }
 
+  final _$getDepositPicAsyncAction = AsyncAction('_DepositStore.getDepositPic');
+
+  @override
+  Future<String> getDepositPic(int paymentBankId) {
+    return _$getDepositPicAsyncAction
+        .run(() => super.getDepositPic(paymentBankId));
+  }
+
   final _$sendRequestAsyncAction = AsyncAction('_DepositStore.sendRequest');
 
   @override
@@ -152,11 +145,11 @@ mixin _$DepositStore on _DepositStore, Store {
   @override
   String toString() {
     return '''
-infoList: ${infoList},
 waitForDepositResult: ${waitForDepositResult},
 depositResult: ${depositResult},
 errorMessage: ${errorMessage},
-state: ${state}
+state: ${state},
+getLocalDepositInfoList: ${getLocalDepositInfoList}
     ''';
   }
 }

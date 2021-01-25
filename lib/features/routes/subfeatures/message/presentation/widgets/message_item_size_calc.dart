@@ -11,11 +11,11 @@ class MessageItemSizeCalc {
 
   MessageItemSizeCalc() {
     headerTextSize = FontSize.TITLE.value;
-    maxHeight = headerTextSize * 4;
-    maxHeaderHeight = headerTextSize * 3;
+    maxHeight = headerTextSize * 3.5;
+    maxHeaderHeight = headerTextSize * 2.75;
     headerInset = (maxHeight - maxHeaderHeight) / 2 - 4.0;
 
-    maxWidth = Global.device.width - 56.0;
-    iconSize = 28.0 * Global.device.widthScale;
+    maxWidth = Global.device.width - 80.0;
+    iconSize = 24.0 * Global.device.widthScale;
   }
 }

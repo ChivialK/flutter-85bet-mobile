@@ -22,12 +22,8 @@ abstract class _NoticeStore with Store {
   @observable
   String errorMessage;
 
-  void setErrorMsg({
-    String msg,
-    bool showOnce = false,
-    FailureType type,
-    int code,
-  }) =>
+  void setErrorMsg(
+          {String msg, bool showOnce = false, FailureType type, int code}) =>
       errorMessage = getErrorMsg(
           from: FailureType.NOTICE,
           msg: msg,
@@ -72,5 +68,6 @@ abstract class _NoticeStore with Store {
   }
 
   List<NoticeData> get getMaintenanceList => dataModel.data.maintenanceList;
+
   List<NoticeData> get getMarqueeList => dataModel.data.marqueeList;
 }

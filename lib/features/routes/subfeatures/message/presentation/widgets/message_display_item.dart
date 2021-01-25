@@ -35,7 +35,7 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
     hasChinese = widget.data.title.hasChinese;
     availableCharacters = (calc.maxWidth * 0.75 / calc.headerTextSize).floor();
     headerMultiLine = widget.data.title.countLength > availableCharacters;
-    debugPrint('multiline header: $headerMultiLine');
+    debugPrint('header has chinese: $hasChinese, multiline: $headerMultiLine');
     super.initState();
   }
 
@@ -44,15 +44,10 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(4.0),
         child: Container(
           decoration: new BoxDecoration(
-            color: themeColor.defaultCardColor,
-            border: Border.symmetric(
-                vertical: BorderSide(
-              color: Colors.black12,
-              width: 1.5,
-            )),
+            color: themeColor.dialogBgColor0,
           ),
           child: ConfigurableExpansionTile(
             header: _buildHeader(false),
@@ -66,7 +61,11 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Divider(height: 2.0, color: Colors.black26),
+                      child: Divider(
+                        height: 2.0,
+                        color: Colors.black26,
+                        thickness: 2.0,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
@@ -78,7 +77,9 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
                           Expanded(
                             child: Text(
                               '${widget.data.msg}',
-                              style: TextStyle(fontSize: calc.headerTextSize),
+                              style: TextStyle(
+                                  fontSize: calc.headerTextSize - 2,
+                                  color: themeColor.defaultCardTitleColor),
                             ),
                           ),
                         ],
@@ -94,8 +95,9 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
                           Expanded(
                             child: Text(
                               '${widget.data.date}',
-                              style:
-                                  TextStyle(fontSize: calc.headerTextSize - 4),
+                              style: TextStyle(
+                                  fontSize: calc.headerTextSize - 4,
+                                  color: themeColor.defaultCardTitleColor),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                             ),
@@ -138,9 +140,7 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
                       right: 12.0,
                       top: (headerMultiLine && hasChinese)
                           ? 3
-                          : (hasChinese)
-                              ? 2
-                              : 0,
+                          : (hasChinese) ? 2 : 0,
                     )
                   : const EdgeInsets.symmetric(horizontal: 12.0),
               child: (isRead || isExpanded)
@@ -165,7 +165,7 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
                 color: themeColor.defaultCardTitleColor,
               ),
               overflow: TextOverflow.ellipsis,
-              maxLines: (isExpanded) ? 2 : 1,
+              maxLines: (headerMultiLine) ? 2 : 1,
             ),
           ),
           Expanded(
@@ -173,8 +173,8 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Icon(
-                Icons.add,
-                color: const Color(0xFF707070),
+                (isExpanded) ? Icons.remove : Icons.add,
+                color: themeColor.defaultCardTitleColor,
                 size: calc.iconSize,
               ),
             ),

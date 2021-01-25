@@ -322,10 +322,6 @@ class _CenterDisplayVipState extends State<CenterDisplayVip> {
                     ? themeColor.vipProgressBorderColor
                     : themeColor.vipProgressCircleColor,
                 shape: BoxShape.circle,
-                border: new Border.all(
-                  color: themeColor.vipProgressBorderColor,
-                  width: 6.0,
-                ),
 //                boxShadow: <BoxShadow>[
 //                  BoxShadow(
 //                    color: Colors.black54,
@@ -343,7 +339,9 @@ class _CenterDisplayVipState extends State<CenterDisplayVip> {
 //                    color: (current >= required)
 //                        ? themeColor.vipIconTextColor
 //                        : themeColor.vipTextColor,
-                    color: themeColor.vipIconTextColor,
+                    color: (current >= required)
+                        ? themeColor.vipIconTextSubColor
+                        : themeColor.vipIconTextColor,
                   ),
                 ),
               ),
@@ -358,7 +356,8 @@ class _CenterDisplayVipState extends State<CenterDisplayVip> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12.0),
-                    child: Text(label),
+                    child: Text(label,
+                        style: TextStyle(color: themeColor.vipLevelTextColor)),
                   ),
                 )
               : LayoutId(
@@ -369,7 +368,8 @@ class _CenterDisplayVipState extends State<CenterDisplayVip> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(right: 12.0),
-                    child: Text(label),
+                    child: Text(label,
+                        style: TextStyle(color: themeColor.vipLevelTextColor)),
                   ),
                 ),
         ],

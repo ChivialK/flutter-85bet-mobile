@@ -15,6 +15,7 @@ class DepositApi {
   static const String GET_DEPOSIT_BANK = "/api/getBankid";
   static const String POST_DEPOSIT = "api/deposit";
   static const String JWT_CHECK_HREF = "/deposit";
+  static const String GET_DEPOSIT_QR = "/api/getDepositPic";
 }
 
 abstract class DepositRepository {
@@ -24,6 +25,7 @@ abstract class DepositRepository {
   Future<Either<Failure, Map<int, String>>> getDepositBanks();
   Future<Either<Failure, Map<int, String>>> getDepositRule();
   Future<Either<Failure, DepositResult>> postDeposit(DepositDataForm form);
+  Future<Either<Failure, String>> getDepositQr(int paymentId);
 }
 
 class DepositRepositoryImpl implements DepositRepository {
@@ -101,7 +103,7 @@ class DepositRepositoryImpl implements DepositRepository {
     return result.fold(
       (failure) => Left(failure),
       (data) => Right(data.map<int, String>((key, value) {
-        debugPrint('rule key: $key, data: $value');
+        // debugPrint('rule key: $key, data: $value');
         return MapEntry<int, String>('$key'.strToInt, """$value""");
       })),
     );
@@ -137,10 +139,30 @@ class DepositRepositoryImpl implements DepositRepository {
       addKey: false,
       tag: 'remote-DEPOSIT',
     );
-//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+    // debugPrint('test response type: ${result.runtimeType}, data: $result');
     return result.fold(
       (failure) => Left(failure),
       (list) => Right(list),
+    );
+  }
+
+  @override
+  Future<Either<Failure, String>> getDepositQr(int paymentId) async {
+    final result = await requestModel<RequestCodeModel>(
+      request: dioApiService.post(
+        DepositApi.GET_DEPOSIT_QR,
+        data: {'payment': paymentId},
+        userToken: jwtInterface.token,
+      ),
+      jsonToModel: RequestCodeModel.jsonToCodeModel,
+      tag: 'remote-DEPOSIT',
+    );
+//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+    return result.fold(
+      (failure) => Left(failure),
+      (model) => (model.isSuccess)
+          ? Right(model.data)
+          : Left(Failure.errorMessage(msg: model.msg)),
     );
   }
 }

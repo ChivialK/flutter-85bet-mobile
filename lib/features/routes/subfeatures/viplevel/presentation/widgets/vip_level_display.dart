@@ -11,12 +11,25 @@ class VipLevelDisplay extends StatelessWidget {
 
   final MemberGridItem pageItem = MemberGridItem.vip;
 
+//  final double itemMaxHeight = 484.0;
+  final double itemMaxWidth = 300.0;
+  final double padVertical = 18.0;
+
   @override
   Widget build(BuildContext context) {
+    double padHorizontal = (Global.device.width - itemMaxWidth) / 2;
+    if (padHorizontal > 30) padHorizontal = 30;
+
     return SizedBox(
       width: Global.device.width - 24.0,
-      child: Align(
-        alignment: Alignment.topCenter,
+      child: InkWell(
+        // to dismiss the keyboard when the user tabs out of the TextField
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        focusColor: Colors.transparent,
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
         child: ListView(
           primary: true,
           shrinkWrap: true,
@@ -28,11 +41,7 @@ class VipLevelDisplay extends StatelessWidget {
                     children: [
                       Container(
                         padding: const EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: themeColor.memberIconColor,
-                          boxShadow: ThemeInterface.iconBottomShadow,
-                        ),
+                        decoration: ThemeInterface.pageIconContainerDecor,
                         child: Icon(
                           pageItem.value.iconData,
                           size: 32 * Global.device.widthScale,
@@ -42,7 +51,9 @@ class VipLevelDisplay extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text(
                           pageItem.value.label,
-                          style: TextStyle(fontSize: FontSize.HEADER.value),
+                          style: TextStyle(
+                              fontSize: FontSize.HEADER.value,
+                              color: themeColor.defaultTitleColor),
                         ),
                       )
                     ],
@@ -60,9 +71,21 @@ class VipLevelDisplay extends StatelessWidget {
 
   Widget _buildLevel(VipLevelName level) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 12.0),
+      constraints: BoxConstraints(
+//        maxHeight: itemMaxHeight,
+        maxWidth: itemMaxWidth - 8,
+      ),
       decoration: BoxDecoration(
-        color: themeColor.defaultLayeredBackgroundColor,
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            themeColor.vipLinearBgColor1,
+            themeColor.vipLinearBgColor2,
+          ],
+          stops: [0.2, 1.0],
+          tileMode: TileMode.clamp,
+        ),
         boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black12,
@@ -72,6 +95,7 @@ class VipLevelDisplay extends StatelessWidget {
           ),
         ],
       ),
+      margin: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 12.0),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(16.0, 20.0, 12.0, 24.0),
         child: Row(
@@ -149,7 +173,7 @@ class VipLevelDisplay extends StatelessWidget {
                             child: Text(
                               option.ch,
                               style: TextStyle(
-                                color: themeColor.vipTitleColor,
+                                color: themeColor.vipDescColor,
                                 fontSize: FontSize.SUBTITLE.value,
                               ),
                               maxLines: 2,

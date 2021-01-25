@@ -68,6 +68,13 @@ mixin _$RegisterStore on _RegisterStore, Store {
     return _$postLoginAsyncAction.run(() => super.postLogin(form));
   }
 
+  final _$sendVerifyAsyncAction = AsyncAction('_RegisterStore.sendVerify');
+
+  @override
+  Future<bool> sendVerify(MobileVerifyForm form) {
+    return _$sendVerifyAsyncAction.run(() => super.sendVerify(form));
+  }
+
   @override
   String toString() {
     return '''

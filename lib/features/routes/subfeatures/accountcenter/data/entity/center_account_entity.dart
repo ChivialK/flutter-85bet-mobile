@@ -21,11 +21,17 @@ abstract class CenterAccountEntity with _$CenterAccountEntity {
 
 extension CenterAccountEntityExtension on CenterAccountEntity {
   bool get canBindCard => firstName.isEmpty;
+
   bool get canBindBirthDate => birthDate.isEmpty;
+
   bool get canVerifyPhone => phone.isNotEmpty && phone.contains('未') == true;
+
   bool get canBindMail => email.isEmpty;
+
   bool get canBindWechat => wechat.isEmpty;
+
   bool get canBindCgp => cgpWallet.isEmpty || cgpWallet != '-1';
+
   bool get canBindCpw => cpwWallet.isEmpty || cpwWallet != '-1';
 
   List<String> get getInitInput => [

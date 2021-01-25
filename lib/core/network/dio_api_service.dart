@@ -97,28 +97,24 @@ class DioApiService {
   /// [data]：請求參數
   /// [options]：請求配置
   /// [cancelToken]：取消標識
-  Future<Response<dynamic>> get(url,
-      {data,
-      options,
-      cancelToken,
-      String userToken,
-      Map<String, dynamic> headers}) async {
+  Future<Response<dynamic>> get(
+    url, {
+    data,
+    options,
+    cancelToken,
+    String userToken,
+    String agentToken,
+    Map<String, dynamic> headers,
+  }) async {
     try {
-      if (userToken != null)
-        return await _dio.get(url,
-            queryParameters: data,
-            options: Options(headers: {
-              'JWT-TOKEN': userToken,
-            }),
-            cancelToken: cancelToken);
-      else if (headers != null)
-        return await _dio.get(url,
-            queryParameters: data,
-            options: Options(headers: headers),
-            cancelToken: cancelToken);
-      else
-        return await _dio.get(url,
-            queryParameters: data, options: options, cancelToken: cancelToken);
+      return await _dio.get(url,
+          queryParameters: data,
+          options: (userToken != null)
+              ? Options(headers: {'JWT-TOKEN': userToken})
+              : (agentToken != null)
+                  ? Options(headers: {'JWT-TOKEN-AGENT': agentToken})
+                  : (headers != null) ? Options(headers: headers) : options,
+          cancelToken: cancelToken);
     } on DioError catch (e) {
       throw getErrorType(e);
     }
@@ -129,17 +125,24 @@ class DioApiService {
   /// [data]：請求參數
   /// [options]：請求配置
   /// [cancelToken]：取消標識
-  Future<Response<dynamic>> post(url,
-      {param, data, options, cancelToken, String userToken}) async {
+  Future<Response<dynamic>> post(
+    url, {
+    param,
+    data,
+    options,
+    cancelToken,
+    String userToken,
+    String agentToken,
+  }) async {
     try {
       return await _dio.post(url,
           queryParameters: param,
           data: data,
           options: (userToken != null)
-              ? Options(headers: {
-                  'JWT-TOKEN': userToken,
-                })
-              : options,
+              ? Options(headers: {'JWT-TOKEN': userToken})
+              : (agentToken != null)
+                  ? Options(headers: {'JWT-TOKEN-AGENT': agentToken})
+                  : options,
           cancelToken: cancelToken);
     } on DioError catch (e) {
       throw getErrorType(e);
