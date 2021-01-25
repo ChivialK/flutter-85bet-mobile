@@ -40,6 +40,7 @@ mixin _$MobileVerifyForm {
   String get uuid;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $MobileVerifyFormCopyWith<MobileVerifyForm> get copyWith;
 }
 
@@ -141,6 +142,7 @@ class _$_MobileVerifyForm implements _MobileVerifyForm {
       const DeepCollectionEquality().hash(mobile) ^
       const DeepCollectionEquality().hash(uuid);
 
+  @JsonKey(ignore: true)
   @override
   _$MobileVerifyFormCopyWith<_MobileVerifyForm> get copyWith =>
       __$MobileVerifyFormCopyWithImpl<_MobileVerifyForm>(this, _$identity);
@@ -163,5 +165,6 @@ abstract class _MobileVerifyForm implements MobileVerifyForm {
   @override
   String get uuid;
   @override
+  @JsonKey(ignore: true)
   _$MobileVerifyFormCopyWith<_MobileVerifyForm> get copyWith;
 }

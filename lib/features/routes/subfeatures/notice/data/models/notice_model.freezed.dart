@@ -33,6 +33,7 @@ mixin _$NoticeModel {
   NoticeDataModel get data;
   String get msg;
 
+  @JsonKey(ignore: true)
   $NoticeModelCopyWith<NoticeModel> get copyWith;
 }
 
@@ -150,6 +151,7 @@ class _$_NoticeModel implements _NoticeModel {
       const DeepCollectionEquality().hash(data) ^
       const DeepCollectionEquality().hash(msg);
 
+  @JsonKey(ignore: true)
   @override
   _$NoticeModelCopyWith<_NoticeModel> get copyWith =>
       __$NoticeModelCopyWithImpl<_NoticeModel>(this, _$identity);
@@ -166,6 +168,7 @@ abstract class _NoticeModel implements NoticeModel {
   @override
   String get msg;
   @override
+  @JsonKey(ignore: true)
   _$NoticeModelCopyWith<_NoticeModel> get copyWith;
 }
 
@@ -192,6 +195,7 @@ mixin _$NoticeDataModel {
   List<NoticeData> get maintenanceList;
   List<NoticeData> get marqueeList;
 
+  @JsonKey(ignore: true)
   $NoticeDataModelCopyWith<NoticeDataModel> get copyWith;
 }
 
@@ -297,6 +301,7 @@ class _$_NoticeDataModel implements _NoticeDataModel {
       const DeepCollectionEquality().hash(maintenanceList) ^
       const DeepCollectionEquality().hash(marqueeList);
 
+  @JsonKey(ignore: true)
   @override
   _$NoticeDataModelCopyWith<_NoticeDataModel> get copyWith =>
       __$NoticeDataModelCopyWithImpl<_NoticeDataModel>(this, _$identity);
@@ -312,6 +317,7 @@ abstract class _NoticeDataModel implements NoticeDataModel {
   @override
   List<NoticeData> get marqueeList;
   @override
+  @JsonKey(ignore: true)
   _$NoticeDataModelCopyWith<_NoticeDataModel> get copyWith;
 }
 
@@ -355,6 +361,7 @@ mixin _$NoticeData {
   String get date;
   int get sort;
 
+  @JsonKey(ignore: true)
   $NoticeDataCopyWith<NoticeData> get copyWith;
 }
 
@@ -509,6 +516,7 @@ class _$_NoticeData implements _NoticeData {
       const DeepCollectionEquality().hash(date) ^
       const DeepCollectionEquality().hash(sort);
 
+  @JsonKey(ignore: true)
   @override
   _$NoticeDataCopyWith<_NoticeData> get copyWith =>
       __$NoticeDataCopyWithImpl<_NoticeData>(this, _$identity);
@@ -540,5 +548,6 @@ abstract class _NoticeData implements NoticeData {
   @override
   int get sort;
   @override
+  @JsonKey(ignore: true)
   _$NoticeDataCopyWith<_NoticeData> get copyWith;
 }

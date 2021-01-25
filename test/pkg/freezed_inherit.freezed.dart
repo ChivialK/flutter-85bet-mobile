@@ -79,6 +79,7 @@ mixin _$FreezedParent {
     @required TResult orElse(),
   });
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $FreezedParentCopyWith<FreezedParent> get copyWith;
 }
 
@@ -180,6 +181,7 @@ class _$FreezedParentData implements FreezedParentData {
       const DeepCollectionEquality().hash(account) ^
       const DeepCollectionEquality().hash(credit);
 
+  @JsonKey(ignore: true)
   @override
   $FreezedParentDataCopyWith<FreezedParentData> get copyWith =>
       _$FreezedParentDataCopyWithImpl<FreezedParentData>(this, _$identity);
@@ -257,6 +259,7 @@ abstract class FreezedParentData implements FreezedParent {
   @override
   String get credit;
   @override
+  @JsonKey(ignore: true)
   $FreezedParentDataCopyWith<FreezedParentData> get copyWith;
 }
 
@@ -336,6 +339,7 @@ class _$FreezedChildData implements FreezedChildData {
       const DeepCollectionEquality().hash(credit) ^
       const DeepCollectionEquality().hash(status);
 
+  @JsonKey(ignore: true)
   @override
   $FreezedChildDataCopyWith<FreezedChildData> get copyWith =>
       _$FreezedChildDataCopyWithImpl<FreezedChildData>(this, _$identity);
@@ -414,5 +418,6 @@ abstract class FreezedChildData implements FreezedParent {
   String get credit;
   String get status;
   @override
+  @JsonKey(ignore: true)
   $FreezedChildDataCopyWith<FreezedChildData> get copyWith;
 }

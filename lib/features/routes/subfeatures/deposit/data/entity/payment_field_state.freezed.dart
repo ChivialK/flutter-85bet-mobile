@@ -42,6 +42,7 @@ mixin _$PaymentFieldState {
   String get fieldError;
   bool get isValid;
 
+  @JsonKey(ignore: true)
   $PaymentFieldStateCopyWith<PaymentFieldState> get copyWith;
 }
 
@@ -177,6 +178,7 @@ class _$_PaymentFieldState implements _PaymentFieldState {
       const DeepCollectionEquality().hash(fieldError) ^
       const DeepCollectionEquality().hash(isValid);
 
+  @JsonKey(ignore: true)
   @override
   _$PaymentFieldStateCopyWith<_PaymentFieldState> get copyWith =>
       __$PaymentFieldStateCopyWithImpl<_PaymentFieldState>(this, _$identity);
@@ -201,5 +203,6 @@ abstract class _PaymentFieldState implements PaymentFieldState {
   @override
   bool get isValid;
   @override
+  @JsonKey(ignore: true)
   _$PaymentFieldStateCopyWith<_PaymentFieldState> get copyWith;
 }

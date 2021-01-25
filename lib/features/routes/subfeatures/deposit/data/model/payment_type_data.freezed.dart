@@ -158,6 +158,7 @@ mixin _$PaymentTypeData {
     @required TResult orElse(),
   });
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $PaymentTypeDataCopyWith<PaymentTypeData> get copyWith;
 }
 
@@ -374,6 +375,7 @@ class _$PaymentTypeOnlineData implements PaymentTypeOnlineData {
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(key);
 
+  @JsonKey(ignore: true)
   @override
   $PaymentTypeOnlineDataCopyWith<PaymentTypeOnlineData> get copyWith =>
       _$PaymentTypeOnlineDataCopyWithImpl<PaymentTypeOnlineData>(
@@ -517,6 +519,7 @@ abstract class PaymentTypeOnlineData implements PaymentTypeData {
   @override
   dynamic get key;
   @override
+  @JsonKey(ignore: true)
   $PaymentTypeOnlineDataCopyWith<PaymentTypeOnlineData> get copyWith;
 }
 
@@ -659,6 +662,7 @@ class _$PaymentTypeLocalData implements PaymentTypeLocalData {
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(key);
 
+  @JsonKey(ignore: true)
   @override
   $PaymentTypeLocalDataCopyWith<PaymentTypeLocalData> get copyWith =>
       _$PaymentTypeLocalDataCopyWithImpl<PaymentTypeLocalData>(
@@ -795,5 +799,6 @@ abstract class PaymentTypeLocalData implements PaymentTypeData {
   @override
   dynamic get key;
   @override
+  @JsonKey(ignore: true)
   $PaymentTypeLocalDataCopyWith<PaymentTypeLocalData> get copyWith;
 }

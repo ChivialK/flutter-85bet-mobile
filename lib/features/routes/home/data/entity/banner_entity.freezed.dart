@@ -47,6 +47,7 @@ mixin _$BannerEntity {
   @HiveField(4)
   int get sort;
 
+  @JsonKey(ignore: true)
   $BannerEntityCopyWith<BannerEntity> get copyWith;
 }
 
@@ -197,6 +198,7 @@ class _$_BannerEntity implements _BannerEntity {
       const DeepCollectionEquality().hash(promoUrl) ^
       const DeepCollectionEquality().hash(sort);
 
+  @JsonKey(ignore: true)
   @override
   _$BannerEntityCopyWith<_BannerEntity> get copyWith =>
       __$BannerEntityCopyWithImpl<_BannerEntity>(this, _$identity);
@@ -231,5 +233,6 @@ abstract class _BannerEntity implements BannerEntity, DataOperator {
   @HiveField(4)
   int get sort;
   @override
+  @JsonKey(ignore: true)
   _$BannerEntityCopyWith<_BannerEntity> get copyWith;
 }

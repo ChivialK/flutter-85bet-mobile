@@ -21,13 +21,13 @@ class ThemeDefault implements ThemeColorInterface {
   Color defaultBackgroundColor = Color(0xffeaeaea);
 
   @override
-  Color defaultLayeredBackgroundColor = Color(0xffffffff);
+  Color defaultLayeredBackgroundColor = Color(0xfff5f5f5);
 
   @override
   Color defaultLayeredBackgroundColorAlpha = Color(0x80ffffff);
 
   @override
-  Color defaultPrimaryColor = Color(0xff38394b);
+  Color defaultPrimaryColor = Color(0xff0d162f);
 
   @override
   Color defaultAccentColor = Color(0xff1a77df);
@@ -39,10 +39,10 @@ class ThemeDefault implements ThemeColorInterface {
   Color defaultDividerColor = Color(0xff4a4a4a);
 
   @override
-  Color defaultAppbarColor = Color(0xff38394b);
+  Color defaultAppbarColor = Color(0xff243666);
 
   @override
-  Color navigationColor = Color(0x80f0f0f0);
+  Color navigationColor = Color(0xfff0f0f0);
 
   @override
   Color navigationColorFocus = Color(0xffffffff);
@@ -58,6 +58,9 @@ class ThemeDefault implements ThemeColorInterface {
 
   @override
   Color defaultSelectableWidgetColor = Color(0xff1a77df);
+
+  @override
+  Color defaultActiveWidgetColor = Color(0xff1a77df);
 
   @override
   Color defaultDisabledColor = Color(0xff989898);
@@ -87,7 +90,7 @@ class ThemeDefault implements ThemeColorInterface {
   Color defaultTabSelectedTextColor = Color(0xff2a60ba);
 
   @override
-  Color defaultIndicatorColor = Color(0xff3f3f5a);
+  Color defaultIndicatorColor = Color(0xff30394b);
 
   ///
   /// Side menu color
@@ -111,10 +114,10 @@ class ThemeDefault implements ThemeColorInterface {
   Color sideMenuButtonTextColor = Color(0xff383838);
 
   @override
-  Color sideMenuHeaderTextColor = Color(0xffffffff);
+  Color sideMenuHeaderTextColor = Color(0xfff5f5f5);
 
   @override
-  Color sideMenuIconColor = Color(0xffffffff);
+  Color sideMenuIconColor = Color(0xfff0f0f0);
 
   @override
   Color sideMenuIconBgColor = Color(0xff1a77df);
@@ -171,7 +174,7 @@ class ThemeDefault implements ThemeColorInterface {
   Color defaultHintColor = Color(0xff545454);
 
   @override
-  Color defaultHintSubColor = Color(0xffa8a8a8);
+  Color defaultHintSubColor = Color(0xffb4b4b4);
 
   @override
   Color defaultMessageColor = Color(0xff424242);
@@ -285,7 +288,7 @@ class ThemeDefault implements ThemeColorInterface {
   Color buttonLinearColor2 = Color(0xff409cf3);
 
   @override
-  Color pagerButtonColor = Color(0xffc7c7c7);
+  Color pagerButtonColor = Color(0xff828282);
 
   @override
   Color pagerButtonSelectedColor = Color(0xff3b3b3b);
@@ -318,7 +321,7 @@ class ThemeDefault implements ThemeColorInterface {
   Color fieldInputHintColor = Color(0xff969696);
 
   @override
-  Color fieldPrefixBgColor = Color(0xffffffff);
+  Color fieldPrefixBgColor = Color(0xfff5f5f5);
 
   @override
   Color fieldPrefixColor = Color(0xff383838);
@@ -366,7 +369,7 @@ class ThemeDefault implements ThemeColorInterface {
   Color chartBgColor = Color(0xffeaeaea);
 
   @override
-  Color chartHeaderBgColor = Color(0xff484848);
+  Color chartHeaderBgColor = Color(0xff606060);
 
   /*******************************************************************
    * Specific Page Color                                             *
@@ -387,34 +390,34 @@ class ThemeDefault implements ThemeColorInterface {
   /// Home page color
   ///
   @override
-  Color defaultMarqueeBarColor = Color(0xf0797999);
+  Color defaultMarqueeBarColor = Color(0x8A000000);
 
   @override
-  Color defaultMarqueeTextColor = Color(0xfff0f0f0);
+  Color defaultMarqueeTextColor = Color(0xffecc55a);
 
   @override
   Color homeFavoriteColor = Color(0xffffffff);
 
   @override
-  Color homeTabBgColor = Color(0xffffffff);
+  Color homeTabBgColor = Color(0xff16213e);
 
   @override
-  Color homeTabDividerColor = Color(0xff1a77df);
+  Color homeTabDividerColor = Color(0xff2b5a9b);
 
   @override
   Color homeTabIconColor = Color(0xfff0f0f0);
 
   @override
-  Color homeTabIconBgColor = Color(0xff1a77df);
+  Color homeTabIconBgColor = Color(0xff303d60);
 
   @override
-  Color homeTabTextColor = Color(0xff1a77df);
+  Color homeTabTextColor = Color(0xfff0f0f0);
 
   @override
-  Color homeTabSelectedTextColor = Color(0xffffffff);
+  Color homeTabSelectedTextColor = Color(0xffe7c080);
 
   @override
-  Color homeBoxBgColor = Color(0xff515175);
+  Color homeBoxBgColor = Color(0xff4c4c4c);
 
   @override
   Color homeBoxHintBgColor = Color(0xff1a77df);
@@ -423,22 +426,22 @@ class ThemeDefault implements ThemeColorInterface {
   Color homeBoxHintTextColor = Color(0xffffffff);
 
   @override
-  Color homeBoxInfoTextColor = Color(0xffffffff);
+  Color homeBoxInfoTextColor = Color(0xffff9e4c);
 
   @override
-  Color homeBoxDividerColor = Color(0xff606084);
+  Color homeBoxDividerColor = Color(0xff16213e);
 
   @override
   Color homeBoxIconColor = Color(0xffffffff);
 
   @override
-  Color homeBoxIconBgColor = Color(0xff80c0e7);
+  Color homeBoxIconBgColor = Color(0x00000000);
 
   @override
   Color homeBoxIconTextColor = Color(0xffffffff);
 
   @override
-  Color homeBoxButtonTextColor = Color(0xff383838);
+  Color homeBoxButtonTextColor = Color(0xffe7c080);
 
   @override
   Color homeTabSelectedLinearColor1 = Color(0xff7687ac);
@@ -588,7 +591,7 @@ class ThemeDefault implements ThemeColorInterface {
   /// VIP level page & Center VIP color
   ///
   @override
-  Color vipCardBackgroundColor = Color(0xffd2d2d2);
+  Color vipCardBackgroundColor = Color(0xfff5f5f5);
 
   @override
   Color vipTitleBackgroundColor = Color(0xff4285f4);
@@ -606,7 +609,7 @@ class ThemeDefault implements ThemeColorInterface {
   Color vipIconTextColor = Color(0xffffffff);
 
   @override
-  Color vipIconTextSubColor = Color(0xff000000);
+  Color vipIconTextSubColor = Color(0xff383838);
 
   @override
   Color vipTitleColor = Color(0xff2a60ba);
@@ -624,10 +627,10 @@ class ThemeDefault implements ThemeColorInterface {
   Color vipLinearBgColor2 = Color(0xfff5f5f5);
 
   @override
-  Color vipProgressColor = Color(0xffa9a9a9);
+  Color vipProgressColor = Color(0xffb7b7b7);
 
   @override
-  Color vipProgressCircleColor = Color(0xff2a60ba);
+  Color vipProgressCircleColor = Color(0xffeaeaea);
 
   @override
   Color vipProgressBorderColor = Color(0xff2a60ba);
@@ -669,7 +672,7 @@ class ThemeDefault implements ThemeColorInterface {
   Color rollerBackgroundBlockTop = Color(0xffd2080e);
 
   @override
-  Color rollerBackgroundBlock = Color(0xffe7c080);
+  Color rollerBackgroundBlock = Color(0xff21a1ba);
 
   @override
   Color rollerRuleTitleColor = Color(0xffe60000);

@@ -4,6 +4,7 @@ import 'package:flutter_85bet_mobile/features/general/widgets/checkbox_widget.da
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
 import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
+import 'package:flutter_85bet_mobile/features/themes/icon_code.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/user_entity.dart';
 import 'package:flutter_85bet_mobile/features/user/login/presentation/widgets/login_navigate.dart';
 
@@ -154,7 +155,10 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       child: Visibility(
                         visible: _showAccountError,
                         child: Text(
-                          localeStr.messageInvalidAccount,
+                          localeStr.messageInvalidAccount(
+                            InputLimit.ACCOUNT_MIN,
+                            InputLimit.ACCOUNT_MAX,
+                          ),
                           style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
@@ -201,7 +205,10 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       child: Visibility(
                         visible: _showPasswordError,
                         child: Text(
-                          localeStr.messageInvalidPasswordNew,
+                          localeStr.messageInvalidPassword(
+                            InputLimit.PASSWORD_MIN_OLD,
+                            InputLimit.PASSWORD_MAX,
+                          ),
                           style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
@@ -422,7 +429,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                 visualDensity: VisualDensity.compact,
                 padding: EdgeInsets.zero,
                 icon: Icon(
-                  const IconData(0xe967, fontFamily: 'IconMoon'),
+                  IconCode.gridNotice,
                   color: themeColor.defaultTextColor,
                 ),
                 onPressed: () {

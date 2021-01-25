@@ -57,6 +57,7 @@ mixin _$DepositDataForm {
   int get localBank;
   String get localBankCard;
 
+  @JsonKey(ignore: true)
   $DepositDataFormCopyWith<DepositDataForm> get copyWith;
 }
 
@@ -282,6 +283,7 @@ class _$_DepositDataForm implements _DepositDataForm {
       const DeepCollectionEquality().hash(localBank) ^
       const DeepCollectionEquality().hash(localBankCard);
 
+  @JsonKey(ignore: true)
   @override
   _$DepositDataFormCopyWith<_DepositDataForm> get copyWith =>
       __$DepositDataFormCopyWithImpl<_DepositDataForm>(this, _$identity);
@@ -321,5 +323,6 @@ abstract class _DepositDataForm implements DepositDataForm {
   @override
   String get localBankCard;
   @override
+  @JsonKey(ignore: true)
   _$DepositDataFormCopyWith<_DepositDataForm> get copyWith;
 }

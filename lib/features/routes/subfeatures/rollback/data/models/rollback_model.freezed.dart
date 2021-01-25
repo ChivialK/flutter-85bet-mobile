@@ -85,6 +85,7 @@ mixin _$RollbackModel {
   String get rollOver;
   dynamic get key;
 
+  @JsonKey(ignore: true)
   $RollbackModelCopyWith<RollbackModel> get copyWith;
 }
 
@@ -380,6 +381,7 @@ class _$_RollbackModel implements _RollbackModel {
       const DeepCollectionEquality().hash(rollOver) ^
       const DeepCollectionEquality().hash(key);
 
+  @JsonKey(ignore: true)
   @override
   _$RollbackModelCopyWith<_RollbackModel> get copyWith =>
       __$RollbackModelCopyWithImpl<_RollbackModel>(this, _$identity);
@@ -447,5 +449,6 @@ abstract class _RollbackModel implements RollbackModel {
   @override
   dynamic get key;
   @override
+  @JsonKey(ignore: true)
   _$RollbackModelCopyWith<_RollbackModel> get copyWith;
 }

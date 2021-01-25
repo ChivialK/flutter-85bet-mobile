@@ -36,6 +36,7 @@ mixin _$MarqueeModelList {
   List<MarqueeModel> get marquees;
   int get speed;
 
+  @JsonKey(ignore: true)
   $MarqueeModelListCopyWith<MarqueeModelList> get copyWith;
 }
 
@@ -148,6 +149,7 @@ class _$_MarqueeModelList implements _MarqueeModelList {
       const DeepCollectionEquality().hash(marquees) ^
       const DeepCollectionEquality().hash(speed);
 
+  @JsonKey(ignore: true)
   @override
   _$MarqueeModelListCopyWith<_MarqueeModelList> get copyWith =>
       __$MarqueeModelListCopyWithImpl<_MarqueeModelList>(this, _$identity);
@@ -166,5 +168,6 @@ abstract class _MarqueeModelList implements MarqueeModelList {
   @override
   int get speed;
   @override
+  @JsonKey(ignore: true)
   _$MarqueeModelListCopyWith<_MarqueeModelList> get copyWith;
 }

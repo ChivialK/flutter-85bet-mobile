@@ -28,6 +28,7 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
   Widget contentWidget;
 
   double maxFieldWidth;
+  double fieldBtnWidth;
   TextStyle _textStyle = TextStyle(fontSize: FontSize.SUBTITLE.value);
 
   int _selectedYear;
@@ -47,6 +48,14 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
   @override
   void initState() {
     maxFieldWidth = (Global.device.width - 48) / 7 * 4;
+    if (Global.device.widthScale > 1.0) {
+      fieldBtnWidth = maxFieldWidth * 0.4 / Global.device.widthScale;
+    } else {
+      fieldBtnWidth = maxFieldWidth * 0.4;
+    }
+    if (fieldBtnWidth < Global.device.comfortButtonHeight) {
+      fieldBtnWidth = FontSize.SUBTITLE.value * 6;
+    }
     super.initState();
   }
 
@@ -77,7 +86,7 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
           key: _streamKey,
           stream: _store.accountStream,
           builder: (context, snapshot) {
-//        print('account stream snapshot: $snapshot');
+//        debugPrint('account stream snapshot: $snapshot');
             if (_storeData != _store.accountEntity) {
               _storeData = _store.accountEntity;
               contentWidget = _buildContent();
@@ -133,11 +142,11 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
                       if (_selectedYear != null &&
                           _selectedMonth != null &&
                           _selectedDay != null) {
-//                        print('request bind birth date: $_selectedYear-$_selectedMonth-$_selectedDay');
+//                        debugPrint('request bind birth date: $_selectedYear-$_selectedMonth-$_selectedDay');
                         DateTime date = DateTime(
                             _selectedYear, _selectedMonth, _selectedDay);
                         String birth = date.toDateString;
-//                        print('birth date: $birth');
+//                        debugPrint('birth date: $birth');
                         checkAndPost(context, () {
                           if (birth.isDate &&
                               checkDateRange(birth, getDateString())) {
@@ -248,7 +257,7 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
         minHeight: Global.device.comfortButtonHeight * 0.75,
         maxHeight: Global.device.comfortButtonHeight,
         minWidth: Global.device.comfortButtonHeight,
-        maxWidth: maxFieldWidth * 0.4,
+        maxWidth: fieldBtnWidth,
       ),
       decoration: BoxDecoration(
         color: Color(0xf0ffffff),

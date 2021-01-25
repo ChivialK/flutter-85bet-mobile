@@ -34,6 +34,7 @@ mixin _$RequestStatusModel {
   @JsonKey(fromJson: JsonUtil.getRawJson, required: false)
   String get msg;
 
+  @JsonKey(ignore: true)
   $RequestStatusModelCopyWith<RequestStatusModel> get copyWith;
 }
 
@@ -149,6 +150,7 @@ class _$_RequestStatusModel implements _RequestStatusModel {
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(msg);
 
+  @JsonKey(ignore: true)
   @override
   _$RequestStatusModelCopyWith<_RequestStatusModel> get copyWith =>
       __$RequestStatusModelCopyWithImpl<_RequestStatusModel>(this, _$identity);
@@ -167,6 +169,7 @@ abstract class _RequestStatusModel implements RequestStatusModel {
   @JsonKey(fromJson: JsonUtil.getRawJson, required: false)
   String get msg;
   @override
+  @JsonKey(ignore: true)
   _$RequestStatusModelCopyWith<_RequestStatusModel> get copyWith;
 }
 
@@ -192,6 +195,7 @@ mixin _$DataRequestResult {
   dynamic get data;
   RequestStatusModel get failedData;
 
+  @JsonKey(ignore: true)
   $DataRequestResultCopyWith<DataRequestResult> get copyWith;
 }
 
@@ -307,6 +311,7 @@ class _$_DataRequestResult implements _DataRequestResult {
       const DeepCollectionEquality().hash(data) ^
       const DeepCollectionEquality().hash(failedData);
 
+  @JsonKey(ignore: true)
   @override
   _$DataRequestResultCopyWith<_DataRequestResult> get copyWith =>
       __$DataRequestResultCopyWithImpl<_DataRequestResult>(this, _$identity);
@@ -321,5 +326,6 @@ abstract class _DataRequestResult implements DataRequestResult {
   @override
   RequestStatusModel get failedData;
   @override
+  @JsonKey(ignore: true)
   _$DataRequestResultCopyWith<_DataRequestResult> get copyWith;
 }

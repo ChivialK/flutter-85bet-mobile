@@ -1,94 +1,125 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/features/event/presentation/state/event_store.dart';
-import 'package:flutter_85bet_mobile/features/event/presentation/widgets/ad_dialog.dart';
-import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
-import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
-import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
-import 'package:flutter_85bet_mobile/features/update/presentation/state/update_store.dart';
-import 'package:flutter_85bet_mobile/injection_container.dart';
-import 'package:flutter_85bet_mobile/res.dart';
+import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
+import 'package:provider/provider.dart';
 
-import '../../data/models/game_category_model.dart';
 import '../state/home_store.dart';
-import 'home_display_banner.dart';
-import 'home_display_marquee.dart';
-import 'home_display_size_calc.dart';
-import 'home_display_tabs.dart';
-import 'home_search_widget.dart';
-import 'home_shortcut_widget.dart';
-import 'home_store_inherit_widget.dart';
+import 'home_display_provider.dart';
+import 'home_logo_bar.dart';
+import 'home_widget_banner.dart';
+import 'home_widget_marquee.dart';
+import 'home_widget_size_calc.dart';
+import 'home_widget_tabs.dart';
 
 class HomeDisplay extends StatefulWidget {
+  HomeDisplay({Key key}) : super(key: key);
+
   @override
   _HomeDisplayState createState() => _HomeDisplayState();
 }
 
 class _HomeDisplayState extends State<HomeDisplay> {
-  final GlobalKey<HomeShortcutWidgetState> _shortcutWidgetKey =
-      new GlobalKey<HomeShortcutWidgetState>();
-  final GlobalKey<HomeDisplayTabsState> _tabsWidgetKey =
-      new GlobalKey<HomeDisplayTabsState>();
+  final Key _scaffoldKey = new UniqueKey();
+  final GlobalKey<HomeWidgetTabsState> _tabsKey =
+      new GlobalKey(debugLabel: 'hometabs');
 
-  EventStore _eventStore;
-  UpdateStore _updateStore;
   HomeStore _store;
-  HomeShortcutWidget _shortcutWidget;
-  HomeDisplayBanner _bannerWidget;
-  HomeDisplayMarquee _marqueeWidget;
-  HomeDisplaySizeCalc _sizeCalc;
-  Widget _contentWidget;
-
-  double _screenWidth = Global.device.width;
+  HomeWidgetBanner _bannerWidget;
+  HomeWidgetMarquee _marqueeWidget;
+  HomeWidgetSizeCalc _sizeCalc;
 
   List banners;
   List marquees;
   List tabs;
 
-  String gameTitle = '';
-  bool showGameTitle = false;
-  bool showingAds = false;
+  @override
+  void initState() {
+    _sizeCalc = HomeWidgetSizeCalc();
+    super.initState();
+  }
 
-  void showAdsDialog(List list) {
-    if (showingAds) return;
-    if (_updateStore.showingUpdateDialog) {
-      Future.delayed(Duration(seconds: 2), () {
-        showAdsDialog(list);
-      });
-    } else {
-      Future.delayed(Duration(milliseconds: 500), () {
-        if (!mounted)
-          showAdsDialog(list);
-        else {
-          showingAds = true;
-          showDialog(
-            context: context,
-            barrierDismissible: false,
-            builder: (context) => new AdDialog(
-              ads: new List.from(list),
-              initCheck: _eventStore.checkSkip,
-              onClose: (skipNextTime) {
-                debugPrint('ads dialog close, skip=$skipNextTime');
-                showingAds = false;
-                _eventStore.setAutoShowAds = false;
-                _eventStore.setSkipAd(skipNextTime);
-                _eventStore.adsDialogClose();
-              },
+  @override
+  Widget build(BuildContext context) {
+    _store ??= Provider.of<HomeDisplayProvider>(context).store;
+    return Scaffold(
+      key: _scaffoldKey,
+      body: NestedScrollView(
+        physics: const BouncingScrollPhysics(),
+        headerSliverBuilder: (headerCtx, innerBoxIsScrolled) {
+          return [
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: _HomeLogoBarDelegate(
+                logoBar: HomeLogoBar(),
+                barHeight: _sizeCalc.logoBarHeight,
+              ),
             ),
-          );
-        }
-      });
-    }
+            SliverToBoxAdapter(
+              child: Container(
+                height: _sizeCalc.bannerHeight,
+                child: Stack(
+                  children: [
+                    StreamBuilder(
+                      stream: _store.bannerStream,
+                      initialData: _store.banners,
+                      builder: (ctx, _) {
+                        if (banners != _store.banners) {
+                          banners = _store.banners;
+                          _bannerWidget = HomeWidgetBanner(
+                            banners: banners,
+                            onBannerClicked: (url) => _widgetUrlCheck(url),
+                          );
+                        }
+                        _bannerWidget ??=
+                            HomeWidgetBanner(onBannerClicked: (_) {});
+                        return _bannerWidget;
+                      },
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      child: StreamBuilder(
+                        stream: _store.marqueeStream,
+                        initialData: _store.marquees,
+                        builder: (ctx, _) {
+                          if (marquees != _store.marquees) {
+                            marquees = _store.marquees;
+                            _marqueeWidget = HomeWidgetMarquee(
+                              marquees: marquees,
+                              onMarqueeClicked: (url) => _widgetUrlCheck(url),
+                            );
+                          }
+                          _marqueeWidget ??= HomeWidgetMarquee();
+                          return _marqueeWidget;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ];
+        },
+        body: Container(
+          constraints: BoxConstraints(maxHeight: _sizeCalc.pageMaxHeight),
+          child: HomeWidgetTabs(key: _tabsKey, tabs: _store.homeTabs),
+        ),
+      ),
+    );
   }
 
   void _widgetUrlCheck(String url) {
     debugPrint('home widget url check: $url');
+    String fixUrl;
+    if (url.contains(Global.DOMAIN_NAME)) {
+      fixUrl = url.substring(
+          url.indexOf(Global.DOMAIN_NAME) + Global.DOMAIN_NAME.length);
+    } else if (!url.startsWith('/')) {
+      fixUrl = '/$url';
+    } else {
+      fixUrl = url;
+    }
     _widgetUrlNavigate(
       url.contains('/api/open/'),
-      url
-          .substring(
-              url.indexOf(Global.DOMAIN_NAME) + Global.DOMAIN_NAME.length)
-          .replaceAll('/api/open/', ''),
+      fixUrl.replaceAll('/api/open/', ''),
     );
   }
 
@@ -104,17 +135,30 @@ class _HomeDisplayState extends State<HomeDisplay> {
 
       /// Show game category view
     } else if (url.startsWith('/gamelist/')) {
-      String className = url.replaceAll('/gamelist/', '').replaceAll('/', '-');
-      debugPrint('searching platform name: $className');
-      _tabsWidgetKey.currentState?.findPage(className.split('-')[1]);
-      _store.showSearchPlatform(className);
+      callToast(localeStr.urlActionNotSupported);
+      MyLogger.debug(msg: 'Found unsupported Game URL: $url');
+
+      /// Jump to promo page with promo id if provided
     } else if (url.startsWith('/promo/')) {
-      int promoId =
-          url.substring(url.lastIndexOf('/') + 1, url.length).strToInt;
-      debugPrint('url promo id: $promoId');
+      int itemId = url.substring(url.lastIndexOf('/') + 1, url.length).strToInt;
+      debugPrint('url promo id: $itemId');
       RouterNavigate.navigateToPage(
         RoutePage.promo,
-        arg: (promoId > 0) ? PromoRouteArguments(openPromoId: promoId) : null,
+        arg: (itemId > 0) ? PromoRouteArguments(openPromoId: itemId) : null,
+      );
+
+      /// Jump to store page with product id if provided
+    } else if (url.startsWith('/mall/')) {
+      int itemId = url.substring(url.lastIndexOf('/') + 1, url.length).strToInt;
+
+      if (!getAppGlobalStreams.hasUser) {
+        callToastInfo(localeStr.messageErrorNotLogin);
+        return;
+      }
+      debugPrint('url mall id: $itemId');
+      RouterNavigate.navigateToPage(
+        RoutePage.sideStore,
+        arg: (itemId > 0) ? StoreRouteArguments(showProductId: itemId) : null,
       );
 
       /// Jump to route page if path name exist
@@ -147,232 +191,38 @@ class _HomeDisplayState extends State<HomeDisplay> {
 
       /// Jump to game platform page
     } else if (gameParam.length == 2) {
-      return;
+      if (url == 'va/slot') {
+        _tabsKey?.currentState?.jumpToTab = 2;
+        return;
+      }
     }
 
     callToast(localeStr.urlActionNotSupported);
     MyLogger.debug(msg: 'Found unsupported Game URL: $url');
   }
+}
+
+class _HomeLogoBarDelegate extends SliverPersistentHeaderDelegate {
+  _HomeLogoBarDelegate({this.logoBar, this.barHeight});
+
+  final HomeLogoBar logoBar;
+  final double barHeight;
+
+  /// this will shrink the header to 75% and leave 25% for body extent
+  @override
+  double get minExtent => barHeight * 0.75;
 
   @override
-  void initState() {
-    _sizeCalc = HomeDisplaySizeCalc();
-    super.initState();
+  double get maxExtent => barHeight;
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return new Container(child: logoBar);
   }
 
   @override
-  Widget build(BuildContext context) {
-    _store ??= HomeStoreInheritedWidget.of(context).store;
-    _eventStore ??= sl.get<EventStore>();
-    _updateStore ??= sl.get<UpdateStore>();
-    return Stack(
-      children: [
-        if (_eventStore != null && _updateStore != null)
-          StreamBuilder<List>(
-            stream: _eventStore.adsStream,
-            initialData: _eventStore.ads ?? [],
-            builder: (ctx, snapshot) {
-              if (snapshot.data != null &&
-                  snapshot.data.isNotEmpty &&
-                  _eventStore.autoShowAds &&
-                  _eventStore.checkSkip == false) {
-                debugPrint('stream home ads: ${snapshot.data.length}');
-                showAdsDialog(new List.from(snapshot.data));
-              }
-              return SizedBox.shrink();
-            },
-          ),
-        StreamBuilder<String>(
-            stream: _store.homeGameTitleStream,
-            initialData: '',
-            builder: (context, snapshot) {
-              if (snapshot != null &&
-                  snapshot.data != null &&
-                  gameTitle != snapshot.data) {
-                debugPrint('home display stream game title: $snapshot');
-                if ((snapshot.data.isEmpty && showGameTitle) ||
-                    (snapshot.data.isNotEmpty && !showGameTitle)) {
-                  if (mounted) {
-                    Future.delayed(Duration(milliseconds: 200), () {
-                      setState(() {
-                        gameTitle = snapshot.data;
-                        showGameTitle = gameTitle.isNotEmpty;
-                      });
-                    });
-                  }
-                }
-              }
-              return SizedBox.shrink();
-            }),
-        if (Res.wallpaper.isNotEmpty)
-          Container(
-            constraints: BoxConstraints.tight(Size(
-              Global.device.width,
-              Global.device.featureContentHeight,
-            )),
-            child:
-                FittedBox(fit: BoxFit.fill, child: Image.asset(Res.wallpaper)),
-          ),
-        Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ConstrainedBox(
-              constraints: BoxConstraints.tight(
-                Size(_screenWidth, _sizeCalc.bannerHeight),
-              ),
-              child: IndexedStack(
-                index: (showGameTitle) ? 1 : 0,
-                children: [
-                  Stack(
-                    children: [
-                      StreamBuilder(
-                        stream: _store.bannerStream,
-                        builder: (ctx, _) {
-                          if (banners != _store.banners) {
-                            banners = _store.banners;
-                            _bannerWidget = HomeDisplayBanner(
-                              banners: banners,
-                              onBannerClicked: (url) => _widgetUrlCheck(url),
-                            );
-                          }
-                          _bannerWidget ??=
-                              HomeDisplayBanner(onBannerClicked: (_) {});
-                          return _bannerWidget;
-                        },
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        child: StreamBuilder(
-                          stream: _store.marqueeStream,
-                          builder: (ctx, _) {
-                            if (marquees != _store.marquees) {
-                              marquees = _store.marquees;
-                              _marqueeWidget = HomeDisplayMarquee(
-                                marquees: marquees,
-                                onMarqueeClicked: (url) => _widgetUrlCheck(url),
-                              );
-                            }
-                            _marqueeWidget ??= HomeDisplayMarquee();
-                            return _marqueeWidget;
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  if (showGameTitle)
-                    ShaderMask(
-                      shaderCallback: (rect) {
-                        return LinearGradient(
-                          begin: Alignment.center,
-                          end: Alignment.bottomCenter,
-                          stops: [0.7, 1.0],
-                          colors: [Colors.black, Colors.transparent],
-                        ).createShader(
-                            Rect.fromLTRB(0, 0, rect.width, rect.height));
-                      },
-                      blendMode: BlendMode.dstIn,
-                      child: SizedBox(
-                          height: _sizeCalc.bannerHeight,
-                          child:
-                              networkImageBuilder(gameTitle, fit: BoxFit.fill)),
-                    ),
-                ],
-              ),
-            ),
-            Container(
-              constraints: BoxConstraints.tight(
-                Size(
-                  _screenWidth,
-                  Global.device.featureContentHeight - _sizeCalc.bannerHeight,
-                ),
-              ),
-              child: Stack(
-                children: [
-                  Column(
-                    children: [
-                      if (!showGameTitle)
-                        Container(
-                          child: StreamBuilder<bool>(
-                            stream:
-                                RouterNavigate.routerStreams.recheckUserStream,
-                            initialData: false,
-                            builder: (context, snapshot) {
-//                debugPrint('checking shortcut widget: ${getRouteUserStreams.lastUser}');
-                              if (_shortcutWidget == null) {
-                                _shortcutWidget = HomeShortcutWidget(
-                                  key: _shortcutWidgetKey,
-                                  sizeCalc: _sizeCalc,
-                                  eventStore: _eventStore,
-                                );
-                              } else if (snapshot.data) {
-                                _shortcutWidgetKey.currentState.updateUser();
-                                _store.checkHomeTabs();
-                                RouterNavigate.resetCheckUser();
-                              }
-                              return _shortcutWidget;
-                            },
-                          ),
-                        ),
-                      if (showGameTitle)
-                        ConstrainedBox(
-                          constraints: BoxConstraints(
-                            maxHeight: _sizeCalc.shortcutMaxHeight,
-                            maxWidth: Global.device.width,
-                          ),
-                          child: HomeSearchWidget(
-                            onSearch: (searchStr) =>
-                                _store.searchGame(searchKey: searchStr),
-                          ),
-                        ),
-                      Expanded(
-                        child: StreamBuilder(
-                          stream: _store.tabStream,
-                          initialData: (_store.hasUser)
-                              ? _store.homeUserTabs
-                              : _store.homeTabs,
-                          builder: (ctx, snapshot) {
-                            if (tabs != snapshot.data) {
-//                              debugPrint('update display tabs: ${snapshot.data}');
-                              tabs = new List<GameCategoryModel>.from(
-                                  snapshot.data);
-                              // use different widget to avoid tab controller's dispose error
-                              _contentWidget = new HomeDisplayTabs(
-                                key: _tabsWidgetKey,
-                                tabs: tabs,
-                                sizeCalc: _sizeCalc,
-                              );
-                            }
-                            _contentWidget ??= HomeDisplayTabs(
-                                key: _tabsWidgetKey, sizeCalc: _sizeCalc);
-                            return _contentWidget;
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        if (!showGameTitle)
-          Positioned(
-            top: _sizeCalc.bannerHeight - 6,
-            child: Row(
-              children: [
-                Transform(
-                    transform: Matrix4.diagonal3Values(Global.device.widthScale,
-                        Global.device.ratio - 0.25, 1.0),
-                    child: Image.asset(
-                      Res.shadow,
-                      color: Color(0xD0000000),
-                    )),
-              ],
-            ),
-          ),
-      ],
-    );
+  bool shouldRebuild(_HomeLogoBarDelegate oldDelegate) {
+    return false;
   }
 }

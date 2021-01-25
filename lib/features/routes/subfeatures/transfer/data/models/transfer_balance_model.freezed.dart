@@ -38,6 +38,7 @@ mixin _$TransferBalanceModel {
   String get balance;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $TransferBalanceModelCopyWith<TransferBalanceModel> get copyWith;
 }
 
@@ -128,6 +129,7 @@ class _$_TransferBalanceModel implements _TransferBalanceModel {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(balance);
 
+  @JsonKey(ignore: true)
   @override
   _$TransferBalanceModelCopyWith<_TransferBalanceModel> get copyWith =>
       __$TransferBalanceModelCopyWithImpl<_TransferBalanceModel>(
@@ -149,5 +151,6 @@ abstract class _TransferBalanceModel implements TransferBalanceModel {
   @override
   String get balance;
   @override
+  @JsonKey(ignore: true)
   _$TransferBalanceModelCopyWith<_TransferBalanceModel> get copyWith;
 }

@@ -60,6 +60,7 @@ mixin _$BetRecordModel {
   @JsonKey(fromJson: decodeBetRecordData)
   List<BetRecordData> get data;
 
+  @JsonKey(ignore: true)
   $BetRecordModelCopyWith<BetRecordModel> get copyWith;
 }
 
@@ -262,6 +263,7 @@ class _$_BetRecordModel implements _BetRecordModel {
       const DeepCollectionEquality().hash(prevPageUrl) ^
       const DeepCollectionEquality().hash(data);
 
+  @JsonKey(ignore: true)
   @override
   _$BetRecordModelCopyWith<_BetRecordModel> get copyWith =>
       __$BetRecordModelCopyWithImpl<_BetRecordModel>(this, _$identity);
@@ -305,6 +307,7 @@ abstract class _BetRecordModel implements BetRecordModel {
   @JsonKey(fromJson: decodeBetRecordData)
   List<BetRecordData> get data;
   @override
+  @JsonKey(ignore: true)
   _$BetRecordModelCopyWith<_BetRecordModel> get copyWith;
 }
 
@@ -357,6 +360,7 @@ mixin _$BetRecordData {
   String get type;
   dynamic get key;
 
+  @JsonKey(ignore: true)
   $BetRecordDataCopyWith<BetRecordData> get copyWith;
 }
 
@@ -549,6 +553,7 @@ class _$_BetRecordData implements _BetRecordData {
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(key);
 
+  @JsonKey(ignore: true)
   @override
   _$BetRecordDataCopyWith<_BetRecordData> get copyWith =>
       __$BetRecordDataCopyWithImpl<_BetRecordData>(this, _$identity);
@@ -589,6 +594,7 @@ abstract class _BetRecordData implements BetRecordData {
   @override
   dynamic get key;
   @override
+  @JsonKey(ignore: true)
   _$BetRecordDataCopyWith<_BetRecordData> get copyWith;
 }
 
@@ -619,6 +625,7 @@ mixin _$BetRecordDataAllPlatform {
   num get payout;
   dynamic get key;
 
+  @JsonKey(ignore: true)
   $BetRecordDataAllPlatformCopyWith<BetRecordDataAllPlatform> get copyWith;
 }
 
@@ -734,6 +741,7 @@ class _$_BetRecordDataAllPlatform implements _BetRecordDataAllPlatform {
       const DeepCollectionEquality().hash(payout) ^
       const DeepCollectionEquality().hash(key);
 
+  @JsonKey(ignore: true)
   @override
   _$BetRecordDataAllPlatformCopyWith<_BetRecordDataAllPlatform> get copyWith =>
       __$BetRecordDataAllPlatformCopyWithImpl<_BetRecordDataAllPlatform>(
@@ -756,5 +764,6 @@ abstract class _BetRecordDataAllPlatform implements BetRecordDataAllPlatform {
   @override
   dynamic get key;
   @override
+  @JsonKey(ignore: true)
   _$BetRecordDataAllPlatformCopyWith<_BetRecordDataAllPlatform> get copyWith;
 }

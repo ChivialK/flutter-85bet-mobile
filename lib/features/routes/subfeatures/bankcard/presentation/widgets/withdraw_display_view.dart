@@ -41,11 +41,10 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
       );
       if (dataForm.isValid) {
         debugPrint('bankcard form: ${dataForm.toJson()}');
-        if (widget.store.waitForWithdrawResult) {
+        if (widget.store.waitForWithdrawResult)
           callToast(localeStr.messageWait);
-        } else {
-          widget.store.sendRequest(dataForm);
-        }
+        else
+          widget.store.requestWithdraw(dataForm);
       } else {
         callToast(localeStr.messageActionFillForm);
       }
@@ -75,11 +74,7 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: themeColor.memberIconColor,
-                      boxShadow: ThemeInterface.iconBottomShadow,
-                    ),
+                    decoration: ThemeInterface.pageIconContainerDecor,
                     child: Icon(
                       pageItem.value.iconData,
                       size: 32 * Global.device.widthScale,

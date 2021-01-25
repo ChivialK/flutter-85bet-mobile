@@ -113,11 +113,7 @@ class _BalanceDisplayState extends State<BalanceDisplay> {
               children: [
                 Container(
                   padding: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: themeColor.memberIconColor,
-                    boxShadow: ThemeInterface.iconBottomShadow,
-                  ),
+                  decoration: ThemeInterface.pageIconContainerDecor,
                   child: Icon(
                     pageItem.value.iconData,
                     size: 32 * Global.device.widthScale,

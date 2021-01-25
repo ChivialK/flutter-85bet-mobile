@@ -245,6 +245,7 @@ class DioApiService {
   ServerException getErrorType(DioError e) {
     MyLogger.error(msg: 'request error: ${e.type}', tag: TAG, error: e.error);
     switch (e.type) {
+      case DioErrorType.DEFAULT:
       case DioErrorType.CONNECT_TIMEOUT:
       case DioErrorType.SEND_TIMEOUT:
       case DioErrorType.RECEIVE_TIMEOUT:
@@ -253,7 +254,6 @@ class DioApiService {
         return ResponseException();
       case DioErrorType.CANCEL:
         return RequestCanceledException();
-      case DioErrorType.DEFAULT:
       default:
         return UnknownException();
     }

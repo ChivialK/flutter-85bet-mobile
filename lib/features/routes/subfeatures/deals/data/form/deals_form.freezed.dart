@@ -35,6 +35,7 @@ mixin _$DealsForm {
   int get type;
   int get status;
 
+  @JsonKey(ignore: true)
   $DealsFormCopyWith<DealsForm> get copyWith;
 }
 
@@ -143,6 +144,7 @@ class _$_DealsForm implements _DealsForm {
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(status);
 
+  @JsonKey(ignore: true)
   @override
   _$DealsFormCopyWith<_DealsForm> get copyWith =>
       __$DealsFormCopyWithImpl<_DealsForm>(this, _$identity);
@@ -161,5 +163,6 @@ abstract class _DealsForm implements DealsForm {
   @override
   int get status;
   @override
+  @JsonKey(ignore: true)
   _$DealsFormCopyWith<_DealsForm> get copyWith;
 }

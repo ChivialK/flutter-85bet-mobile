@@ -25,7 +25,7 @@ class _ScreenMenuLangWidgetState extends State<ScreenMenuLangWidget> {
 
   @override
   void initState() {
-    _currentLang = Global.lang;
+    _currentLang = Global.lang.code;
     super.initState();
   }
 
@@ -49,7 +49,10 @@ class _ScreenMenuLangWidgetState extends State<ScreenMenuLangWidget> {
                     child: networkImageBuilder(langImg[index], imgScale: 3.0),
                   ),
                 ),
-                Text(langOptions[index]),
+                Padding(
+                  padding: const EdgeInsets.only(left: 4.0),
+                  child: Text(langOptions[index]),
+                ),
               ],
             ),
           ),
@@ -57,22 +60,35 @@ class _ScreenMenuLangWidgetState extends State<ScreenMenuLangWidget> {
       }),
       selectedItemBuilder: (context) =>
           List<Widget>.generate(langValues.length, (index) {
-        return Container(
-          padding: const EdgeInsets.only(right: 12.0),
-          decoration: BoxDecoration(shape: BoxShape.circle),
-          child: Transform.scale(
-            scale: 0.75,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(36.0),
-              child: networkImageBuilder(langImg[index], imgScale: 3.0),
+        return Row(
+          children: [
+            Container(
+              decoration: BoxDecoration(shape: BoxShape.circle),
+              child: Transform.scale(
+                scale: 0.75,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(36.0),
+                  child: networkImageBuilder(langImg[index], imgScale: 3.0),
+                ),
+              ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4.0),
+              child: Text(
+                langOptions[index],
+                style: TextStyle(
+                  color: themeColor.defaultWidgetColor,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ],
         );
       }),
       value: _currentLang,
       onChanged: (value) {
         debugPrint('selected lang: $value');
-        if (Global.lang != value) {
+        if (Global.lang.code != value) {
           String newLang = value;
           try {
             sl.get<LocalStrings>()?.setLanguage(newLang);
@@ -87,7 +103,7 @@ class _ScreenMenuLangWidgetState extends State<ScreenMenuLangWidget> {
             MyLogger.error(
                 msg: 'Localize File not initialized', tag: 'LocalStrings');
           } finally {
-            Global.setLanguage = newLang;
+            Global.lang.setLocale = newLang;
             if (mounted) {
               _currentLang = newLang;
             }

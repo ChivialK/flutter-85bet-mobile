@@ -24,6 +24,7 @@ class _WithdrawDisplayState extends State<WithdrawDisplay> {
   void initState() {
     _store ??= sl.get<WithdrawStore>();
     super.initState();
+    _store.getWalletCredit();
   }
 
   @override
@@ -71,6 +72,22 @@ class _WithdrawDisplayState extends State<WithdrawDisplay> {
           } else {
             callToastError(
                 MessageMap.getErrorMessage(result.msg, RouteEnum.WITHDRAW));
+          }
+        },
+      ),
+      /* Reaction on wallet credit changed */
+      reaction(
+        // Observe in page
+        // Tell the reaction which observable to observe
+        (_) => _store.walletCredit,
+        // Run some logic with the content of the observed field
+        (credit) {
+          debugPrint('reaction on withdraw credit: $credit');
+          if (credit.isEmpty) {
+            toastDismiss = callToastLoading();
+          } else if (toastDismiss != null) {
+            toastDismiss();
+            toastDismiss = null;
           }
         },
       ),

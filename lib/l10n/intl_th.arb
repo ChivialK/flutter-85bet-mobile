@@ -1,9 +1,9 @@
 {
   "@@last_modified": "2020-09-25T10:54:50+0800",
   "@@locale": "th",
-  "title": "85Bet Mobile",
+  "title": "VKing Mobile",
   "@title": {
-    "description": "85Bet Demo",
+    "description": "VKing Demo",
     "type": "text",
     "placeholders": {}
   },
@@ -349,6 +349,14 @@
   "@btnCopy": {
     "type": "text"
   },
+  "btnNextStep": "ขั้นตอนต่อไป",
+  "@btnNextStep": {
+    "type": "text"
+  },
+  "btnPreStep": "ก่อนหน้า",
+  "@btnPreStep": {
+    "type": "text"
+  },
   "sideBtnBackHome": "ย้อนกลับ",
   "@sideBtnBackHome": {
     "type": "text"
@@ -478,7 +486,7 @@
   "@messageActionFailed": {
     "type": "text"
   },
-  "messageActionFillForm": "กรุณากรอกแบบฟอร์ม",
+  "messageActionFillForm": "โปรดยืนยันข้อมูลฟิลด์และกรอกข้อมูลให้ครบถ้วน",
   "@messageActionFillForm": {
     "type": "text"
   },
@@ -610,6 +618,18 @@
       }
     }
   },
+  "messageInvalidPhone2": "หมายเลขโทรศัพท์ผิดพลาด ({min}~{max})",
+  "@messageInvalidPhone2": {
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "10"
+      },
+      "max": {
+        "example": "10"
+      }
+    }
+  },
   "messageInvalidPostCode": "รหัสโพสต์ผิดพลาด (5~8)",
   "@messageInvalidPostCode": {
     "type": "text"
@@ -635,17 +655,29 @@
       }
     }
   },
-  "messageInvalidAccount": "ชหมายเลขบัญชีคือ 6 ~ 12 ตัวพิมพ์เล็กภาษาอังกฤษ / หลัก",
+  "messageInvalidAccount": "ชหมายเลขบัญชีคือ {min}~{max} ตัวพิมพ์เล็กภาษาอังกฤษ / หลัก",
   "@messageInvalidAccount": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "6"
+      },
+      "max": {
+        "example": "12"
+      }
+    }
   },
-  "messageInvalidPassword": "รหัสผ่านควรมีความยาว 8 ~ 18 คำ",
+  "messageInvalidPassword": "รหัสผ่านควรมีความยาว {min}~{max} คำ",
   "@messageInvalidPassword": {
-    "type": "text"
-  },
-  "messageInvalidPasswordNew": "รหัสผ่านควรมีความยาว 8 ~ 18 คำ",
-  "@messageInvalidPasswordNew": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "8"
+      },
+      "max": {
+        "example": "20"
+      }
+    }
   },
   "messageInvalidConfirmPassword": "รหัสผ่านไม่ตรงกัน",
   "@messageInvalidConfirmPassword": {
@@ -672,8 +704,12 @@
       }
     }
   },
-  "messageInvalidDepositAmountMax": "เกินจำนวนการถอนสูงสุดของการทำธุรกรรมหนึ่งครั้ง (โปรดดูที่ระบบระดับสมาชิก)",
-  "@messageInvalidDepositAmountMax": {
+  "messageInvalidDepositAmountMaxLimit": "จำนวนเงินที่เติมเกินขีด จำกัด ด้านบน",
+  "@messageInvalidDepositAmountMaxLimit": {
+    "type": "text"
+  },
+  "messageInvalidDepositAmountMinLimit": "จำนวนการเติมเงินต่ำกว่าขีด จำกัด ล่าง",
+  "@messageInvalidDepositAmountMinLimit": {
     "type": "text"
   },
   "messageInvalidDepositName": "ชื่อบัญชีไม่ถูกต้อง",
@@ -684,12 +720,43 @@
   "@messageInvalidCardOwner": {
     "type": "text"
   },
-  "messageInvalidCardNumber": "หมายเลขบัตรคือ 5 ~ 20 อักขระ",
+  "messageInvalidCardNumber": "หมายเลขการ์ดคือ {min}~{max} ตัวอักษร",
   "@messageInvalidCardNumber": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "16"
+      },
+      "max": {
+        "example": "19"
+      }
+    }
+  },
+  "messageInvalidCardNumberFixed": "หมายเลขการ์ดคือ {min}~{max} ตัวอักษร (ขึ้นต้นด้วย {fixed})",
+  "@messageInvalidCardNumberFixed": {
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "16"
+      },
+      "max": {
+        "example": "19"
+      },
+      "fixed": {
+        "example": "9704"
+      }
+    }
   },
   "messageInvalidCardBankPoint": "ชื่อต้องมีความยาวมากกว่า 3 อักขระ",
   "@messageInvalidCardBankPoint": {
+    "type": "text"
+  },
+  "messageExceedRemainCredit": "เกินความสมดุล",
+  "@messageExceedRemainCredit": {
+    "type": "text"
+  },
+  "messagePlatformMaintenance": "แพลตฟอร์มอยู่ระหว่างการบำรุงรักษา",
+  "@messagePlatformMaintenance": {
     "type": "text"
   },
   "messageInvalidWithdrawPassword": "รหัสผ่านผิดพลาด! (ค่าเริ่มต้นคือรหัสผ่านเข้าสู่ระบบ)",
@@ -702,6 +769,10 @@
   },
   "messageInvalidWithdrawUnderAmount": "ต่ำกว่าจำนวนเงินถอนขั้นต่ำ",
   "@messageInvalidWithdrawUnderAmount": {
+    "type": "text"
+  },
+  "messageInvalidWithdrawExceedAmount": "เกินจำนวนการถอนสูงสุดของการทำธุรกรรมหนึ่งครั้ง (โปรดดูที่ระบบระดับสมาชิก)",
+  "@messageInvalidWithdrawExceedAmount": {
     "type": "text"
   },
   "messageWarnUsingCellular": "คุณกำลังใช้เครือข่ายมือถือ",
@@ -772,6 +843,10 @@
   "@messageErrorLoadingGame": {
     "type": "text"
   },
+  "messageErrorGamePermission": "คุณไม่ได้รับอนุญาตให้เล่นเกมแพลตฟอร์มนี้โปรดติดต่อฝ่ายบริการลูกค้า",
+  "@messageErrorGamePermission": {
+    "type": "text"
+  },
   "messageErrorLoadingPay": "ข้อผิดพลาดในการโหลดหน้าเว็บโปรดลองอีกครั้งในภายหลัง",
   "@messageErrorLoadingPay": {
     "type": "text"
@@ -836,6 +911,10 @@
   },
   "messageErrorPassword": "รหัสผ่านผิดพลาด",
   "@messageErrorPassword": {
+    "type": "text"
+  },
+  "messageErrorPasswordHint": "รหัสผ่านไม่ตรงกันบัญชีจะถูกล็อกหลังจากมีข้อผิดพลาด 5 ข้อ",
+  "@messageErrorPasswordHint": {
     "type": "text"
   },
   "messageErrorReferral": "รหัสอ้างอิงไม่ถูกต้อง",
@@ -991,7 +1070,7 @@
   "@gameCategoryWeb": {
     "type": "text"
   },
-  "gameCategoryWebHint": "คลิกฉันเพื่อเปิดเว็บไซต์ 85Bet",
+  "gameCategoryWebHint": "คลิกฉันเพื่อเปิดเว็บไซต์ VKing",
   "@gameCategoryWebHint": {
     "type": "text"
   },
@@ -1653,7 +1732,7 @@
   "@dealsHeaderSerial": {
     "type": "text"
   },
-  "dealsHeaderType": "items",
+  "dealsHeaderType": "โครงการ",
   "@dealsHeaderType": {
     "type": "text"
   },
@@ -1671,6 +1750,10 @@
   },
   "dealsHeaderAmount": "จำนวนเงิน",
   "@dealsHeaderAmount": {
+    "type": "text"
+  },
+  "dealsDetailTypeAdjustCash": "จำนวนเงินที่ปรับแล้ว",
+  "@dealsDetailTypeAdjustCash": {
     "type": "text"
   },
   "dealsDetailTypeAdjustDeposit": "จำนวนเงินที่ปรับแล้ว",
@@ -1770,10 +1853,6 @@
       }
     }
   },
-  "depositPaymentEditTitleNote": "หมายเหตุ",
-  "@depositPaymentEditTitleNote": {
-    "type": "text"
-  },
   "depositPaymentEditTitleAmountHintRange": "ช่วง: {num}~{num2}",
   "@depositPaymentEditTitleAmountHintRange": {
     "type": "text",
@@ -1800,6 +1879,18 @@
         "example": "50"
       }
     }
+  },
+  "depositPaymentEditTitleCode": "รหัสธุรกรรม",
+  "@depositPaymentEditTitleCode": {
+    "type": "text"
+  },
+  "depositPaymentEditHintCode": "กรุณากรอกรหัสธุรกรรม",
+  "@depositPaymentEditHintCode": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleNote": "หมายเหตุ",
+  "@depositPaymentEditTitleNote": {
+    "type": "text"
   },
   "depositPaymentButtonTitleTutorial": "บทช่วยสอน",
   "@depositPaymentButtonTitleTutorial": {
@@ -1959,6 +2050,10 @@
   },
   "depositMessageFailed": "การเติมเงินล้มเหลวโปรดลองอีกครั้งในภายหลังหรือติดต่อฝ่ายบริการลูกค้า",
   "@depositMessageFailed": {
+    "type": "text"
+  },
+  "depositMessageFormError": "ข้อมูลการเติมเงินไม่ถูกต้องโปรดเลือกวิธีการเติมเงินใหม่หรือติดต่อฝ่ายบริการลูกค้า",
+  "@depositMessageFormError": {
     "type": "text"
   },
   "depositMessageSuccessLocal": "ขอความสำเร็จหมายเลขคำสั่งซื้อ {value}",
@@ -2169,332 +2264,6 @@
   },
   "rollbackIndexRollback": "ล่าถอย",
   "@rollbackIndexRollback": {
-    "type": "text"
-  },
-  "agentActionLoginHint": "กรุณาเข้าสู่ระบบบัญชีตัวแทนของคุณก่อน",
-  "@agentActionLoginHint": {
-    "type": "text"
-  },
-  "agentActionLogin": "เข้าสู่ระบบตัวแทน",
-  "@agentActionLogin": {
-    "type": "text"
-  },
-  "agentActionRegister": "การลงทะเบียนตัวแทน",
-  "@agentActionRegister": {
-    "type": "text"
-  },
-  "agentRegisterSuccess": "ส่งตัวแทนเข้ารับการตรวจสอบแล้วโปรดรอสักครู่",
-  "@agentRegisterSuccess": {
-    "type": "text"
-  },
-  "agentAccountLevelCompany": "บริษัท",
-  "@agentAccountLevelCompany": {
-    "type": "text"
-  },
-  "agentAccountLevelGrandMaster": "ประธานาธิบดีใหญ่",
-  "@agentAccountLevelGrandMaster": {
-    "type": "text"
-  },
-  "agentAccountLevelMaster": "รวมรุ่น",
-  "@agentAccountLevelMaster": {
-    "type": "text"
-  },
-  "agentAccountLevelAgent": "พร็อกซี",
-  "@agentAccountLevelAgent": {
-    "type": "text"
-  },
-  "agentAccountLevelMember": "สมาชิก",
-  "@agentAccountLevelMember": {
-    "type": "text"
-  },
-  "agentTitleAccount": "{level}หมายเลขบัญชี",
-  "@agentTitleAccount": {
-    "type": "text",
-    "placeholders": {
-      "level": {
-        "example": "agent"
-      }
-    }
-  },
-  "agentTabTitleInfo": "ข้อมูล",
-  "@agentTabTitleInfo": {
-    "type": "text"
-  },
-  "agentTabTitleChart": "แผนภูมิ",
-  "@agentTabTitleChart": {
-    "type": "text"
-  },
-  "agentTabTitleCommission": "ค่าคอมมิชชั่น",
-  "@agentTabTitleCommission": {
-    "type": "text"
-  },
-  "agentTabTitleLedger": "บัญชีแยกประเภท",
-  "@agentTabTitleLedger": {
-    "type": "text"
-  },
-  "agentTabTitleDownlineList": "{level}รายการ",
-  "@agentTabTitleDownlineList": {
-    "type": "text",
-    "placeholders": {
-      "level": {
-        "example": "agent"
-      }
-    }
-  },
-  "agentTabTitleCard": "แก้ไขบัตรธนาคาร",
-  "@agentTabTitleCard": {
-    "type": "text"
-  },
-  "agentTabTitleAds": "โฆษณา",
-  "@agentTabTitleAds": {
-    "type": "text"
-  },
-  "agentInfoFieldCode": "รหัสแนะนำ",
-  "@agentInfoTitleCode": {
-    "type": "text"
-  },
-  "agentInfoFieldLink": "ลิงก์ตัวแทน",
-  "@agentInfoFieldLink": {
-    "type": "text"
-  },
-  "agentInfoFieldAgents": "ตัวแทน",
-  "@agentInfoFieldAgents": {
-    "type": "text"
-  },
-  "agentInfoFieldButtonGetCode": "รับรหัส",
-  "@agentInfoFieldButtonGetCode": {
-    "type": "text"
-  },
-  "agentButtonTextShare": "แบ่งปัน",
-  "@agentButtonTextShare": {
-    "type": "text"
-  },
-  "agentButtonTextLink": "ลิงก์",
-  "@agentButtonTextLink": {
-    "type": "text"
-  },
-  "agentButtonTextCopy": "คัดลอก",
-  "@agentButtonTextCopy": {
-    "type": "text"
-  },
-  "agentTextChartDate": "เวลา:",
-  "@agentTextChartDate": {
-    "type": "text"
-  },
-  "agentTextChartMonth": "เดือนนี้",
-  "@agentTextChartMonth": {
-    "type": "text"
-  },
-  "agentTextChartMonthPrev": "เดือนที่แล้ว",
-  "@agentTextChartMonthPrev": {
-    "type": "text"
-  },
-  "agentTextChartOption": "เลือก",
-  "@agentTextChartOption": {
-    "type": "text"
-  },
-  "agentTextChartPlatform": "แพลตฟอร์ม",
-  "@agentTextChartPlatform": {
-    "type": "text"
-  },
-  "agentTextChartCategory": "หมวดหมู่",
-  "@agentTextChartCategory": {
-    "type": "text"
-  },
-  "agentTextChartQuery": "แบบสอบถาม",
-  "@agentTextChartQuery": {
-    "type": "text"
-  },
-  "agentTextChartCheckFull": "แสดงข้อมูลทั้งหมด",
-  "@agentTextChartCheckFull": {
-    "type": "text"
-  },
-  "agentChartTableSpinner": "แบบฟอร์ม",
-  "@agentChartTableSpinner": {
-    "type": "text"
-  },
-  "agentChartHeaderAccount": "บัญชี",
-  "@agentChartHeaderAccount": {
-    "type": "text"
-  },
-  "agentChartHeaderWager": "จำนวนเงินเดิมพัน",
-  "@agentChartHeaderWager": {
-    "type": "text"
-  },
-  "agentChartHeaderBet": "จำนวนเงินเดิมพัน",
-  "@agentChartHeaderBet": {
-    "type": "text"
-  },
-  "agentChartHeaderValid": "จำนวนเงินเดิมพันที่ถูกต้อง",
-  "@agentChartHeaderValid": {
-    "type": "text"
-  },
-  "agentChartHeaderPayout": "จ่าย",
-  "@agentChartHeaderPayout": {
-    "type": "text"
-  },
-  "agentChartHeaderTotalWager": "ปริมาณการเดิมพันทั้งหมด",
-  "@agentChartHeaderTotalWager": {
-    "type": "text"
-  },
-  "agentChartHeaderTotalBet": "เดิมพันทั้งหมด",
-  "@agentChartHeaderTotalBet": {
-    "type": "text"
-  },
-  "agentChartHeaderTotalValid": "จำนวนเงินที่ถูกต้องทั้งหมด",
-  "@agentChartHeaderTotalValid": {
-    "type": "text"
-  },
-  "agentChartHeaderTotalPayout": "การจ่ายเงินทั้งหมด",
-  "@agentChartHeaderTotalPayout": {
-    "type": "text"
-  },
-  "agentCommissionHeaderMonth": "เดือน",
-  "@agentCommissionHeaderMonth": {
-    "type": "text"
-  },
-  "agentCommissionHeaderLowLine": "ค่าคอมมิชชั่นออฟไลน์",
-  "@agentCommissionHeaderLowLine": {
-    "type": "text"
-  },
-  "agentCommissionHeaderGroup": "ค่าคอมมิชชั่นกลุ่ม",
-  "@agentCommissionHeaderGroup": {
-    "type": "text"
-  },
-  "agentCommissionHeaderAdmin": "ค่าธรรมเนียมการดูแลระบบ",
-  "@agentCommissionHeaderAdmin": {
-    "type": "text"
-  },
-  "agentCommissionHeaderPlatform": "ค่าธรรมเนียมแพลตฟอร์ม",
-  "@agentCommissionHeaderPlatform": {
-    "type": "text"
-  },
-  "agentCommissionHeaderReceive": "ค่าคอมมิชชันจริง",
-  "@agentCommissionHeaderReceive": {
-    "type": "text"
-  },
-  "agentLedgerFieldTitleAccount": "โปรดป้อนชื่อตัวแทน",
-  "@agentLedgerFieldTitleAccount": {
-    "type": "text"
-  },
-  "agentLedgerFieldTitleDepositCheck": "ฝากสมาชิก",
-  "@agentLedgerFieldTitleDepositCheck": {
-    "type": "text"
-  },
-  "agentLedgerHeaderNo": "หมายเลขซีเรียล",
-  "@agentLedgerHeaderNo": {
-    "type": "text"
-  },
-  "agentLedgerHeaderAccount": "บัญชี",
-  "@agentLedgerHeaderAccount": {
-    "type": "text"
-  },
-  "agentLedgerHeaderDeposit": "เงินฝาก",
-  "@agentLedgerHeaderDeposit": {
-    "type": "text"
-  },
-  "agentLedgerHeaderWithdraw": "ถอน",
-  "@agentLedgerHeaderWithdraw": {
-    "type": "text"
-  },
-  "agentLedgerHeaderPromo": "โปรโมชั่น",
-  "@agentLedgerHeaderPromo": {
-    "type": "text"
-  },
-  "agentLedgerHeaderRefund": "การคืนเงิน",
-  "@agentLedgerHeaderRefund": {
-    "type": "text"
-  },
-  "agentLedgerHeaderRegDate": "เวลาลงทะเบียน",
-  "@agentLedgerHeaderRegDate": {
-    "type": "text"
-  },
-  "agentLedgerHeaderLastLogin": "เวลาเข้าสู่ระบบครั้งล่าสุด",
-  "@agentLedgerHeaderLastLogin": {
-    "type": "text"
-  },
-  "agentBankcardHint": "หลังจากเพิ่มบัตรธนาคารแล้วหากคุณต้องการแก้ไขโปรดติดต่อบริษัทเพื่อทำการแก้ไข",
-  "@agentBankcardHint": {
-    "type": "text"
-  },
-  "agentAddDownlineHint": "※ {level} สามารถเพิ่มได้เฉพาะบัญชี {downline}",
-  "@agentAddDownlineHint": {
-    "type": "text",
-    "placeholders": {
-      "level": {
-        "example": "Slot"
-      },
-      "downline": {
-        "example": "AG"
-      }
-    }
-  },
-  "agentDownlineButtonAdd": "เพิ่มออฟไลน์",
-  "@agentDownlineButtonAdd": {
-    "type": "text"
-  },
-  "agentDownlineButtonProportion": "อัปเดตบัญชี",
-  "@agentDownlineButtonProportion": {
-    "type": "text"
-  },
-  "agentDownlineHeaderAccount": "หมายเลขบัญชี",
-  "@agentDownlineHeaderAccount": {
-    "type": "text"
-  },
-  "agentDownlineHeaderStatus": "สถานะ",
-  "@agentDownlineHeaderStatus": {
-    "type": "text"
-  },
-  "agentDownlineHeaderStatus0": "เปิดใช้งาน",
-  "@agentDownlineHeaderStatus0": {
-    "type": "text"
-  },
-  "agentDownlineHeaderStatus1": "ปิดการใช้งาน",
-  "@agentDownlineHeaderStatus1": {
-    "type": "text"
-  },
-  "agentDownlineHeaderUpdateHint": "อัปเดตบัญชี\n(คุณสามารถแก้ไขบัญชีได้โดยตรงหลังจากเพิ่มบัญชี)",
-  "@agentDownlineHeaderUpdateHint": {
-    "type": "text"
-  },
-  "agentDownlineHeaderUpdate": "อัปเดตบัญชี",
-  "@agentDownlineHeaderUpdate": {
-    "type": "text"
-  },
-  "agentDownlineHeaderMore": "มากกว่า",
-  "@agentDownlineHeaderMore": {
-    "type": "text"
-  },
-  "agentDownlineHeaderCategory": "ประเภท",
-  "@agentDownlineHeaderCategory": {
-    "type": "text"
-  },
-  "agentDownlineHeaderProportion": "คิดเป็น",
-  "@agentDownlineHeaderProportion": {
-    "type": "text"
-  },
-  "agentDownlineHeaderFee": "ค่าธรรมเนียมการจัดการ /\nค่าธรรมเนียมแพลตฟอร์ม",
-  "@agentDownlineHeaderFee": {
-    "type": "text"
-  },
-  "agentAdTabAvailable": "ว่าง",
-  "@agentAdTabAvailable": {
-    "type": "text"
-  },
-  "agentAdTabGenerated": "สร้างแล้ว",
-  "@agentAdTabGenerated": {
-    "type": "text"
-  },
-  "agentAdButtonGenerate": "สร้างโฆษณา",
-  "@agentAdButtonGenerate": {
-    "type": "text"
-  },
-  "noticeTabGeneral": "ข้อความทั่วไป",
-  "@noticeTabGeneral": {
-    "type": "text"
-  },
-  "noticeTabMaintenance": "การแจ้งเตือนการบำรุงรักษา",
-  "@noticeTabMaintenance": {
     "type": "text"
   },
   "wheelTextTitleCount": "จับฉลากได้: {num} ครั้ง",
@@ -2840,90 +2609,13 @@
   "@eventButtonSignUpFailed": {
     "type": "text"
   },
-  "movieCategoryLabelCollect": "คอลเลคชัน",
-  "@movieCategoryLabelCollect": {
+  "noticeTabGeneral": "ข้อความทั่วไป",
+  "@noticeTabGeneral": {
     "type": "text"
   },
-  "movieCategoryLabelBuy": "ซื้อ",
-  "@movieCategoryLabelBuy": {
+  "noticeTabMaintenance": "การแจ้งเตือนการบำรุงรักษา",
+  "@noticeTabMaintenance": {
     "type": "text"
-  },
-  "movieCategoryLabelExpand": "ขยาย",
-  "@movieCategoryLabelExpand": {
-    "type": "text"
-  },
-  "movieCategoryLabelFold": "พับ",
-  "@movieCategoryLabelFold": {
-    "type": "text"
-  },
-  "movieSeparatorTextHot": "คนอื่นกำลังดู",
-  "@movieSeparatorTextHot": {
-    "type": "text"
-  },
-  "movieTextBuyNow": "ซื้อเลย",
-  "@movieTextBuyNow": {
-    "type": "text"
-  },
-  "movieHintTextFree": "ฟรีวันนี้",
-  "@movieHintTextFree": {
-    "type": "text"
-  },
-  "movieHintTextPurchased": "ซื้อแล้ว",
-  "@movieHintTextPurchased": {
-    "type": "text"
-  },
-  "movieHintTextNotPurchased": "ยังไม่ได้ซื้อ",
-  "@movieHintTextNotPurchased": {
-    "type": "text"
-  },
-  "movieListHintLoad": "โหลดเพิ่มเติม",
-  "@movieListHintLoad": {
-    "type": "text"
-  },
-  "movieListHintLoadReady": "กำลังขอ ... ",
-  "@movieListHintLoadReady": {
-    "type": "text"
-  },
-  "movieListHintLoading": "กำลังโหลด ... ",
-  "@movieListHintLoading": {
-    "type": "text"
-  },
-  "movieListHintLoadSuccess": "โหลดสำเร็จ",
-  "@movieListHintLoadSuccess": {
-    "type": "text"
-  },
-  "movieListHintLoadFailed": "โหลดล้มเหลว",
-  "@movieListHintLoadFailed": {
-    "type": "text"
-  },
-  "movieListHintLoadNoMore": "ไม่มาก",
-  "@movieListHintLoadNoMore": {
-    "type": "text"
-  },
-  "movieDialogTitlePay": "ซื้อภาพยนตร์เรื่องนี้",
-  "@movieDialogTitlePay": {
-    "type": "text"
-  },
-  "movieDialogTextFreeTimes": "นาฬิกาฟรียังคงอยู่:",
-  "@movieDialogTextFreeTimes": {
-    "type": "text"
-  },
-  "movieDialogTextStorePoints": "จุดร้านค้าปัจจุบัน:",
-  "@movieDialogTextStorePoints": {
-    "type": "text"
-  },
-  "movieDialogButtonWatchFree": "ดูฟรี",
-  "@movieDialogButtonWatchFree": {
-    "type": "text"
-  },
-  "movieDialogButtonPayPoint": "จ่าย {value} คะแนนร้านค้า",
-  "@movieDialogButtonPayPoint": {
-    "type": "text",
-    "placeholders": {
-      "value": {
-        "example": "10"
-      }
-    }
   },
   "updateDialogErrorUrl": "ไม่สามารถรับ URL ดาวน์โหลดโปรดติดต่อฝ่ายบริการลูกค้า !!",
   "@updateDialogErrorUrl": {

@@ -1,2 +1,2 @@
 /// build variants for CI/CD
-enum Environment { DEV, RELEASE }
+enum Environment { DEV, RELEASE, FIREBASE }

@@ -168,6 +168,7 @@ mixin _$GamePlatform {
     @required TResult orElse(),
   });
 
+  @JsonKey(ignore: true)
   $GamePlatformCopyWith<GamePlatform> get copyWith;
 }
 
@@ -368,6 +369,7 @@ class _$GamePlatformModel implements GamePlatformModel {
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(favorite);
 
+  @JsonKey(ignore: true)
   @override
   $GamePlatformModelCopyWith<GamePlatformModel> get copyWith =>
       _$GamePlatformModelCopyWithImpl<GamePlatformModel>(this, _$identity);
@@ -519,6 +521,7 @@ abstract class GamePlatformModel implements GamePlatform {
   @override
   String get favorite;
   @override
+  @JsonKey(ignore: true)
   $GamePlatformModelCopyWith<GamePlatformModel> get copyWith;
 }
 
@@ -661,6 +664,7 @@ class _$GamePlatformEntity implements GamePlatformEntity {
       const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(favorite);
 
+  @JsonKey(ignore: true)
   @override
   $GamePlatformEntityCopyWith<GamePlatformEntity> get copyWith =>
       _$GamePlatformEntityCopyWithImpl<GamePlatformEntity>(this, _$identity);
@@ -817,5 +821,6 @@ abstract class GamePlatformEntity implements GamePlatform, DataOperator {
   @override
   String get favorite;
   @override
+  @JsonKey(ignore: true)
   $GamePlatformEntityCopyWith<GamePlatformEntity> get copyWith;
 }

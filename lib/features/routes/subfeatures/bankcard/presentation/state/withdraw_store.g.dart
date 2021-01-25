@@ -79,6 +79,21 @@ mixin _$WithdrawStore on _WithdrawStore, Store {
     });
   }
 
+  final _$walletCreditAtom = Atom(name: '_WithdrawStore.walletCredit');
+
+  @override
+  String get walletCredit {
+    _$walletCreditAtom.reportRead();
+    return super.walletCredit;
+  }
+
+  @override
+  set walletCredit(String value) {
+    _$walletCreditAtom.reportWrite(value, super.walletCredit, () {
+      super.walletCredit = value;
+    });
+  }
+
   final _$errorMessageAtom = Atom(name: '_WithdrawStore.errorMessage');
 
   @override
@@ -92,6 +107,14 @@ mixin _$WithdrawStore on _WithdrawStore, Store {
     _$errorMessageAtom.reportWrite(value, super.errorMessage, () {
       super.errorMessage = value;
     });
+  }
+
+  final _$getWalletCreditAsyncAction =
+      AsyncAction('_WithdrawStore.getWalletCredit');
+
+  @override
+  Future<void> getWalletCredit() {
+    return _$getWalletCreditAsyncAction.run(() => super.getWalletCredit());
   }
 
   final _$getCgpWalletAsyncAction = AsyncAction('_WithdrawStore.getCgpWallet');
@@ -115,11 +138,12 @@ mixin _$WithdrawStore on _WithdrawStore, Store {
     return _$getRollbackAsyncAction.run(() => super.getRollback());
   }
 
-  final _$sendRequestAsyncAction = AsyncAction('_WithdrawStore.sendRequest');
+  final _$requestWithdrawAsyncAction =
+      AsyncAction('_WithdrawStore.requestWithdraw');
 
   @override
-  Future<void> sendRequest(WithdrawForm form) {
-    return _$sendRequestAsyncAction.run(() => super.sendRequest(form));
+  Future<void> requestWithdraw(WithdrawForm form) {
+    return _$requestWithdrawAsyncAction.run(() => super.requestWithdraw(form));
   }
 
   @override
@@ -127,6 +151,7 @@ mixin _$WithdrawStore on _WithdrawStore, Store {
     return '''
 waitForWithdrawResult: ${waitForWithdrawResult},
 withdrawResult: ${withdrawResult},
+walletCredit: ${walletCredit},
 errorMessage: ${errorMessage},
 state: ${state}
     ''';

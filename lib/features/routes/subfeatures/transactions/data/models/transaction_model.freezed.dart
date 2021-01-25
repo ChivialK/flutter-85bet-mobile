@@ -60,6 +60,7 @@ mixin _$TransactionModel {
   @JsonKey(fromJson: decodeTransactionData)
   List<TransactionData> get data;
 
+  @JsonKey(ignore: true)
   $TransactionModelCopyWith<TransactionModel> get copyWith;
 }
 
@@ -262,6 +263,7 @@ class _$_TransactionModel implements _TransactionModel {
       const DeepCollectionEquality().hash(prevPageUrl) ^
       const DeepCollectionEquality().hash(data);
 
+  @JsonKey(ignore: true)
   @override
   _$TransactionModelCopyWith<_TransactionModel> get copyWith =>
       __$TransactionModelCopyWithImpl<_TransactionModel>(this, _$identity);
@@ -310,6 +312,7 @@ abstract class _TransactionModel implements TransactionModel {
   @JsonKey(fromJson: decodeTransactionData)
   List<TransactionData> get data;
   @override
+  @JsonKey(ignore: true)
   _$TransactionModelCopyWith<_TransactionModel> get copyWith;
 }
 
@@ -356,6 +359,7 @@ mixin _$TransactionData {
   String get type;
   dynamic get key;
 
+  @JsonKey(ignore: true)
   $TransactionDataCopyWith<TransactionData> get copyWith;
 }
 
@@ -521,6 +525,7 @@ class _$_TransactionData implements _TransactionData {
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(key);
 
+  @JsonKey(ignore: true)
   @override
   _$TransactionDataCopyWith<_TransactionData> get copyWith =>
       __$TransactionDataCopyWithImpl<_TransactionData>(this, _$identity);
@@ -555,5 +560,6 @@ abstract class _TransactionData implements TransactionData {
   @override
   dynamic get key;
   @override
+  @JsonKey(ignore: true)
   _$TransactionDataCopyWith<_TransactionData> get copyWith;
 }

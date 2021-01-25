@@ -28,9 +28,6 @@ abstract class PaymentPromo with _$PaymentPromo {
 //    @JsonKey(name: 'featureindex') String featureIndex,
   }) = PaymentPromoData;
 
-  // factory PaymentPromo.fromJson(Map<String, dynamic> json) =>
-  //     _$PaymentPromoFromJson(json);
-
   @override
   factory PaymentPromo.fromJson(Map<String, dynamic> json) {
     if (json.keys.first.length == 1)

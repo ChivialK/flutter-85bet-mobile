@@ -30,6 +30,7 @@ abstract class ThemeColorInterface {
   Color defaultWidgetColor;
   Color defaultWidgetBgColor;
   Color defaultSelectableWidgetColor;
+  Color defaultActiveWidgetColor;
   Color defaultDisabledColor;
   Color defaultChipColor;
   Color defaultGridColor;

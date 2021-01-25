@@ -3,12 +3,12 @@ import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
 import 'package:flutter_85bet_mobile/features/router/route_enum.dart';
 import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
+export 'package:flutter_85bet_mobile/features/router/route_enum.dart';
+
 class MessageMap {
   static String getSuccessMessage(String msgKey, RouteEnum from) {
     if (msgKey != null && msgKey.isNotEmpty && msgKey.hasChinese) return msgKey;
     switch (from) {
-      case RouteEnum.AGENT_REGISTER:
-        return localeStr.agentRegisterSuccess;
       default:
         break;
     }
@@ -18,6 +18,9 @@ class MessageMap {
   static String getErrorMessage(String msgKey, RouteEnum from) {
     if (msgKey == null || msgKey.isEmpty) return localeStr.messageFailed;
     if (msgKey.hasChinese) return msgKey;
+    if (msgKey.contains('maintenance'))
+      return localeStr.messagePlatformMaintenance;
+
     debugPrint('looking for error message: $msgKey');
     switch (msgKey) {
       case 'dobBefore':
@@ -51,13 +54,26 @@ class MessageMap {
       case 'belowTheMinimum':
         return localeStr.messageInvalidDepositAmountMin(100);
       case 'aboveTheCeiling':
-        return localeStr.messageInvalidDepositAmountMax;
+        return localeStr.messageInvalidWithdrawExceedAmount;
+      case 'amountExceedsTheUpperLimit':
+        return localeStr.messageInvalidDepositAmountMaxLimit;
+      case 'amountIsBelowTheLowerLimit':
+        return localeStr.messageInvalidDepositAmountMinLimit;
+      case 'YouHaveInsufficientCredit':
+        return localeStr.messageExceedRemainCredit;
       case 'NoRecordsYet':
         return localeStr.messageWarnNoHistoryData;
+      case 'inMaintenance':
+        return localeStr.messagePlatformMaintenance;
+      case 'YouDoNotHavePpermissionToPlayThisPlatform,PleaseContact24-hourOnlineCustomerService':
+      case 'ThisAccountDoesNotHavePermissionToStartTheGamePleaseContactCustomerService':
+        return localeStr.messageErrorGamePermission;
       default:
         break;
     }
     switch (from) {
+      case RouteEnum.HOME:
+        return localeStr.messageErrorLoadingGame;
       case RouteEnum.LOGIN:
         return localeStr.messageLoginFailed;
       case RouteEnum.REGISTER:
@@ -66,8 +82,11 @@ class MessageMap {
         return localeStr.messageTaskFailed(localeStr.messageErrorBindBankcard);
       case RouteEnum.WITHDRAW:
         return localeStr.messageErrorWithdraw;
+      case RouteEnum.DEPOSIT:
+        return localeStr.depositMessageFailed;
       case RouteEnum.BALANCE:
-        return localeStr.messageTaskFailed(localeStr.transferResultAlertTitle);
+      case RouteEnum.TRANSFER:
+        return localeStr.transferResultAlertTitle;
       default:
         if (msgKey.isNotEmpty) {
           return localeStr.messageErrorStatus(msgKey);

@@ -1,11 +1,11 @@
 import 'package:after_layout/after_layout.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 
 import 'state/home_store.dart';
 import 'widgets/home_display.dart';
-import 'widgets/home_store_inherit_widget.dart';
+import 'widgets/home_display_provider.dart';
 
 ///
 /// Main View of [FeatureRouter.homeRoute]
@@ -18,6 +18,8 @@ class HomeRoute extends StatefulWidget {
 }
 
 class _HomeRouteState extends State<HomeRoute> with AfterLayoutMixin {
+  final GlobalKey _viewKey = new GlobalKey();
+
   HomeStore _store;
   List<ReactionDisposer> _disposers;
   CancelFunc toastDismiss;
@@ -39,7 +41,15 @@ class _HomeRouteState extends State<HomeRoute> with AfterLayoutMixin {
         // Run some logic with the content of the observed field
         (String message) {
           if (message != null && message.isNotEmpty) {
-            callToastError(message, delayedMilli: 200);
+            if (message.contains('code')) {
+              callToastError(message, delayedMilli: 200);
+            } else {
+              callToastError(
+                message,
+                delayedMilli: 200,
+                duration: ToastDuration.LONG,
+              );
+            }
           }
         },
       ),
@@ -89,7 +99,6 @@ class _HomeRouteState extends State<HomeRoute> with AfterLayoutMixin {
 
   @override
   Widget build(BuildContext context) {
-    ///TODO call get ads data here
     return Scaffold(
       body: Container(
         alignment: Alignment.topCenter,
@@ -107,9 +116,9 @@ class _HomeRouteState extends State<HomeRoute> with AfterLayoutMixin {
                       Global.device.width,
                       Global.device.featureContentHeight,
                     )),
-                    child: HomeStoreInheritedWidget(
-                      store: _store,
-                      child: HomeDisplay(),
+                    child: ChangeNotifierProvider<HomeDisplayProvider>.value(
+                      value: sl.get<HomeDisplayProvider>(),
+                      child: HomeDisplay(key: _viewKey),
                     ),
                   ),
                 );

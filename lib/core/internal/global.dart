@@ -3,40 +3,25 @@ import 'dart:convert' show Encoding;
 import 'package:flutter/material.dart' show kToolbarHeight;
 
 import 'device.dart';
-import 'language_code.dart';
+import 'language.dart';
 
 class Global {
   /// Device Relative
   static Device device;
 
-  /// BuildType
-  static bool addAnalytics = false;
-
   /// APP Language
-  static bool initLocale = false;
-
-  static bool lockLanguage = false;
-
-  static LanguageCode _locale = defaultLocale;
-
-  static String get jsonContentKey => _locale.value.contentKey;
-
-  static String get lang => _locale.value.code;
-
-  static set setLanguage(String langCode) =>
-      _locale = LanguageCode.getByCode(langCode);
+  static Language lang;
 
   /// Web Service
   static const bool HAS_FLEX_ROUTE = false;
-  static const String CURRENT_BASE = BET85_OFFICIAL_URL;
+  static const String CURRENT_BASE = VA_OFFICIAL_URL;
 
-  static const String DOMAIN_NAME = "85bet.com";
-  static const String BET85_BASE_URL = "http://10.20.10.11/";
-  static const String BET85_OFFICIAL_URL = "https://85bet.com/";
-  static const String BET85_TEST_URL = "http://192.168.2.87:7315/";
-  static const String BET85_SERVICE_URL =
-      "https://vm.providesupport.com/095ecqycnij4h0q56020owowxq";
-  static const String BET85_MOVIE_URL = "http://web.95vn.com";
+  // DOMAIN_NAME cannot set to empty, banner and marquee url navigate will failed
+  static const String DOMAIN_NAME = "8809.ml";
+  static const String VA_BASE_URL = "http://10.20.18.11/";
+  static const String VA_OFFICIAL_URL = "https://8809.ml/";
+  static const String VA_TEST_URL = "http://192.168.2.87:1811/";
+  static const String VA_SERVICE_URL = "";
 
   /// HIVE table name
   static const String CACHED_COOKIE = 'CACHED_USER_COOKIE';
@@ -48,7 +33,7 @@ class Global {
 
   /// Other static value
   static const double APP_MENU_HEIGHT = kToolbarHeight - 8.0;
-  static const double APP_NAV_HEIGHT = kToolbarHeight + 12.0;
+  static const double APP_NAV_HEIGHT = kToolbarHeight + 6.0;
   static const double APP_BARS_HEIGHT = Global.APP_MENU_HEIGHT + APP_NAV_HEIGHT;
   static const double TEST_DEVICE_HEIGHT = 785.45;
   static const double TEST_DEVICE_WIDTH = 392.72;

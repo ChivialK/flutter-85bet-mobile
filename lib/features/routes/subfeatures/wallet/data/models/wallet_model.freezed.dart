@@ -43,6 +43,7 @@ mixin _$WalletModel {
   String get credit;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $WalletModelCopyWith<WalletModel> get copyWith;
 }
 
@@ -150,6 +151,7 @@ class _$_WalletModel implements _WalletModel {
       const DeepCollectionEquality().hash(auto) ^
       const DeepCollectionEquality().hash(credit);
 
+  @JsonKey(ignore: true)
   @override
   _$WalletModelCopyWith<_WalletModel> get copyWith =>
       __$WalletModelCopyWithImpl<_WalletModel>(this, _$identity);
@@ -175,5 +177,6 @@ abstract class _WalletModel implements WalletModel {
   @JsonKey(name: 'creditlimit', defaultValue: '0.00')
   String get credit;
   @override
+  @JsonKey(ignore: true)
   _$WalletModelCopyWith<_WalletModel> get copyWith;
 }

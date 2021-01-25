@@ -27,27 +27,27 @@ class _$CenterModelTearOff {
       @JsonKey(name: 'cGP_wallet', defaultValue: '') String cgpWallet,
       @JsonKey(name: 'cPW_wallet', defaultValue: '') String cpwWallet,
       @JsonKey(name: 'address', fromJson: _jsonList) List<dynamic> lotto,
-      @JsonKey(name: 'allgame') int allGame,
+      @JsonKey(name: 'allgame') num allGame,
       @JsonKey(name: 'allgame_level') int allGameLevel,
-      @JsonKey(name: 'allgame_value') int allGameValue,
-      @JsonKey(name: 'cardgame') int cardGame,
+      @JsonKey(name: 'allgame_value') num allGameValue,
+      @JsonKey(name: 'cardgame') num cardGame,
       @JsonKey(name: 'cardgame_level') int cardGameLevel,
-      @JsonKey(name: 'cardgame_value') int cardGameValue,
-      @JsonKey(name: 'casinogame') int casinoGame,
+      @JsonKey(name: 'cardgame_value') num cardGameValue,
+      @JsonKey(name: 'casinogame') num casinoGame,
       @JsonKey(name: 'casinogame_level') int casinoGameLevel,
-      @JsonKey(name: 'casinogame_value') int casinoGameValue,
-      @JsonKey(name: 'fishgame') int fishGame,
+      @JsonKey(name: 'casinogame_value') num casinoGameValue,
+      @JsonKey(name: 'fishgame') num fishGame,
       @JsonKey(name: 'fishgame_level') int fishGameLevel,
-      @JsonKey(name: 'fishgame_value') int fishGameValue,
-      @JsonKey(name: 'lotterygame') int lotteryGame,
+      @JsonKey(name: 'fishgame_value') num fishGameValue,
+      @JsonKey(name: 'lotterygame') num lotteryGame,
       @JsonKey(name: 'lotterygame_level') int lotteryGameLevel,
-      @JsonKey(name: 'lotterygame_value') int lotteryGameValue,
-      @JsonKey(name: 'slotgame') int slotGame,
+      @JsonKey(name: 'lotterygame_value') num lotteryGameValue,
+      @JsonKey(name: 'slotgame') num slotGame,
       @JsonKey(name: 'slotgame_level') int slotGameLevel,
-      @JsonKey(name: 'slotgame_value') int slotGameValue,
-      @JsonKey(name: 'sportgame') int sportGame,
+      @JsonKey(name: 'slotgame_value') num slotGameValue,
+      @JsonKey(name: 'sportgame') num sportGame,
       @JsonKey(name: 'sportgame_level') int sportGameLevel,
-      @JsonKey(name: 'sportgame_value') int sportGameValue,
+      @JsonKey(name: 'sportgame_value') num sportGameValue,
       @JsonKey(name: 'vip_option') dynamic vipOption,
       @JsonKey(name: 'vip_setting') dynamic vipSetting}) {
     return _CenterModel(
@@ -118,47 +118,47 @@ mixin _$CenterModel {
   @JsonKey(name: 'address', fromJson: _jsonList)
   List<dynamic> get lotto;
   @JsonKey(name: 'allgame')
-  int get allGame;
+  num get allGame;
   @JsonKey(name: 'allgame_level')
   int get allGameLevel;
   @JsonKey(name: 'allgame_value')
-  int get allGameValue;
+  num get allGameValue;
   @JsonKey(name: 'cardgame')
-  int get cardGame;
+  num get cardGame;
   @JsonKey(name: 'cardgame_level')
   int get cardGameLevel;
   @JsonKey(name: 'cardgame_value')
-  int get cardGameValue;
+  num get cardGameValue;
   @JsonKey(name: 'casinogame')
-  int get casinoGame;
+  num get casinoGame;
   @JsonKey(name: 'casinogame_level')
   int get casinoGameLevel;
   @JsonKey(name: 'casinogame_value')
-  int get casinoGameValue;
+  num get casinoGameValue;
   @JsonKey(name: 'fishgame')
-  int get fishGame;
+  num get fishGame;
   @JsonKey(name: 'fishgame_level')
   int get fishGameLevel;
   @JsonKey(name: 'fishgame_value')
-  int get fishGameValue;
+  num get fishGameValue;
   @JsonKey(name: 'lotterygame')
-  int get lotteryGame;
+  num get lotteryGame;
   @JsonKey(name: 'lotterygame_level')
   int get lotteryGameLevel;
   @JsonKey(name: 'lotterygame_value')
-  int get lotteryGameValue;
+  num get lotteryGameValue;
   @JsonKey(name: 'slotgame')
-  int get slotGame;
+  num get slotGame;
   @JsonKey(name: 'slotgame_level')
   int get slotGameLevel;
   @JsonKey(name: 'slotgame_value')
-  int get slotGameValue;
+  num get slotGameValue;
   @JsonKey(name: 'sportgame')
-  int get sportGame;
+  num get sportGame;
   @JsonKey(name: 'sportgame_level')
   int get sportGameLevel;
   @JsonKey(name: 'sportgame_value')
-  int get sportGameValue;
+  num get sportGameValue;
   @JsonKey(name: 'vip_option')
   dynamic get vipOption;
   @JsonKey(name: 'vip_setting')
@@ -185,27 +185,27 @@ abstract class $CenterModelCopyWith<$Res> {
       @JsonKey(name: 'cGP_wallet', defaultValue: '') String cgpWallet,
       @JsonKey(name: 'cPW_wallet', defaultValue: '') String cpwWallet,
       @JsonKey(name: 'address', fromJson: _jsonList) List<dynamic> lotto,
-      @JsonKey(name: 'allgame') int allGame,
+      @JsonKey(name: 'allgame') num allGame,
       @JsonKey(name: 'allgame_level') int allGameLevel,
-      @JsonKey(name: 'allgame_value') int allGameValue,
-      @JsonKey(name: 'cardgame') int cardGame,
+      @JsonKey(name: 'allgame_value') num allGameValue,
+      @JsonKey(name: 'cardgame') num cardGame,
       @JsonKey(name: 'cardgame_level') int cardGameLevel,
-      @JsonKey(name: 'cardgame_value') int cardGameValue,
-      @JsonKey(name: 'casinogame') int casinoGame,
+      @JsonKey(name: 'cardgame_value') num cardGameValue,
+      @JsonKey(name: 'casinogame') num casinoGame,
       @JsonKey(name: 'casinogame_level') int casinoGameLevel,
-      @JsonKey(name: 'casinogame_value') int casinoGameValue,
-      @JsonKey(name: 'fishgame') int fishGame,
+      @JsonKey(name: 'casinogame_value') num casinoGameValue,
+      @JsonKey(name: 'fishgame') num fishGame,
       @JsonKey(name: 'fishgame_level') int fishGameLevel,
-      @JsonKey(name: 'fishgame_value') int fishGameValue,
-      @JsonKey(name: 'lotterygame') int lotteryGame,
+      @JsonKey(name: 'fishgame_value') num fishGameValue,
+      @JsonKey(name: 'lotterygame') num lotteryGame,
       @JsonKey(name: 'lotterygame_level') int lotteryGameLevel,
-      @JsonKey(name: 'lotterygame_value') int lotteryGameValue,
-      @JsonKey(name: 'slotgame') int slotGame,
+      @JsonKey(name: 'lotterygame_value') num lotteryGameValue,
+      @JsonKey(name: 'slotgame') num slotGame,
       @JsonKey(name: 'slotgame_level') int slotGameLevel,
-      @JsonKey(name: 'slotgame_value') int slotGameValue,
-      @JsonKey(name: 'sportgame') int sportGame,
+      @JsonKey(name: 'slotgame_value') num slotGameValue,
+      @JsonKey(name: 'sportgame') num sportGame,
       @JsonKey(name: 'sportgame_level') int sportGameLevel,
-      @JsonKey(name: 'sportgame_value') int sportGameValue,
+      @JsonKey(name: 'sportgame_value') num sportGameValue,
       @JsonKey(name: 'vip_option') dynamic vipOption,
       @JsonKey(name: 'vip_setting') dynamic vipSetting});
 }
@@ -272,54 +272,54 @@ class _$CenterModelCopyWithImpl<$Res> implements $CenterModelCopyWith<$Res> {
       cgpWallet: cgpWallet == freezed ? _value.cgpWallet : cgpWallet as String,
       cpwWallet: cpwWallet == freezed ? _value.cpwWallet : cpwWallet as String,
       lotto: lotto == freezed ? _value.lotto : lotto as List<dynamic>,
-      allGame: allGame == freezed ? _value.allGame : allGame as int,
+      allGame: allGame == freezed ? _value.allGame : allGame as num,
       allGameLevel:
           allGameLevel == freezed ? _value.allGameLevel : allGameLevel as int,
       allGameValue:
-          allGameValue == freezed ? _value.allGameValue : allGameValue as int,
-      cardGame: cardGame == freezed ? _value.cardGame : cardGame as int,
+          allGameValue == freezed ? _value.allGameValue : allGameValue as num,
+      cardGame: cardGame == freezed ? _value.cardGame : cardGame as num,
       cardGameLevel: cardGameLevel == freezed
           ? _value.cardGameLevel
           : cardGameLevel as int,
       cardGameValue: cardGameValue == freezed
           ? _value.cardGameValue
-          : cardGameValue as int,
-      casinoGame: casinoGame == freezed ? _value.casinoGame : casinoGame as int,
+          : cardGameValue as num,
+      casinoGame: casinoGame == freezed ? _value.casinoGame : casinoGame as num,
       casinoGameLevel: casinoGameLevel == freezed
           ? _value.casinoGameLevel
           : casinoGameLevel as int,
       casinoGameValue: casinoGameValue == freezed
           ? _value.casinoGameValue
-          : casinoGameValue as int,
-      fishGame: fishGame == freezed ? _value.fishGame : fishGame as int,
+          : casinoGameValue as num,
+      fishGame: fishGame == freezed ? _value.fishGame : fishGame as num,
       fishGameLevel: fishGameLevel == freezed
           ? _value.fishGameLevel
           : fishGameLevel as int,
       fishGameValue: fishGameValue == freezed
           ? _value.fishGameValue
-          : fishGameValue as int,
+          : fishGameValue as num,
       lotteryGame:
-          lotteryGame == freezed ? _value.lotteryGame : lotteryGame as int,
+          lotteryGame == freezed ? _value.lotteryGame : lotteryGame as num,
       lotteryGameLevel: lotteryGameLevel == freezed
           ? _value.lotteryGameLevel
           : lotteryGameLevel as int,
       lotteryGameValue: lotteryGameValue == freezed
           ? _value.lotteryGameValue
-          : lotteryGameValue as int,
-      slotGame: slotGame == freezed ? _value.slotGame : slotGame as int,
+          : lotteryGameValue as num,
+      slotGame: slotGame == freezed ? _value.slotGame : slotGame as num,
       slotGameLevel: slotGameLevel == freezed
           ? _value.slotGameLevel
           : slotGameLevel as int,
       slotGameValue: slotGameValue == freezed
           ? _value.slotGameValue
-          : slotGameValue as int,
-      sportGame: sportGame == freezed ? _value.sportGame : sportGame as int,
+          : slotGameValue as num,
+      sportGame: sportGame == freezed ? _value.sportGame : sportGame as num,
       sportGameLevel: sportGameLevel == freezed
           ? _value.sportGameLevel
           : sportGameLevel as int,
       sportGameValue: sportGameValue == freezed
           ? _value.sportGameValue
-          : sportGameValue as int,
+          : sportGameValue as num,
       vipOption: vipOption == freezed ? _value.vipOption : vipOption as dynamic,
       vipSetting:
           vipSetting == freezed ? _value.vipSetting : vipSetting as dynamic,
@@ -347,27 +347,27 @@ abstract class _$CenterModelCopyWith<$Res>
       @JsonKey(name: 'cGP_wallet', defaultValue: '') String cgpWallet,
       @JsonKey(name: 'cPW_wallet', defaultValue: '') String cpwWallet,
       @JsonKey(name: 'address', fromJson: _jsonList) List<dynamic> lotto,
-      @JsonKey(name: 'allgame') int allGame,
+      @JsonKey(name: 'allgame') num allGame,
       @JsonKey(name: 'allgame_level') int allGameLevel,
-      @JsonKey(name: 'allgame_value') int allGameValue,
-      @JsonKey(name: 'cardgame') int cardGame,
+      @JsonKey(name: 'allgame_value') num allGameValue,
+      @JsonKey(name: 'cardgame') num cardGame,
       @JsonKey(name: 'cardgame_level') int cardGameLevel,
-      @JsonKey(name: 'cardgame_value') int cardGameValue,
-      @JsonKey(name: 'casinogame') int casinoGame,
+      @JsonKey(name: 'cardgame_value') num cardGameValue,
+      @JsonKey(name: 'casinogame') num casinoGame,
       @JsonKey(name: 'casinogame_level') int casinoGameLevel,
-      @JsonKey(name: 'casinogame_value') int casinoGameValue,
-      @JsonKey(name: 'fishgame') int fishGame,
+      @JsonKey(name: 'casinogame_value') num casinoGameValue,
+      @JsonKey(name: 'fishgame') num fishGame,
       @JsonKey(name: 'fishgame_level') int fishGameLevel,
-      @JsonKey(name: 'fishgame_value') int fishGameValue,
-      @JsonKey(name: 'lotterygame') int lotteryGame,
+      @JsonKey(name: 'fishgame_value') num fishGameValue,
+      @JsonKey(name: 'lotterygame') num lotteryGame,
       @JsonKey(name: 'lotterygame_level') int lotteryGameLevel,
-      @JsonKey(name: 'lotterygame_value') int lotteryGameValue,
-      @JsonKey(name: 'slotgame') int slotGame,
+      @JsonKey(name: 'lotterygame_value') num lotteryGameValue,
+      @JsonKey(name: 'slotgame') num slotGame,
       @JsonKey(name: 'slotgame_level') int slotGameLevel,
-      @JsonKey(name: 'slotgame_value') int slotGameValue,
-      @JsonKey(name: 'sportgame') int sportGame,
+      @JsonKey(name: 'slotgame_value') num slotGameValue,
+      @JsonKey(name: 'sportgame') num sportGame,
       @JsonKey(name: 'sportgame_level') int sportGameLevel,
-      @JsonKey(name: 'sportgame_value') int sportGameValue,
+      @JsonKey(name: 'sportgame_value') num sportGameValue,
       @JsonKey(name: 'vip_option') dynamic vipOption,
       @JsonKey(name: 'vip_setting') dynamic vipSetting});
 }
@@ -436,54 +436,54 @@ class __$CenterModelCopyWithImpl<$Res> extends _$CenterModelCopyWithImpl<$Res>
       cgpWallet: cgpWallet == freezed ? _value.cgpWallet : cgpWallet as String,
       cpwWallet: cpwWallet == freezed ? _value.cpwWallet : cpwWallet as String,
       lotto: lotto == freezed ? _value.lotto : lotto as List<dynamic>,
-      allGame: allGame == freezed ? _value.allGame : allGame as int,
+      allGame: allGame == freezed ? _value.allGame : allGame as num,
       allGameLevel:
           allGameLevel == freezed ? _value.allGameLevel : allGameLevel as int,
       allGameValue:
-          allGameValue == freezed ? _value.allGameValue : allGameValue as int,
-      cardGame: cardGame == freezed ? _value.cardGame : cardGame as int,
+          allGameValue == freezed ? _value.allGameValue : allGameValue as num,
+      cardGame: cardGame == freezed ? _value.cardGame : cardGame as num,
       cardGameLevel: cardGameLevel == freezed
           ? _value.cardGameLevel
           : cardGameLevel as int,
       cardGameValue: cardGameValue == freezed
           ? _value.cardGameValue
-          : cardGameValue as int,
-      casinoGame: casinoGame == freezed ? _value.casinoGame : casinoGame as int,
+          : cardGameValue as num,
+      casinoGame: casinoGame == freezed ? _value.casinoGame : casinoGame as num,
       casinoGameLevel: casinoGameLevel == freezed
           ? _value.casinoGameLevel
           : casinoGameLevel as int,
       casinoGameValue: casinoGameValue == freezed
           ? _value.casinoGameValue
-          : casinoGameValue as int,
-      fishGame: fishGame == freezed ? _value.fishGame : fishGame as int,
+          : casinoGameValue as num,
+      fishGame: fishGame == freezed ? _value.fishGame : fishGame as num,
       fishGameLevel: fishGameLevel == freezed
           ? _value.fishGameLevel
           : fishGameLevel as int,
       fishGameValue: fishGameValue == freezed
           ? _value.fishGameValue
-          : fishGameValue as int,
+          : fishGameValue as num,
       lotteryGame:
-          lotteryGame == freezed ? _value.lotteryGame : lotteryGame as int,
+          lotteryGame == freezed ? _value.lotteryGame : lotteryGame as num,
       lotteryGameLevel: lotteryGameLevel == freezed
           ? _value.lotteryGameLevel
           : lotteryGameLevel as int,
       lotteryGameValue: lotteryGameValue == freezed
           ? _value.lotteryGameValue
-          : lotteryGameValue as int,
-      slotGame: slotGame == freezed ? _value.slotGame : slotGame as int,
+          : lotteryGameValue as num,
+      slotGame: slotGame == freezed ? _value.slotGame : slotGame as num,
       slotGameLevel: slotGameLevel == freezed
           ? _value.slotGameLevel
           : slotGameLevel as int,
       slotGameValue: slotGameValue == freezed
           ? _value.slotGameValue
-          : slotGameValue as int,
-      sportGame: sportGame == freezed ? _value.sportGame : sportGame as int,
+          : slotGameValue as num,
+      sportGame: sportGame == freezed ? _value.sportGame : sportGame as num,
       sportGameLevel: sportGameLevel == freezed
           ? _value.sportGameLevel
           : sportGameLevel as int,
       sportGameValue: sportGameValue == freezed
           ? _value.sportGameValue
-          : sportGameValue as int,
+          : sportGameValue as num,
       vipOption: vipOption == freezed ? _value.vipOption : vipOption as dynamic,
       vipSetting:
           vipSetting == freezed ? _value.vipSetting : vipSetting as dynamic,
@@ -571,67 +571,67 @@ class _$_CenterModel implements _CenterModel {
   final List<dynamic> lotto;
   @override
   @JsonKey(name: 'allgame')
-  final int allGame;
+  final num allGame;
   @override
   @JsonKey(name: 'allgame_level')
   final int allGameLevel;
   @override
   @JsonKey(name: 'allgame_value')
-  final int allGameValue;
+  final num allGameValue;
   @override
   @JsonKey(name: 'cardgame')
-  final int cardGame;
+  final num cardGame;
   @override
   @JsonKey(name: 'cardgame_level')
   final int cardGameLevel;
   @override
   @JsonKey(name: 'cardgame_value')
-  final int cardGameValue;
+  final num cardGameValue;
   @override
   @JsonKey(name: 'casinogame')
-  final int casinoGame;
+  final num casinoGame;
   @override
   @JsonKey(name: 'casinogame_level')
   final int casinoGameLevel;
   @override
   @JsonKey(name: 'casinogame_value')
-  final int casinoGameValue;
+  final num casinoGameValue;
   @override
   @JsonKey(name: 'fishgame')
-  final int fishGame;
+  final num fishGame;
   @override
   @JsonKey(name: 'fishgame_level')
   final int fishGameLevel;
   @override
   @JsonKey(name: 'fishgame_value')
-  final int fishGameValue;
+  final num fishGameValue;
   @override
   @JsonKey(name: 'lotterygame')
-  final int lotteryGame;
+  final num lotteryGame;
   @override
   @JsonKey(name: 'lotterygame_level')
   final int lotteryGameLevel;
   @override
   @JsonKey(name: 'lotterygame_value')
-  final int lotteryGameValue;
+  final num lotteryGameValue;
   @override
   @JsonKey(name: 'slotgame')
-  final int slotGame;
+  final num slotGame;
   @override
   @JsonKey(name: 'slotgame_level')
   final int slotGameLevel;
   @override
   @JsonKey(name: 'slotgame_value')
-  final int slotGameValue;
+  final num slotGameValue;
   @override
   @JsonKey(name: 'sportgame')
-  final int sportGame;
+  final num sportGame;
   @override
   @JsonKey(name: 'sportgame_level')
   final int sportGameLevel;
   @override
   @JsonKey(name: 'sportgame_value')
-  final int sportGameValue;
+  final num sportGameValue;
   @override
   @JsonKey(name: 'vip_option')
   final dynamic vipOption;
@@ -786,27 +786,27 @@ abstract class _CenterModel implements CenterModel {
       @JsonKey(name: 'cGP_wallet', defaultValue: '') String cgpWallet,
       @JsonKey(name: 'cPW_wallet', defaultValue: '') String cpwWallet,
       @JsonKey(name: 'address', fromJson: _jsonList) List<dynamic> lotto,
-      @JsonKey(name: 'allgame') int allGame,
+      @JsonKey(name: 'allgame') num allGame,
       @JsonKey(name: 'allgame_level') int allGameLevel,
-      @JsonKey(name: 'allgame_value') int allGameValue,
-      @JsonKey(name: 'cardgame') int cardGame,
+      @JsonKey(name: 'allgame_value') num allGameValue,
+      @JsonKey(name: 'cardgame') num cardGame,
       @JsonKey(name: 'cardgame_level') int cardGameLevel,
-      @JsonKey(name: 'cardgame_value') int cardGameValue,
-      @JsonKey(name: 'casinogame') int casinoGame,
+      @JsonKey(name: 'cardgame_value') num cardGameValue,
+      @JsonKey(name: 'casinogame') num casinoGame,
       @JsonKey(name: 'casinogame_level') int casinoGameLevel,
-      @JsonKey(name: 'casinogame_value') int casinoGameValue,
-      @JsonKey(name: 'fishgame') int fishGame,
+      @JsonKey(name: 'casinogame_value') num casinoGameValue,
+      @JsonKey(name: 'fishgame') num fishGame,
       @JsonKey(name: 'fishgame_level') int fishGameLevel,
-      @JsonKey(name: 'fishgame_value') int fishGameValue,
-      @JsonKey(name: 'lotterygame') int lotteryGame,
+      @JsonKey(name: 'fishgame_value') num fishGameValue,
+      @JsonKey(name: 'lotterygame') num lotteryGame,
       @JsonKey(name: 'lotterygame_level') int lotteryGameLevel,
-      @JsonKey(name: 'lotterygame_value') int lotteryGameValue,
-      @JsonKey(name: 'slotgame') int slotGame,
+      @JsonKey(name: 'lotterygame_value') num lotteryGameValue,
+      @JsonKey(name: 'slotgame') num slotGame,
       @JsonKey(name: 'slotgame_level') int slotGameLevel,
-      @JsonKey(name: 'slotgame_value') int slotGameValue,
-      @JsonKey(name: 'sportgame') int sportGame,
+      @JsonKey(name: 'slotgame_value') num slotGameValue,
+      @JsonKey(name: 'sportgame') num sportGame,
       @JsonKey(name: 'sportgame_level') int sportGameLevel,
-      @JsonKey(name: 'sportgame_value') int sportGameValue,
+      @JsonKey(name: 'sportgame_value') num sportGameValue,
       @JsonKey(name: 'vip_option') dynamic vipOption,
       @JsonKey(name: 'vip_setting') dynamic vipSetting}) = _$_CenterModel;
 
@@ -845,67 +845,67 @@ abstract class _CenterModel implements CenterModel {
   List<dynamic> get lotto;
   @override
   @JsonKey(name: 'allgame')
-  int get allGame;
+  num get allGame;
   @override
   @JsonKey(name: 'allgame_level')
   int get allGameLevel;
   @override
   @JsonKey(name: 'allgame_value')
-  int get allGameValue;
+  num get allGameValue;
   @override
   @JsonKey(name: 'cardgame')
-  int get cardGame;
+  num get cardGame;
   @override
   @JsonKey(name: 'cardgame_level')
   int get cardGameLevel;
   @override
   @JsonKey(name: 'cardgame_value')
-  int get cardGameValue;
+  num get cardGameValue;
   @override
   @JsonKey(name: 'casinogame')
-  int get casinoGame;
+  num get casinoGame;
   @override
   @JsonKey(name: 'casinogame_level')
   int get casinoGameLevel;
   @override
   @JsonKey(name: 'casinogame_value')
-  int get casinoGameValue;
+  num get casinoGameValue;
   @override
   @JsonKey(name: 'fishgame')
-  int get fishGame;
+  num get fishGame;
   @override
   @JsonKey(name: 'fishgame_level')
   int get fishGameLevel;
   @override
   @JsonKey(name: 'fishgame_value')
-  int get fishGameValue;
+  num get fishGameValue;
   @override
   @JsonKey(name: 'lotterygame')
-  int get lotteryGame;
+  num get lotteryGame;
   @override
   @JsonKey(name: 'lotterygame_level')
   int get lotteryGameLevel;
   @override
   @JsonKey(name: 'lotterygame_value')
-  int get lotteryGameValue;
+  num get lotteryGameValue;
   @override
   @JsonKey(name: 'slotgame')
-  int get slotGame;
+  num get slotGame;
   @override
   @JsonKey(name: 'slotgame_level')
   int get slotGameLevel;
   @override
   @JsonKey(name: 'slotgame_value')
-  int get slotGameValue;
+  num get slotGameValue;
   @override
   @JsonKey(name: 'sportgame')
-  int get sportGame;
+  num get sportGame;
   @override
   @JsonKey(name: 'sportgame_level')
   int get sportGameLevel;
   @override
   @JsonKey(name: 'sportgame_value')
-  int get sportGameValue;
+  num get sportGameValue;
   @override
   @JsonKey(name: 'vip_option')
   dynamic get vipOption;

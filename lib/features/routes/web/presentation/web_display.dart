@@ -73,6 +73,14 @@ class _WebDisplayState extends State<WebDisplay> {
             },
             onLoadStart: (InAppWebViewController controller, String url) {
               debugPrint('webview start loading: $url');
+              if (widget.url.endsWith('/newbie')) {
+                debugPrint('setting web storage: '
+                    '${Global.lang.webKey}-${Global.lang.webCode}');
+                _controller.webStorage.localStorage
+                    .removeItem(key: Global.lang.webKey);
+                _controller.webStorage.localStorage.setItem(
+                    key: Global.lang.webKey, value: Global.lang.webCode);
+              }
             },
             onLoadStop: (InAppWebViewController controller, String url) async {
               debugPrint('web page loaded: $url');
@@ -80,22 +88,25 @@ class _WebDisplayState extends State<WebDisplay> {
                 debugPrint('hiding web page bars');
                 _controller.evaluateJavascript(
                     source:
-                        "document.getElementsByClassName('el-header')[0].remove();");
+                        "document.getElementsByClassName('el-header')[0].style.display='none';");
                 _controller.evaluateJavascript(
                     source:
-                        "document.getElementsByClassName('el-footer')[0].remove();");
+                        "document.getElementsByClassName('el-footer')[0].style.display='none';");
                 _controller.evaluateJavascript(
                     source:
-                        "document.getElementsByClassName('footer_bg')[0].remove();");
+                        "document.getElementsByClassName('footer_bg')[0].style.display = 'none';");
                 _controller.evaluateJavascript(
                     source:
-                        "document.getElementsByClassName('header_bg')[0].remove();");
+                        "document.getElementsByClassName('header_bg')[0].style.display = 'none';");
                 _controller.evaluateJavascript(
                     source:
-                        "document.getElementsByClassName('aside_bars')[0].remove();");
+                        "document.getElementsByClassName('aside_bars')[0].style.display='none';");
                 _controller.evaluateJavascript(
                     source:
                         "document.getElementsByClassName('page_title')[0].remove();");
+                _controller.evaluateJavascript(
+                    source:
+                        "document.getElementsByClassName('content index_bg')[0].style.paddingTop = '0';");
                 _controller.evaluateJavascript(
                     source:
                         "document.getElementsByClassName('content')[0].style.paddingTop = '0';");

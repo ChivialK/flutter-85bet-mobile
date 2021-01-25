@@ -1,18 +1,15 @@
+import 'dart:async';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/builders/autoroute/auto_route.dart';
-import 'package:flutter_85bet_mobile/features/event/event_inject.dart';
+import 'package:flutter_85bet_mobile/features/event/presentation/state/event_store.dart';
 import 'package:flutter_85bet_mobile/features/event/presentation/widgets/ad_dialog.dart';
-import 'package:flutter_85bet_mobile/features/event/presentation/widgets/event_dialog.dart';
-import 'package:flutter_85bet_mobile/features/event/presentation/widgets/event_dialog_signed.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/cached_network_image.dart';
-import 'package:flutter_85bet_mobile/features/routes/more/more_dialog.dart';
-import 'package:flutter_85bet_mobile/features/screen/screen_menu_bar_action.dart';
-import 'package:flutter_85bet_mobile/features/user/register/presentation/register_route.dart';
-import 'package:flutter_85bet_mobile/res.dart';
+import 'package:flutter_85bet_mobile/features/update/presentation/state/update_store.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../export_internal_file.dart';

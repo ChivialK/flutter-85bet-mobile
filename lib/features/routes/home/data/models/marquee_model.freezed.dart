@@ -48,6 +48,7 @@ mixin _$MarqueeModel {
   String get updatedAt;
   String get showDate;
 
+  @JsonKey(ignore: true)
   $MarqueeModelCopyWith<MarqueeModel> get copyWith;
 }
 
@@ -205,6 +206,7 @@ class _$_MarqueeModel implements _MarqueeModel {
       const DeepCollectionEquality().hash(updatedAt) ^
       const DeepCollectionEquality().hash(showDate);
 
+  @JsonKey(ignore: true)
   @override
   _$MarqueeModelCopyWith<_MarqueeModel> get copyWith =>
       __$MarqueeModelCopyWithImpl<_MarqueeModel>(this, _$identity);
@@ -235,5 +237,6 @@ abstract class _MarqueeModel implements MarqueeModel {
   @override
   String get showDate;
   @override
+  @JsonKey(ignore: true)
   _$MarqueeModelCopyWith<_MarqueeModel> get copyWith;
 }

@@ -28,10 +28,10 @@ import 'package:flutter_85bet_mobile/features/routes/subfeatures/transactions/pr
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/betrecord/presentation/bet_record_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/deals/presentation/deals_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/rollback/presentation/rollback_route.dart';
-import 'package:flutter_85bet_mobile/features/routes/subfeatures/about/presentation/about_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/downloadarea/download_area_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/notice/presentation/notice_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/viplevel/presentation/vip_level_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/store/presentation/store_route.dart';
 import 'package:flutter_85bet_mobile/features/test_area_route.dart';
 
 abstract class Routes {
@@ -58,11 +58,11 @@ abstract class Routes {
   static const betRecordRoute = '/bet-record-route';
   static const dealsRoute = '/deals-route';
   static const rollbackRoute = '/rollback-route';
-  static const moreWebPage = '/more-web-page';
-  static const aboutRoute = '/about-route';
+  static const tutorialWebPage = '/tutorial-web-page';
   static const downloadAreaRoute = '/download-area-route';
   static const noticeRoute = '/notice-route';
   static const levelRoute = '/level-route';
+  static const storeRoute = '/store-route';
   static const testAreaRoute = '/test-area-route';
   static const all = {
     homeRoute,
@@ -88,11 +88,11 @@ abstract class Routes {
     betRecordRoute,
     dealsRoute,
     rollbackRoute,
-    moreWebPage,
-    aboutRoute,
+    tutorialWebPage,
     downloadAreaRoute,
     noticeRoute,
     levelRoute,
+    storeRoute,
     testAreaRoute,
   };
 }
@@ -343,7 +343,7 @@ class FeatureRouter extends RouterBase {
           transitionsBuilder: MyStaticPageTransition.slide,
           transitionDuration: const Duration(milliseconds: 400),
         );
-      case Routes.moreWebPage:
+      case Routes.tutorialWebPage:
         if (hasInvalidArgs<WebRouteArguments>(args, isRequired: true)) {
           return misTypedArgsRoute<WebRouteArguments>(args);
         }
@@ -353,13 +353,6 @@ class FeatureRouter extends RouterBase {
               startUrl: typedArgs.startUrl,
               showUrl: typedArgs.showUrl,
               hideHtmlBars: typedArgs.hideHtmlBars),
-          settings: settings,
-          transitionsBuilder: MyStaticPageTransition.slide,
-          transitionDuration: const Duration(milliseconds: 400),
-        );
-      case Routes.aboutRoute:
-        return PageRouteBuilder<dynamic>(
-          pageBuilder: (context, animation, secondaryAnimation) => AboutRoute(),
           settings: settings,
           transitionsBuilder: MyStaticPageTransition.slide,
           transitionDuration: const Duration(milliseconds: 400),
@@ -384,6 +377,18 @@ class FeatureRouter extends RouterBase {
         return PageRouteBuilder<dynamic>(
           pageBuilder: (context, animation, secondaryAnimation) =>
               VipLevelRoute(),
+          settings: settings,
+          transitionsBuilder: MyStaticPageTransition.slide,
+          transitionDuration: const Duration(milliseconds: 400),
+        );
+      case Routes.storeRoute:
+        if (hasInvalidArgs<StoreRouteArguments>(args)) {
+          return misTypedArgsRoute<StoreRouteArguments>(args);
+        }
+        final typedArgs = args as StoreRouteArguments ?? StoreRouteArguments();
+        return PageRouteBuilder<dynamic>(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              StoreRoute(showProductId: typedArgs.showProductId),
           settings: settings,
           transitionsBuilder: MyStaticPageTransition.slide,
           transitionDuration: const Duration(milliseconds: 400),
@@ -453,4 +458,10 @@ class BankcardRouteArguments {
 class CenterDisplayAccountPasswordArguments {
   final CenterStore store;
   CenterDisplayAccountPasswordArguments({@required this.store});
+}
+
+//StoreRoute arguments holder class
+class StoreRouteArguments {
+  final int showProductId;
+  StoreRouteArguments({this.showProductId});
 }

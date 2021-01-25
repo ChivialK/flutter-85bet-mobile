@@ -68,6 +68,7 @@ mixin _$AdModel {
   @JsonKey(name: 'url_blank')
   bool get urlBlank;
 
+  @JsonKey(ignore: true)
   $AdModelCopyWith<AdModel> get copyWith;
 }
 
@@ -293,6 +294,7 @@ class _$_AdModel implements _AdModel {
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(urlBlank);
 
+  @JsonKey(ignore: true)
   @override
   _$AdModelCopyWith<_AdModel> get copyWith =>
       __$AdModelCopyWithImpl<_AdModel>(this, _$identity);
@@ -343,5 +345,6 @@ abstract class _AdModel implements AdModel {
   @JsonKey(name: 'url_blank')
   bool get urlBlank;
   @override
+  @JsonKey(ignore: true)
   _$AdModelCopyWith<_AdModel> get copyWith;
 }

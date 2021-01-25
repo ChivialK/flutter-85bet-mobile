@@ -32,10 +32,6 @@ abstract class PaymentTypeData with _$PaymentTypeData {
     dynamic key,
   }) = PaymentTypeLocalData;
 
-  // factory PaymentTypeData.fromJson(Map<String, dynamic> json) =>
-  //     _$PaymentTypeDataFromJson(json);
-
-  @override
   factory PaymentTypeData.fromJson(Map<String, dynamic> json) {
     if (json.keys.contains('payment') && json['payment'] == 'localbank')
       json['runtimeType'] = 'local';

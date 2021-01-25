@@ -70,12 +70,11 @@ class DealsDisplayListState extends State<DealsDisplayList> {
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 24.0),
           decoration: new BoxDecoration(
-            color: (index % 2 == 1)
-                ? themeColor.defaultCardColor
-                : themeColor.chartBgColor,
+            color:
+                (index % 2 == 1) ? Colors.transparent : themeColor.chartBgColor,
             border: (index % 2 == 1)
                 ? null
-                : Border.symmetric(vertical: _borderSide),
+                : Border.symmetric(horizontal: _borderSide),
           ),
           child: Column(
             children: List.generate(_headerTexts.length, (rowIndex) {
@@ -150,6 +149,10 @@ class DealsDisplayListState extends State<DealsDisplayList> {
       case 'webBank':
       case 'webbank':
         return localeStr.memberGridTitleTransfer;
+      case 'deposit':
+        return localeStr.rollbackIndexDeposit;
+      case 'promo':
+        return localeStr.rollbackIndexPromo;
       case 'adjustDeposit':
         return localeStr.dealsDetailTypeAdjustDeposit;
       case 'adjustWithdraw':

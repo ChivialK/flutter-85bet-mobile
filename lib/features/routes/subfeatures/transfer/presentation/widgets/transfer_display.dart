@@ -3,6 +3,7 @@ import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_dropdown_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_input_chip_container.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
 
 import '../../data/form/transfer_form.dart';
 import '../../data/models/transfer_platform_model.dart';
@@ -26,13 +27,18 @@ class _TransferDisplayState extends State<TransferDisplay> {
   // Fields
   final GlobalKey<CustomizeFieldWidgetState> _amountFieldKey =
       new GlobalKey(debugLabel: 'amount');
+
   // Dropdowns
   final GlobalKey<CustomizeDropdownWidgetState> _site1Key =
       new GlobalKey(debugLabel: 'site1');
   final GlobalKey<CustomizeDropdownWidgetState> _site2Key =
       new GlobalKey(debugLabel: 'site2');
 
-  final List<String> chipValues = [
+  final double _fieldInset = 72.0;
+  double _valueTextPadding;
+  String _valueInitText;
+
+  final List<String> _chipValues = [
     '100',
     '500',
     '1000',
@@ -40,14 +46,28 @@ class _TransferDisplayState extends State<TransferDisplay> {
     '5000',
     'all',
   ];
-  List<String> chipLabels;
-  List<TransferPlatformModel> _site2List = [];
+  List<String> _chipLabels;
 
-  final double _fieldInset = 72.0;
-  double _valueTextPadding;
-  String _valueInitText;
+  List<TransferPlatformModel> _site2List = [];
+  List<String> _site1Labels;
+  List<String> _site2Labels;
   String _site1Selected;
   String _site2Selected;
+  double _site1Value;
+
+  void _updateChipLabels() {
+    _chipLabels = _chipValues
+        .map((e) => e == 'all' ? localeStr.transferViewTextOptionAll : e)
+        .toList(growable: false);
+  }
+
+  List<String> _localeSiteLabel(List<TransferPlatformModel> list) {
+    debugPrint('update dropdown labels: ${list.length}');
+    return list
+        .map((e) =>
+            e.name == 'center wallet' ? localeStr.walletViewTitle : e.name)
+        .toList();
+  }
 
   void _validateForm() {
     if (widget.store.isPlatformValid == false) {
@@ -59,12 +79,9 @@ class _TransferDisplayState extends State<TransferDisplay> {
       form.save();
       String amountText = _amountFieldKey.currentState.getInput;
       int amount = amountText.strToInt;
-      if (!rangeCheck(
-        value: amount,
-        min: 1,
-        max: widget.store.creditLimit,
-      )) {
-        callToastError(localeStr.messageInvalidDepositAmount);
+      if (!rangeCheck(value: amount, min: 1, max: widget.store.creditLimit) ||
+          _site1Value < amount) {
+        callToastError(localeStr.messageExceedRemainCredit);
         return;
       }
       TransferForm dataForm = TransferForm(
@@ -76,39 +93,59 @@ class _TransferDisplayState extends State<TransferDisplay> {
     }
   }
 
-  void _setSite1(String platform) {
+  void _onSelectSite1(String platform) async {
     if (platform == null) return;
-    debugPrint('display selected: $platform');
-    // platform credit can only transfer to member wallet
+    debugPrint('site1 selected: $platform');
+
+    // set site1 selected
+    _site1Selected = platform;
+    widget.store.setSite1Value('');
+    widget.store.getBalance(platform, isLimit: true);
+
+    /// platform credit can only transfer to member wallet
     if (platform != '0') {
-      _site2List = [widget.store.platforms.first];
-      _site2Selected = '0';
-      _site2Key.currentState.setSelected = '0';
-      widget.store.setSite2Value('');
-      widget.store.getBalance('0');
-      setState(() {});
-    } else if (_site2List.length == 1) {
-      // restore site2 dropdown to normal
-      _site2List = List.from(widget.store.platforms)..removeAt(0);
+      // if site2 list only has center wallet option, there's no need to update
+      // condition:
+      // 1. site2 list not initialize
+      // 2.3. site2 has other options than wallet
+      if (_site2List.isEmpty ||
+          _site2List.length > 1 ||
+          _site2List.any((e) => e.site != '0')) {
+        _site2List = widget.store.platforms
+            .takeWhile((e) => e.site == '0')
+            .toList(growable: false);
+        _site2Labels = _localeSiteLabel(_site2List);
+        _site2Selected = '0';
+        _site2Key.currentState.setSelected = '0';
+        widget.store.setSite2Value('');
+        widget.store.getBalance('0');
+        setState(() {});
+      }
+
+      /// restore site2 options to available platforms
+    } else {
+      // condition:
+      // 1. site2 list not initialize
+      // 2. site1 select wallet and site2 list probably only has wallet
+      // 3. site1 select platform and site2 has other options than wallet
+      if (_site2List.isEmpty ||
+          (platform == '0' && _site2List.length <= 1) ||
+          _site2List.length == 1 && _site2List.any((e) => e.site != '0')) {
+        _site2List = widget.store.platforms
+            .where((e) => e.site != '0')
+            .toList(growable: false);
+        _site2Labels = _localeSiteLabel(_site2List);
+      }
       _site2Selected = null;
       _site2Key.currentState.setSelected = null;
       widget.store.setSite2Value('');
       setState(() {});
-    } else if (platform == '0' && _site2List.length == 0) {
-      // when site2 dropdown not initialized
-      _site2List = List.from(widget.store.platforms)..removeAt(0);
-      setState(() {});
     }
-    // set site1 selected
-    _site1Selected = platform;
-//  widget.store.setSite1Value('$data');
-    widget.store.setSite1Value('');
-    widget.store.getBalance(platform, isLimit: true);
   }
 
-  void _setSite2(String platform) {
+  void _onSelectSite2(String platform) {
     if (platform == null) return;
-    debugPrint('display selected: $platform');
+    debugPrint('site2 selected: $platform');
     // set site2 selected
     _site2Selected = platform;
     widget.store.setSite2Value('');
@@ -122,27 +159,28 @@ class _TransferDisplayState extends State<TransferDisplay> {
         ThemeInterface.minusSize +
         16.0;
     _valueInitText = localeStr.transferViewSiteHint;
-    chipLabels = [
-      '100',
-      '500',
-      '1000',
-      '2000',
-      '5000',
-      localeStr.transferViewTextOptionAll,
-    ];
+    _updateChipLabels();
     super.initState();
   }
 
   @override
   void didUpdateWidget(TransferDisplay oldWidget) {
     _valueInitText = localeStr.transferViewSiteHint;
+    _site1Labels = null;
+    _site2Labels = null;
     super.didUpdateWidget(oldWidget);
-    chipLabels.replaceRange(chipLabels.length - 1, chipLabels.length,
-        [localeStr.transferViewTextOptionAll]);
+    _updateChipLabels();
   }
 
   @override
   Widget build(BuildContext context) {
+    _site1Labels ??= widget.store.platforms
+        .map((e) =>
+            e.name == 'center wallet' ? localeStr.walletViewTitle : e.name)
+        .toList();
+    if (_site2Labels == null && _site2List != null) {
+      _site2Labels = _site2List.map((e) => e.name).toList();
+    }
     return SizedBox(
       width: Global.device.width - 24.0,
       child: InkWell(
@@ -164,11 +202,7 @@ class _TransferDisplayState extends State<TransferDisplay> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: themeColor.memberIconColor,
-                      boxShadow: ThemeInterface.iconBottomShadow,
-                    ),
+                    decoration: ThemeInterface.pageIconContainerDecor,
                     child: Icon(
                       pageItem.value.iconData,
                       size: 32 * Global.device.widthScale,
@@ -211,11 +245,9 @@ class _TransferDisplayState extends State<TransferDisplay> {
                               optionValues: widget.store.platforms
                                   .map((e) => e.site)
                                   .toList(),
-                              optionStrings: widget.store.platforms
-                                  .map((e) => e.name)
-                                  .toList(),
+                              optionStrings: _site1Labels,
                               clearValueOnMenuChanged: true,
-                              changeNotify: (data) => _setSite1(data),
+                              changeNotify: (data) => _onSelectSite1(data),
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
@@ -231,10 +263,13 @@ class _TransferDisplayState extends State<TransferDisplay> {
                                       bool reset = snapshot.data == null ||
                                           snapshot.data.isEmpty ||
                                           widget.store.site1.strToInt == -1;
+                                      debugPrint('site1 reset: $reset');
                                       String text = (reset)
                                           ? _valueInitText
                                           : snapshot.data;
-                                      debugPrint('site1 reset: $reset');
+                                      _site1Value = (reset)
+                                          ? 0
+                                          : snapshot.data.strToDouble;
                                       return GestureDetector(
                                         onTap: () {
                                           if (_site1Selected == null) return;
@@ -263,10 +298,9 @@ class _TransferDisplayState extends State<TransferDisplay> {
                               horizontalInset: _fieldInset,
                               optionValues:
                                   _site2List.map((e) => e.site).toList(),
-                              optionStrings:
-                                  _site2List.map((e) => e.name).toList(),
+                              optionStrings: _site2Labels,
                               clearValueOnMenuChanged: true,
-                              changeNotify: (data) => _setSite2(data),
+                              changeNotify: (data) => _onSelectSite2(data),
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
@@ -308,15 +342,20 @@ class _TransferDisplayState extends State<TransferDisplay> {
                             ///
                             /// Amount Input Field
                             ///
-                            new CustomizeFieldWidget(
-                              key: _amountFieldKey,
-                              fieldType: FieldType.Numbers,
-                              persistHint: false,
-                              hint: 'VDK',
+                            new CustomizeTitledContainer(
                               prefixText: localeStr.transferViewTitleAmount,
                               prefixTextSize: FontSize.SUBTITLE.value,
-                              maxInputLength: InputLimit.AMOUNT,
+                              backgroundColor: themeColor.fieldPrefixBgColor,
                               horizontalInset: _fieldInset,
+                              child: new CustomizeFieldWidget(
+                                key: _amountFieldKey,
+                                fieldType: FieldType.Numbers,
+                                hint: 'VDK',
+                                persistHint: false,
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 0.0),
+                                maxInputLength: InputLimit.AMOUNT,
+                              ),
                             ),
 
                             ///
@@ -347,18 +386,19 @@ class _TransferDisplayState extends State<TransferDisplay> {
                             ),
                             new CustomizeInputChipContainer(
                               horizontalInset: _fieldInset,
-                              labels: chipLabels,
-                              values: chipValues,
+                              labels: _chipLabels,
+                              values: _chipValues,
                               heightFactor: 1.75,
                               backgroundColor:
                                   themeColor.defaultLayeredBackgroundColor,
                               roundChip: false,
                               chipTapCall: (value) {
-                                if (value == 'all')
+                                if (value == 'all') {
                                   _amountFieldKey.currentState.setInput =
                                       '${widget.store.creditLimit}';
-                                else
+                                } else {
                                   _amountFieldKey.currentState.setInput = value;
+                                }
                               },
                             ),
                           ],

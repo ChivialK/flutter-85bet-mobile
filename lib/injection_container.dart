@@ -7,6 +7,7 @@ import 'core/network/util/network_info.dart';
 import 'features/event/event_inject.dart';
 import 'features/router/app_global_streams.dart';
 import 'features/routes/home/home_inject.dart';
+import 'features/routes/home/presentation/widgets/home_display_provider.dart';
 import 'features/routes/member/member_inject.dart';
 import 'features/routes/promo/promo_inject.dart';
 import 'features/routes/subfeatures/accountcenter/center_inject.dart';
@@ -19,6 +20,7 @@ import 'features/routes/subfeatures/message/message_inject.dart';
 import 'features/routes/subfeatures/notice/notice_inject.dart';
 import 'features/routes/subfeatures/rollback/rollback_inject.dart';
 import 'features/routes/subfeatures/service/presentation/state/service_store.dart';
+import 'features/routes/subfeatures/store/store_inject.dart';
 import 'features/routes/subfeatures/transactions/transaction_inject.dart';
 import 'features/routes/subfeatures/transfer/transfer_inject.dart';
 import 'features/routes/subfeatures/viplevel/vip_level_inject.dart';
@@ -121,9 +123,9 @@ Future<void> init() async {
   sl.registerLazySingleton<VipLevelRepository>(
     () => VipLevelRepositoryImpl(dioApiService: sl()),
   );
-  // sl.registerLazySingleton<StoreRepository>(
-  //   () => StoreRepositoryImpl(dioApiService: sl(), jwtInterface: sl()),
-  // );
+  sl.registerLazySingleton<StoreRepository>(
+    () => StoreRepositoryImpl(dioApiService: sl(), jwtInterface: sl()),
+  );
   // sl.registerLazySingleton<RollerRepository>(
   //   () => RollerRepositoryImpl(dioApiService: sl(), jwtInterface: sl()),
   // );
@@ -140,6 +142,9 @@ Future<void> init() async {
   );
   sl.registerLazySingleton(
     () => HomeStore(sl<HomeRepository>()),
+  );
+  sl.registerLazySingleton(
+    () => HomeDisplayProvider(sl<HomeStore>()),
   );
   sl.registerFactory(
     () => LoginStore(sl<UserRepository>()),
@@ -198,9 +203,9 @@ Future<void> init() async {
   sl.registerFactory(
     () => VipLevelStore(sl<VipLevelRepository>()),
   );
-  // sl.registerFactory(
-  //   () => PointStore(sl<StoreRepository>()),
-  // );
+  sl.registerFactory(
+    () => PointStore(sl<StoreRepository>()),
+  );
   // sl.registerFactory(
   //   () => RollerStore(sl<RollerRepository>()),
   // );

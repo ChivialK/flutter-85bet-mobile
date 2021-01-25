@@ -34,6 +34,7 @@ mixin _$UserEntity {
   String get credit;
   int get vip;
 
+  @JsonKey(ignore: true)
   $UserEntityCopyWith<UserEntity> get copyWith;
 }
 
@@ -140,6 +141,7 @@ class _$_UserEntity implements _UserEntity {
       const DeepCollectionEquality().hash(credit) ^
       const DeepCollectionEquality().hash(vip);
 
+  @JsonKey(ignore: true)
   @override
   _$UserEntityCopyWith<_UserEntity> get copyWith =>
       __$UserEntityCopyWithImpl<_UserEntity>(this, _$identity);
@@ -158,5 +160,6 @@ abstract class _UserEntity implements UserEntity {
   @override
   int get vip;
   @override
+  @JsonKey(ignore: true)
   _$UserEntityCopyWith<_UserEntity> get copyWith;
 }

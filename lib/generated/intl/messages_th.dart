@@ -19,109 +19,111 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'th';
 
-  static m0(level, downline) => "※ ${level} สามารถเพิ่มได้เฉพาะบัญชี ${downline}";
+  static m0(value) => "เวอร์ชัน ${value}";
 
-  static m1(level) => "${level}รายการ";
+  static m1(action, platform) => "คุณแน่ใจหรือไม่ว่า ${action} ไปยังแพลตฟอร์ม ${platform}";
 
-  static m2(level) => "${level}หมายเลขบัญชี";
+  static m2(value) => "เครดิตไม่เพียงพอ: ${value}";
 
-  static m3(value) => "เวอร์ชัน ${value}";
+  static m3(value) => "ทั้งหมด: \$ ${value}";
 
-  static m4(action, platform) => "คุณแน่ใจหรือไม่ว่า ${action} ไปยังแพลตฟอร์ม ${platform}";
+  static m4(no) => "${no} บัตรเดบิตที่ถูก จำกัด และการชำระยอดคงเหลือ Alipay! \n";
 
-  static m5(value) => "เครดิตไม่เพียงพอ: ${value}";
+  static m5(value) => "ขีดจำกัดการฝากเงินครั้งเดียว: VDK ${value}";
 
-  static m6(value) => "ทั้งหมด: \$ ${value}";
+  static m6(no) => "${no} [คำเตือนสำคัญ] อย่าเก็บบัญชีธนาคารของคุณไว้โปรดรับบัญชีเรียกเก็บเงินล่าสุดอีกครั้งก่อนการเติมเงินแต่ละครั้งหากคุณฝากเงินไปยังบัญชีรับเงินที่ปิดใช้งาน บริษัท จะไม่สามารถตรวจสอบการเรียกเก็บเงินและจะไม่ รับผิดชอบ! \n ";
 
-  static m7(no) => "${no} บัตรเดบิตที่ถูก จำกัด และการชำระยอดคงเหลือ Alipay! \n";
+  static m7(no) => "${no} หากคุณพบความล้มเหลวเช่นการสแกนเงินฝากล้มเหลวโปรดลองรีเฟรชและลองอีกครั้งและติดต่อฝ่ายบริการลูกค้าเพื่อใช้ช่องทางอื่นทดแทน \n";
 
-  static m8(value) => "ขีดจำกัดการฝากเงินครั้งเดียว: VDK ${value}";
+  static m8(no) => "${no} การชำระเงินธนาคารและชื่อบัญชีโปรดติดต่อ";
 
-  static m9(no) => "${no} [คำเตือนสำคัญ] อย่าเก็บบัญชีธนาคารของคุณไว้โปรดรับบัญชีเรียกเก็บเงินล่าสุดอีกครั้งก่อนการเติมเงินแต่ละครั้งหากคุณฝากเงินไปยังบัญชีรับเงินที่ปิดใช้งาน บริษัท จะไม่สามารถตรวจสอบการเรียกเก็บเงินและจะไม่ รับผิดชอบ! \n ";
+  static m9(no) => "${no} หากการสิ้นสุดของธุรกรรมเดียวจำนวนเงินไม่ใช่ 0 (เช่น: 1,000 หยวน) จะทำให้การฝากเงินไม่สำเร็จ \n";
 
-  static m10(no) => "${no} หากคุณพบความล้มเหลวเช่นการสแกนเงินฝากล้มเหลวโปรดลองรีเฟรชและลองอีกครั้งและติดต่อฝ่ายบริการลูกค้าเพื่อใช้ช่องทางอื่นทดแทน \n";
+  static m10(no) => "${no} โซลูชันการ จำกัด ผู้ออก: ต้องการให้ผู้ใช้โทรติดต่อฝ่ายบริการลูกค้าของผู้ออกบัตรเพื่อขอเพิ่มขีด จำกัด ธุรกรรมออนไลน์ \n";
 
-  static m11(no) => "${no} การชำระเงินธนาคารและชื่อบัญชีโปรดติดต่อ";
+  static m11(no) => "${no} ขีดจำกัดสูงสุดเดียว \n";
 
-  static m12(no) => "${no} หากการสิ้นสุดของธุรกรรมเดียวจำนวนเงินไม่ใช่ 0 (เช่น: 1,000 หยวน) จะทำให้การฝากเงินไม่สำเร็จ \n";
+  static m12(no) => "${no} เกินขีด จำกัด การชำระเงินออนไลน์สำหรับหนึ่งวันหรือการฝากจำนวนมากเพียงครั้งเดียวสามารถใช้วิธีการฝากอื่นได้ \n";
 
-  static m13(no) => "${no} โซลูชันการ จำกัด ผู้ออก: ต้องการให้ผู้ใช้โทรติดต่อฝ่ายบริการลูกค้าของผู้ออกบัตรเพื่อขอเพิ่มขีด จำกัด ธุรกรรมออนไลน์ \n";
+  static m13(no) => "${no} คำเตือนที่อบอุ่น: คุณต้องจ่ายทศนิยมสองตำแหน่งเพื่อการชำระเงินที่รวดเร็วและระบบจะนำเข้าโดยอัตโนมัติ (หากคุณส่ง 00 สำหรับทศนิยมสองตำแหน่งจะไม่สำเร็จ) \n";
 
-  static m14(no) => "${no} ขีดจำกัดสูงสุดเดียว \n";
+  static m14(no) => "${no} ต้องการใช้รหัสสแกน UnionPay ในการชำระเงินตราบใดที่คุณมีบัตร UnionPay ที่ขึ้นต้นด้วยหมายเลขบัตร 62 ก็สามารถใช้บัตรเดบิตของบัตรเครดิตได้ \n";
 
-  static m15(no) => "${no} เกินขีด จำกัด การชำระเงินออนไลน์สำหรับหนึ่งวันหรือการฝากจำนวนมากเพียงครั้งเดียวสามารถใช้วิธีการฝากอื่นได้ \n";
+  static m15(no) => "${no} เปิดฟังก์ชันด่วนสำหรับ UnionPay เพื่อให้การชำระเงินของคุณสะดวกยิ่งขึ้น \n";
 
-  static m16(no) => "${no} คำเตือนที่อบอุ่น: คุณต้องจ่ายทศนิยมสองตำแหน่งเพื่อการชำระเงินที่รวดเร็วและระบบจะนำเข้าโดยอัตโนมัติ (หากคุณส่ง 00 สำหรับทศนิยมสองตำแหน่งจะไม่สำเร็จ) \n";
+  static m16(value) => "ขอความสำเร็จหมายเลขคำสั่งซื้อ ${value}";
 
-  static m17(no) => "${no} ต้องการใช้รหัสสแกน UnionPay ในการชำระเงินตราบใดที่คุณมีบัตร UnionPay ที่ขึ้นต้นด้วยหมายเลขบัตร 62 ก็สามารถใช้บัตรเดบิตของบัตรเครดิตได้ \n";
+  static m17(num, num2) => "ช่วง: ${num}~${num2}";
 
-  static m18(no) => "${no} เปิดฟังก์ชันด่วนสำหรับ UnionPay เพื่อให้การชำระเงินของคุณสะดวกยิ่งขึ้น \n";
+  static m18(num, num2, num3) => "ช่วง: ${num}~${num2} (ขั้นตอน: ${num3})";
 
-  static m19(value) => "ขอความสำเร็จหมายเลขคำสั่งซื้อ ${value}";
+  static m19(value) => "ความเป็นจริง: VND ${value}";
 
-  static m20(num, num2) => "ช่วง: ${num}~${num2}";
+  static m20(value) => "ลงนามแล้ว ${value} วัน";
 
-  static m21(num, num2, num3) => "ช่วง: ${num}~${num2} (ขั้นตอน: ${num3})";
+  static m21(name) => "สวัสดี ${name}！";
 
-  static m22(value) => "ความเป็นจริง: VND ${value}";
+  static m22(msg) => "${msg} ข้อผิดพลาด";
 
-  static m23(value) => "ลงนามแล้ว ${value} วัน";
+  static m23(wallet) => "${wallet} ข้อผิดพลาด URL การผูก";
 
-  static m24(name) => "สวัสดี ${name}！";
+  static m24(msg, msg2) => "ข้อผิดพลาด: ${msg} (${msg2})";
 
-  static m25(msg) => "${msg} ข้อผิดพลาด";
+  static m25(msg) => "โปรดป้อน ${msg}";
 
-  static m26(wallet) => "${wallet} ข้อผิดพลาด URL การผูก";
+  static m26(url) => "ไม่สามารถเปิดลิงก์: ${url}";
 
-  static m27(msg, msg2) => "ข้อผิดพลาด: ${msg} (${msg2})";
+  static m27(msg) => "ข้อผิดพลาด: ${msg}";
 
-  static m28(msg) => "โปรดป้อน ${msg}";
+  static m28(min, max) => "ชหมายเลขบัญชีคือ ${min}~${max} ตัวพิมพ์เล็กภาษาอังกฤษ / หลัก";
 
-  static m29(url) => "ไม่สามารถเปิดลิงก์: ${url}";
+  static m29(min, max) => "หมายเลขการ์ดคือ ${min}~${max} ตัวอักษร";
 
-  static m30(msg) => "ข้อผิดพลาด: ${msg}";
+  static m30(min, max, fixed) => "หมายเลขการ์ดคือ ${min}~${max} ตัวอักษร (ขึ้นต้นด้วย ${fixed})";
 
   static m31(num) => "จำนวนเงินขั้นต่ำคือ ${num}";
 
-  static m32(num) => "รหัสผ่านต้องมีอย่างน้อย ${num} คำ";
+  static m32(min, max) => "รหัสผ่านควรมีความยาว ${min}~${max} คำ";
 
-  static m33(num) => "หมายเลขโทรศัพท์ผิดพลาด (${num})";
+  static m33(num) => "รหัสผ่านต้องมีอย่างน้อย ${num} คำ";
 
-  static m34(name) => "${name} โปรดเข้าสู่ระบบอีกครั้ง";
+  static m34(num) => "หมายเลขโทรศัพท์ผิดพลาด (${num})";
 
-  static m35(msg) => "${msg} ถูกยกเลิก";
+  static m35(min, max) => "หมายเลขโทรศัพท์ผิดพลาด (${min}~${max})";
 
-  static m36(msg) => "${msg} ล้มเหลว";
+  static m36(name) => "${name} โปรดเข้าสู่ระบบอีกครั้ง";
 
-  static m37(msg) => "${msg} สำเร็จ";
+  static m37(msg) => "${msg} ถูกยกเลิก";
 
-  static m38(name) => "ยินดีต้อนรับ ${name}";
+  static m38(msg) => "${msg} ล้มเหลว";
 
-  static m39(value) => "จ่าย ${value} คะแนนร้านค้า";
+  static m39(msg) => "${msg} สำเร็จ";
 
-  static m40(value) => "ที่อยู่: ${value}";
+  static m40(name) => "ยินดีต้อนรับ ${name}";
 
-  static m41(from, to, total) => "แสดงผลลำดับที่ ${from} ถึง ${to}, ทั้งหมดคือ ${total}";
+  static m41(value) => "ที่อยู่: ${value}";
 
-  static m42(value) => "ชื่อ: ${value}";
+  static m42(from, to, total) => "แสดงผลลำดับที่ ${from} ถึง ${to}, ทั้งหมดคือ ${total}";
 
-  static m43(value) => "โทรศัพท์: ${value}";
+  static m43(value) => "ชื่อ: ${value}";
 
-  static m44(value) => "รหัสไปรษณีย์: ${value}";
+  static m44(value) => "โทรศัพท์: ${value}";
 
-  static m45(value) => "แต่ละแพลตฟอร์ม ${value}";
+  static m45(value) => "รหัสไปรษณีย์: ${value}";
 
-  static m46(value) => "${value} คะแนน";
+  static m46(value) => "แต่ละแพลตฟอร์ม ${value}";
 
-  static m47(value) => "VDK ${value}";
+  static m47(value) => "${value} คะแนน";
 
-  static m48(from, to) => "${from} ถึง ${to}";
+  static m48(value) => "VDK ${value}";
 
-  static m49(value, version) => "พบเวอร์ชันใหม่， โปรดคลิกปุ่ม \'อัปเดต\' เพื่อดาวน์โหลดและติดตั้ง\nเวอร์ชันปัจจุบัน： ${version}\nเวอร์ชันใหม่： ${value}";
+  static m49(from, to) => "${from} ถึง ${to}";
 
-  static m50(separator) => "ขอ ${separator} รหัส";
+  static m50(value, version) => "พบเวอร์ชันใหม่， โปรดคลิกปุ่ม \'อัปเดต\' เพื่อดาวน์โหลดและติดตั้ง\nเวอร์ชันปัจจุบัน： ${version}\nเวอร์ชันใหม่： ${value}";
 
-  static m51(num) => "จับฉลากได้: ${num} ครั้ง";
+  static m51(separator) => "ขอ ${separator} รหัส";
+
+  static m52(num) => "จับฉลากได้: ${num} ครั้ง";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -130,91 +132,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "actionNotify" : MessageLookupByLibrary.simpleMessage("แจ้งเตือน"),
     "actionSearch" : MessageLookupByLibrary.simpleMessage("ค้นหา"),
     "actionSetting" : MessageLookupByLibrary.simpleMessage("การตั้งค่า"),
-    "agentAccountLevelAgent" : MessageLookupByLibrary.simpleMessage("พร็อกซี"),
-    "agentAccountLevelCompany" : MessageLookupByLibrary.simpleMessage("บริษัท"),
-    "agentAccountLevelGrandMaster" : MessageLookupByLibrary.simpleMessage("ประธานาธิบดีใหญ่"),
-    "agentAccountLevelMaster" : MessageLookupByLibrary.simpleMessage("รวมรุ่น"),
-    "agentAccountLevelMember" : MessageLookupByLibrary.simpleMessage("สมาชิก"),
-    "agentActionLogin" : MessageLookupByLibrary.simpleMessage("เข้าสู่ระบบตัวแทน"),
-    "agentActionLoginHint" : MessageLookupByLibrary.simpleMessage("กรุณาเข้าสู่ระบบบัญชีตัวแทนของคุณก่อน"),
-    "agentActionRegister" : MessageLookupByLibrary.simpleMessage("การลงทะเบียนตัวแทน"),
-    "agentAdButtonGenerate" : MessageLookupByLibrary.simpleMessage("สร้างโฆษณา"),
-    "agentAdTabAvailable" : MessageLookupByLibrary.simpleMessage("ว่าง"),
-    "agentAdTabGenerated" : MessageLookupByLibrary.simpleMessage("สร้างแล้ว"),
-    "agentAddDownlineHint" : m0,
-    "agentBankcardHint" : MessageLookupByLibrary.simpleMessage("หลังจากเพิ่มบัตรธนาคารแล้วหากคุณต้องการแก้ไขโปรดติดต่อบริษัทเพื่อทำการแก้ไข"),
-    "agentButtonTextCopy" : MessageLookupByLibrary.simpleMessage("คัดลอก"),
-    "agentButtonTextLink" : MessageLookupByLibrary.simpleMessage("ลิงก์"),
-    "agentButtonTextShare" : MessageLookupByLibrary.simpleMessage("แบ่งปัน"),
-    "agentChartHeaderAccount" : MessageLookupByLibrary.simpleMessage("บัญชี"),
-    "agentChartHeaderBet" : MessageLookupByLibrary.simpleMessage("จำนวนเงินเดิมพัน"),
-    "agentChartHeaderPayout" : MessageLookupByLibrary.simpleMessage("จ่าย"),
-    "agentChartHeaderTotalBet" : MessageLookupByLibrary.simpleMessage("เดิมพันทั้งหมด"),
-    "agentChartHeaderTotalPayout" : MessageLookupByLibrary.simpleMessage("การจ่ายเงินทั้งหมด"),
-    "agentChartHeaderTotalValid" : MessageLookupByLibrary.simpleMessage("จำนวนเงินที่ถูกต้องทั้งหมด"),
-    "agentChartHeaderTotalWager" : MessageLookupByLibrary.simpleMessage("ปริมาณการเดิมพันทั้งหมด"),
-    "agentChartHeaderValid" : MessageLookupByLibrary.simpleMessage("จำนวนเงินเดิมพันที่ถูกต้อง"),
-    "agentChartHeaderWager" : MessageLookupByLibrary.simpleMessage("จำนวนเงินเดิมพัน"),
-    "agentChartTableSpinner" : MessageLookupByLibrary.simpleMessage("แบบฟอร์ม"),
-    "agentCommissionHeaderAdmin" : MessageLookupByLibrary.simpleMessage("ค่าธรรมเนียมการดูแลระบบ"),
-    "agentCommissionHeaderGroup" : MessageLookupByLibrary.simpleMessage("ค่าคอมมิชชั่นกลุ่ม"),
-    "agentCommissionHeaderLowLine" : MessageLookupByLibrary.simpleMessage("ค่าคอมมิชชั่นออฟไลน์"),
-    "agentCommissionHeaderMonth" : MessageLookupByLibrary.simpleMessage("เดือน"),
-    "agentCommissionHeaderPlatform" : MessageLookupByLibrary.simpleMessage("ค่าธรรมเนียมแพลตฟอร์ม"),
-    "agentCommissionHeaderReceive" : MessageLookupByLibrary.simpleMessage("ค่าคอมมิชชันจริง"),
-    "agentDownlineButtonAdd" : MessageLookupByLibrary.simpleMessage("เพิ่มออฟไลน์"),
-    "agentDownlineButtonProportion" : MessageLookupByLibrary.simpleMessage("อัปเดตบัญชี"),
-    "agentDownlineHeaderAccount" : MessageLookupByLibrary.simpleMessage("หมายเลขบัญชี"),
-    "agentDownlineHeaderCategory" : MessageLookupByLibrary.simpleMessage("ประเภท"),
-    "agentDownlineHeaderFee" : MessageLookupByLibrary.simpleMessage("ค่าธรรมเนียมการจัดการ /\nค่าธรรมเนียมแพลตฟอร์ม"),
-    "agentDownlineHeaderMore" : MessageLookupByLibrary.simpleMessage("มากกว่า"),
-    "agentDownlineHeaderProportion" : MessageLookupByLibrary.simpleMessage("คิดเป็น"),
-    "agentDownlineHeaderStatus" : MessageLookupByLibrary.simpleMessage("สถานะ"),
-    "agentDownlineHeaderStatus0" : MessageLookupByLibrary.simpleMessage("เปิดใช้งาน"),
-    "agentDownlineHeaderStatus1" : MessageLookupByLibrary.simpleMessage("ปิดการใช้งาน"),
-    "agentDownlineHeaderUpdate" : MessageLookupByLibrary.simpleMessage("อัปเดตบัญชี"),
-    "agentDownlineHeaderUpdateHint" : MessageLookupByLibrary.simpleMessage("อัปเดตบัญชี\n(คุณสามารถแก้ไขบัญชีได้โดยตรงหลังจากเพิ่มบัญชี)"),
-    "agentInfoFieldAgents" : MessageLookupByLibrary.simpleMessage("ตัวแทน"),
-    "agentInfoFieldButtonGetCode" : MessageLookupByLibrary.simpleMessage("รับรหัส"),
-    "agentInfoFieldCode" : MessageLookupByLibrary.simpleMessage("รหัสแนะนำ"),
-    "agentInfoFieldLink" : MessageLookupByLibrary.simpleMessage("ลิงก์ตัวแทน"),
-    "agentLedgerFieldTitleAccount" : MessageLookupByLibrary.simpleMessage("โปรดป้อนชื่อตัวแทน"),
-    "agentLedgerFieldTitleDepositCheck" : MessageLookupByLibrary.simpleMessage("ฝากสมาชิก"),
-    "agentLedgerHeaderAccount" : MessageLookupByLibrary.simpleMessage("บัญชี"),
-    "agentLedgerHeaderDeposit" : MessageLookupByLibrary.simpleMessage("เงินฝาก"),
-    "agentLedgerHeaderLastLogin" : MessageLookupByLibrary.simpleMessage("เวลาเข้าสู่ระบบครั้งล่าสุด"),
-    "agentLedgerHeaderNo" : MessageLookupByLibrary.simpleMessage("หมายเลขซีเรียล"),
-    "agentLedgerHeaderPromo" : MessageLookupByLibrary.simpleMessage("โปรโมชั่น"),
-    "agentLedgerHeaderRefund" : MessageLookupByLibrary.simpleMessage("การคืนเงิน"),
-    "agentLedgerHeaderRegDate" : MessageLookupByLibrary.simpleMessage("เวลาลงทะเบียน"),
-    "agentLedgerHeaderWithdraw" : MessageLookupByLibrary.simpleMessage("ถอน"),
-    "agentRegisterSuccess" : MessageLookupByLibrary.simpleMessage("ส่งตัวแทนเข้ารับการตรวจสอบแล้วโปรดรอสักครู่"),
-    "agentTabTitleAds" : MessageLookupByLibrary.simpleMessage("โฆษณา"),
-    "agentTabTitleCard" : MessageLookupByLibrary.simpleMessage("แก้ไขบัตรธนาคาร"),
-    "agentTabTitleChart" : MessageLookupByLibrary.simpleMessage("แผนภูมิ"),
-    "agentTabTitleCommission" : MessageLookupByLibrary.simpleMessage("ค่าคอมมิชชั่น"),
-    "agentTabTitleDownlineList" : m1,
-    "agentTabTitleInfo" : MessageLookupByLibrary.simpleMessage("ข้อมูล"),
-    "agentTabTitleLedger" : MessageLookupByLibrary.simpleMessage("บัญชีแยกประเภท"),
-    "agentTextChartCategory" : MessageLookupByLibrary.simpleMessage("หมวดหมู่"),
-    "agentTextChartCheckFull" : MessageLookupByLibrary.simpleMessage("แสดงข้อมูลทั้งหมด"),
-    "agentTextChartDate" : MessageLookupByLibrary.simpleMessage("เวลา:"),
-    "agentTextChartMonth" : MessageLookupByLibrary.simpleMessage("เดือนนี้"),
-    "agentTextChartMonthPrev" : MessageLookupByLibrary.simpleMessage("เดือนที่แล้ว"),
-    "agentTextChartOption" : MessageLookupByLibrary.simpleMessage("เลือก"),
-    "agentTextChartPlatform" : MessageLookupByLibrary.simpleMessage("แพลตฟอร์ม"),
-    "agentTextChartQuery" : MessageLookupByLibrary.simpleMessage("แบบสอบถาม"),
-    "agentTitleAccount" : m2,
-    "appVersion" : m3,
+    "appVersion" : m0,
     "balanceHintText1" : MessageLookupByLibrary.simpleMessage("1. กรุณาออกจากอินเทอร์เฟซการเดิมพันเกมหรือเกมก่อนโอนเงิน"),
     "balanceHintText2" : MessageLookupByLibrary.simpleMessage("2. เมื่อไม่ได้เข้าร่วมกิจกรรมจำนวนเงินรับส่งภายในอาคารต้องไม่ต่ำกว่า1หยวนและไม่มีค่าธรรมเนียมการจัดการสำหรับการโอนในร่ม"),
     "balanceHintText3" : MessageLookupByLibrary.simpleMessage("3. หากคุณมีการเชื่อมต่ออินเทอร์เน็ตที่ช้าโปรดรอสักครู่และอย่าส่งซ้ำหลายครั้ง"),
     "balanceHintText4" : MessageLookupByLibrary.simpleMessage("4. หากจำนวนแพลตฟอร์มไม่เปลี่ยนแปลงหลังจากการโอนสำเร็จ4ครั้งโปรดรีเฟรชแพลตฟอร์มด้วยตนเองหรือติดต่อฝ่ายบริการลูกค้า"),
     "balanceHintTextTitle" : MessageLookupByLibrary.simpleMessage("การแจ้งเตือน:"),
     "balanceStatusMaintenance" : MessageLookupByLibrary.simpleMessage("การบำรุงรักษา"),
-    "balanceTransferAlertMsg" : m4,
+    "balanceTransferAlertMsg" : m1,
     "balanceTransferAlertTitle" : MessageLookupByLibrary.simpleMessage("โปรดยืนยัน"),
-    "balanceTransferAmountError" : m5,
+    "balanceTransferAmountError" : m2,
     "balanceTransferInText" : MessageLookupByLibrary.simpleMessage("โอนเข้า"),
     "balanceTransferOutText" : MessageLookupByLibrary.simpleMessage("โอนออก"),
     "bankcardViewHintNew" : MessageLookupByLibrary.simpleMessage("กรุณาผูกบัตรธนาคารเพื่อรับการชำระเงิน"),
@@ -242,7 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "betsSpinnerOptionAllPlatform" : MessageLookupByLibrary.simpleMessage("ทุกแพลตฟอร์ม"),
     "betsSpinnerTitlePlatform" : MessageLookupByLibrary.simpleMessage("แพลตฟอร์มเกม"),
     "betsSpinnerTitleTime" : MessageLookupByLibrary.simpleMessage("เวลาเดิมพัน"),
-    "betsTextTotal" : m6,
+    "betsTextTotal" : m3,
     "btnBack" : MessageLookupByLibrary.simpleMessage("ย้อนกลับ"),
     "btnBind" : MessageLookupByLibrary.simpleMessage("ผูก"),
     "btnCancel" : MessageLookupByLibrary.simpleMessage("ยกเลิก"),
@@ -255,9 +182,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "btnGo" : MessageLookupByLibrary.simpleMessage("ไปที่"),
     "btnLogin" : MessageLookupByLibrary.simpleMessage("เข้าสู่ระบบ"),
     "btnMenu" : MessageLookupByLibrary.simpleMessage("เมนู"),
+    "btnNextStep" : MessageLookupByLibrary.simpleMessage("ขั้นตอนต่อไป"),
     "btnOff" : MessageLookupByLibrary.simpleMessage("ปิด"),
     "btnOn" : MessageLookupByLibrary.simpleMessage("เปิด"),
     "btnOpenGame" : MessageLookupByLibrary.simpleMessage("เปิด"),
+    "btnPreStep" : MessageLookupByLibrary.simpleMessage("ก่อนหน้า"),
     "btnQuery" : MessageLookupByLibrary.simpleMessage("สอบถาม"),
     "btnQueryNow" : MessageLookupByLibrary.simpleMessage("ค้นหา"),
     "btnRefresh" : MessageLookupByLibrary.simpleMessage("รีเฟรช"),
@@ -300,6 +229,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "centerViewTitleData" : MessageLookupByLibrary.simpleMessage("โปรไฟล์"),
     "centerViewTitleLotto" : MessageLookupByLibrary.simpleMessage("รหัสนำโชค"),
     "centerViewTitleVipRank" : MessageLookupByLibrary.simpleMessage("ระดับ VIP"),
+    "dealsDetailTypeAdjustCash" : MessageLookupByLibrary.simpleMessage("จำนวนเงินที่ปรับแล้ว"),
     "dealsDetailTypeAdjustDeposit" : MessageLookupByLibrary.simpleMessage("จำนวนเงินที่ปรับแล้ว"),
     "dealsDetailTypeAdjustWithdraw" : MessageLookupByLibrary.simpleMessage("ปรับการถอน"),
     "dealsHeaderAmount" : MessageLookupByLibrary.simpleMessage("จำนวนเงิน"),
@@ -307,7 +237,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dealsHeaderDetail" : MessageLookupByLibrary.simpleMessage("รายละเอียด"),
     "dealsHeaderSerial" : MessageLookupByLibrary.simpleMessage("หมายเลขเดียว"),
     "dealsHeaderStatus" : MessageLookupByLibrary.simpleMessage("สถานะการสั่งซื้อ"),
-    "dealsHeaderType" : MessageLookupByLibrary.simpleMessage("items"),
+    "dealsHeaderType" : MessageLookupByLibrary.simpleMessage("โครงการ"),
     "dealsViewSpinnerStatus0" : MessageLookupByLibrary.simpleMessage("ทั้งหมด"),
     "dealsViewSpinnerStatus1" : MessageLookupByLibrary.simpleMessage("ความสำเร็จ"),
     "dealsViewSpinnerStatus2" : MessageLookupByLibrary.simpleMessage("ล้มเหลว"),
@@ -319,25 +249,26 @@ class MessageLookup extends MessageLookupByLibrary {
     "dealsViewSpinnerType3" : MessageLookupByLibrary.simpleMessage("โบนัส"),
     "depositHintRedirectBankcard" : MessageLookupByLibrary.simpleMessage("โปรดเพิ่มบัตรธนาคารก่อน"),
     "depositHintTextAccount" : MessageLookupByLibrary.simpleMessage("โปรดติดต่อฝ่ายบริการลูกค้าสำหรับข้อมูลบัญชีเติมเงิน"),
-    "depositHintTextAli" : m7,
-    "depositHintTextAmount" : m8,
-    "depositHintTextClearInfo" : m9,
-    "depositHintTextFailure" : m10,
-    "depositHintTextInfo" : m11,
-    "depositHintTextLastNum" : m12,
-    "depositHintTextLimit" : m13,
-    "depositHintTextMax" : m14,
-    "depositHintTextMaxExceed" : m15,
-    "depositHintTextQuickpay" : m16,
+    "depositHintTextAli" : m4,
+    "depositHintTextAmount" : m5,
+    "depositHintTextClearInfo" : m6,
+    "depositHintTextFailure" : m7,
+    "depositHintTextInfo" : m8,
+    "depositHintTextLastNum" : m9,
+    "depositHintTextLimit" : m10,
+    "depositHintTextMax" : m11,
+    "depositHintTextMaxExceed" : m12,
+    "depositHintTextQuickpay" : m13,
     "depositHintTextService" : MessageLookupByLibrary.simpleMessage("บริการลูกค้าออนไลน์"),
     "depositHintTextTitle" : MessageLookupByLibrary.simpleMessage("หมายเหตุ"),
-    "depositHintTextUnion" : m17,
+    "depositHintTextUnion" : m14,
     "depositHintTextUnionA" : MessageLookupByLibrary.simpleMessage("A. ดาวน์โหลดแอพ China Bank หรือ UnionPay Wallet บนโทรศัพท์ของคุณ \n"),
     "depositHintTextUnionB" : MessageLookupByLibrary.simpleMessage("B. เข้าสู่ระบบแอป China Bank และใช้ฟังก์ชันการชำระเงินที่มุมขวาบนหรือฟังก์ชันการชำระเงินในโมดูลการชำระเงินผ่านมือถือ \n"),
     "depositHintTextUnionC" : MessageLookupByLibrary.simpleMessage("C. เข้าสู่หน้ารหัส QR สำหรับการชำระเงินให้กับผู้ขายเพียงแค่สแกนรหัสด้วยเครื่อง \n"),
-    "depositHintTextUnionShortcut" : m18,
+    "depositHintTextUnionShortcut" : m15,
     "depositMessageFailed" : MessageLookupByLibrary.simpleMessage("การเติมเงินล้มเหลวโปรดลองอีกครั้งในภายหลังหรือติดต่อฝ่ายบริการลูกค้า"),
-    "depositMessageSuccessLocal" : m19,
+    "depositMessageFormError" : MessageLookupByLibrary.simpleMessage("ข้อมูลการเติมเงินไม่ถูกต้องโปรดเลือกวิธีการเติมเงินใหม่หรือติดต่อฝ่ายบริการลูกค้า"),
+    "depositMessageSuccessLocal" : m16,
     "depositNewbieAli0" : MessageLookupByLibrary.simpleMessage("บทช่วยสอน Alipay"),
     "depositNewbieAli1" : MessageLookupByLibrary.simpleMessage("ขั้นแรกให้เปิด Alipay บนโทรศัพท์มือถือของคุณและเข้าสู่ระบบคลิกฟังก์ชัน [โอน] บนเมนบอร์ด"),
     "depositNewbieAli2" : MessageLookupByLibrary.simpleMessage("เลือกปุ่ม [ไปที่บัตรธนาคาร] ที่ด้านล่างของหน้าการโอนเงิน"),
@@ -362,12 +293,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "depositNewbieWechat1" : MessageLookupByLibrary.simpleMessage("1. รับรหัส QR สำหรับการชำระเงินด้วยโทรศัพท์มือถือ"),
     "depositNewbieWechat2" : MessageLookupByLibrary.simpleMessage("2. จากนั้นใช้ WeChat โทรศัพท์มือถืออีกเครื่องสแกนโค้ด"),
     "depositPaymentButtonTitleTutorial" : MessageLookupByLibrary.simpleMessage("บทช่วยสอน"),
+    "depositPaymentEditHintCode" : MessageLookupByLibrary.simpleMessage("กรุณากรอกรหัสธุรกรรม"),
     "depositPaymentEditTitleAccount" : MessageLookupByLibrary.simpleMessage("บัญชีธนาคาร"),
     "depositPaymentEditTitleAccountHint" : MessageLookupByLibrary.simpleMessage("กรอกบัญชีธนาคาร"),
     "depositPaymentEditTitleAmount" : MessageLookupByLibrary.simpleMessage("จำนวนเงินฝาก"),
-    "depositPaymentEditTitleAmountHintRange" : m20,
-    "depositPaymentEditTitleAmountHintRangeStep" : m21,
-    "depositPaymentEditTitleAmountHintVND" : m22,
+    "depositPaymentEditTitleAmountHintRange" : m17,
+    "depositPaymentEditTitleAmountHintRangeStep" : m18,
+    "depositPaymentEditTitleAmountHintVND" : m19,
+    "depositPaymentEditTitleCode" : MessageLookupByLibrary.simpleMessage("รหัสธุรกรรม"),
     "depositPaymentEditTitleName" : MessageLookupByLibrary.simpleMessage("ชื่อ"),
     "depositPaymentEditTitleNameHint" : MessageLookupByLibrary.simpleMessage("กรอกข้อมูลเจ้าของบัญชี"),
     "depositPaymentEditTitleNote" : MessageLookupByLibrary.simpleMessage("หมายเหตุ"),
@@ -399,7 +332,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "eventButtonSignUpAlready" : MessageLookupByLibrary.simpleMessage("ลงชื่อเข้าใช้"),
     "eventButtonSignUpFailed" : MessageLookupByLibrary.simpleMessage("การลงชื่อเข้าใช้ล้มเหลว !!"),
     "eventButtonSignUpSuccess" : MessageLookupByLibrary.simpleMessage("ลงชื่อเข้าใช้สำเร็จ !!"),
-    "eventButtonSignUpTv" : m23,
+    "eventButtonSignUpTv" : m20,
     "eventSignUpHint1" : MessageLookupByLibrary.simpleMessage("ลงชื่อสมัครใช้แล้ว"),
     "eventSignUpHint2" : MessageLookupByLibrary.simpleMessage("วัน"),
     "exitAppHint" : MessageLookupByLibrary.simpleMessage("กดอีกครั้งเพื่อออกจาก APP"),
@@ -423,7 +356,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "gameCategorySport" : MessageLookupByLibrary.simpleMessage("กีฬา"),
     "gameCategorySportFull" : MessageLookupByLibrary.simpleMessage("กีฬา"),
     "gameCategoryWeb" : MessageLookupByLibrary.simpleMessage("เว็บไซต์"),
-    "gameCategoryWebHint" : MessageLookupByLibrary.simpleMessage("คลิกฉันเพื่อเปิดเว็บไซต์ 85Bet"),
+    "gameCategoryWebHint" : MessageLookupByLibrary.simpleMessage("คลิกฉันเพื่อเปิดเว็บไซต์ VKing"),
     "gameToolHintRestore" : MessageLookupByLibrary.simpleMessage("ดับเบิลคลิกเพื่อคืนค่าการแสดงผล"),
     "gameToolHintUsage" : MessageLookupByLibrary.simpleMessage("คลิกเพื่อแสดงกดแบบยาวเพื่อซ่อน ↗"),
     "hintAccount" : MessageLookupByLibrary.simpleMessage("UserName"),
@@ -446,7 +379,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "homeHintMemberCreditLeft" : MessageLookupByLibrary.simpleMessage("เครดิต"),
     "homeHintWelcome" : MessageLookupByLibrary.simpleMessage("ยินดีต้อนรับ！"),
     "homeHintWelcomeLogin" : MessageLookupByLibrary.simpleMessage("ยินดีต้อนรับ！ กรุณาเข้าสู่ระบบก่อน"),
-    "homeHintWelcomeMember" : m24,
+    "homeHintWelcomeMember" : m21,
     "homeUserTabCategoryFavorite" : MessageLookupByLibrary.simpleMessage("รายการโปรด"),
     "homeUserTabCategoryGames" : MessageLookupByLibrary.simpleMessage("เกม"),
     "homeUserTabCategoryMovie" : MessageLookupByLibrary.simpleMessage("ภาพยนตร์"),
@@ -467,25 +400,26 @@ class MessageLookup extends MessageLookupByLibrary {
     "memberGridTitleWithdraw" : MessageLookupByLibrary.simpleMessage("ถอน"),
     "messageActionCheckTerms" : MessageLookupByLibrary.simpleMessage("โปรดอ่านและยอมรับเงื่อนไขการเดิมพัน"),
     "messageActionFailed" : MessageLookupByLibrary.simpleMessage("การดำเนินการไม่ถูกต้อง"),
-    "messageActionFillForm" : MessageLookupByLibrary.simpleMessage("กรุณากรอกแบบฟอร์ม"),
+    "messageActionFillForm" : MessageLookupByLibrary.simpleMessage("โปรดยืนยันข้อมูลฟิลด์และกรอกข้อมูลให้ครบถ้วน"),
     "messageActionTooFrequent" : MessageLookupByLibrary.simpleMessage("มีการดำเนินการมากเกินไปในช่วงเวลาสั้นๆ"),
     "messageCopy" : MessageLookupByLibrary.simpleMessage("คัดลอกไปที่คลิปบอร์ด"),
     "messageCopyError" : MessageLookupByLibrary.simpleMessage("คัดลอกล้มเหลว"),
-    "messageError" : m25,
+    "messageError" : m22,
     "messageErrorAccount" : MessageLookupByLibrary.simpleMessage("ข้อผิดพลาดของบัญชี"),
     "messageErrorAccountIsLocked" : MessageLookupByLibrary.simpleMessage("บัญชีถูกล็อคโปรดติดต่อฝ่ายบริการลูกค้า"),
     "messageErrorAutoLogin" : MessageLookupByLibrary.simpleMessage("ข้อมูลผิดพลาดโปรดเข้าสู่ระบบด้วยตนเอง"),
     "messageErrorBindBankcard" : MessageLookupByLibrary.simpleMessage("กรุณาผูกบัตรธนาคารของคุณก่อน!"),
     "messageErrorBindCgp" : MessageLookupByLibrary.simpleMessage("กรุณาผูกกระเป๋าเงิน CGP ก่อน"),
     "messageErrorBindCpw" : MessageLookupByLibrary.simpleMessage("กรุณาผูกกระเป๋าเงินเพื่อซื้อสมบัติ"),
-    "messageErrorBindUrl" : m26,
+    "messageErrorBindUrl" : m23,
     "messageErrorCachedFile" : MessageLookupByLibrary.simpleMessage("ข้อผิดพลาดของไฟล์ที่แคชไว้โปรดลองอีกครั้งในภายหลังหรือติดต่อฝ่ายบริการลูกค้า"),
-    "messageErrorCause" : m27,
+    "messageErrorCause" : m24,
     "messageErrorEvent" : MessageLookupByLibrary.simpleMessage("ไม่สามารถดึงข้อมูลเหตุการณ์จากเซิร์ฟเวอร์ได้โปรดลองอีกครั้งในภายหลัง"),
-    "messageErrorFieldError" : m28,
+    "messageErrorFieldError" : m25,
+    "messageErrorGamePermission" : MessageLookupByLibrary.simpleMessage("คุณไม่ได้รับอนุญาตให้เล่นเกมแพลตฟอร์มนี้โปรดติดต่อฝ่ายบริการลูกค้า"),
     "messageErrorHasCardData" : MessageLookupByLibrary.simpleMessage("ผูกบัตรธนาคารไว้แล้ว"),
     "messageErrorInternal" : MessageLookupByLibrary.simpleMessage("ข้อผิดพลาดภายในโปรดลองอีกครั้งในภายหลังหรือติดต่อฝ่ายบริการลูกค้า"),
-    "messageErrorLink" : m29,
+    "messageErrorLink" : m26,
     "messageErrorLoadingGame" : MessageLookupByLibrary.simpleMessage("เกิดข้อผิดพลาดขณะโหลดเกมโปรดลองอีกครั้งในภายหลัง"),
     "messageErrorLoadingPay" : MessageLookupByLibrary.simpleMessage("ข้อผิดพลาดในการโหลดหน้าเว็บโปรดลองอีกครั้งในภายหลัง"),
     "messageErrorMobile" : MessageLookupByLibrary.simpleMessage("หมายเลขโทรศัพท์มือถือผิดพลาด"),
@@ -494,57 +428,63 @@ class MessageLookup extends MessageLookupByLibrary {
     "messageErrorNoStoragePermission" : MessageLookupByLibrary.simpleMessage("โปรดเปิดการอนุญาต \"บันทึก\""),
     "messageErrorNotLogin" : MessageLookupByLibrary.simpleMessage("กรุณาเข้าสู่ระบบก่อน"),
     "messageErrorPassword" : MessageLookupByLibrary.simpleMessage("รหัสผ่านผิดพลาด"),
+    "messageErrorPasswordHint" : MessageLookupByLibrary.simpleMessage("รหัสผ่านไม่ตรงกันบัญชีจะถูกล็อกหลังจากมีข้อผิดพลาด 5 ข้อ"),
     "messageErrorReferral" : MessageLookupByLibrary.simpleMessage("รหัสอ้างอิงไม่ถูกต้อง"),
     "messageErrorServerData" : MessageLookupByLibrary.simpleMessage("ข้อผิดพลาดของข้อมูลเซิร์ฟเวอร์โปรดลองอีกครั้งในภายหลังหรือติดต่อฝ่ายบริการลูกค้า"),
-    "messageErrorStatus" : m30,
+    "messageErrorStatus" : m27,
     "messageErrorTimeoutError" : MessageLookupByLibrary.simpleMessage("เครือข่ายหมดเวลาโปรดลองอีกครั้งในภายหลัง"),
     "messageErrorToken" : MessageLookupByLibrary.simpleMessage("ข้อผิดพลาดโทเค็นของผู้ใช้โปรดออกจากระบบและเข้าสู่ระบบอีกครั้ง"),
     "messageErrorWithdraw" : MessageLookupByLibrary.simpleMessage("การถอนล้มเหลว"),
+    "messageExceedRemainCredit" : MessageLookupByLibrary.simpleMessage("เกินความสมดุล"),
     "messageFailed" : MessageLookupByLibrary.simpleMessage("การเปลี่ยนแปลงล้มเหลวโปรดลองอีกครั้งในภายหลัง"),
-    "messageInvalidAccount" : MessageLookupByLibrary.simpleMessage("ชหมายเลขบัญชีคือ 6 ~ 12 ตัวพิมพ์เล็กภาษาอังกฤษ / หลัก"),
+    "messageInvalidAccount" : m28,
     "messageInvalidBirthDate" : MessageLookupByLibrary.simpleMessage("วันเกิดผิด"),
     "messageInvalidCardBankPoint" : MessageLookupByLibrary.simpleMessage("ชื่อต้องมีความยาวมากกว่า 3 อักขระ"),
-    "messageInvalidCardNumber" : MessageLookupByLibrary.simpleMessage("หมายเลขบัตรคือ 5 ~ 20 อักขระ"),
+    "messageInvalidCardNumber" : m29,
+    "messageInvalidCardNumberFixed" : m30,
     "messageInvalidCardOwner" : MessageLookupByLibrary.simpleMessage("ชื่อผู้ถือบัตรไม่ถูกต้อง"),
     "messageInvalidConfirmPassword" : MessageLookupByLibrary.simpleMessage("รหัสผ่านไม่ตรงกัน"),
     "messageInvalidDate" : MessageLookupByLibrary.simpleMessage("วันที่ไม่ถูกต้อง"),
     "messageInvalidDepositAmount" : MessageLookupByLibrary.simpleMessage("จำนวนเงินผิดพลาด"),
-    "messageInvalidDepositAmountMax" : MessageLookupByLibrary.simpleMessage("เกินจำนวนการถอนสูงสุดของการทำธุรกรรมหนึ่งครั้ง (โปรดดูที่ระบบระดับสมาชิก)"),
+    "messageInvalidDepositAmountMaxLimit" : MessageLookupByLibrary.simpleMessage("จำนวนเงินที่เติมเกินขีด จำกัด ด้านบน"),
     "messageInvalidDepositAmountMin" : m31,
+    "messageInvalidDepositAmountMinLimit" : MessageLookupByLibrary.simpleMessage("จำนวนการเติมเงินต่ำกว่าขีด จำกัด ล่าง"),
     "messageInvalidDepositName" : MessageLookupByLibrary.simpleMessage("ชื่อบัญชีไม่ถูกต้อง"),
     "messageInvalidEmail" : MessageLookupByLibrary.simpleMessage("กล่องจดหมายผิดรูปแบบ"),
     "messageInvalidFormat" : MessageLookupByLibrary.simpleMessage("รูปแบบข้อมูลผิดพลาด"),
     "messageInvalidName" : MessageLookupByLibrary.simpleMessage("ชื่อผิดรูปแบบ"),
-    "messageInvalidPassword" : MessageLookupByLibrary.simpleMessage("รหัสผ่านควรมีความยาว 8 ~ 18 คำ"),
-    "messageInvalidPasswordArg" : m32,
+    "messageInvalidPassword" : m32,
+    "messageInvalidPasswordArg" : m33,
     "messageInvalidPasswordFive" : MessageLookupByLibrary.simpleMessage("รหัสผ่านไม่ตรงกันบัญชีจะถูกล็อคเนื่องจากข้อผิดพลาดห้าประการ"),
     "messageInvalidPasswordLocked" : MessageLookupByLibrary.simpleMessage("บัญชีถูกล็อคโปรดติดต่อฝ่ายบริการลูกค้า"),
-    "messageInvalidPasswordNew" : MessageLookupByLibrary.simpleMessage("รหัสผ่านควรมีความยาว 8 ~ 18 คำ"),
-    "messageInvalidPhone" : m33,
+    "messageInvalidPhone" : m34,
+    "messageInvalidPhone2" : m35,
     "messageInvalidPostCode" : MessageLookupByLibrary.simpleMessage("รหัสโพสต์ผิดพลาด (5~8)"),
     "messageInvalidSymbol" : MessageLookupByLibrary.simpleMessage("มีสัญลักษณ์ที่ไม่ถูกต้อง"),
     "messageInvalidVerify" : MessageLookupByLibrary.simpleMessage("โปรดป้อนรหัสยืนยัน"),
     "messageInvalidWechat" : MessageLookupByLibrary.simpleMessage("บัญชี WeChat ไม่ถูกต้อง"),
     "messageInvalidWithdrawAmount" : MessageLookupByLibrary.simpleMessage("เครดิตไม่เพียงพอ"),
+    "messageInvalidWithdrawExceedAmount" : MessageLookupByLibrary.simpleMessage("เกินจำนวนการถอนสูงสุดของการทำธุรกรรมหนึ่งครั้ง (โปรดดูที่ระบบระดับสมาชิก)"),
     "messageInvalidWithdrawPassword" : MessageLookupByLibrary.simpleMessage("รหัสผ่านผิดพลาด! (ค่าเริ่มต้นคือรหัสผ่านเข้าสู่ระบบ)"),
     "messageInvalidWithdrawUnderAmount" : MessageLookupByLibrary.simpleMessage("ต่ำกว่าจำนวนเงินถอนขั้นต่ำ"),
     "messageInvalidZalo" : MessageLookupByLibrary.simpleMessage("บัญชี Zalo ไม่ถูกต้อง"),
     "messageLoading" : MessageLookupByLibrary.simpleMessage("กำลังโหลด ... "),
     "messageLoginFailed" : MessageLookupByLibrary.simpleMessage("เข้าสู่ระบบล้มเหลว"),
     "messageLoginHint" : MessageLookupByLibrary.simpleMessage("กรุณาเข้าสู่ระบบ / ลงทะเบียน"),
-    "messageLogout" : m34,
+    "messageLogout" : m36,
     "messageNoEvent" : MessageLookupByLibrary.simpleMessage("ไม่มีกิจกรรมในขณะนี้"),
     "messageNoMessages" : MessageLookupByLibrary.simpleMessage("ไม่มีข้อมูลสถานี"),
     "messagePartFailed" : MessageLookupByLibrary.simpleMessage("การโอนบางส่วนล้มเหลว"),
+    "messagePlatformMaintenance" : MessageLookupByLibrary.simpleMessage("แพลตฟอร์มอยู่ระหว่างการบำรุงรักษา"),
     "messageRegisterFailed" : MessageLookupByLibrary.simpleMessage("การลงทะเบียนล้มเหลว"),
     "messageRepeatAccount" : MessageLookupByLibrary.simpleMessage("การลงทะเบียนบัญชีที่ซ้ำกัน"),
     "messageRepeatMobile" : MessageLookupByLibrary.simpleMessage("การลงทะเบียนหมายเลขโทรศัพท์มือถือซ้ำ"),
     "messageRepeatPhone" : MessageLookupByLibrary.simpleMessage("หมายเลขโทรศัพท์ซ้ำกัน"),
     "messageSentVerify" : MessageLookupByLibrary.simpleMessage("ยืนยันรหัสได้ส่งแล้ว"),
     "messageSuccess" : MessageLookupByLibrary.simpleMessage("ความสำเร็จ"),
-    "messageTaskCanceled" : m35,
-    "messageTaskFailed" : m36,
-    "messageTaskSuccess" : m37,
+    "messageTaskCanceled" : m37,
+    "messageTaskFailed" : m38,
+    "messageTaskSuccess" : m39,
     "messageVerifySuccess" : MessageLookupByLibrary.simpleMessage("ยืนยันความสำเร็จ"),
     "messageWait" : MessageLookupByLibrary.simpleMessage("โปรดรอขณะดำเนินการตามคำขอ ... "),
     "messageWaitComplete" : MessageLookupByLibrary.simpleMessage("อย่าออกขณะดำเนินการตามคำขอ"),
@@ -556,27 +496,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "messageWarnUsingCellular" : MessageLookupByLibrary.simpleMessage("คุณกำลังใช้เครือข่ายมือถือ"),
     "messageWelcome" : MessageLookupByLibrary.simpleMessage("ยินดีต้อนรับ"),
     "messageWelcomeHint" : MessageLookupByLibrary.simpleMessage("ยินดีต้อนรับ! กรุณาเข้าสู่ระบบ / ลงทะเบียน"),
-    "messageWelcomeUser" : m38,
-    "movieCategoryLabelBuy" : MessageLookupByLibrary.simpleMessage("ซื้อ"),
-    "movieCategoryLabelCollect" : MessageLookupByLibrary.simpleMessage("คอลเลคชัน"),
-    "movieCategoryLabelExpand" : MessageLookupByLibrary.simpleMessage("ขยาย"),
-    "movieCategoryLabelFold" : MessageLookupByLibrary.simpleMessage("พับ"),
-    "movieDialogButtonPayPoint" : m39,
-    "movieDialogButtonWatchFree" : MessageLookupByLibrary.simpleMessage("ดูฟรี"),
-    "movieDialogTextFreeTimes" : MessageLookupByLibrary.simpleMessage("นาฬิกาฟรียังคงอยู่:"),
-    "movieDialogTextStorePoints" : MessageLookupByLibrary.simpleMessage("จุดร้านค้าปัจจุบัน:"),
-    "movieDialogTitlePay" : MessageLookupByLibrary.simpleMessage("ซื้อภาพยนตร์เรื่องนี้"),
-    "movieHintTextFree" : MessageLookupByLibrary.simpleMessage("ฟรีวันนี้"),
-    "movieHintTextNotPurchased" : MessageLookupByLibrary.simpleMessage("ยังไม่ได้ซื้อ"),
-    "movieHintTextPurchased" : MessageLookupByLibrary.simpleMessage("ซื้อแล้ว"),
-    "movieListHintLoad" : MessageLookupByLibrary.simpleMessage("โหลดเพิ่มเติม"),
-    "movieListHintLoadFailed" : MessageLookupByLibrary.simpleMessage("โหลดล้มเหลว"),
-    "movieListHintLoadNoMore" : MessageLookupByLibrary.simpleMessage("ไม่มาก"),
-    "movieListHintLoadReady" : MessageLookupByLibrary.simpleMessage("กำลังขอ ... "),
-    "movieListHintLoadSuccess" : MessageLookupByLibrary.simpleMessage("โหลดสำเร็จ"),
-    "movieListHintLoading" : MessageLookupByLibrary.simpleMessage("กำลังโหลด ... "),
-    "movieSeparatorTextHot" : MessageLookupByLibrary.simpleMessage("คนอื่นกำลังดู"),
-    "movieTextBuyNow" : MessageLookupByLibrary.simpleMessage("ซื้อเลย"),
+    "messageWelcomeUser" : m40,
     "networkChangedHint" : MessageLookupByLibrary.simpleMessage("ตรวจพบสถานะเครือข่ายมีการเปลี่ยนแปลงคุณต้องการรีเฟรชหรือไม่"),
     "noticeTabGeneral" : MessageLookupByLibrary.simpleMessage("ข้อความทั่วไป"),
     "noticeTabMaintenance" : MessageLookupByLibrary.simpleMessage("การแจ้งเตือนการบำรุงรักษา"),
@@ -689,11 +609,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "storeRecordFieldHint" : MessageLookupByLibrary.simpleMessage("โปรดป้อนชื่อผลิตภัณฑ์"),
     "storeRecordSpinnerTitle1" : MessageLookupByLibrary.simpleMessage("แสดง"),
     "storeRecordSpinnerTitle2" : MessageLookupByLibrary.simpleMessage("item"),
-    "storeRecordTableDetailAddress" : m40,
-    "storeRecordTableDetailItem" : m41,
-    "storeRecordTableDetailName" : m42,
-    "storeRecordTableDetailPhone" : m43,
-    "storeRecordTableDetailPostCode" : m44,
+    "storeRecordTableDetailAddress" : m41,
+    "storeRecordTableDetailItem" : m42,
+    "storeRecordTableDetailName" : m43,
+    "storeRecordTableDetailPhone" : m44,
+    "storeRecordTableDetailPostCode" : m45,
     "storeRecordTableStatusPending" : MessageLookupByLibrary.simpleMessage("รอดำเนินการ"),
     "storeRecordTableTitleDate" : MessageLookupByLibrary.simpleMessage("วันที่"),
     "storeRecordTableTitleNo" : MessageLookupByLibrary.simpleMessage("หมายเลขคำสั่งซื้อ"),
@@ -711,11 +631,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "storeRequestWindowTextPoint" : MessageLookupByLibrary.simpleMessage("คะแนนสะสม:"),
     "storeRequestWindowTitle" : MessageLookupByLibrary.simpleMessage("ข้อมูลติดต่อ"),
     "storeRuleTableHeader" : MessageLookupByLibrary.simpleMessage("คุณจะได้รับตารางคะแนนสำหรับทุกๆ 100 หยวนของการเดิมพันที่ถูกต้อง"),
-    "storeRuleTableTitle" : m45,
+    "storeRuleTableTitle" : m46,
     "storeTextItemButton" : MessageLookupByLibrary.simpleMessage("แลกเลย"),
     "storeTextItemButtonDisabled" : MessageLookupByLibrary.simpleMessage("คะแนนไม่เพียงพอ"),
     "storeTextItemHint" : MessageLookupByLibrary.simpleMessage("จำกัด จำนวน จำกัด "),
-    "storeTextItemPoint" : m46,
+    "storeTextItemPoint" : m47,
     "storeTextTitlePoint" : MessageLookupByLibrary.simpleMessage("คะแนนสมาชิก:"),
     "storeTextTitleProduct" : MessageLookupByLibrary.simpleMessage("แลกสินค้า"),
     "storeTextTitleRecord" : MessageLookupByLibrary.simpleMessage("บันทึกคะแนน"),
@@ -724,8 +644,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "themeColorDefault" : MessageLookupByLibrary.simpleMessage("ค่าเริ่มต้น"),
     "themeColorHintSelect" : MessageLookupByLibrary.simpleMessage("เลือกสีของธีม"),
     "themeColorLight" : MessageLookupByLibrary.simpleMessage("แสง"),
-    "title" : MessageLookupByLibrary.simpleMessage("85Bet Mobile"),
-    "toolBarMemberCredit" : m47,
+    "title" : MessageLookupByLibrary.simpleMessage("VKing Mobile"),
+    "toolBarMemberCredit" : m48,
     "transactionHeaderAmount" : MessageLookupByLibrary.simpleMessage("จำนวนเงิน"),
     "transactionHeaderDate" : MessageLookupByLibrary.simpleMessage("วันที่"),
     "transactionHeaderDesc" : MessageLookupByLibrary.simpleMessage("คำอธิบาย"),
@@ -734,7 +654,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "transactionViewSpinnerTitle" : MessageLookupByLibrary.simpleMessage("เวลาโอน"),
     "transferDataError" : MessageLookupByLibrary.simpleMessage("ข้อมูลผิดพลาดโปรดเลือกอีกครั้ง"),
     "transferHintRefresh" : MessageLookupByLibrary.simpleMessage("4. หากเครดิตแพลตฟอร์มไม่อัปเดตหลังโอนโปรดเลือกแพลตฟอร์มอีกครั้งเพื่อรีเฟรชหรือติดต่อฝ่ายบริการลูกค้า"),
-    "transferMessage" : m48,
+    "transferMessage" : m49,
     "transferPlatformError" : MessageLookupByLibrary.simpleMessage("แพลตฟอร์มที่เลือกกำลังบำรุงรักษา"),
     "transferResultAlertTitle" : MessageLookupByLibrary.simpleMessage("การโอนล้มเหลว"),
     "transferViewButtonConfirm" : MessageLookupByLibrary.simpleMessage("ยืนยันการโอน"),
@@ -745,7 +665,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "transferViewTitleOption" : MessageLookupByLibrary.simpleMessage("เลือกจำนวนเงิน"),
     "transferViewTitleOut" : MessageLookupByLibrary.simpleMessage("ออก"),
     "updateDialogErrorUrl" : MessageLookupByLibrary.simpleMessage("ไม่สามารถรับ URL ดาวน์โหลดโปรดติดต่อฝ่ายบริการลูกค้า !!"),
-    "updateDialogMessage" : m49,
+    "updateDialogMessage" : m50,
     "urlActionNotSupported" : MessageLookupByLibrary.simpleMessage("ไม่สามารถข้ามไปยัง URL ปลายทางได้"),
     "userPwdButtonTitle" : MessageLookupByLibrary.simpleMessage("เปลี่ยนรหัสผ่าน"),
     "userPwdFieldHintConfirm" : MessageLookupByLibrary.simpleMessage("ป้อนรหัสผ่านใหม่อีกครั้ง"),
@@ -754,7 +674,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "userPwdFieldTitleConfirm" : MessageLookupByLibrary.simpleMessage("การยืนยันรหัสผ่าน:"),
     "userPwdFieldTitleNew" : MessageLookupByLibrary.simpleMessage("รหัสผ่านใหม่:"),
     "userPwdFieldTitleOld" : MessageLookupByLibrary.simpleMessage("รหัสผ่านเดิม:"),
-    "userVerifyButtonText" : m50,
+    "userVerifyButtonText" : m51,
     "userVerifyFieldHint" : MessageLookupByLibrary.simpleMessage("ป้อนรหัสยืนยัน"),
     "userVerifyFieldInfo" : MessageLookupByLibrary.simpleMessage("คุณสามารถขอได้ครั้งเดียวใน 24 ชม."),
     "userVerifyFieldTitle" : MessageLookupByLibrary.simpleMessage("ยืนยัน:"),
@@ -786,7 +706,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "wheelRecordTableTextCount" : MessageLookupByLibrary.simpleMessage("จำนวนครั้ง"),
     "wheelRecordTableTextOperate" : MessageLookupByLibrary.simpleMessage("การทำงาน"),
     "wheelRecordTableTextTime" : MessageLookupByLibrary.simpleMessage("เวลา"),
-    "wheelTextTitleCount" : m51,
+    "wheelTextTitleCount" : m52,
     "wheelTextTitleGet" : MessageLookupByLibrary.simpleMessage("รับการหมุน"),
     "wheelTextTitlePrize" : MessageLookupByLibrary.simpleMessage("ประวัติการชนะ"),
     "wheelTextTitleRecord" : MessageLookupByLibrary.simpleMessage("บันทึกการทำงาน"),

@@ -1,5 +1,6 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/types_grid_widget.dart';
 import 'package:flutter_85bet_mobile/features/themes/theme_interface.dart';
 
@@ -69,9 +70,10 @@ class _PromoTabDisplayState extends State<PromoTabDisplay>
             types: _categories,
             titleKey: 'label',
             onTypeGridTap: (_, type) => updateContent(type),
-            tabsPerRow: 5,
+            tabsPerRow: (Global.device.widthScale > 1.2) ? 5 : 4,
             itemSpace: 2.0,
             expectTabHeight: 36.0,
+            icons: _categories.map((e) => e.value.iconData).toList(),
           ),
         ),
         Padding(

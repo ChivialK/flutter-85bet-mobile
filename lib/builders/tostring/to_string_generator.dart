@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
+import 'package:flutter/foundation.dart';
 import 'package:source_gen/source_gen.dart';
 
 import 'parser/code_generate.dart';
@@ -28,7 +29,7 @@ class ToStringGenerator extends GeneratorForAnnotation<ToString> {
     final clazz = element;
 
     if (!(element is ClassElement)) {
-      print("Only supports class element");
+      debugPrint("Only supports class element");
       return null;
     }
 

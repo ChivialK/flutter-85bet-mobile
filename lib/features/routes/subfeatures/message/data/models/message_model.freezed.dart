@@ -38,6 +38,7 @@ mixin _$MessageModel {
   String get status;
   String get title;
 
+  @JsonKey(ignore: true)
   $MessageModelCopyWith<MessageModel> get copyWith;
 }
 
@@ -170,6 +171,7 @@ class _$_MessageModel implements _MessageModel {
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(title);
 
+  @JsonKey(ignore: true)
   @override
   _$MessageModelCopyWith<_MessageModel> get copyWith =>
       __$MessageModelCopyWithImpl<_MessageModel>(this, _$identity);
@@ -194,5 +196,6 @@ abstract class _MessageModel implements MessageModel {
   @override
   String get title;
   @override
+  @JsonKey(ignore: true)
   _$MessageModelCopyWith<_MessageModel> get copyWith;
 }

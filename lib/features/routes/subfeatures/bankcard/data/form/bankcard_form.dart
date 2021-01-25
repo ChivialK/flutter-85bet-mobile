@@ -19,8 +19,7 @@ extension BankcardFormExtension on BankcardForm {
       owner.isNotEmpty &&
       bankId.isNotEmpty &&
       card.isNotEmpty &&
-      branch.isNotEmpty &&
-      province.isNotEmpty;
+      branch.isNotEmpty;
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{

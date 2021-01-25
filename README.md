@@ -1,4 +1,4 @@
-# Flutter 85Bet Mobile
+# Flutter VKing Mobile
 ==================
 
 *   [概述](#overview)
@@ -10,7 +10,7 @@
 
 <h2 id="overview">概述</h2>
 
-85Bet mobile app for multi platforms.
+VKing mobile app for multi platforms.
 
 - - -
 
@@ -33,4 +33,4 @@
 
 - - -
 作者：Raven Chiang   
-更新日期：2020.08
+更新日期：2020.12

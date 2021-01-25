@@ -153,7 +153,7 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
     // update text max lines
     _currentPrefixMaxLines = (widget.prefixTextMaxLines != null)
         ? widget.prefixTextMaxLines
-        : (Global.lang == 'zh')
+        : (Global.lang.isChinese)
             ? 1
             : 2;
 
@@ -202,6 +202,9 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
 
     // update suffix widget
     if (widget.suffixInitText == null && widget.suffixTextStream == null) {
+      _suffixWidget = null;
+    }
+    if (oldWidget.suffixInitText != widget.suffixInitText) {
       _suffixWidget = null;
     }
 

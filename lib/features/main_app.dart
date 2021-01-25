@@ -1,15 +1,15 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
-import 'package:flutter_85bet_mobile/features/themes/theme_color_enum.dart';
+import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/generated/l10n.dart';
-import 'package:flutter_85bet_mobile/injection_container.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'main_startup.dart';
 import 'router/app_global_streams.dart';
 import 'routes/home/presentation/state/home_store.dart';
+import 'themes/theme_color_enum.dart';
+import 'themes/theme_interface.dart';
 
 class MainApp extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
-  final String tag = 'Main';
+  final String tag = 'MainWithFirebase';
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -25,8 +25,6 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
     switch (state) {
       case AppLifecycleState.paused:
         MyLogger.info(msg: 'app paused', tag: tag);
-//        SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
-//        exit(0); // exit the app on paused
         break;
       case AppLifecycleState.resumed:
         MyLogger.info(msg: 'app resumed', tag: tag);
@@ -83,12 +81,12 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
             ],
             supportedLocales: S.delegate.supportedLocales,
             localeResolutionCallback: (deviceLocale, supportedLocales) {
-              return Locale.fromSubtags(languageCode: Global.lang);
+              return Locale.fromSubtags(languageCode: Global.lang.code);
             },
             localeListResolutionCallback: (deviceLocales, supportedLocales) {
               debugPrint('device locales: $deviceLocales');
               debugPrint('supported locales: $supportedLocales');
-              return Locale.fromSubtags(languageCode: Global.lang);
+              return Locale.fromSubtags(languageCode: Global.lang.code);
             },
             theme: ThemeInterface.theme.data,
             // builder: ExtendedNavigator<ScreenRouter>(router: ScreenRouter()),

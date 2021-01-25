@@ -45,6 +45,7 @@ mixin _$RegisterForm {
   String get mobileno;
   String get code;
 
+  @JsonKey(ignore: true)
   $RegisterFormCopyWith<RegisterForm> get copyWith;
 }
 
@@ -203,6 +204,7 @@ class _$_RegisterForm implements _RegisterForm {
       const DeepCollectionEquality().hash(mobileno) ^
       const DeepCollectionEquality().hash(code);
 
+  @JsonKey(ignore: true)
   @override
   _$RegisterFormCopyWith<_RegisterForm> get copyWith =>
       __$RegisterFormCopyWithImpl<_RegisterForm>(this, _$identity);
@@ -230,5 +232,6 @@ abstract class _RegisterForm implements RegisterForm {
   @override
   String get code;
   @override
+  @JsonKey(ignore: true)
   _$RegisterFormCopyWith<_RegisterForm> get copyWith;
 }

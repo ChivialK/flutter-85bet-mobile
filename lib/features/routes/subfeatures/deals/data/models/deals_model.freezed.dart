@@ -60,6 +60,7 @@ mixin _$DealsModel {
   @JsonKey(fromJson: decodeDealsData)
   List<DealsData> get data;
 
+  @JsonKey(ignore: true)
   $DealsModelCopyWith<DealsModel> get copyWith;
 }
 
@@ -259,6 +260,7 @@ class _$_DealsModel implements _DealsModel {
       const DeepCollectionEquality().hash(prevPageUrl) ^
       const DeepCollectionEquality().hash(data);
 
+  @JsonKey(ignore: true)
   @override
   _$DealsModelCopyWith<_DealsModel> get copyWith =>
       __$DealsModelCopyWithImpl<_DealsModel>(this, _$identity);
@@ -302,6 +304,7 @@ abstract class _DealsModel implements DealsModel {
   @JsonKey(fromJson: decodeDealsData)
   List<DealsData> get data;
   @override
+  @JsonKey(ignore: true)
   _$DealsModelCopyWith<_DealsModel> get copyWith;
 }
 
@@ -344,6 +347,7 @@ mixin _$DealsData {
   String get action;
   String get type;
 
+  @JsonKey(ignore: true)
   $DealsDataCopyWith<DealsData> get copyWith;
 }
 
@@ -491,6 +495,7 @@ class _$_DealsData implements _DealsData {
       const DeepCollectionEquality().hash(action) ^
       const DeepCollectionEquality().hash(type);
 
+  @JsonKey(ignore: true)
   @override
   _$DealsDataCopyWith<_DealsData> get copyWith =>
       __$DealsDataCopyWithImpl<_DealsData>(this, _$identity);
@@ -521,5 +526,6 @@ abstract class _DealsData implements DealsData {
   @override
   String get type;
   @override
+  @JsonKey(ignore: true)
   _$DealsDataCopyWith<_DealsData> get copyWith;
 }

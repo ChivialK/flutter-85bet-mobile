@@ -25,6 +25,10 @@ class ScreenDrawerItem extends Vnum<RouteListItem> {
   //   iconData: IconCode.drawerNotice,
   //   route: RoutePage.sideNoticeBoard,
   // ));
+  static ScreenDrawerItem member = ScreenDrawerItem.define(RouteListItem(
+    iconData: IconCode.navMember,
+    route: RoutePage.member,
+  ));
   static ScreenDrawerItem promo = ScreenDrawerItem.define(RouteListItem(
     iconData: IconCode.navPromo,
     route: RoutePage.promo,
@@ -46,11 +50,10 @@ class ScreenDrawerItem extends Vnum<RouteListItem> {
     iconData: IconCode.drawerEvent,
     userOnly: true,
   ));
-  // static ScreenDrawerItem store = ScreenDrawerItem.define(RouteListItem(
-  //   imageName: 'images/mobile-mall_Color1.png',
-  //   imageSubName: 'images/mobile-mall.png',
-  //   route: RoutePage.sideStore,
-  // ));
+  static ScreenDrawerItem store = ScreenDrawerItem.define(RouteListItem(
+    route: RoutePage.sideStore,
+    iconData: IconCode.drawerStore,
+  ));
   // static ScreenDrawerItem roller = ScreenDrawerItem.define(RouteListItem(
   //   imageName: 'images/mobile-turntable_Color1.png',
   //   imageSubName: 'images/mobile-turntable.png',

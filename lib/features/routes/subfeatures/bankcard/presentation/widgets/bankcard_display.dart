@@ -32,8 +32,8 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
       new GlobalKey(debugLabel: 'account');
   final GlobalKey<CustomizeFieldWidgetState> _branchFieldKey =
       new GlobalKey(debugLabel: 'branch');
-  final GlobalKey<CustomizeFieldWidgetState> _provinceFieldKey =
-      new GlobalKey(debugLabel: 'branch');
+  // final GlobalKey<CustomizeFieldWidgetState> _provinceFieldKey =
+  //     new GlobalKey(debugLabel: 'province');
 
   List<ReactionDisposer> _disposers;
   Map<String, String> bankMap;
@@ -48,7 +48,7 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
         bankId: _bankSelected ?? '',
         card: _accountFieldKey.currentState.getInput,
         branch: _branchFieldKey.currentState.getInput,
-        province: _provinceFieldKey.currentState.getInput,
+        province: '',
         area: '',
       );
       if (dataForm.isValid) {
@@ -117,11 +117,7 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: themeColor.memberIconColor,
-                      boxShadow: ThemeInterface.iconBottomShadow,
-                    ),
+                    decoration: ThemeInterface.pageIconContainerDecor,
                     child: Icon(
                       pageItem.value.iconData,
                       size: 32 * Global.device.widthScale,
@@ -209,7 +205,10 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                                 prefixTextSize: FontSize.SUBTITLE.value,
                                 maxInputLength: InputLimit.CARD_MAX,
                                 horizontalInset: _fieldInset,
-                                errorMsg: localeStr.messageInvalidCardNumber,
+                                errorMsg: localeStr.messageInvalidCardNumber(
+                                  InputLimit.CARD_MIN,
+                                  InputLimit.CARD_MAX,
+                                ),
                                 validCondition: (value) => rangeCheck(
                                   value: value.length,
                                   min: InputLimit.CARD_MIN,
@@ -241,28 +240,28 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                               ),
                             ),
 
-                            ///
-                            /// Bank Province Field
-                            ///
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 6.0),
-                              child: new CustomizeFieldWidget(
-                                key: _provinceFieldKey,
-                                hint: '',
-                                persistHint: false,
-                                prefixText:
-                                    localeStr.bankcardViewTitleBankProvince,
-                                prefixTextSize: FontSize.SUBTITLE.value,
-                                maxInputLength: InputLimit.NAME_MAX,
-                                horizontalInset: _fieldInset,
-                                errorMsg: localeStr.messageInvalidCardBankPoint,
-                                validCondition: (value) => rangeCheck(
-                                    value: value.length,
-                                    min: 3,
-                                    max: InputLimit.NAME_MAX),
-                              ),
-                            ),
+                            // ///
+                            // /// Bank Province Field
+                            // ///
+                            // Padding(
+                            //   padding:
+                            //       const EdgeInsets.symmetric(vertical: 6.0),
+                            //   child: new CustomizeFieldWidget(
+                            //     key: _provinceFieldKey,
+                            //     hint: '',
+                            //     persistHint: false,
+                            //     prefixText:
+                            //         localeStr.bankcardViewTitleBankProvince,
+                            //     prefixTextSize: FontSize.SUBTITLE.value,
+                            //     maxInputLength: InputLimit.NAME_MAX,
+                            //     horizontalInset: _fieldInset,
+                            //     errorMsg: localeStr.messageInvalidCardBankPoint,
+                            //     validCondition: (value) => rangeCheck(
+                            //         value: value.length,
+                            //         min: 3,
+                            //         max: InputLimit.NAME_MAX),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),

@@ -22,12 +22,28 @@ class TransactionDisplayTableState extends State<TransactionDisplayTable> {
   List<String> _headerRowTexts;
   TableRow _headerRow;
 
+  String _textIn;
+  String _textOut;
+
   set updateContent(List<TransactionData> list) {
     debugPrint('transaction list length: ${list.length}');
     if (_dataList != list) {
       _dataList = list;
       setState(() {});
     }
+  }
+
+  void updateTexts(bool state) {
+    _headerRowTexts = [
+      localeStr.transactionHeaderSerial,
+      localeStr.transactionHeaderDate,
+      localeStr.transactionHeaderType,
+      localeStr.transactionHeaderDesc,
+      localeStr.transactionHeaderAmount,
+    ];
+    _textIn = localeStr.transferViewTitleIn;
+    _textOut = localeStr.transferViewTitleOut;
+    if (state) setState(() {});
   }
 
   @override
@@ -68,13 +84,7 @@ class TransactionDisplayTableState extends State<TransactionDisplayTable> {
         ),
       );
     } else {
-      _headerRowTexts ??= [
-        localeStr.transactionHeaderSerial,
-        localeStr.transactionHeaderDate,
-        localeStr.transactionHeaderType,
-        localeStr.transactionHeaderDesc,
-        localeStr.transactionHeaderAmount,
-      ];
+      if (_headerRowTexts == null) updateTexts(false);
       _headerRow ??= TableRow(
         children: List.generate(
           _headerRowTexts.length,
@@ -104,13 +114,15 @@ class TransactionDisplayTableState extends State<TransactionDisplayTable> {
                     (index) {
                       TransactionData data = _dataList[index];
                       String explanation =
-                          (data.type == localeStr.transferViewTitleIn)
-                              ? '${data.type} ${data.to}'
-                              : '${data.from} ${data.type}';
+                          (data.type == localeStr.transferViewTitleOut)
+                              ? '${data.from} ${data.type}'
+                              : '${data.type} ${data.to}';
                       List<dynamic> dataTexts = [
                         data.key,
                         data.date,
-                        data.type,
+                        ('${data.type}'.toLowerCase() == 'in')
+                            ? _textIn
+                            : _textOut,
                         explanation,
                         data.amount,
                       ];
@@ -129,5 +141,11 @@ class TransactionDisplayTableState extends State<TransactionDisplayTable> {
         ),
       );
     }
+  }
+
+  String _localeTransferDesc(String from, String to) {
+    final _from = (from == 'centerWallet') ? localeStr.walletViewTitle : from;
+    final _to = (to == 'centerWallet') ? localeStr.walletViewTitle : to;
+    return localeStr.transferMessage(_from, _to);
   }
 }

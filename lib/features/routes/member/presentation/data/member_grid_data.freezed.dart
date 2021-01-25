@@ -48,6 +48,7 @@ mixin _$MemberGridData {
   RoutePage get route;
   bool get isUserOnly;
 
+  @JsonKey(ignore: true)
   $MemberGridDataCopyWith<MemberGridData> get copyWith;
 }
 
@@ -248,6 +249,7 @@ class _$_MemberGridData
       const DeepCollectionEquality().hash(route) ^
       const DeepCollectionEquality().hash(isUserOnly);
 
+  @JsonKey(ignore: true)
   @override
   _$MemberGridDataCopyWith<_MemberGridData> get copyWith =>
       __$MemberGridDataCopyWithImpl<_MemberGridData>(this, _$identity);
@@ -278,5 +280,6 @@ abstract class _MemberGridData implements MemberGridData {
   @override
   bool get isUserOnly;
   @override
+  @JsonKey(ignore: true)
   _$MemberGridDataCopyWith<_MemberGridData> get copyWith;
 }

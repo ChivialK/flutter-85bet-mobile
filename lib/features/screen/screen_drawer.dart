@@ -9,9 +9,11 @@ class ScreenDrawer extends StatelessWidget {
 
   static final List<ScreenDrawerItem> _menuItems = [
     ScreenDrawerItem.home,
+    ScreenDrawerItem.member,
     ScreenDrawerItem.tutorial,
     ScreenDrawerItem.vip,
     ScreenDrawerItem.promo,
+    ScreenDrawerItem.store,
     ScreenDrawerItem.website,
     ScreenDrawerItem.logout,
 //    ScreenDrawerItem.testUI,
@@ -84,25 +86,26 @@ class ScreenDrawer extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Center(
-                            child: Text(localeStr.messageWelcome,
-                                style: TextStyle(
-                                  fontSize: FontSize.MESSAGE.value,
-                                )),
-                          ),
-                          Center(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 12.0),
-                              child: Text(
-                                localeStr.messageWelcomeHint,
-                                style: TextStyle(
-                                    fontSize: FontSize.SUBTITLE.value),
-                              ),
-                            ),
+                          RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(children: [
+                              TextSpan(
+                                  text: '${localeStr.messageWelcome}\n',
+                                  style: TextStyle(
+                                    fontSize: FontSize.MESSAGE.value,
+                                    color: themeColor.sideMenuHeaderTextColor,
+                                  )),
+                              TextSpan(
+                                  text: localeStr.messageWelcomeHint,
+                                  style: TextStyle(
+                                    fontSize: FontSize.SUBTITLE.value,
+                                    height: 2.0,
+                                  )),
+                            ]),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            padding:
+                                const EdgeInsets.only(top: 16.0, bottom: 8.0),
                             child: RaisedButton(
                               color: themeColor.buttonPrimaryColor,
                               textColor: themeColor.buttonTextPrimaryColor,
@@ -136,19 +139,22 @@ class ScreenDrawer extends StatelessWidget {
                                 Navigator.of(context).pop();
                               }
                               Future.delayed(Duration(milliseconds: 100), () {
-                                showDialog(
-                                  context: context,
-                                  barrierDismissible: true,
-                                  builder: (_) =>
-                                      new RegisterRoute(isDialog: true),
-                                );
+                                RouterNavigate.navigateToPage(
+                                    RoutePage.register);
+                                // showDialog(
+                                //   context: context,
+                                //   barrierDismissible: true,
+                                //   builder: (_) =>
+                                //       new RegisterRoute(isDialog: true),
+                                // );
                               });
                             },
                           ),
                           Container(
                             width: 144,
                             height: 144,
-                            margin: const EdgeInsets.symmetric(vertical: 30.0),
+                            margin:
+                                const EdgeInsets.only(top: 24.0, bottom: 30.0),
                             child: networkImageBuilder(
                               'images/member-star.png',
                               imgScale: 0.85,

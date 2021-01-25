@@ -33,6 +33,7 @@ mixin _$WithdrawModel {
   dynamic get data;
   String get msg;
 
+  @JsonKey(ignore: true)
   $WithdrawModelCopyWith<WithdrawModel> get copyWith;
 }
 
@@ -137,6 +138,7 @@ class _$_WithdrawModel implements _WithdrawModel {
       const DeepCollectionEquality().hash(data) ^
       const DeepCollectionEquality().hash(msg);
 
+  @JsonKey(ignore: true)
   @override
   _$WithdrawModelCopyWith<_WithdrawModel> get copyWith =>
       __$WithdrawModelCopyWithImpl<_WithdrawModel>(this, _$identity);
@@ -153,5 +155,6 @@ abstract class _WithdrawModel implements WithdrawModel {
   @override
   String get msg;
   @override
+  @JsonKey(ignore: true)
   _$WithdrawModelCopyWith<_WithdrawModel> get copyWith;
 }

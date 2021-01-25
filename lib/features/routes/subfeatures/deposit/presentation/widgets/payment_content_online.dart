@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_dropdown_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/deposit/data/model/payment_promo.dart';
 
 import '../../data/form/deposit_form.dart';
 import '../../data/model/payment_type_data.dart';
@@ -12,10 +14,12 @@ import '../../data/model/payment_type_data.dart';
 ///@version 2020/3/26
 class PaymentContentOnline extends StatefulWidget {
   final List<PaymentTypeData> dataList;
+  final List<PaymentPromoData> promoList;
   final Function depositFuncCall;
 
   PaymentContentOnline({
     @required this.dataList,
+    @required this.promoList,
     @required this.depositFuncCall,
   });
 
@@ -39,7 +43,10 @@ class _PaymentContentOnlineState extends State<PaymentContentOnline>
   PaymentTypeOnlineData _onlineData;
   int _bankSelectedIndex = -1;
   int _bankSelectedId = -1;
+  int _promoSelected = -1;
   int _amountVnd = 0;
+
+  bool _showAmountError = false;
 
   void _validateForm() {
     final form = _formKey.currentState;
@@ -48,6 +55,7 @@ class _PaymentContentOnlineState extends State<PaymentContentOnline>
       DepositDataForm dataForm = new DepositDataForm(
         bankIndex: _bankSelectedIndex,
         bankId: _bankSelectedId,
+        promoId: _promoSelected,
         amount: _amountFieldKey.currentState?.getInput ?? '',
         gateway: _onlineData.gateway.toString(),
         remark: '',
@@ -115,6 +123,13 @@ class _PaymentContentOnlineState extends State<PaymentContentOnline>
         ),
       );
     } else {
+      List<PaymentPromoData> promos = [
+        PaymentPromoData(
+          promoId: -1,
+          promoDesc: localeStr.depositPaymentNoPromo,
+        ),
+      ];
+      if (widget.promoList != null) promos.addAll(widget.promoList);
       return new Form(
         key: _formKey,
         child: Column(
@@ -141,10 +156,30 @@ class _PaymentContentOnlineState extends State<PaymentContentOnline>
 
             /// Account Hint
             Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+              padding: const EdgeInsets.only(top: 8.0, left: 4.0),
               child: Text(
                 localeStr.depositHintTextAccount,
                 style: TextStyle(color: themeColor.hintHighlight),
+              ),
+            ),
+
+            ///
+            /// Promo Option
+            ///
+            Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: CustomizeDropdownWidget(
+                prefixText: localeStr.depositPaymentSpinnerTitlePromo,
+                prefixTextSize: FontSize.SUBTITLE.value,
+                horizontalInset: _fieldInset,
+                optionValues: promos.map((item) => item.promoId).toList(),
+                optionStrings: promos.map((item) => item.promoDesc).toList(),
+                changeNotify: (data) {
+                  // clear text field focus
+                  FocusScope.of(context).unfocus();
+                  // set selected data
+                  if (data is PaymentPromoData) _promoSelected = data.promoId;
+                },
               ),
             ),
 
@@ -153,34 +188,50 @@ class _PaymentContentOnlineState extends State<PaymentContentOnline>
             ///
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: new CustomizeFieldWidget(
-                key: _amountFieldKey,
-                fieldType: FieldType.Numbers,
-                hint: localeStr.depositPaymentEditTitleAmountHintRange(
-                  _onlineData.min ?? 1,
-                  _onlineData.max,
-                ),
-                persistHint: false,
+              child: new CustomizeTitledContainer(
                 prefixText: localeStr.depositPaymentEditTitleAmount,
                 prefixTextSize: FontSize.SUBTITLE.value,
+                backgroundColor: themeColor.fieldPrefixBgColor,
                 horizontalInset: _fieldInset,
-                maxInputLength: _onlineData.max.toString().length,
-                errorMsg: localeStr.messageInvalidDepositAmount,
-                validCondition: (value) =>
-                    value.contains('.') == false &&
-                    rangeCheck(
-                      value: (value.isNotEmpty) ? int.parse(value) : 0,
-                      min: _onlineData.min ?? 1,
-                      max: _onlineData.max,
-                    ),
-                onInputChanged: (value) {
-//                  debugPrint('received field value: $value');
-                  int input = value.strToInt;
-                  setState(() {
-                    _amountVnd = (input > 0) ? input * 1000 : 0;
-                  });
-                },
+                child: new CustomizeFieldWidget(
+                  key: _amountFieldKey,
+                  fieldType: FieldType.Numbers,
+                  hint: localeStr.depositPaymentEditTitleAmountHintRange(
+                    _onlineData.min ?? 1,
+                    _onlineData.max,
+                  ),
+                  persistHint: false,
+                  padding: const EdgeInsets.symmetric(vertical: 0.0),
+                  maxInputLength: _onlineData.max.toString().length,
+                  onInputChanged: (input) {
+                    setState(() {
+                      int amt = input.strToInt;
+                      _amountVnd = (amt > 0) ? amt * 1000 : 0;
+                      _showAmountError = input.contains('.') ||
+                          !rangeCheck(
+                            value: (input.isNotEmpty) ? int.parse(input) : 0,
+                            min: _onlineData.min ?? 1,
+                            max: _onlineData.max,
+                          );
+                    });
+                  },
+                ),
               ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: _valueTextPadding),
+                  child: Visibility(
+                    visible: _showAmountError,
+                    child: Text(
+                      localeStr.messageInvalidDepositAmount,
+                      style: TextStyle(color: themeColor.defaultErrorColor),
+                    ),
+                  ),
+                ),
+              ],
             ),
 
             ///

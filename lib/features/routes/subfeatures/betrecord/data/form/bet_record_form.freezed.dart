@@ -45,6 +45,7 @@ mixin _$BetRecordForm {
   String get startTime;
   String get endTime;
 
+  @JsonKey(ignore: true)
   $BetRecordFormCopyWith<BetRecordForm> get copyWith;
 }
 
@@ -201,6 +202,7 @@ class _$_BetRecordForm implements _BetRecordForm {
       const DeepCollectionEquality().hash(startTime) ^
       const DeepCollectionEquality().hash(endTime);
 
+  @JsonKey(ignore: true)
   @override
   _$BetRecordFormCopyWith<_BetRecordForm> get copyWith =>
       __$BetRecordFormCopyWithImpl<_BetRecordForm>(this, _$identity);
@@ -228,5 +230,6 @@ abstract class _BetRecordForm implements BetRecordForm {
   @override
   String get endTime;
   @override
+  @JsonKey(ignore: true)
   _$BetRecordFormCopyWith<_BetRecordForm> get copyWith;
 }

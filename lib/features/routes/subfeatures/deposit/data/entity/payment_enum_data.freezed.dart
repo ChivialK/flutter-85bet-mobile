@@ -36,6 +36,7 @@ mixin _$PaymentTutorialItem {
   String get value;
   TutorialItemType get type;
 
+  @JsonKey(ignore: true)
   $PaymentTutorialItemCopyWith<PaymentTutorialItem> get copyWith;
 }
 
@@ -144,6 +145,7 @@ class _$_PaymentTutorialItem implements _PaymentTutorialItem {
       const DeepCollectionEquality().hash(value) ^
       const DeepCollectionEquality().hash(type);
 
+  @JsonKey(ignore: true)
   @override
   _$PaymentTutorialItemCopyWith<_PaymentTutorialItem> get copyWith =>
       __$PaymentTutorialItemCopyWithImpl<_PaymentTutorialItem>(
@@ -163,6 +165,7 @@ abstract class _PaymentTutorialItem implements PaymentTutorialItem {
   @override
   TutorialItemType get type;
   @override
+  @JsonKey(ignore: true)
   _$PaymentTutorialItemCopyWith<_PaymentTutorialItem> get copyWith;
 }
 
@@ -196,6 +199,7 @@ mixin _$PaymentEnumData {
   String get tutorialTitle;
   List<PaymentTutorialItem> get tutorialItem;
 
+  @JsonKey(ignore: true)
   $PaymentEnumDataCopyWith<PaymentEnumData> get copyWith;
 }
 
@@ -334,6 +338,7 @@ class _$_PaymentEnumData implements _PaymentEnumData {
       const DeepCollectionEquality().hash(tutorialTitle) ^
       const DeepCollectionEquality().hash(tutorialItem);
 
+  @JsonKey(ignore: true)
   @override
   _$PaymentEnumDataCopyWith<_PaymentEnumData> get copyWith =>
       __$PaymentEnumDataCopyWithImpl<_PaymentEnumData>(this, _$identity);
@@ -355,5 +360,6 @@ abstract class _PaymentEnumData implements PaymentEnumData {
   @override
   List<PaymentTutorialItem> get tutorialItem;
   @override
+  @JsonKey(ignore: true)
   _$PaymentEnumDataCopyWith<_PaymentEnumData> get copyWith;
 }

@@ -42,6 +42,7 @@ mixin _$FreezedForm {
   String get password;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $FreezedFormCopyWith<FreezedForm> get copyWith;
 }
 
@@ -146,6 +147,7 @@ class _$_FreezedForm implements _FreezedForm {
       const DeepCollectionEquality().hash(account) ^
       const DeepCollectionEquality().hash(password);
 
+  @JsonKey(ignore: true)
   @override
   _$FreezedFormCopyWith<_FreezedForm> get copyWith =>
       __$FreezedFormCopyWithImpl<_FreezedForm>(this, _$identity);
@@ -170,6 +172,7 @@ abstract class _FreezedForm implements FreezedForm {
   @override
   String get password;
   @override
+  @JsonKey(ignore: true)
   _$FreezedFormCopyWith<_FreezedForm> get copyWith;
 }
 
@@ -223,6 +226,7 @@ mixin _$FreezedNested {
     @required TResult orElse(),
   });
 
+  @JsonKey(ignore: true)
   $FreezedNestedCopyWith<FreezedNested> get copyWith;
 }
 
@@ -304,6 +308,7 @@ class _$_Add implements _Add {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(status);
 
+  @JsonKey(ignore: true)
   @override
   _$AddCopyWith<_Add> get copyWith =>
       __$AddCopyWithImpl<_Add>(this, _$identity);
@@ -365,6 +370,7 @@ abstract class _Add implements FreezedNested {
   @override
   int get status;
   @override
+  @JsonKey(ignore: true)
   _$AddCopyWith<_Add> get copyWith;
 }
 
@@ -420,6 +426,7 @@ class _$_Subtract implements _Subtract {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(status);
 
+  @JsonKey(ignore: true)
   @override
   _$SubtractCopyWith<_Subtract> get copyWith =>
       __$SubtractCopyWithImpl<_Subtract>(this, _$identity);
@@ -481,6 +488,7 @@ abstract class _Subtract implements FreezedNested {
   @override
   int get status;
   @override
+  @JsonKey(ignore: true)
   _$SubtractCopyWith<_Subtract> get copyWith;
 }
 
@@ -611,6 +619,7 @@ class _$Add implements Add {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
 
+  @JsonKey(ignore: true)
   @override
   $AddCopyWith<Add> get copyWith => _$AddCopyWithImpl<Add>(this, _$identity);
 
@@ -675,6 +684,7 @@ abstract class Add implements FreezedOperation {
   const factory Add(int value) = _$Add;
 
   int get value;
+  @JsonKey(ignore: true)
   $AddCopyWith<Add> get copyWith;
 }
 
@@ -728,6 +738,7 @@ class _$Subtract implements Subtract {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(value);
 
+  @JsonKey(ignore: true)
   @override
   $SubtractCopyWith<Subtract> get copyWith =>
       _$SubtractCopyWithImpl<Subtract>(this, _$identity);
@@ -793,6 +804,7 @@ abstract class Subtract implements FreezedOperation {
   const factory Subtract(int value) = _$Subtract;
 
   int get value;
+  @JsonKey(ignore: true)
   $SubtractCopyWith<Subtract> get copyWith;
 }
 
@@ -846,6 +858,7 @@ class _$Error implements Error {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(msg);
 
+  @JsonKey(ignore: true)
   @override
   $ErrorCopyWith<Error> get copyWith =>
       _$ErrorCopyWithImpl<Error>(this, _$identity);
@@ -911,5 +924,6 @@ abstract class Error implements FreezedOperation {
   const factory Error([String msg]) = _$Error;
 
   String get msg;
+  @JsonKey(ignore: true)
   $ErrorCopyWith<Error> get copyWith;
 }

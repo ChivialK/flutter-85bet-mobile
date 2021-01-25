@@ -33,6 +33,7 @@ mixin _$LoginForm {
   String get account;
   String get password;
 
+  @JsonKey(ignore: true)
   $LoginFormCopyWith<LoginForm> get copyWith;
 }
 
@@ -127,6 +128,7 @@ class _$_LoginForm implements _LoginForm {
       const DeepCollectionEquality().hash(account) ^
       const DeepCollectionEquality().hash(password);
 
+  @JsonKey(ignore: true)
   @override
   _$LoginFormCopyWith<_LoginForm> get copyWith =>
       __$LoginFormCopyWithImpl<_LoginForm>(this, _$identity);
@@ -143,6 +145,7 @@ abstract class _LoginForm implements LoginForm {
   @override
   String get password;
   @override
+  @JsonKey(ignore: true)
   _$LoginFormCopyWith<_LoginForm> get copyWith;
 }
 
@@ -176,6 +179,7 @@ mixin _$LoginHiveForm {
   @HiveField(2)
   bool get fastLogin;
 
+  @JsonKey(ignore: true)
   $LoginHiveFormCopyWith<LoginHiveForm> get copyWith;
 }
 
@@ -299,6 +303,7 @@ class _$_LoginHiveForm implements _LoginHiveForm {
       const DeepCollectionEquality().hash(password) ^
       const DeepCollectionEquality().hash(fastLogin);
 
+  @JsonKey(ignore: true)
   @override
   _$LoginHiveFormCopyWith<_LoginHiveForm> get copyWith =>
       __$LoginHiveFormCopyWithImpl<_LoginHiveForm>(this, _$identity);
@@ -320,5 +325,6 @@ abstract class _LoginHiveForm implements LoginHiveForm {
   @HiveField(2)
   bool get fastLogin;
   @override
+  @JsonKey(ignore: true)
   _$LoginHiveFormCopyWith<_LoginHiveForm> get copyWith;
 }

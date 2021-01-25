@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_85bet_mobile/utils/value_util.dart';
 
 part 'platform_game_form.freezed.dart';
 
@@ -11,8 +12,9 @@ abstract class PlatformGameForm with _$PlatformGameForm {
 }
 
 extension PlatformGameFormExtension on PlatformGameForm {
-  Map<String, dynamic> toJson() => <String, dynamic>{
+  Map<String, dynamic> toJson({String accountId}) => <String, dynamic>{
         'category': category,
         'platform': platform,
+        'accountid': accountId?.strToInt,
       };
 }

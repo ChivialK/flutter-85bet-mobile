@@ -70,19 +70,18 @@ class BetRecordDisplayList extends StatelessWidget {
               data.site,
               data.type,
               data.bet,
-              data.activeBet,
+              data.validBet,
               data.payout,
             ];
           }
         }
         return Container(
           decoration: new BoxDecoration(
-            color: (index % 2 == 1)
-                ? themeColor.defaultCardColor
-                : themeColor.chartBgColor,
+            color:
+                (index % 2 == 1) ? Colors.transparent : themeColor.chartBgColor,
             border: (index % 2 == 1)
                 ? null
-                : Border.symmetric(vertical: _borderSide),
+                : Border.symmetric(horizontal: _borderSide),
           ),
           child: Column(
             children: (!isAllData)

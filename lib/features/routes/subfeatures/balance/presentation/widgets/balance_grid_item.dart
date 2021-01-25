@@ -76,7 +76,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
   }
 
   void updateVariables(bool state) {
-    _verticalActionLayout = Global.lang != 'zh';
+    _verticalActionLayout = !Global.lang.isChinese;
     _btn1Text = localeStr.balanceTransferOutText;
     _btn2Text = localeStr.balanceTransferInText;
     _maintenanceText = localeStr.balanceStatusMaintenance;
@@ -121,6 +121,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
       child: Container(
         decoration: BoxDecoration(
           color: themeColor.balanceCardBackground,
+          border: Border.all(color: Color(0xffcccccc)),
           borderRadius: BorderRadius.circular(6.0),
           boxShadow: [
             BoxShadow(

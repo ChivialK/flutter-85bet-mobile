@@ -45,8 +45,9 @@ class _PromoDisplayState extends State<PromoDisplay>
   /// Set [_current] to change tab bar item color
   void _setActiveTabIndex() {
     // set state to change tab's image color
-    _current = categories[_tabController.index];
-    setState(() {});
+    setState(() {
+      _current = categories[_tabController.index];
+    });
   }
 
   @override
@@ -75,7 +76,8 @@ class _PromoDisplayState extends State<PromoDisplay>
     try {
       if (_tabController != null) _tabController.dispose();
     } catch (e) {
-      MyLogger.warn(msg: '${e.runtimeType}', tag: "PromoDisplay", error: e);
+      MyLogger.warn(
+          msg: 'Dispose tab controller has exception: $e', tag: "PromoDisplay");
     }
     super.dispose();
   }
@@ -95,9 +97,6 @@ class _PromoDisplayState extends State<PromoDisplay>
             labelStyle: TextStyle(fontSize: FontSize.SUBTITLE.value),
             labelPadding: const EdgeInsets.only(top: 4.0),
             indicatorColor: Colors.transparent,
-//            indicatorWeight: 3.0,
-//            indicatorSize: TabBarIndicatorSize.label,
-//            indicatorPadding: const EdgeInsets.symmetric(horizontal: 4.0),
             controller: _tabController,
             isScrollable: true,
             /* Category Tabs */

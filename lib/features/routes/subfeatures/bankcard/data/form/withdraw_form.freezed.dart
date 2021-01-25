@@ -36,6 +36,7 @@ mixin _$WithdrawForm {
   String get password;
   String get type;
 
+  @JsonKey(ignore: true)
   $WithdrawFormCopyWith<WithdrawForm> get copyWith;
 }
 
@@ -143,6 +144,7 @@ class _$_WithdrawForm implements _WithdrawForm {
       const DeepCollectionEquality().hash(password) ^
       const DeepCollectionEquality().hash(type);
 
+  @JsonKey(ignore: true)
   @override
   _$WithdrawFormCopyWith<_WithdrawForm> get copyWith =>
       __$WithdrawFormCopyWithImpl<_WithdrawForm>(this, _$identity);
@@ -161,5 +163,6 @@ abstract class _WithdrawForm implements WithdrawForm {
   @override
   String get type;
   @override
+  @JsonKey(ignore: true)
   _$WithdrawFormCopyWith<_WithdrawForm> get copyWith;
 }

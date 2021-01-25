@@ -38,6 +38,7 @@ mixin _$GameCategoryModel {
   String get type;
   GameCategory get info;
 
+  @JsonKey(ignore: true)
   $GameCategoryModelCopyWith<GameCategoryModel> get copyWith;
 }
 
@@ -154,6 +155,7 @@ class _$_GameCategoryModel implements _GameCategoryModel {
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(info);
 
+  @JsonKey(ignore: true)
   @override
   _$GameCategoryModelCopyWith<_GameCategoryModel> get copyWith =>
       __$GameCategoryModelCopyWithImpl<_GameCategoryModel>(this, _$identity);
@@ -179,5 +181,6 @@ abstract class _GameCategoryModel implements GameCategoryModel, DataOperator {
   @override
   GameCategory get info;
   @override
+  @JsonKey(ignore: true)
   _$GameCategoryModelCopyWith<_GameCategoryModel> get copyWith;
 }

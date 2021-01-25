@@ -33,6 +33,7 @@ mixin _$RequestCodeModel {
   dynamic get data;
   String get msg;
 
+  @JsonKey(ignore: true)
   $RequestCodeModelCopyWith<RequestCodeModel> get copyWith;
 }
 
@@ -149,6 +150,7 @@ class _$_RequestCodeModel implements _RequestCodeModel {
       const DeepCollectionEquality().hash(data) ^
       const DeepCollectionEquality().hash(msg);
 
+  @JsonKey(ignore: true)
   @override
   _$RequestCodeModelCopyWith<_RequestCodeModel> get copyWith =>
       __$RequestCodeModelCopyWithImpl<_RequestCodeModel>(this, _$identity);
@@ -165,5 +167,6 @@ abstract class _RequestCodeModel implements RequestCodeModel {
   @override
   String get msg;
   @override
+  @JsonKey(ignore: true)
   _$RequestCodeModelCopyWith<_RequestCodeModel> get copyWith;
 }

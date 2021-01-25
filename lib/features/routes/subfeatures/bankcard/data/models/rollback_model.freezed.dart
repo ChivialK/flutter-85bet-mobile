@@ -82,6 +82,7 @@ mixin _$RollbackModel {
   @JsonKey(name: 'withdrawal_valid')
   String get withdrawalValid;
 
+  @JsonKey(ignore: true)
   $RollbackModelCopyWith<RollbackModel> get copyWith;
 }
 
@@ -373,6 +374,7 @@ class _$_RollbackModel implements _RollbackModel {
       const DeepCollectionEquality().hash(turnover) ^
       const DeepCollectionEquality().hash(withdrawalValid);
 
+  @JsonKey(ignore: true)
   @override
   _$RollbackModelCopyWith<_RollbackModel> get copyWith =>
       __$RollbackModelCopyWithImpl<_RollbackModel>(this, _$identity);
@@ -438,5 +440,6 @@ abstract class _RollbackModel implements RollbackModel {
   @JsonKey(name: 'withdrawal_valid')
   String get withdrawalValid;
   @override
+  @JsonKey(ignore: true)
   _$RollbackModelCopyWith<_RollbackModel> get copyWith;
 }

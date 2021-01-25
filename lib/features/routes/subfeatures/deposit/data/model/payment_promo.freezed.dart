@@ -183,6 +183,7 @@ class _$PaymentPromoTypeJson implements PaymentPromoTypeJson {
       const DeepCollectionEquality().hash(local) ^
       const DeepCollectionEquality().hash(other);
 
+  @JsonKey(ignore: true)
   @override
   $PaymentPromoTypeJsonCopyWith<PaymentPromoTypeJson> get copyWith =>
       _$PaymentPromoTypeJsonCopyWithImpl<PaymentPromoTypeJson>(
@@ -268,6 +269,7 @@ abstract class PaymentPromoTypeJson implements PaymentPromo {
   dynamic get local;
   @JsonKey(name: '2', defaultValue: '')
   dynamic get other;
+  @JsonKey(ignore: true)
   $PaymentPromoTypeJsonCopyWith<PaymentPromoTypeJson> get copyWith;
 }
 
@@ -349,6 +351,7 @@ class _$PaymentPromoData implements PaymentPromoData {
       const DeepCollectionEquality().hash(promoId) ^
       const DeepCollectionEquality().hash(promoDesc);
 
+  @JsonKey(ignore: true)
   @override
   $PaymentPromoDataCopyWith<PaymentPromoData> get copyWith =>
       _$PaymentPromoDataCopyWithImpl<PaymentPromoData>(this, _$identity);
@@ -434,5 +437,6 @@ abstract class PaymentPromoData implements PaymentPromo {
   int get promoId;
   @JsonKey(name: 'promodesc', required: true, defaultValue: '?')
   String get promoDesc;
+  @JsonKey(ignore: true)
   $PaymentPromoDataCopyWith<PaymentPromoData> get copyWith;
 }

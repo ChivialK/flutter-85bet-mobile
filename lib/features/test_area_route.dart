@@ -45,7 +45,7 @@ class _TestAreaRouteState extends State<TestAreaRoute> with AfterLayoutMixin {
           //       text: texts[2],
           //       recognizer: TapGestureRecognizer()
           //         ..onTap = () {
-          //           print('Gesture Tap');
+          //           debugPrint('Gesture Tap');
           //         },
           //     ),
           //   ],

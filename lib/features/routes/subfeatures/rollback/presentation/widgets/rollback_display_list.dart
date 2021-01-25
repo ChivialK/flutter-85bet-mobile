@@ -78,7 +78,7 @@ class FlowsDisplayList extends StatelessWidget {
           dataTexts = [
             "${data.startTime} ~ ${data.endTime}",
             data.code ?? data.key,
-            data.index,
+            getStatusIndex(data.index),
             formatValue(data.amount, creditSign: true),
             '${data.multiply}',
             '${data.promoSimplified}',
@@ -89,12 +89,11 @@ class FlowsDisplayList extends StatelessWidget {
         }
         return Container(
           decoration: new BoxDecoration(
-            color: (index % 2 == 1)
-                ? themeColor.defaultCardColor
-                : themeColor.chartBgColor,
+            color:
+                (index % 2 == 1) ? Colors.transparent : themeColor.chartBgColor,
             border: (index % 2 == 1)
                 ? null
-                : Border.symmetric(vertical: _borderSide),
+                : Border.symmetric(horizontal: _borderSide),
           ),
           child: Column(
             children: List.generate(
@@ -142,5 +141,27 @@ class FlowsDisplayList extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String getStatusIndex(String state) {
+    switch (state.toLowerCase()) {
+      case 'webbank':
+        return localeStr.memberGridTitleTransfer;
+      case 'deposit':
+        return localeStr.rollbackIndexDeposit;
+      case 'promo':
+        return localeStr.rollbackIndexPromo;
+      case 'adjustdeposit':
+        return localeStr.dealsDetailTypeAdjustDeposit;
+      case 'adjustwithdraw':
+        return localeStr.dealsDetailTypeAdjustWithdraw;
+      case 'cashadjustment':
+        return localeStr.dealsDetailTypeAdjustCash;
+      case '退水':
+      case 'rollback':
+        return localeStr.rollbackIndexRollback;
+      default:
+        return state;
+    }
   }
 }

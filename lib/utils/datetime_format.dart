@@ -21,9 +21,14 @@ List<String> getMonthRange() {
   DateTime now = DateTime.now();
   int year = now.year;
   int month = now.month;
-  DateTime thisMonthStart = DateTime.parse('$year${month}01');
+  debugPrint('getMonthRange year=$year month=$month');
+  DateTime thisMonthStart = (month < 10)
+      ? DateTime.parse('${year}0${month}01')
+      : DateTime.parse('$year${month}01');
   DateTime thisMonthEnd = ((month < 12)
-      ? DateTime.parse('$year${month + 1}01')
+      ? (month < 9)
+          ? DateTime.parse('${year}0${month + 1}01')
+          : DateTime.parse('$year${month + 1}01')
       : DateTime.parse('${year + 1}0101'))
     ..subtract(Duration(days: 1));
   debugPrint('month range: $thisMonthStart - $thisMonthEnd');

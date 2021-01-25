@@ -14,7 +14,7 @@ class ScreenNavigationBar extends StatefulWidget {
 class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
   static final List<ScreenNavigationBarItem> _tabs = [
     ScreenNavigationBarItem.home,
-    ScreenNavigationBarItem.deposit,
+    ScreenNavigationBarItem.promo,
     ScreenNavigationBarItem.member,
     ScreenNavigationBarItem.service,
   ];
@@ -23,7 +23,6 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
   String _locale;
 
   EventStore _eventStore;
-  bool _showingEventDialog = false;
 
   Widget _barWidget;
   int _navIndex = 0;
@@ -31,13 +30,7 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
   void _itemTapped(int index, bool hasUser) {
     var item = _tabs[index];
     debugPrint('tapped item: ${item.value}');
-    if (item.value.id == RouteEnum.MORE) {
-      showDialog(
-        context: context,
-        barrierDismissible: true,
-        builder: (context) => new MoreDialog(_store),
-      );
-    } else if (item.value.route == null) {
+    if (item.value.route == null) {
       callToastInfo(localeStr.workInProgress);
     } else {
       var value = item.value;
@@ -49,63 +42,9 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
     }
   }
 
-  void _checkShowEvent() {
-    _eventStore.debugEvent();
-    if (_eventStore.forceShowEvent && _eventStore.hasEvent == false) {
-      Future.delayed(Duration(milliseconds: 200), () {
-        callToastInfo(localeStr.messageNoEvent);
-      });
-      // set to false so it will not pop on other pages
-      _eventStore.setForceShowEvent = false;
-      return;
-    }
-    if (_eventStore.showEventOnHome && !_showingEventDialog) {
-      _showingEventDialog = true;
-      Future.delayed(Duration(milliseconds: 1200), () {
-        // will not show
-        if (_store.hasUser == false ||
-            (_store.navIndex != 0 && _eventStore.forceShowEvent == false)) {
-          _stopEventAutoShow();
-          return;
-        } else {
-          // set to false so it will not pop on other pages
-          _eventStore.setForceShowEvent = false;
-        }
-        _showEventDialog();
-      });
-    }
-  }
-
-  void _showEventDialog() {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (_) => (_eventStore.hasSignedEvent == false)
-          ? new EventDialog(
-              event: _eventStore.event.eventData,
-              signCount: _eventStore.event.signData.times,
-              onSign: () => _eventStore.signEvent(),
-              onSignError: () => _eventStore.getEventError(),
-              onDialogClose: () => _stopEventAutoShow(),
-            )
-          : new EventDialogSigned(
-              event: _eventStore.event.eventData,
-              signCount: _eventStore.event.signData.times,
-              onDialogClose: () => _stopEventAutoShow(),
-            ),
-    );
-  }
-
-  void _stopEventAutoShow() {
-    if (_store == null) return;
-    _showingEventDialog = false;
-    // set to false so it will not pop again when return to home page
-    _eventStore.setShowEvent = false;
-  }
-
   @override
   void initState() {
-    _locale = Global.lang;
+    _locale = Global.lang.code;
     super.initState();
   }
 
@@ -135,9 +74,9 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
           stream: _store.loginStateStream,
           initialData: false,
           builder: (context, snapshot) {
-            if (_barWidget != null && _locale != Global.lang) {
+            if (_barWidget != null && _locale != Global.lang.code) {
               _barWidget = _buildWidget(snapshot.data);
-              _locale = Global.lang;
+              _locale = Global.lang.code;
             }
             _barWidget ??= _buildWidget(snapshot.data);
             return _barWidget;
@@ -152,7 +91,6 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
       final index = _store.navIndex;
       if (index >= 0) _navIndex = index;
       // monitor observable value to show event dialog
-      if (_eventStore.showEventOnHome) _checkShowEvent();
       return BottomNavigationBar(
         onTap: (index) {
           debugPrint('navigate bar has user: ${_store.hasUser}');

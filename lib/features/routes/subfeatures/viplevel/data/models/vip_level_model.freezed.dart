@@ -42,6 +42,7 @@ mixin _$VipLevelModel {
   @JsonKey(name: 'vip')
   Map<String, dynamic> get rules;
 
+  @JsonKey(ignore: true)
   $VipLevelModelCopyWith<VipLevelModel> get copyWith;
 }
 
@@ -167,6 +168,7 @@ class _$_VipLevelModel implements _VipLevelModel {
       const DeepCollectionEquality().hash(options) ^
       const DeepCollectionEquality().hash(rules);
 
+  @JsonKey(ignore: true)
   @override
   _$VipLevelModelCopyWith<_VipLevelModel> get copyWith =>
       __$VipLevelModelCopyWithImpl<_VipLevelModel>(this, _$identity);
@@ -191,6 +193,7 @@ abstract class _VipLevelModel implements VipLevelModel {
   @JsonKey(name: 'vip')
   Map<String, dynamic> get rules;
   @override
+  @JsonKey(ignore: true)
   _$VipLevelModelCopyWith<_VipLevelModel> get copyWith;
 }
 
@@ -218,6 +221,7 @@ mixin _$VipLevelName {
   String get title;
   String get img;
 
+  @JsonKey(ignore: true)
   $VipLevelNameCopyWith<VipLevelName> get copyWith;
 }
 
@@ -320,6 +324,7 @@ class _$_VipLevelName implements _VipLevelName {
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(img);
 
+  @JsonKey(ignore: true)
   @override
   _$VipLevelNameCopyWith<_VipLevelName> get copyWith =>
       __$VipLevelNameCopyWithImpl<_VipLevelName>(this, _$identity);
@@ -336,6 +341,7 @@ abstract class _VipLevelName implements VipLevelName {
   @override
   String get img;
   @override
+  @JsonKey(ignore: true)
   _$VipLevelNameCopyWith<_VipLevelName> get copyWith;
 }
 
@@ -365,6 +371,7 @@ mixin _$VipLevelOption {
   String get ch;
   String get type;
 
+  @JsonKey(ignore: true)
   $VipLevelOptionCopyWith<VipLevelOption> get copyWith;
 }
 
@@ -478,6 +485,7 @@ class _$_VipLevelOption implements _VipLevelOption {
       const DeepCollectionEquality().hash(ch) ^
       const DeepCollectionEquality().hash(type);
 
+  @JsonKey(ignore: true)
   @override
   _$VipLevelOptionCopyWith<_VipLevelOption> get copyWith =>
       __$VipLevelOptionCopyWithImpl<_VipLevelOption>(this, _$identity);
@@ -496,5 +504,6 @@ abstract class _VipLevelOption implements VipLevelOption {
   @override
   String get type;
   @override
+  @JsonKey(ignore: true)
   _$VipLevelOptionCopyWith<_VipLevelOption> get copyWith;
 }

@@ -60,6 +60,9 @@ class ThemeDark implements ThemeColorInterface {
   Color defaultSelectableWidgetColor = Color(0xffc7c7c7);
 
   @override
+  Color defaultActiveWidgetColor = Color(0xffe7c080);
+
+  @override
   Color defaultDisabledColor = Color(0xff575757);
 
   @override

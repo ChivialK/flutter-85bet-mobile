@@ -18,11 +18,19 @@ class DepositApi {
 }
 
 abstract class DepositRepository {
+  /// Get all available deposit methods
   Future<Either<Failure, List<PaymentType>>> getPayment();
-  Future<Either<Failure, PaymentPromoTypeJson>> getPaymentPromo();
+
+  /// Local deposit target bank info,
+  /// get info by [PaymentTypeLocalData]'s bankaccountid
   Future<Either<Failure, List<DepositInfo>>> getDepositInfo();
+
+  Future<Either<Failure, PaymentPromoTypeJson>> getPaymentPromo();
+
   Future<Either<Failure, Map<int, String>>> getDepositBanks();
+
   Future<Either<Failure, Map<int, String>>> getDepositRule();
+
   Future<Either<Failure, DepositResult>> postDeposit(DepositDataForm form);
 }
 

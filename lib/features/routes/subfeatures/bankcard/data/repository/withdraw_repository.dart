@@ -9,6 +9,7 @@ class WithdrawApi {
   static const String GET_CPW = "api/getCpwWallet";
   static const String GET_ROLLBACK = "api/rollback";
   static const String POST_WITHDRAW = "api/withdrawal";
+  static const String POST_PROMISE = "api/balancetomain";
 }
 
 abstract class WithdrawRepository {
@@ -16,6 +17,7 @@ abstract class WithdrawRepository {
   Future<Either<Failure, String>> getCpwWallet();
   Future<Either<Failure, String>> getRollback();
   Future<Either<Failure, WithdrawModel>> postWithdraw(WithdrawForm form);
+  Future<Either<Failure, String>> postVaBalanceToMain();
 }
 
 class WithdrawRepositoryImpl implements WithdrawRepository {
@@ -119,6 +121,29 @@ class WithdrawRepositoryImpl implements WithdrawRepository {
           return Right('$totalRollover');
         }
         return Right('0');
+      },
+    );
+  }
+
+  @override
+  Future<Either<Failure, String>> postVaBalanceToMain() async {
+    final result = await requestData(
+      request: dioApiService.post(
+        WithdrawApi.POST_PROMISE,
+        data: {'accountcode': jwtInterface.account, 'plat': 'Va'},
+        userToken: jwtInterface.token,
+      ),
+      tag: 'remote-WITHDRAW',
+    );
+//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+    return result.fold(
+      (failure) => Left(failure),
+      (data) {
+        if (data is Map) {
+          return Right(data['creditlimit'] ?? 'NaN');
+        } else {
+          return Right('NaN');
+        }
       },
     );
   }

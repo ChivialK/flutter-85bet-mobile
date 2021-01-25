@@ -39,6 +39,7 @@ mixin _$CenterPasswordForm {
   @JsonKey(name: 'conpassword')
   String get confirmPwd;
 
+  @JsonKey(ignore: true)
   $CenterPasswordFormCopyWith<CenterPasswordForm> get copyWith;
 }
 
@@ -161,6 +162,7 @@ class _$_CenterPasswordForm implements _CenterPasswordForm {
       const DeepCollectionEquality().hash(newPwd) ^
       const DeepCollectionEquality().hash(confirmPwd);
 
+  @JsonKey(ignore: true)
   @override
   _$CenterPasswordFormCopyWith<_CenterPasswordForm> get copyWith =>
       __$CenterPasswordFormCopyWithImpl<_CenterPasswordForm>(this, _$identity);
@@ -183,5 +185,6 @@ abstract class _CenterPasswordForm implements CenterPasswordForm {
   @JsonKey(name: 'conpassword')
   String get confirmPwd;
   @override
+  @JsonKey(ignore: true)
   _$CenterPasswordFormCopyWith<_CenterPasswordForm> get copyWith;
 }

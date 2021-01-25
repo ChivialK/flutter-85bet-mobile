@@ -45,6 +45,7 @@ mixin _$UserModel {
   @JsonKey(name: 'vip_name', required: false)
   String get vipName;
 
+  @JsonKey(ignore: true)
   $UserModelCopyWith<UserModel> get copyWith;
 }
 
@@ -183,6 +184,7 @@ class _$_UserModel implements _UserModel {
       const DeepCollectionEquality().hash(vip) ^
       const DeepCollectionEquality().hash(vipName);
 
+  @JsonKey(ignore: true)
   @override
   _$UserModelCopyWith<_UserModel> get copyWith =>
       __$UserModelCopyWithImpl<_UserModel>(this, _$identity);
@@ -211,5 +213,6 @@ abstract class _UserModel implements UserModel {
   @JsonKey(name: 'vip_name', required: false)
   String get vipName;
   @override
+  @JsonKey(ignore: true)
   _$UserModelCopyWith<_UserModel> get copyWith;
 }

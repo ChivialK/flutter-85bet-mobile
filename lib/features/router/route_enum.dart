@@ -76,7 +76,7 @@ extension RouteEnumExtension on RouteEnum {
 
       /// Member
       case RouteEnum.MEMBER:
-        return localeStr.pageTitleMember;
+        return localeStr.pageTitleCenter;
       case RouteEnum.DEPOSIT:
         return localeStr.pageTitleDeposit;
       case RouteEnum.TRANSFER:

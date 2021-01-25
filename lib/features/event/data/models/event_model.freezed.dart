@@ -37,6 +37,7 @@ mixin _$EventModel {
   EventSignData get signData;
   bool get hasData;
 
+  @JsonKey(ignore: true)
   $EventModelCopyWith<EventModel> get copyWith;
 }
 
@@ -182,6 +183,7 @@ class _$_EventModel implements _EventModel {
       const DeepCollectionEquality().hash(signData) ^
       const DeepCollectionEquality().hash(hasData);
 
+  @JsonKey(ignore: true)
   @override
   _$EventModelCopyWith<_EventModel> get copyWith =>
       __$EventModelCopyWithImpl<_EventModel>(this, _$identity);
@@ -201,6 +203,7 @@ abstract class _EventModel implements EventModel {
   @override
   bool get hasData;
   @override
+  @JsonKey(ignore: true)
   _$EventModelCopyWith<_EventModel> get copyWith;
 }
 
@@ -267,6 +270,7 @@ mixin _$EventData {
   int get times; // 可以領取獎勵的次數
   String get title;
 
+  @JsonKey(ignore: true)
   $EventDataCopyWith<EventData> get copyWith;
 }
 
@@ -516,6 +520,7 @@ class _$_EventData implements _EventData {
       const DeepCollectionEquality().hash(times) ^
       const DeepCollectionEquality().hash(title);
 
+  @JsonKey(ignore: true)
   @override
   _$EventDataCopyWith<_EventData> get copyWith =>
       __$EventDataCopyWithImpl<_EventData>(this, _$identity);
@@ -570,6 +575,7 @@ abstract class _EventData implements EventData {
   @override // 可以領取獎勵的次數
   String get title;
   @override
+  @JsonKey(ignore: true)
   _$EventDataCopyWith<_EventData> get copyWith;
 }
 
@@ -615,6 +621,7 @@ mixin _$EventSignData {
   String get lastSignDate;
   int get times;
 
+  @JsonKey(ignore: true)
   $EventSignDataCopyWith<EventSignData> get copyWith;
 }
 
@@ -794,6 +801,7 @@ class _$_EventSignData implements _EventSignData {
       const DeepCollectionEquality().hash(lastSignDate) ^
       const DeepCollectionEquality().hash(times);
 
+  @JsonKey(ignore: true)
   @override
   _$EventSignDataCopyWith<_EventSignData> get copyWith =>
       __$EventSignDataCopyWithImpl<_EventSignData>(this, _$identity);
@@ -827,5 +835,6 @@ abstract class _EventSignData implements EventSignData {
   @override
   int get times;
   @override
+  @JsonKey(ignore: true)
   _$EventSignDataCopyWith<_EventSignData> get copyWith;
 }

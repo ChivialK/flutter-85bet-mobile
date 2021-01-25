@@ -32,6 +32,7 @@ mixin _$PlatformGameForm {
   String get category;
   String get platform;
 
+  @JsonKey(ignore: true)
   $PlatformGameFormCopyWith<PlatformGameForm> get copyWith;
 }
 
@@ -131,6 +132,7 @@ class _$_PlatformGameForm implements _PlatformGameForm {
       const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(platform);
 
+  @JsonKey(ignore: true)
   @override
   _$PlatformGameFormCopyWith<_PlatformGameForm> get copyWith =>
       __$PlatformGameFormCopyWithImpl<_PlatformGameForm>(this, _$identity);
@@ -146,5 +148,6 @@ abstract class _PlatformGameForm implements PlatformGameForm {
   @override
   String get platform;
   @override
+  @JsonKey(ignore: true)
   _$PlatformGameFormCopyWith<_PlatformGameForm> get copyWith;
 }

@@ -31,6 +31,7 @@ mixin _$LoginStatus {
   bool get loggedIn;
   UserEntity get currentUser;
 
+  @JsonKey(ignore: true)
   $LoginStatusCopyWith<LoginStatus> get copyWith;
 }
 
@@ -146,6 +147,7 @@ class _$_LoginStatus implements _LoginStatus {
       const DeepCollectionEquality().hash(loggedIn) ^
       const DeepCollectionEquality().hash(currentUser);
 
+  @JsonKey(ignore: true)
   @override
   _$LoginStatusCopyWith<_LoginStatus> get copyWith =>
       __$LoginStatusCopyWithImpl<_LoginStatus>(this, _$identity);
@@ -160,5 +162,6 @@ abstract class _LoginStatus implements LoginStatus {
   @override
   UserEntity get currentUser;
   @override
+  @JsonKey(ignore: true)
   _$LoginStatusCopyWith<_LoginStatus> get copyWith;
 }

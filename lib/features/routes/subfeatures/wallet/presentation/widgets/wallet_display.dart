@@ -127,11 +127,7 @@ class _WalletDisplayState extends State<WalletDisplay> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: themeColor.memberIconColor,
-                      boxShadow: ThemeInterface.iconBottomShadow,
-                    ),
+                    decoration: ThemeInterface.pageIconContainerDecor,
                     child: Icon(
                       pageItem.value.iconData,
                       size: 32 * Global.device.widthScale,
@@ -183,8 +179,10 @@ class _WalletDisplayState extends State<WalletDisplay> {
                                   const EdgeInsets.symmetric(vertical: 12.0),
                               child: Text(
                                 localeStr.walletViewTitleMy,
-                                style:
-                                    TextStyle(fontSize: FontSize.LARGE.value),
+                                style: TextStyle(
+                                  fontSize: FontSize.LARGE.value,
+                                  color: themeColor.walletBoxTitleColor,
+                                ),
                               ),
                             ),
                             Padding(
@@ -350,7 +348,7 @@ class _WalletDisplayState extends State<WalletDisplay> {
                   style: TextStyle(
                     fontSize: FontSize.TITLE.value,
                     color: (_selected == radioValue)
-                        ? themeColor.defaultAccentColor
+                        ? themeColor.defaultActiveWidgetColor
                         : themeColor.walletRadioColor,
                   ),
                 ),

@@ -221,7 +221,7 @@ abstract class _CenterStore with Store {
       await _repository.postPassword(form).then((result) {
 //        debugPrint('center password result: $result');
         return result.fold(
-          (failure) => setErrorMsg(msg: failure.message, showOnce: true),
+          (failure) => setErrorMsg(msg: failure.message),
           (data) {
             if (data.isSuccess &&
                 _loginDataBox != null &&
@@ -353,7 +353,7 @@ abstract class _CenterStore with Store {
       await _repository.postVerifyRequest(mobile).then((result) {
         debugPrint('center verify request result: $result');
         return result.fold(
-          (failure) => setErrorMsg(msg: failure.message, showOnce: true),
+          (failure) => setErrorMsg(msg: failure.message),
           (data) => requestResponse = data,
         );
       }).whenComplete(() => waitForResponse = false);
@@ -376,7 +376,7 @@ abstract class _CenterStore with Store {
       await _repository.postVerify(mobile, code).then((result) {
         debugPrint('center verify result: $result');
         return result.fold(
-          (failure) => setErrorMsg(msg: failure.message, showOnce: true),
+          (failure) => setErrorMsg(msg: failure.message),
           (data) {
             if (data.isSuccess)
               Future.delayed(Duration(milliseconds: 300), () => getAccount());

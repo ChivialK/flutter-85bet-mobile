@@ -2,7 +2,7 @@ import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/core/internal/device.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
-import 'package:flutter_85bet_mobile/features/routes/home/presentation/widgets/home_display_size_calc.dart';
+import 'package:flutter_85bet_mobile/features/routes/home/presentation/widgets/home_widget_size_calc.dart';
 
 class TestHomeSizeCalc extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _TestHomeSizeCalcState extends State<TestHomeSizeCalc>
 //      new GlobalKey<WebGameScreenFloatButtonState>(debugLabel: 'floattool');
 
   Device device;
-  HomeDisplaySizeCalc calc;
+  HomeWidgetSizeCalc calc;
 
 //  WebGameScreenStore _store;
 //
@@ -36,7 +36,7 @@ class _TestHomeSizeCalcState extends State<TestHomeSizeCalc>
   @override
   void initState() {
     device = Global.device;
-    calc = HomeDisplaySizeCalc();
+    calc = HomeWidgetSizeCalc();
 //    _store ??= sl.get<WebGameScreenStore>();
     super.initState();
 //    _floatFuture =
@@ -113,17 +113,23 @@ class _TestHomeSizeCalcState extends State<TestHomeSizeCalc>
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Container(
+                      height: calc.logoBarHeight,
+                      color: Colors.orange.withOpacity(0.3),
+                      alignment: Alignment.bottomRight,
+                      child: Text('calc shortcut: ${calc.logoBarHeight}'),
+                    ),
+                    Container(
                       height: calc.bannerHeight,
                       color: Colors.blue.withOpacity(0.3),
                       alignment: Alignment.bottomRight,
                       child: Text('calc banner: ${calc.bannerHeight}'),
                     ),
-                    Container(
-                      height: calc.shortcutMaxHeight,
-                      color: Colors.orange.withOpacity(0.3),
-                      alignment: Alignment.bottomRight,
-                      child: Text('calc shortcut: ${calc.shortcutMaxHeight}'),
-                    ),
+                    // Container(
+                    //   height: calc.shortcutMaxHeight,
+                    //   color: Colors.orange.withOpacity(0.3),
+                    //   alignment: Alignment.bottomRight,
+                    //   child: Text('calc shortcut: ${calc.shortcutMaxHeight}'),
+                    // ),
                     Container(
                       margin: const EdgeInsets.only(top: 10),
                       height: calc.pageMaxHeight - 16,
@@ -167,7 +173,7 @@ class _TestHomeSizeCalcState extends State<TestHomeSizeCalc>
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                      top: calc.bannerHeight + calc.shortcutMaxHeight + 10),
+                      top: calc.bannerHeight + calc.logoBarHeight + 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [

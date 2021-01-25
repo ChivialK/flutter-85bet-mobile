@@ -2,6 +2,7 @@ import 'dart:collection' show HashMap;
 
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
+import 'package:flutter_85bet_mobile/features/general/data/error/error_message_map.dart';
 import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
 import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
@@ -30,16 +31,6 @@ abstract class _HomeStore with Store {
 
   static StreamController<List<GameCategoryModel>> _tabController =
       StreamController<List<GameCategoryModel>>.broadcast();
-  static StreamController<String> _gamesRetrieveController =
-      StreamController<String>.broadcast();
-
-  final StreamController<String> _searchPlatformController =
-      StreamController<String>.broadcast();
-
-  final StreamController<String> _gameTitleController =
-      StreamController<String>.broadcast();
-  final StreamController<String> _searchGameController =
-      StreamController<String>.broadcast();
 
   _HomeStore(this._repository) {
     debugPrint('init home store');
@@ -51,19 +42,6 @@ abstract class _HomeStore with Store {
 //      debugPrint('home stream marquees: ${event.length}');
       marquees = event;
     });
-    _gamesRetrieveController.stream.listen((event) {
-      debugPrint('home stream games retrieve: $event');
-    });
-    _searchPlatformController.stream.listen((event) {
-      debugPrint('home stream search recommend: $event');
-      searchPlatform = event;
-    });
-    _gameTitleController.stream.listen((event) {
-      debugPrint('home stream game title: $event');
-    });
-    _searchGameController.stream.listen((event) {
-      debugPrint('home stream search game: $event');
-    });
   }
 
   Stream<List<BannerEntity>> get bannerStream => _bannerController.stream;
@@ -71,14 +49,6 @@ abstract class _HomeStore with Store {
   Stream<List<MarqueeEntity>> get marqueeStream => _marqueeController.stream;
 
   Stream<List<GameCategoryModel>> get tabStream => _tabController.stream;
-
-  Stream<String> get gamesStream => _gamesRetrieveController.stream;
-
-  Stream<String> get showPlatformStream => _searchPlatformController.stream;
-
-  Stream<String> get homeGameTitleStream => _gameTitleController.stream;
-
-  Stream<String> get searchGameStream => _searchGameController.stream;
 
   @observable
   ObservableFuture<List> _initFuture;
@@ -89,34 +59,19 @@ abstract class _HomeStore with Store {
 
   GameTypes _gameTypes;
 
+  // home tab categories
+  List<GameCategoryModel> homeTabs;
+
   // Key = category
   HashMap<String, List<GamePlatformEntity>> homePlatformMap;
   // Key = site/category
   HashMap<String, List<GameEntity>> _homeGamesMap;
 
-  bool hasPlatformGames(String key) =>
-      _homeGamesMap != null && _homeGamesMap.containsKey(key);
+  @observable
+  List<GameEntity> recommends;
 
-  bool hasGameInMap(String key, int gameId) =>
-      _homeGamesMap.containsKey(key) &&
-      _homeGamesMap[key].any((game) => game.gameUrl.endsWith('/$gameId'));
-
-  List<GameEntity> getPlatformGames(String key) =>
-      (_homeGamesMap.containsKey(key)) ? _homeGamesMap[key] : [];
-
-  /// home tab tab categories
-  List<GameCategoryModel> homeTabs;
-
-  bool hasUser = false;
-
-  @computed
-  List<GameCategoryModel> get homeUserTabs => homeTabs;
-//      new List.from(
-//        [recommendCategory, favoriteCategory] + homeTabs,
-//           + [movieEgCategory, movieNewCategory],
-//      );
-
-  String searchPlatform = '';
+  @observable
+  List<GameEntity> favorites;
 
   @observable
   bool waitForGameUrl = false;
@@ -146,6 +101,12 @@ abstract class _HomeStore with Store {
           showOnce: showOnce,
           type: type,
           code: code);
+
+  bool hasGameInMap(String key, int gameId) =>
+      _homeGamesMap.containsKey(key) &&
+      _homeGamesMap[key].any((game) => game.gameUrl.endsWith('/$gameId'));
+
+  void clearGameUrl() => gameUrl = null;
 
   @computed
   HomeStoreState get state {
@@ -179,7 +140,7 @@ abstract class _HomeStore with Store {
 //        debugPrint('banners: ${banners?.length}, '
 //            'marquees: ${marquees?.length}, '
 //            'gametypes: ${_gameTypes.categories.length}');
-        if (force) checkHomeTabs();
+//         if (force) checkHomeTabs();
       });
     } on Exception {
       waitForInitializeData = false;
@@ -206,7 +167,7 @@ abstract class _HomeStore with Store {
                 _bannerController.sink.add([]);
               },
               (list) {
-//                debugPrint('home store banners: $list');
+                debugPrint('home store banners: $list');
                 // creates a new list then add to stream
                 // otherwise the data will lost after navigate
                 _bannerController.sink.add(List.from(list));
@@ -256,12 +217,7 @@ abstract class _HomeStore with Store {
                     _marqueeController.sink.add(List.from(list));
                   }
                 } else {
-                  _marqueeController.sink.add([
-//                    MarqueeEntity(
-//                        id: 0,
-//                        content: localeStr.homeHintDefaultMarquee,
-//                        url: '')
-                  ]);
+                  _marqueeController.sink.add([]);
                 }
               },
             ),
@@ -289,7 +245,8 @@ abstract class _HomeStore with Store {
             (result) => result.fold(
               (failure) {
                 setErrorMsg(msg: failure.message, showOnce: true);
-                _tabController.sink.add([]);
+                homeTabs = [];
+                _tabController.sink.add(homeTabs);
               },
               (data) {
 //                debugPrint('home store game types: $data');
@@ -300,9 +257,7 @@ abstract class _HomeStore with Store {
                 // otherwise the data will lost after navigate
                 _gameTypes = new GameTypes(
                   categories: new List.from(data.categories),
-                  platforms: new List.from(data.platforms)
-                    ..removeWhere(
-                        (element) => element.className == 'sb-lottery'),
+                  platforms: new List.from(data.platforms),
                 );
                 _processHomeContent();
               },
@@ -326,10 +281,6 @@ abstract class _HomeStore with Store {
       var list = List<GamePlatformEntity>.from(
           all.where((platform) => category.type == platform.category));
       switch (category.type) {
-        case 'gift':
-        case 'movie':
-          if (list == null || list.isEmpty) remove.add(category);
-          break;
         default:
           if (list == null || list.isEmpty)
             homePlatformMap.putIfAbsent(
@@ -342,97 +293,56 @@ abstract class _HomeStore with Store {
     if (remove.isNotEmpty)
       remove.forEach((element) => homeTabs.remove(element));
 
-    customizePlatformMap();
-    homeTabs.add(cockfightingCategory);
-    homeTabs.add(promoCategory);
-    homeTabs.add(movieWebCategory);
-    homeTabs.add(websiteCategory);
-    homeTabs.add(aboutCategory);
+    homeTabs.insert(0, recommendCategory);
+    homeTabs.insert(1, favoriteCategory);
+    homeTabs.add(memberCategory);
 
-//    homePlatformMap.keys.forEach((key) => MyLogger.debugPrint(
-//        msg: '$key: ${homePlatformMap[key]}\n', tag: 'HomePlatformMap'));
-
-    checkHomeTabs();
-  }
-
-  void customizePlatformMap() {
-    List<String> classNames = ['s128-sport'];
-    try {
-//      debugPrint('sport platforms: ${homePlatformMap['sport'].length}');
-      var cockfightingGames = homePlatformMap['sport']
-              ?.where((element) => classNames.contains(element.className))
-              ?.toList() ??
-          [];
-//      debugPrint('found cockfighting games: ${cockfightingGames.length}');
-      homePlatformMap['sport']
-          .removeWhere((element) => classNames.contains(element.className));
-      homePlatformMap.putIfAbsent(
-          cockfightingCategory.type, () => cockfightingGames);
-    } catch (e) {
-      debugPrint(e);
-    } finally {
-//      debugPrint('updated sport platforms: ${homePlatformMap['sport'].length}');
-//      debugPrint('updated cockfighting platforms: '
-//          '${homePlatformMap[cockfightingCategory.type].length}');
-    }
-  }
-
-  void checkHomeTabs() {
-    if (hasUser != getAppGlobalStreams.hasUser) {
-      hasUser = getAppGlobalStreams.hasUser;
-//      debugPrint('home store has user = $hasUser');
-      getGameTypes();
-    }
-    if (hasUser) {
-      _tabController.sink.add(homeUserTabs);
-    } else {
-      _tabController.sink.add(homeTabs);
-    }
+    // homePlatformMap.keys.forEach((key) => MyLogger.debug(
+    //     msg: '$key: ${homePlatformMap[key]}\n', tag: 'HomePlatformMap'));
+    _tabController.sink.add(homeTabs);
   }
 
   @action
-  Future<void> getGames(PlatformGameForm form, String key) async {
+  Future<List<GameEntity>> getGames({
+    PlatformGameForm form,
+    String storeMapKey,
+    GamePlatformEntity platform,
+    bool getFromNetwork = false,
+  }) async {
     try {
+      final _key = storeMapKey ?? platform.className.replaceAll('-', '/');
+      final _form = form ??
+          PlatformGameForm(
+            category: platform.category,
+            platform: platform.site,
+          );
+
+      // check if data exists
       _homeGamesMap ??= new HashMap();
-      if (_homeGamesMap.containsKey(key)) {
-        _gamesRetrieveController.sink.add(key);
-        return;
+      if (_homeGamesMap.containsKey(_key) && !getFromNetwork) {
+        return _homeGamesMap[_key];
       }
       // Reset the possible previous error message.
       errorMessage = null;
       // Fetch from the repository and wrap the regular Future into an observable.
-      debugPrint('requesting home platform games: $form');
-      await _repository.getGames(form).then(
+      debugPrint('requesting home platform games: $_form');
+      return await _repository.getGames(_form).then(
             (result) => result.fold(
-              (failure) => setErrorMsg(msg: failure.message, showOnce: true),
+              (failure) {
+                setErrorMsg(msg: failure.message, showOnce: true);
+                return _homeGamesMap[_key];
+              },
               (list) {
-                debugPrint('home store platform games: $list');
-                _homeGamesMap[key] = new List.from(list);
-                _gamesRetrieveController.sink.add(key);
+                // debugPrint('home store platform games: $list');
+                _homeGamesMap[_key] = new List.from(list);
+                return _homeGamesMap[_key];
               },
             ),
           );
     } on Exception {
       //errorMessage = "Couldn't fetch description. Is the device online?";
       setErrorMsg(type: FailureType.GAMES, code: 2);
-    }
-  }
-
-  void setGameTitle({GamePlatformEntity platform, bool clear = false}) {
-    if (clear) {
-      _gameTitleController.sink.add('');
-      searchGame(clear: true);
-    } else if (platform != null) {
-      _gameTitleController.sink.add(
-          'images/games/gameTitle/${platform.category}_game_${platform.site.toLowerCase()}.png');
-    }
-  }
-
-  void searchGame({String searchKey, bool clear = false}) {
-    if (clear) {
-      _searchGameController.sink.add('');
-    } else if (searchKey != null) {
-      _searchGameController.sink.add(searchKey);
+      return [];
     }
   }
 
@@ -450,7 +360,13 @@ abstract class _HomeStore with Store {
           .getGameUrl(param)
           .then(
             (result) => result.fold(
-              (failure) => setErrorMsg(msg: failure.message),
+              (failure) {
+                String msg = MessageMap.getErrorMessage(
+                  failure.message,
+                  RouteEnum.HOME,
+                );
+                return setErrorMsg(msg: msg, type: FailureType.GAMES);
+              },
               (data) {
                 debugPrint('home store game url: $data');
                 gameUrl = data;
@@ -465,12 +381,200 @@ abstract class _HomeStore with Store {
     }
   }
 
-  void clearGameUrl() => gameUrl = null;
+  @action
+  Future<void> getRecommend() async {
+    if (waitForRecommend) return null;
+    try {
+      // Reset the possible previous error message.
+      errorMessage = null;
+      waitForRecommend = true;
+      // Fetch from the repository and wrap the regular Future into an observable.
+      debugPrint('requesting home recommend data...');
+      await _repository
+          .getRecommend()
+          .then(
+            (result) => result.fold(
+              (failure) {
+                setErrorMsg(msg: failure.message);
+                recommends = [];
+              },
+              (list) {
+//                debugPrint('home store game recommend: $list');
+                // creates a new data instance then add to stream
+                // otherwise the data will lost after navigate
+                if (recommends != list) {
+                  recommends = list
+                      .where((item) =>
+                          item is GameEntity && item.gameUrl.startsWith('va/'))
+                      .map((e) => e as GameEntity)
+                      .toList();
+                  debugPrint('home store game recommend updated');
+                }
+              },
+            ),
+          )
+          .whenComplete(() => waitForRecommend = false);
+    } on Exception {
+      waitForRecommend = false;
+      setErrorMsg(type: FailureType.RECOMMENDS);
+      recommends = [];
+    }
+  }
 
-  void showSearchPlatform(String platformClassName) =>
-      _searchPlatformController.sink.add(platformClassName);
+  @action
+  Future<void> getFavorites() async {
+    if (waitForFavorite || !getAppGlobalStreams.hasUser) return null;
+    try {
+      // Reset the possible previous error message.
+      errorMessage = null;
+      waitForFavorite = true;
+      // Fetch from the repository and wrap the regular Future into an observable.
+      debugPrint('requesting home favorite data...');
+      await _repository
+          .getFavorites()
+          .then(
+            (result) => result.fold(
+              (failure) {
+                setErrorMsg(msg: failure.message);
+                favorites = [];
+              },
+              (list) {
+                // debugPrint('home store game favorite: $list');
+                // creates a new data instance then add to stream
+                // otherwise the data will lost after navigate
+                if (list != favorites) {
+                  favorites = list
+                      .where((item) =>
+                          item is GameEntity && item.gameUrl.startsWith('va/'))
+                      .map((e) => e as GameEntity)
+                      .toList();
+                }
+              },
+            ),
+          )
+          .whenComplete(() => waitForFavorite = false);
+    } on Exception {
+      waitForFavorite = false;
+      setErrorMsg(type: FailureType.FAVORITE, code: 1);
+      favorites = [];
+    }
+  }
 
-  void clearSearch() => searchPlatform = '';
+  @action
+  Future<bool> postFavorite({
+    @required GameEntity entity,
+    @required bool favorite,
+  }) async {
+    try {
+      // Reset the possible previous error message.
+      errorMessage = null;
+      // Fetch from the repository and wrap the regular Future into an observable.
+      debugPrint('posting home favorite: $entity');
+      int id = entity.id;
+      return await _repository.postFavoriteGame(id, favorite).then(
+            (result) => result.fold(
+              (failure) {
+                MyLogger.warn(msg: 'set game $id favorite failed: $failure');
+                return false;
+              },
+              (success) {
+                MyLogger.log(msg: 'set game $id favorite($favorite) success');
+                Future.microtask(() => _updateGamesFavor(entity, favorite));
+                return true;
+              },
+            ),
+          );
+    } on Exception {
+      setErrorMsg(type: FailureType.FAVORITE, code: 2);
+      return false;
+    }
+  }
+
+  void _updateGamesFavor(GameEntity entity, bool isFavorite) {
+    final newItem = entity.copyWith(favorite: (isFavorite) ? 1 : 0);
+
+    List info = entity.gameUrl.split('/');
+    String key = '${info[0]}/${info[1]}';
+    // debugPrint('game map key: $key');
+
+    if (_homeGamesMap != null && _homeGamesMap.containsKey(key)) {
+      try {
+        // debugPrint('game map items: ${_homeGamesMap[key]}');
+        int index =
+            _homeGamesMap[key].indexWhere((game) => game.id == entity.id);
+        // debugPrint('game map item index: $index');
+        _homeGamesMap[key][index] = newItem;
+        debugPrint('updated game map item: ${_homeGamesMap[key][index]}');
+      } catch (e) {
+        MyLogger.warn(
+            msg: 'update game map ($key) failed: $e', tag: 'HomeStore');
+        getGames(
+          form: PlatformGameForm(
+            category: info[1],
+            platform: info[0],
+          ),
+          storeMapKey: key,
+        );
+      }
+    }
+
+    if (isFavorite) {
+      if (favorites == null) {
+        getFavorites();
+      } else if (!favorites.any((element) => element.id == entity.id)) {
+        favorites = List.of(favorites)..add(newItem);
+      }
+    } else {
+      bool success = favorites.remove(entity);
+      if (!success) {
+        debugPrint('favorite item not found: $entity');
+        debugPrint('favorites: $favorites');
+        getFavorites();
+      } else {
+        favorites = List.of(favorites);
+      }
+    }
+    // debugPrint('favorite update: $favorites');
+
+    _updateRecommendsFavor(entity, newItem);
+  }
+
+  void _updateRecommendsFavor(GameEntity oldEntity, GameEntity newEntity) {
+    if (recommends != null && recommends.isNotEmpty) {
+      try {
+        debugPrint('looking for $oldEntity in recommends list');
+        // debugPrint('recommend has game: ${recommends.contains(oldEntity)}');
+        int rIndex = recommends.indexOf(oldEntity);
+        if (rIndex == -1) {
+          final item = recommends.singleWhere(
+            (element) =>
+                element is GameEntity &&
+                element.id == oldEntity.id &&
+                element.gameUrl == oldEntity.gameUrl,
+            orElse: () => null,
+          );
+          rIndex = recommends.indexOf(item);
+        }
+
+        if (rIndex == -1) {
+          MyLogger.debug(
+              msg: 'recommend item index not found, requesting from server...',
+              tag: 'HomeStore');
+          getRecommend();
+        } else {
+          debugPrint('updating recommend game to $newEntity');
+          recommends.replaceRange(rIndex, rIndex + 1, [newEntity]);
+          // List<GameEntity> list = new List.of(recommends);
+          // recommends = null;
+          // recommends = list;
+          debugPrint('recommend list item updated, index: $rIndex');
+        }
+      } catch (e) {
+        MyLogger.warn(
+            msg: 'update recommend game failed: $e', tag: 'HomeStore');
+      }
+    }
+  }
 
   Future<void> closeStreams() {
     try {
@@ -478,10 +582,6 @@ abstract class _HomeStore with Store {
         _bannerController.close(),
         _marqueeController.close(),
         _tabController.close(),
-        _gamesRetrieveController.close(),
-        _searchPlatformController.close(),
-        _gameTitleController.close(),
-        _searchGameController.close(),
       ]);
     } catch (e) {
       MyLogger.warn(msg: 'close home stream error', error: e, tag: 'HomeStore');

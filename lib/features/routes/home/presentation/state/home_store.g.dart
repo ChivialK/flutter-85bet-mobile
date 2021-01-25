@@ -9,13 +9,6 @@ part of 'home_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeStore on _HomeStore, Store {
-  Computed<List<GameCategoryModel>> _$homeUserTabsComputed;
-
-  @override
-  List<GameCategoryModel> get homeUserTabs => (_$homeUserTabsComputed ??=
-          Computed<List<GameCategoryModel>>(() => super.homeUserTabs,
-              name: '_HomeStore.homeUserTabs'))
-      .value;
   Computed<HomeStoreState> _$stateComputed;
 
   @override
@@ -35,6 +28,36 @@ mixin _$HomeStore on _HomeStore, Store {
   set _initFuture(ObservableFuture<List<dynamic>> value) {
     _$_initFutureAtom.reportWrite(value, super._initFuture, () {
       super._initFuture = value;
+    });
+  }
+
+  final _$recommendsAtom = Atom(name: '_HomeStore.recommends');
+
+  @override
+  List<GameEntity> get recommends {
+    _$recommendsAtom.reportRead();
+    return super.recommends;
+  }
+
+  @override
+  set recommends(List<GameEntity> value) {
+    _$recommendsAtom.reportWrite(value, super.recommends, () {
+      super.recommends = value;
+    });
+  }
+
+  final _$favoritesAtom = Atom(name: '_HomeStore.favorites');
+
+  @override
+  List<GameEntity> get favorites {
+    _$favoritesAtom.reportRead();
+    return super.favorites;
+  }
+
+  @override
+  set favorites(List<GameEntity> value) {
+    _$favoritesAtom.reportWrite(value, super.favorites, () {
+      super.favorites = value;
     });
   }
 
@@ -116,8 +139,16 @@ mixin _$HomeStore on _HomeStore, Store {
   final _$getGamesAsyncAction = AsyncAction('_HomeStore.getGames');
 
   @override
-  Future<void> getGames(PlatformGameForm form, String key) {
-    return _$getGamesAsyncAction.run(() => super.getGames(form, key));
+  Future<List<GameEntity>> getGames(
+      {PlatformGameForm form,
+      String storeMapKey,
+      GamePlatformEntity platform,
+      bool getFromNetwork = false}) {
+    return _$getGamesAsyncAction.run(() => super.getGames(
+        form: form,
+        storeMapKey: storeMapKey,
+        platform: platform,
+        getFromNetwork: getFromNetwork));
   }
 
   final _$getGameUrlAsyncAction = AsyncAction('_HomeStore.getGameUrl');
@@ -127,13 +158,37 @@ mixin _$HomeStore on _HomeStore, Store {
     return _$getGameUrlAsyncAction.run(() => super.getGameUrl(param));
   }
 
+  final _$getRecommendAsyncAction = AsyncAction('_HomeStore.getRecommend');
+
+  @override
+  Future<void> getRecommend() {
+    return _$getRecommendAsyncAction.run(() => super.getRecommend());
+  }
+
+  final _$getFavoritesAsyncAction = AsyncAction('_HomeStore.getFavorites');
+
+  @override
+  Future<void> getFavorites() {
+    return _$getFavoritesAsyncAction.run(() => super.getFavorites());
+  }
+
+  final _$postFavoriteAsyncAction = AsyncAction('_HomeStore.postFavorite');
+
+  @override
+  Future<bool> postFavorite(
+      {@required GameEntity entity, @required bool favorite}) {
+    return _$postFavoriteAsyncAction
+        .run(() => super.postFavorite(entity: entity, favorite: favorite));
+  }
+
   @override
   String toString() {
     return '''
+recommends: ${recommends},
+favorites: ${favorites},
 waitForGameUrl: ${waitForGameUrl},
 gameUrl: ${gameUrl},
 errorMessage: ${errorMessage},
-homeUserTabs: ${homeUserTabs},
 state: ${state}
     ''';
   }

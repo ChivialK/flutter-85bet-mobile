@@ -34,6 +34,9 @@ abstract class _WithdrawStore with Store {
   String rollback = '';
 
   @observable
+  String walletCredit;
+
+  @observable
   String errorMessage;
 
   void setErrorMsg({
@@ -65,6 +68,28 @@ abstract class _WithdrawStore with Store {
   }
 
   @action
+  Future<void> getWalletCredit() async {
+    try {
+      // Reset the possible previous error message.
+      errorMessage = null;
+      walletCredit = '';
+      // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
+      await _repository.postVaBalanceToMain().then((result) {
+        debugPrint('wallet credit result: $result');
+        result.fold(
+          (failure) {
+            setErrorMsg(msg: failure.message, showOnce: true);
+            walletCredit = 'NaN';
+          },
+          (data) => walletCredit = data,
+        );
+      });
+    } on Exception {
+      setErrorMsg(code: 1);
+    }
+  }
+
+  @action
   Future<void> getCgpWallet() async {
     try {
       // Reset the possible previous error message.
@@ -80,7 +105,7 @@ abstract class _WithdrawStore with Store {
         );
       });
     } on Exception {
-      setErrorMsg(code: 1);
+      setErrorMsg(code: 2);
     }
   }
 
@@ -100,7 +125,7 @@ abstract class _WithdrawStore with Store {
         );
       });
     } on Exception {
-      setErrorMsg(code: 2);
+      setErrorMsg(code: 3);
     }
   }
 
@@ -118,12 +143,16 @@ abstract class _WithdrawStore with Store {
         );
       });
     } on Exception {
-      setErrorMsg(code: 3);
+      setErrorMsg(code: 4);
     }
   }
 
   @action
-  Future<void> sendRequest(WithdrawForm form) async {
+  Future<void> requestWithdraw(WithdrawForm form) async {
+    if (walletCredit == 'NaN') {
+      setErrorMsg(msg: localeStr.messageErrorWithdraw);
+      return;
+    }
     try {
       // Reset the possible previous error message.
       errorMessage = null;
@@ -147,7 +176,7 @@ abstract class _WithdrawStore with Store {
       });
     } on Exception {
       waitForWithdrawResult = false;
-      setErrorMsg(code: 4);
+      setErrorMsg(code: 5);
     }
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter_85bet_mobile/utils/json_util.dart';
-import 'package:flutter_85bet_mobile/utils/value_util.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'bet_record_model.freezed.dart';
@@ -66,11 +65,11 @@ abstract class BetRecordData with _$BetRecordData {
 
   static BetRecordData jsonToBetRecordData(Map<String, dynamic> jsonMap) {
     return _$_BetRecordData(
-      activeBet: '${jsonMap['activebet']}',
-      validBet: '${jsonMap['validbet']}',
-      bet: '${jsonMap['bet']}',
+      activeBet: jsonMap['activebet'] as String,
+      validBet: jsonMap['validbet'] as String,
+      bet: jsonMap['bet'] as String,
       betNo: jsonMap['betno'] as String,
-      payout: '${jsonMap['payout']}',
+      payout: jsonMap['payout'] as String,
       site: jsonMap['site'] as String,
       startTime: jsonMap['starttime'] as String,
       type: jsonMap['type'] as String,
@@ -95,9 +94,9 @@ abstract class BetRecordDataAllPlatform with _$BetRecordDataAllPlatform {
   static BetRecordDataAllPlatform jsonToBetRecordDataAllPlatform(
       Map<String, dynamic> jsonMap) {
     return _$_BetRecordDataAllPlatform(
-      bet: '${jsonMap['bet']}'.strToDouble,
-      valid: '${jsonMap['validbet']}'.strToDouble,
-      payout: '${jsonMap['payout']}'.strToDouble,
+      bet: jsonMap['bet'] as num,
+      valid: jsonMap['validbet'] as num,
+      payout: jsonMap['payout'] as num,
       key: jsonMap['key'],
     );
   }

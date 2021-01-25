@@ -1,9 +1,9 @@
 import 'package:flutter_85bet_mobile/builders/autoroute/auto_route_annotations.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/store/presentation/store_route.dart';
 
 import '../routes/home/presentation/home_route.dart';
 import '../routes/member/presentation/member_route.dart';
 import '../routes/promo/presentation/promo_route.dart';
-import '../routes/subfeatures/about/presentation/about_route.dart';
 import '../routes/subfeatures/accountcenter/presentation/center_route.dart';
 import '../routes/subfeatures/accountcenter/presentation/widgets/center_display_account_pwd.dart';
 import '../routes/subfeatures/balance/presentation/balance_route.dart';
@@ -55,16 +55,11 @@ class $FeatureRouter {
   BetRecordRoute betRecordRoute;
   DealsRoute dealsRoute;
   RollbackRoute rollbackRoute;
-  // AgentLoginRoute agentLoginRoute;
-  // AgentRegisterRoute agentRegisterRoute;
-  // AgentRoute agentRoute;
-  WebRoute moreWebPage;
-  AboutRoute aboutRoute;
-
-  /// side menu route
+  WebRoute tutorialWebPage;
   DownloadAreaRoute downloadAreaRoute;
   NoticeRoute noticeRoute;
   VipLevelRoute levelRoute;
+  StoreRoute storeRoute;
 
   /// test route
   TestAreaRoute testAreaRoute;

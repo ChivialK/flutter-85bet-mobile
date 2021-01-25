@@ -51,6 +51,7 @@ mixin _$BankcardForm {
   @JsonKey(name: 'bankcity')
   String get area;
 
+  @JsonKey(ignore: true)
   $BankcardFormCopyWith<BankcardForm> get copyWith;
 }
 
@@ -211,6 +212,7 @@ class _$_BankcardForm implements _BankcardForm {
       const DeepCollectionEquality().hash(province) ^
       const DeepCollectionEquality().hash(area);
 
+  @JsonKey(ignore: true)
   @override
   _$BankcardFormCopyWith<_BankcardForm> get copyWith =>
       __$BankcardFormCopyWithImpl<_BankcardForm>(this, _$identity);
@@ -244,5 +246,6 @@ abstract class _BankcardForm implements BankcardForm {
   @JsonKey(name: 'bankcity')
   String get area;
   @override
+  @JsonKey(ignore: true)
   _$BankcardFormCopyWith<_BankcardForm> get copyWith;
 }

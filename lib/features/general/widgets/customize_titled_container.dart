@@ -109,11 +109,8 @@ class _CustomizeTitledContainerState extends State<CustomizeTitledContainer> {
     );
 
     // update text max lines
-    _currentPrefixMaxLines = (widget.prefixTextMaxLines != null)
-        ? widget.prefixTextMaxLines
-        : (Global.lang == 'zh')
-            ? 1
-            : 2;
+    _currentPrefixMaxLines =
+        (widget.prefixTextMaxLines != null) ? widget.prefixTextMaxLines : 2;
 
     if (widget.debug) {
       debugPrint('screen width: ${Global.device.width}');

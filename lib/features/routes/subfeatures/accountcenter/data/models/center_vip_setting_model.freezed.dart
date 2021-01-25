@@ -201,6 +201,7 @@ class _$CenterVipSetting implements CenterVipSetting {
       const DeepCollectionEquality().hash(item) ^
       const DeepCollectionEquality().hash(title);
 
+  @JsonKey(ignore: true)
   @override
   $CenterVipSettingCopyWith<CenterVipSetting> get copyWith =>
       _$CenterVipSettingCopyWithImpl<CenterVipSetting>(this, _$identity);
@@ -291,6 +292,7 @@ abstract class CenterVipSetting implements CenterVipSettingModel {
       fromJson: CenterVipSettingModel.jsonToCenterVipSettingItem)
   CenterVipSettingItem get item;
   String get title;
+  @JsonKey(ignore: true)
   $CenterVipSettingCopyWith<CenterVipSetting> get copyWith;
 }
 
@@ -418,6 +420,7 @@ class _$CenterVipSettingItem implements CenterVipSettingItem {
       const DeepCollectionEquality().hash(lotterygame) ^
       const DeepCollectionEquality().hash(cardgame);
 
+  @JsonKey(ignore: true)
   @override
   $CenterVipSettingItemCopyWith<CenterVipSettingItem> get copyWith =>
       _$CenterVipSettingItemCopyWithImpl<CenterVipSettingItem>(
@@ -517,5 +520,6 @@ abstract class CenterVipSettingItem implements CenterVipSettingModel {
   String get fishgame;
   String get lotterygame;
   String get cardgame;
+  @JsonKey(ignore: true)
   $CenterVipSettingItemCopyWith<CenterVipSettingItem> get copyWith;
 }

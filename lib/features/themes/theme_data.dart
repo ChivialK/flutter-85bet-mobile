@@ -52,7 +52,7 @@ class MyThemeData {
       /// Selector Theme
       ///
       unselectedWidgetColor: interface.defaultSelectableWidgetColor,
-      toggleableActiveColor: interface.defaultAccentColor,
+      toggleableActiveColor: interface.defaultActiveWidgetColor,
 
       ///
       /// Buttons Theme

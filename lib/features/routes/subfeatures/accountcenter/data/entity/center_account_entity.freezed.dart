@@ -60,6 +60,7 @@ mixin _$CenterAccountEntity {
   String get cgpWallet;
   String get cpwWallet;
 
+  @JsonKey(ignore: true)
   $CenterAccountEntityCopyWith<CenterAccountEntity> get copyWith;
 }
 
@@ -282,6 +283,7 @@ class _$_CenterAccountEntity implements _CenterAccountEntity {
       const DeepCollectionEquality().hash(cgpWallet) ^
       const DeepCollectionEquality().hash(cpwWallet);
 
+  @JsonKey(ignore: true)
   @override
   _$CenterAccountEntityCopyWith<_CenterAccountEntity> get copyWith =>
       __$CenterAccountEntityCopyWithImpl<_CenterAccountEntity>(
@@ -325,5 +327,6 @@ abstract class _CenterAccountEntity implements CenterAccountEntity {
   @override
   String get cpwWallet;
   @override
+  @JsonKey(ignore: true)
   _$CenterAccountEntityCopyWith<_CenterAccountEntity> get copyWith;
 }

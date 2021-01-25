@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/types_grid_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/warning_display.dart';
 import 'package:flutter_85bet_mobile/features/routes/member/presentation/data/member_grid_item.dart';
 
+import '../data/notice_type.dart';
 import '../state/notice_store.dart';
 import 'notice_display_content.dart';
 
@@ -21,7 +23,7 @@ class _NoticeDisplayState extends State<NoticeDisplay> {
   final int tabsPerRow = 3;
   final double expectTabHeight = 42.0;
 
-  List<String> tabs;
+  List<NoticeTypeEnum> tabs;
   int _clicked = 0;
   double gridRatio;
 
@@ -33,29 +35,17 @@ class _NoticeDisplayState extends State<NoticeDisplay> {
 //    debugPrint('grid item width: $gridItemWidth, gridRatio: $gridRatio');
     if (gridRatio > 4.16) gridRatio = 4.16;
     super.initState();
-    tabs = [
-      localeStr.noticeTabGeneral,
-      localeStr.noticeTabMaintenance,
-    ];
-  }
-
-  @override
-  void didUpdateWidget(NoticeDisplay oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    tabs = [
-      localeStr.noticeTabGeneral,
-      localeStr.noticeTabMaintenance,
-    ];
+    tabs = NoticeTypeEnum.mapAll;
   }
 
   @override
   Widget build(BuildContext context) {
-    if (widget.store.dataModel == null || widget.store.dataModel.code != '0')
+    if (widget.store.dataModel == null || widget.store.dataModel.code != '0') {
       return WarningDisplay(message: localeStr.messageErrorServerData);
-    else {
-      return SizedBox(
-        width: Global.device.width - 24.0,
-        height: Global.device.featureContentHeight - 24.0,
+    } else {
+      return Container(
+        width: Global.device.width,
+        height: Global.device.featureContentHeight,
         child: Column(
           children: [
             Padding(
@@ -64,11 +54,7 @@ class _NoticeDisplayState extends State<NoticeDisplay> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: themeColor.memberIconColor,
-                      boxShadow: ThemeInterface.iconBottomShadow,
-                    ),
+                    decoration: ThemeInterface.pageIconContainerDecor,
                     child: Icon(
                       pageItem.value.iconData,
                       size: 32 * Global.device.widthScale,
@@ -85,64 +71,33 @@ class _NoticeDisplayState extends State<NoticeDisplay> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(12.0, 16.0, 12.0, 0.0),
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: tabsPerRow,
-                  crossAxisSpacing: 2.0,
-                  childAspectRatio: gridRatio,
-                ),
-                physics: BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: tabs.length,
-                itemBuilder: (_, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      if (_clicked == index) return;
-                      setState(() {
-                        _clicked = index;
-                      });
-                    },
-                    child: Material(
-                      color: Colors.transparent,
-                      elevation: 8.0,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: (_clicked == index)
-                              ? themeColor.buttonTextPrimaryColor
-                              : themeColor.walletBoxButtonColor,
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(6.0)),
-                        ),
-                        alignment: Alignment.center,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                          child: Text(
-                            tabs[index],
-                            style: TextStyle(
-                              color: (_clicked == index)
-                                  ? themeColor.walletBoxButtonColor
-                                  : themeColor.buttonTextPrimaryColor,
-                              fontSize: FontSize.SUBTITLE.value,
-                            ),
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
+              padding: const EdgeInsets.fromLTRB(4.0, 12.0, 4.0, 0.0),
+              child: TypesGridWidget<NoticeTypeEnum>(
+                types: tabs,
+                titleKey: 'label',
+                onTypeGridTap: (_, type) {
+                  int index = tabs.indexOf(type);
+                  if (index != _clicked) {
+                    setState(() {
+                      _clicked = index;
+                    });
+                  }
                 },
+                round: true,
+                tabsPerRow: tabsPerRow,
+                itemSpace: 6.0,
+                expectTabHeight: expectTabHeight,
               ),
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: IndexedStack(
                   index: _clicked,
                   children: <Widget>[
                     NoticeDisplayContent(dataList: widget.store.getMarqueeList),
-                    NoticeDisplayContent(dataList: widget.store.getMaintenanceList),
+                    NoticeDisplayContent(
+                        dataList: widget.store.getMaintenanceList),
                   ],
                 ),
               ),

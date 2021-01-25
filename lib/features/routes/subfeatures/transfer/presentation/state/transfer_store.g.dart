@@ -51,13 +51,13 @@ mixin _$TransferStore on _TransferStore, Store {
   final _$transferResultAtom = Atom(name: '_TransferStore.transferResult');
 
   @override
-  RequestStatusModel get transferResult {
+  TransferResultModel get transferResult {
     _$transferResultAtom.reportRead();
     return super.transferResult;
   }
 
   @override
-  set transferResult(RequestStatusModel value) {
+  set transferResult(TransferResultModel value) {
     _$transferResultAtom.reportWrite(value, super.transferResult, () {
       super.transferResult = value;
     });

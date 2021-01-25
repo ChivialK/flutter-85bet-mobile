@@ -43,6 +43,7 @@ mixin _$TransferPlatformModel {
   String get name;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $TransferPlatformModelCopyWith<TransferPlatformModel> get copyWith;
 }
 
@@ -145,6 +146,7 @@ class _$_TransferPlatformModel implements _TransferPlatformModel {
       const DeepCollectionEquality().hash(site) ^
       const DeepCollectionEquality().hash(name);
 
+  @JsonKey(ignore: true)
   @override
   _$TransferPlatformModelCopyWith<_TransferPlatformModel> get copyWith =>
       __$TransferPlatformModelCopyWithImpl<_TransferPlatformModel>(
@@ -170,6 +172,7 @@ abstract class _TransferPlatformModel implements TransferPlatformModel {
   @JsonKey(name: 'site_name')
   String get name;
   @override
+  @JsonKey(ignore: true)
   _$TransferPlatformModelCopyWith<_TransferPlatformModel> get copyWith;
 }
 
@@ -193,6 +196,7 @@ const $TransferPlatformList = _$TransferPlatformListTearOff();
 mixin _$TransferPlatformList {
   List<TransferPlatformModel> get list;
 
+  @JsonKey(ignore: true)
   $TransferPlatformListCopyWith<TransferPlatformList> get copyWith;
 }
 
@@ -278,6 +282,7 @@ class _$_TransferPlatformList implements _TransferPlatformList {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(list);
 
+  @JsonKey(ignore: true)
   @override
   _$TransferPlatformListCopyWith<_TransferPlatformList> get copyWith =>
       __$TransferPlatformListCopyWithImpl<_TransferPlatformList>(
@@ -291,5 +296,6 @@ abstract class _TransferPlatformList implements TransferPlatformList {
   @override
   List<TransferPlatformModel> get list;
   @override
+  @JsonKey(ignore: true)
   _$TransferPlatformListCopyWith<_TransferPlatformList> get copyWith;
 }

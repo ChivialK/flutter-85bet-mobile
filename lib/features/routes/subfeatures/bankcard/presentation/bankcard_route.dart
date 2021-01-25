@@ -52,7 +52,7 @@ class _BankcardRouteState extends State<BankcardRoute> {
         (_) => _store.waitForNewCardResult,
         // Run some logic with the content of the observed field
         (bool wait) {
-          print('reaction on wait bankcard: $wait');
+          debugPrint('reaction on wait bankcard: $wait');
           if (wait) {
             toastDismiss = callToastLoading();
           } else if (toastDismiss != null) {
@@ -68,7 +68,7 @@ class _BankcardRouteState extends State<BankcardRoute> {
         (_) => _store.newCardResult,
         // Run some logic with the content of the observed field
         (RequestCodeModel result) {
-          print('new bankcard result: $result');
+          debugPrint('new bankcard result: $result');
           if (result == null) return;
           if (result.isSuccess) {
             callToastInfo(
@@ -98,7 +98,7 @@ class _BankcardRouteState extends State<BankcardRoute> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        print('pop bankcard/withdraw route');
+        debugPrint('pop bankcard/withdraw route');
         Future.delayed(
             Duration(milliseconds: 100), () => RouterNavigate.navigateBack());
         return Future(() => true);

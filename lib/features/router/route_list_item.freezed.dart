@@ -45,6 +45,7 @@ mixin _$RouteListItem {
   RoutePage get route;
   bool get userOnly;
 
+  @JsonKey(ignore: true)
   $RouteListItemCopyWith<RouteListItem> get copyWith;
 }
 
@@ -216,6 +217,7 @@ class _$_RouteListItem with DiagnosticableTreeMixin implements _RouteListItem {
       const DeepCollectionEquality().hash(route) ^
       const DeepCollectionEquality().hash(userOnly);
 
+  @JsonKey(ignore: true)
   @override
   _$RouteListItemCopyWith<_RouteListItem> get copyWith =>
       __$RouteListItemCopyWithImpl<_RouteListItem>(this, _$identity);
@@ -243,5 +245,6 @@ abstract class _RouteListItem implements RouteListItem {
   @override
   bool get userOnly;
   @override
+  @JsonKey(ignore: true)
   _$RouteListItemCopyWith<_RouteListItem> get copyWith;
 }

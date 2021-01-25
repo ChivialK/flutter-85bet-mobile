@@ -8,9 +8,6 @@ part of 'deposit_result.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-DepositResult _$DepositResultFromJson(Map<String, dynamic> json) {
-  return _DepositResult.fromJson(json);
-}
 
 /// @nodoc
 class _$DepositResultTearOff {
@@ -31,11 +28,6 @@ class _$DepositResultTearOff {
       ledger: ledger,
     );
   }
-
-// ignore: unused_element
-  DepositResult fromJson(Map<String, Object> json) {
-    return DepositResult.fromJson(json);
-  }
 }
 
 /// @nodoc
@@ -53,7 +45,7 @@ mixin _$DepositResult {
   @JsonKey(name: 'ledgerindex', defaultValue: -1)
   int get ledger;
 
-  Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $DepositResultCopyWith<DepositResult> get copyWith;
 }
 
@@ -141,8 +133,6 @@ class __$DepositResultCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
 class _$_DepositResult implements _DepositResult {
   const _$_DepositResult(
@@ -152,9 +142,6 @@ class _$_DepositResult implements _DepositResult {
       this.code,
       @JsonKey(name: 'ledgerindex', defaultValue: -1) this.ledger})
       : assert(msg != null);
-
-  factory _$_DepositResult.fromJson(Map<String, dynamic> json) =>
-      _$_$_DepositResultFromJson(json);
 
   @override
   @nullable
@@ -201,14 +188,10 @@ class _$_DepositResult implements _DepositResult {
       const DeepCollectionEquality().hash(code) ^
       const DeepCollectionEquality().hash(ledger);
 
+  @JsonKey(ignore: true)
   @override
   _$DepositResultCopyWith<_DepositResult> get copyWith =>
       __$DepositResultCopyWithImpl<_DepositResult>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$_$_DepositResultToJson(this);
-  }
 }
 
 abstract class _DepositResult implements DepositResult {
@@ -219,9 +202,6 @@ abstract class _DepositResult implements DepositResult {
           int code,
           @JsonKey(name: 'ledgerindex', defaultValue: -1) int ledger}) =
       _$_DepositResult;
-
-  factory _DepositResult.fromJson(Map<String, dynamic> json) =
-      _$_DepositResult.fromJson;
 
   @override
   @nullable
@@ -237,5 +217,6 @@ abstract class _DepositResult implements DepositResult {
   @JsonKey(name: 'ledgerindex', defaultValue: -1)
   int get ledger;
   @override
+  @JsonKey(ignore: true)
   _$DepositResultCopyWith<_DepositResult> get copyWith;
 }

@@ -34,6 +34,7 @@ mixin _$TransferForm {
   String get from;
   String get to;
 
+  @JsonKey(ignore: true)
   $TransferFormCopyWith<TransferForm> get copyWith;
 }
 
@@ -140,6 +141,7 @@ class _$_TransferForm implements _TransferForm {
       const DeepCollectionEquality().hash(from) ^
       const DeepCollectionEquality().hash(to);
 
+  @JsonKey(ignore: true)
   @override
   _$TransferFormCopyWith<_TransferForm> get copyWith =>
       __$TransferFormCopyWithImpl<_TransferForm>(this, _$identity);
@@ -158,5 +160,6 @@ abstract class _TransferForm implements TransferForm {
   @override
   String get to;
   @override
+  @JsonKey(ignore: true)
   _$TransferFormCopyWith<_TransferForm> get copyWith;
 }

@@ -2,6 +2,7 @@ import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/screen/feature_screen_inherited_widget.dart';
+import 'package:flutter_85bet_mobile/features/themes/icon_code.dart';
 
 import '../data/member_grid_item.dart';
 import '../state/member_credit_store.dart';
@@ -30,18 +31,18 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
   static final List<MemberGridItem> _gridItems = [
     MemberGridItem.notice,
     MemberGridItem.deposit,
-    MemberGridItem.transfer,
+    // MemberGridItem.transfer,
     MemberGridItem.bankcard,
     MemberGridItem.withdraw,
-    MemberGridItem.balance,
-    MemberGridItem.wallet,
+    // MemberGridItem.balance,
+    // MemberGridItem.wallet,
     MemberGridItem.stationMessages,
     MemberGridItem.accountCenter,
-    MemberGridItem.transferRecord,
+    // MemberGridItem.transferRecord,
     MemberGridItem.betRecord,
     MemberGridItem.dealRecord,
     MemberGridItem.rollback,
-    MemberGridItem.vip,
+    // MemberGridItem.vip,
   ];
 
   void _itemTapped(MemberGridItem item) {
@@ -130,13 +131,9 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
             children: [
               Container(
                 padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: themeColor.memberIconColor,
-                  boxShadow: ThemeInterface.iconBottomShadow,
-                ),
+                decoration: ThemeInterface.pageIconContainerDecor,
                 child: Icon(
-                  const IconData(0xe962, fontFamily: 'IconMoon'),
+                  IconCode.navMember,
                   size: _iconSize,
                 ),
               ),

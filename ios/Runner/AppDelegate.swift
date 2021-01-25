@@ -9,10 +9,10 @@ import Firebase
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     // flutter channel
-    // static const _rotationChannel = const MethodChannel('com.op85bet.mobile/orientation');
+    // static const _rotationChannel = const MethodChannel('com.opvking88.mobile/orientation');
     let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
     let rotationChannel = FlutterMethodChannel(
-        name: "com.op85bet.mobile/orientation",
+        name: "com.opvking88.mobile/orientation",
         binaryMessenger: controller.binaryMessenger)
 
     // flutter call (call SystemChrome.setPreferredOrientation before invoke)

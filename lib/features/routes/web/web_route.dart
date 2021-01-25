@@ -34,7 +34,7 @@ class _WebRouteState extends State<WebRoute> {
         if (RouterNavigate.current == Routes.serviceWebRoute ||
             RouterNavigate.current == Routes.depositWebPage ||
             RouterNavigate.current == Routes.centerWebPage ||
-            RouterNavigate.current == Routes.moreWebPage) {
+            RouterNavigate.current == Routes.tutorialWebPage) {
           Future.delayed(
             Duration(milliseconds: 200),
             () => RouterNavigate.navigateBack(),

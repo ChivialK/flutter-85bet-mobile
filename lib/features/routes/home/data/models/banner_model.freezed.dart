@@ -68,6 +68,7 @@ mixin _$BannerModel {
   @JsonKey(name: 'mobile_url', required: true)
   String get mobileUrl;
 
+  @JsonKey(ignore: true)
   $BannerModelCopyWith<BannerModel> get copyWith;
 }
 
@@ -304,6 +305,7 @@ class _$_BannerModel implements _BannerModel {
       const DeepCollectionEquality().hash(url) ^
       const DeepCollectionEquality().hash(mobileUrl);
 
+  @JsonKey(ignore: true)
   @override
   _$BannerModelCopyWith<_BannerModel> get copyWith =>
       __$BannerModelCopyWithImpl<_BannerModel>(this, _$identity);
@@ -355,5 +357,6 @@ abstract class _BannerModel implements BannerModel {
   @JsonKey(name: 'mobile_url', required: true)
   String get mobileUrl;
   @override
+  @JsonKey(ignore: true)
   _$BannerModelCopyWith<_BannerModel> get copyWith;
 }
