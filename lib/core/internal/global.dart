@@ -18,7 +18,7 @@ class Global {
 
   static const String DOMAIN_NAME = "sv179.com";
   static const String DOMAIN_NAME_2 = "sv179.net";
-  static const String V79_OFFICIAL_URL = "https://sv179.net/";
+  static const String V79_OFFICIAL_URL = "https://sv179.com/";
   static const String V79_BASE_URL = "http://10.20.28.11/";
   static const String V79_TEST_URL = "http://192.168.2.87:2811/";
   static const String CS_SERVICE_URL = "";

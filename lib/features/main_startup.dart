@@ -8,10 +8,13 @@ import 'package:flutter_85bet_mobile/core/internal/device.dart';
 import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:flutter_85bet_mobile/injection_container.dart';
+import 'package:flutter_85bet_mobile/utils/regex_util.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'router/app_navigate.dart';
 import 'screen/web_game_screen_store.dart';
 import 'update/presentation/state/update_store.dart';
+import 'update/presentation/update_dialog.dart';
 
 ///
 /// Build the main ui using [ScreenRouter] and
@@ -100,30 +103,31 @@ class _MainStartupState extends State<MainStartup> with AfterLayoutMixin {
   @override
   void afterFirstLayout(BuildContext context) {
     if (updateStore != null) {
-      updateStore.dialogClosed();
-      // updateFuture ??=
-      //     Future.delayed(Duration(seconds: 5), () => updateStore.getVersion());
-      // updateFuture.then((hasUpdate) {
-      //   if (hasUpdate) {
-      //     showDialog(
-      //       context: context,
-      //       barrierDismissible: false,
-      //       builder: (context) => UpdateDialog(
-      //         newVersion: updateStore.serverAppVersion,
-      //         onUpdateClick: () {
-      //           String url = updateStore.serverAppUrl;
-      //           if (url == null || url.isEmpty || url.isUrl == false)
-      //             callToastError(localeStr.updateDialogErrorUrl);
-      //           else
-      //             launch(updateStore.serverAppUrl);
-      //         },
-      //         onDialogClose: () => updateStore.dialogClosed(),
-      //       ),
-      //     );
-      //   } else {
-      //     updateStore.dialogClosed();
-      //   }
-      // });
+      // updateStore.dialogClosed();
+      updateFuture ??=
+          Future.delayed(Duration(seconds: 5), () => updateStore.getVersion());
+      updateFuture.then((hasUpdate) {
+        if (hasUpdate) {
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (context) => UpdateDialog(
+              newVersion: updateStore.serverAppVersion,
+              onUpdateClick: () {
+                String url = updateStore.serverAppUrl;
+                if (url == null || url.isEmpty || url.isUrl == false) {
+                  callToastError(localeStr.updateDialogErrorUrl);
+                } else {
+                  launch(updateStore.serverAppUrl);
+                }
+              },
+              onDialogClose: () => updateStore.dialogClosed(),
+            ),
+          );
+        } else {
+          updateStore.dialogClosed();
+        }
+      });
     }
   }
 }
