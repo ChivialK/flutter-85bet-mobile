@@ -14,11 +14,12 @@ class Global {
 
   /// Web Service
   static const bool HAS_FLEX_ROUTE = false;
-  static const String CURRENT_BASE = V79_TEST_URL;
+  static const String CURRENT_BASE = V79_OFFICIAL_URL;
 
-  static const String DOMAIN_NAME = "192.168.2.87:2811";
-  static const String V79_OFFICIAL_URL = "";
-  static const String V79_BASE_URL = "";
+  static const String DOMAIN_NAME = "sv179.com";
+  static const String DOMAIN_NAME_2 = "sv179.net";
+  static const String V79_OFFICIAL_URL = "https://sv179.net/";
+  static const String V79_BASE_URL = "http://10.20.28.11/";
   static const String V79_TEST_URL = "http://192.168.2.87:2811/";
   static const String CS_SERVICE_URL = "";
 

@@ -59,7 +59,9 @@ class HomeDisplayBanner extends StatelessWidget {
       onImageTap: (index) {
         String url = bannerUrls[index];
         debugPrint('clicked image $index, url: $url');
-        if (url.contains(Global.DOMAIN_NAME) || !url.isUrl) {
+        if (url.contains(Global.DOMAIN_NAME) ||
+            url.contains(Global.DOMAIN_NAME_2) ||
+            !url.isUrl) {
           if (onBannerClicked != null) {
             onBannerClicked(url);
           }

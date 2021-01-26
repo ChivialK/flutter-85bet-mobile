@@ -2906,6 +2906,26 @@
   "@storeExchangeResultError": {
     "type": "text"
   },
+  "storeRecordOrderStateShipping": "จะจัดส่ง",
+  "@storeRecordOrderStateShipping": {
+    "type": "text"
+  },
+  "storeRecordOrderStateCancel": "คำสั่งซื้อถูกยกเลิก",
+  "@storeRecordOrderStateCancel": {
+    "type": "text"
+  },
+  "storeRecordOrderStateSuccess": "แลกแล้ว",
+  "@storeRecordOrderStateSuccess": {
+    "type": "text"
+  },
+  "storeRecordOrderStateRefuse": "ถูกปฏิเสธ",
+  "@storeRecordOrderStateRefuse": {
+    "type": "text"
+  },
+  "storeRecordOrderStateAdjust": "ปรับแล้ว",
+  "@storeRecordOrderStateAdjust": {
+    "type": "text"
+  },
   "eventButtonSignUpTv": "ลงนามแล้ว {value} วัน",
   "@eventButtonSignUpTv": {
     "type": "text",

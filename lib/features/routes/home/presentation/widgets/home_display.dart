@@ -280,6 +280,9 @@ class _HomeDisplayState extends State<HomeDisplay> {
     if (url.contains(Global.DOMAIN_NAME)) {
       fixUrl = url.substring(
           url.indexOf(Global.DOMAIN_NAME) + Global.DOMAIN_NAME.length);
+    } else if (url.contains(Global.DOMAIN_NAME_2)) {
+      fixUrl = url.substring(
+          url.indexOf(Global.DOMAIN_NAME_2) + Global.DOMAIN_NAME_2.length);
     } else if (!url.startsWith('/')) {
       fixUrl = '/$url';
     } else {

@@ -2906,6 +2906,26 @@
   "@storeExchangeResultError": {
     "type": "text"
   },
+  "storeRecordOrderStateShipping": "Waiting to ship",
+  "@storeRecordOrderStateShipping": {
+    "type": "text"
+  },
+  "storeRecordOrderStateCancel": "Canceled",
+  "@storeRecordOrderStateCancel": {
+    "type": "text"
+  },
+  "storeRecordOrderStateSuccess": "Redeemed",
+  "@storeRecordOrderStateSuccess": {
+    "type": "text"
+  },
+  "storeRecordOrderStateRefuse": "Rejected",
+  "@storeRecordOrderStateRefuse": {
+    "type": "text"
+  },
+  "storeRecordOrderStateAdjust": "Adjusted",
+  "@storeRecordOrderStateAdjust": {
+    "type": "text"
+  },
   "eventButtonSignUpTv": "signed {value} days",
   "@eventButtonSignUpTv": {
     "type": "text",

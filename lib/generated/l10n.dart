@@ -6505,6 +6505,56 @@ class S {
     );
   }
 
+  /// `Waiting to ship`
+  String get storeRecordOrderStateShipping {
+    return Intl.message(
+      'Waiting to ship',
+      name: 'storeRecordOrderStateShipping',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Canceled`
+  String get storeRecordOrderStateCancel {
+    return Intl.message(
+      'Canceled',
+      name: 'storeRecordOrderStateCancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Redeemed`
+  String get storeRecordOrderStateSuccess {
+    return Intl.message(
+      'Redeemed',
+      name: 'storeRecordOrderStateSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rejected`
+  String get storeRecordOrderStateRefuse {
+    return Intl.message(
+      'Rejected',
+      name: 'storeRecordOrderStateRefuse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adjusted`
+  String get storeRecordOrderStateAdjust {
+    return Intl.message(
+      'Adjusted',
+      name: 'storeRecordOrderStateAdjust',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `signed {value} days`
   String eventButtonSignUpTv(Object value) {
     return Intl.message(

@@ -2907,6 +2907,26 @@
   "@storeExchangeResultError": {
     "type": "text"
   },
+  "storeRecordOrderStateShipping": "Được vận chuyển",
+  "@storeRecordOrderStateShipping": {
+    "type": "text"
+  },
+  "storeRecordOrderStateCancel": "Đơn hàng đã bị Hủy",
+  "@storeRecordOrderStateCancel": {
+    "type": "text"
+  },
+  "storeRecordOrderStateSuccess": "Đã được đổi",
+  "@storeRecordOrderStateSuccess": {
+    "type": "text"
+  },
+  "storeRecordOrderStateRefuse": "Bị từ chối",
+  "@storeRecordOrderStateRefuse": {
+    "type": "text"
+  },
+  "storeRecordOrderStateAdjust": "Đã điều chỉnh",
+  "@storeRecordOrderStateAdjust": {
+    "type": "text"
+  },
   "eventButtonSignUpTv": "Đăng nhập tích lũy trong {value} ngày",
   "@eventButtonSignUpTv": {
     "type": "text",

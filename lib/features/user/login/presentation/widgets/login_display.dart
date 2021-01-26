@@ -51,7 +51,6 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
 
   Timer _routeTimer;
   bool _loginSuccess = false;
-  Widget formWidget;
 
   void _validateForm() {
     final form = _formKey.currentState;
@@ -157,7 +156,6 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
   @override
   void didUpdateWidget(LoginDisplay oldWidget) {
     debugPrint('didUpdateWidget');
-    formWidget = null;
     super.didUpdateWidget(oldWidget);
   }
 
@@ -169,8 +167,6 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('rebuild login display');
-    formWidget ??= _buildFormWidget();
     return Stack(
       children: [
         /// loading icon
@@ -254,7 +250,144 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                    child: formWidget,
+                    child: InkWell(
+                      // to dismiss the keyboard when the user tabs out of the TextField
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      onTap: () {
+                        FocusScope.of(context).unfocus();
+                      },
+                      child: new Form(
+                        key: _formKey,
+                        child: ListView(
+                          primary: false,
+                          physics: BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          children: <Widget>[
+                            ///
+                            /// Account Field
+                            ///
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: new CustomizeTitledContainer(
+                                prefixText: localeStr.hintAccount,
+                                prefixTextSize: FontSize.SUBTITLE.value,
+                                backgroundColor: themeColor.fieldPrefixBgColor,
+                                child: new CustomizeFieldWidget(
+                                  key: _accountFieldKey,
+                                  fieldType: FieldType.Account,
+                                  hint: localeStr.hintAccountInput,
+                                  persistHint: false,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 0.0),
+                                  maxInputLength: InputLimit.ACCOUNT_MAX,
+                                  onInputChanged: (input) {
+                                    final showError = !rangeCheck(
+                                      value: input.length,
+                                      min: InputLimit.ACCOUNT_MIN,
+                                      max: InputLimit.ACCOUNT_MAX,
+                                    );
+                                    if (showError != _showAccountError) {
+                                      // debugPrint('input: $input, error: $showError');
+                                      setState(
+                                          () => _showAccountError = showError);
+                                    }
+                                  },
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                        left: _valueTextPadding),
+                                    child: Visibility(
+                                      visible: _showAccountError,
+                                      child: Text(
+                                        localeStr.messageInvalidAccount(
+                                          InputLimit.ACCOUNT_MIN,
+                                          InputLimit.ACCOUNT_MAX,
+                                        ),
+                                        style: TextStyle(
+                                            color:
+                                                themeColor.defaultErrorColor),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 12.0),
+
+                            ///
+                            /// Password Field
+                            ///
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: new CustomizeTitledContainer(
+                                prefixText: localeStr.hintAccountPassword,
+                                prefixTextSize: FontSize.SUBTITLE.value,
+                                backgroundColor: Colors.transparent,
+                                child: new CustomizeFieldWidget(
+                                  key: _pwdFieldKey,
+                                  fieldType: FieldType.Password,
+                                  hint: localeStr.hintAccountPassword,
+                                  persistHint: false,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 0.0),
+                                  maxInputLength: InputLimit.PASSWORD_MAX,
+                                  onInputChanged: (input) {
+                                    final showError = !rangeCheck(
+                                      value: input.length,
+                                      min: InputLimit.PASSWORD_MIN_OLD,
+                                      max: InputLimit.PASSWORD_MAX,
+                                    );
+                                    if (showError != _showPasswordError) {
+                                      // debugPrint('input: $input, error: $showError');
+                                      setState(
+                                          () => _showPasswordError = showError);
+                                    }
+                                  },
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                        left: _valueTextPadding),
+                                    child: Visibility(
+                                      visible: _showPasswordError,
+                                      child: Text(
+                                        localeStr.messageInvalidPassword(
+                                          InputLimit.PASSWORD_MIN_OLD,
+                                          InputLimit.PASSWORD_MAX,
+                                        ),
+                                        style: TextStyle(
+                                            color:
+                                                themeColor.defaultErrorColor),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            /* Login CheckBox */
+                            CheckboxWidget(
+                              key: _fastKey,
+                              label: localeStr.btnFastLogin,
+                              initValue: _hiveForm?.fastLogin ?? false,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
 
                   Padding(
@@ -298,134 +431,6 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
             closeDialog: widget.isDialog,
           ),
       ],
-    );
-  }
-
-  Widget _buildFormWidget() {
-    debugPrint('rebuild login display form');
-    return InkWell(
-      // to dismiss the keyboard when the user tabs out of the TextField
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      focusColor: Colors.transparent,
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
-      child: new Form(
-        key: _formKey,
-        child: ListView(
-          primary: false,
-          physics: BouncingScrollPhysics(),
-          shrinkWrap: true,
-          children: <Widget>[
-            ///
-            /// Account Field
-            ///
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: new CustomizeTitledContainer(
-                prefixText: localeStr.hintAccount,
-                prefixTextSize: FontSize.SUBTITLE.value,
-                backgroundColor: themeColor.fieldPrefixBgColor,
-                child: new CustomizeFieldWidget(
-                  key: _accountFieldKey,
-                  fieldType: FieldType.Account,
-                  hint: localeStr.hintAccountInput,
-                  persistHint: false,
-                  padding: const EdgeInsets.symmetric(vertical: 0.0),
-                  maxInputLength: InputLimit.ACCOUNT_MAX,
-                  onInputChanged: (input) {
-                    setState(() {
-                      _showAccountError = !rangeCheck(
-                        value: input.length,
-                        min: InputLimit.ACCOUNT_MIN,
-                        max: InputLimit.ACCOUNT_MAX,
-                      );
-                    });
-                  },
-                ),
-              ),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: _valueTextPadding),
-                    child: Visibility(
-                      visible: _showAccountError,
-                      child: Text(
-                        localeStr.messageInvalidAccount(
-                          InputLimit.ACCOUNT_MIN,
-                          InputLimit.ACCOUNT_MAX,
-                        ),
-                        style: TextStyle(color: themeColor.defaultErrorColor),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 12.0),
-
-            ///
-            /// Password Field
-            ///
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: new CustomizeTitledContainer(
-                prefixText: localeStr.hintAccountPassword,
-                prefixTextSize: FontSize.SUBTITLE.value,
-                backgroundColor: Colors.transparent,
-                child: new CustomizeFieldWidget(
-                  key: _pwdFieldKey,
-                  fieldType: FieldType.Password,
-                  hint: localeStr.hintAccountPassword,
-                  persistHint: false,
-                  padding: const EdgeInsets.symmetric(vertical: 0.0),
-                  maxInputLength: InputLimit.PASSWORD_MAX,
-                  onInputChanged: (input) {
-                    setState(() {
-                      _showPasswordError = !rangeCheck(
-                        value: input.length,
-                        min: InputLimit.PASSWORD_MIN_OLD,
-                        max: InputLimit.PASSWORD_MAX,
-                      );
-                    });
-                  },
-                ),
-              ),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: _valueTextPadding),
-                    child: Visibility(
-                      visible: _showPasswordError,
-                      child: Text(
-                        localeStr.messageInvalidPassword(
-                          InputLimit.PASSWORD_MIN_OLD,
-                          InputLimit.PASSWORD_MAX,
-                        ),
-                        style: TextStyle(color: themeColor.defaultErrorColor),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 8.0),
-            /* Login CheckBox */
-            CheckboxWidget(
-              key: _fastKey,
-              label: localeStr.btnFastLogin,
-              initValue: _hiveForm?.fastLogin ?? false,
-            ),
-          ],
-        ),
-      ),
     );
   }
 

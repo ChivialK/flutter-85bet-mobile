@@ -74,7 +74,7 @@ class StoreDisplayRecordTable extends StatelessWidget {
         data.product,
         data.point,
         data.date,
-        data.status,
+        getStatusIndex(data.status),
       ];
       /* generate cell text */
       return TableRow(
@@ -137,5 +137,22 @@ class StoreDisplayRecordTable extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String getStatusIndex(String state) {
+    switch (state.toLowerCase()) {
+      case '1':
+        return localeStr.storeRecordOrderStateShipping;
+      case '0':
+        return localeStr.storeRecordOrderStateCancel;
+      case 'success order':
+        return localeStr.storeRecordOrderStateSuccess;
+      case 'refuse':
+        return localeStr.storeRecordOrderStateRefuse;
+      case 'adjust':
+        return localeStr.storeRecordOrderStateAdjust;
+      default:
+        return state;
+    }
   }
 }

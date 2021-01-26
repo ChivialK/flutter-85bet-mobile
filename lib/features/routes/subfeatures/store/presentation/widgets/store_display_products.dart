@@ -2,8 +2,8 @@ import 'package:after_layout/after_layout.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
-import 'package:flutter_85bet_mobile/res.dart';
 
 import '../../data/models/store_product_model.dart';
 import '../state/point_store.dart';
@@ -24,6 +24,21 @@ class _StoreDisplayProductsState extends State<StoreDisplayProducts>
   final double _itemExtent = 240;
   final double _itemSpace = 12.0;
   final double _gridRatio = 0.5;
+
+  double _dynamicRatio;
+
+  @override
+  void initState() {
+    if (Global.device.widthScale > 1) {
+      int itemPerRow = (Global.device.width / 240).floor();
+      double itemWidth = (Global.device.width - 48) / itemPerRow;
+      debugPrint('item width: $itemWidth');
+      double expectHeight = _itemExtent * (1 + _gridRatio);
+      _dynamicRatio = itemWidth / expectHeight;
+      debugPrint('dynamic ratio: $_dynamicRatio');
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +75,7 @@ class _StoreDisplayProductsState extends State<StoreDisplayProducts>
               maxCrossAxisExtent: _itemExtent,
               crossAxisSpacing: _itemSpace,
               mainAxisSpacing: _itemSpace,
-              childAspectRatio: _gridRatio,
+              childAspectRatio: _dynamicRatio ?? _gridRatio,
             ),
             physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
@@ -73,7 +88,7 @@ class _StoreDisplayProductsState extends State<StoreDisplayProducts>
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Stack(
                         children: <Widget>[
@@ -84,15 +99,15 @@ class _StoreDisplayProductsState extends State<StoreDisplayProducts>
                               fit: BoxFit.fill,
                             ),
                           ),
-                          if (product.isNewProduct)
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.asset(
-                                Res.new_product,
-                                alignment: Alignment.topLeft,
-                                fit: BoxFit.none,
-                              ),
-                            ),
+                          // if (product.isNewProduct)
+                          //   Padding(
+                          //     padding: const EdgeInsets.all(8.0),
+                          //     child: Image.asset(
+                          //       Res.new_product,
+                          //       alignment: Alignment.topLeft,
+                          //       fit: BoxFit.none,
+                          //     ),
+                          //   ),
                         ],
                       ),
                       Padding(

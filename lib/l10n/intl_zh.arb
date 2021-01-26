@@ -2906,6 +2906,26 @@
   "@storeExchangeResultError": {
     "type": "text"
   },
+  "storeRecordOrderStateShipping": "待出货",
+  "@storeRecordOrderStateShipping": {
+    "type": "text"
+  },
+  "storeRecordOrderStateCancel": "订单取消",
+  "@storeRecordOrderStateCancel": {
+    "type": "text"
+  },
+  "storeRecordOrderStateSuccess": "已兑换",
+  "@storeRecordOrderStateSuccess": {
+    "type": "text"
+  },
+  "storeRecordOrderStateRefuse": "已拒绝",
+  "@storeRecordOrderStateRefuse": {
+    "type": "text"
+  },
+  "storeRecordOrderStateAdjust": "已调整",
+  "@storeRecordOrderStateAdjust": {
+    "type": "text"
+  },
   "eventButtonSignUpTv": "已累积签到{value}天",
   "@eventButtonSignUpTv": {
     "type": "text",

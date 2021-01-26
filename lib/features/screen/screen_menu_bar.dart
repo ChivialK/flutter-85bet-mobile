@@ -177,6 +177,40 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
               return SizedBox.shrink();
             },
           ),
+        if (_eventStore != null)
+          Container(
+//            padding: const EdgeInsets.only(right: 12.0),
+            decoration: BoxDecoration(shape: BoxShape.circle),
+            child: Transform.scale(
+              scale: 0.5,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(36.0),
+                child: GestureDetector(
+                  onTap: () {
+                    if (_eventStore.canShowAds) {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => new AdDialog(
+                          ads: _eventStore.ads,
+                          initCheck: _eventStore.checkSkip,
+                          onClose: (skipNextTime) {
+                            debugPrint('ads dialog close, skip=$skipNextTime');
+                            _eventStore.setSkipAd(skipNextTime);
+                            _eventStore.adsDialogClose();
+                          },
+                        ),
+                      );
+                    }
+                  },
+                  child: networkImageBuilder(
+                    'images/AD_ICON2.png',
+                    imgScale: 3.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
         Visibility(
           visible: !_hideLangOption,
           maintainState: true,
