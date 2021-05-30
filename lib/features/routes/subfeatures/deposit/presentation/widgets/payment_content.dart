@@ -62,6 +62,11 @@ class PaymentContentState extends State<PaymentContent> {
           )
         : new PaymentContentOnline(
             dataList: type.data,
+            promoList: (widget.promos.containsKey(type.key))
+                ? widget.promos[type.key]
+                : (widget.promos.containsKey(2))
+                    ? widget.promos[2]
+                    : [],
             depositFuncCall: widget.depositCall,
           );
 
@@ -92,7 +97,7 @@ class PaymentContentState extends State<PaymentContent> {
     _typeContent ??= SizedBox.shrink();
     return Container(
       constraints: BoxConstraints(minHeight: 100),
-      decoration: ThemeInterface.layerShadowDecorRoundBottom,
+      decoration: ThemeInterface.layerShadowDecorBottom,
       padding: const EdgeInsets.all(24.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,

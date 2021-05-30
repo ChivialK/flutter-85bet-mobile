@@ -145,23 +145,24 @@ class JsonUtil {
   static T decodeToModel<T>(
     dynamic str,
     Function(Map<String, dynamic> jsonMap) jsonToModel, {
-    bool trim = true,
+    bool trim = false,
     String tag = debugTag,
   }) {
     MyLogger.debug(
         msg: 'start decoding ${str.runtimeType} to model $T...', tag: tag);
-    Map<String, dynamic> map;
-    if (str is Map == false) {
-      var trimmed = (trim) ? trimJson(str) : str;
-      map = jsonDecode(trimmed);
-    } else {
-      map = str;
-    }
     // transfer decoded data to model data
+    Map<String, dynamic> map;
     try {
+      if (str is Map == false) {
+        var trimmed = (trim) ? trimJson(str) : str;
+        map = jsonDecode(trimmed);
+      } else {
+        map = str;
+      }
       return jsonToModel(map) as T;
     } catch (e, s) {
       debugPrint('decode to model error: $e, stack:\n$s');
+      debugPrint('decode data: $str');
       MyLogger.error(
           msg: 'mapped model error!! data: $str\nmapped json: $map',
           stackTrace: s,

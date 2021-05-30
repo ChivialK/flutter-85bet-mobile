@@ -1,9 +1,9 @@
 {
   "@@last_modified": "2020-08-06T17:12:17+0800",
   "@@locale": "vi",
-  "title": "85Bet Mobile",
+  "title": "Go88 Mobile",
   "@title": {
-    "description": "85Bet Demo",
+    "description": "Go88 Demo",
     "type": "text",
     "placeholders": {}
   },
@@ -172,7 +172,7 @@
   "@pageTitleMore": {
     "type": "text"
   },
-  "toolBarMemberCredit": "VDK {value}",
+  "toolBarMemberCredit": "NTD {value}",
   "@toolBarMemberCredit": {
     "type": "text",
     "placeholders": {
@@ -349,6 +349,14 @@
   "@btnCopy": {
     "type": "text"
   },
+  "btnNextStep": "Bước tiếp theo",
+  "@btnNextStep": {
+    "type": "text"
+  },
+  "btnPreStep": "Trước",
+  "@btnPreStep": {
+    "type": "text"
+  },
   "sideBtnBackHome": "Trang Chủ",
   "@sideBtnBackHome": {
     "type": "text"
@@ -417,6 +425,14 @@
   "@hintConfirmedInput": {
     "type": "text"
   },
+  "hintCaptcha": "hình ảnh xác thực",
+  "@hintCaptcha": {
+    "type": "text"
+  },
+  "hintCaptchaInput": "nhập hình ảnh xác thực",
+  "@hintCaptchaInput": {
+    "type": "text"
+  },
   "hintPhoneInput": "Nhập số điện thoại",
   "@hintPhoneInput": {
     "type": "text"
@@ -478,7 +494,7 @@
   "@messageActionFailed": {
     "type": "text"
   },
-  "messageActionFillForm": "Vui lòng hoàn thành",
+  "messageActionFillForm": "Vui lòng xác nhận thông tin trường và hoàn thành",
   "@messageActionFillForm": {
     "type": "text"
   },
@@ -712,12 +728,43 @@
   "@messageInvalidCardOwner": {
     "type": "text"
   },
-  "messageInvalidCardNumber": "Số thẻ là 5 ~ 19 ký tự",
+  "messageInvalidCardNumber": "Số thẻ là {min}~{max} ký tự",
   "@messageInvalidCardNumber": {
-    "type": "text"
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "16"
+      },
+      "max": {
+        "example": "19"
+      }
+    }
+  },
+  "messageInvalidCardNumberFixed": "Số thẻ là {min}~{max} ký tự (bắt đầu bằng {fixed})",
+  "@messageInvalidCardNumberFixed": {
+    "type": "text",
+    "placeholders": {
+      "min": {
+        "example": "16"
+      },
+      "max": {
+        "example": "19"
+      },
+      "fixed": {
+        "example": "9704"
+      }
+    }
   },
   "messageInvalidCardBankPoint": "Tên phải nhiều hơn 3 ký tự",
   "@messageInvalidCardBankPoint": {
+    "type": "text"
+  },
+  "messageExceedRemainCredit": "Số dư",
+  "@messageExceedRemainCredit": {
+    "type": "text"
+  },
+  "messagePlatformMaintenance": "Nền tảng đang được bảo trì",
+  "@messagePlatformMaintenance": {
     "type": "text"
   },
   "messageInvalidWithdrawPassword": "Mật khẩu không hợp lệ",
@@ -804,6 +851,10 @@
   "@messageErrorLoadingGame": {
     "type": "text"
   },
+  "messageErrorGamePermission": "Bạn không được phép chơi trò chơi nền tảng này, vui lòng liên hệ với dịch vụ khách hàng",
+  "@messageErrorGamePermission": {
+    "type": "text"
+  },
   "messageErrorLoadingPay": "Lỗi tải trang, vui lòng thử lại sau",
   "@messageErrorLoadingPay": {
     "type": "text"
@@ -876,6 +927,14 @@
   },
   "messageErrorReferral": "Mã giới thiệu không hợp lệ",
   "@messageErrorReferral": {
+    "type": "text"
+  },
+  "messageErrorVerify": "Mã xác minh sai, vui lòng kiểm tra thông tin đầu vào hoặc nhấp vào hình ảnh để làm mới",
+  "@messageErrorVerify": {
+    "type": "text"
+  },
+  "messageErrorVerifyShort": "Lỗi mã xác minh",
+  "@messageErrorVerifyShort": {
     "type": "text"
   },
   "messageErrorWithdraw": "Rút tiền không thành công",
@@ -1256,7 +1315,7 @@
   "@transferViewTitleIn": {
     "type": "text"
   },
-  "transferViewSiteHint": "Vui lòng chọn một nền tảng",
+  "transferViewSiteHint": "xin vui lòng chọn",
   "@transferViewSiteHint": {
     "type": "text"
   },
@@ -1268,7 +1327,7 @@
   "@transferViewTitleOption": {
     "type": "text"
   },
-  "transferViewTextOptionAll": "Tất cả ra ngoài",
+  "transferViewTextOptionAll": "Tất cả",
   "@transferViewTextOptionAll": {
     "type": "text"
   },
@@ -1390,6 +1449,10 @@
   },
   "withdrawViewHint2": "Mỗi tài khoản hội viên được tối đa 3 lần rút tiền trong ngày , nếu hơn 3 lần sẽ phải chịu thêm phí dịch vụ 5%.",
   "@withdrawViewHint2": {
+    "type": "text"
+  },
+  "withdrawViewHintMax": "Rút tiền tối đa",
+  "@withdrawViewHintMax": {
     "type": "text"
   },
   "walletViewTitle": "Ví trung tâm",
@@ -1608,7 +1671,7 @@
   "@betsFieldDateError": {
     "type": "text"
   },
-  "betsTextTotal": "Tổng cộng: VDK {value}",
+  "betsTextTotal": "Tổng cộng: NTD {value}",
   "@betsTextTotal": {
     "type": "text",
     "placeholders": {
@@ -1673,7 +1736,7 @@
   "@dealsViewSpinnerStatus1": {
     "type": "text"
   },
-  "dealsViewSpinnerStatus2": "Thất bại",
+  "dealsViewSpinnerStatus2": "Từ chối",
   "@dealsViewSpinnerStatus2": {
     "type": "text"
   },
@@ -1689,7 +1752,7 @@
   "@dealsHeaderSerial": {
     "type": "text"
   },
-  "dealsHeaderType": "Mục,tiêu đề",
+  "dealsHeaderType": "Dự án",
   "@dealsHeaderType": {
     "type": "text"
   },
@@ -1697,7 +1760,7 @@
   "@dealsHeaderDetail": {
     "type": "text"
   },
-  "dealsHeaderStatus": "Trạng thái đơn đặt",
+  "dealsHeaderStatus": "Trạng thái",
   "@dealsHeaderStatus": {
     "type": "text"
   },
@@ -1707,6 +1770,10 @@
   },
   "dealsHeaderAmount": "Số tiền",
   "@dealsHeaderAmount": {
+    "type": "text"
+  },
+  "dealsDetailTypeAdjustCash": "Số tiền điều chỉnh",
+  "@dealsDetailTypeAdjustCash": {
     "type": "text"
   },
   "dealsDetailTypeAdjustDeposit": "Số tiền điều chỉnh",
@@ -1721,7 +1788,7 @@
   "@depositPaymentNoData": {
     "type": "text"
   },
-  "depositPaymentTitleBank": "Nạp tiền ngân hàng",
+  "depositPaymentTitleBank": "Ngân hàng điện tử",
   "@depositPaymentTitleBank": {
     "type": "text"
   },
@@ -1753,7 +1820,7 @@
   "@depositPaymentTitleWechat": {
     "type": "text"
   },
-  "depositPaymentTitleAtm": "Chuyển khoản ngân hàng trực tuyến",
+  "depositPaymentTitleAtm": "Chuyển tại ATM",
   "@depositPaymentTitleAtm": {
     "type": "text"
   },
@@ -1797,18 +1864,14 @@
   "@depositPaymentEditTitleAmount": {
     "type": "text"
   },
-  "depositPaymentEditTitleAmountHintVND": "Thực tế: {value} VND",
-  "@depositPaymentEditTitleAmountHintVND": {
+  "depositPaymentEditTitleCurrencyHint": "Thực tế: {value} NTD",
+  "@depositPaymentEditTitleCurrencyHint": {
     "type": "text",
     "placeholders": {
       "value": {
         "example": "100"
       }
     }
-  },
-  "depositPaymentEditTitleNote": "Nhận xét",
-  "@depositPaymentEditTitleNote": {
-    "type": "text"
   },
   "depositPaymentEditTitleAmountHintRange": "{num}~{num2}",
   "@depositPaymentEditTitleAmountHintRange": {
@@ -1836,6 +1899,19 @@
         "example": "50"
       }
     }
+  },
+
+  "depositPaymentEditTitleCode": "Mã giao dịch",
+  "@depositPaymentEditTitleCode": {
+    "type": "text"
+  },
+  "depositPaymentEditHintCode": "Vui lòng điền mã giao dịch",
+  "@depositPaymentEditHintCode": {
+    "type": "text"
+  },
+  "depositPaymentEditTitleNote": "Nhận xét",
+  "@depositPaymentEditTitleNote": {
+    "type": "text"
   },
   "depositPaymentButtonTitleTutorial": "Nhấp vào tôi để xem giảng dạy",
   "@depositPaymentButtonTitleTutorial": {
@@ -1997,6 +2073,10 @@
   "@depositMessageFailed": {
     "type": "text"
   },
+  "depositMessageFormError": "Thông tin nạp tiền bị sai, vui lòng chọn lại phương thức nạp tiền hoặc liên hệ bộ phận chăm sóc khách hàng",
+  "@depositMessageFormError": {
+    "type": "text"
+  },
   "depositMessageSuccessLocal": "Đơn hàng đã được thiết lập, số đơn hàng: {value}",
   "@depositMessageSuccessLocal": {
     "type": "text",
@@ -2143,7 +2223,7 @@
   "@balanceHintText1": {
     "type": "text"
   },
-  "balanceHintText2": "2.Trong khi tham gia trò chơi này, số tiền không được ít hơn 200000 VND, số tiền này không tính phí khi chuyển.",
+  "balanceHintText2": "2.Trong khi tham gia trò chơi này, số tiền không được ít hơn 200000 NTD, số tiền này không tính phí khi chuyển.",
   "@balanceHintText2": {
     "type": "text"
   },
@@ -2847,6 +2927,26 @@
   "@storeExchangeResultError": {
     "type": "text"
   },
+  "storeRecordOrderStateShipping": "Được vận chuyển",
+  "@storeRecordOrderStateShipping": {
+    "type": "text"
+  },
+  "storeRecordOrderStateCancel": "Đơn hàng đã bị Hủy",
+  "@storeRecordOrderStateCancel": {
+    "type": "text"
+  },
+  "storeRecordOrderStateSuccess": "Đã được đổi",
+  "@storeRecordOrderStateSuccess": {
+    "type": "text"
+  },
+  "storeRecordOrderStateRefuse": "Bị từ chối",
+  "@storeRecordOrderStateRefuse": {
+    "type": "text"
+  },
+  "storeRecordOrderStateAdjust": "Đã điều chỉnh",
+  "@storeRecordOrderStateAdjust": {
+    "type": "text"
+  },
   "eventButtonSignUpTv": "Đăng nhập tích lũy trong {value} ngày",
   "@eventButtonSignUpTv": {
     "type": "text",
@@ -2976,178 +3076,6 @@
         "example": "v1.0"
       }
     }
-  },
-  "aboutCertTitle": "Giấy phép",
-  "@aboutCertTitle": {
-    "type": "text"
-  },
-  "aboutCertTitleGC": "Ủy ban Giám sát GC của Anh",
-  "@aboutCertTitleGC": {
-    "type": "text"
-  },
-  "aboutCertTitleMGA": "Chứng nhận Giấy phép Trò chơi Malta (MGA)",
-  "@aboutCertTitleMGA": {
-    "type": "text"
-  },
-  "aboutCertTitlePGC": "Thẻ chơi game được giám sát của Philippines (PAGCOR)",
-  "@aboutCertTitlePGC": {
-    "type": "text"
-  },
-  "aboutCertTitleBVI": "Chứng nhận Quần đảo Virgin thuộc Anh (BVI)",
-  "@aboutCertTitleBVI": {
-    "type": "text"
-  },
-  "aboutDataTitle1": "Giới thiệu đại lý 85BET",
-  "@ aboutDataTitle1": {
-    "type": "text"
-  },
-  "aboutDataDesc10": "85BET đã có giấy phép từ Isle of Man, Cagayan và Freeport Economic Zone. Đây là một công ty đa quốc gia hoạt động ở khu vực Châu Á - Thái Bình Dương.\n\n",
-  "@ aboutDataDesc10": {
-    "type": "text"
-  },
-  "aboutDataDesc11": "85bet dựa vào kinh nghiệm và danh tiếng phong phú của mình để cung cấp dịch vụ cho hơn 10 triệu người chơi, điều này cho thấy tính hợp pháp và hợp pháp lâu dài và hoàn toàn đáng tin cậy.",
-  "@ aboutDataDesc11": {
-    "type": "text"
-  },
-  "aboutDataDesc12": "Đây là công ty trò chơi trực thuộc Tập đoàn giải trí MAN có trụ sở chính tại Manila, Philippines. Đây được coi là công ty lớn nhất trong thị trường cờ bạc trực tuyến châu Á với lực lượng lao động lớn. 85bet có độ tin cậy cao được công nhận và hiện đã trở thành hiệp hội trò chơi trực tuyến quốc tế Một trong những nhà cái được cấp phép và xác minh đầy đủ nhất. ",
-  "@ aboutDataDesc12": {
-    "type": "text"
-  },
-  "aboutDataTitle2": "Thông tin",
-  "@ aboutDataTitle2": {
-    "type": "text"
-  },
-  "aboutDataSubtitle20": "Đăng ký",
-  "@ aboutDataSubtitle20": {
-    "type": "text"
-  },
-  "aboutDataDesc20": "Mở tài khoản 85bet Việt Nam và tham gia tất cả các trang web giải trí chất lượng cao khuyến mãi cá cược trực tuyến của chúng tôi với mức giá ưu đãi. Chúng tôi tin rằng với số điểm thưởng, khách hàng sẽ có cơ hội nhận được giá trị khi tham gia các hoạt động khuyến mãi Quà tặng và phần thưởng. ",
-  "@ aboutDataDesc20": {
-    "type": "text"
-  },
-  "aboutDataSubtitle21": "Tổ chức",
-  "@ aboutDataSubtitle21": {
-    "type": "text"
-  },
-  "aboutDataDesc21": "Hãy trở thành đối tác tốt nhất của chúng tôi và hưởng hoa hồng hàng tháng hậu hĩnh bằng cách giới thiệu người chơi đến 85bet.",
-  "@ aboutDataDesc21": {
-    "type": "text"
-  },
-  "aboutDataSubtitle22": "Trò chơi có trách nhiệm",
-  "@ aboutDataSubtitle22": {
-    "type": "text"
-  },
-  "aboutDataDesc22": "85bet Odds Odds Football cam kết cung cấp các kênh giải trí cho khách hàng của chúng tôi một cách tích cực. Chúng tôi có các biện pháp bảo vệ để thúc đẩy và đảm bảo cờ bạc có trách nhiệm.",
-  "@ aboutDataDesc22": {
-    "type": "text"
-  },
-  "aboutDataSubtitle23": "Bảo mật",
-  "@ aboutDataSubtitle23": {
-    "type": "text"
-  },
-  "aboutDataDesc23": "Với hệ thống cá cược ổn định và an toàn. Quyền riêng tư của bạn là ưu tiên hàng đầu của chúng tôi, vì vậy chúng tôi luôn tuân thủ nghiêm ngặt chính sách bảo mật.",
-  "@ aboutDataDesc23": {
-    "type": "text"
-  },
-  "aboutDataTitle3": "Sản phẩm",
-  "@ aboutDataTitle3": {
-    "type": "text"
-  },
-  "aboutDataSubtitle30": "Cá cược thể thao và tỷ lệ cá cược bóng đá trực tiếp",
-  "@ aboutDataSubtitle30": {
-    "type": "text"
-  },
-  "aboutDataDesc30": "Tỷ lệ cá cược bóng đá. Chúng tôi cung cấp các sự kiện chính sau: Ngoại hạng Anh, Giải vô địch Tây Ban Nha La Liga, Serie A Ý, UEFA Champions League, Giải vô địch quốc gia Pháp, Đức, NFL, NBA, NCAA, bóng rổ nữ, quần vợt, đua xe F1 Chúng tôi rất hân hạnh được mang đến cho bạn hơn 4.000 trò chơi mỗi tháng. ",
-  "@ aboutDataDesc30": {
-    "type": "text"
-  },
-  "aboutDataSubtitle31": "Trò chơi Trực tuyến",
-  "@ aboutDataSubtitle31": {
-    "type": "text"
-  },
-  "aboutDataDesc31": "Trò chơi trực tuyến có nhiều cơ hội để giành được các giải thưởng lớn trong trò chơi: roulette, blackjack, poker, máy đánh bạc. Nhiều giải đặc biệt hơn và cơ hội thắng 85bet càng cao.",
-  "@ aboutDataDesc31": {
-    "type": "text"
-  },
-  "aboutDataSubtitle32": "Sòng bạc Trực tuyến",
-  "@ aboutDataSubtitle32": {
-    "type": "text"
-  },
-  "aboutDataDesc32": "Ngoài ra, chúng tôi còn cung cấp nhiều loại trò chơi trực tuyến khác, đặc biệt là: sòng bạc trực tiếp, có sẵn trong các nhà cung cấp trò chơi phổ biến như baccarat, sic bo, dragon / tiger, roulette và máy đánh bạc trực tuyến Thật dễ dàng để chơi. ",
-  "@ aboutDataDesc32": {
-    "type": "text"
-  },
-  "aboutDataTitle4": "Trung tâm Thông tin",
-  "@ aboutDataTitle4": {
-    "type": "text"
-  },
-  "aboutDataSubtitle40": "Quảng cáo",
-  "@ aboutDataSubtitle40": {
-    "type": "text"
-  },
-  "aboutDataDesc40": "Thưởng khuyến mãi cho các thành viên mới. Thưởng cho các khoản tiền tiếp theo và hoàn lại tiền cho các thành viên hiện tại.",
-  "@ aboutDataDesc40": {
-    "type": "text"
-  },
-  "aboutDataSubtitle41": "Trung tâm Hỗ trợ",
-  "@ aboutDataSubtitle41": {
-    "type": "text"
-  },
-  "aboutDataDesc41": "Vui lòng tham khảo Câu hỏi thường gặp về thể thao và các trò chơi khác. Đăng ký tài khoản, chuyển tiền, rút ​​tiền và thông tin kỹ thuật khác được hỗ trợ.",
-  "@ aboutDataDesc41": {
-    "type": "text"
-  },
-  "aboutDataSubtitle42": "Phương thức Thanh toán",
-  "@ aboutDataSubtitle42": {
-    "type": "text"
-  },
-  "aboutDataDesc42": "Chúng tôi cung cấp cho khách hàng các tùy chọn tuyệt vời để nạp tiền và rút tiền qua NETELLER, Moneybookers, Chuyển khoản ngân hàng quốc tế, Western Union. Chúng tôi có mọi thứ, hãy bắt đầu 85bet ngay lập tức.",
-  "@ aboutDataDesc42": {
-    "type": "text"
-  },
-  "aboutDataSubtitle43": "Liên hệ",
-  "@ aboutDataSubtitle43": {
-    "type": "text"
-  },
-  "aboutDataDesc43": "Nếu bạn cần bất kỳ trợ giúp hoặc thắc mắc nào liên quan đến tỷ lệ cá cược bóng đá hoặc cá cược trực tuyến trên sòng bạc trực tuyến, chúng tôi sẽ hỗ trợ 24/7 qua trò chuyện trực tiếp, điện thoại và email.",
-  "@ aboutDataDesc43": {
-    "type": "text"
-  },
-  "aboutDataTitle5": "Thông tin Cược",
-  "@ aboutDataTitle5": {
-    "type": "text"
-  },
-  "aboutDataSubtitle50": "Kết quả thể thao",
-  "@ aboutDataSubtitle50": {
-    "type": "text"
-  },
-  "aboutDataDesc50": "Tỷ lệ cá cược bóng đá Việt Nam cung cấp kết quả của tất cả các trận đấu và giải đấu thể thao hay nhất tại Việt Nam hiện nay.",
-  "@ aboutDataDesc50": {
-    "type": "text"
-  },
-  "aboutDataSubtitle51": "Thống kê Đặt cược",
-  "@ aboutDataSubtitle51": {
-    "type": "text"
-  },
-  "aboutDataDesc51": "Hơn 200 trò chơi khác nhau, bao gồm nhiều môn thể thao, định dạng, trò chơi đồng đội và cá nhân, lịch thi đấu, đội hình, đội, thêm giờ và trò chơi bị hoãn.",
-  "@ aboutDataDesc51": {
-    "type": "text"
-  },
-  "aboutDataSubtitle52": "Cá cược thể thao",
-  "@ aboutDataSubtitle52": {
-    "type": "text"
-  },
-  "aboutDataDesc52": "Tất cả các quy tắc thể thao của chúng tôi đều tuân thủ nghiêm ngặt các quy định chính thức của Ban tổ chức Giải Việt Nam hiện nay.",
-  "@ aboutDataDesc52": {
-    "type": "text"
-  },
-  "aboutDataSubtitle53": "Trò chơi đánh bạc",
-  "@ aboutDataSubtitle53": {
-    "type": "text"
-  },
-  "aboutDataDesc53": "Sòng bạc trực tiếp hiển thị đầy đủ: giới hạn cá cược, kết quả và chi tiết lịch sử cá cược. Mọi thông tin cá cược của bạn đều được tích hợp trên màn hình để tiện giải trí. Bạn có thể xem thông tin cá cược bất kỳ lúc nào.",
-  "@ aboutDataDesc53": {
-    "type": "text"
   },
   "serviceRouteHint": "Cần giúp đỡ hoặc liên hệ với chúng tôi",
   "@serviceRouteHint": {

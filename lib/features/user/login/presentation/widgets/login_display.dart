@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/checkbox_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
+import 'package:flutter_85bet_mobile/features/user/data/models/captcha_model.dart';
 
 import '../../../data/form/login_form.dart';
 import '../../../register/presentation/register_route.dart';
@@ -35,6 +37,8 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
       new GlobalKey(debugLabel: 'name');
   final GlobalKey<CustomizeFieldWidgetState> _pwdFieldKey =
       new GlobalKey(debugLabel: 'pwd');
+  final GlobalKey<CustomizeFieldWidgetState> _captchaFieldKey =
+      new GlobalKey(debugLabel: 'captcha');
   final GlobalKey<CheckboxWidgetState> _fastKey =
       new GlobalKey(debugLabel: 'fast');
 
@@ -43,10 +47,14 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
   bool _waitForClose = false;
   int _loadingStack = 0;
   LoginHiveForm _hiveForm;
+  CaptchaData _captchaData;
+
+  double _valueTextPadding;
+  bool _showAccountError = false;
+  bool _showPasswordError = false;
 
   Timer _routeTimer;
   bool _loginSuccess = false;
-  Widget formWidget;
 
   void _validateForm() {
     final form = _formKey.currentState;
@@ -58,11 +66,31 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
         password: _pwdFieldKey.currentState.getInput,
         fastLogin: _fastKey.currentState.boxChecked,
       );
-      if (_hiveForm.isValid)
-        widget.store.login(_hiveForm.simple, _hiveForm.fastLogin);
+      String captcha = _captchaFieldKey.currentState.getInput;
+      if (_hiveForm.isValid && captcha.isNotEmpty)
+        widget.store.login(
+          _hiveForm.simple,
+          _hiveForm.fastLogin,
+          captcha,
+        );
       else
         callToast(localeStr.messageActionFillForm);
     }
+  }
+
+  void _checkHiveForm(LoginHiveForm form) {
+    debugPrint('checking hive login form...');
+    if (_hiveForm == form) return;
+    _hiveForm = form;
+    if (_hiveForm != null)
+      Future.delayed(Duration(milliseconds: 200), () {
+        if (!mounted) return;
+        if (_loadingStack != 1)
+          setState(() {
+            _loadingStack = 1;
+          });
+        _updateFields();
+      });
   }
 
   void _updateFields() {
@@ -87,19 +115,21 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
     }
   }
 
-  void _checkHiveForm(LoginHiveForm form) {
-    debugPrint('checking hive login form...');
-    if (_hiveForm == form) return;
-    _hiveForm = form;
-    if (_hiveForm != null)
-      Future.delayed(Duration(milliseconds: 200), () {
-        if (!mounted) return;
-        if (_loadingStack != 1)
-          setState(() {
-            _loadingStack = 1;
-          });
-        _updateFields();
-      });
+  void _updateCaptcha(CaptchaData data) {
+    // debugPrint('received captcha data: $data');
+    setState(() {
+      _captchaData = data;
+    });
+  }
+
+  @override
+  void initState() {
+    _valueTextPadding = (Global.device.width.roundToDouble() - 48) *
+            ThemeInterface.prefixTextWidthFactor -
+        ThemeInterface.minusSize +
+        8.0;
+    super.initState();
+    _captchaData = widget.store.captchaData;
   }
 
   @override
@@ -113,6 +143,13 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
         (_) => widget.store.hiveLoginForm,
         // Run some logic with the content of the observed field
         (form) => _checkHiveForm(form),
+      ),
+      reaction(
+        // Observe in page
+        // Tell the reaction which observable to observe
+        (_) => widget.store.captchaData,
+        // Run some logic with the content of the observed field
+        (data) => _updateCaptcha(data),
       ),
       reaction(
         // Observe in page
@@ -143,7 +180,6 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
   @override
   void didUpdateWidget(LoginDisplay oldWidget) {
     debugPrint('didUpdateWidget');
-    formWidget = null;
     super.didUpdateWidget(oldWidget);
   }
 
@@ -155,27 +191,25 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('rebuild login display');
-    formWidget ??= _buildFormWidget();
     return Stack(
       children: [
-        /// loading icon
-        Positioned(
-          top: 32,
-          right: 16,
-          child: Observer(
-            builder: (context) {
-              if (widget.store.waitForHive || widget.store.waitForLogin)
-                return SizedBox(
-                  height: 14,
-                  width: 14,
-                  child: CircularProgressIndicator(strokeWidth: 3.0),
-                );
-              else
-                return SizedBox.shrink();
-            },
-          ),
-        ),
+        // /// loading icon
+        // Positioned(
+        //   top: 32,
+        //   right: 16,
+        //   child: Observer(
+        //     builder: (context) {
+        //       if (widget.store.waitForHive || widget.store.waitForLogin)
+        //         return SizedBox(
+        //           height: 14,
+        //           width: 14,
+        //           child: CircularProgressIndicator(strokeWidth: 3.0),
+        //         );
+        //       else
+        //         return SizedBox.shrink();
+        //     },
+        //   ),
+        // ),
 
         /// content box
         Container(
@@ -187,10 +221,8 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
           child: SingleChildScrollView(
             primary: true,
             child: Container(
-              constraints: BoxConstraints(
-                minHeight: 360.0,
-              ),
-              color: themeColor.defaultLayeredBackgroundColor,
+              constraints: BoxConstraints(minHeight: 360.0),
+              decoration: ThemeInterface.layerShadowDecorLight,
               margin: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -204,42 +236,253 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
                     width: Global.device.width - 24,
                     height: FontSize.TITLE.value * 3,
                     child: Stack(
+                      alignment: Alignment.center,
                       children: [
                         Center(
                           child: Text(
                             localeStr.pageTitleLogin,
-                            style: TextStyle(fontSize: FontSize.TITLE.value),
+                            style: TextStyle(
+                              fontSize: FontSize.TITLE.value,
+                              color: themeColor.defaultTextColor,
+                            ),
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: IconButton(
-                            icon: Icon(
-                              Icons.arrow_back_ios,
-                              color: themeColor.dialogCloseIconColor,
-                              size: 32.0 * Global.device.widthScale,
-                            ),
-                            visualDensity: VisualDensity.compact,
-                            padding:
-                                const EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 0.0),
-                            onPressed: () {
-                              // clear text field focus
-                              FocusScope.of(context).unfocus();
-                              RouterNavigate.navigateBack();
+
+                        /// loading icon
+                        Container(
+                          alignment: Alignment.centerRight,
+                          padding: const EdgeInsets.only(right: 16.0),
+                          child: Observer(
+                            builder: (context) {
+                              if (widget.store.waitForHive ||
+                                  widget.store.waitForLogin)
+                                return SizedBox(
+                                  height: 14,
+                                  width: 14,
+                                  child: CircularProgressIndicator(
+                                      strokeWidth: 3.0),
+                                );
+                              else
+                                return SizedBox.shrink();
                             },
                           ),
                         ),
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: IconButton(
+                        //     icon: Icon(
+                        //       Icons.arrow_back_ios,
+                        //       color: themeColor.dialogCloseIconColor,
+                        //       size: 32.0 * Global.device.widthScale,
+                        //     ),
+                        //     visualDensity: VisualDensity.compact,
+                        //     padding:
+                        //         const EdgeInsets.fromLTRB(8.0, 2.0, 8.0, 0.0),
+                        //     onPressed: () {
+                        //       // clear text field focus
+                        //       FocusScope.of(context).unfocus();
+                        //       RouterNavigate.navigateBack();
+                        //     },
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 6.0, horizontal: 12.0),
-                    child: Divider(height: 2.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Divider(
+                        thickness: 1.5, color: themeColor.defaultAccentColor),
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-                    child: formWidget,
+                    child: InkWell(
+                      // to dismiss the keyboard when the user tabs out of the TextField
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      onTap: () {
+                        FocusScope.of(context).unfocus();
+                      },
+                      child: new Form(
+                        key: _formKey,
+                        child: ListView(
+                          primary: false,
+                          physics: BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          children: <Widget>[
+                            ///
+                            /// Account Field
+                            ///
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: new CustomizeTitledContainer(
+                                prefixText: localeStr.hintAccount,
+                                prefixTextSize: FontSize.SUBTITLE.value,
+                                backgroundColor: themeColor.fieldPrefixBgColor,
+                                child: new CustomizeFieldWidget(
+                                  key: _accountFieldKey,
+                                  fieldType: FieldType.Account,
+                                  hint: localeStr.hintAccountInput,
+                                  persistHint: false,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 0.0),
+                                  maxInputLength: InputLimit.ACCOUNT_MAX,
+                                  onInputChanged: (input) {
+                                    final showError = !rangeCheck(
+                                      value: input.length,
+                                      min: InputLimit.ACCOUNT_MIN,
+                                      max: InputLimit.ACCOUNT_MAX,
+                                    );
+                                    if (showError != _showAccountError) {
+                                      // debugPrint('input: $input, error: $showError');
+                                      setState(
+                                          () => _showAccountError = showError);
+                                    }
+                                  },
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                        left: _valueTextPadding),
+                                    child: Visibility(
+                                      visible: _showAccountError,
+                                      child: Text(
+                                        localeStr.messageInvalidAccount(
+                                          InputLimit.ACCOUNT_MIN,
+                                          InputLimit.ACCOUNT_MAX,
+                                        ),
+                                        style: TextStyle(
+                                            color:
+                                                themeColor.defaultErrorColor),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 12.0),
+
+                            ///
+                            /// Password Field
+                            ///
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: new CustomizeTitledContainer(
+                                prefixText: localeStr.hintAccountPassword,
+                                prefixTextSize: FontSize.SUBTITLE.value,
+                                backgroundColor: Colors.transparent,
+                                child: new CustomizeFieldWidget(
+                                  key: _pwdFieldKey,
+                                  fieldType: FieldType.Password,
+                                  hint: localeStr.hintPasswordInput,
+                                  persistHint: false,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 0.0),
+                                  maxInputLength: InputLimit.PASSWORD_MAX,
+                                  onInputChanged: (input) {
+                                    final showError = !rangeCheck(
+                                      value: input.length,
+                                      min: InputLimit.PASSWORD_MIN_OLD,
+                                      max: InputLimit.PASSWORD_MAX,
+                                    );
+                                    if (showError != _showPasswordError) {
+                                      // debugPrint('input: $input, error: $showError');
+                                      setState(
+                                          () => _showPasswordError = showError);
+                                    }
+                                  },
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                        left: _valueTextPadding),
+                                    child: Visibility(
+                                      visible: _showPasswordError,
+                                      child: Text(
+                                        localeStr.messageInvalidPassword(
+                                          InputLimit.PASSWORD_MIN_OLD,
+                                          InputLimit.PASSWORD_MAX,
+                                        ),
+                                        style: TextStyle(
+                                            color:
+                                                themeColor.defaultErrorColor),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            ///
+                            /// Captcha Field
+                            ///
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: new CustomizeTitledContainer(
+                                prefixText: localeStr.hintCaptcha,
+                                prefixTextSize: FontSize.SUBTITLE.value,
+                                backgroundColor: Colors.transparent,
+                                heightFactor: 2,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        if (_captchaData != null)
+                                          widget.store.getCaptcha();
+                                      },
+                                      child: Container(
+                                        height: 42,
+                                        padding:
+                                            const EdgeInsets.only(bottom: 6.0),
+                                        child: (_captchaData != null)
+                                            ? (_captchaData.key.isNotEmpty &&
+                                                    _captchaData.img != null)
+                                                ? Image.memory(
+                                                    _captchaData.img,
+                                                    fit: BoxFit.fitHeight,
+                                                  )
+                                                : Icon(
+                                                    Icons.broken_image,
+                                                    color: themeColor
+                                                        .iconSubColor1,
+                                                  )
+                                            : LoadingWidget(),
+                                      ),
+                                    ),
+                                    new CustomizeFieldWidget(
+                                      key: _captchaFieldKey,
+                                      fieldType: FieldType.Numbers,
+                                      persistHint: false,
+                                      padding: EdgeInsets.zero,
+                                      maxInputLength: 4,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 8.0),
+                            /* Login CheckBox */
+                            CheckboxWidget(
+                              key: _fastKey,
+                              label: localeStr.btnFastLogin,
+                              initValue: _hiveForm?.fastLogin ?? false,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
 
                   Padding(
@@ -268,6 +511,7 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
                       onPressed: () {
                         // clear text field focus
                         FocusScope.of(context).unfocus();
+                        if (_captchaData == null) return;
                         _validateForm();
                       },
                     ),
@@ -283,80 +527,6 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
             closeDialog: widget.isDialog,
           ),
       ],
-    );
-  }
-
-  Widget _buildFormWidget() {
-    debugPrint('rebuild login display form');
-    return InkWell(
-      // to dismiss the keyboard when the user tabs out of the TextField
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      focusColor: Colors.transparent,
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
-      child: new Form(
-        key: _formKey,
-        child: ListView(
-          primary: false,
-          physics: BouncingScrollPhysics(),
-          shrinkWrap: true,
-          children: <Widget>[
-//            /* Login Hint Text*/
-//            Padding(
-//              padding: const EdgeInsets.only(bottom: 8.0),
-//              child: Text(
-//                localeStr.hintTitleLogin,
-//                textAlign: TextAlign.left,
-//                style: TextStyle(color: themeColor.defaultHintColor),
-//              ),
-//            ),
-            new CustomizeFieldWidget(
-              key: _accountFieldKey,
-              fieldType: FieldType.Account,
-              persistHint: false,
-              hint: localeStr.hintAccountInput,
-              prefixText: localeStr.hintAccount,
-              prefixTextSize: FontSize.SUBTITLE.value,
-              maxInputLength: InputLimit.ACCOUNT_MAX,
-              errorMsg: localeStr.messageInvalidAccount(
-                InputLimit.ACCOUNT_MIN,
-                InputLimit.ACCOUNT_MAX,
-              ),
-              validCondition: (value) => rangeCheck(
-                  value: value.length,
-                  min: InputLimit.ACCOUNT_MIN,
-                  max: InputLimit.ACCOUNT_MAX),
-            ),
-            SizedBox(height: 12.0),
-            new CustomizeFieldWidget(
-              key: _pwdFieldKey,
-              fieldType: FieldType.Password,
-              persistHint: false,
-              hint: localeStr.hintPasswordInput,
-              prefixText: localeStr.hintAccountPassword,
-              prefixTextSize: FontSize.SUBTITLE.value,
-              maxInputLength: InputLimit.PASSWORD_MAX,
-              errorMsg: localeStr.messageInvalidPassword(
-                InputLimit.PASSWORD_MIN_OLD,
-                InputLimit.PASSWORD_MAX,
-              ),
-              validCondition: (value) => rangeCheck(
-                  value: value.length,
-                  min: InputLimit.PASSWORD_MIN_OLD,
-                  max: InputLimit.PASSWORD_MAX),
-            ),
-            SizedBox(height: 8.0),
-            /* Login CheckBox */
-            CheckboxWidget(
-              key: _fastKey,
-              label: localeStr.btnFastLogin,
-              initValue: _hiveForm?.fastLogin ?? false,
-            ),
-          ],
-        ),
-      ),
     );
   }
 
@@ -379,7 +549,7 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  localeStr.btnRegister,
+                  localeStr.pageTitleRegisterFree,
                   style: TextStyle(
                     fontSize: FontSize.SUBTITLE.value,
                     color: Color(0xfffec017),
@@ -402,41 +572,41 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
             ],
           ),
         ),
-        SizedBox(width: 6.0),
-        GestureDetector(
-          onTap: () {
-            // clear text field focus
-            FocusScope.of(context).unfocus();
-            RouterNavigate.navigateToPage(RoutePage.service);
-          },
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  localeStr.btnResetPassword,
-                  style: TextStyle(
-                    fontSize: FontSize.SUBTITLE.value,
-                    color: Color(0xff33b6e4),
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              Container(
-                constraints: BoxConstraints.tight(Size(24, 24)),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0xff33b6e4),
-                ),
-                child: Icon(
-                  const IconData(0xf128, fontFamily: 'FontAwesome'),
-                  color: Colors.white,
-                  size: 16.0,
-                ),
-              )
-            ],
-          ),
-        ),
+        // SizedBox(width: 6.0),
+        // GestureDetector(
+        //   onTap: () {
+        //     // clear text field focus
+        //     FocusScope.of(context).unfocus();
+        //     RouterNavigate.navigateToPage(RoutePage.service);
+        //   },
+        //   child: Row(
+        //     children: [
+        //       Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: Text(
+        //           localeStr.btnResetPassword,
+        //           style: TextStyle(
+        //             fontSize: FontSize.SUBTITLE.value,
+        //             color: Color(0xff33b6e4),
+        //             decoration: TextDecoration.underline,
+        //           ),
+        //         ),
+        //       ),
+        //       Container(
+        //         constraints: BoxConstraints.tight(Size(24, 24)),
+        //         decoration: BoxDecoration(
+        //           shape: BoxShape.circle,
+        //           color: Color(0xff33b6e4),
+        //         ),
+        //         child: Icon(
+        //           const IconData(0xf128, fontFamily: 'FontAwesome'),
+        //           color: Colors.white,
+        //           size: 16.0,
+        //         ),
+        //       )
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }

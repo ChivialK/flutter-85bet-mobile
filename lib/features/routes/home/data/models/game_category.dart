@@ -44,64 +44,50 @@ class GameCategory extends Vnum<HomeCategoryInfo> {
   /// GAMES
   static const GameCategory casino = const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.CASINO,
-    imageUrl: 'images/phone_nav_casino_Color1.png',
+    // imageUrl: 'images/phone_nav_casino_Color1.png',
   ));
   static const GameCategory slot = const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.SLOT,
-    imageUrl: 'images/phone_nav_slot_Color1.png',
+    // imageUrl: 'images/phone_nav_slot_Color1.png',
   ));
   static const GameCategory sport = const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.SPORT,
-    imageUrl: 'images/phone_nav_sport_Color1.png',
+    // imageUrl: 'images/phone_nav_sport_Color1.png',
   ));
   static const GameCategory fish = const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.FISH,
-    imageUrl: 'images/phone_nav_fish_Color1.png',
+    // imageUrl: 'images/phone_nav_fish_Color1.png',
   ));
   static const GameCategory lottery =
       const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.LOTTERY,
-    imageUrl: 'images/phone_nav_lottery_Color1.png',
+    // imageUrl: 'images/phone_nav_lottery_Color1.png',
   ));
   static const GameCategory card = const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.CARD,
-    imageUrl: 'images/phone_nav_card_Color1.png',
+    // imageUrl: 'images/phone_nav_card_Color1.png',
   ));
   static const GameCategory gift = const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.GIFT,
-    imageUrl: 'images/index/tbico_gift.png',
+    // imageUrl: 'images/index/tbico_gift.png',
   ));
   static const GameCategory cockfighting =
       const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.COCKFIGHTING,
-    imageUrl: 'images/phone_nav_cockfighting_Color1.png',
-  ));
-
-  /// MOVIES
-  static const GameCategory egMovie =
-      const GameCategory.define(HomeCategoryInfo(
-    id: HomeCategoryEnum.EG_MOVIE,
-    imageUrl: 'images/index/tbico_movie.png',
-    pageType: GamePageType.MovieEg,
-  ));
-  static const GameCategory newMovie =
-      const GameCategory.define(HomeCategoryInfo(
-    id: HomeCategoryEnum.NEW_MOVIE,
-    imageUrl: 'images/index/tbico_movie.png',
-    pageType: GamePageType.MovieNew,
+    // imageUrl: 'images/phone_nav_cockfighting_Color1.png',
   ));
 
   /// USER
   static const GameCategory recommend =
       const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.RECOMMEND,
-    imageUrl: 'images/index/tbico_recommend.png',
+    // imageUrl: 'images/index/tbico_recommend.png',
     pageType: GamePageType.Recommend,
   ));
   static const GameCategory favorite =
       const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.FAVORITE,
-    imageUrl: 'images/index/tbico_love.png',
+    // imageUrl: 'images/index/tbico_love.png',
     pageType: GamePageType.Favorite,
   ));
 
@@ -111,23 +97,11 @@ class GameCategory extends Vnum<HomeCategoryInfo> {
     imageUrl: '',
     pageType: GamePageType.Promo,
   ));
-  static const GameCategory movieWebsite =
-      const GameCategory.define(HomeCategoryInfo(
-    id: HomeCategoryEnum.MOVIE_WEBSITE,
-    imageUrl: '',
-    pageType: GamePageType.MovieWebsite,
-  ));
   static const GameCategory website =
       const GameCategory.define(HomeCategoryInfo(
     id: HomeCategoryEnum.WEBSITE,
     imageUrl: '',
     pageType: GamePageType.Website,
-  ));
-  static const GameCategory about = const GameCategory.define(HomeCategoryInfo(
-    id: HomeCategoryEnum.ABOUT,
-    imageUrl: '',
-    assetPath: Res.icon_about,
-    pageType: GamePageType.About,
   ));
   static const GameCategory undefined =
       const GameCategory.define(HomeCategoryInfo(
@@ -162,17 +136,17 @@ extension HomeCategoryExtension on HomeCategoryInfo {
   String get label {
     switch (id) {
       case HomeCategoryEnum.CASINO:
-        return localeStr.gameCategoryCasinoFull;
+        return localeStr.gameCategoryCasino;
       case HomeCategoryEnum.SLOT:
-        return localeStr.gameCategorySlotFull;
+        return localeStr.gameCategorySlot;
       case HomeCategoryEnum.SPORT:
-        return localeStr.gameCategorySportFull;
+        return localeStr.gameCategorySport;
       case HomeCategoryEnum.FISH:
-        return localeStr.gameCategoryFishFull;
+        return localeStr.gameCategoryFish;
       case HomeCategoryEnum.LOTTERY:
-        return localeStr.gameCategoryLotteryFull;
+        return localeStr.gameCategoryLottery;
       case HomeCategoryEnum.CARD:
-        return localeStr.gameCategoryCardFull;
+        return localeStr.gameCategoryCard;
       case HomeCategoryEnum.GIFT:
         return localeStr.gameCategoryGift;
       case HomeCategoryEnum.COCKFIGHTING:
@@ -191,6 +165,39 @@ extension HomeCategoryExtension on HomeCategoryInfo {
         return localeStr.gameCategoryAbout;
       default:
         return '???';
+    }
+  }
+
+  IconData get iconData {
+    switch (id) {
+      case HomeCategoryEnum.CASINO:
+        return IconCode.tabGameCasino;
+      case HomeCategoryEnum.SLOT:
+        return IconCode.tabGameSlot;
+      case HomeCategoryEnum.SPORT:
+        return IconCode.tabGameSport;
+      case HomeCategoryEnum.FISH:
+        return IconCode.tabGameFish;
+      case HomeCategoryEnum.LOTTERY:
+        return IconCode.tabGameLottery;
+      case HomeCategoryEnum.CARD:
+        return IconCode.tabGameCard;
+      case HomeCategoryEnum.GIFT:
+        return IconCode.tabGameGift;
+      case HomeCategoryEnum.COCKFIGHTING:
+        return IconCode.tabGameCockFighting;
+      case HomeCategoryEnum.RECOMMEND:
+        return IconCode.tabGameRec;
+      case HomeCategoryEnum.FAVORITE:
+        return IconCode.tabGameFav;
+      case HomeCategoryEnum.PROMO:
+        return IconCode.navPromo;
+      case HomeCategoryEnum.MOVIE_WEBSITE:
+        return IconCode.tabMovieWebsite;
+      case HomeCategoryEnum.WEBSITE:
+        return IconCode.tabWebsite;
+      default:
+        return IconCode.tabUnknown;
     }
   }
 }

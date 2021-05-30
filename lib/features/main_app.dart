@@ -83,12 +83,12 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
             ],
             supportedLocales: S.delegate.supportedLocales,
             localeResolutionCallback: (deviceLocale, supportedLocales) {
-              return Locale.fromSubtags(languageCode: Global.localeCode);
+              return Locale.fromSubtags(languageCode: Global.lang.code);
             },
             localeListResolutionCallback: (deviceLocales, supportedLocales) {
               debugPrint('device locales: $deviceLocales');
               debugPrint('supported locales: $supportedLocales');
-              return Locale.fromSubtags(languageCode: Global.localeCode);
+              return Locale.fromSubtags(languageCode: Global.lang.code);
             },
             theme: ThemeInterface.theme.data,
             // builder: ExtendedNavigator<ScreenRouter>(router: ScreenRouter()),

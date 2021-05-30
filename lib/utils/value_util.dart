@@ -10,7 +10,7 @@ bool rangeCheck({@required num value, @required num min, num max = 0}) {
     return value >= min;
 }
 
-final String creditSymbol = 'VDK ';
+final String creditSymbol = 'NTD ';
 final NumberFormat numFormat = new NumberFormat("###0.00", "en_US");
 final NumberFormat creditFormat =
     new NumberFormat("$creditSymbol#,##0.00", "en_US");

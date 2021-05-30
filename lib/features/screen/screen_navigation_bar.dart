@@ -30,13 +30,20 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
 
   void _itemTapped(int index, bool hasUser) {
     var item = _tabs[index];
-    debugPrint('tapped item: ${item.value}');
+    debugPrint('tapped item: ${item.value.routeId}');
     if (item.value.route == null) {
       callToastInfo(localeStr.workInProgress);
     } else {
       var value = item.value;
       if (value.isUserOnly && !hasUser) {
         RouterNavigate.navigateToPage(RoutePage.login);
+      } else if (item.value.id == RouteEnum.SERVICE_WEB) {
+        RouterNavigate.navigateToPage(
+          value.route,
+          arg: WebRouteArguments(
+            startUrl: Global.CS_SERVICE_URL,
+          ),
+        );
       } else {
         RouterNavigate.navigateToPage(value.route);
       }
@@ -99,7 +106,7 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
 
   @override
   void initState() {
-    _locale = Global.localeCode;
+    _locale = Global.lang.code;
     super.initState();
   }
 
@@ -129,9 +136,9 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
           stream: _store.loginStateStream,
           initialData: false,
           builder: (context, snapshot) {
-            if (_barWidget != null && _locale != Global.localeCode) {
+            if (_barWidget != null && _locale != Global.lang.code) {
               _barWidget = _buildWidget(snapshot.data);
-              _locale = Global.localeCode;
+              _locale = Global.lang.code;
             }
             _barWidget ??= _buildWidget(snapshot.data);
             return _barWidget;

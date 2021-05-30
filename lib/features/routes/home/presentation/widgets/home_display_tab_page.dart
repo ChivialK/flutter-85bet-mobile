@@ -1,5 +1,7 @@
 import 'package:after_layout/after_layout.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_85bet_mobile/core/error/exceptions.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/loading_widget.dart';
 
@@ -7,8 +9,9 @@ import '../../data/entity/game_entity.dart';
 import '../../data/form/platform_game_form.dart';
 import '../../data/models/game_platform.dart';
 import '../state/home_store.dart';
-import 'grid_item_game.dart';
-import 'grid_item_platform.dart';
+import 'grid_view_games.dart';
+import 'grid_view_platforms.dart';
+import 'home_search_widget.dart';
 import 'home_store_inherit_widget.dart';
 
 ///
@@ -19,13 +22,15 @@ import 'home_store_inherit_widget.dart';
 class HomeDisplayTabPage extends StatefulWidget {
   final String category;
   final double pageMaxWidth;
+  final double itemLabelWidthFactor;
   final bool addSearchListener;
   final bool addPlugin;
 
   HomeDisplayTabPage({
     Key key,
-    @required this.pageMaxWidth,
     @required this.category,
+    @required this.pageMaxWidth,
+    @required this.itemLabelWidthFactor,
     this.addSearchListener = false,
     this.addPlugin = false,
   }) : super(key: key);
@@ -38,28 +43,15 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
     with AfterLayoutMixin {
   final String _tag = 'HomeDisplayTabsPage';
   final bool _isIos = Global.device.isIos;
-  final int _platformsPerRow = 2;
-  final int _gamesPerRow = 2;
-  final FontSize _gFontSize = FontSize.MESSAGE;
 
   HomeStore _store;
   List<GamePlatformEntity> _platforms;
-
-  Widget _grid;
-  Widget _gamesView;
-  bool _isGameGrid = false;
-  int _plusGrid;
-
-  double _platformGridRatio;
-  double _platformItemSize;
-
-  double _gameItemSize;
-  double _gBaseTextSize;
-  int _gAvailableCharacters;
-
-  GamePlatformEntity _currentPlatform;
   List<GameEntity> _games;
-  bool _twoLineText = true;
+
+  Widget _contentWidget;
+  Widget _gamesGrid;
+  bool _isGameGrid = false;
+  GamePlatformEntity _currentPlatform;
 
   String _searched;
   GamePlatformEntity _searchPlatform;
@@ -79,36 +71,43 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
   /// Pass in a [itemData] on grid item tap or back button pressed.
   /// [itemData] should be [GamePlatformEntity] or [GameEntity]
   /// else throw [UnknownConditionException].
-  String _onItemTap(dynamic itemData, {bool search = false}) {
-    debugPrint('onItemTap page: $itemData');
+  void _onItemTap(dynamic itemData, {bool fromSearch = false}) {
     if (itemData is GamePlatformEntity) {
-      if (search)
-        _setGridContent(_buildGamesView(itemData));
-      else if (_isGameGrid) {
-//        debugPrint('clicked back');
+      debugPrint(
+          'clicked platform: ${itemData.category}, from search: $fromSearch');
+      if (fromSearch) {
+        if (itemData.isGameHall == false) {
+          _setGridContent(_buildGamesView(itemData));
+        } else {
+          _openGame(itemData.gameUrl);
+        }
+      } else if (_isGameGrid) {
+        // if current is showing games grid, change to platforms grid
         _setGridContent(_createPlatformGrid());
       } else if (itemData.isGameHall == false) {
-//        debugPrint('clicked platform: ${itemData.className}, data: $itemData');
+        // if the platform is not defined as game hall, show games grid
         _setGridContent(_buildGamesView(itemData));
       } else {
-        debugPrint('clicked game platform: ${itemData.gameUrl}');
-        if (itemData.gameUrl == 'funky/lottery/0')
+        debugPrint('game-hall (platform) url: ${itemData.gameUrl}');
+        if (itemData.gameUrl == 'funky/lottery/0') {
           _setGridContent(_buildGamesView(itemData));
-        else
-          return itemData.gameUrl;
+        } else if (itemData.gameUrl.isNotEmpty) {
+          _openGame(itemData.gameUrl);
+        }
       }
     } else if (itemData is GameEntity) {
       debugPrint('clicked game: ${itemData.gameUrl}');
-      return itemData.gameUrl;
+      if (itemData.gameUrl.isNotEmpty) {
+        _openGame(itemData.gameUrl);
+      }
     } else {
-      MyLogger.warn(msg: 'tapped item unknown, data: $itemData', tag: _tag);
+      MyLogger.warn(msg: 'grid item unknown, data: $itemData', tag: _tag);
     }
-    return '';
   }
 
   void _setGridContent(Widget widget) {
     setState(() {
-      _grid = widget;
+      _contentWidget = widget;
     });
   }
 
@@ -118,26 +117,11 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
     else if (_store != null) _store.getGameUrl(url);
   }
 
-  @override
-  void initState() {
-    _plusGrid = (Global.device.widthScale > 2.0)
-        ? 2
-        : (Global.device.widthScale > 1.5) ? 1 : 0;
-
-    _platformItemSize =
-        widget.pageMaxWidth / (_platformsPerRow + _plusGrid) * 1.05;
-    _platformGridRatio = _platformItemSize / 128 / Global.device.widthScale;
-    debugPrint(
-        'platform item size: $_platformItemSize, ratio: $_platformGridRatio');
-//
-    _gameItemSize = widget.pageMaxWidth / (_gamesPerRow + _plusGrid);
-//    gameGridRatio = gameItemSize / 115 / Global.device.widthScale;
-//    debugPrint('game item size: $gameItemSize, ratio: $gameGridRatio');
-
-    _gBaseTextSize = (_isIos) ? _gFontSize.value + 2 : _gFontSize.value;
-    _gAvailableCharacters = (_gameItemSize * 0.9 / _gBaseTextSize).floor();
-    debugPrint('game item available characters: $_gAvailableCharacters');
-    super.initState();
+  void _setFavorite(dynamic entity, bool favor) {
+    if (entity is GamePlatformEntity || entity is GameEntity) {
+      debugPrint('set ${entity.id} favor to $favor');
+      _store.postFavorite(entity: entity, favorite: favor);
+    }
   }
 
   @override
@@ -159,38 +143,35 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
       return Center(
         child: WarningDisplay(
           message:
-              Failure.internal(FailureCode(type: FailureType.HOME, code: 10))
-                  .message,
+              Failure.internal(FailureCode(type: FailureType.HOME)).message,
         ),
       );
     }
 
     _platforms ??= _store.homePlatformMap[widget.category] ?? [];
-    _grid ??= _createPlatformGrid();
-    return _grid;
+    _contentWidget ??= _createPlatformGrid();
+    return _contentWidget;
   }
 
   /// Main layer to show platforms under category
   Widget _createPlatformGrid() {
     _isGameGrid = false;
-    _store.setGameTitle(clear: true);
-    return GridView.count(
-      physics: BouncingScrollPhysics(),
-      padding: const EdgeInsets.only(bottom: 2.0),
-      crossAxisCount: _platformsPerRow + _plusGrid,
-      childAspectRatio: _platformGridRatio + (_plusGrid * 0.075),
-      mainAxisSpacing: 0.0,
-      shrinkWrap: true,
-      children: _platforms.map((entity) => _createGridItem(entity)).toList(),
-    );
+    if (widget.addSearchListener) _store.searchGame(clear: true);
+    return GridViewPlatform(
+        platforms: _platforms,
+        onTap: (entity) => _onItemTap(entity),
+        addPlugin: widget.addPlugin,
+        onFavorTap: (entity, isFavorite) => _setFavorite(entity, isFavorite),
+        pageMaxWidth: widget.pageMaxWidth,
+        labelWidthFactor: widget.itemLabelWidthFactor,
+        isIos: _isIos);
   }
 
   /// Second Layer to show games under platform
   Widget _buildGamesView(GamePlatformEntity platform) {
     _isGameGrid = true;
-    _store.setGameTitle(platform: platform);
     if (platform != _currentPlatform) {
-      _gamesView = _createGameListListener(
+      _gamesGrid = _createGameListListener(
         _createForm(platform),
         _getMapKey(platform),
       );
@@ -199,13 +180,13 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
     return Stack(
       children: [
         // game grid view
-        _gamesView,
+        _gamesGrid,
         // action button to show platform grid
         Container(
           alignment: Alignment.bottomRight,
-          padding: EdgeInsets.only(right: 8.0, bottom: 8.0),
+          padding: const EdgeInsets.only(right: 8.0, bottom: 8.0),
           child: FloatingActionButton(
-            backgroundColor: Colors.black54,
+            backgroundColor: Colors.white24,
             mini: true,
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             child: FittedBox(
@@ -249,84 +230,50 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
 
   Widget _createGamesGrid(List<GameEntity> list) {
     _games = List.from(list);
-    _twoLineText =
-        _games.any((element) => element.isLongText(_gAvailableCharacters));
-    debugPrint(
-        '${_currentPlatform.className} game grid two line text: $_twoLineText');
-    return StreamBuilder<String>(
-        stream: _store.searchGameStream,
-        initialData: '',
-        builder: (context, snapshot) {
-          String searchKey = snapshot?.data ?? '';
-          return new GridView.count(
-            physics: BouncingScrollPhysics(),
-            crossAxisCount: _gamesPerRow + _plusGrid,
-            childAspectRatio: 1.0,
-            mainAxisSpacing: 0.0,
-            shrinkWrap: true,
-            children: (searchKey.isEmpty)
-                ? _games.map((entity) => _createGridItem(entity)).toList()
-                : _games
-                    .where((entity) => entity.cname
-                        .toLowerCase()
-                        .contains(searchKey.toLowerCase()))
-                    .map((entity) => _createGridItem(entity))
-                    .toList(),
-          );
-        });
-  }
-
-  /// Create grid item for data [entity]
-  /// Returns a [Stack] widget with image and name
-  Widget _createGridItem(dynamic entity) {
-    String label;
-    String imgUrl;
-    double textHeight = _gFontSize.value;
-
-    if (entity is GameEntity) {
-      label = entity.cname;
-      imgUrl = entity.imageUrl;
-//      debugPrint('game: $label, img:$imgUrl');
-    } else if (entity is GamePlatformEntity) {
-      label = entity.label;
-      imgUrl = entity.imageUrl;
-//      debugPrint('platform: $label, img:$imgUrl');
+    if (widget.addSearchListener) {
+      return ListView(
+        primary: true,
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        children: [
+          HomeSearchWidget(onSearch: (input) {
+            _store.searchGame(searchKey: input);
+          }),
+          StreamBuilder<String>(
+              stream: _store.searchGameStream,
+              initialData: '',
+              builder: (context, snapshot) {
+                String searchKey = snapshot?.data ?? '';
+                return GridViewGames(
+                  pageMaxWidth: widget.pageMaxWidth,
+                  labelWidthFactor: widget.itemLabelWidthFactor,
+                  isIos: _isIos,
+                  games: (searchKey.isEmpty)
+                      ? _games
+                      : _games
+                          .where((entity) => entity.cname
+                              .toLowerCase()
+                              .contains(searchKey.toLowerCase()))
+                          .toList(),
+                  onTap: (entity) => _onItemTap(entity),
+                  addPlugin: widget.addPlugin,
+                  onFavorTap: (entity, isFavorite) =>
+                      _setFavorite(entity, isFavorite),
+                );
+              }),
+        ],
+      );
     } else {
-      MyLogger.warn(msg: 'Unknown Grid item: $entity', tag: _tag);
+      return GridViewGames(
+        pageMaxWidth: widget.pageMaxWidth,
+        labelWidthFactor: widget.itemLabelWidthFactor,
+        isIos: _isIos,
+        games: _games,
+        onTap: (entity) => _onItemTap(entity),
+        addPlugin: widget.addPlugin,
+        onFavorTap: (entity, isFavorite) => _setFavorite(entity, isFavorite),
+      );
     }
-
-    return Container(
-      padding:
-          (!_isGameGrid) ? const EdgeInsets.only(top: 6.0) : EdgeInsets.zero,
-      constraints: (!_isGameGrid)
-          ? BoxConstraints.tight(Size(
-              _platformItemSize,
-              _platformItemSize + textHeight,
-            ))
-          : BoxConstraints.expand(),
-      child: GestureDetector(
-        onTap: () {
-          String url = _onItemTap(entity);
-          if (url.isNotEmpty) _openGame(url);
-        },
-        child: (!_isGameGrid)
-            ? GridItemPlatform(
-                imgUrl: imgUrl,
-                label: label,
-                itemSize: _platformItemSize,
-                textHeight: textHeight,
-                isIos: _isIos,
-              )
-            : GridItemGame(
-                imgUrl: imgUrl,
-                label: label,
-                itemSize: _gameItemSize,
-                fontSize: textHeight,
-                twoLineText: _twoLineText,
-                isIos: _isIos,
-              ),
-      ),
-    );
   }
 
   @override
@@ -352,8 +299,8 @@ class HomeDisplayTabPageState extends State<HomeDisplayTabPage>
     );
     debugPrint('search platform: $_searchPlatform');
     if (_searchPlatform != null) {
-      _onItemTap(_searchPlatform, search: true);
-      _store.clearSearch();
+      _onItemTap(_searchPlatform, fromSearch: true);
+      _store.clearPlatformSearch();
     }
   }
 }

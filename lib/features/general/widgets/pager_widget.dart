@@ -25,6 +25,9 @@ class PagerWidgetState extends State<PagerWidget> {
   double maxScreenWidth;
   double btnSize = 30.0;
 
+  TextStyle _textStyle = TextStyle(
+      fontSize: FontSize.SUBTITLE.value, color: themeColor.secondaryTextColor1);
+
   set updateCurrentPage(int page) {
     if (currentPage != page)
       setState(() {
@@ -78,7 +81,7 @@ class PagerWidgetState extends State<PagerWidget> {
                     onPressed: (widget.onAction == null || currentPage == 1)
                         ? null
                         : () => widget.onAction(currentPage - 1),
-                    child: Text('<<'),
+                    child: Text('<<', style: _textStyle),
                   ),
                 ),
               ),
@@ -119,10 +122,11 @@ class PagerWidgetState extends State<PagerWidget> {
                               : () => widget.onAction(page),
                           child: Text(
                             '$page',
-                            style: TextStyle(
-                                color: (currentPage == page)
-                                    ? themeColor.secondaryTextColor1
-                                    : themeColor.defaultTextColor),
+                            style: _textStyle,
+                            // style: TextStyle(
+                            //     color: (currentPage == page)
+                            //         ? themeColor.secondaryTextColor1
+                            //         : themeColor.defaultTextColor),
                           ),
                         ),
                       ),
@@ -155,7 +159,7 @@ class PagerWidgetState extends State<PagerWidget> {
                         (widget.onAction == null || currentPage == totalPage)
                             ? null
                             : () => widget.onAction(currentPage + 1),
-                    child: Text('>>'),
+                    child: Text('>>', style: _textStyle),
                   ),
                 ),
               ),

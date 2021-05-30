@@ -18,7 +18,7 @@ class HomeDisplayBanner extends StatelessWidget {
   final List<BannerEntity> banners;
   final OnBannerClicked onBannerClicked;
 
-  HomeDisplayBanner({this.banners, this.onBannerClicked});
+  HomeDisplayBanner({this.banners, @required this.onBannerClicked});
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +30,11 @@ class HomeDisplayBanner extends StatelessWidget {
         alignment: Alignment.center,
         margin: const EdgeInsets.only(bottom: 34.0),
         child: WarningDisplay(
-          message: localeStr.messageErrorNoServerConnection,
+          message:
+              (banners == null) ? localeStr.messageErrorNoServerConnection : '',
           widthFactor: 1,
           largerText: true,
-          highlight: true,
+          highlight: banners == null,
         ),
       );
     }
@@ -49,12 +50,15 @@ class HomeDisplayBanner extends StatelessWidget {
                 fit: BoxFit.fill,
               ))
           .toList(),
-      showIndicator: true,
-      indicatorSize: 48.0,
-      indicatorColor: themeColor.defaultMarqueeBarColor,
-      indicatorPadding: const EdgeInsets.only(bottom: 12.0),
-      animationDuration: Duration(milliseconds: 1000),
-      autoplayDuration: Duration(seconds: 6),
+      showIndicator: false,
+//      dotSize: 3.0,
+//      dotSpacing: 16.0,
+//      dotColor: themeColor.defaultAccentColor,
+//      indicatorBgPadding: 4.0,
+//      dotBgColor: Colors.white12,
+      borderRadius: false,
+      animationDuration: Duration(milliseconds: 2000),
+      autoplayDuration: Duration(seconds: 10),
       jumpOnEndPage: true,
       onImageTap: (index) {
         String url = bannerUrls[index];

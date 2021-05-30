@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_dropdown_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
 
 import '../../data/form/deposit_form.dart';
 import '../../data/model/deposit_info.dart';
@@ -49,6 +50,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
   final double _titleWidthFactor = 0.35;
   double _valueTextPadding;
 
+  List<DepositInfo> _targetBanks;
   List<String> _bankNames;
   List<int> _bankIds;
 
@@ -58,6 +60,11 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
   int _promoSelected = -1;
   int _methodSelected = 1;
   int _amountVnd = 0;
+
+  bool _showNameError = false;
+  bool _showAccountError = false;
+  bool _showAmountError = false;
+  bool _showRemarkError = false;
 
   void _validateForm() {
     final form = _formKey.currentState;
@@ -91,24 +98,41 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
   }
 
   void _updateSelected() {
-    _localData = widget.dataList.firstWhere(
-        (element) => element.bankAccountId == _selectedBankInfo.bankAccountId);
+    if (widget.infoList != null && widget.infoList.isNotEmpty) {
+      _selectedBankInfo ??= widget.infoList.first;
+    } else {
+      _selectedBankInfo = DepositInfo(hasBankInfo: false);
+    }
+    // debugPrint('available local payments: ${widget.dataList}');
+    if (_selectedBankInfo != null && _selectedBankInfo.hasBankInfo) {
+      _localData = widget.dataList.firstWhere(
+        (element) => element.bankAccountId == _selectedBankInfo.bankAccountId,
+        orElse: () => null,
+      );
+    } else {
+      _localData = widget.dataList.first;
+    }
+    debugPrint('selected bank info: $_selectedBankInfo');
+    debugPrint('selected local payment: $_localData');
   }
 
   void _generateBankDataList() {
     debugPrint('bank map: ${widget.bankMap}');
-    _bankNames = widget.bankMap.values.toList()..sort();
-    debugPrint('bank names sorted: $_bankNames\n\n');
-    _bankIds = _bankNames
-        .map((value) =>
-            widget.bankMap.entries
-                .firstWhere((element) => element.value == value,
-                    orElse: () => null)
-                ?.key ??
-            -1)
-        .toList()
-          ..removeWhere((element) => element == -1);
-    debugPrint('bank ids sorted: $_bankIds\n\n');
+    if (widget.bankMap != null && widget.bankMap.isNotEmpty) {
+      _bankNames = widget.bankMap.values.toList()..sort();
+      // debugPrint('bank names sorted: $_bankNames\n');
+      _bankIds = _bankNames
+          .map((value) =>
+              widget.bankMap.entries
+                  .firstWhere((element) => element.value == value,
+                      orElse: () => null)
+                  ?.key ??
+              -1)
+          .toList()
+            ..removeWhere((element) => element == -1);
+      // debugPrint('bank ids sorted: $_bankIds\n');
+      _bankSelected = _bankIds.first;
+    }
   }
 
   @override
@@ -117,16 +141,31 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
             _titleWidthFactor -
         ThemeInterface.minusSize;
 
-    _selectedBankInfo = widget.infoList.first;
-    _bankSelected = widget.bankMap.keys.first;
     _generateBankDataList();
     _updateSelected();
     super.initState();
+    if (widget.infoList != null && widget.infoList.isNotEmpty) {
+      _targetBanks = widget.infoList;
+    } else {
+      _targetBanks = widget.dataList.map((e) {
+        final PaymentTypeLocalData data = e as PaymentTypeLocalData;
+        return DepositInfo(
+          bankAccountId: data.bankAccountId,
+          bankAccountName: data.type,
+          bankAccountNo: data.bankAccountNo,
+          bankCode: data.bankIndex.toString(),
+          hasBankInfo: false,
+        );
+      }).toList();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (widget.dataList == null || widget.dataList.isEmpty) {
+    if (widget.dataList == null ||
+        widget.dataList.isEmpty ||
+        _selectedBankInfo == null ||
+        _localData == null) {
       return Center(
         child: WarningDisplay(
           message: Failure.server().message,
@@ -157,10 +196,9 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
               prefixTextSize: FontSize.SUBTITLE.value,
               titleWidthFactor: _titleWidthFactor,
               horizontalInset: _fieldInset,
-              optionValues:
-                  widget.infoList.map((item) => item.bankAccountId).toList(),
+              optionValues: _targetBanks,
               optionStrings:
-                  widget.infoList.map((item) => item.bankAccountName).toList(),
+                  _targetBanks.map((e) => e.bankAccountName).toList(),
               changeNotify: (data) {
                 // clear text field focus
                 FocusScope.of(context).unfocus();
@@ -168,8 +206,7 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                 if (_selectedBankInfo == data) return;
                 setState(() {
                   _selectedBankInfo = data;
-                  _localData = widget.dataList.firstWhere((element) =>
-                      element.bankAccountId == _selectedBankInfo.bankAccountId);
+                  _updateSelected();
                 });
               },
             ),
@@ -181,40 +218,48 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
               padding: const EdgeInsets.only(top: 12.0),
               child: DottedBorder(
                 dashPattern: const <double>[4, 2],
-                color: const Color.fromRGBO(206, 0, 0, 0.2),
+                color: themeColor.defaultDividerColor,
                 padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 0.0),
                 child: Center(
                   child: RichText(
                     textAlign: TextAlign.center,
-                    text: TextSpan(
-                      style: TextStyle(
-                        color: themeColor.hintDarkRed,
-                        fontSize: FontSize.MESSAGE.value,
-                        fontWeight: FontWeight.w500,
-                        height: 1.5,
-                      ),
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: '${localeStr.bankcardViewTitleOwner}:\r\r'),
-                        TextSpan(
-                          text: '${_selectedBankInfo.accountName}\n',
-                          style:
-                              TextStyle(color: themeColor.hintHighlightDarkRed),
-                        ),
-                        TextSpan(
-                            text:
-                                '${localeStr.bankcardViewTitleCardNumber}:\r\r'),
-                        TextSpan(
-                          text: '${_selectedBankInfo.bankAccountNo}\n',
-                          style:
-                              TextStyle(color: themeColor.hintHighlightDarkRed),
-                        ),
-                        TextSpan(
-                            text: '${localeStr.bankcardViewTitleBank}:\r\r'),
-                        TextSpan(
-                            text: '${_selectedBankInfo.bankAccountName}\n'),
-                      ],
-                    ),
+                    text: (!_selectedBankInfo.hasBankInfo)
+                        ? TextSpan(
+                            text: localeStr.depositHintTextAccount,
+                            style: TextStyle(color: themeColor.hintHighlight),
+                          )
+                        : TextSpan(
+                            style: TextStyle(
+                              color: themeColor.defaultDividerColor,
+                              fontSize: FontSize.MESSAGE.value,
+                              fontWeight: FontWeight.w500,
+                              height: 1.5,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text:
+                                      '${localeStr.bankcardViewTitleOwner}:\r\r'),
+                              TextSpan(
+                                text: '${_selectedBankInfo.accountName}\n',
+                                style:
+                                    TextStyle(color: themeColor.hintHyperLink),
+                              ),
+                              TextSpan(
+                                  text:
+                                      '${localeStr.bankcardViewTitleCardNumber}:\r\r'),
+                              TextSpan(
+                                text: '${_selectedBankInfo.bankAccountNo}\n',
+                                style:
+                                    TextStyle(color: themeColor.hintHyperLink),
+                              ),
+                              TextSpan(
+                                  text:
+                                      '${localeStr.bankcardViewTitleBank}:\r\r'),
+                              TextSpan(
+                                  text:
+                                      '${_selectedBankInfo.bankAccountName}\n'),
+                            ],
+                          ),
                   ),
                 ),
               ),
@@ -289,21 +334,43 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
             ///
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: new CustomizeFieldWidget(
-                key: _nameFieldKey,
-                hint: localeStr.depositPaymentEditTitleNameHint,
-                persistHint: false,
+              child: new CustomizeTitledContainer(
                 prefixText: localeStr.depositPaymentEditTitleName,
                 prefixTextSize: FontSize.SUBTITLE.value,
+                backgroundColor: themeColor.fieldPrefixBgColor,
                 titleWidthFactor: _titleWidthFactor,
                 horizontalInset: _fieldInset,
-                maxInputLength: InputLimit.NAME_MAX,
-                errorMsg: localeStr.messageInvalidDepositName,
-                validCondition: (value) => rangeCheck(
-                    value: value.length,
-                    min: InputLimit.NAME_MIN,
-                    max: InputLimit.NAME_MAX),
+                child: new CustomizeFieldWidget(
+                  key: _nameFieldKey,
+                  hint: localeStr.depositPaymentEditTitleNameHint,
+                  persistHint: false,
+                  padding: const EdgeInsets.symmetric(vertical: 0.0),
+                  maxInputLength: InputLimit.NAME_MAX,
+                  onInputChanged: (input) {
+                    setState(() {
+                      _showNameError = !rangeCheck(
+                          value: input.length,
+                          min: InputLimit.NAME_MIN,
+                          max: InputLimit.NAME_MAX);
+                    });
+                  },
+                ),
               ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: _valueTextPadding),
+                  child: Visibility(
+                    visible: _showNameError,
+                    child: Text(
+                      localeStr.messageInvalidDepositName,
+                      style: TextStyle(color: themeColor.defaultErrorColor),
+                    ),
+                  ),
+                ),
+              ],
             ),
 
             ///
@@ -311,22 +378,48 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
             ///
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: new CustomizeFieldWidget(
-                key: _accountFieldKey,
-                hint: localeStr.depositPaymentEditTitleAccountHint,
-                persistHint: false,
+              child: new CustomizeTitledContainer(
                 prefixText: localeStr.depositPaymentEditTitleAccount,
                 prefixTextSize: FontSize.SUBTITLE.value,
+                backgroundColor: themeColor.fieldPrefixBgColor,
                 titleWidthFactor: _titleWidthFactor,
                 horizontalInset: _fieldInset,
-                maxInputLength: InputLimit.CARD_MAX,
-                errorMsg: localeStr.messageInvalidCardNumber,
-                validCondition: (value) => rangeCheck(
-                  value: value.length,
-                  min: InputLimit.CARD_MIN,
-                  max: InputLimit.CARD_MAX,
+                child: new CustomizeFieldWidget(
+                  key: _accountFieldKey,
+                  fieldType: FieldType.Numbers,
+                  hint: localeStr.depositPaymentEditTitleAccountHint,
+                  persistHint: false,
+                  padding: const EdgeInsets.symmetric(vertical: 0.0),
+                  maxInputLength: InputLimit.CARD_MAX,
+                  onInputChanged: (input) {
+                    setState(() {
+                      _showAccountError = !rangeCheck(
+                        value: input.length,
+                        min: InputLimit.CARD_MIN,
+                        max: InputLimit.CARD_MAX,
+                      );
+                    });
+                  },
                 ),
               ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: _valueTextPadding),
+                  child: Visibility(
+                    visible: _showAccountError,
+                    child: Text(
+                      localeStr.messageInvalidCardNumber(
+                        InputLimit.CARD_MIN,
+                        InputLimit.CARD_MAX,
+                      ),
+                      style: TextStyle(color: themeColor.defaultErrorColor),
+                    ),
+                  ),
+                ),
+              ],
             ),
 
             ///
@@ -334,44 +427,60 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
             ///
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: new CustomizeFieldWidget(
-                key: _amountFieldKey,
-                fieldType: FieldType.Numbers,
-                hint: localeStr.depositPaymentEditTitleAmountHintRange(
-                  _localData.min?.strToInt ?? 1,
-                  _localData.max.strToInt,
-                ),
-                persistHint: false,
+              child: new CustomizeTitledContainer(
                 prefixText: localeStr.depositPaymentEditTitleAmount,
                 prefixTextSize: FontSize.SUBTITLE.value,
+                backgroundColor: themeColor.fieldPrefixBgColor,
                 titleWidthFactor: _titleWidthFactor,
                 horizontalInset: _fieldInset,
-                maxInputLength: _localData.max.length,
-                errorMsg: localeStr.messageInvalidDepositAmount,
-                validCondition: (value) =>
-                    value.contains('.') == false &&
-                    rangeCheck(
-                      value: (value.isNotEmpty) ? int.parse(value) : 0,
-                      min: _localData.min?.strToInt ?? 1,
-                      max: _localData.max.strToInt,
-                    ),
-                onInputChanged: (value) {
-//                  debugPrint('received field value: $value');
-                  int input = value.strToInt;
-                  setState(() {
-                    _amountVnd = (input > 0) ? input * 1000 : 0;
-                  });
-                },
+                child: new CustomizeFieldWidget(
+                  key: _amountFieldKey,
+                  fieldType: FieldType.Numbers,
+                  hint: localeStr.depositPaymentEditTitleAmountHintRange(
+                    _localData.min?.strToInt ?? 1,
+                    _localData.max.strToInt,
+                  ),
+                  persistHint: false,
+                  padding: const EdgeInsets.symmetric(vertical: 0.0),
+                  maxInputLength: _localData.max.length,
+                  onInputChanged: (input) {
+                    setState(() {
+                      int amt = input.strToInt;
+                      _amountVnd = (amt > 0) ? amt * 1000 : 0;
+                      _showAmountError = input.contains('.') ||
+                          !rangeCheck(
+                            value: (input.isNotEmpty) ? int.parse(input) : 0,
+                            min: _localData.min?.strToInt ?? 1,
+                            max: _localData.max.strToInt,
+                          );
+                    });
+                  },
+                ),
               ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: _valueTextPadding),
+                  child: Visibility(
+                    visible: _showAmountError,
+                    child: Text(
+                      localeStr.messageInvalidDepositAmount,
+                      style: TextStyle(color: themeColor.defaultErrorColor),
+                    ),
+                  ),
+                ),
+              ],
             ),
 
             ///
-            /// VND Amount Hint
+            /// Credit Amount Hint
             ///
             Padding(
               padding: EdgeInsets.fromLTRB(_valueTextPadding, 24.0, 0.0, 16.0),
               child: Text(
-                localeStr.depositPaymentEditTitleAmountHintVND(_amountVnd),
+                localeStr.depositPaymentEditTitleCurrencyHint(_amountVnd),
                 style: TextStyle(
                   color: themeColor.defaultHintColor,
                   fontSize: FontSize.SUBTITLE.value,
@@ -384,19 +493,43 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
             ///
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: new CustomizeFieldWidget(
-                key: _noteFieldKey,
-                hint: localeStr.depositPaymentEditTitleNote,
-                persistHint: false,
+              child: new CustomizeTitledContainer(
                 prefixText: localeStr.depositPaymentEditTitleNote,
                 prefixTextSize: FontSize.SUBTITLE.value,
+                backgroundColor: themeColor.fieldPrefixBgColor,
                 titleWidthFactor: _titleWidthFactor,
                 horizontalInset: _fieldInset,
-                maxInputLength: InputLimit.NOTE_MAX,
-                errorMsg: localeStr.messageInvalidFormat,
-                validCondition: (value) => rangeCheck(
-                    value: value.length, min: 0, max: InputLimit.NOTE_MAX),
+                child: new CustomizeFieldWidget(
+                  key: _noteFieldKey,
+                  hint: localeStr.depositPaymentEditTitleNote,
+                  persistHint: false,
+                  padding: const EdgeInsets.symmetric(vertical: 0.0),
+                  maxInputLength: InputLimit.NOTE_MAX,
+                  onInputChanged: (input) {
+                    setState(() {
+                      _showRemarkError = !rangeCheck(
+                          value: input.length,
+                          min: 0,
+                          max: InputLimit.NOTE_MAX);
+                    });
+                  },
+                ),
               ),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: _valueTextPadding),
+                  child: Visibility(
+                    visible: _showRemarkError,
+                    child: Text(
+                      localeStr.messageInvalidFormat,
+                      style: TextStyle(color: themeColor.defaultErrorColor),
+                    ),
+                  ),
+                ),
+              ],
             ),
 
             ///

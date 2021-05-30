@@ -33,4 +33,9 @@ class FontSize extends Vnum<double> {
 
   /// Used for defining cases
   const FontSize.define(double fromValue) : super.define(fromValue - minus);
+
+  @override
+  String toString() {
+    return 'FontSize ${this.value}';
+  }
 }

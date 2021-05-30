@@ -31,7 +31,7 @@ class BetRecordDisplayList extends StatelessWidget {
   ];
 
   final BorderSide _borderSide =
-      BorderSide(color: themeColor.defaultBorderColor, width: 1.5);
+      BorderSide(color: themeColor.chartBorderColor, width: 1.5);
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +82,7 @@ class BetRecordDisplayList extends StatelessWidget {
                 : themeColor.chartBgColor,
             border: (index % 2 == 1)
                 ? null
-                : Border.symmetric(vertical: _borderSide),
+                : Border.symmetric(horizontal: _borderSide),
           ),
           child: Column(
             children: (!isAllData)

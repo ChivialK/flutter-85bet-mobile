@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_85bet_mobile/utils/value_util.dart';
 
 part 'withdraw_form.freezed.dart';
 
@@ -13,7 +14,10 @@ abstract class WithdrawForm with _$WithdrawForm {
 
 extension WithdrawFormExtension on WithdrawForm {
   bool get isValid =>
-      amount.isNotEmpty && password.isNotEmpty && type.isNotEmpty;
+      amount.isNotEmpty &&
+      amount.strToInt >= 100 &&
+      password.isNotEmpty &&
+      type.isNotEmpty;
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{

@@ -50,6 +50,7 @@ class CustomizeDropdownWidget extends StatefulWidget {
   final bool subTheme;
   final bool scaleText;
   final bool roundCorner;
+  final bool borderless;
   final bool requiredInput;
   final bool debug;
 
@@ -80,7 +81,8 @@ class CustomizeDropdownWidget extends StatefulWidget {
     this.clearValueOnMenuChanged = false,
     this.subTheme = false,
     this.scaleText = false,
-    this.roundCorner = false,
+    this.roundCorner = true,
+    this.borderless = false,
     this.requiredInput = false,
     this.debug = false,
   }) : super(key: key);
@@ -92,7 +94,8 @@ class CustomizeDropdownWidget extends StatefulWidget {
 class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
   double _viewWidth;
   double _smallWidgetHeight;
-  BoxDecoration dropdownDecor;
+  BoxDecoration _dropdownDecor;
+  BoxBorder _dropdownBorder;
 
   double _prefixWidth;
   Widget _prefixWidget;
@@ -153,9 +156,13 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
     // update text max lines
     _currentPrefixMaxLines = (widget.prefixTextMaxLines != null)
         ? widget.prefixTextMaxLines
-        : (Global.localeCode == 'zh')
+        : (Global.lang.isChinese)
             ? 1
             : 2;
+
+    _dropdownBorder = (widget.borderless)
+        ? null
+        : Border.all(color: themeColor.defaultAccentColor);
 
     if (widget.debug) {
       debugPrint(
@@ -204,6 +211,9 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
     if (widget.suffixInitText == null && widget.suffixTextStream == null) {
       _suffixWidget = null;
     }
+    if (oldWidget.suffixInitText != widget.suffixInitText) {
+      _suffixWidget = null;
+    }
 
     updateVariables();
     super.didUpdateWidget(oldWidget);
@@ -222,8 +232,10 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
       _buildSuffix();
     }
 
-    if (_suffixWidget == null && _prefixWidget != null) {
-      dropdownDecor = BoxDecoration(
+    if (_suffixWidget == null &&
+        _prefixWidget != null &&
+        _dropdownBorder == null) {
+      _dropdownDecor = BoxDecoration(
         color: (widget.subTheme)
             ? themeColor.fieldInputSubBgColor
             : themeColor.fieldInputBgColor,
@@ -235,13 +247,14 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
             : BorderRadius.circular(0.0),
       );
     } else {
-      dropdownDecor = BoxDecoration(
+      _dropdownDecor = BoxDecoration(
         color: (widget.subTheme)
             ? themeColor.fieldInputSubBgColor
             : themeColor.fieldInputBgColor,
         borderRadius: (widget.roundCorner)
-            ? BorderRadius.circular(2.0)
+            ? BorderRadius.circular(4.0)
             : BorderRadius.circular(0.0),
+        border: _dropdownBorder,
       );
     }
 
@@ -271,7 +284,7 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
           Expanded(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              decoration: dropdownDecor,
+              decoration: _dropdownDecor,
               child: DropdownButtonHideUnderline(
                 child: DropdownButton(
                   hint: FittedBox(
@@ -296,12 +309,12 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
                   style: TextStyle(
                     color: (widget.subTheme)
                         ? themeColor.fieldInputSubColor
-                        : themeColor.defaultTextColor,
+                        : themeColor.fieldInputColor,
                     fontSize: FontSize.NORMAL.value,
                   ),
                   dropdownColor: (widget.subTheme)
-                      ? themeColor.fieldInputSubBgColor
-                      : themeColor.fieldInputBgColor,
+                      ? themeColor.fieldDropdownSubColor
+                      : themeColor.fieldDropdownColor,
                   iconEnabledColor: (widget.subTheme)
                       ? themeColor.iconColor
                       : themeColor.buttonPrimaryColor,
@@ -364,7 +377,7 @@ class CustomizeDropdownWidgetState extends State<CustomizeDropdownWidget> {
                               ? themeColor.defaultAccentColor
                               : (widget.subTheme)
                                   ? themeColor.secondaryTextColor2
-                                  : themeColor.defaultTextColor,
+                                  : themeColor.fieldInputColor,
                         ),
                       ),
                     );

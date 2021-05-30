@@ -3,6 +3,7 @@ import 'package:flutter_85bet_mobile/core/repository_export.dart';
 import '../form/transfer_form.dart';
 import '../models/transfer_balance_model.dart';
 import '../models/transfer_platform_model.dart';
+import '../models/transfer_result_model.dart';
 
 class TransferApi {
   static const String GET_PLATFORM = "api/getPlatform";
@@ -12,8 +13,10 @@ class TransferApi {
 
 abstract class TransferRepository {
   Future<Either<Failure, TransferPlatformList>> getPlatform();
+
   Future<Either<Failure, TransferBalanceModel>> getBalance(String platform);
-  Future<Either<Failure, RequestStatusModel>> postTransfer(TransferForm form);
+
+  Future<Either<Failure, TransferResultModel>> postTransfer(TransferForm form);
 }
 
 class TransferRepositoryImpl implements TransferRepository {
@@ -62,15 +65,15 @@ class TransferRepositoryImpl implements TransferRepository {
   }
 
   @override
-  Future<Either<Failure, RequestStatusModel>> postTransfer(
+  Future<Either<Failure, TransferResultModel>> postTransfer(
       TransferForm form) async {
-    final result = await requestModel<RequestStatusModel>(
+    final result = await requestModel<TransferResultModel>(
       request: dioApiService.post(
         TransferApi.POST_TRANSFER,
         userToken: jwtInterface.token,
         data: form.toJson(),
       ),
-      jsonToModel: RequestStatusModel.jsonToStatusModel,
+      jsonToModel: TransferResultModel.jsonToModel,
       tag: 'remote-TRANSFER',
     );
 //    debugPrint('test response type: ${result.runtimeType}, data: $result');

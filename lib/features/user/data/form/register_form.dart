@@ -35,7 +35,7 @@ extension RegisterFormExtension on RegisterForm {
       confirmPassword.isNotEmpty &&
       password == confirmPassword &&
       mobileno.isNotEmpty &&
-      !rangeCheck(
+      rangeCheck(
         value: mobileno.length,
         min: InputLimit.PHONE_MIN,
         max: InputLimit.PHONE_MAX,

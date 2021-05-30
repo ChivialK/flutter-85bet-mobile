@@ -40,16 +40,30 @@ abstract class ThemeInterface {
 
   /// Container Decor
   static BoxDecoration get layerShadowDecor => BoxDecoration(
+        color: themeColor.defaultLayeredBackgroundColor,
+        // boxShadow: ThemeInterface.layerShadow,
+      );
+
+  static BoxDecoration get layerShadowDecorBottom => BoxDecoration(
+        color: themeColor.defaultLayeredBackgroundColor,
+        border: Border.all(color: themeColor.defaultBorderColor),
+        // boxShadow: ThemeInterface.layerShadowLight
+      );
+
+  static BoxDecoration get layerShadowDecorLight => BoxDecoration(
       color: themeColor.defaultLayeredBackgroundColor,
-      boxShadow: ThemeInterface.layerShadow);
+      border: Border.all(color: themeColor.defaultBorderColor),
+      boxShadow: ThemeInterface.layerShadowLight);
 
   static BoxDecoration get layerShadowDecorRound => BoxDecoration(
       color: themeColor.defaultLayeredBackgroundColor,
+      border: Border.all(color: themeColor.defaultBorderColor),
       borderRadius: BorderRadius.all(Radius.circular(4.0)),
       boxShadow: ThemeInterface.layerShadow);
 
   static BoxDecoration get layerShadowDecorRoundLight => BoxDecoration(
       color: themeColor.defaultLayeredBackgroundColor,
+      border: Border.all(color: themeColor.defaultBorderColor),
       borderRadius: BorderRadius.all(Radius.circular(4.0)),
       boxShadow: ThemeInterface.layerShadowLight);
 
@@ -60,16 +74,19 @@ abstract class ThemeInterface {
 
   static BoxDecoration get layerShadowDecorRoundTop => BoxDecoration(
       color: themeColor.defaultLayeredBackgroundColor,
+      border: Border.all(color: themeColor.defaultBorderColor),
       borderRadius: BorderRadius.vertical(top: Radius.circular(8.0)),
       boxShadow: ThemeInterface.layerShadowLight);
 
   static BoxDecoration get layerShadowDecorRoundBottom => BoxDecoration(
       color: themeColor.defaultLayeredBackgroundColor,
+      border: Border.all(color: themeColor.defaultBorderColor),
       borderRadius: BorderRadius.vertical(bottom: Radius.circular(8.0)),
       boxShadow: ThemeInterface.layerShadowLight);
 
   static BoxDecoration get gridItemShadowDecor => BoxDecoration(
       color: themeColor.defaultLayeredBackgroundColor,
+      border: Border.all(color: themeColor.defaultBorderColor),
       borderRadius: BorderRadius.all(Radius.circular(8.0)),
       boxShadow: ThemeInterface.gridItemShadow);
 
@@ -78,8 +95,7 @@ abstract class ThemeInterface {
 
   static BoxDecoration get pageIconContainerDecor => BoxDecoration(
       shape: BoxShape.circle,
-      color: themeIconBgColor,
-      gradient: themeIconBgGradient,
+      color: themeColor.memberIconDecorColor,
       boxShadow: ThemeInterface.iconBottomShadow);
 
   /// Container Shadow
@@ -129,8 +145,8 @@ abstract class ThemeInterface {
   /// Container Gradient
   static Gradient radialGradient = RadialGradient(
     colors: [
-      Color(0x40a4a4a4),
-      Color(0xcc25272c),
+      Color(0xff154760),
+      Color(0xff02283d),
     ],
     stops: [0.1, 0.8],
     radius: 0.7,
@@ -139,8 +155,8 @@ abstract class ThemeInterface {
 
   static Gradient radialGradientLight = RadialGradient(
     colors: [
-      Color(0xffd7c3b3),
-      Color(0xffc1a180),
+      Color(0xff21a1ba),
+      Color(0xff154760),
     ],
     stops: [0.1, 0.8],
     radius: 0.7,

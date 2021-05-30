@@ -60,6 +60,9 @@ class ThemeDark implements ThemeColorInterface {
   Color defaultSelectableWidgetColor = Color(0xffc7c7c7);
 
   @override
+  Color defaultActiveWidgetColor = Color(0xffe7c080);
+
+  @override
   Color defaultDisabledColor = Color(0xff575757);
 
   @override
@@ -294,7 +297,7 @@ class ThemeDark implements ThemeColorInterface {
   Color centerButtonColor = Color(0xf0423e3d);
 
   @override
-  Color centerButtonTextColor = Color(0xffd08200);
+  Color centerButtonShadowColor = Color(0xffd08200);
 
   @override
   Color centerButtonBorderColor = Color(0xfff39800);
@@ -330,6 +333,12 @@ class ThemeDark implements ThemeColorInterface {
   Color fieldInputHintSubColor = Color(0xff383838);
 
   @override
+  Color fieldDropdownColor = Color(0xff4e4e4e);
+
+  @override
+  Color fieldDropdownSubColor = Color(0xffffffff);
+
+  @override
   Color fieldPrefixBgColor = Color(0xff383838);
 
   @override
@@ -343,6 +352,9 @@ class ThemeDark implements ThemeColorInterface {
 
   @override
   Color fieldSuffixSubColor = Color(0xffffffff);
+
+  @override
+  Color fieldCursorColor = Color(0xffe7c080);
 
   @override
   Color fieldCursorSubColor = Color(0xff000000);

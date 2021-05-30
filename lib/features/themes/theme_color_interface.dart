@@ -30,6 +30,7 @@ abstract class ThemeColorInterface {
   Color defaultWidgetColor;
   Color defaultWidgetBgColor;
   Color defaultSelectableWidgetColor;
+  Color defaultActiveWidgetColor;
   Color defaultDisabledColor;
   Color defaultChipColor;
   Color defaultGridColor;
@@ -133,7 +134,7 @@ abstract class ThemeColorInterface {
   Color pagerButtonSelectedColor;
 
   Color centerButtonColor;
-  Color centerButtonTextColor;
+  Color centerButtonShadowColor;
   Color centerButtonBorderColor;
   Color centerButtonStackColor;
 
@@ -149,11 +150,14 @@ abstract class ThemeColorInterface {
   Color fieldPrefixSubColor;
   Color fieldSuffixColor;
   Color fieldSuffixSubColor;
+  Color fieldInputSubColor;
   Color fieldInputSubBgColor;
   Color fieldReadOnlySubBgColor;
-  Color fieldInputSubColor;
   Color fieldInputHintSubColor;
+  Color fieldCursorColor;
   Color fieldCursorSubColor;
+  Color fieldDropdownColor;
+  Color fieldDropdownSubColor;
 
   ///
   /// Chart table color

@@ -19,7 +19,7 @@ abstract class MarqueeModel with _$MarqueeModel {
   static MarqueeModel jsonToMarqueeModel(Map<String, dynamic> jsonMap) =>
       _$_MarqueeModel(
         id: jsonMap['id'] as int,
-        content: jsonMap[Global.localeJsonKey] as String,
+        content: jsonMap[Global.lang.jsonKey] as String,
         url: jsonMap['url'] as String,
         createdAt: jsonMap['created_at'] as String,
         updatedAt: jsonMap['updated_at'] as String,

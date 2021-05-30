@@ -16,13 +16,15 @@ class _$GameEntityTearOff {
 // ignore: unused_element
   _GameEntity call(
       {@required int id,
-      @required String cname,
+      String cname = '??',
+      String ename = '??',
       @JsonKey(fromJson: decodeGameUrl, required: true) String gameUrl,
       int favorite = 0,
       int sort = 0}) {
     return _GameEntity(
       id: id,
       cname: cname,
+      ename: ename,
       gameUrl: gameUrl,
       favorite: favorite,
       sort: sort,
@@ -38,6 +40,7 @@ const $GameEntity = _$GameEntityTearOff();
 mixin _$GameEntity {
   int get id;
   String get cname;
+  String get ename;
   @JsonKey(fromJson: decodeGameUrl, required: true)
   String get gameUrl;
   int get favorite;
@@ -54,6 +57,7 @@ abstract class $GameEntityCopyWith<$Res> {
   $Res call(
       {int id,
       String cname,
+      String ename,
       @JsonKey(fromJson: decodeGameUrl, required: true) String gameUrl,
       int favorite,
       int sort});
@@ -71,6 +75,7 @@ class _$GameEntityCopyWithImpl<$Res> implements $GameEntityCopyWith<$Res> {
   $Res call({
     Object id = freezed,
     Object cname = freezed,
+    Object ename = freezed,
     Object gameUrl = freezed,
     Object favorite = freezed,
     Object sort = freezed,
@@ -78,6 +83,7 @@ class _$GameEntityCopyWithImpl<$Res> implements $GameEntityCopyWith<$Res> {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as int,
       cname: cname == freezed ? _value.cname : cname as String,
+      ename: ename == freezed ? _value.ename : ename as String,
       gameUrl: gameUrl == freezed ? _value.gameUrl : gameUrl as String,
       favorite: favorite == freezed ? _value.favorite : favorite as int,
       sort: sort == freezed ? _value.sort : sort as int,
@@ -94,6 +100,7 @@ abstract class _$GameEntityCopyWith<$Res> implements $GameEntityCopyWith<$Res> {
   $Res call(
       {int id,
       String cname,
+      String ename,
       @JsonKey(fromJson: decodeGameUrl, required: true) String gameUrl,
       int favorite,
       int sort});
@@ -113,6 +120,7 @@ class __$GameEntityCopyWithImpl<$Res> extends _$GameEntityCopyWithImpl<$Res>
   $Res call({
     Object id = freezed,
     Object cname = freezed,
+    Object ename = freezed,
     Object gameUrl = freezed,
     Object favorite = freezed,
     Object sort = freezed,
@@ -120,6 +128,7 @@ class __$GameEntityCopyWithImpl<$Res> extends _$GameEntityCopyWithImpl<$Res>
     return _then(_GameEntity(
       id: id == freezed ? _value.id : id as int,
       cname: cname == freezed ? _value.cname : cname as String,
+      ename: ename == freezed ? _value.ename : ename as String,
       gameUrl: gameUrl == freezed ? _value.gameUrl : gameUrl as String,
       favorite: favorite == freezed ? _value.favorite : favorite as int,
       sort: sort == freezed ? _value.sort : sort as int,
@@ -131,19 +140,25 @@ class __$GameEntityCopyWithImpl<$Res> extends _$GameEntityCopyWithImpl<$Res>
 class _$_GameEntity implements _GameEntity {
   const _$_GameEntity(
       {@required this.id,
-      @required this.cname,
+      this.cname = '??',
+      this.ename = '??',
       @JsonKey(fromJson: decodeGameUrl, required: true) this.gameUrl,
       this.favorite = 0,
       this.sort = 0})
       : assert(id != null),
         assert(cname != null),
+        assert(ename != null),
         assert(favorite != null),
         assert(sort != null);
 
   @override
   final int id;
+  @JsonKey(defaultValue: '??')
   @override
   final String cname;
+  @JsonKey(defaultValue: '??')
+  @override
+  final String ename;
   @override
   @JsonKey(fromJson: decodeGameUrl, required: true)
   final String gameUrl;
@@ -156,7 +171,7 @@ class _$_GameEntity implements _GameEntity {
 
   @override
   String toString() {
-    return 'GameEntity(id: $id, cname: $cname, gameUrl: $gameUrl, favorite: $favorite, sort: $sort)';
+    return 'GameEntity(id: $id, cname: $cname, ename: $ename, gameUrl: $gameUrl, favorite: $favorite, sort: $sort)';
   }
 
   @override
@@ -167,6 +182,8 @@ class _$_GameEntity implements _GameEntity {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.cname, cname) ||
                 const DeepCollectionEquality().equals(other.cname, cname)) &&
+            (identical(other.ename, ename) ||
+                const DeepCollectionEquality().equals(other.ename, ename)) &&
             (identical(other.gameUrl, gameUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.gameUrl, gameUrl)) &&
@@ -182,6 +199,7 @@ class _$_GameEntity implements _GameEntity {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(cname) ^
+      const DeepCollectionEquality().hash(ename) ^
       const DeepCollectionEquality().hash(gameUrl) ^
       const DeepCollectionEquality().hash(favorite) ^
       const DeepCollectionEquality().hash(sort);
@@ -194,7 +212,8 @@ class _$_GameEntity implements _GameEntity {
 abstract class _GameEntity implements GameEntity {
   const factory _GameEntity(
       {@required int id,
-      @required String cname,
+      String cname,
+      String ename,
       @JsonKey(fromJson: decodeGameUrl, required: true) String gameUrl,
       int favorite,
       int sort}) = _$_GameEntity;
@@ -203,6 +222,8 @@ abstract class _GameEntity implements GameEntity {
   int get id;
   @override
   String get cname;
+  @override
+  String get ename;
   @override
   @JsonKey(fromJson: decodeGameUrl, required: true)
   String get gameUrl;

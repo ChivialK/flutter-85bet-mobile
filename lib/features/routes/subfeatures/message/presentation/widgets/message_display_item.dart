@@ -44,15 +44,15 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(6.0),
         child: Container(
           decoration: new BoxDecoration(
             color: themeColor.defaultCardColor,
-            border: Border.symmetric(
-                vertical: BorderSide(
-              color: Colors.black12,
-              width: 1.5,
-            )),
+            // border: Border.symmetric(
+            //     vertical: BorderSide(
+            //   color: themeColor.defaultActiveWidgetColor,
+            //   width: 1.5,
+            // )),
           ),
           child: ConfigurableExpansionTile(
             header: _buildHeader(false),
@@ -124,7 +124,7 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
   Widget _buildHeader(bool isExpanded) {
     return Container(
       width: calc.maxWidth,
-      height: calc.maxHeaderHeight,
+      // height: calc.maxHeaderHeight,
       margin: EdgeInsets.symmetric(vertical: calc.headerInset),
       child: Row(
         mainAxisSize: MainAxisSize.max,
@@ -165,7 +165,7 @@ class MessageDisplayItemState extends State<MessageDisplayItem> {
                 color: themeColor.defaultCardTitleColor,
               ),
               overflow: TextOverflow.ellipsis,
-              maxLines: (isExpanded) ? 2 : 1,
+              maxLines: (isExpanded) ? 6 : 2,
             ),
           ),
           Expanded(

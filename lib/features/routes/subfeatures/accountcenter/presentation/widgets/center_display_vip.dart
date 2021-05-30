@@ -80,8 +80,9 @@ class _CenterDisplayVipState extends State<CenterDisplayVip> {
       );
     }
     return Container(
-      decoration: ThemeInterface.layerShadowDecorRoundBottom,
+      decoration: ThemeInterface.layerShadowDecorBottom,
       constraints: BoxConstraints(minHeight: 60),
+      margin: const EdgeInsets.only(top: 16.0),
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: InkWell(
         // to dismiss the keyboard when the user tabs out of the TextField
@@ -323,7 +324,9 @@ class _CenterDisplayVipState extends State<CenterDisplayVip> {
                     : themeColor.vipProgressCircleColor,
                 shape: BoxShape.circle,
                 border: new Border.all(
-                  color: themeColor.vipProgressBorderColor,
+                  color: (current >= required)
+                      ? themeColor.vipProgressBorderColor
+                      : themeColor.vipProgressCircleColor,
                   width: 6.0,
                 ),
 //                boxShadow: <BoxShadow>[
@@ -340,10 +343,9 @@ class _CenterDisplayVipState extends State<CenterDisplayVip> {
                   required.toString(),
                   style: TextStyle(
                     fontSize: FontSize.SUBTITLE.value,
-//                    color: (current >= required)
-//                        ? themeColor.vipIconTextColor
-//                        : themeColor.vipTextColor,
-                    color: themeColor.vipIconTextColor,
+                    color: (current >= required)
+                        ? themeColor.vipIconTextColor
+                        : themeColor.vipIconTextSubColor,
                   ),
                 ),
               ),

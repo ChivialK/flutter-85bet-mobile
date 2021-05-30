@@ -51,8 +51,7 @@ class DealsDisplayListState extends State<DealsDisplayList> {
         child: Center(child: Text(localeStr.messageWarnNoHistoryData)),
       );
 
-    _borderSide ??=
-        BorderSide(color: themeColor.defaultBorderColor, width: 1.5);
+    _borderSide ??= BorderSide(color: themeColor.chartBorderColor, width: 1.5);
     return ListView.builder(
       primary: false,
       shrinkWrap: true,
@@ -75,7 +74,7 @@ class DealsDisplayListState extends State<DealsDisplayList> {
                 : themeColor.chartBgColor,
             border: (index % 2 == 1)
                 ? null
-                : Border.symmetric(vertical: _borderSide),
+                : Border.symmetric(horizontal: _borderSide),
           ),
           child: Column(
             children: List.generate(_headerTexts.length, (rowIndex) {

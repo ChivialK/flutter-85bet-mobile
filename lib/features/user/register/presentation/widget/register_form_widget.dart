@@ -4,6 +4,7 @@ import 'package:flutter_85bet_mobile/features/general/widgets/checkbox_widget.da
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
 import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
+import 'package:flutter_85bet_mobile/features/themes/icon_code.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/user_entity.dart';
 import 'package:flutter_85bet_mobile/features/user/login/presentation/widgets/login_navigate.dart';
 
@@ -68,10 +69,12 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
         mobileno: _phoneFieldKey.currentState.getInput,
         intro: _introFieldKey.currentState.getInput,
       );
-      if (regForm.isValid && _termsCheckKey.currentState.boxChecked)
+      debugPrint('register form: $regForm, valid: ${regForm.isValid}');
+      if (regForm.isValid && _termsCheckKey.currentState.boxChecked) {
         _store.postRegister(regForm);
-      else
+      } else {
         callToast(localeStr.messageActionFillForm);
+      }
     }
   }
 
@@ -279,11 +282,20 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                         Container(
                           width: 64.0,
                           height: _phoneCodeContainerHeight,
-                          color: themeColor.fieldInputBgColor,
+                          decoration: BoxDecoration(
+                            color: themeColor.fieldInputBgColor,
+                            border: Border.all(
+                                color: themeColor.defaultAccentColor),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(4.0)),
+                          ),
                           alignment: Alignment.center,
                           child: Text(
-                            '+84',
-                            style: TextStyle(fontSize: FontSize.SUBTITLE.value),
+                            '+886',
+                            style: TextStyle(
+                              fontSize: FontSize.SUBTITLE.value,
+                              color: themeColor.fieldInputColor,
+                            ),
                           ),
                         ),
                         SizedBox(width: 8.0),
@@ -318,7 +330,10 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       child: Visibility(
                         visible: _showPhoneError,
                         child: Text(
-                          localeStr.messageInvalidPhone(InputLimit.PHONE_MAX),
+                          localeStr.messageInvalidPhone2(
+                            InputLimit.PHONE_MIN,
+                            InputLimit.PHONE_MAX,
+                          ),
                           style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
@@ -354,7 +369,10 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
 
         Padding(
           padding: const EdgeInsets.fromLTRB(20.0, 16.0, 20.0, 0.0),
-          child: Divider(height: 16.0),
+          child: Divider(
+              height: 16.0,
+              thickness: 1.5,
+              color: themeColor.defaultAccentColor),
         ),
 
         ///
@@ -367,9 +385,8 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
             widgetPadding: EdgeInsets.zero,
             textPadding: const EdgeInsets.only(left: 8.0),
             label: localeStr.registerCheckButtonNews,
-            boxBackgroundColor: themeColor.fieldInputBgColor,
             textSize: FontSize.SUBTITLE.value,
-            scale: 1.75,
+            scale: 1.5,
           ),
         ),
 
@@ -382,11 +399,10 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
             key: _termsCheckKey,
             widgetPadding: EdgeInsets.zero,
             textPadding: const EdgeInsets.only(left: 8.0),
-            boxBackgroundColor: themeColor.fieldInputBgColor,
             label: localeStr.registerCheckButtonTerms,
             textSize: FontSize.SUBTITLE.value,
             maxLines: 2,
-            scale: 1.75,
+            scale: 1.5,
             mustCheck: true,
           ),
         ),
@@ -431,11 +447,16 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                     visualDensity: VisualDensity.compact,
                     padding: EdgeInsets.zero,
                     icon: Icon(
-                      const IconData(0xe967, fontFamily: 'IconMoon'),
-                      color: themeColor.defaultTextColor,
+                      IconCode.csService,
+                      color: themeColor.defaultAccentColor,
                     ),
                     onPressed: () {
-                      RouterNavigate.navigateToPage(RoutePage.service);
+                      RouterNavigate.navigateToPage(
+                        RoutePage.service,
+                        arg: WebRouteArguments(
+                          startUrl: Global.CS_SERVICE_URL,
+                        ),
+                      );
                       if (widget.isDialog) {
                         Future.delayed(Duration(milliseconds: 100),
                             () => Navigator.of(context).pop());

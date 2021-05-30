@@ -20,7 +20,9 @@ class TypesGridWidget<T extends DataOperator> extends StatefulWidget {
   final double expectTabHeight;
   final double horizontalInset;
   final bool borderless;
+  final bool bottomBorder;
   final bool round;
+  final List<IconData> icons;
 
   TypesGridWidget({
     Key key,
@@ -32,8 +34,10 @@ class TypesGridWidget<T extends DataOperator> extends StatefulWidget {
     this.itemSpaceHorFactor = 2.0,
     this.expectTabHeight = 42.0,
     this.horizontalInset = 48.0,
-    this.borderless = true,
-    this.round = true,
+    this.borderless = false,
+    this.bottomBorder = true,
+    this.round = false,
+    this.icons,
   }) : super(key: key);
 
   @override
@@ -45,6 +49,8 @@ class _TypesGridWidgetState extends State<TypesGridWidget>
   final BorderSide borderSide =
       BorderSide(color: themeColor.defaultBorderColor);
   final BorderSide borderSideTrans = BorderSide(color: Colors.transparent);
+  final BorderSide borderSideBottom =
+      BorderSide(color: themeColor.defaultTabSelectedColor, width: 1.5);
 
   int _clicked = 0;
   double _gridRatio;
@@ -113,27 +119,35 @@ class _TypesGridWidgetState extends State<TypesGridWidget>
                       offset: Offset(1, 2), // changes position of shadow
                     ),
                   ],
-                  shape: (widget.borderless)
-                      ? RoundedRectangleBorder(
+                  shape: (widget.bottomBorder)
+                      ? CustomRoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(
                               top: (widget.round)
                                   ? Radius.circular(6.0)
                                   : Radius.circular(0.0)),
+                          bottomSide: borderSideBottom,
                         )
-                      : CustomRoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                              top: (widget.round)
-                                  ? Radius.circular(6.0)
-                                  : Radius.circular(0.0)),
-                          leftSide: borderSide,
-                          topLeftCornerSide: borderSide,
-                          bottomLeftCornerSide: borderSide,
-                          rightSide: borderSide,
-                          topRightCornerSide: borderSide,
-                          bottomRightCornerSide: borderSide,
-                          topSide: borderSide,
-                          bottomSide: borderSideTrans,
-                        )),
+                      : (widget.borderless)
+                          ? RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  top: (widget.round)
+                                      ? Radius.circular(6.0)
+                                      : Radius.circular(0.0)),
+                            )
+                          : CustomRoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  top: (widget.round)
+                                      ? Radius.circular(6.0)
+                                      : Radius.circular(0.0)),
+                              leftSide: borderSide,
+                              topLeftCornerSide: borderSide,
+                              bottomLeftCornerSide: borderSide,
+                              rightSide: borderSide,
+                              topRightCornerSide: borderSide,
+                              bottomRightCornerSide: borderSide,
+                              topSide: borderSide,
+                              bottomSide: borderSideTrans,
+                            )),
               margin: (index > 0 && (index + 1) % widget.tabsPerRow == 0)
                   ? const EdgeInsets.only(right: 2.0)
                   : EdgeInsets.zero,
@@ -142,13 +156,23 @@ class _TypesGridWidgetState extends State<TypesGridWidget>
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Row(
                   children: [
+                    if (widget.icons != null)
+                      Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: Icon(
+                          widget.icons[index],
+                          color: (_clicked == index)
+                              ? themeColor.defaultTabSelectedTextColor
+                              : themeColor.defaultAccentColor,
+                        ),
+                      ),
                     Expanded(
                       child: AutoSizeText(
                         type[widget.titleKey],
                         style: TextStyle(
                           color: (_clicked == index)
                               ? themeColor.defaultTabSelectedTextColor
-                              : themeColor.defaultTabSelectedColor,
+                              : themeColor.secondaryTextColor2,
                           fontSize: FontSize.SUBTITLE.value,
                         ),
                         maxLines: 2,

@@ -12,7 +12,6 @@ class CheckboxWidget extends StatefulWidget {
   final String label;
   final int maxLines;
   final Color labelColor;
-  final Color boxBackgroundColor;
   final bool initValue;
   final bool mustCheck;
   final double scale;
@@ -26,7 +25,6 @@ class CheckboxWidget extends StatefulWidget {
     @required this.label,
     this.maxLines = 1,
     this.labelColor,
-    this.boxBackgroundColor,
     this.initValue = false,
     this.mustCheck = false,
     this.scale = 1.0,
@@ -64,20 +62,27 @@ class CheckboxWidgetState extends State<CheckboxWidget> {
                   ? CrossAxisAlignment.start
                   : CrossAxisAlignment.center,
               children: <Widget>[
-                Theme(
-                  data: ThemeData(
-                    unselectedWidgetColor: widget.labelColor,
-                  ),
-                  child: Transform.scale(
-                    scale: widget.scale,
-                    child: Checkbox(
-                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      visualDensity: VisualDensity.compact,
-                      value: boxChecked,
-                      onChanged: (value) {
-                        setChecked = value;
-                        if (widget.onChecked != null) widget.onChecked(value);
-                      },
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12.0),
+                  child: Container(
+                    child: Theme(
+                      data: ThemeData(
+                        unselectedWidgetColor: widget.labelColor,
+                      ),
+                      child: Transform.scale(
+                        scale: widget.scale,
+                        child: Checkbox(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          visualDensity: VisualDensity.compact,
+                          value: boxChecked,
+                          onChanged: (value) {
+                            setChecked = value;
+                            if (widget.onChecked != null)
+                              widget.onChecked(value);
+                          },
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -101,16 +106,21 @@ class CheckboxWidgetState extends State<CheckboxWidget> {
                   ? CrossAxisAlignment.start
                   : CrossAxisAlignment.center,
               children: <Widget>[
-                Transform.scale(
-                  scale: widget.scale,
-                  child: Checkbox(
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    visualDensity: VisualDensity.compact,
-                    value: boxChecked,
-                    onChanged: (value) {
-                      setChecked = value;
-                      if (widget.onChecked != null) widget.onChecked(value);
-                    },
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12.0),
+                  child: Container(
+                    child: Transform.scale(
+                      scale: widget.scale,
+                      child: Checkbox(
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        visualDensity: VisualDensity.compact,
+                        value: boxChecked,
+                        onChanged: (value) {
+                          setChecked = value;
+                          if (widget.onChecked != null) widget.onChecked(value);
+                        },
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(

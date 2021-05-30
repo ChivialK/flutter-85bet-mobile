@@ -52,7 +52,7 @@ class MyThemeData {
       /// Selector Theme
       ///
       unselectedWidgetColor: interface.defaultSelectableWidgetColor,
-      toggleableActiveColor: interface.defaultAccentColor,
+      toggleableActiveColor: interface.defaultActiveWidgetColor,
 
       ///
       /// Buttons Theme
@@ -79,10 +79,10 @@ class MyThemeData {
       disabledColor: interface.defaultDisabledColor,
       textTheme: TextTheme(
           headline1: TextStyle(
-              color: interface.defaultTextColor,
+              color: interface.defaultTitleColor,
               fontSize: FontSize.HEADER.value),
           headline6: TextStyle(
-              color: interface.defaultTextColor,
+              color: interface.defaultTitleColor,
               fontSize: FontSize.TITLE.value),
 // input text color
           subtitle1: TextStyle(
@@ -95,7 +95,7 @@ class MyThemeData {
               color: interface.defaultTextColor,
               fontSize: FontSize.SUBTITLE.value),
           bodyText2: TextStyle(
-              color: interface.secondaryTextColor2,
+              color: interface.defaultTextColor,
               fontSize: FontSize.NORMAL.value),
           button: TextStyle(
               color: interface.buttonTextPrimaryColor,

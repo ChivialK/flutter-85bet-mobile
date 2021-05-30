@@ -26,6 +26,7 @@ class CustomizeFieldWidget extends StatefulWidget {
   final bool coloredHint;
   final bool centerFieldText;
   final bool useSameBgColor;
+  final bool hasBorder;
   final bool subTheme;
   final bool readOnly;
 
@@ -74,6 +75,7 @@ class CustomizeFieldWidget extends StatefulWidget {
     this.coloredHint = false,
     this.centerFieldText = false,
     this.useSameBgColor = false,
+    this.hasBorder = true,
     this.subTheme = false,
     this.readOnly = false,
     this.maxInputLength = 16,
@@ -111,11 +113,14 @@ class CustomizeFieldWidget extends StatefulWidget {
 class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
   final TextEditingController _controller = new TextEditingController();
   final GlobalKey<FormFieldState> _fieldKey = new GlobalKey();
+  final FocusNode _focusNode = new FocusNode();
 
+  bool _focusListener = false;
   double _viewWidth;
   EdgeInsetsGeometry _fieldInset;
   TextStyle _fieldTextStyle;
   Color _fieldColor;
+  InputBorder _fieldBorder;
   double _smallWidgetHeight;
   double _prefixWidth;
   Widget _prefixWidget;
@@ -137,7 +142,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
     _controller.text = text;
     if (text.isNotEmpty) {
       // Android on change resets cursor position(cursor goes to 0)
-      // so you have to check if it reset, then put in the end(just on android)
+      // so you have to check if it had been reset, then put in the end(just on android)
       // as IOS bugs if you simply put it in the end
       _controller.selection =
           new TextSelection.fromPosition(new TextPosition(offset: text.length));
@@ -181,11 +186,9 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
       _isValid = widget.validCondition(value) ?? true;
     });
 
-    if (widget.onInputChanged != null) {
-      if (widget.debug) {
-        debugPrint(
-            '${widget.hint} input: $value, code: ${value.codeUnits}, valid: $_isValid');
-      }
+    if (widget.onInputChanged != null && widget.debug) {
+      debugPrint(
+          '${widget.hint} input: $value, code: ${value.codeUnits}, valid: $_isValid');
     }
   }
 
@@ -219,6 +222,14 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
             : (widget.readOnly)
                 ? themeColor.fieldReadOnlyBgColor
                 : themeColor.fieldInputBgColor;
+
+    _fieldBorder = (widget.hasBorder)
+        ? OutlineInputBorder(
+            borderSide: BorderSide(
+              color: themeColor.defaultAccentColor,
+            ),
+          )
+        : InputBorder.none;
   }
 
   @override
@@ -234,7 +245,11 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
     if (Global.device.isIos) _suffixWidth += 8.0;
 
     _currentMaxLines = widget.maxLines;
-    _currentPrefixMaxLines = widget.prefixTextMaxLines ?? 2;
+    _currentPrefixMaxLines = (widget.prefixTextMaxLines != null)
+        ? widget.prefixTextMaxLines
+        : (Global.lang.isChinese)
+            ? 1
+            : 2;
 
     _smallWidgetHeight = ((Global.device.isIos)
             ? ThemeInterface.fieldHeight + 8
@@ -260,6 +275,19 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
     super.initState();
     _prefixColor = widget.prefixItemColor ?? themeColor.fieldPrefixColor;
     _prefixBgColor = widget.prefixBgColor ?? themeColor.fieldPrefixBgColor;
+    if (!_focusListener) {
+      _focusNode.addListener(() {
+        // debugPrint('field ${widget.key} has focus ${_focusNode.hasFocus}');
+        if (_controller.selection.baseOffset ==
+                _controller.selection.extentOffset &&
+            _controller.selection.baseOffset != _controller.text.length) {
+          _controller.selection = new TextSelection.fromPosition(
+              new TextPosition(offset: _controller.text.length));
+          debugPrint('fixed controller selection: ${_controller.selection}');
+        }
+      });
+      _focusListener = true;
+    }
     if (widget.onInputChanged != null) {
       _controller.addListener(() {
         widget.onInputChanged(_controller.text);
@@ -297,7 +325,11 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
         minHeight: _smallWidgetHeight,
       );
     }
-    _currentPrefixMaxLines = widget.prefixTextMaxLines ?? 2;
+    _currentPrefixMaxLines = (widget.prefixTextMaxLines != null)
+        ? widget.prefixTextMaxLines
+        : (Global.lang.isChinese)
+            ? 1
+            : 2;
     _updateFieldStyle();
     super.didUpdateWidget(oldWidget);
   }
@@ -337,6 +369,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
           child: new TextFormField(
             key: _fieldKey,
             controller: _controller,
+            focusNode: _focusNode,
             enableInteractiveSelection: false,
             keyboardType: _keyboardType(),
             inputFormatters: _formatterList(),
@@ -346,7 +379,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
             style: _fieldTextStyle,
             cursorColor: (widget.subTheme)
                 ? themeColor.fieldCursorSubColor
-                : themeColor.defaultAccentColor,
+                : themeColor.fieldCursorColor,
             textAlign:
                 (widget.centerFieldText) ? TextAlign.center : TextAlign.start,
             textAlignVertical: TextAlignVertical.center,
@@ -357,6 +390,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
                   ? TextStyle(color: themeColor.hintHighlight)
                   : TextStyle(color: themeColor.fieldInputHintColor),
               fillColor: _fieldColor,
+              enabledBorder: _fieldBorder,
+              focusedBorder: _fieldBorder,
               isDense: true,
               contentPadding: _fieldInset,
               errorText: (_isValid) ? null : widget.errorMsg,
@@ -381,6 +416,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
           child: new TextFormField(
             key: _fieldKey,
             controller: _controller,
+            focusNode: _focusNode,
             enableInteractiveSelection: false,
             keyboardType: _keyboardType(),
             inputFormatters: _formatterList(),
@@ -390,7 +426,7 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
             style: _fieldTextStyle,
             cursorColor: (widget.subTheme)
                 ? themeColor.fieldCursorSubColor
-                : themeColor.defaultAccentColor,
+                : themeColor.fieldCursorColor,
             textAlign:
                 (widget.centerFieldText) ? TextAlign.center : TextAlign.start,
             textAlignVertical: TextAlignVertical.center,
@@ -402,6 +438,8 @@ class CustomizeFieldWidgetState extends State<CustomizeFieldWidget> {
                   : TextStyle(color: themeColor.fieldInputHintColor),
               isDense: true,
               fillColor: _fieldColor,
+              enabledBorder: _fieldBorder,
+              focusedBorder: _fieldBorder,
               contentPadding: _fieldInset,
               prefixIconConstraints: (_prefixWidget != null)
                   ? _prefixConstraints

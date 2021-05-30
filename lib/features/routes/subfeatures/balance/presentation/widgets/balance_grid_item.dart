@@ -76,7 +76,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
   }
 
   void updateVariables(bool state) {
-    _verticalActionLayout = Global.localeCode != 'zh';
+    _verticalActionLayout = !Global.lang.isChinese;
     _btn1Text = localeStr.balanceTransferOutText;
     _btn2Text = localeStr.balanceTransferInText;
     _maintenanceText = localeStr.balanceStatusMaintenance;
@@ -121,6 +121,7 @@ class BalanceGridItemState extends State<BalanceGridItem>
       child: Container(
         decoration: BoxDecoration(
           color: themeColor.balanceCardBackground,
+          border: Border.all(color: themeColor.defaultBorderColor),
           borderRadius: BorderRadius.circular(6.0),
           boxShadow: [
             BoxShadow(
@@ -138,12 +139,15 @@ class BalanceGridItemState extends State<BalanceGridItem>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
-                widget.platform.toUpperCase(),
-                style: TextStyle(
-                  color: themeColor.balanceCardTitleColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: FontSize.HEADER.value,
+              Padding(
+                padding: const EdgeInsets.only(top: 4.0),
+                child: Text(
+                  widget.platform.toUpperCase(),
+                  style: TextStyle(
+                    color: themeColor.balanceCardTitleColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: FontSize.HEADER.value,
+                  ),
                 ),
               ),
               (_verticalActionLayout)
@@ -171,41 +175,44 @@ class BalanceGridItemState extends State<BalanceGridItem>
                         _transferInWidget(),
                       ],
                     ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  Expanded(
-                    child: Text(
-                      (isMaintaining) ? _maintenanceText : 'VDK $_credit',
-                      style: TextStyle(
-                        color: themeColor.balanceCardTextColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: FontSize.TITLE.value,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(
+                        (isMaintaining) ? _maintenanceText : 'NTD $_credit',
+                        style: TextStyle(
+                          color: themeColor.balanceCardTextColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: FontSize.TITLE.value,
+                        ),
                       ),
                     ),
-                  ),
-                  GestureDetector(
-                    child: RotationTransition(
-                      turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
-                      child: Icon(
-                        Icons.refresh,
-                        color: (canRefresh)
-                            ? themeColor.defaultHintColor
-                            : themeColor.defaultHintSubColor,
-                        size: 20,
+                    GestureDetector(
+                      child: RotationTransition(
+                        turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
+                        child: Icon(
+                          Icons.refresh,
+                          color: (canRefresh)
+                              ? themeColor.defaultHintColor
+                              : themeColor.defaultHintSubColor,
+                          size: 20,
+                        ),
                       ),
+                      onTap: () {
+                        if (widget.onTapAction != null && canRefresh) {
+                          startAnim();
+                          widget.onTapAction(
+                            BalanceGridAction.refresh,
+                            widget.platform,
+                          );
+                        }
+                      },
                     ),
-                    onTap: () {
-                      if (widget.onTapAction != null && canRefresh) {
-                        startAnim();
-                        widget.onTapAction(
-                          BalanceGridAction.refresh,
-                          widget.platform,
-                        );
-                      }
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

@@ -12,7 +12,8 @@ class NoticeDisplayContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: ThemeInterface.layerShadowDecorRoundBottom,
+      margin: const EdgeInsets.only(top: 12.0),
+      decoration: ThemeInterface.layerShadowDecor,
       constraints: BoxConstraints(minHeight: 60),
       child: ListView.builder(
         primary: true,
@@ -22,7 +23,7 @@ class NoticeDisplayContent extends StatelessWidget {
         itemBuilder: (_, index) {
           NoticeData data = dataList[index];
           String content = '';
-          switch (Global.localeCode) {
+          switch (Global.lang.code) {
             case 'zh':
               content = data.content;
               break;
@@ -36,16 +37,16 @@ class NoticeDisplayContent extends StatelessWidget {
               content = data.contentVI;
               break;
           }
-          if (content.isEmpty && Global.localeCode != 'zh') {
+          if (content.isEmpty && !Global.lang.isChinese) {
             content = data.content ?? 'ERROR';
           }
           return Container(
-            margin: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.symmetric(vertical: 8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 4.0),
+                  padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 4.0),
                   child: Text(
                     data.date.replaceAll(' ~ ', ' ~ \n'),
                     style: TextStyle(
@@ -59,12 +60,16 @@ class NoticeDisplayContent extends StatelessWidget {
                       vertical: 12.0, horizontal: 16.0),
                   child: Text(
                     content,
-                    style: TextStyle(fontSize: FontSize.SUBTITLE.value),
+                    style: TextStyle(
+                      fontSize: FontSize.SUBTITLE.value,
+                      color: themeColor.defaultTextColor,
+                      height: 1.75,
+                    ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 8.0),
-                  child: DotSeparator(color: themeColor.defaultBorderColor),
+                  padding: const EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 12.0),
+                  child: DotSeparator(color: themeColor.defaultAccentColor),
                 ),
               ],
             ),

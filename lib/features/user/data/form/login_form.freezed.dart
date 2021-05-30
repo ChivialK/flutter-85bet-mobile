@@ -15,10 +15,15 @@ class _$LoginFormTearOff {
 
 // ignore: unused_element
   _LoginForm call(
-      {@JsonKey(name: 'accountcode') String account, String password}) {
+      {@JsonKey(name: 'accountcode') String account,
+      String password,
+      @JsonKey(name: 'key') String captchaKey,
+      @JsonKey(name: 'captcha') String captchaAns}) {
     return _LoginForm(
       account: account,
       password: password,
+      captchaKey: captchaKey,
+      captchaAns: captchaAns,
     );
   }
 }
@@ -32,6 +37,10 @@ mixin _$LoginForm {
   @JsonKey(name: 'accountcode')
   String get account;
   String get password;
+  @JsonKey(name: 'key')
+  String get captchaKey;
+  @JsonKey(name: 'captcha')
+  String get captchaAns;
 
   $LoginFormCopyWith<LoginForm> get copyWith;
 }
@@ -40,7 +49,11 @@ mixin _$LoginForm {
 abstract class $LoginFormCopyWith<$Res> {
   factory $LoginFormCopyWith(LoginForm value, $Res Function(LoginForm) then) =
       _$LoginFormCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'accountcode') String account, String password});
+  $Res call(
+      {@JsonKey(name: 'accountcode') String account,
+      String password,
+      @JsonKey(name: 'key') String captchaKey,
+      @JsonKey(name: 'captcha') String captchaAns});
 }
 
 /// @nodoc
@@ -55,10 +68,16 @@ class _$LoginFormCopyWithImpl<$Res> implements $LoginFormCopyWith<$Res> {
   $Res call({
     Object account = freezed,
     Object password = freezed,
+    Object captchaKey = freezed,
+    Object captchaAns = freezed,
   }) {
     return _then(_value.copyWith(
       account: account == freezed ? _value.account : account as String,
       password: password == freezed ? _value.password : password as String,
+      captchaKey:
+          captchaKey == freezed ? _value.captchaKey : captchaKey as String,
+      captchaAns:
+          captchaAns == freezed ? _value.captchaAns : captchaAns as String,
     ));
   }
 }
@@ -69,7 +88,11 @@ abstract class _$LoginFormCopyWith<$Res> implements $LoginFormCopyWith<$Res> {
           _LoginForm value, $Res Function(_LoginForm) then) =
       __$LoginFormCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'accountcode') String account, String password});
+  $Res call(
+      {@JsonKey(name: 'accountcode') String account,
+      String password,
+      @JsonKey(name: 'key') String captchaKey,
+      @JsonKey(name: 'captcha') String captchaAns});
 }
 
 /// @nodoc
@@ -85,10 +108,16 @@ class __$LoginFormCopyWithImpl<$Res> extends _$LoginFormCopyWithImpl<$Res>
   $Res call({
     Object account = freezed,
     Object password = freezed,
+    Object captchaKey = freezed,
+    Object captchaAns = freezed,
   }) {
     return _then(_LoginForm(
       account: account == freezed ? _value.account : account as String,
       password: password == freezed ? _value.password : password as String,
+      captchaKey:
+          captchaKey == freezed ? _value.captchaKey : captchaKey as String,
+      captchaAns:
+          captchaAns == freezed ? _value.captchaAns : captchaAns as String,
     ));
   }
 }
@@ -96,17 +125,26 @@ class __$LoginFormCopyWithImpl<$Res> extends _$LoginFormCopyWithImpl<$Res>
 /// @nodoc
 class _$_LoginForm implements _LoginForm {
   const _$_LoginForm(
-      {@JsonKey(name: 'accountcode') this.account, this.password});
+      {@JsonKey(name: 'accountcode') this.account,
+      this.password,
+      @JsonKey(name: 'key') this.captchaKey,
+      @JsonKey(name: 'captcha') this.captchaAns});
 
   @override
   @JsonKey(name: 'accountcode')
   final String account;
   @override
   final String password;
+  @override
+  @JsonKey(name: 'key')
+  final String captchaKey;
+  @override
+  @JsonKey(name: 'captcha')
+  final String captchaAns;
 
   @override
   String toString() {
-    return 'LoginForm(account: $account, password: $password)';
+    return 'LoginForm(account: $account, password: $password, captchaKey: $captchaKey, captchaAns: $captchaAns)';
   }
 
   @override
@@ -118,14 +156,22 @@ class _$_LoginForm implements _LoginForm {
                     .equals(other.account, account)) &&
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
-                    .equals(other.password, password)));
+                    .equals(other.password, password)) &&
+            (identical(other.captchaKey, captchaKey) ||
+                const DeepCollectionEquality()
+                    .equals(other.captchaKey, captchaKey)) &&
+            (identical(other.captchaAns, captchaAns) ||
+                const DeepCollectionEquality()
+                    .equals(other.captchaAns, captchaAns)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(account) ^
-      const DeepCollectionEquality().hash(password);
+      const DeepCollectionEquality().hash(password) ^
+      const DeepCollectionEquality().hash(captchaKey) ^
+      const DeepCollectionEquality().hash(captchaAns);
 
   @override
   _$LoginFormCopyWith<_LoginForm> get copyWith =>
@@ -135,13 +181,21 @@ class _$_LoginForm implements _LoginForm {
 abstract class _LoginForm implements LoginForm {
   const factory _LoginForm(
       {@JsonKey(name: 'accountcode') String account,
-      String password}) = _$_LoginForm;
+      String password,
+      @JsonKey(name: 'key') String captchaKey,
+      @JsonKey(name: 'captcha') String captchaAns}) = _$_LoginForm;
 
   @override
   @JsonKey(name: 'accountcode')
   String get account;
   @override
   String get password;
+  @override
+  @JsonKey(name: 'key')
+  String get captchaKey;
+  @override
+  @JsonKey(name: 'captcha')
+  String get captchaAns;
   @override
   _$LoginFormCopyWith<_LoginForm> get copyWith;
 }

@@ -11,6 +11,7 @@ import '../entity/marquee_entity.dart';
 import '../form/platform_game_form.dart';
 import '../models/banner_model.dart';
 import '../models/game_model.dart';
+import '../models/game_platform.dart';
 import '../models/game_types.dart';
 import '../models/marquee_model.dart';
 import '../models/marquee_model_list.dart';
@@ -46,6 +47,14 @@ abstract class HomeRepository {
   Future<Either<Failure, GameTypes>> getCachedGameTypes();
 
   Future<Either<Failure, List<GameEntity>>> getGames(PlatformGameForm form);
+
+  Future<Either<Failure, List>> getRecommend();
+
+  Future<Either<Failure, List>> getFavorites();
+
+  Future<Either<Failure, bool>> postFavoritePlatform(int id, bool favorite);
+
+  Future<Either<Failure, bool>> postFavoriteGame(int id, bool favorite);
 
   Future<Either<Failure, String>> getGameUrl(String requestUrl);
 }
@@ -159,7 +168,7 @@ class HomeRepositoryImpl implements HomeRepository {
     if (!connected) return getCachedGameTypes();
 
     final result = await requestModel<GameTypes>(
-      request: dioApiService.get(
+      request: dioApiService.post(
         HomeApi.GAME_ALL,
         data: {
           "accountid": jwtInterface.accountId,
@@ -256,164 +265,166 @@ class HomeRepositoryImpl implements HomeRepository {
 
     return result.fold(
       (failure) => Left(failure),
-      (data) =>
-          (data.isUrl) ? Right(data) : Left(Failure.errorMessage(msg: data)),
+      (data) => (data.isUrl || (data.isHtmlFormat && data.contains('</form>')))
+          ? Right(data)
+          : Left(Failure.errorMessage(msg: data)),
     );
   }
-//
-//  @override
-//  Future<Either<Failure, List>> getRecommend() async {
-//    final connected = await networkInfo.isConnected;
-//    if (!connected) return Left(Failure.network());
-//
-//    final result = await requestData(
-//      request: dioApiService.post(
-//        HomeApi.GAME_RECOMMEND,
-//        data: {
-//          'accountid': jwtInterface.accountId,
-//        },
-//      ),
-//      tag: 'remote-RECOMMEND',
-//    );
-////    debugPrint('test response type: ${result.runtimeType}, data: $result');
-//    return result.fold(
-//      (failure) => Left(failure),
-//      (data) {
-//        debugPrint('check recommend data type: ${data.runtimeType}');
-//        if (data is List) return Right(_decodeMixedData(data));
-//        if (data is String && data.startsWith('[') && data.endsWith(']'))
-//          return Right(_decodeMixedData(jsonDecode(data)));
-//        return Left(Failure.jsonFormat());
-//      },
-//    );
-//  }
-//
-//  List _decodeMixedData(List data) {
-//    if (data == null || data.isEmpty) return [];
-//    List decodedList = data.map((map) {
-//      try {
-//        if (map.containsKey('platform'))
-//          return GameModel.jsonToGameModel(map).entity;
-//        else if (map.containsKey('site'))
-//          return GamePlatform.jsonToGamePlatformEntity(map);
-//        else
-//          return '';
-//      } catch (e) {
-//        return '';
-//      }
-//    }).toList();
-//    decodedList.removeWhere((element) => element == '');
-////    debugPrint('decoded recommend games: $decodedList');
-//    return decodedList;
-//  }
-//
-//  @override
-//  Future<Either<Failure, List>> getFavorites() async {
-//    final connected = await networkInfo.isConnected;
-//    if (!connected) return Left(Failure.network());
-//
-//    final result = await requestData(
-//      request: dioApiService.post(
-//        HomeApi.GAME_FAVORITE,
-//        data: {
-//          'accountid': jwtInterface.accountId,
-//        },
-//      ),
-//      tag: 'remote-FAVORITE',
-//    );
-////    debugPrint('test response type: ${result.runtimeType}, data: $result');
-//    return result.fold(
-//      (failure) => Left(failure),
-//      (data) {
-//        debugPrint('check favorite data type: ${data.runtimeType}');
-//        Map map = new Map();
-//        if (data is Map)
-//          map = data;
-//        else if (data is String)
-//          map = jsonDecode(data);
-//        else
-//          return Left(Failure.jsonFormat());
-//
-//        List dataList = new List();
-//        map.forEach((key, value) {
-////            debugPrint('$key data is List: ${value is List}');
-//          if (value is List)
-//            dataList.addAll(value);
-//          else
-//            MyLogger.warn(
-//              msg: 'data type error, $key data is ${value.runtimeType}',
-//              tag: tag,
-//            );
-//        });
-//        return Right(_decodeMixedData(dataList));
-//      },
-//    );
-//  }
-//
-//  @override
-//  Future<Either<Failure, bool>> postFavoritePlatform(
-//    int id,
-//    bool favorite,
-//  ) async {
-//    final connected = await networkInfo.isConnected;
-//    if (!connected) return Left(Failure.network());
-//
-//    final result = await requestData(
-//      request: dioApiService.post(
-//        HomeApi.POST_FAVORITE_PLATFORM,
-//        data: {
-//          'accountid': jwtInterface.accountId,
-//          'id': id,
-//          'status': (favorite) ? '1' : '0',
-//        },
-//      ),
-//      tag: 'remote-FAVORITE',
-//    );
-////    debugPrint('test response type: ${result.runtimeType}, data: $result');
-//    return result.fold(
-//      (failure) => Left(failure),
-//      (data) {
-//        if (data is String)
-//          return Right(data == '1' || data == 'true');
-//        else if (data is bool)
-//          return Right(data);
-//        else if (data is int)
-//          return Right(data == 1);
-//        else
-//          return Left(Failure.dataType());
-//      },
-//    );
-//  }
-//
-//  @override
-//  Future<Either<Failure, bool>> postFavoriteGame(int id, bool favorite) async {
-//    final connected = await networkInfo.isConnected;
-//    if (!connected) return Left(Failure.network());
-//
-//    final result = await requestData(
-//      request: dioApiService.post(
-//        HomeApi.POST_FAVORITE_GAME,
-//        data: {
-//          'accountid': jwtInterface.accountId,
-//          'gameid': id,
-//          'status': (favorite) ? '1' : '0',
-//        },
-//      ),
-//      tag: 'remote-FAVORITE',
-//    );
-////    debugPrint('test response type: ${result.runtimeType}, data: $result');
-//    return result.fold(
-//      (failure) => Left(failure),
-//      (data) {
-//        if (data is String)
-//          return Right(data == '1' || data == 'true');
-//        else if (data is bool)
-//          return Right(data);
-//        else if (data is int)
-//          return Right(data == 1);
-//        else
-//          return Left(Failure.dataType());
-//      },
-//    );
-//  }
+
+  @override
+  Future<Either<Failure, List>> getRecommend() async {
+    final result = await requestData(
+      request: dioApiService.post(
+        HomeApi.GAME_RECOMMEND,
+        data: {
+          'accountid': jwtInterface.accountId,
+        },
+      ),
+      tag: 'remote-RECOMMEND',
+    );
+//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+    return result.fold(
+      (failure) => Left(failure),
+      (data) {
+        debugPrint('check recommend data type: ${data.runtimeType}');
+        if (data is List) return Right(_decodeMixedData(data));
+        if (data is Map) return Right(_decodeMixedData(data.values.toList()));
+        if (data is String) {
+          if (data.startsWith('[') && data.endsWith(']')) {
+            return Right(_decodeMixedData(jsonDecode(data)));
+          } else if (data.startsWith('{') && data.endsWith('}')) {
+            return Right(
+                _decodeMixedData((jsonDecode(data) as Map).values.toList()));
+          }
+        }
+        return Left(Failure.jsonFormat());
+      },
+    );
+  }
+
+  List _decodeMixedData(List data) {
+    if (data == null || data.isEmpty) return [];
+    List decodedList = data.map((map) {
+      try {
+        if (map.containsKey('platform'))
+          return GameModel.jsonToGameModel(map).entity;
+        else if (map.containsKey('site'))
+          return GamePlatform.jsonToGamePlatformEntity(map);
+        else
+          return '';
+      } catch (e) {
+        return '';
+      }
+    }).toList();
+    decodedList.removeWhere((element) => element == '');
+//    debugPrint('decoded recommend games: $decodedList');
+    return decodedList;
+  }
+
+  @override
+  Future<Either<Failure, List>> getFavorites() async {
+    final connected = await networkInfo.isConnected;
+    if (!connected) return Left(Failure.network());
+
+    final result = await requestData(
+      request: dioApiService.post(
+        HomeApi.GAME_FAVORITE,
+        data: {
+          'accountid': jwtInterface.accountId,
+        },
+      ),
+      tag: 'remote-FAVORITE',
+    );
+//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+    return result.fold(
+      (failure) => Left(failure),
+      (data) {
+        debugPrint('check favorite data type: ${data.runtimeType}');
+        Map map = new Map();
+        if (data is Map)
+          map = data;
+        else if (data is String)
+          map = jsonDecode(data);
+        else
+          return Left(Failure.jsonFormat());
+
+        List dataList = new List();
+        map.forEach((key, value) {
+//            debugPrint('$key data is List: ${value is List}');
+          if (value is List)
+            dataList.addAll(value);
+          else
+            MyLogger.warn(
+              msg: 'data type error, $key data is ${value.runtimeType}',
+              tag: tag,
+            );
+        });
+        return Right(_decodeMixedData(dataList));
+      },
+    );
+  }
+
+  @override
+  Future<Either<Failure, bool>> postFavoritePlatform(
+    int id,
+    bool favorite,
+  ) async {
+    final result = await requestData(
+      request: dioApiService.post(
+        HomeApi.POST_FAVORITE_PLATFORM,
+        data: {
+          'accountid': jwtInterface.accountId,
+          'id': id,
+          'status': (favorite) ? '1' : '0',
+        },
+      ),
+      tag: 'remote-FAVORITE',
+    );
+//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+    return result.fold(
+      (failure) => Left(failure),
+      (data) {
+        if (data is String)
+          return Right(data == '1' || data == 'true');
+        else if (data is bool)
+          return Right(data);
+        else if (data is int)
+          return Right(data == 1);
+        else
+          return Left(Failure.dataType());
+      },
+    );
+  }
+
+  @override
+  Future<Either<Failure, bool>> postFavoriteGame(int id, bool favorite) async {
+    final connected = await networkInfo.isConnected;
+    if (!connected) return Left(Failure.network());
+
+    final result = await requestData(
+      request: dioApiService.post(
+        HomeApi.POST_FAVORITE_GAME,
+        data: {
+          'accountid': jwtInterface.accountId,
+          'gameid': id,
+          'status': (favorite) ? '1' : '0',
+        },
+      ),
+      tag: 'remote-FAVORITE',
+    );
+//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+    return result.fold(
+      (failure) => Left(failure),
+      (data) {
+        if (data is String)
+          return Right(data == '1' || data == 'true');
+        else if (data is bool)
+          return Right(data);
+        else if (data is int)
+          return Right(data == 1);
+        else
+          return Left(Failure.dataType());
+      },
+    );
+  }
 }

@@ -27,13 +27,13 @@ mixin _$LoginStore on _LoginStore, Store {
   final _$_initFutureAtom = Atom(name: '_LoginStore._initFuture');
 
   @override
-  ObservableFuture<Box<dynamic>> get _initFuture {
+  ObservableFuture<List<dynamic>> get _initFuture {
     _$_initFutureAtom.reportRead();
     return super._initFuture;
   }
 
   @override
-  set _initFuture(ObservableFuture<Box<dynamic>> value) {
+  set _initFuture(ObservableFuture<List<dynamic>> value) {
     _$_initFutureAtom.reportWrite(value, super._initFuture, () {
       super._initFuture = value;
     });
@@ -66,6 +66,21 @@ mixin _$LoginStore on _LoginStore, Store {
   set waitForHive(bool value) {
     _$waitForHiveAtom.reportWrite(value, super.waitForHive, () {
       super.waitForHive = value;
+    });
+  }
+
+  final _$captchaDataAtom = Atom(name: '_LoginStore.captchaData');
+
+  @override
+  CaptchaData get captchaData {
+    _$captchaDataAtom.reportRead();
+    return super.captchaData;
+  }
+
+  @override
+  set captchaData(CaptchaData value) {
+    _$captchaDataAtom.reportWrite(value, super.captchaData, () {
+      super.captchaData = value;
     });
   }
 
@@ -121,17 +136,34 @@ mixin _$LoginStore on _LoginStore, Store {
     return _$initBoxAsyncAction.run(() => super.initBox());
   }
 
+  final _$_getLastLoginRecordAsyncAction =
+      AsyncAction('_LoginStore._getLastLoginRecord');
+
+  @override
+  Future<void> _getLastLoginRecord() {
+    return _$_getLastLoginRecordAsyncAction
+        .run(() => super._getLastLoginRecord());
+  }
+
+  final _$getCaptchaAsyncAction = AsyncAction('_LoginStore.getCaptcha');
+
+  @override
+  Future<void> getCaptcha() {
+    return _$getCaptchaAsyncAction.run(() => super.getCaptcha());
+  }
+
   final _$loginAsyncAction = AsyncAction('_LoginStore.login');
 
   @override
-  Future<void> login(LoginForm form, bool saveForm) {
-    return _$loginAsyncAction.run(() => super.login(form, saveForm));
+  Future<void> login(LoginForm form, bool saveForm, String captcha) {
+    return _$loginAsyncAction.run(() => super.login(form, saveForm, captcha));
   }
 
   @override
   String toString() {
     return '''
 waitForHive: ${waitForHive},
+captchaData: ${captchaData},
 hiveLoginForm: ${hiveLoginForm},
 waitForLogin: ${waitForLogin},
 errorMessage: ${errorMessage},

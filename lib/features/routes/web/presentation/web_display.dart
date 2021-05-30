@@ -73,6 +73,14 @@ class _WebDisplayState extends State<WebDisplay> {
             },
             onLoadStart: (InAppWebViewController controller, String url) {
               debugPrint('webview start loading: $url');
+              if (widget.url.endsWith('/newbie')) {
+                debugPrint('setting web storage: '
+                    '${Global.lang.webKey}-${Global.lang.webCode}');
+                _controller.webStorage.localStorage
+                    .removeItem(key: Global.lang.webKey);
+                _controller.webStorage.localStorage.setItem(
+                    key: Global.lang.webKey, value: Global.lang.webCode);
+              }
             },
             onLoadStop: (InAppWebViewController controller, String url) async {
               debugPrint('web page loaded: $url');

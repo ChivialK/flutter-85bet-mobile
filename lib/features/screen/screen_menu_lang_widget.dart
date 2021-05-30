@@ -25,7 +25,7 @@ class _ScreenMenuLangWidgetState extends State<ScreenMenuLangWidget> {
 
   @override
   void initState() {
-    _currentLang = Global.localeCode;
+    _currentLang = Global.lang.code;
     super.initState();
   }
 
@@ -72,7 +72,7 @@ class _ScreenMenuLangWidgetState extends State<ScreenMenuLangWidget> {
       value: _currentLang,
       onChanged: (value) {
         debugPrint('selected lang: $value');
-        if (Global.localeCode != value) {
+        if (Global.lang.code != value) {
           String newLang = value;
           try {
             sl.get<LocalStrings>()?.setLanguage(newLang);
@@ -87,7 +87,7 @@ class _ScreenMenuLangWidgetState extends State<ScreenMenuLangWidget> {
             MyLogger.error(
                 msg: 'Localize File not initialized', tag: 'LocalStrings');
           } finally {
-            Global.setLocale = newLang;
+            Global.lang.setLocale = newLang;
             if (mounted) {
               _currentLang = newLang;
             }
