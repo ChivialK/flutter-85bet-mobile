@@ -17,6 +17,21 @@ mixin _$WithdrawStore on _WithdrawStore, Store {
               name: '_WithdrawStore.state'))
           .value;
 
+  final _$_initFutureAtom = Atom(name: '_WithdrawStore._initFuture');
+
+  @override
+  ObservableFuture<List<dynamic>> get _initFuture {
+    _$_initFutureAtom.reportRead();
+    return super._initFuture;
+  }
+
+  @override
+  set _initFuture(ObservableFuture<List<dynamic>> value) {
+    _$_initFutureAtom.reportWrite(value, super._initFuture, () {
+      super._initFuture = value;
+    });
+  }
+
   final _$_cgpFutureAtom = Atom(name: '_WithdrawStore._cgpFuture');
 
   @override
@@ -94,6 +109,13 @@ mixin _$WithdrawStore on _WithdrawStore, Store {
     });
   }
 
+  final _$initializeAsyncAction = AsyncAction('_WithdrawStore.initialize');
+
+  @override
+  Future<void> initialize() {
+    return _$initializeAsyncAction.run(() => super.initialize());
+  }
+
   final _$getCgpWalletAsyncAction = AsyncAction('_WithdrawStore.getCgpWallet');
 
   @override
@@ -113,6 +135,14 @@ mixin _$WithdrawStore on _WithdrawStore, Store {
   @override
   Future<void> getRollback() {
     return _$getRollbackAsyncAction.run(() => super.getRollback());
+  }
+
+  final _$getWithdrawLimitAsyncAction =
+      AsyncAction('_WithdrawStore.getWithdrawLimit');
+
+  @override
+  Future<void> getWithdrawLimit() {
+    return _$getWithdrawLimitAsyncAction.run(() => super.getWithdrawLimit());
   }
 
   final _$sendRequestAsyncAction = AsyncAction('_WithdrawStore.sendRequest');

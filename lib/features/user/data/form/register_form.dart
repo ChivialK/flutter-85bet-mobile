@@ -13,6 +13,8 @@ abstract class RegisterForm with _$RegisterForm {
     String intro,
     String mobileno,
     String code,
+    @JsonKey(name: 'key') String captchaKey,
+    @JsonKey(name: 'captcha') String captchaAns,
   }) = _RegisterForm;
 }
 
@@ -29,11 +31,17 @@ extension RegisterFormExtension on RegisterForm {
     };
   }
 
+  Map<String, dynamic> captchaToJson() => <String, dynamic>{
+        'key': this.captchaKey,
+        'captcha': this.captchaAns,
+      };
+
   bool get isValid =>
       username.isNotEmpty &&
       password.isNotEmpty &&
       confirmPassword.isNotEmpty &&
       password == confirmPassword &&
+      intro.isNotEmpty &&
       mobileno.isNotEmpty &&
       rangeCheck(
         value: mobileno.length,

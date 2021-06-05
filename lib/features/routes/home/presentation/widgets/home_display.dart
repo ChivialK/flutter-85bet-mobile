@@ -227,7 +227,11 @@ class _HomeDisplayState extends State<HomeDisplay> {
       RoutePage newRoute = url.urlToRoutePage;
       debugPrint('checking url to app route: $newRoute');
       if (newRoute != null) {
-        RouterNavigate.navigateToPage(newRoute);
+        if (newRoute.pageId == RouteEnum.HOME) {
+          callToast(localeStr.pageTitleHome);
+        } else {
+          RouterNavigate.navigateToPage(newRoute);
+        }
       } else {
         callToast(localeStr.urlActionNotSupported);
         MyLogger.debug(msg: 'Found unsupported Route URL: $url');

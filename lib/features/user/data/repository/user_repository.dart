@@ -18,7 +18,7 @@ class UserApi {
 
 abstract class UserRepository {
   /// Login user and get user info
-  Future<Either<Failure, UserModel>> login(LoginForm form);
+  Future<Either<Failure, UserModel>> login(LoginForm form, bool verified);
 
   /// Create Login Captcha
   Future<Either<Failure, CaptchaModel>> getCaptcha();
@@ -36,17 +36,20 @@ class UserRepositoryImpl implements UserRepository {
       {@required this.dioApiService, @required this.jwtInterface});
 
   @override
-  Future<Either<Failure, UserModel>> login(LoginForm form) async {
+  Future<Either<Failure, UserModel>> login(
+      LoginForm form, bool captchaVerified) async {
     /// verify captcha
-    final verified = await _checkCaptcha(form.captchaToJson());
-    debugPrint('check captcha: $verified');
-    Either<Failure, UserModel> verifyFailure = verified.fold(
-      (failure) => Left(Failure.errorMessage(msg: 'verifyFailed')),
-      (status) => (status.isSuccess)
-          ? null
-          : Left(Failure.errorMessage(msg: 'verifyFailed')),
-    );
-    if (verifyFailure != null) return Future.value(verifyFailure);
+    if (!captchaVerified) {
+      final verified = await _checkCaptcha(form.captchaToJson());
+      debugPrint('check captcha: $verified');
+      Either<Failure, UserModel> verifyFailure = verified.fold(
+        (failure) => Left(Failure.errorMessage(msg: 'verifyFailed')),
+        (status) => (status.isSuccess)
+            ? null
+            : Left(Failure.errorMessage(msg: 'verifyFailed')),
+      );
+      if (verifyFailure != null) return Future.value(verifyFailure);
+    }
 
     /// get user token and info
     final result = await _getToken(form);
@@ -139,6 +142,18 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<Failure, RequestStatusModel>> postRegister(
       RegisterForm form) async {
+    /// verify captcha
+    final verified = await _checkCaptcha(form.captchaToJson());
+    debugPrint('check captcha: $verified');
+    Either<Failure, RequestStatusModel> verifyFailure = verified.fold(
+      (failure) => Left(Failure.errorMessage(msg: 'verifyFailed')),
+      (status) => (status.isSuccess)
+          ? null
+          : Left(Failure.errorMessage(msg: 'verifyFailed')),
+    );
+    if (verifyFailure != null) return Future.value(verifyFailure);
+
+    /// register user
     final result = await requestModel<RequestStatusModel>(
       request: dioApiService.post(
         UserApi.POST_REGISTER,

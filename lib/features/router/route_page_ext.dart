@@ -27,6 +27,7 @@ extension PagesNameExtension on String {
   RoutePage get urlToRoutePage {
     _featureScreenRoutes ??= RoutePage.listAll;
     try {
+      if (this == '/') return RoutePage.home;
       return _featureScreenRoutes.singleWhere(
           (page) => (page.value as RouteInfo).webPageName == this,
           orElse: () => null) as RoutePage;

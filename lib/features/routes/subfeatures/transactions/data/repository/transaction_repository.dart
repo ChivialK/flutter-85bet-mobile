@@ -38,6 +38,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
         break;
       case TransactionDateSelected.yesterday:
         startDate = now.subtract(Duration(days: 1)).toDateStartString;
+        endDate = now.subtract(Duration(days: 1)).toDateEndString;
         break;
       case TransactionDateSelected.month:
         var lastMonth = now.subtract(Duration(days: 30));
@@ -45,6 +46,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
             .toDateStartString;
         break;
     }
+    debugPrint('range: $startDate ~ $endDate');
 
     final result = await requestModel<TransactionModel>(
       request: dioApiService.post(

@@ -20,7 +20,9 @@ class _$RegisterFormTearOff {
       @required String confirmPassword,
       String intro,
       String mobileno,
-      String code}) {
+      String code,
+      @JsonKey(name: 'key') String captchaKey,
+      @JsonKey(name: 'captcha') String captchaAns}) {
     return _RegisterForm(
       username: username,
       password: password,
@@ -28,6 +30,8 @@ class _$RegisterFormTearOff {
       intro: intro,
       mobileno: mobileno,
       code: code,
+      captchaKey: captchaKey,
+      captchaAns: captchaAns,
     );
   }
 }
@@ -44,6 +48,10 @@ mixin _$RegisterForm {
   String get intro;
   String get mobileno;
   String get code;
+  @JsonKey(name: 'key')
+  String get captchaKey;
+  @JsonKey(name: 'captcha')
+  String get captchaAns;
 
   $RegisterFormCopyWith<RegisterForm> get copyWith;
 }
@@ -59,7 +67,9 @@ abstract class $RegisterFormCopyWith<$Res> {
       String confirmPassword,
       String intro,
       String mobileno,
-      String code});
+      String code,
+      @JsonKey(name: 'key') String captchaKey,
+      @JsonKey(name: 'captcha') String captchaAns});
 }
 
 /// @nodoc
@@ -78,6 +88,8 @@ class _$RegisterFormCopyWithImpl<$Res> implements $RegisterFormCopyWith<$Res> {
     Object intro = freezed,
     Object mobileno = freezed,
     Object code = freezed,
+    Object captchaKey = freezed,
+    Object captchaAns = freezed,
   }) {
     return _then(_value.copyWith(
       username: username == freezed ? _value.username : username as String,
@@ -88,6 +100,10 @@ class _$RegisterFormCopyWithImpl<$Res> implements $RegisterFormCopyWith<$Res> {
       intro: intro == freezed ? _value.intro : intro as String,
       mobileno: mobileno == freezed ? _value.mobileno : mobileno as String,
       code: code == freezed ? _value.code : code as String,
+      captchaKey:
+          captchaKey == freezed ? _value.captchaKey : captchaKey as String,
+      captchaAns:
+          captchaAns == freezed ? _value.captchaAns : captchaAns as String,
     ));
   }
 }
@@ -105,7 +121,9 @@ abstract class _$RegisterFormCopyWith<$Res>
       String confirmPassword,
       String intro,
       String mobileno,
-      String code});
+      String code,
+      @JsonKey(name: 'key') String captchaKey,
+      @JsonKey(name: 'captcha') String captchaAns});
 }
 
 /// @nodoc
@@ -126,6 +144,8 @@ class __$RegisterFormCopyWithImpl<$Res> extends _$RegisterFormCopyWithImpl<$Res>
     Object intro = freezed,
     Object mobileno = freezed,
     Object code = freezed,
+    Object captchaKey = freezed,
+    Object captchaAns = freezed,
   }) {
     return _then(_RegisterForm(
       username: username == freezed ? _value.username : username as String,
@@ -136,6 +156,10 @@ class __$RegisterFormCopyWithImpl<$Res> extends _$RegisterFormCopyWithImpl<$Res>
       intro: intro == freezed ? _value.intro : intro as String,
       mobileno: mobileno == freezed ? _value.mobileno : mobileno as String,
       code: code == freezed ? _value.code : code as String,
+      captchaKey:
+          captchaKey == freezed ? _value.captchaKey : captchaKey as String,
+      captchaAns:
+          captchaAns == freezed ? _value.captchaAns : captchaAns as String,
     ));
   }
 }
@@ -148,7 +172,9 @@ class _$_RegisterForm implements _RegisterForm {
       @required this.confirmPassword,
       this.intro,
       this.mobileno,
-      this.code})
+      this.code,
+      @JsonKey(name: 'key') this.captchaKey,
+      @JsonKey(name: 'captcha') this.captchaAns})
       : assert(username != null),
         assert(password != null),
         assert(confirmPassword != null);
@@ -165,10 +191,16 @@ class _$_RegisterForm implements _RegisterForm {
   final String mobileno;
   @override
   final String code;
+  @override
+  @JsonKey(name: 'key')
+  final String captchaKey;
+  @override
+  @JsonKey(name: 'captcha')
+  final String captchaAns;
 
   @override
   String toString() {
-    return 'RegisterForm(username: $username, password: $password, confirmPassword: $confirmPassword, intro: $intro, mobileno: $mobileno, code: $code)';
+    return 'RegisterForm(username: $username, password: $password, confirmPassword: $confirmPassword, intro: $intro, mobileno: $mobileno, code: $code, captchaKey: $captchaKey, captchaAns: $captchaAns)';
   }
 
   @override
@@ -190,7 +222,13 @@ class _$_RegisterForm implements _RegisterForm {
                 const DeepCollectionEquality()
                     .equals(other.mobileno, mobileno)) &&
             (identical(other.code, code) ||
-                const DeepCollectionEquality().equals(other.code, code)));
+                const DeepCollectionEquality().equals(other.code, code)) &&
+            (identical(other.captchaKey, captchaKey) ||
+                const DeepCollectionEquality()
+                    .equals(other.captchaKey, captchaKey)) &&
+            (identical(other.captchaAns, captchaAns) ||
+                const DeepCollectionEquality()
+                    .equals(other.captchaAns, captchaAns)));
   }
 
   @override
@@ -201,7 +239,9 @@ class _$_RegisterForm implements _RegisterForm {
       const DeepCollectionEquality().hash(confirmPassword) ^
       const DeepCollectionEquality().hash(intro) ^
       const DeepCollectionEquality().hash(mobileno) ^
-      const DeepCollectionEquality().hash(code);
+      const DeepCollectionEquality().hash(code) ^
+      const DeepCollectionEquality().hash(captchaKey) ^
+      const DeepCollectionEquality().hash(captchaAns);
 
   @override
   _$RegisterFormCopyWith<_RegisterForm> get copyWith =>
@@ -215,7 +255,9 @@ abstract class _RegisterForm implements RegisterForm {
       @required String confirmPassword,
       String intro,
       String mobileno,
-      String code}) = _$_RegisterForm;
+      String code,
+      @JsonKey(name: 'key') String captchaKey,
+      @JsonKey(name: 'captcha') String captchaAns}) = _$_RegisterForm;
 
   @override
   String get username;
@@ -229,6 +271,12 @@ abstract class _RegisterForm implements RegisterForm {
   String get mobileno;
   @override
   String get code;
+  @override
+  @JsonKey(name: 'key')
+  String get captchaKey;
+  @override
+  @JsonKey(name: 'captcha')
+  String get captchaAns;
   @override
   _$RegisterFormCopyWith<_RegisterForm> get copyWith;
 }

@@ -1,11 +1,16 @@
+import 'dart:async';
+
+import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/checkbox_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/loading_widget.dart';
 import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
 import 'package:flutter_85bet_mobile/features/themes/icon_code.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/user_entity.dart';
+import 'package:flutter_85bet_mobile/features/user/data/models/captcha_model.dart';
 import 'package:flutter_85bet_mobile/features/user/login/presentation/widgets/login_navigate.dart';
 
 import '../../../data/form/register_form.dart';
@@ -24,7 +29,8 @@ class RegisterFormWidget extends StatefulWidget {
   _RegisterFormWidgetState createState() => _RegisterFormWidgetState();
 }
 
-class _RegisterFormWidgetState extends State<RegisterFormWidget> {
+class _RegisterFormWidgetState extends State<RegisterFormWidget>
+    with AfterLayoutMixin {
   static final GlobalKey<FormState> _formKey =
       new GlobalKey(debugLabel: 'form');
 
@@ -38,18 +44,22 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
       new GlobalKey(debugLabel: 'phone');
   final GlobalKey<CustomizeFieldWidgetState> _introFieldKey =
       new GlobalKey(debugLabel: 'intro');
+  final GlobalKey<CustomizeFieldWidgetState> _captchaFieldKey =
+      new GlobalKey(debugLabel: 'captcha');
 
   final GlobalKey<CheckboxWidgetState> _newsCheckKey =
       new GlobalKey(debugLabel: 'news');
   final GlobalKey<CheckboxWidgetState> _termsCheckKey =
       new GlobalKey(debugLabel: 'terms');
 
+  RegisterStore _store;
+  List<ReactionDisposer> _disposers;
+  CaptchaData _captchaData;
+
   double _fieldInset;
   double _phoneCodeContainerHeight;
   double _valueTextPadding;
   Color _fieldPrefixBg;
-
-  RegisterStore _store;
 
   bool _showAccountError = false;
   bool _showPasswordError = false;
@@ -62,6 +72,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
     if (form.validate()) {
       form.save();
 //      debugPrint('The user wants to login with $_username and $_password');
+      String captcha = _captchaFieldKey.currentState.getInput;
       RegisterForm regForm = RegisterForm(
         username: _accountFieldKey.currentState.getInput,
         password: _pwdFieldKey.currentState.getInput,
@@ -70,12 +81,21 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
         intro: _introFieldKey.currentState.getInput,
       );
       debugPrint('register form: $regForm, valid: ${regForm.isValid}');
-      if (regForm.isValid && _termsCheckKey.currentState.boxChecked) {
-        _store.postRegister(regForm);
+      if (regForm.isValid &&
+          captcha.isNotEmpty &&
+          _termsCheckKey.currentState.boxChecked) {
+        _store.postRegister(regForm, captcha);
       } else {
         callToast(localeStr.messageActionFillForm);
       }
     }
+  }
+
+  void _updateCaptcha(CaptchaData data) {
+    // debugPrint('received captcha data: $data');
+    setState(() {
+      _captchaData = data;
+    });
   }
 
   @override
@@ -93,6 +113,29 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
         ThemeInterface.minusSize +
         24.0;
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    debugPrint('didChangeDependencies');
+    super.didChangeDependencies();
+    _disposers ??= [
+      reaction(
+        // Observe in page
+        // Tell the reaction which observable to observe
+        (_) => _store.captchaData,
+        // Run some logic with the content of the observed field
+        (data) => _updateCaptcha(data),
+      ),
+    ];
+  }
+
+  @override
+  void dispose() {
+    try {
+      _disposers.forEach((d) => d());
+    } on Exception {}
+    super.dispose();
   }
 
   @override
@@ -273,11 +316,12 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                     prefixBgColor: _fieldPrefixBg,
                     backgroundColor: Colors.transparent,
                     horizontalInset: _fieldInset,
+                    heightFactor: 2.15,
                     requiredInput: true,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           width: 64.0,
@@ -298,7 +342,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                             ),
                           ),
                         ),
-                        SizedBox(width: 8.0),
+                        SizedBox(height: 8.0),
                         Expanded(
                           child: new CustomizeFieldWidget(
                             key: _phoneFieldKey,
@@ -310,10 +354,11 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                             onInputChanged: (input) {
                               setState(() {
                                 _showPhoneError = !rangeCheck(
-                                  value: input.length,
-                                  min: InputLimit.PHONE_MIN,
-                                  max: InputLimit.PHONE_MAX,
-                                );
+                                      value: input.length,
+                                      min: InputLimit.PHONE_MIN,
+                                      max: InputLimit.PHONE_MAX,
+                                    ) ||
+                                    !input.startsWith('09');
                               });
                             },
                           ),
@@ -330,10 +375,13 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       child: Visibility(
                         visible: _showPhoneError,
                         child: Text(
-                          localeStr.messageInvalidPhone2(
-                            InputLimit.PHONE_MIN,
-                            InputLimit.PHONE_MAX,
-                          ),
+                          (InputLimit.PHONE_MIN != InputLimit.PHONE_MAX)
+                              ? localeStr.messageInvalidPhone2(
+                                  InputLimit.PHONE_MIN,
+                                  InputLimit.PHONE_MAX,
+                                )
+                              : localeStr
+                                  .messageInvalidPhone(InputLimit.PHONE_MAX),
                           style: TextStyle(color: themeColor.defaultErrorColor),
                         ),
                       ),
@@ -352,6 +400,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                     prefixBgColor: _fieldPrefixBg,
                     backgroundColor: themeColor.fieldPrefixBgColor,
                     horizontalInset: _fieldInset,
+                    requiredInput: true,
                     child: new CustomizeFieldWidget(
                       key: _introFieldKey,
                       fieldType: FieldType.Numbers,
@@ -359,6 +408,55 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
                       persistHint: false,
                       padding: const EdgeInsets.symmetric(vertical: 0.0),
                       maxInputLength: InputLimit.RECOMMEND,
+                    ),
+                  ),
+                ),
+
+                ///
+                /// Captcha Field
+                ///
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: new CustomizeTitledContainer(
+                    prefixText: localeStr.hintCaptcha,
+                    prefixTextSize: FontSize.SUBTITLE.value,
+                    prefixBgColor: _fieldPrefixBg,
+                    backgroundColor: themeColor.fieldPrefixBgColor,
+                    horizontalInset: _fieldInset,
+                    heightFactor: 2,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            if (_captchaData != null) _store.getCaptcha();
+                          },
+                          child: Container(
+                            height: 42,
+                            padding: const EdgeInsets.only(bottom: 6.0),
+                            child: (_captchaData != null)
+                                ? (_captchaData.key.isNotEmpty &&
+                                        _captchaData.img != null)
+                                    ? Image.memory(
+                                        _captchaData.img,
+                                        fit: BoxFit.fitHeight,
+                                      )
+                                    : Icon(
+                                        Icons.broken_image,
+                                        color: themeColor.iconSubColor1,
+                                      )
+                                : LoadingWidget(),
+                          ),
+                        ),
+                        new CustomizeFieldWidget(
+                          key: _captchaFieldKey,
+                          fieldType: FieldType.Numbers,
+                          persistHint: false,
+                          padding: EdgeInsets.zero,
+                          maxInputLength: 4,
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -500,5 +598,15 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget> {
         SizedBox(height: 24.0),
       ],
     );
+  }
+
+  @override
+  void afterFirstLayout(BuildContext context) {
+    Timer.periodic(Duration(milliseconds: 500), (self) {
+      if (_store.captchaData != null) {
+        _updateCaptcha(_store.captchaData);
+        self.cancel();
+      }
+    });
   }
 }

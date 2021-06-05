@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
+import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../data/model/deposit_info.dart';
 import '../../data/model/payment_promo.dart';
@@ -135,7 +137,21 @@ class PaymentContentState extends State<PaymentContent> {
         widget.rules.isNotEmpty &&
         widget.rules.containsKey(typeId)) {
 //      debugPrint('rules content: ${widget.rules[typeId]}');
-      return HtmlWidget(widget.rules[typeId]);
+      return HtmlWidget(
+        widget.rules[typeId],
+        onTapUrl: (String url) {
+          debugPrint('tap url: $url');
+          if (url.isUrl) {
+            launch(url);
+          } else if (url.startsWith("../../newbie#")) {
+            var fixUrl = Global.CURRENT_BASE + url.split('/').last;
+            debugPrint('fixed url: $fixUrl');
+            launch(fixUrl);
+          } else {
+            callToast(localeStr.urlActionNotSupported);
+          }
+        },
+      );
     } else {
       return SizedBox.shrink();
     }

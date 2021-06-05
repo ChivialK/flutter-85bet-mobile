@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
+import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
 import 'package:flutter_85bet_mobile/features/routes/member/presentation/data/member_grid_item.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart';
 
@@ -35,8 +36,10 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
   bool _showAmountError = false;
   bool _showPasswordError = false;
 
-  int amountLimit = 50000;
-  String _flowLimit = '0';
+  double _currentCredit = 0;
+  int _amountMin = 200;
+  int _amountMax = 0;
+  int _flowLimit = 0;
 
   void _validateForm() {
     final form = _formKey.currentState;
@@ -47,6 +50,17 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
         password: _passwordFieldKey.currentState.getInput,
         type: '0',
       );
+      if (_currentCredit != -1) {
+        var hasEnoughFlow = rangeCheck(
+            value: dataForm.amount.strToInt,
+            min: _amountMin,
+            max: _currentCredit - _flowLimit);
+        debugPrint('hasEnoughFlow= $hasEnoughFlow');
+        if (!hasEnoughFlow) {
+          callToast(localeStr.withdrawViewOptionHint2 + '$_flowLimit');
+          return;
+        }
+      }
       if (dataForm.isValid) {
         debugPrint('bankcard form: ${dataForm.toJson()}');
         if (widget.store.waitForWithdrawResult) {
@@ -66,6 +80,21 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
             ThemeInterface.prefixTextWidthFactor -
         ThemeInterface.minusSize;
     super.initState();
+    _amountMax = widget.store.limit;
+    _flowLimit = widget.store.rollback;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    try {
+      _currentCredit =
+          getAppGlobalStreams.getCredit(addSymbol: false).strToDouble;
+      debugPrint("user credit: $_currentCredit");
+    } catch (e) {
+      _currentCredit = -1;
+      debugPrint("get user credit has exception: $e");
+    }
   }
 
   @override
@@ -169,7 +198,7 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                                 child: new CustomizeFieldWidget(
                                   key: _amountFieldKey,
                                   fieldType: FieldType.Numbers,
-                                  hint: '',
+                                  hint: '$_amountMin ~ $_amountMax',
                                   persistHint: false,
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 0.0),
@@ -180,7 +209,8 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                                         value: (input.isNotEmpty)
                                             ? int.parse(input)
                                             : 0,
-                                        min: 100,
+                                        min: _amountMin,
+                                        max: _amountMax,
                                       );
                                     });
                                   },
@@ -196,7 +226,7 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                                   child: Visibility(
                                     visible: _showAmountError,
                                     child: Text(
-                                      '${localeStr.messageInvalidDepositAmountMinLimit}100',
+                                      '${localeStr.messageInvalidDepositAmountMinLimit}$_amountMin',
                                       style: TextStyle(
                                           color: themeColor.defaultErrorColor),
                                     ),
@@ -263,7 +293,7 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 4.0),
                       child: Text(
-                        '※ ${localeStr.withdrawViewHintMax} $amountLimit',
+                        '※ ${localeStr.withdrawViewHintMax} $_amountMax',
                         style: TextStyle(
                           fontSize: FontSize.SUBTITLE.value,
                           color: themeColor.defaultHintColor,

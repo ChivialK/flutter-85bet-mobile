@@ -178,12 +178,6 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
   }
 
   @override
-  void didUpdateWidget(LoginDisplay oldWidget) {
-    debugPrint('didUpdateWidget');
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
   void dispose() {
     _disposers.forEach((d) => d());
     super.dispose();

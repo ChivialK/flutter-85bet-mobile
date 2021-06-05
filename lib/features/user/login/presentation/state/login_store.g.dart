@@ -129,11 +129,11 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
-  final _$initBoxAsyncAction = AsyncAction('_LoginStore.initBox');
+  final _$initializeAsyncAction = AsyncAction('_LoginStore.initialize');
 
   @override
-  Future<void> initBox() {
-    return _$initBoxAsyncAction.run(() => super.initBox());
+  Future<void> initialize() {
+    return _$initializeAsyncAction.run(() => super.initialize());
   }
 
   final _$_getLastLoginRecordAsyncAction =

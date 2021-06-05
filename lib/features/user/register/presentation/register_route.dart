@@ -26,6 +26,7 @@ class _RegisterRouteState extends State<RegisterRoute> {
   void initState() {
     _store ??= sl.get<RegisterStore>();
     super.initState();
+    _store.initialize();
   }
 
   @override
@@ -96,18 +97,41 @@ class _RegisterRouteState extends State<RegisterRoute> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.isDialog) {
-      return DialogWidget(
-        constraints: BoxConstraints.tight(Size(
-          Global.device.width,
-          Global.device.height,
-        )),
-        padding: EdgeInsets.zero,
-        transparentBg: true,
-        roundParam: 0.0,
-        canClose: false,
-        children: [
-          InkWell(
+    return Scaffold(
+      body: Observer(
+        // Observe using specific widget
+        builder: (_) {
+          switch (_store.state) {
+            case RegisterStoreState.loading:
+              return LoadingWidget();
+            case RegisterStoreState.loaded:
+              if (widget.isDialog) {
+                return buildDialog();
+              } else {
+                return buildDisplay();
+              }
+              break;
+            default:
+              return SizedBox.shrink();
+          }
+        },
+      ),
+    );
+  }
+
+  Widget buildDisplay() {
+    return WillPopScope(
+      onWillPop: () {
+        debugPrint('pop register route');
+        Future.delayed(
+            Duration(milliseconds: 100), () => RouterNavigate.navigateBack());
+        return Future(() => true);
+      },
+      child: Scaffold(
+        body: Container(
+          width: Global.device.width,
+          padding: const EdgeInsets.all(12.0),
+          child: InkWell(
             // to dismiss the keyboard when the user tabs out of the TextField
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
@@ -117,39 +141,39 @@ class _RegisterRouteState extends State<RegisterRoute> {
             },
             child: RegisterStoreInheritedWidget(
               store: _store,
-              child: RegisterDisplayDialog(),
-            ),
-          ),
-        ],
-      );
-    } else {
-      return WillPopScope(
-        onWillPop: () {
-          debugPrint('pop register route');
-          Future.delayed(
-              Duration(milliseconds: 100), () => RouterNavigate.navigateBack());
-          return Future(() => true);
-        },
-        child: Scaffold(
-          body: Container(
-            width: Global.device.width,
-            padding: const EdgeInsets.all(12.0),
-            child: InkWell(
-              // to dismiss the keyboard when the user tabs out of the TextField
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              onTap: () {
-                FocusScope.of(context).unfocus();
-              },
-              child: RegisterStoreInheritedWidget(
-                store: _store,
-                child: RegisterDisplay(),
-              ),
+              child: RegisterDisplay(),
             ),
           ),
         ),
-      );
-    }
+      ),
+    );
+  }
+
+  Widget buildDialog() {
+    return DialogWidget(
+      constraints: BoxConstraints.tight(Size(
+        Global.device.width,
+        Global.device.height,
+      )),
+      padding: EdgeInsets.zero,
+      transparentBg: true,
+      roundParam: 0.0,
+      canClose: false,
+      children: [
+        InkWell(
+          // to dismiss the keyboard when the user tabs out of the TextField
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: RegisterStoreInheritedWidget(
+            store: _store,
+            child: RegisterDisplayDialog(),
+          ),
+        ),
+      ],
+    );
   }
 }

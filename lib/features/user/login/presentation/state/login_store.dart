@@ -75,7 +75,7 @@ abstract class _LoginStore with Store {
   }
 
   @action
-  Future<void> initBox() async {
+  Future<void> initialize() async {
     // Reset the possible previous error message.
     errorMessage = null;
     // Fetch from the repository and wrap the regular Future into an observable.
@@ -152,10 +152,12 @@ abstract class _LoginStore with Store {
       waitForLogin = true;
       _loginFuture = null;
       // Fetch from the repository and wrap the regular Future into an observable.
-      _loginFuture = ObservableFuture(_repository.login(form.copyWith(
-        captchaKey: captchaData.key,
-        captchaAns: captcha,
-      )));
+      _loginFuture = ObservableFuture(_repository.login(
+          form.copyWith(
+            captchaKey: captchaData.key,
+            captchaAns: captcha,
+          ),
+          false));
       // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
       await _loginFuture.then((value) => value.fold(
             (failure) {

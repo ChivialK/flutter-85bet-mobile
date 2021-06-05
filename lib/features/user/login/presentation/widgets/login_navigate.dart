@@ -41,7 +41,9 @@ class LoginNavigate extends StatelessWidget {
           } else if (returnHomePage) {
             if (closeDialog) {
               Future.delayed(Duration(milliseconds: 100), () {
-                Navigator.of(context).pop();
+                try {
+                  Navigator.of(context).pop();
+                } on Exception {}
               }).whenComplete(() => RouterNavigate.navigateClean(force: true));
             } else {
               RouterNavigate.navigateClean(force: true);

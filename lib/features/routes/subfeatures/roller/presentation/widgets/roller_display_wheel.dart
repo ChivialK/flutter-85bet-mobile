@@ -167,8 +167,13 @@ class _RollerDisplayWheelState extends State<RollerDisplayWheel>
             child: GestureDetector(
               onTap: () {
                 if (waitForReturnPrize ||
-                    getAppGlobalStreams.hasUser == false ||
-                    widget.store.canRoll == false) return;
+                    getAppGlobalStreams.hasUser == false) {
+                  return;
+                }
+                if (widget.store.canRoll == false) {
+                  callToast(localeStr.wheelApplyTableTextCount + ' 0');
+                  return;
+                }
                 waitForReturnPrize = true;
                 widget.store.getPrize();
               },
