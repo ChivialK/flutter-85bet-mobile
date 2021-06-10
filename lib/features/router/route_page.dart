@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart' show debugPrint;
+import 'package:flutter/widgets.dart';
 import 'package:flutter_85bet_mobile/core/internal/global.dart';
 import 'package:flutter_85bet_mobile/mylogger.dart';
 import 'package:vnum/vnum.dart';
@@ -41,26 +42,22 @@ class RoutePage extends Vnum<RouteInfo> {
     hideAppbarActions: false,
   ));
 
-  static const RoutePage about = const RoutePage.define(RouteInfo(
-    id: RouteEnum.ABOUT,
-    route: Routes.aboutRoute,
-    hideLanguageOption: true,
-    hideAppbarActions: true,
-  ));
+  // static const RoutePage service = const RoutePage.define(RouteInfo(
+  //   id: RouteEnum.SERVICE,
+  //   route: Routes.serviceRoute,
+  //   webPageName: ('/customer_service'),
+  //   bottomNavIndex: 3,
+  //   hideAppbarActions: false,
+  //   hideLanguageOption: true,
+  // ));
 
-  static const RoutePage service = const RoutePage.define(RouteInfo(
-    id: RouteEnum.SERVICE,
-    route: Routes.serviceRoute,
-    webPageName: ('/customer_service'),
-    bottomNavIndex: 3,
-    hideAppbarActions: false,
-    hideLanguageOption: true,
-  ));
+  static const RoutePage service = serviceWeb;
 
   static const RoutePage serviceWeb = const RoutePage.define(RouteInfo(
     id: RouteEnum.SERVICE_WEB,
     route: Routes.serviceWebRoute,
-    root: Routes.serviceRoute,
+    // root: Routes.serviceRoute,
+    webPageName: ('/customer_service'),
     bottomNavIndex: 3,
     hideAppbarActions: false,
     hideLanguageOption: true,
@@ -260,23 +257,23 @@ class RoutePage extends Vnum<RouteInfo> {
   /// * important:
   /// change route name if duplicate
   ///
-  // static const RoutePage sideStore = const RoutePage.define(RouteInfo(
-  //   id: RouteEnum.STORE,
-  //   route: Routes.storeRoute,
-  //   webPageName: ('/mall'),
-  //   showDrawer: true,
-  //   hideLanguageOption: true,
-  //   isUserOnly: true,
-  // ));
+  static const RoutePage sideStore = const RoutePage.define(RouteInfo(
+    id: RouteEnum.STORE,
+    route: Routes.storeRoute,
+    webPageName: ('/mall'),
+    showDrawer: true,
+    hideLanguageOption: true,
+    isUserOnly: true,
+  ));
 
-  // static const RoutePage sideRoller = const RoutePage.define(RouteInfo(
-  //   id: RouteEnum.ROLLER,
-  //   route: Routes.rollerRoute,
-  //   webPageName: ('/turntable'),
-  //   showDrawer: true,
-  //   hideLanguageOption: true,
-  //   isUserOnly: true,
-  // ));
+  static const RoutePage sideRoller = const RoutePage.define(RouteInfo(
+    id: RouteEnum.ROLLER,
+    route: Routes.rollerRoute,
+    webPageName: ('/turntable'),
+    showDrawer: true,
+    hideLanguageOption: true,
+    isUserOnly: true,
+  ));
 
   static const RoutePage sideDownload = const RoutePage.define(RouteInfo(
     id: RouteEnum.DOWNLOAD,

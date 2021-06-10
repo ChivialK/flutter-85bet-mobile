@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 
 class TableCellTextWidget extends StatelessWidget {
   final String text;
+  final TextStyle textStyle;
   final bool shrinkInset;
   final Color textColor;
   final Color bgColor;
@@ -10,6 +11,7 @@ class TableCellTextWidget extends StatelessWidget {
   TableCellTextWidget({
     @required this.text,
     this.shrinkInset = true,
+    this.textStyle,
     this.textColor,
     this.bgColor,
   }) : assert(text is String);
@@ -23,10 +25,14 @@ class TableCellTextWidget extends StatelessWidget {
       textWidget = Text(
         text,
         textAlign: TextAlign.center,
-        style: TextStyle(color: textColor),
+        style: textStyle ?? TextStyle(color: textColor),
       );
     else
-      textWidget = Text(text, textAlign: TextAlign.center);
+      textWidget = Text(
+        text,
+        textAlign: TextAlign.center,
+        style: textStyle ?? TextStyle(),
+      );
 
     if (shrinkInset) {
       return Container(

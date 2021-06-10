@@ -4,7 +4,6 @@ import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
 import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/login_status.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/user_entity.dart';
-import 'package:flutter_85bet_mobile/ga_interface.dart';
 
 class LoginNavigate extends StatelessWidget {
   final bool returnHomePage;
@@ -27,7 +26,7 @@ class LoginNavigate extends StatelessWidget {
 
       // update user stream
       if (user != null) {
-        GaInterface.log?.logLogin(loginMethod: 'App');
+        // GaInterface.log?.logLogin(loginMethod: 'App');
         getAppGlobalStreams
             .updateUser(LoginStatus(loggedIn: true, currentUser: user));
         getAppGlobalStreams.setCheck(true);
@@ -42,7 +41,9 @@ class LoginNavigate extends StatelessWidget {
           } else if (returnHomePage) {
             if (closeDialog) {
               Future.delayed(Duration(milliseconds: 100), () {
-                Navigator.of(context).pop();
+                try {
+                  Navigator.of(context).pop();
+                } on Exception {}
               }).whenComplete(() => RouterNavigate.navigateClean(force: true));
             } else {
               RouterNavigate.navigateClean(force: true);

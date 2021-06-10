@@ -44,3 +44,4 @@ ios/Runner/GoogleService-Info.plist
 /android/keystore.properties
 /android/mobileapp.keystore
 /config/
+/.fvm/

@@ -31,11 +31,11 @@ class MemberGridItemWidget extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 8.0),
                 padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: itemData.iconDecorColor ?? themeColor.memberIconColor,
+                child: Icon(
+                  itemData.iconData,
+                  size: iconSize ?? 24.0,
+                  color: themeColor.memberIconColor,
                 ),
-                child: Icon(itemData.iconData, size: iconSize ?? 24.0),
               ),
               Container(
                 padding:
@@ -43,7 +43,9 @@ class MemberGridItemWidget extends StatelessWidget {
                 height: (FontSize.SUBTITLE.value - 1) * 2.75,
                 child: Text(
                   itemData.label,
-                  style: TextStyle(fontSize: FontSize.SUBTITLE.value - 1),
+                  style: TextStyle(
+                      fontSize: FontSize.SUBTITLE.value,
+                      color: themeColor.memberIconLabelColor),
                   maxLines: 2,
                   overflow: TextOverflow.visible,
                   textAlign: TextAlign.center,

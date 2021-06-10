@@ -10,13 +10,13 @@ import '../mylogger.dart';
 class PlatformUtil {
   static const String TAG = 'PlatformUtil';
   static const restartChannel =
-      const MethodChannel('com.op85bet.mobile/restart');
+      const MethodChannel('com.opsbbwin.mobile/restart');
   static const sensorChannel =
-      const MethodChannel('com.op85bet.mobile/sensorswitch');
+      const MethodChannel('com.opsbbwin.mobile/sensorswitch');
   static const sensorEventChannel =
-      const EventChannel('com.op85bet.mobile/sensor');
+      const EventChannel('com.opsbbwin.mobile/sensor');
   static const iosRotationChannel =
-      const MethodChannel('com.op85bet.mobile/orientation');
+      const MethodChannel('com.opsbbwin.mobile/orientation');
 
   static StreamSubscription sensorSubscription;
   static Stream sensorStream;

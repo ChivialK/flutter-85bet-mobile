@@ -57,7 +57,11 @@ class MemberDisplayHeaderState extends State<MemberDisplayHeader> {
         maxHeight: headerMaxHeight,
         maxWidth: Global.device.width,
       ),
-      decoration: ThemeInterface.layerShadowDecorRoundLight,
+      decoration: BoxDecoration(
+        color: themeColor.memberLinearColor1,
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        boxShadow: ThemeInterface.layerShadowLight,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -80,7 +84,10 @@ class MemberDisplayHeaderState extends State<MemberDisplayHeader> {
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
                     widget.userName,
-                    style: TextStyle(fontSize: FontSize.MESSAGE.value),
+                    style: TextStyle(
+                      fontSize: FontSize.MESSAGE.value,
+                      color: themeColor.defaultAccentColor,
+                    ),
                   ),
                 ),
               ],
@@ -93,6 +100,7 @@ class MemberDisplayHeaderState extends State<MemberDisplayHeader> {
               style: TextStyle(
                 fontSize: FontSize.HEADER.value * 1.5,
                 fontWeight: FontWeight.w400,
+                color: themeColor.defaultAccentColor,
               ),
               overflow: TextOverflow.ellipsis,
             ),
@@ -108,6 +116,11 @@ class MemberDisplayHeaderState extends State<MemberDisplayHeader> {
                     localeStr.btnRefresh,
                     style: TextStyle(fontSize: FontSize.MESSAGE.value),
                   ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(24.0),
+                  ),
+                  visualDensity: VisualDensity(horizontal: 2.0),
+                  color: themeColor.buttonSubColor,
                   onPressed: () => widget.onRefresh(),
                 ),
                 RaisedButton(
@@ -115,6 +128,11 @@ class MemberDisplayHeaderState extends State<MemberDisplayHeader> {
                     localeStr.memberGridTitleLogout,
                     style: TextStyle(fontSize: FontSize.MESSAGE.value),
                   ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(24.0),
+                  ),
+                  visualDensity: VisualDensity(horizontal: 2.0),
+                  color: themeColor.buttonSubColor,
                   onPressed: () => getAppGlobalStreams.logout(),
                 ),
               ],

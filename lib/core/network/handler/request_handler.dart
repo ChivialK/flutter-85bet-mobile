@@ -153,6 +153,7 @@ Future<Either<Failure, T>> requestModel<T>({
   return await runTask(_makeRequest(request: request, tag: tag)).then((result) {
     return result.fold((failure) => Left(failure), (data) {
       try {
+        if (data is Failure) return Left(data);
         return Right(
             JsonUtil.decodeToModel<T>(data, jsonToModel, trim: trim, tag: tag));
       } on TokenException {

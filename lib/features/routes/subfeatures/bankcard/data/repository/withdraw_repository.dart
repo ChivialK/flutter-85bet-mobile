@@ -1,4 +1,5 @@
 import 'package:flutter_85bet_mobile/core/repository_export.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/viplevel/data/models/vip_level_model.dart';
 
 import '../../data/models/rollback_model.dart';
 import '../form/withdraw_form.dart';
@@ -9,12 +10,18 @@ class WithdrawApi {
   static const String GET_CPW = "api/getCpwWallet";
   static const String GET_ROLLBACK = "api/rollback";
   static const String POST_WITHDRAW = "api/withdrawal";
+  static const String GET_LEVEL = "api/vipLevel";
 }
 
 abstract class WithdrawRepository {
   Future<Either<Failure, String>> getCgpWallet();
+
   Future<Either<Failure, String>> getCpwWallet();
+
   Future<Either<Failure, String>> getRollback();
+
+  Future<Either<Failure, String>> getWithdrawLimit(int vipLevel);
+
   Future<Either<Failure, WithdrawModel>> postWithdraw(WithdrawForm form);
 }
 
@@ -119,6 +126,30 @@ class WithdrawRepositoryImpl implements WithdrawRepository {
           return Right('$totalRollover');
         }
         return Right('0');
+      },
+    );
+  }
+
+  @override
+  Future<Either<Failure, String>> getWithdrawLimit(int vipLevel) async {
+    final result = await requestModel<VipLevelModel>(
+      request: dioApiService.get(WithdrawApi.GET_LEVEL),
+      jsonToModel: VipLevelModel.jsonToVipLevelModel,
+      tag: 'remote-VIP',
+    );
+//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+    return result.fold(
+      (failure) => Left(failure),
+      (model) {
+        var option = model.options
+            .firstWhere((element) => element.name == "withdrawallimit");
+        var limitMap = model.rules[option.key];
+        debugPrint("withdraw limit map: $limitMap, vip: $vipLevel");
+        if (limitMap is Map) {
+          return Right(limitMap["$vipLevel"]);
+        } else {
+          return Right("-1");
+        }
       },
     );
   }

@@ -28,6 +28,7 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
   Widget contentWidget;
 
   double maxFieldWidth;
+  double fieldBtnWidth;
   TextStyle _textStyle = TextStyle(fontSize: FontSize.SUBTITLE.value);
 
   int _selectedYear;
@@ -47,6 +48,14 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
   @override
   void initState() {
     maxFieldWidth = (Global.device.width - 48) / 7 * 4;
+    if (Global.device.widthScale > 1.0) {
+      fieldBtnWidth = maxFieldWidth * 0.4 / Global.device.widthScale;
+    } else {
+      fieldBtnWidth = maxFieldWidth * 0.4;
+    }
+    if (fieldBtnWidth < Global.device.comfortButtonHeight) {
+      fieldBtnWidth = FontSize.SUBTITLE.value * 6;
+    }
     super.initState();
   }
 
@@ -62,8 +71,9 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
       );
     }
     return Container(
-      decoration: ThemeInterface.layerShadowDecorRoundBottom,
+      decoration: ThemeInterface.layerShadowDecorBottom,
       constraints: BoxConstraints(minHeight: 60),
+      margin: const EdgeInsets.only(top: 16.0),
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: InkWell(
         // to dismiss the keyboard when the user tabs out of the TextField
@@ -248,20 +258,20 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
         minHeight: Global.device.comfortButtonHeight * 0.75,
         maxHeight: Global.device.comfortButtonHeight,
         minWidth: Global.device.comfortButtonHeight,
-        maxWidth: maxFieldWidth * 0.4,
+        maxWidth: fieldBtnWidth,
       ),
       decoration: BoxDecoration(
-        color: Color(0xf0ffffff),
-        border: Border.all(color: Color(0xfffec017)),
+        color: themeColor.centerButtonColor,
+        border: Border.all(color: themeColor.centerButtonBorderColor),
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(8.0),
           bottomLeft: Radius.circular(8.0),
         ),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Color(0xffd08200),
-            spreadRadius: 1.15,
-            blurRadius: 3.0,
+            color: themeColor.centerButtonShadowColor,
+            // spreadRadius: 1.15,
+            // blurRadius: 1.5,
             offset: Offset(1, 1), // changes position of shadow
           ),
         ],
@@ -281,7 +291,9 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
           Center(
               child: Text(
             text,
-            style: _textStyle,
+            style: TextStyle(
+                fontSize: FontSize.SUBTITLE.value,
+                color: themeColor.centerButtonBorderColor),
             maxLines: 2,
             textAlign: TextAlign.center,
           )),

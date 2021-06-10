@@ -5,14 +5,14 @@ import 'package:flutter_85bet_mobile/utils/value_util.dart';
 
 import '../../data/models/rollback_model.dart';
 
-class FlowsDisplayTable extends StatefulWidget {
-  FlowsDisplayTable(Key key) : super(key: key);
+class RollbackDisplayTable extends StatefulWidget {
+  RollbackDisplayTable(Key key) : super(key: key);
 
   @override
-  FlowsDisplayTableState createState() => FlowsDisplayTableState();
+  RollbackDisplayTableState createState() => RollbackDisplayTableState();
 }
 
-class FlowsDisplayTableState extends State<FlowsDisplayTable> {
+class RollbackDisplayTableState extends State<RollbackDisplayTable> {
   double _availableWidth;
   double _tableHeight;
   Map<int, TableColumnWidth> _tableWidthMap;
@@ -29,7 +29,7 @@ class FlowsDisplayTableState extends State<FlowsDisplayTable> {
   double totalBetResult = 0;
 
   set updateContent(List<RollbackModel> list) {
-    print('flow list length: ${list.length}');
+    debugPrint('flow list length: ${list.length}');
     if (_dataList != list) {
       _dataList = list;
       if (_dataList.isNotEmpty) countTotal();
@@ -76,7 +76,7 @@ class FlowsDisplayTableState extends State<FlowsDisplayTable> {
     int availableRows = ((Global.device.featureContentHeight - 16) /
             (FontSize.NORMAL.value * 2.35))
         .floor();
-    print('available rows: $availableRows');
+    debugPrint('available rows: $availableRows');
     // FontSize.NORMAL.value * 2 = font size * 2 line + space
     _tableHeight = FontSize.NORMAL.value * 2.15 * availableRows;
 
@@ -97,6 +97,14 @@ class FlowsDisplayTableState extends State<FlowsDisplayTable> {
   }
 
   @override
+  void didUpdateWidget(RollbackDisplayTable oldWidget) {
+    _headerRow = null;
+    _headerRowTexts = null;
+    _totalRow = null;
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     _headerRowTexts ??= [
       localeStr.rollbackHeaderTextTime,
@@ -110,6 +118,7 @@ class FlowsDisplayTableState extends State<FlowsDisplayTable> {
       localeStr.rollbackHeaderTextNeed,
     ];
     _headerRow ??= TableRow(
+      decoration: BoxDecoration(color: themeColor.chartPrimaryHeaderColor),
       children: List.generate(
         _headerRowTexts.length,
         (index) => TableCellTextWidget(text: _headerRowTexts[index]),
@@ -121,7 +130,7 @@ class FlowsDisplayTableState extends State<FlowsDisplayTable> {
     return Container(
       constraints: BoxConstraints(
         maxWidth: (isEmptyTable) ? _availableWidth : _availableWidth * 2,
-        maxHeight: _tableHeight,
+        maxHeight: Global.device.featureContentHeight - 16,
       ),
       child: (isEmptyTable) ? _buildEmptyTable() : _buildTable(),
     );
@@ -164,8 +173,8 @@ class FlowsDisplayTableState extends State<FlowsDisplayTable> {
                 RollbackModel data = _dataList[index];
                 List<dynamic> dataTexts = [
                   "${data.startTime}\n｜\n${data.endTime}",
-                  data.code,
-                  data.index,
+                  data.code ?? data.key,
+                  getStatusIndex(data.index),
                   formatValue(data.amount, creditSign: true),
                   '${data.multiply}',
                   '${data.promoSimplified}',
@@ -185,5 +194,30 @@ class FlowsDisplayTableState extends State<FlowsDisplayTable> {
         ),
       ),
     );
+  }
+
+  String getStatusIndex(String state) {
+    switch (state.toLowerCase()) {
+      case 'webbank':
+        return localeStr.memberGridTitleTransfer;
+      case 'deposit':
+        return localeStr.rollbackIndexDeposit;
+      case 'promo':
+        return localeStr.rollbackIndexPromo;
+      case 'adjust deposit':
+      case 'adjustdeposit':
+        return localeStr.dealsDetailTypeAdjustDeposit;
+      case 'adjust withdraw':
+      case 'adjustwithdraw':
+        return localeStr.dealsDetailTypeAdjustWithdraw;
+      case 'cash adjustment':
+      case 'cashadjustment':
+        return localeStr.dealsDetailTypeAdjustCash;
+      case '退水':
+      case 'rollback':
+        return localeStr.rollbackIndexRollback;
+      default:
+        return state;
+    }
   }
 }

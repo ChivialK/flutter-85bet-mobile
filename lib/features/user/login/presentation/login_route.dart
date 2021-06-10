@@ -26,7 +26,7 @@ class _LoginRouteState extends State<LoginRoute> {
     _store ??= sl.get<LoginStore>();
     super.initState();
     // execute action on init
-    _store.initBox();
+    _store.initialize();
   }
 
   @override

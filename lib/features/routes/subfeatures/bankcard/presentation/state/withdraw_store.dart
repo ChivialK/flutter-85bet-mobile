@@ -1,6 +1,6 @@
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
 import 'package:flutter_85bet_mobile/features/general/data/error/error_message_map.dart';
-import 'package:flutter_85bet_mobile/features/router/route_enum.dart';
+import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
 
 import '../../data/form/withdraw_form.dart';
 import '../../data/models/withdraw_model.dart';
@@ -18,6 +18,9 @@ abstract class _WithdrawStore with Store {
   _WithdrawStore(this._repository);
 
   @observable
+  ObservableFuture<List> _initFuture;
+
+  @observable
   ObservableFuture<Either<Failure, String>> _cgpFuture;
 
   @observable
@@ -31,7 +34,8 @@ abstract class _WithdrawStore with Store {
 
   String cgpUrl = '';
   String cpwUrl = '';
-  String rollback = '';
+  int rollback = 0;
+  int limit = 0;
 
   @observable
   String errorMessage;
@@ -52,16 +56,27 @@ abstract class _WithdrawStore with Store {
   @computed
   WithdrawStoreState get state {
     // If the user has not yet triggered a action or there has been an error
-    if ((_cgpFuture == null || _cgpFuture.status == FutureStatus.rejected) &&
-        (_cpwFuture == null || _cpwFuture.status == FutureStatus.rejected)) {
+    if (_initFuture == null || _initFuture.status == FutureStatus.rejected) {
       return WithdrawStoreState.initial;
     }
     // Pending Future means "loading"
     // Fulfilled Future means "loaded"
-    return _cgpFuture.status == FutureStatus.pending &&
-            _cpwFuture.status == FutureStatus.pending
+    return _initFuture.status == FutureStatus.pending
         ? WithdrawStoreState.loading
         : WithdrawStoreState.loaded;
+  }
+
+  @action
+  Future<void> initialize() async {
+    // Reset the possible previous error message.
+    errorMessage = null;
+    // Fetch from the repository and wrap the regular Future into an observable.
+    _initFuture = ObservableFuture(Future.wait([
+      // getCgpWallet(),
+      // getCpwWallet(),
+      // getRollback(),
+      getWithdrawLimit(),
+    ]));
   }
 
   @action
@@ -114,11 +129,37 @@ abstract class _WithdrawStore with Store {
         debugPrint('rollback result: $result');
         result.fold(
           (failure) => setErrorMsg(msg: failure.message, showOnce: true),
-          (data) => rollback = data,
+          (data) => rollback = data.strToInt,
         );
       });
     } on Exception {
       setErrorMsg(code: 3);
+    }
+  }
+
+  @action
+  Future<void> getWithdrawLimit() async {
+    try {
+      // Reset the possible previous error message.
+      errorMessage = null;
+      var _userData = getAppGlobalStreams.lastStatus;
+      if (!_userData.loggedIn) {
+        limit = 0;
+        return;
+      }
+      // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
+      await _repository
+          .getWithdrawLimit(_userData.currentUser.vip)
+          .then((result) {
+        debugPrint('withdraw limit result: $result');
+        result.fold(
+          (failure) => setErrorMsg(msg: failure.message, showOnce: true),
+          (data) => limit = data.strToInt,
+        );
+      });
+      debugPrint('withdraw limit: $limit');
+    } on Exception {
+      setErrorMsg(code: 4);
     }
   }
 
@@ -147,7 +188,7 @@ abstract class _WithdrawStore with Store {
       });
     } on Exception {
       waitForWithdrawResult = false;
-      setErrorMsg(code: 4);
+      setErrorMsg(code: 5);
     }
   }
 }

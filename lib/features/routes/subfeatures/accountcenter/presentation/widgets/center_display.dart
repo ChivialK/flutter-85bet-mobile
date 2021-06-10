@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/types_grid_widget.dart';
 import 'package:flutter_85bet_mobile/features/routes/member/presentation/data/member_grid_item.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/accountcenter/presentation/data/center_category.dart';
 
 import 'center_display_account.dart';
 import 'center_display_vip.dart';
@@ -12,11 +14,7 @@ class CenterDisplay extends StatefulWidget {
 
 class _CenterDisplayState extends State<CenterDisplay> {
   final MemberGridItem pageItem = MemberGridItem.accountCenter;
-  final List<String> tabs = [
-    localeStr.centerViewTitleData,
-//    localeStr.centerViewTitleLotto,
-    localeStr.centerViewTitleVipRank,
-  ];
+  final List<CenterCategoryEnum> tabs = CenterCategoryEnum.mapAll;
 
   final int tabsPerRow = 3;
   final double expectTabHeight = 42.0;
@@ -49,11 +47,7 @@ class _CenterDisplayState extends State<CenterDisplay> {
               children: [
                 Container(
                   padding: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: themeColor.memberIconColor,
-                    boxShadow: ThemeInterface.iconBottomShadow,
-                  ),
+                  decoration: ThemeInterface.pageIconContainerDecor,
                   child: Icon(
                     pageItem.value.iconData,
                     size: 32 * Global.device.widthScale,
@@ -70,68 +64,29 @@ class _CenterDisplayState extends State<CenterDisplay> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(12.0, 16.0, 12.0, 0.0),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: tabsPerRow,
-                crossAxisSpacing: 2.0,
-                childAspectRatio: gridRatio,
-              ),
-              physics: BouncingScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: tabs.length,
-              itemBuilder: (_, index) {
-                return GestureDetector(
-                  onTap: () {
-                    if (_clicked == index) return;
-                    setState(() {
-                      _clicked = index;
-                    });
-                  },
-                  child: Material(
-                    color: Colors.transparent,
-                    elevation: 8.0,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: (_clicked == index)
-                            ? themeColor.buttonTextPrimaryColor
-                            : themeColor.walletBoxButtonColor,
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(6.0)),
-                      ),
-                      alignment: Alignment.center,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        child: Text(
-                          tabs[index],
-                          style: TextStyle(
-                            color: (_clicked == index)
-                                ? themeColor.walletBoxButtonColor
-                                : themeColor.buttonTextPrimaryColor,
-                            fontSize: FontSize.SUBTITLE.value,
-                          ),
-                          maxLines: 2,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
+            padding: const EdgeInsets.only(top: 12.0),
+            child: TypesGridWidget<CenterCategoryEnum>(
+              types: tabs,
+              titleKey: 'label',
+              itemSpaceHorFactor: 1.0,
+              onTypeGridTap: (_, type) {
+                int index = tabs.indexOf(type);
+                if (index != _clicked) {
+                  setState(() {
+                    _clicked = index;
+                  });
+                }
               },
+              tabsPerRow: tabsPerRow,
+              expectTabHeight: expectTabHeight,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 8.0),
+          Container(
             child: IndexedStack(
               index: _clicked,
               children: <Widget>[
                 CenterDisplayAccount(),
-//                CenterDisplayLotto(),
-                Visibility(
-                  visible: _clicked == 1,
-                  maintainState: true,
-                  child: CenterDisplayVip(),
-                ),
+                CenterDisplayVip(),
               ],
             ),
           ),

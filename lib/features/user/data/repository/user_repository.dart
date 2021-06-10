@@ -1,4 +1,5 @@
 import 'package:flutter_85bet_mobile/core/repository_export.dart';
+import 'package:flutter_85bet_mobile/features/user/data/models/captcha_model.dart';
 
 import '../form/login_form.dart';
 import '../form/register_form.dart';
@@ -10,11 +11,17 @@ class UserApi {
   static const String POST_REGISTER = "api/reg";
   static const String JWT_CHECK_HREF = "/myaccount";
   static const String LOGOUT = "api/logout";
+
+  static const String GET_CAPTCHA = "api/captcha";
+  static const String CHECK_CAPTCHA = "api/checkCaptcha";
 }
 
 abstract class UserRepository {
   /// Login user and get user info
-  Future<Either<Failure, UserModel>> login(LoginForm form);
+  Future<Either<Failure, UserModel>> login(LoginForm form, bool verified);
+
+  /// Create Login Captcha
+  Future<Either<Failure, CaptchaModel>> getCaptcha();
 
   /// Register new user
   Future<Either<Failure, RequestStatusModel>> postRegister(RegisterForm form);
@@ -28,18 +35,23 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(
       {@required this.dioApiService, @required this.jwtInterface});
 
-  /// Calls the service [UserApi.LOGIN] endpoint with [form] to get user token.
-  Future<Either<Failure, dynamic>> _getToken(LoginForm form) {
-    debugPrint('start requesting token...');
-    return requestHeader(
-      request: dioApiService.post(UserApi.LOGIN, data: form.toJson()),
-      header: 'set-cookie',
-      tag: 'remote-USER',
-    );
-  }
-
   @override
-  Future<Either<Failure, UserModel>> login(LoginForm form) async {
+  Future<Either<Failure, UserModel>> login(
+      LoginForm form, bool captchaVerified) async {
+    // /// verify captcha
+    // if (!captchaVerified) {
+    //   final verified = await _checkCaptcha(form.captchaToJson());
+    //   debugPrint('check captcha: $verified');
+    //   Either<Failure, UserModel> verifyFailure = verified.fold(
+    //     (failure) => Left(Failure.errorMessage(msg: 'verifyFailed')),
+    //     (status) => (status.isSuccess)
+    //         ? null
+    //         : Left(Failure.errorMessage(msg: 'verifyFailed')),
+    //   );
+    //   if (verifyFailure != null) return Future.value(verifyFailure);
+    // }
+
+    /// get user token and info
     final result = await _getToken(form);
 //    debugPrint('test response type: ${result.runtimeType}, data: $result');
     return result.fold(
@@ -65,6 +77,18 @@ class UserRepositoryImpl implements UserRepository {
         }
         return Left(Failure.dataType());
       },
+    );
+  }
+
+  ///
+  /// Calls the service [UserApi.LOGIN] endpoint with [form] to get user token.
+  ///
+  Future<Either<Failure, dynamic>> _getToken(LoginForm form) {
+    debugPrint('start requesting token...');
+    return requestHeader(
+      request: dioApiService.post(UserApi.LOGIN, data: form.toJson()),
+      header: 'set-cookie',
+      tag: 'remote-USER',
     );
   }
 
@@ -118,6 +142,18 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<Failure, RequestStatusModel>> postRegister(
       RegisterForm form) async {
+    // /// verify captcha
+    // final verified = await _checkCaptcha(form.captchaToJson());
+    // debugPrint('check captcha: $verified');
+    // Either<Failure, RequestStatusModel> verifyFailure = verified.fold(
+    //   (failure) => Left(Failure.errorMessage(msg: 'verifyFailed')),
+    //   (status) => (status.isSuccess)
+    //       ? null
+    //       : Left(Failure.errorMessage(msg: 'verifyFailed')),
+    // );
+    // if (verifyFailure != null) return Future.value(verifyFailure);
+
+    /// register user
     final result = await requestModel<RequestStatusModel>(
       request: dioApiService.post(
         UserApi.POST_REGISTER,
@@ -130,6 +166,41 @@ class UserRepositoryImpl implements UserRepository {
     return result.fold(
       (failure) => Left(failure),
       (data) => Right(data),
+    );
+  }
+
+  ///
+  /// Calls the service [UserApi.GET_ACCOUNT] endpoint,
+  /// and decode json into [UserModel].
+  ///
+  Future<Either<Failure, CaptchaModel>> getCaptcha() async {
+    final result = await requestModel<CaptchaModel>(
+      request: dioApiService.get(UserApi.GET_CAPTCHA),
+      jsonToModel: CaptchaModel.parseJson,
+      tag: 'remote-CAPTCHA',
+    );
+    // debugPrint('test response type: ${result.runtimeType}, data: $result');
+    return result.fold(
+      (failure) => Left(failure),
+      (model) => Right(model),
+    );
+  }
+
+  ///
+  /// Calls the service [UserApi.GET_ACCOUNT] endpoint,
+  /// and decode json into [UserModel].
+  ///
+  Future<Either<Failure, RequestStatusModel>> _checkCaptcha(
+      Map<String, dynamic> captchaJson) async {
+    final result = await requestModel<RequestStatusModel>(
+      request: dioApiService.post(UserApi.CHECK_CAPTCHA, data: captchaJson),
+      jsonToModel: RequestStatusModel.jsonToStatusModel,
+      tag: 'remote-CAPTCHA',
+    );
+//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+    return result.fold(
+      (failure) => Left(failure),
+      (model) => Right(model),
     );
   }
 }

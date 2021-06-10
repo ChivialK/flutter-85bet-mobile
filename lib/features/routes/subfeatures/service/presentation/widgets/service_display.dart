@@ -26,9 +26,6 @@ class ServiceDisplay extends StatelessWidget {
         maxHeight: Global.device.featureContentHeight,
         maxWidth: Global.device.width,
       ),
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage(Res.content_bg), fit: BoxFit.fill)),
       alignment: Alignment.topCenter,
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 6.0),
       child: ListView(
@@ -86,7 +83,7 @@ class ServiceDisplay extends StatelessWidget {
                 buttonType: _ButtonType.COPY),
           if (data.skype.isNotEmpty)
             _buildBox(
-                iconData: const IconData(0xf0c0, fontFamily: 'FontAwesome'),
+                iconData: IconCode.csSkype,
                 title: localeStr.serviceTitleSkype,
                 content: data.skype,
                 data: data.skype,
@@ -100,7 +97,7 @@ class ServiceDisplay extends StatelessWidget {
                 buttonType: _ButtonType.COPY),
           if (data.qq.isNotEmpty)
             _buildBox(
-                iconData: const IconData(0xe970, fontFamily: 'IconMoon'),
+                iconData: IconCode.csQQ,
                 title: 'QQ',
                 content: data.qq,
                 data: data.qq,
@@ -257,47 +254,58 @@ class ServiceDisplay extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(4.0),
-                        child: Text(title),
+                        child: Text(
+                          title,
+                          style: TextStyle(color: themeColor.defaultTextColor),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(4.0),
-                        child: Text(content),
+                        child: Text(
+                          content,
+                          style: TextStyle(color: themeColor.defaultTextColor),
+                        ),
                       ),
                     ],
                   ),
                 ),
-                RaisedButton(
-                  color: themeColor.defaultLayeredBackgroundColor,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(color: themeColor.defaultMarqueeBarColor),
-                    borderRadius: new BorderRadius.circular(4.0),
-                  ),
-                  visualDensity: VisualDensity(vertical: -1.0),
-                  child: RichText(
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    text: TextSpan(
-                      text: (buttonType == _ButtonType.OPEN)
-                          ? localeStr.btnGo
-                          : localeStr.btnCopy,
-                      style: TextStyle(
-                        fontSize: FontSize.SUBTITLE.value,
-                        color: themeColor.defaultMarqueeBarColor,
+                Container(
+                  constraints:
+                      BoxConstraints(minWidth: FontSize.SUBTITLE.value * 5),
+                  child: RaisedButton(
+                    color: themeColor.defaultLayeredBackgroundColor,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: themeColor.buttonPrimaryColor),
+                      borderRadius: new BorderRadius.circular(4.0),
+                    ),
+                    visualDensity: VisualDensity(vertical: -1.0),
+                    child: RichText(
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      text: TextSpan(
+                        text: (buttonType == _ButtonType.OPEN)
+                            ? localeStr.btnGo
+                            : localeStr.btnCopy,
+                        style: TextStyle(
+                          fontSize: FontSize.SUBTITLE.value,
+                          color: themeColor.defaultTextColor,
+                        ),
                       ),
                     ),
+                    onPressed: () {
+                      debugPrint('button: $title, data: $data');
+                      if (buttonType == _ButtonType.COPY) {
+                        Clipboard.setData(new ClipboardData(text: data))
+                            .whenComplete(
+                                () => callToast(localeStr.messageCopy));
+                      } else {
+                        RouterNavigate.navigateToPage(RoutePage.serviceWeb,
+                            arg: WebRouteArguments(
+                                startUrl: data, hideHtmlBars: true));
+                      }
+                    },
                   ),
-                  onPressed: () {
-                    debugPrint('button: $title, data: $data');
-                    if (buttonType == _ButtonType.COPY) {
-                      Clipboard.setData(new ClipboardData(text: data))
-                          .whenComplete(() => callToast(localeStr.messageCopy));
-                    } else {
-                      RouterNavigate.navigateToPage(RoutePage.serviceWeb,
-                          arg: WebRouteArguments(
-                              startUrl: data, hideHtmlBars: true));
-                    }
-                  },
                 )
               ],
             ),

@@ -169,6 +169,15 @@ mixin _$WalletStore on _WalletStore, Store {
         .run(() => super.postWalletTransfer());
   }
 
+  final _$cancelWalletTransferAsyncAction =
+      AsyncAction('_WalletStore.cancelWalletTransfer');
+
+  @override
+  Future<void> cancelWalletTransfer() {
+    return _$cancelWalletTransferAsyncAction
+        .run(() => super.cancelWalletTransfer());
+  }
+
   @override
   String toString() {
     return '''

@@ -4,7 +4,7 @@ import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart'
     show getAppGlobalStreams;
 import 'package:meta/meta.dart' show required;
 
-export 'dart:async' show Stream, StreamController;
+export 'dart:async' show Stream, StreamController, StreamSubscription;
 
 export 'package:dartz/dartz.dart' show Either, Left, Right;
 export 'package:flutter/foundation.dart' show debugPrint;

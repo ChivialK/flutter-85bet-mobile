@@ -60,6 +60,9 @@ class ThemeLight implements ThemeColorInterface {
   Color defaultSelectableWidgetColor = Color(0xff1a77df);
 
   @override
+  Color defaultActiveWidgetColor = Color(0xff1a77df);
+
+  @override
   Color defaultDisabledColor = Color(0xff989898);
 
   @override
@@ -294,7 +297,7 @@ class ThemeLight implements ThemeColorInterface {
   Color centerButtonColor = Color(0xf0ffffff);
 
   @override
-  Color centerButtonTextColor = Color(0xff3751f3);
+  Color centerButtonShadowColor = Color(0xff3751f3);
 
   @override
   Color centerButtonBorderColor = Color(0xff409cf3);
@@ -309,13 +312,31 @@ class ThemeLight implements ThemeColorInterface {
   Color fieldInputColor = Color(0xff303030);
 
   @override
+  Color fieldInputSubColor = Color(0xffeaeaea);
+
+  @override
   Color fieldInputBgColor = Color(0xffe1e1e1);
+
+  @override
+  Color fieldInputSubBgColor = Color(0xff686868);
 
   @override
   Color fieldReadOnlyBgColor = Color(0xffd3d3d3);
 
   @override
+  Color fieldReadOnlySubBgColor = Color(0xff3f3f3f);
+
+  @override
   Color fieldInputHintColor = Color(0xff969696);
+
+  @override
+  Color fieldInputHintSubColor = Color(0xffb0b0b0);
+
+  @override
+  Color fieldDropdownColor = Color(0xffe1e1e1);
+
+  @override
+  Color fieldDropdownSubColor = Color(0xff686868);
 
   @override
   Color fieldPrefixBgColor = Color(0xffffffff);
@@ -333,16 +354,7 @@ class ThemeLight implements ThemeColorInterface {
   Color fieldSuffixSubColor = Color(0xffffffff);
 
   @override
-  Color fieldInputSubBgColor = Color(0xff686868);
-
-  @override
-  Color fieldReadOnlySubBgColor = Color(0xff3f3f3f);
-
-  @override
-  Color fieldInputSubColor = Color(0xffeaeaea);
-
-  @override
-  Color fieldInputHintSubColor = Color(0xffb0b0b0);
+  Color fieldCursorColor = Color(0xff1a77df);
 
   @override
   Color fieldCursorSubColor = Color(0xff90caf9);

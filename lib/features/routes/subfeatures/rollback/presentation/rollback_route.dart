@@ -6,7 +6,6 @@ import 'package:flutter_85bet_mobile/features/routes/member/presentation/data/me
 
 import 'state/rollback_store.dart';
 import 'widgets/rollback_display_list.dart';
-import 'widgets/rollback_display_table.dart';
 
 class RollbackRoute extends StatefulWidget {
   @override
@@ -19,8 +18,6 @@ class _RollbackRouteState extends State<RollbackRoute> with AfterLayoutMixin {
   List<ReactionDisposer> _disposers;
   CancelFunc toastDismiss;
 
-  final GlobalKey<FlowsDisplayTableState> contentKey =
-      new GlobalKey(debugLabel: 'content');
   final GlobalKey<PagerWidgetState> pagerKey =
       new GlobalKey(debugLabel: 'pager');
 
@@ -127,11 +124,7 @@ class _RollbackRouteState extends State<RollbackRoute> with AfterLayoutMixin {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: themeColor.memberIconColor,
-                        boxShadow: ThemeInterface.iconBottomShadow,
-                      ),
+                      decoration: ThemeInterface.pageIconContainerDecor,
                       child: Icon(
                         pageItem.value.iconData,
                         size: 32 * Global.device.widthScale,
@@ -150,7 +143,7 @@ class _RollbackRouteState extends State<RollbackRoute> with AfterLayoutMixin {
               Padding(
                 padding: const EdgeInsets.fromLTRB(4.0, 20.0, 8.0, 16.0),
                 child: Container(
-                  decoration: ThemeInterface.layerShadowDecorRound,
+                  decoration: ThemeInterface.layerShadowDecor,
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,

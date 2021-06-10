@@ -1,21 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_85bet_mobile/features/event/presentation/state/event_store.dart';
-import 'package:flutter_85bet_mobile/features/event/presentation/widgets/ad_dialog.dart';
-import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
-import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
-import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
-import 'package:flutter_85bet_mobile/features/update/presentation/state/update_store.dart';
-import 'package:flutter_85bet_mobile/injection_container.dart';
-import 'package:flutter_85bet_mobile/res.dart';
+import 'package:flutter_85bet_mobile/features/event/event_inject.dart';
+import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
+import 'package:flutter_85bet_mobile/features/routes/home/data/models/game_category_model.dart';
 
-import '../../data/models/game_category_model.dart';
 import '../state/home_store.dart';
 import 'home_display_banner.dart';
 import 'home_display_marquee.dart';
 import 'home_display_size_calc.dart';
 import 'home_display_tabs.dart';
-import 'home_search_widget.dart';
+import 'home_display_user_tabs.dart';
 import 'home_shortcut_widget.dart';
 import 'home_store_inherit_widget.dart';
 
@@ -31,7 +24,6 @@ class _HomeDisplayState extends State<HomeDisplay> {
       new GlobalKey<HomeDisplayTabsState>();
 
   EventStore _eventStore;
-  UpdateStore _updateStore;
   HomeStore _store;
   HomeShortcutWidget _shortcutWidget;
   HomeDisplayBanner _bannerWidget;
@@ -39,47 +31,10 @@ class _HomeDisplayState extends State<HomeDisplay> {
   HomeDisplaySizeCalc _sizeCalc;
   Widget _contentWidget;
 
-  double _screenWidth = Global.device.width;
-
   List banners;
   List marquees;
   List tabs;
-
-  String gameTitle = '';
-  bool showGameTitle = false;
   bool showingAds = false;
-
-  void showAdsDialog(List list) {
-    if (showingAds) return;
-    if (_updateStore.showingUpdateDialog) {
-      Future.delayed(Duration(seconds: 2), () {
-        showAdsDialog(list);
-      });
-    } else {
-      Future.delayed(Duration(milliseconds: 500), () {
-        if (!mounted)
-          showAdsDialog(list);
-        else {
-          showingAds = true;
-          showDialog(
-            context: context,
-            barrierDismissible: false,
-            builder: (context) => new AdDialog(
-              ads: new List.from(list),
-              initCheck: _eventStore.checkSkip,
-              onClose: (skipNextTime) {
-                debugPrint('ads dialog close, skip=$skipNextTime');
-                showingAds = false;
-                _eventStore.setAutoShowAds = false;
-                _eventStore.setSkipAd(skipNextTime);
-                _eventStore.adsDialogClose();
-              },
-            ),
-          );
-        }
-      });
-    }
-  }
 
   @override
   void initState() {
@@ -91,197 +46,123 @@ class _HomeDisplayState extends State<HomeDisplay> {
   Widget build(BuildContext context) {
     _store ??= HomeStoreInheritedWidget.of(context).store;
     _eventStore ??= sl.get<EventStore>();
-    return Stack(
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        StreamBuilder<String>(
-            stream: _store.homeGameTitleStream,
-            initialData: '',
-            builder: (context, snapshot) {
-              if (snapshot != null &&
-                  snapshot.data != null &&
-                  gameTitle != snapshot.data) {
-                debugPrint('home display stream game title: $snapshot');
-                if ((snapshot.data.isEmpty && showGameTitle) ||
-                    (snapshot.data.isNotEmpty && !showGameTitle)) {
-                  if (mounted) {
-                    Future.delayed(Duration(milliseconds: 200), () {
-                      setState(() {
-                        gameTitle = snapshot.data;
-                        showGameTitle = gameTitle.isNotEmpty;
-                      });
-                    });
+        ConstrainedBox(
+          constraints: BoxConstraints.tight(
+            Size(Global.device.width, _sizeCalc.bannerHeight),
+          ),
+          child: Stack(
+            children: [
+              StreamBuilder(
+                stream: _store.bannerStream,
+                builder: (ctx, _) {
+                  if (banners != _store.banners) {
+                    banners = _store.banners;
+                    _bannerWidget = HomeDisplayBanner(
+                      banners: banners,
+                      onBannerClicked: (url) => _widgetUrlCheck(url),
+                    );
                   }
-                }
-              }
-              return SizedBox.shrink();
-            }),
-        Container(
-          constraints: BoxConstraints.tight(Size(
-            Global.device.width,
-            Global.device.featureContentHeight,
-          )),
-          child:
-              FittedBox(fit: BoxFit.fill, child: Image.asset(Res.content_bg)),
-        ),
-        Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ConstrainedBox(
-              constraints: BoxConstraints.tight(
-                Size(_screenWidth, _sizeCalc.bannerHeight),
+                  _bannerWidget ??= HomeDisplayBanner(onBannerClicked: (_) {});
+                  return _bannerWidget;
+                },
               ),
-              child: IndexedStack(
-                index: (showGameTitle) ? 1 : 0,
-                children: [
-                  Stack(
-                    children: [
-                      StreamBuilder(
-                        stream: _store.bannerStream,
-                        builder: (ctx, _) {
-                          if (banners != _store.banners) {
-                            banners = _store.banners;
-                            _bannerWidget = HomeDisplayBanner(
-                              banners: banners,
-                              onBannerClicked: (url) => _widgetUrlCheck(url),
-                            );
-                          }
-                          _bannerWidget ??=
-                              HomeDisplayBanner(onBannerClicked: (_) {});
-                          return _bannerWidget;
-                        },
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        child: StreamBuilder(
-                          stream: _store.marqueeStream,
-                          builder: (ctx, _) {
-                            if (marquees != _store.marquees) {
-                              marquees = _store.marquees;
-                              _marqueeWidget = HomeDisplayMarquee(
-                                marquees: marquees,
-                                onMarqueeClicked: (url) => _widgetUrlCheck(url),
-                              );
-                            }
-                            _marqueeWidget ??= HomeDisplayMarquee();
-                            return _marqueeWidget;
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  if (showGameTitle)
-                    ShaderMask(
-                      shaderCallback: (rect) {
-                        return LinearGradient(
-                          begin: Alignment.center,
-                          end: Alignment.bottomCenter,
-                          stops: [0.7, 1.0],
-                          colors: [Colors.black, Colors.transparent],
-                        ).createShader(
-                            Rect.fromLTRB(0, 0, rect.width, rect.height));
-                      },
-                      blendMode: BlendMode.dstIn,
-                      child: SizedBox(
-                          height: _sizeCalc.bannerHeight,
-                          child:
-                              networkImageBuilder(gameTitle, fit: BoxFit.fill)),
-                    ),
-                ],
-              ),
-            ),
-            Container(
-              constraints: BoxConstraints.tight(
-                Size(
-                  _screenWidth,
-                  Global.device.featureContentHeight - _sizeCalc.bannerHeight,
+              Positioned(
+                bottom: 0,
+                child: StreamBuilder(
+                  stream: _store.marqueeStream,
+                  builder: (ctx, _) {
+                    if (marquees != _store.marquees) {
+                      marquees = _store.marquees;
+                      _marqueeWidget = HomeDisplayMarquee(
+                        marquees: marquees,
+                        onMarqueeClicked: (url) => _widgetUrlCheck(url),
+                      );
+                    }
+                    _marqueeWidget ??= HomeDisplayMarquee();
+                    return _marqueeWidget;
+                  },
                 ),
               ),
-              child: Stack(
+            ],
+          ),
+        ),
+        Container(
+          constraints: BoxConstraints.tight(
+            Size(Global.device.width,
+                Global.device.featureContentHeight - _sizeCalc.bannerHeight),
+          ),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Column(
                 children: [
-                  Column(
-                    children: [
-                      if (!showGameTitle)
-                        Container(
-                          child: StreamBuilder<bool>(
-                            stream:
-                                RouterNavigate.routerStreams.recheckUserStream,
-                            initialData: false,
-                            builder: (context, snapshot) {
-//                debugPrint('checking shortcut widget: ${getRouteUserStreams.lastUser}');
-                              if (_shortcutWidget == null) {
-                                _shortcutWidget = HomeShortcutWidget(
-                                  key: _shortcutWidgetKey,
-                                  sizeCalc: _sizeCalc,
-                                  eventStore: _eventStore,
-                                );
-                              } else if (snapshot.data) {
-                                _shortcutWidgetKey.currentState.updateUser();
-                                _store.checkHomeTabs();
-                                RouterNavigate.resetCheckUser();
-                              }
-                              return _shortcutWidget;
-                            },
-                          ),
-                        ),
-                      if (showGameTitle)
-                        ConstrainedBox(
-                          constraints: BoxConstraints(
-                            maxHeight: _sizeCalc.shortcutMaxHeight,
-                            maxWidth: Global.device.width,
-                          ),
-                          child: HomeSearchWidget(
-                            onSearch: (searchStr) =>
-                                _store.searchGame(searchKey: searchStr),
-                          ),
-                        ),
-                      Expanded(
-                        child: StreamBuilder(
-                          stream: _store.tabStream,
-                          initialData: (_store.hasUser)
-                              ? _store.homeUserTabs
-                              : _store.homeTabs,
-                          builder: (ctx, snapshot) {
-                            if (tabs != snapshot.data) {
-//                              debugPrint('update display tabs: ${snapshot.data}');
-                              tabs = new List<GameCategoryModel>.from(
-                                  snapshot.data);
-                              // use different widget to avoid tab controller's dispose error
-                              _contentWidget = new HomeDisplayTabs(
-                                key: _tabsWidgetKey,
-                                tabs: tabs,
-                                sizeCalc: _sizeCalc,
-                              );
-                            }
-                            _contentWidget ??= HomeDisplayTabs(
-                                key: _tabsWidgetKey, sizeCalc: _sizeCalc);
-                            return _contentWidget;
-                          },
-                        ),
-                      ),
-                    ],
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 6.0),
+                    child: StreamBuilder<bool>(
+                      stream: RouterNavigate.routerStreams.recheckUserStream,
+                      initialData: false,
+                      builder: (context, snapshot) {
+                        // debugPrint(
+                        //     'checking shortcut widget: ${getAppGlobalStreams.lastStatus}');
+                        if (_shortcutWidget == null) {
+                          _shortcutWidget = HomeShortcutWidget(
+                            key: _shortcutWidgetKey,
+                            sizeCalc: _sizeCalc,
+                            eventStore: _eventStore,
+                          );
+                        } else if (snapshot.data) {
+                          _shortcutWidgetKey.currentState.updateUser();
+                          _store.checkHomeTabs();
+                          RouterNavigate.resetCheckUser();
+                        }
+                        return _shortcutWidget;
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: StreamBuilder(
+                      stream: _store.tabStream,
+                      initialData: (_store.hasUser)
+                          ? _store.homeUserTabs
+                          : _store.homeTabs,
+                      builder: (ctx, snapshot) {
+                        if (tabs != snapshot.data) {
+//                debugPrint('update display tabs: ${snapshot.data}');
+                          tabs =
+                              new List<GameCategoryModel>.from(snapshot.data);
+                          // use different widget to avoid tab controller's dispose error
+                          if (tabs.contains(favoriteCategory)) {
+                            _contentWidget = new HomeDisplayUserTabs(
+                              tabs: tabs,
+                              sizeCalc: _sizeCalc,
+                            );
+                          } else if (tabs != null) {
+                            _contentWidget = new HomeDisplayTabs(
+                              key: _tabsWidgetKey,
+                              tabs: tabs,
+                              sizeCalc: _sizeCalc,
+                            );
+                          }
+                        }
+                        _contentWidget ??= HomeDisplayTabs(
+                            key: _tabsWidgetKey, sizeCalc: _sizeCalc);
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 6.0),
+                          child: _contentWidget,
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
-            ),
-          ],
-        ),
-        if (!showGameTitle)
-          Positioned(
-            top: _sizeCalc.bannerHeight - 6,
-            child: Row(
-              children: [
-                Transform(
-                    transform: Matrix4.diagonal3Values(Global.device.widthScale,
-                        Global.device.ratio - 0.25, 1.0),
-                    child: Image.asset(
-                      Res.shadow,
-                      color: Color(0xD0000000),
-                    )),
-              ],
-            ),
+            ],
           ),
+        ),
       ],
     );
   }
@@ -294,6 +175,8 @@ class _HomeDisplayState extends State<HomeDisplay> {
           url.indexOf(Global.DOMAIN_NAME) + Global.DOMAIN_NAME.length);
     } else if (!url.startsWith('/')) {
       fixUrl = '/$url';
+    } else {
+      fixUrl = url;
     }
     _widgetUrlNavigate(
       url.contains('/api/open/'),
@@ -334,7 +217,7 @@ class _HomeDisplayState extends State<HomeDisplay> {
       //     return;
       //   }
       //   debugPrint('url mall id: $itemId');
-      //   AppNavigator.navigateTo(
+      //   RouterNavigate.navigateTo(
       //     RoutePage.sideStore,
       //     arg: (itemId > 0) ? StoreRouteArguments(showProductId: itemId) : null,
       //   );
@@ -344,7 +227,11 @@ class _HomeDisplayState extends State<HomeDisplay> {
       RoutePage newRoute = url.urlToRoutePage;
       debugPrint('checking url to app route: $newRoute');
       if (newRoute != null) {
-        RouterNavigate.navigateToPage(newRoute);
+        if (newRoute.pageId == RouteEnum.HOME) {
+          callToast(localeStr.pageTitleHome);
+        } else {
+          RouterNavigate.navigateToPage(newRoute);
+        }
       } else {
         callToast(localeStr.urlActionNotSupported);
         MyLogger.debug(msg: 'Found unsupported Route URL: $url');

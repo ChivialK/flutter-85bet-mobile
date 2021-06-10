@@ -35,12 +35,12 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `85Bet Mobile`
+  /// `SBB Mobile`
   String get title {
     return Intl.message(
-      '85Bet Mobile',
+      'SBB Mobile',
       name: 'title',
-      desc: '85Bet Demo',
+      desc: 'SBB Demo',
       args: [],
     );
   }
@@ -445,10 +445,10 @@ class S {
     );
   }
 
-  /// `VDK {value}`
+  /// `NTD {value}`
   String toolBarMemberCredit(Object value) {
     return Intl.message(
-      'VDK $value',
+      'NTD $value',
       name: 'toolBarMemberCredit',
       desc: '',
       args: [value],
@@ -875,6 +875,26 @@ class S {
     );
   }
 
+  /// `Next Step`
+  String get btnNextStep {
+    return Intl.message(
+      'Next Step',
+      name: 'btnNextStep',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get btnPreStep {
+    return Intl.message(
+      'Back',
+      name: 'btnPreStep',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Return`
   String get sideBtnBackHome {
     return Intl.message(
@@ -1040,6 +1060,26 @@ class S {
     return Intl.message(
       'enter password again',
       name: 'hintConfirmedInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `captcha`
+  String get hintCaptcha {
+    return Intl.message(
+      'captcha',
+      name: 'hintCaptcha',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `enter captcha`
+  String get hintCaptchaInput {
+    return Intl.message(
+      'enter captcha',
+      name: 'hintCaptchaInput',
       desc: '',
       args: [],
     );
@@ -1565,13 +1605,23 @@ class S {
     );
   }
 
-  /// `The card number is 5 ~ 19 characters`
-  String get messageInvalidCardNumber {
+  /// `Card number should be {min}~{max} characters`
+  String messageInvalidCardNumber(Object min, Object max) {
     return Intl.message(
-      'The card number is 5 ~ 19 characters',
+      'Card number should be $min~$max characters',
       name: 'messageInvalidCardNumber',
       desc: '',
-      args: [],
+      args: [min, max],
+    );
+  }
+
+  /// `Card number should be {min}~{max} characters and starts with {fixed}`
+  String messageInvalidCardNumberFixed(Object min, Object max, Object fixed) {
+    return Intl.message(
+      'Card number should be $min~$max characters and starts with $fixed',
+      name: 'messageInvalidCardNumberFixed',
+      desc: '',
+      args: [min, max, fixed],
     );
   }
 
@@ -1580,6 +1630,26 @@ class S {
     return Intl.message(
       'The name must be greater than 3 characters',
       name: 'messageInvalidCardBankPoint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not enough credit`
+  String get messageExceedRemainCredit {
+    return Intl.message(
+      'Not enough credit',
+      name: 'messageExceedRemainCredit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Platform under maintenance`
+  String get messagePlatformMaintenance {
+    return Intl.message(
+      'Platform under maintenance',
+      name: 'messagePlatformMaintenance',
       desc: '',
       args: [],
     );
@@ -1795,6 +1865,16 @@ class S {
     );
   }
 
+  /// `You do not have permission to play on this platform, please contact customer service.`
+  String get messageErrorGamePermission {
+    return Intl.message(
+      'You do not have permission to play on this platform, please contact customer service.',
+      name: 'messageErrorGamePermission',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Page loading error, please try again later`
   String get messageErrorLoadingPay {
     return Intl.message(
@@ -1950,6 +2030,26 @@ class S {
     return Intl.message(
       'Referral Code not valid',
       name: 'messageErrorReferral',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify code error, please check your input or tap image to refresh`
+  String get messageErrorVerify {
+    return Intl.message(
+      'Verify code error, please check your input or tap image to refresh',
+      name: 'messageErrorVerify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify code error`
+  String get messageErrorVerifyShort {
+    return Intl.message(
+      'Verify code error',
+      name: 'messageErrorVerifyShort',
       desc: '',
       args: [],
     );
@@ -2315,10 +2415,10 @@ class S {
     );
   }
 
-  /// `Click me to open 85Bet website`
+  /// `Click me to open SBB website`
   String get gameCategoryWebHint {
     return Intl.message(
-      'Click me to open 85Bet website',
+      'Click me to open SBB website',
       name: 'gameCategoryWebHint',
       desc: '',
       args: [],
@@ -2495,6 +2595,16 @@ class S {
     );
   }
 
+  /// `Bankcard Name`
+  String get registerFieldTitleCardHolder {
+    return Intl.message(
+      'Bankcard Name',
+      name: 'registerFieldTitleCardHolder',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Mobile number`
   String get registerFieldTitlePhone {
     return Intl.message(
@@ -2560,6 +2670,26 @@ class S {
     return Intl.message(
       'Please enter a verification code',
       name: 'registerFieldHintVerify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter card holder name`
+  String get registerFieldHintCardName {
+    return Intl.message(
+      'Please enter card holder name',
+      name: 'registerFieldHintCardName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `＊To ensure your rights, please fill in the account name that matches the withdrawal bank`
+  String get registerFieldHintCard {
+    return Intl.message(
+      '＊To ensure your rights, please fill in the account name that matches the withdrawal bank',
+      name: 'registerFieldHintCard',
       desc: '',
       args: [],
     );
@@ -2905,10 +3035,10 @@ class S {
     );
   }
 
-  /// `All credits`
+  /// `All`
   String get transferViewTextOptionAll {
     return Intl.message(
-      'All credits',
+      'All',
       name: 'transferViewTextOptionAll',
       desc: '',
       args: [],
@@ -3035,30 +3165,30 @@ class S {
     );
   }
 
-  /// `Account (Card) Number`
+  /// `Bank Account`
   String get bankcardViewTitleCardNumber {
     return Intl.message(
-      'Account (Card) Number',
+      'Bank Account',
       name: 'bankcardViewTitleCardNumber',
       desc: '',
       args: [],
     );
   }
 
-  /// `Bank Branch`
+  /// `Branch`
   String get bankcardViewTitleBankBranch {
     return Intl.message(
-      'Bank Branch',
+      'Branch',
       name: 'bankcardViewTitleBankBranch',
       desc: '',
       args: [],
     );
   }
 
-  /// `Open an Account`
+  /// `Province`
   String get bankcardViewTitleBankProvince {
     return Intl.message(
-      'Open an Account',
+      'Province',
       name: 'bankcardViewTitleBankProvince',
       desc: '',
       args: [],
@@ -3190,6 +3320,16 @@ class S {
     return Intl.message(
       'Each member account can only withdraw up to 3 withdrawals per day, if more than 3 withdrawals will be charged a 5% service fee. ',
       name: 'withdrawViewHint2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Max Withdraw`
+  String get withdrawViewHintMax {
+    return Intl.message(
+      'Max Withdraw',
+      name: 'withdrawViewHintMax',
       desc: '',
       args: [],
     );
@@ -3735,10 +3875,10 @@ class S {
     );
   }
 
-  /// `Total: VDK {value}`
+  /// `Total: NTD {value}`
   String betsTextTotal(Object value) {
     return Intl.message(
-      'Total: VDK $value',
+      'Total: NTD $value',
       name: 'betsTextTotal',
       desc: '',
       args: [value],
@@ -3885,10 +4025,10 @@ class S {
     );
   }
 
-  /// `Failed`
+  /// `Rejected`
   String get dealsViewSpinnerStatus2 {
     return Intl.message(
-      'Failed',
+      'Rejected',
       name: 'dealsViewSpinnerStatus2',
       desc: '',
       args: [],
@@ -3915,40 +4055,40 @@ class S {
     );
   }
 
-  /// `Single Number`
+  /// `No.`
   String get dealsHeaderSerial {
     return Intl.message(
-      'Single Number',
+      'No.',
       name: 'dealsHeaderSerial',
       desc: '',
       args: [],
     );
   }
 
-  /// `items`
+  /// `Type`
   String get dealsHeaderType {
     return Intl.message(
-      'items',
+      'Type',
       name: 'dealsHeaderType',
       desc: '',
       args: [],
     );
   }
 
-  /// `Details`
+  /// `Detail`
   String get dealsHeaderDetail {
     return Intl.message(
-      'Details',
+      'Detail',
       name: 'dealsHeaderDetail',
       desc: '',
       args: [],
     );
   }
 
-  /// `Order Status`
+  /// `Status`
   String get dealsHeaderStatus {
     return Intl.message(
-      'Order Status',
+      'Status',
       name: 'dealsHeaderStatus',
       desc: '',
       args: [],
@@ -3970,6 +4110,16 @@ class S {
     return Intl.message(
       'Amount',
       name: 'dealsHeaderAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adjust Cash`
+  String get dealsDetailTypeAdjustCash {
+    return Intl.message(
+      'Adjust Cash',
+      name: 'dealsDetailTypeAdjustCash',
       desc: '',
       args: [],
     );
@@ -4195,23 +4345,13 @@ class S {
     );
   }
 
-  /// `Reality: {value} VND`
-  String depositPaymentEditTitleAmountHintVND(Object value) {
+  /// `Reality: {value} NTD`
+  String depositPaymentEditTitleCurrencyHint(Object value) {
     return Intl.message(
-      'Reality: $value VND',
-      name: 'depositPaymentEditTitleAmountHintVND',
+      'Reality: $value NTD',
+      name: 'depositPaymentEditTitleCurrencyHint',
       desc: '',
       args: [value],
-    );
-  }
-
-  /// `Remarks`
-  String get depositPaymentEditTitleNote {
-    return Intl.message(
-      'Remarks',
-      name: 'depositPaymentEditTitleNote',
-      desc: '',
-      args: [],
     );
   }
 
@@ -4232,6 +4372,36 @@ class S {
       name: 'depositPaymentEditTitleAmountHintRangeStep',
       desc: '',
       args: [num, num2, num3],
+    );
+  }
+
+  /// `Transaction Code`
+  String get depositPaymentEditTitleCode {
+    return Intl.message(
+      'Transaction Code',
+      name: 'depositPaymentEditTitleCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `please enter the transaction code`
+  String get depositPaymentEditHintCode {
+    return Intl.message(
+      'please enter the transaction code',
+      name: 'depositPaymentEditHintCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remarks`
+  String get depositPaymentEditTitleNote {
+    return Intl.message(
+      'Remarks',
+      name: 'depositPaymentEditTitleNote',
+      desc: '',
+      args: [],
     );
   }
 
@@ -4475,11 +4645,21 @@ class S {
     );
   }
 
-  /// `Recharge failed, please try again later or contact customer service`
+  /// `Deposit failed, please try again later or contact customer service`
   String get depositMessageFailed {
     return Intl.message(
-      'Recharge failed, please try again later or contact customer service',
+      'Deposit failed, please try again later or contact customer service',
       name: 'depositMessageFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deposit info error, please re-select the payment method or contact customer service`
+  String get depositMessageFormError {
+    return Intl.message(
+      'Deposit info error, please re-select the payment method or contact customer service',
+      name: 'depositMessageFormError',
       desc: '',
       args: [],
     );
@@ -6405,6 +6585,56 @@ class S {
     );
   }
 
+  /// `Waiting to ship`
+  String get storeRecordOrderStateShipping {
+    return Intl.message(
+      'Waiting to ship',
+      name: 'storeRecordOrderStateShipping',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Canceled`
+  String get storeRecordOrderStateCancel {
+    return Intl.message(
+      'Canceled',
+      name: 'storeRecordOrderStateCancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Redeemed`
+  String get storeRecordOrderStateSuccess {
+    return Intl.message(
+      'Redeemed',
+      name: 'storeRecordOrderStateSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rejected`
+  String get storeRecordOrderStateRefuse {
+    return Intl.message(
+      'Rejected',
+      name: 'storeRecordOrderStateRefuse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Adjusted`
+  String get storeRecordOrderStateAdjust {
+    return Intl.message(
+      'Adjusted',
+      name: 'storeRecordOrderStateAdjust',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `signed {value} days`
   String eventButtonSignUpTv(Object value) {
     return Intl.message(
@@ -6682,436 +6912,6 @@ class S {
       name: 'updateDialogMessage',
       desc: '',
       args: [value, version],
-    );
-  }
-
-  /// `Certifact`
-  String get aboutCertTitle {
-    return Intl.message(
-      'Certifact',
-      name: 'aboutCertTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Gambling Commission`
-  String get aboutCertTitleGC {
-    return Intl.message(
-      'Gambling Commission',
-      name: 'aboutCertTitleGC',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `MGA License`
-  String get aboutCertTitleMGA {
-    return Intl.message(
-      'MGA License',
-      name: 'aboutCertTitleMGA',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `PAGCOR License`
-  String get aboutCertTitlePGC {
-    return Intl.message(
-      'PAGCOR License',
-      name: 'aboutCertTitlePGC',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `BVI Certified`
-  String get aboutCertTitleBVI {
-    return Intl.message(
-      'BVI Certified',
-      name: 'aboutCertTitleBVI',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Introducing the 85BET Dealer`
-  String get aboutDataTitle1 {
-    return Intl.message(
-      'Introducing the 85BET Dealer',
-      name: 'aboutDataTitle1',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `85BET is licensed by the Isle of Man and the Cagayan and Freeport Economic Zones. This is a multinational company with operations in the Asia-Pacific region.`
-  String get aboutDataDesc10 {
-    return Intl.message(
-      '85BET is licensed by the Isle of Man and the Cagayan and Freeport Economic Zones. This is a multinational company with operations in the Asia-Pacific region.',
-      name: 'aboutDataDesc10',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `85bet relies on its rich experience and reputation to service more than ten million players, which demonstrates long-term legitimacy and is completely reliable.`
-  String get aboutDataDesc11 {
-    return Intl.message(
-      '85bet relies on its rich experience and reputation to service more than ten million players, which demonstrates long-term legitimacy and is completely reliable.',
-      name: 'aboutDataDesc11',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Is a game company under M.A.N Entertainment Group, headquartered in Manila, Philippines. This is considered the largest corporation in the Asian online gambling market with a large workforce. With the recognized high confidence, 85bet has now become one of the International Online Games Association's most fully verified and licensed bookmakers.`
-  String get aboutDataDesc12 {
-    return Intl.message(
-      'Is a game company under M.A.N Entertainment Group, headquartered in Manila, Philippines. This is considered the largest corporation in the Asian online gambling market with a large workforce. With the recognized high confidence, 85bet has now become one of the International Online Games Association\'s most fully verified and licensed bookmakers.',
-      name: 'aboutDataDesc12',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `INFORMATION`
-  String get aboutDataTitle2 {
-    return Intl.message(
-      'INFORMATION',
-      name: 'aboutDataTitle2',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Registration`
-  String get aboutDataSubtitle20 {
-    return Intl.message(
-      'Registration',
-      name: 'aboutDataSubtitle20',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Open a Vietnamese 85bet account to join online all of our online betting promotions high quality entertainment website with exceptionally good value. We believe that in bonus points, customers will have the opportunity to receive valuable gifts and incentives when participating in promotions.`
-  String get aboutDataDesc20 {
-    return Intl.message(
-      'Open a Vietnamese 85bet account to join online all of our online betting promotions high quality entertainment website with exceptionally good value. We believe that in bonus points, customers will have the opportunity to receive valuable gifts and incentives when participating in promotions.',
-      name: 'aboutDataDesc20',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Agency`
-  String get aboutDataSubtitle21 {
-    return Intl.message(
-      'Agency',
-      name: 'aboutDataSubtitle21',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Become our best partner and enjoy great commissions every month by referring players to 85bet.`
-  String get aboutDataDesc21 {
-    return Intl.message(
-      'Become our best partner and enjoy great commissions every month by referring players to 85bet.',
-      name: 'aboutDataDesc21',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Responsible Betting`
-  String get aboutDataSubtitle22 {
-    return Intl.message(
-      'Responsible Betting',
-      name: 'aboutDataSubtitle22',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `85bet betting odds soccer strives to provide a channel of entertainment to our customers in a positive way. We have safeguards primarily promoting and ensuring responsible betting.`
-  String get aboutDataDesc22 {
-    return Intl.message(
-      '85bet betting odds soccer strives to provide a channel of entertainment to our customers in a positive way. We have safeguards primarily promoting and ensuring responsible betting.',
-      name: 'aboutDataDesc22',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Security`
-  String get aboutDataSubtitle23 {
-    return Intl.message(
-      'Security',
-      name: 'aboutDataSubtitle23',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `With a stable and safe betting system. Your privacy is our top priority so we are always in strict compliance with the privacy policies.`
-  String get aboutDataDesc23 {
-    return Intl.message(
-      'With a stable and safe betting system. Your privacy is our top priority so we are always in strict compliance with the privacy policies.',
-      name: 'aboutDataDesc23',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `PRODUCT`
-  String get aboutDataTitle3 {
-    return Intl.message(
-      'PRODUCT',
-      name: 'aboutDataTitle3',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sports Betting And Live Betting soccer odds`
-  String get aboutDataSubtitle30 {
-    return Intl.message(
-      'Sports Betting And Live Betting soccer odds',
-      name: 'aboutDataSubtitle30',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Football betting odds We offer major tournaments such as: Premier League, Spanish Championship La Liga, Italian Serie A, UEFA Championship, French National Championship, Germany, NFL, NBA, NCAA, Women's Basketball, Tennis, Racing F1 We are honored to bring you over 4,000 matches per month.`
-  String get aboutDataDesc30 {
-    return Intl.message(
-      'Football betting odds We offer major tournaments such as: Premier League, Spanish Championship La Liga, Italian Serie A, UEFA Championship, French National Championship, Germany, NFL, NBA, NCAA, Women\'s Basketball, Tennis, Racing F1 We are honored to bring you over 4,000 matches per month.',
-      name: 'aboutDataDesc30',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Game online`
-  String get aboutDataSubtitle31 {
-    return Intl.message(
-      'Game online',
-      name: 'aboutDataSubtitle31',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Online games with many opportunities to win Jackpots in games: Roulette, Blackjack, Poker, Slots. More progressive jackpot prizes and higher chances of winning in 85bet.`
-  String get aboutDataDesc31 {
-    return Intl.message(
-      'Online games with many opportunities to win Jackpots in games: Roulette, Blackjack, Poker, Slots. More progressive jackpot prizes and higher chances of winning in 85bet.',
-      name: 'aboutDataDesc31',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Online Casino`
-  String get aboutDataSubtitle32 {
-    return Intl.message(
-      'Online Casino',
-      name: 'aboutDataSubtitle32',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `In addition we also offer many other types of online games, especially: Live Casino with hot dealers in Baccarat, Sicbo, Dragon / Tiger, Roulette and Online Casino Slots, easy to play.`
-  String get aboutDataDesc32 {
-    return Intl.message(
-      'In addition we also offer many other types of online games, especially: Live Casino with hot dealers in Baccarat, Sicbo, Dragon / Tiger, Roulette and Online Casino Slots, easy to play.',
-      name: 'aboutDataDesc32',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `INFORMATION CENTRE`
-  String get aboutDataTitle4 {
-    return Intl.message(
-      'INFORMATION CENTRE',
-      name: 'aboutDataTitle4',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Promotion`
-  String get aboutDataSubtitle40 {
-    return Intl.message(
-      'Promotion',
-      name: 'aboutDataSubtitle40',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Bonus promotions for new members. Bonuses on subsequent Fundings and refunds to existing members.`
-  String get aboutDataDesc40 {
-    return Intl.message(
-      'Bonus promotions for new members. Bonuses on subsequent Fundings and refunds to existing members.',
-      name: 'aboutDataDesc40',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Support center`
-  String get aboutDataSubtitle41 {
-    return Intl.message(
-      'Support center',
-      name: 'aboutDataSubtitle41',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `See also FAQs for sports and other games. Support for account registration, Money Transfer, withdrawals and other technical information.`
-  String get aboutDataDesc41 {
-    return Intl.message(
-      'See also FAQs for sports and other games. Support for account registration, Money Transfer, withdrawals and other technical information.',
-      name: 'aboutDataDesc41',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Payment methods`
-  String get aboutDataSubtitle42 {
-    return Intl.message(
-      'Payment methods',
-      name: 'aboutDataSubtitle42',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `We offer excellent options for customers to deposit and withdraw money through NETELLER, Moneybookers, International Bank Transfer, Western Union. We have it all, let's get started right away with 85bet.`
-  String get aboutDataDesc42 {
-    return Intl.message(
-      'We offer excellent options for customers to deposit and withdraw money through NETELLER, Moneybookers, International Bank Transfer, Western Union. We have it all, let\'s get started right away with 85bet.',
-      name: 'aboutDataDesc42',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Contact`
-  String get aboutDataSubtitle43 {
-    return Intl.message(
-      'Contact',
-      name: 'aboutDataSubtitle43',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `If you need any help or questions about online betting on football odds or online casino, we will provide 24/7 support via Live Chat, Phone and email.`
-  String get aboutDataDesc43 {
-    return Intl.message(
-      'If you need any help or questions about online betting on football odds or online casino, we will provide 24/7 support via Live Chat, Phone and email.',
-      name: 'aboutDataDesc43',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Betting information`
-  String get aboutDataTitle5 {
-    return Intl.message(
-      'Betting information',
-      name: 'aboutDataTitle5',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sports Results`
-  String get aboutDataSubtitle50 {
-    return Intl.message(
-      'Sports Results',
-      name: 'aboutDataSubtitle50',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Vietnam football odds Provides the results of all the best sports games and leagues in Vietnam today.`
-  String get aboutDataDesc50 {
-    return Intl.message(
-      'Vietnam football odds Provides the results of all the best sports games and leagues in Vietnam today.',
-      name: 'aboutDataDesc50',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Bet Statistics`
-  String get aboutDataSubtitle51 {
-    return Intl.message(
-      'Bet Statistics',
-      name: 'aboutDataSubtitle51',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `More than 200 diverse tournaments with a variety of sports, formats, teams and individual matches, fixtures, lineups, teams, extra times and deferred matches.`
-  String get aboutDataDesc51 {
-    return Intl.message(
-      'More than 200 diverse tournaments with a variety of sports, formats, teams and individual matches, fixtures, lineups, teams, extra times and deferred matches.',
-      name: 'aboutDataDesc51',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sports Betting`
-  String get aboutDataSubtitle52 {
-    return Intl.message(
-      'Sports Betting',
-      name: 'aboutDataSubtitle52',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `All of our Sports Rules are strictly followed by the Official Rules of the Best Organizing Committee in Vietnam today.`
-  String get aboutDataDesc52 {
-    return Intl.message(
-      'All of our Sports Rules are strictly followed by the Official Rules of the Best Organizing Committee in Vietnam today.',
-      name: 'aboutDataDesc52',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Casino Betting`
-  String get aboutDataSubtitle53 {
-    return Intl.message(
-      'Casino Betting',
-      name: 'aboutDataSubtitle53',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Live Casino fully displays: bet limit, result and bet history details. All of your betting information is integrated on the screen for your entertainment convenience. You can check any bet information at any time.`
-  String get aboutDataDesc53 {
-    return Intl.message(
-      'Live Casino fully displays: bet limit, result and bet history details. All of your betting information is integrated on the screen for your entertainment convenience. You can check any bet information at any time.',
-      name: 'aboutDataDesc53',
-      desc: '',
-      args: [],
     );
   }
 

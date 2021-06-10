@@ -56,7 +56,7 @@ final _digitRegex = RegExp(r'\d+');
 
 extension RegexExtension on String {
   /// String Regex
-  bool get isUrl => Uri.parse(this).isAbsolute || _urlRegex.hasMatch(this);
+  bool get isUrl => Uri.parse(this).isAbsolute;
 
   bool get isEmail => EmailValidator.validate(this);
 

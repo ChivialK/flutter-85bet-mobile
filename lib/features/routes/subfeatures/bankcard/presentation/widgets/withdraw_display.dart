@@ -24,6 +24,7 @@ class _WithdrawDisplayState extends State<WithdrawDisplay> {
   void initState() {
     _store ??= sl.get<WithdrawStore>();
     super.initState();
+    _store.initialize();
   }
 
   @override
@@ -89,9 +90,23 @@ class _WithdrawDisplayState extends State<WithdrawDisplay> {
 
   @override
   Widget build(BuildContext context) {
-    return WithdrawDisplayView(
-      store: _store,
-      bankcard: widget.bankcard,
+    return Scaffold(
+      body: Observer(
+        // Observe using specific widget
+        builder: (_) {
+          switch (_store.state) {
+            case WithdrawStoreState.loading:
+              return LoadingWidget();
+            case WithdrawStoreState.loaded:
+              return WithdrawDisplayView(
+                store: _store,
+                bankcard: widget.bankcard,
+              );
+            default:
+              return SizedBox.shrink();
+          }
+        },
+      ),
     );
   }
 }

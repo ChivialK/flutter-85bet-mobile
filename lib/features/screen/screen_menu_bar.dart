@@ -18,7 +18,7 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
 
   bool _hideActions = false;
   bool _hideLangOption = false;
-  bool _showingAds = false;
+  // bool _showingAds = false;
 
   void initDisposers() {
     _disposers = [
@@ -84,41 +84,50 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
     return AppBar(
       /* App bar Icon */
       title: Container(
-          width: Global.device.width * 0.225,
-          height: Global.APP_MENU_HEIGHT,
+          constraints: BoxConstraints(
+            maxWidth: Global.device.width * 0.25,
+            minHeight: Global.APP_MENU_HEIGHT * 0.85,
+            maxHeight: Global.APP_MENU_HEIGHT * 0.85,
+          ),
+          alignment: Alignment.centerLeft,
           child: Image.asset(Res.icon_bar_logo, scale: 2.5)),
       titleSpacing: 0,
       centerTitle: false,
       /* Appbar Title */
-      flexibleSpace: FlexibleSpaceBar(
-        centerTitle: true,
-        title: SizedBox(
-          width: Global.device.width * 0.275,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Observer(builder: (_) {
-                final page = _viewState.store.pageInfo ?? RoutePage.home.value;
-                return AutoSizeText.rich(
-                  TextSpan(
-                    text: (page.id == RouteEnum.HOME) ? '' : page.id.title,
-                    style: TextStyle(fontSize: FontSize.MESSAGE.value),
-                  ),
-                  maxLines: (Global.localeCode == 'zh') ? 1 : 2,
-                  maxFontSize: FontSize.MESSAGE.value,
-                  minFontSize: FontSize.SMALLER.value,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.visible,
-                );
-              }),
-            ],
-          ),
-        ),
-        titlePadding: EdgeInsetsDirectional.only(
-          start: Global.APP_MENU_HEIGHT / 3,
-        ),
-      ),
+      // flexibleSpace: FlexibleSpaceBar(
+      //   centerTitle: true,
+      //   title: SizedBox(
+      //     width: Global.device.width * 0.3,
+      //     child: Column(
+      //       mainAxisSize: MainAxisSize.max,
+      //       mainAxisAlignment: MainAxisAlignment.center,
+      //       children: [
+      //         Observer(builder: (_) {
+      //           final page = _viewState.store.pageInfo ?? RoutePage.home.value;
+      //           return AutoSizeText.rich(
+      //             TextSpan(
+      //               text: (page.id == RouteEnum.HOME) ? '' : page.id.title,
+      //               style: TextStyle(
+      //                 fontSize: FontSize.TITLE.value,
+      //                 color: themeColor.defaultTitleColor,
+      //               ),
+      //             ),
+      //             maxLines: (Global.isLocaleChinese) ? 1 : 2,
+      //             maxFontSize: FontSize.TITLE.value,
+      //             minFontSize: (Global.isLocaleChinese)
+      //                 ? FontSize.MESSAGE.value
+      //                 : FontSize.NORMAL.value,
+      //             textAlign: TextAlign.center,
+      //             overflow: TextOverflow.visible,
+      //           );
+      //         }),
+      //       ],
+      //     ),
+      //   ),
+      //   titlePadding: EdgeInsetsDirectional.only(
+      //     start: Global.APP_MENU_HEIGHT / 3,
+      //   ),
+      // ),
       /* App bar Left Actions */
       leading: Observer(
         builder: (_) {
@@ -147,64 +156,98 @@ class _ScreenMenuBarState extends State<ScreenMenuBar> {
       ),
       /* App bar Right Actions */
       actions: <Widget>[
-        if (_eventStore != null)
-          StreamBuilder<List>(
-            stream: _eventStore.adsStream,
-            initialData: _eventStore.ads ?? [],
-            builder: (ctx, snapshot) {
-              if (snapshot.data != null &&
-                  snapshot.data.isNotEmpty &&
-                  _eventStore.autoShowAds &&
-                  _eventStore.checkSkip == false) {
-                debugPrint('stream home ads: ${snapshot.data.length}');
-                final ads = new List.from(snapshot.data);
-                Timer.periodic(Duration(seconds: 1), (timer) {
-                  if (mounted && !_updateStore.showingUpdateDialog) {
-                    timer?.cancel();
-                    showAdsDialog(ads);
-                  }
-                });
-              }
-              return SizedBox.shrink();
-            },
-          ),
-        Visibility(
-          visible: !_hideLangOption,
-          maintainState: true,
-          child: Align(
-            alignment: Alignment.center,
-            child: ScreenMenuLangWidget(),
-          ),
-        ),
+//         if (_eventStore != null)
+//           StreamBuilder<List>(
+//             stream: _eventStore.adsStream,
+//             initialData: _eventStore.ads ?? [],
+//             builder: (ctx, snapshot) {
+//               if (snapshot.data != null &&
+//                   snapshot.data.isNotEmpty &&
+//                   _eventStore.autoShowAds &&
+//                   _eventStore.checkSkip == false) {
+//                 debugPrint('stream home ads: ${snapshot.data.length}');
+//                 final ads = new List.from(snapshot.data);
+//                 Timer.periodic(Duration(seconds: 1), (timer) {
+//                   if (mounted && !_updateStore.showingUpdateDialog) {
+//                     timer?.cancel();
+//                     showAdsDialog(ads);
+//                   }
+//                 });
+//               }
+//               return SizedBox.shrink();
+//             },
+//           ),
+//         if (_eventStore != null)
+//           Container(
+// //            padding: const EdgeInsets.only(right: 12.0),
+//             decoration: BoxDecoration(shape: BoxShape.circle),
+//             child: Transform.scale(
+//               scale: 0.5,
+//               child: ClipRRect(
+//                 borderRadius: BorderRadius.circular(36.0),
+//                 child: GestureDetector(
+//                   onTap: () {
+//                     if (_eventStore.canShowAds) {
+//                       showDialog(
+//                         context: context,
+//                         barrierDismissible: false,
+//                         builder: (context) => new AdDialog(
+//                           ads: _eventStore.ads,
+//                           initCheck: _eventStore.checkSkip,
+//                           onClose: (skipNextTime) {
+//                             debugPrint('ads dialog close, skip=$skipNextTime');
+//                             _eventStore.setSkipAd(skipNextTime);
+//                             _eventStore.adsDialogClose();
+//                           },
+//                         ),
+//                       );
+//                     }
+//                   },
+//                   child: networkImageBuilder(
+//                     'images/AD_ICON2.png',
+//                     imgScale: 3.0,
+//                   ),
+//                 ),
+//               ),
+//             ),
+//           ),
+//         Visibility(
+//           visible: !_hideLangOption,
+//           maintainState: true,
+//           child: Align(
+//             alignment: Alignment.center,
+//             child: ScreenMenuLangWidget(),
+//           ),
+//         ),
         Visibility(
           visible: !_hideActions,
           maintainState: true,
           child: Align(
             alignment: Alignment.center,
-            child: ScreenMenuBarAction(_viewState),
+            child: ScreenMenuBarAction(_viewState, eventStore: _eventStore),
           ),
         ),
       ],
     );
   }
 
-  void showAdsDialog(List list) {
-    if (_showingAds || RouterNavigate.current != '/') return;
-    _showingAds = true;
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => new AdDialog(
-        ads: new List.from(list),
-        initCheck: _eventStore.checkSkip,
-        onClose: (skipNextTime) {
-          debugPrint('ads dialog close, skip=$skipNextTime');
-          _showingAds = false;
-          _eventStore.setAutoShowAds = false;
-          _eventStore.setSkipAd(skipNextTime);
-          _eventStore.adsDialogClose();
-        },
-      ),
-    );
-  }
+// void showAdsDialog(List list) {
+//   if (_showingAds || RouterNavigate.current != '/') return;
+//   _showingAds = true;
+//   showDialog(
+//     context: context,
+//     barrierDismissible: false,
+//     builder: (context) => new AdDialog(
+//       ads: new List.from(list),
+//       initCheck: _eventStore.checkSkip,
+//       onClose: (skipNextTime) {
+//         debugPrint('ads dialog close, skip=$skipNextTime');
+//         _showingAds = false;
+//         _eventStore.setAutoShowAds = false;
+//         _eventStore.setSkipAd(skipNextTime);
+//         _eventStore.adsDialogClose();
+//       },
+//     ),
+//   );
+// }
 }

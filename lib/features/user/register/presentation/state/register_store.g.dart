@@ -9,6 +9,29 @@ part of 'register_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$RegisterStore on _RegisterStore, Store {
+  Computed<RegisterStoreState> _$stateComputed;
+
+  @override
+  RegisterStoreState get state =>
+      (_$stateComputed ??= Computed<RegisterStoreState>(() => super.state,
+              name: '_RegisterStore.state'))
+          .value;
+
+  final _$_initFutureAtom = Atom(name: '_RegisterStore._initFuture');
+
+  @override
+  ObservableFuture<dynamic> get _initFuture {
+    _$_initFutureAtom.reportRead();
+    return super._initFuture;
+  }
+
+  @override
+  set _initFuture(ObservableFuture<dynamic> value) {
+    _$_initFutureAtom.reportWrite(value, super._initFuture, () {
+      super._initFuture = value;
+    });
+  }
+
   final _$registerResultAtom = Atom(name: '_RegisterStore.registerResult');
 
   @override
@@ -54,11 +77,19 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
+  final _$initializeAsyncAction = AsyncAction('_RegisterStore.initialize');
+
+  @override
+  Future<void> initialize() {
+    return _$initializeAsyncAction.run(() => super.initialize());
+  }
+
   final _$postRegisterAsyncAction = AsyncAction('_RegisterStore.postRegister');
 
   @override
-  Future<void> postRegister(RegisterForm form) {
-    return _$postRegisterAsyncAction.run(() => super.postRegister(form));
+  Future<void> postRegister(RegisterForm form, String captcha) {
+    return _$postRegisterAsyncAction
+        .run(() => super.postRegister(form, captcha));
   }
 
   final _$postLoginAsyncAction = AsyncAction('_RegisterStore.postLogin');
@@ -73,7 +104,8 @@ mixin _$RegisterStore on _RegisterStore, Store {
     return '''
 registerResult: ${registerResult},
 waitForRegister: ${waitForRegister},
-errorMessage: ${errorMessage}
+errorMessage: ${errorMessage},
+state: ${state}
     ''';
   }
 }

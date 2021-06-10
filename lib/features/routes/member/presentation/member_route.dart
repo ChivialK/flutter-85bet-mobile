@@ -36,8 +36,8 @@ class _MemberRouteState extends State<MemberRoute> {
       },
       child: Scaffold(
         body: Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 0.0),
+          alignment: Alignment.topCenter,
+          // padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 0.0),
           child: Observer(
             // Observe using specific widget
             builder: (_) {

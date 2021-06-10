@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/builders/autoroute/auto_route.dart';
 import 'package:flutter_85bet_mobile/features/event/event_inject.dart';
-import 'package:flutter_85bet_mobile/features/event/presentation/widgets/ad_dialog.dart';
 import 'package:flutter_85bet_mobile/features/event/presentation/widgets/event_dialog.dart';
 import 'package:flutter_85bet_mobile/features/event/presentation/widgets/event_dialog_signed.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
@@ -21,11 +20,12 @@ import '../export_internal_file.dart';
 import 'feature_screen_inherited_widget.dart';
 import 'feature_screen_store.dart';
 import 'screen_drawer_item.dart';
-import 'screen_menu_lang_widget.dart';
 import 'screen_navigation_bar_item.dart';
 
 part 'screen_drawer.dart';
+
 part 'screen_menu_bar.dart';
+
 part 'screen_navigation_bar.dart';
 
 ///

@@ -113,6 +113,7 @@ class DialogWidgetState extends State<DialogWidget> {
       bgColor = themeColor.dialogBgTransparent;
     else
       bgColor = themeColor.dialogBgColor;
+    debugPrint('dialog bg color: $bgColor');
     super.initState();
   }
 

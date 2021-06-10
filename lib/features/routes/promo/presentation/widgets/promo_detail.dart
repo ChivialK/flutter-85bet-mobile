@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/dialog_widget.dart';
-import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import '../../data/models/promo_freezed.dart';
 
@@ -26,7 +26,8 @@ class _PromoDetailState extends State<PromoDetail> {
   final double dialogWidth = Global.device.width - 24;
   final double dialogHeight = Global.device.height - 32;
 
-  final String htmlBgColor = themeColor.dialogBgColor.toHexNoAlpha();
+  final String htmlBgColor =
+      themeColor.defaultLayeredBackgroundColor.toHexNoAlpha();
   final String htmlTextColor = themeColor.dialogTextColor.toHexNoAlpha();
   final String htmlTitleColor = themeColor.dialogTitleColor.toHexNoAlpha();
   final String htmlBorderColor = themeColor.defaultDisabledColor.toHexNoAlpha();
@@ -40,6 +41,7 @@ class _PromoDetailState extends State<PromoDetail> {
       key: _dialogKey,
       // heightFactor: (_stackIndex == 1) ? 0.85 : 0.25,
       heightFactor: 0.85,
+      customBg: themeColor.defaultLayeredBackgroundColor,
       children: [
         if (html.isEmpty)
           WarningDisplay(
@@ -50,12 +52,25 @@ class _PromoDetailState extends State<PromoDetail> {
         if (html.isNotEmpty)
           Padding(
             padding: const EdgeInsets.fromLTRB(16.0, 20.0, 16.0, 16.0),
-            child: ListView(
-              shrinkWrap: true,
-              physics: BouncingScrollPhysics(),
-              children: [
-                HtmlWidget(html),
-              ],
+            // child: ListView(
+            //   shrinkWrap: true,
+            //   physics: BouncingScrollPhysics(),
+            //   children: [
+            //     HtmlWidget(html),
+            //   ],
+            // ),
+            child: Container(
+              constraints: BoxConstraints.tightFor(
+                height: dialogHeight - 36,
+                width: dialogWidth - 32,
+              ),
+              child: InAppWebView(
+                initialData: InAppWebViewInitialData(
+                  data: html,
+                  mimeType: Global.WEB_MIMETYPE,
+                  encoding: Global.webEncoding.name,
+                ),
+              ),
             ),
           ),
 

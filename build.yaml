@@ -5,7 +5,7 @@ targets:
         generate_for:
           - lib/main_dev.dart
           - lib/main_release.dart
-          - lib/main_firebase.dart
+#          - lib/main_firebase.dart
 #          - test/**_test.dart
         options:
           formatted: true

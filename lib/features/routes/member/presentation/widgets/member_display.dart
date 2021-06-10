@@ -19,12 +19,14 @@ class MemberDisplay extends StatefulWidget {
 }
 
 class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
-  List<ReactionDisposer> _disposers;
   final GlobalKey<MemberDisplayHeaderState> _headerKey =
       new GlobalKey<MemberDisplayHeaderState>(debugLabel: 'header');
+
   final int _itemPerRow = 3;
   final double _itemSpace = 12.0;
   final double _iconSize = 32 * Global.device.widthScale;
+
+  List<ReactionDisposer> _disposers;
   double _gridRatio;
 
   static final List<MemberGridItem> _gridItems = [
@@ -41,7 +43,6 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
     MemberGridItem.betRecord,
     MemberGridItem.dealRecord,
     MemberGridItem.rollback,
-    MemberGridItem.vip,
   ];
 
   void _itemTapped(MemberGridItem item) {
@@ -124,34 +125,35 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
             return SizedBox.shrink();
           },
         ),
+        // Padding(
+        //   padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 12.0),
+        //   child: Row(
+        //     children: [
+        //       Container(
+        //         padding: const EdgeInsets.all(10.0),
+        //         decoration: ThemeInterface.pageIconContainerDecor,
+        //         child: Icon(
+        //           IconCode.gridMember,
+        //           size: 32 * Global.device.widthScale,
+        //           color: themeColor.defaultBackgroundColor,
+        //         ),
+        //       ),
+        //       Padding(
+        //         padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        //         child: Text(
+        //           localeStr.pageTitleMember,
+        //           style: TextStyle(
+        //             fontSize: FontSize.HEADER.value,
+        //             color: themeColor.memberIconColor,
+        //           ),
+        //         ),
+        //       )
+        //     ],
+        //   ),
+        // ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 12.0),
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: themeColor.memberIconColor,
-                  boxShadow: ThemeInterface.iconBottomShadow,
-                ),
-                child: Icon(
-                  const IconData(0xe962, fontFamily: 'IconMoon'),
-                  size: _iconSize,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Text(
-                  localeStr.pageTitleCenter,
-                  style: TextStyle(fontSize: FontSize.HEADER.value),
-                ),
-              )
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 6.0),
+          // padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 6.0),
+          padding: EdgeInsets.zero,
           child: MemberDisplayHeader(
             key: _headerKey,
             userName: widget.store.user.account,
@@ -161,7 +163,8 @@ class _MemberDisplayState extends State<MemberDisplay> with AfterLayoutMixin {
         ),
         /* Features Grid */
         Padding(
-          padding: const EdgeInsets.only(top: 12.0, bottom: 8.0),
+          padding: const EdgeInsets.only(
+              top: 12.0, bottom: 8.0, left: 8.0, right: 8.0),
           child: GridView.count(
             primary: false,
             physics: BouncingScrollPhysics(),

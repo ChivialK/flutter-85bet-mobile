@@ -65,6 +65,7 @@ class FailureType extends Vnum<int> {
   static const FailureType JSON = const FailureType.define(8100);
   static const FailureType TOKEN = const FailureType.define(8200);
   static const FailureType CREDIT = const FailureType.define(8300);
+  static const FailureType VERIFY = const FailureType.define(8400);
 
   static const FailureType NOT_DEFINED = const FailureType.define(9000);
 

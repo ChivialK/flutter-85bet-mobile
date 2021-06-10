@@ -27,13 +27,13 @@ mixin _$LoginStore on _LoginStore, Store {
   final _$_initFutureAtom = Atom(name: '_LoginStore._initFuture');
 
   @override
-  ObservableFuture<Box<dynamic>> get _initFuture {
+  ObservableFuture<List<dynamic>> get _initFuture {
     _$_initFutureAtom.reportRead();
     return super._initFuture;
   }
 
   @override
-  set _initFuture(ObservableFuture<Box<dynamic>> value) {
+  set _initFuture(ObservableFuture<List<dynamic>> value) {
     _$_initFutureAtom.reportWrite(value, super._initFuture, () {
       super._initFuture = value;
     });
@@ -114,18 +114,27 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
-  final _$initBoxAsyncAction = AsyncAction('_LoginStore.initBox');
+  final _$initializeAsyncAction = AsyncAction('_LoginStore.initialize');
 
   @override
-  Future<void> initBox() {
-    return _$initBoxAsyncAction.run(() => super.initBox());
+  Future<void> initialize() {
+    return _$initializeAsyncAction.run(() => super.initialize());
+  }
+
+  final _$_getLastLoginRecordAsyncAction =
+      AsyncAction('_LoginStore._getLastLoginRecord');
+
+  @override
+  Future<void> _getLastLoginRecord() {
+    return _$_getLastLoginRecordAsyncAction
+        .run(() => super._getLastLoginRecord());
   }
 
   final _$loginAsyncAction = AsyncAction('_LoginStore.login');
 
   @override
-  Future<void> login(LoginForm form, bool saveForm) {
-    return _$loginAsyncAction.run(() => super.login(form, saveForm));
+  Future<void> login(LoginForm form, bool saveForm, String captcha) {
+    return _$loginAsyncAction.run(() => super.login(form, saveForm, captcha));
   }
 
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
-import 'package:flutter_85bet_mobile/core/network/handler/request_status_model.dart';
 
 import '../../data/form/transfer_form.dart';
 import '../../data/models/transfer_platform_model.dart';
+import '../../data/models/transfer_result_model.dart';
 import '../../data/repository/transfer_repository.dart';
 
 part 'transfer_store.g.dart';
@@ -31,6 +31,7 @@ abstract class _TransferStore with Store {
       new StreamController<String>.broadcast();
 
   Stream<String> get site1ValueStream => _site1ValueController.stream;
+
   Stream<String> get site2ValueStream => _site2ValueController.stream;
 
   @observable
@@ -40,7 +41,7 @@ abstract class _TransferStore with Store {
   List<TransferPlatformModel> platforms;
 
   @observable
-  RequestStatusModel transferResult;
+  TransferResultModel transferResult;
 
   @observable
   bool waitForTransferResult = false;
@@ -105,8 +106,11 @@ abstract class _TransferStore with Store {
   }
 
   @action
-  Future<void> getBalance(String site,
-      {bool isLimit = false, bool retryOnce = false}) async {
+  Future<void> getBalance(
+    String site, {
+    bool isLimit = false,
+    bool retryOnce = false,
+  }) async {
     try {
       // Reset the possible previous error message.
       errorMessage = null;
@@ -115,23 +119,34 @@ abstract class _TransferStore with Store {
         result.fold(
           (failure) => setErrorMsg(msg: failure.message, showOnce: true),
           (data) {
-            debugPrint('$site balance: ${data.balance}');
             bool platformClosed = data.balance == '$creditSymbol-1.00';
+            bool platformMaintenance =
+                data.balance.toLowerCase().contains('maintenance');
+            debugPrint('$site balance: ${data.balance}');
             if (isLimit) {
               creditLimit = (platformClosed) ? 0 : data.balance.strToInt;
-              if (data.balance != site1)
-                setSite1Value(
-                    (platformClosed) ? '$creditSymbol---' : data.balance);
-              else if (retryOnce)
+              debugPrint('credit limit: $creditLimit');
+              if (data.balance != site1) {
+                setSite1Value((platformClosed)
+                    ? '$creditSymbol---'
+                    : (platformMaintenance)
+                        ? localeStr.balanceStatusMaintenance
+                        : data.balance);
+              } else if (retryOnce) {
                 Future.delayed(Duration(milliseconds: 2000),
                     () => getBalance(site, isLimit: isLimit));
+              }
             } else {
-              if (data.balance != site2)
-                setSite2Value(
-                    (platformClosed) ? '$creditSymbol---' : data.balance);
-              else if (retryOnce)
+              if (data.balance != site2) {
+                setSite2Value((platformClosed)
+                    ? '$creditSymbol---'
+                    : (platformMaintenance)
+                        ? localeStr.balanceStatusMaintenance
+                        : data.balance);
+              } else if (retryOnce) {
                 Future.delayed(Duration(milliseconds: 2000),
                     () => getBalance(site, isLimit: isLimit));
+              }
             }
           },
         );
@@ -156,7 +171,7 @@ abstract class _TransferStore with Store {
           .then((result) {
         debugPrint('transfer from ${form.from} to ${form.to} result: $result');
         result.fold(
-          (failure) => setErrorMsg(msg: failure.message, showOnce: true),
+          (failure) => setErrorMsg(msg: failure.message),
           (data) {
             transferResult = data;
             if (data.isSuccess) {

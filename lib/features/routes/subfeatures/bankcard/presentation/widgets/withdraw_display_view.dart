@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
+import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
 import 'package:flutter_85bet_mobile/features/routes/member/presentation/data/member_grid_item.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart';
 
@@ -28,7 +30,16 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
       new GlobalKey(debugLabel: 'amount');
   final GlobalKey<CustomizeFieldWidgetState> _passwordFieldKey =
       new GlobalKey(debugLabel: 'password');
-  final double _fieldInset = 72.0;
+  final double _fieldInset = 48.0;
+
+  double _valueTextPadding;
+  bool _showAmountError = false;
+  bool _showPasswordError = false;
+
+  double _currentCredit = 0;
+  int _amountMin = 200;
+  int _amountMax = 0;
+  int _flowLimit = 0;
 
   void _validateForm() {
     final form = _formKey.currentState;
@@ -39,6 +50,17 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
         password: _passwordFieldKey.currentState.getInput,
         type: '0',
       );
+      if (_currentCredit != -1) {
+        var hasEnoughFlow = rangeCheck(
+            value: dataForm.amount.strToInt,
+            min: _amountMin,
+            max: _currentCredit - _flowLimit);
+        debugPrint('hasEnoughFlow= $hasEnoughFlow');
+        if (!hasEnoughFlow) {
+          callToast(localeStr.withdrawViewOptionHint2 + '$_flowLimit');
+          return;
+        }
+      }
       if (dataForm.isValid) {
         debugPrint('bankcard form: ${dataForm.toJson()}');
         if (widget.store.waitForWithdrawResult) {
@@ -49,6 +71,29 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
       } else {
         callToast(localeStr.messageActionFillForm);
       }
+    }
+  }
+
+  @override
+  void initState() {
+    _valueTextPadding = (Global.device.width.roundToDouble() - _fieldInset) *
+            ThemeInterface.prefixTextWidthFactor -
+        ThemeInterface.minusSize;
+    super.initState();
+    _amountMax = widget.store.limit;
+    _flowLimit = widget.store.rollback;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    try {
+      _currentCredit =
+          getAppGlobalStreams.getCredit(addSymbol: false).strToDouble;
+      debugPrint("user credit: $_currentCredit");
+    } catch (e) {
+      _currentCredit = -1;
+      debugPrint("get user credit has exception: $e");
     }
   }
 
@@ -75,11 +120,7 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: themeColor.memberIconColor,
-                      boxShadow: ThemeInterface.iconBottomShadow,
-                    ),
+                    decoration: ThemeInterface.pageIconContainerDecor,
                     child: Icon(
                       pageItem.value.iconData,
                       size: 32 * Global.device.widthScale,
@@ -98,15 +139,15 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
             Padding(
               padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 0.0),
               child: Container(
-                decoration: ThemeInterface.layerShadowDecorRoundTop,
+                decoration: ThemeInterface.layerShadowDecor,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    SizedBox(height: 36.0),
+                    SizedBox(height: 30.0),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -118,20 +159,20 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                               widget.bankcard.bankAccountNo),
                           _buildRow(localeStr.bankcardViewTitleBankBranch,
                               widget.bankcard.bankAddress),
-                          _buildRow(localeStr.bankcardViewTitleBankProvince,
-                              widget.bankcard.bankProvince),
+                          if (widget.bankcard.bankProvince.isNotEmpty)
+                            _buildRow(localeStr.bankcardViewTitleBankProvince,
+                                widget.bankcard.bankProvince),
                         ],
                       ),
                     ),
-                    SizedBox(height: 36.0),
                   ],
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(4.0, 2.0, 4.0, 16.0),
+              padding: const EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 16.0),
               child: Container(
-                decoration: ThemeInterface.layerShadowDecorRoundBottom,
+                decoration: ThemeInterface.layerShadowDecorBottom,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -141,50 +182,176 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                     new Form(
                       key: _formKey,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
                         child: Column(
                           children: <Widget>[
                             ///
                             /// Amount Input Field
                             ///
-                            new CustomizeFieldWidget(
-                              key: _amountFieldKey,
-                              fieldType: FieldType.Numbers,
-                              hint: '',
-                              persistHint: false,
-                              prefixText: localeStr.withdrawViewTitleAmount,
-                              prefixTextSize: FontSize.SUBTITLE.value,
-                              horizontalInset: _fieldInset,
-                              errorMsg: localeStr.messageInvalidDepositAmount,
-                              validCondition: (value) => rangeCheck(
-                                value:
-                                    (value.isNotEmpty) ? int.parse(value) : 0,
-                                min: 1,
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: new CustomizeTitledContainer(
+                                prefixText: localeStr.withdrawViewTitleAmount,
+                                prefixTextSize: FontSize.SUBTITLE.value,
+                                backgroundColor: themeColor.fieldPrefixBgColor,
+                                horizontalInset: _fieldInset,
+                                child: new CustomizeFieldWidget(
+                                  key: _amountFieldKey,
+                                  fieldType: FieldType.Numbers,
+                                  hint: '$_amountMin ~ $_amountMax',
+                                  persistHint: false,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 0.0),
+                                  maxInputLength: 6,
+                                  onInputChanged: (input) {
+                                    setState(() {
+                                      _showAmountError = !rangeCheck(
+                                        value: (input.isNotEmpty)
+                                            ? int.parse(input)
+                                            : 0,
+                                        min: _amountMin,
+                                        max: _amountMax,
+                                      );
+                                    });
+                                  },
+                                ),
                               ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: _valueTextPadding),
+                                  child: Visibility(
+                                    visible: _showAmountError,
+                                    child: Text(
+                                      '${localeStr.messageInvalidDepositAmountMinLimit}$_amountMin',
+                                      style: TextStyle(
+                                          color: themeColor.defaultErrorColor),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
 
                             ///
                             /// Password Input Field
                             ///
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 6.0),
-                              child: new CustomizeFieldWidget(
-                                key: _passwordFieldKey,
-                                fieldType: FieldType.Password,
-                                persistHint: false,
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: new CustomizeTitledContainer(
                                 prefixText: localeStr.withdrawViewTitlePwd,
                                 prefixTextSize: FontSize.SUBTITLE.value,
+                                backgroundColor: themeColor.fieldPrefixBgColor,
                                 horizontalInset: _fieldInset,
-                                maxInputLength: InputLimit.PASSWORD_MAX,
-                                errorMsg:
-                                    localeStr.messageInvalidWithdrawPassword,
-                                validCondition: (value) => rangeCheck(
-                                  value: value.length,
-                                  min: InputLimit.PASSWORD_MIN_OLD,
-                                  max: InputLimit.PASSWORD_MAX,
+                                child: new CustomizeFieldWidget(
+                                  key: _passwordFieldKey,
+                                  fieldType: FieldType.Password,
+                                  hint: '',
+                                  persistHint: false,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 0.0),
+                                  maxInputLength: InputLimit.PASSWORD_MAX,
+                                  onInputChanged: (input) {
+                                    setState(() {
+                                      _showPasswordError = !rangeCheck(
+                                        value: input.length,
+                                        min: InputLimit.PASSWORD_MIN_OLD,
+                                        max: InputLimit.PASSWORD_MAX,
+                                      );
+                                    });
+                                  },
                                 ),
                               ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: _valueTextPadding),
+                                  child: Visibility(
+                                    visible: _showPasswordError,
+                                    child: Text(
+                                      localeStr.messageInvalidWithdrawPassword,
+                                      style: TextStyle(
+                                          color: themeColor.defaultErrorColor),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    ///
+                    /// Limit Hint
+                    ///
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 4.0),
+                      child: Text(
+                        '※ ${localeStr.withdrawViewHintMax} $_amountMax',
+                        style: TextStyle(
+                          fontSize: FontSize.SUBTITLE.value,
+                          color: themeColor.defaultHintColor,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 4.0, horizontal: 16.0),
+                      child: RichText(
+                        maxLines: 2,
+                        text: TextSpan(
+                          children: <InlineSpan>[
+                            WidgetSpan(
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 4.0, bottom: 2.0),
+                                child: Icon(
+                                  const IconData(0xf05a,
+                                      fontFamily: 'FontAwesome'),
+                                  color: themeColor.hintHyperLink,
+                                  size: FontSize.NORMAL.value,
+                                ),
+                              ),
+                            ),
+                            TextSpan(
+                              text: localeStr.withdrawViewOptionHint2,
+                              style: TextStyle(color: themeColor.hintHyperLink),
+                            ),
+                            TextSpan(
+                              text: '$_flowLimit',
+                              style: TextStyle(color: themeColor.hintHyperLink),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: RichText(
+                        maxLines: 2,
+                        text: TextSpan(
+                          children: <InlineSpan>[
+                            WidgetSpan(
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 4.0, bottom: 2.0),
+                                child: Icon(
+                                  const IconData(0xf05a,
+                                      fontFamily: 'FontAwesome'),
+                                  color: themeColor.hintHyperLink,
+                                  size: FontSize.NORMAL.value,
+                                ),
+                              ),
+                            ),
+                            TextSpan(
+                              text: localeStr.withdrawViewOptionHint3,
+                              style: TextStyle(color: themeColor.hintHyperLink),
                             ),
                           ],
                         ),
@@ -196,7 +363,7 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                     ///
                     Padding(
                       padding:
-                          const EdgeInsets.fromLTRB(20.0, 16.0, 20.0, 24.0),
+                          const EdgeInsets.fromLTRB(12.0, 16.0, 12.0, 24.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -227,7 +394,17 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                               style: TextStyle(
                                 color: themeColor.defaultSubtitleColor,
                                 fontWeight: FontWeight.bold,
+                                fontSize: FontSize.MESSAGE.value,
                                 height: 3,
+                              ),
+                            ),
+                            WidgetSpan(
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 8.0),
+                                child: Divider(
+                                  height: 1.0,
+                                  color: themeColor.defaultDividerColor,
+                                ),
                               ),
                             ),
                             TextSpan(
@@ -260,14 +437,14 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
           Expanded(
               flex: 3,
               child: Text(
-                '$title:',
-                style: TextStyle(fontSize: FontSize.TITLE.value),
+                '$title',
+                style: TextStyle(fontSize: FontSize.SUBTITLE.value),
               )),
           Expanded(
             flex: 5,
             child: Text(
               '\r\r$content',
-              style: TextStyle(fontSize: FontSize.TITLE.value),
+              style: TextStyle(fontSize: FontSize.SUBTITLE.value),
             ),
           ),
         ],

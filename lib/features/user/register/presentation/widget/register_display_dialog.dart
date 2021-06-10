@@ -24,7 +24,10 @@ class RegisterDisplayDialog extends StatelessWidget {
                 Center(
                   child: Text(
                     pageItem.value.label,
-                    style: TextStyle(fontSize: FontSize.HEADER.value),
+                    style: TextStyle(
+                      fontSize: FontSize.HEADER.value,
+                      color: themeColor.defaultTextColor,
+                    ),
                   ),
                 ),
                 Padding(
@@ -45,7 +48,7 @@ class RegisterDisplayDialog extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Divider(height: 8.0),
+          child: Divider(height: 8.0, color: themeColor.defaultAccentColor),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 16.0),

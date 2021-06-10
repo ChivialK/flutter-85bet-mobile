@@ -29,7 +29,7 @@ class ScreenNavigationBarItem extends Vnum<RouteListItem> {
   // ));
   static ScreenNavigationBarItem service =
       ScreenNavigationBarItem.define(RouteListItem(
-    iconData: IconCode.navService,
+    iconData: IconCode.csLine,
     route: RoutePage.service,
   ));
   static ScreenNavigationBarItem member =

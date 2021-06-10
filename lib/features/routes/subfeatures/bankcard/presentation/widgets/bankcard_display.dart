@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_dropdown_widget.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
 
 import '../../data/form/bankcard_form.dart';
 import '../../data/models/bankcard_model.dart';
@@ -32,12 +33,15 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
       new GlobalKey(debugLabel: 'account');
   final GlobalKey<CustomizeFieldWidgetState> _branchFieldKey =
       new GlobalKey(debugLabel: 'branch');
-  final GlobalKey<CustomizeFieldWidgetState> _provinceFieldKey =
-      new GlobalKey(debugLabel: 'branch');
 
   List<ReactionDisposer> _disposers;
   Map<String, String> bankMap;
   String _bankSelected;
+
+  double _errorTextPadding;
+  bool _showAccountError = false;
+  bool _showCardError = false;
+  bool _showBranchError = false;
 
   void _validateForm() {
     final form = _formKey.currentState;
@@ -48,7 +52,7 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
         bankId: _bankSelected ?? '',
         card: _accountFieldKey.currentState.getInput,
         branch: _branchFieldKey.currentState.getInput,
-        province: _provinceFieldKey.currentState.getInput,
+        province: '',
         area: '',
       );
       if (dataForm.isValid) {
@@ -65,6 +69,10 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
 
   @override
   void initState() {
+    _errorTextPadding = (Global.device.width.roundToDouble() - _fieldInset) *
+            ThemeInterface.prefixTextWidthFactor -
+        ThemeInterface.minusSize +
+        10.0;
     super.initState();
     widget.store.getBanks();
   }
@@ -117,11 +125,7 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: themeColor.memberIconColor,
-                      boxShadow: ThemeInterface.iconBottomShadow,
-                    ),
+                    decoration: ThemeInterface.pageIconContainerDecor,
                     child: Icon(
                       pageItem.value.iconData,
                       size: 32 * Global.device.widthScale,
@@ -140,7 +144,7 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
             Padding(
               padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 16.0),
               child: Container(
-                decoration: ThemeInterface.layerShadowDecorRound,
+                decoration: ThemeInterface.layerShadowDecor,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -156,19 +160,45 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                             ///
                             /// Name Input Field
                             ///
-                            new CustomizeFieldWidget(
-                              key: _nameFieldKey,
-                              hint: '',
-                              persistHint: false,
+                            new CustomizeTitledContainer(
                               prefixText: localeStr.bankcardViewTitleOwner,
                               prefixTextSize: FontSize.SUBTITLE.value,
-                              maxInputLength: InputLimit.NAME_MAX,
+                              backgroundColor: themeColor.fieldPrefixBgColor,
                               horizontalInset: _fieldInset,
-                              errorMsg: localeStr.messageInvalidCardOwner,
-                              validCondition: (value) => rangeCheck(
-                                  value: value.length,
-                                  min: 2,
-                                  max: InputLimit.NAME_MAX),
+                              child: new CustomizeFieldWidget(
+                                key: _nameFieldKey,
+                                hint: '',
+                                persistHint: false,
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 0.0),
+                                maxInputLength: InputLimit.NAME_MAX,
+                                onInputChanged: (input) {
+                                  setState(() {
+                                    _showAccountError = !rangeCheck(
+                                      value: input.length,
+                                      min: 2,
+                                      max: InputLimit.NAME_MAX,
+                                    );
+                                  });
+                                },
+                              ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: _errorTextPadding),
+                                  child: Visibility(
+                                    visible: _showAccountError,
+                                    child: Text(
+                                      localeStr.messageInvalidCardOwner,
+                                      style: TextStyle(
+                                          color: themeColor.defaultErrorColor),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
 
                             ///
@@ -199,69 +229,99 @@ class _BankcardDisplayState extends State<BankcardDisplay> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(vertical: 6.0),
-                              child: new CustomizeFieldWidget(
-                                key: _accountFieldKey,
-                                fieldType: FieldType.Numbers,
-                                hint: '',
-                                persistHint: false,
+                              child: new CustomizeTitledContainer(
                                 prefixText:
                                     localeStr.bankcardViewTitleCardNumber,
                                 prefixTextSize: FontSize.SUBTITLE.value,
-                                maxInputLength: InputLimit.CARD_MAX,
+                                backgroundColor: themeColor.fieldPrefixBgColor,
                                 horizontalInset: _fieldInset,
-                                errorMsg: localeStr.messageInvalidCardNumber,
-                                validCondition: (value) => rangeCheck(
-                                  value: value.length,
-                                  min: InputLimit.CARD_MIN,
-                                  max: InputLimit.CARD_MAX,
+                                child: new CustomizeFieldWidget(
+                                  key: _accountFieldKey,
+                                  fieldType: FieldType.Numbers,
+                                  hint: '',
+                                  persistHint: false,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 0.0),
+                                  maxInputLength: InputLimit.CARD_MAX,
+                                  onInputChanged: (input) {
+                                    setState(() {
+                                      _showCardError = !rangeCheck(
+                                        value: input.length,
+                                        min: InputLimit.CARD_MIN,
+                                        max: InputLimit.CARD_MAX,
+                                      );
+                                    });
+                                  },
                                 ),
                               ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: _errorTextPadding),
+                                  child: Visibility(
+                                    visible: _showCardError,
+                                    child: Text(
+                                      localeStr.messageInvalidCardNumber(
+                                        InputLimit.CARD_MIN,
+                                        InputLimit.CARD_MAX,
+                                      ),
+                                      style: TextStyle(
+                                          color: themeColor.defaultErrorColor),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
 
                             ///
                             /// Branch Input Field
                             ///
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 6.0),
-                              child: new CustomizeFieldWidget(
-                                key: _branchFieldKey,
-                                hint: '',
-                                persistHint: false,
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: new CustomizeTitledContainer(
                                 prefixText:
                                     localeStr.bankcardViewTitleBankBranch,
                                 prefixTextSize: FontSize.SUBTITLE.value,
-                                maxInputLength: InputLimit.NAME_MAX,
+                                backgroundColor: themeColor.fieldPrefixBgColor,
                                 horizontalInset: _fieldInset,
-                                errorMsg: localeStr.messageInvalidCardBankPoint,
-                                validCondition: (value) => rangeCheck(
-                                    value: value.length,
-                                    min: 3,
-                                    max: InputLimit.NAME_MAX),
+                                child: new CustomizeFieldWidget(
+                                  key: _branchFieldKey,
+                                  hint: '',
+                                  persistHint: false,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 0.0),
+                                  maxInputLength: InputLimit.NAME_MAX,
+                                  onInputChanged: (input) {
+                                    setState(() {
+                                      _showBranchError = !rangeCheck(
+                                        value: input.length,
+                                        min: 3,
+                                        max: InputLimit.NAME_MAX,
+                                      );
+                                    });
+                                  },
+                                ),
                               ),
                             ),
-
-                            ///
-                            /// Bank Province Field
-                            ///
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 6.0),
-                              child: new CustomizeFieldWidget(
-                                key: _provinceFieldKey,
-                                hint: '',
-                                persistHint: false,
-                                prefixText:
-                                    localeStr.bankcardViewTitleBankProvince,
-                                prefixTextSize: FontSize.SUBTITLE.value,
-                                maxInputLength: InputLimit.NAME_MAX,
-                                horizontalInset: _fieldInset,
-                                errorMsg: localeStr.messageInvalidCardBankPoint,
-                                validCondition: (value) => rangeCheck(
-                                    value: value.length,
-                                    min: 3,
-                                    max: InputLimit.NAME_MAX),
-                              ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: _errorTextPadding),
+                                  child: Visibility(
+                                    visible: _showBranchError,
+                                    child: Text(
+                                      localeStr.messageInvalidCardBankPoint,
+                                      style: TextStyle(
+                                          color: themeColor.defaultErrorColor),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),

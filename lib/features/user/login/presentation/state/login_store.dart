@@ -3,7 +3,6 @@ import 'package:flutter_85bet_mobile/core/internal/global.dart';
 import 'package:flutter_85bet_mobile/core/mobx_store_export.dart';
 import 'package:flutter_85bet_mobile/features/general/data/error/error_message_map.dart';
 import 'package:flutter_85bet_mobile/features/router/app_global_streams.dart';
-import 'package:flutter_85bet_mobile/features/router/route_enum.dart';
 import 'package:hive/hive.dart';
 
 import '../../../data/entity/login_status.dart';
@@ -26,7 +25,7 @@ abstract class _LoginStore with Store {
   _LoginStore(this._repository);
 
   @observable
-  ObservableFuture<Box> _initFuture;
+  ObservableFuture<List> _initFuture;
 
   @observable
   ObservableFuture<Either<Failure, UserModel>> _loginFuture;
@@ -35,6 +34,9 @@ abstract class _LoginStore with Store {
 
   @observable
   bool waitForHive = true;
+
+  // @observable
+  // CaptchaData captchaData;
 
   @observable
   LoginHiveForm hiveLoginForm;
@@ -72,25 +74,61 @@ abstract class _LoginStore with Store {
   }
 
   @action
-  Future<void> initBox() async {
+  Future<void> initialize() async {
     // Reset the possible previous error message.
     errorMessage = null;
     // Fetch from the repository and wrap the regular Future into an observable.
-    _initFuture =
-        ObservableFuture(Future.value(getHiveBox(Global.CACHE_LOGIN_FORM)));
-    // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
-    await _initFuture.then((value) {
-      _box = value;
-      MyLogger.log(msg: 'User Box check: ${_box?.length}', tag: tag);
-      if (_box != null && _box.isNotEmpty) {
-        debugPrint('box login data: ${_box.values.last}');
-        hiveLoginForm = _box.values.last;
-        waitForHive = false;
-      } else {
-        waitForHive = false;
-      }
-    });
+    _initFuture = ObservableFuture(Future.wait([
+      if (waitForHive) _getLastLoginRecord(),
+      // getCaptcha(),
+    ]));
   }
+
+  @action
+  Future<void> _getLastLoginRecord() async {
+    try {
+      // Reset the possible previous error message.
+      errorMessage = null;
+      // Fetch from the repository and wrap the regular Future into an observable.
+      // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
+      await getHiveBox(Global.CACHE_LOGIN_FORM).then((value) {
+        _box = value;
+        MyLogger.log(msg: 'User Box check: ${_box?.length}', tag: tag);
+        if (_box != null && _box.isNotEmpty) {
+          debugPrint('box login data: ${_box.values.last}');
+          hiveLoginForm = _box.values.last;
+          waitForHive = false;
+        } else {
+          waitForHive = false;
+        }
+      });
+    } on Exception {
+      waitForHive = false;
+    }
+  }
+
+  // @action
+  // Future<void> getCaptcha() async {
+  //   try {
+  //     // Reset the possible previous error message.
+  //     errorMessage = null;
+  //     captchaData = null;
+  //     // Fetch from the repository and wrap the regular Future into an observable.
+  //     // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
+  //     await _repository.getCaptcha().then((result) {
+  //       // debugPrint('login captcha result: $result');
+  //       result.fold(
+  //         (failure) => setErrorMsg(msg: failure.message),
+  //         (model) => (model.statusCode == "200")
+  //             ? captchaData = model.data
+  //             : captchaData = CaptchaData(key: '', img: null, sensitive: false),
+  //       );
+  //     });
+  //   } catch (e) {
+  //     MyLogger.error(msg: '$tag has exception: $e');
+  //     setErrorMsg(code: 2);
+  //   }
+  // }
 
   @computed
   LoginState get loginState {
@@ -106,13 +144,23 @@ abstract class _LoginStore with Store {
   }
 
   @action
-  Future<void> login(LoginForm form, bool saveForm) async {
+  Future<void> login(LoginForm form, bool saveForm, String captcha) async {
     try {
       // Reset the possible previous error message.
       errorMessage = null;
       waitForLogin = true;
+      _loginFuture = null;
       // Fetch from the repository and wrap the regular Future into an observable.
-      _loginFuture = ObservableFuture(_repository.login(form));
+      _loginFuture = ObservableFuture(
+        _repository.login(
+          form,
+          // form.copyWith(
+          //   captchaKey: captchaData.key,
+          //   captchaAns: captcha,
+          // ),
+          false,
+        ),
+      );
       // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
       await _loginFuture.then((value) => value.fold(
             (failure) {

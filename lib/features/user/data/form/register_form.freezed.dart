@@ -18,6 +18,7 @@ class _$RegisterFormTearOff {
       {@required String username,
       @required String password,
       @required String confirmPassword,
+      @required String name,
       String intro,
       String mobileno,
       String code}) {
@@ -25,6 +26,7 @@ class _$RegisterFormTearOff {
       username: username,
       password: password,
       confirmPassword: confirmPassword,
+      name: name,
       intro: intro,
       mobileno: mobileno,
       code: code,
@@ -41,6 +43,7 @@ mixin _$RegisterForm {
   String get username;
   String get password;
   String get confirmPassword;
+  String get name;
   String get intro;
   String get mobileno;
   String get code;
@@ -57,6 +60,7 @@ abstract class $RegisterFormCopyWith<$Res> {
       {String username,
       String password,
       String confirmPassword,
+      String name,
       String intro,
       String mobileno,
       String code});
@@ -75,6 +79,7 @@ class _$RegisterFormCopyWithImpl<$Res> implements $RegisterFormCopyWith<$Res> {
     Object username = freezed,
     Object password = freezed,
     Object confirmPassword = freezed,
+    Object name = freezed,
     Object intro = freezed,
     Object mobileno = freezed,
     Object code = freezed,
@@ -85,6 +90,7 @@ class _$RegisterFormCopyWithImpl<$Res> implements $RegisterFormCopyWith<$Res> {
       confirmPassword: confirmPassword == freezed
           ? _value.confirmPassword
           : confirmPassword as String,
+      name: name == freezed ? _value.name : name as String,
       intro: intro == freezed ? _value.intro : intro as String,
       mobileno: mobileno == freezed ? _value.mobileno : mobileno as String,
       code: code == freezed ? _value.code : code as String,
@@ -103,6 +109,7 @@ abstract class _$RegisterFormCopyWith<$Res>
       {String username,
       String password,
       String confirmPassword,
+      String name,
       String intro,
       String mobileno,
       String code});
@@ -123,6 +130,7 @@ class __$RegisterFormCopyWithImpl<$Res> extends _$RegisterFormCopyWithImpl<$Res>
     Object username = freezed,
     Object password = freezed,
     Object confirmPassword = freezed,
+    Object name = freezed,
     Object intro = freezed,
     Object mobileno = freezed,
     Object code = freezed,
@@ -133,6 +141,7 @@ class __$RegisterFormCopyWithImpl<$Res> extends _$RegisterFormCopyWithImpl<$Res>
       confirmPassword: confirmPassword == freezed
           ? _value.confirmPassword
           : confirmPassword as String,
+      name: name == freezed ? _value.name : name as String,
       intro: intro == freezed ? _value.intro : intro as String,
       mobileno: mobileno == freezed ? _value.mobileno : mobileno as String,
       code: code == freezed ? _value.code : code as String,
@@ -146,12 +155,14 @@ class _$_RegisterForm implements _RegisterForm {
       {@required this.username,
       @required this.password,
       @required this.confirmPassword,
+      @required this.name,
       this.intro,
       this.mobileno,
       this.code})
       : assert(username != null),
         assert(password != null),
-        assert(confirmPassword != null);
+        assert(confirmPassword != null),
+        assert(name != null);
 
   @override
   final String username;
@@ -159,6 +170,8 @@ class _$_RegisterForm implements _RegisterForm {
   final String password;
   @override
   final String confirmPassword;
+  @override
+  final String name;
   @override
   final String intro;
   @override
@@ -168,7 +181,7 @@ class _$_RegisterForm implements _RegisterForm {
 
   @override
   String toString() {
-    return 'RegisterForm(username: $username, password: $password, confirmPassword: $confirmPassword, intro: $intro, mobileno: $mobileno, code: $code)';
+    return 'RegisterForm(username: $username, password: $password, confirmPassword: $confirmPassword, name: $name, intro: $intro, mobileno: $mobileno, code: $code)';
   }
 
   @override
@@ -184,6 +197,8 @@ class _$_RegisterForm implements _RegisterForm {
             (identical(other.confirmPassword, confirmPassword) ||
                 const DeepCollectionEquality()
                     .equals(other.confirmPassword, confirmPassword)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.intro, intro) ||
                 const DeepCollectionEquality().equals(other.intro, intro)) &&
             (identical(other.mobileno, mobileno) ||
@@ -199,6 +214,7 @@ class _$_RegisterForm implements _RegisterForm {
       const DeepCollectionEquality().hash(username) ^
       const DeepCollectionEquality().hash(password) ^
       const DeepCollectionEquality().hash(confirmPassword) ^
+      const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(intro) ^
       const DeepCollectionEquality().hash(mobileno) ^
       const DeepCollectionEquality().hash(code);
@@ -213,6 +229,7 @@ abstract class _RegisterForm implements RegisterForm {
       {@required String username,
       @required String password,
       @required String confirmPassword,
+      @required String name,
       String intro,
       String mobileno,
       String code}) = _$_RegisterForm;
@@ -223,6 +240,8 @@ abstract class _RegisterForm implements RegisterForm {
   String get password;
   @override
   String get confirmPassword;
+  @override
+  String get name;
   @override
   String get intro;
   @override
