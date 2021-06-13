@@ -1,60 +1,89 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_display_widget.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import '../../data/models/vip_level_model.dart';
 
 class VipLevelDisplay extends StatelessWidget {
   final VipLevelModel data;
+  final String rules;
 
-  VipLevelDisplay(this.data);
+  VipLevelDisplay(this.data, this.rules);
 
   final MemberGridItem pageItem = MemberGridItem.vip;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: Global.device.width - 24.0,
-      child: Align(
-        alignment: Alignment.topCenter,
-        child: ListView(
-          primary: true,
-          shrinkWrap: true,
-          physics: BouncingScrollPhysics(),
-          children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 12.0),
-                  child: Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(10.0),
-                        decoration: ThemeInterface.pageIconContainerDecor,
-                        child: Icon(
-                          pageItem.value.iconData,
-                          size: 32 * Global.device.widthScale,
+      alignment: Alignment.topCenter,
+      child: ListView(
+        primary: true,
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(4.0, 20.0, 4.0, 12.0),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10.0),
+                      decoration: ThemeInterface.pageIconContainerDecor,
+                      child: Icon(
+                        pageItem.value.iconData,
+                        size: 32 * Global.device.widthScale,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        pageItem.value.label,
+                        style: TextStyle(
+                          fontSize: FontSize.HEADER.value,
+                          color: themeColor.defaultTitleColor,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Text(
-                          pageItem.value.label,
-                          style: TextStyle(
-                            fontSize: FontSize.HEADER.value,
-                            color: themeColor.defaultTitleColor,
-                          ),
-                        ),
-                      )
-                    ],
+                    )
+                  ],
+                ),
+              ),
+            ] +
+            List<Widget>.generate(
+              data.levels.length,
+              (index) => _buildLevel(data.levels[index]),
+            ).toList() +
+            List.of({
+              Container(
+                padding: const EdgeInsets.only(top: 16.0),
+                height: 1600,
+                // child: HtmlWidget(rules),
+                child: InAppWebView(
+                  initialOptions: InAppWebViewGroupOptions(
+                    crossPlatform: InAppWebViewOptions(supportZoom: false),
+                    android: AndroidInAppWebViewOptions(useWideViewPort: true),
+                  ),
+                  initialData: InAppWebViewInitialData(
+                    data: _buildHtmlText(),
+                    mimeType: Global.WEB_MIMETYPE,
+                    encoding: Global.webEncoding.name,
                   ),
                 ),
-              ] +
-              List<Widget>.generate(
-                data.levels.length,
-                (index) => _buildLevel(data.levels[index]),
-              ).toList(),
-        ),
+              )
+            }),
       ),
     );
+  }
+
+  String _buildHtmlText() {
+    final String htmlBgColor = themeColor.defaultBackgroundColor.toHexNoAlpha();
+    final String htmlTextColor = themeColor.dialogTextColor.toHexNoAlpha();
+    debugPrint("rules: $rules");
+    return '<html>'
+        '<head><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"></head>'
+        '<body bgcolor="$htmlBgColor" text="$htmlTextColor" style="line-height:1.2;">'
+        '$rules'
+        '</html>';
   }
 
   Widget _buildLevel(VipLevelName level) {

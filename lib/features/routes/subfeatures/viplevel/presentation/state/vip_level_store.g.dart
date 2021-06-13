@@ -17,18 +17,18 @@ mixin _$VipLevelStore on _VipLevelStore, Store {
               name: '_VipLevelStore.state'))
           .value;
 
-  final _$_levelFutureAtom = Atom(name: '_VipLevelStore._levelFuture');
+  final _$_initFutureAtom = Atom(name: '_VipLevelStore._initFuture');
 
   @override
-  ObservableFuture<Either<Failure, VipLevelModel>> get _levelFuture {
-    _$_levelFutureAtom.reportRead();
-    return super._levelFuture;
+  ObservableFuture<List<dynamic>> get _initFuture {
+    _$_initFutureAtom.reportRead();
+    return super._initFuture;
   }
 
   @override
-  set _levelFuture(ObservableFuture<Either<Failure, VipLevelModel>> value) {
-    _$_levelFutureAtom.reportWrite(value, super._levelFuture, () {
-      super._levelFuture = value;
+  set _initFuture(ObservableFuture<List<dynamic>> value) {
+    _$_initFutureAtom.reportWrite(value, super._initFuture, () {
+      super._initFuture = value;
     });
   }
 
@@ -47,11 +47,25 @@ mixin _$VipLevelStore on _VipLevelStore, Store {
     });
   }
 
+  final _$initializeAsyncAction = AsyncAction('_VipLevelStore.initialize');
+
+  @override
+  Future<void> initialize() {
+    return _$initializeAsyncAction.run(() => super.initialize());
+  }
+
   final _$getLevelAsyncAction = AsyncAction('_VipLevelStore.getLevel');
 
   @override
   Future<void> getLevel() {
     return _$getLevelAsyncAction.run(() => super.getLevel());
+  }
+
+  final _$getRulesAsyncAction = AsyncAction('_VipLevelStore.getRules');
+
+  @override
+  Future<void> getRules() {
+    return _$getRulesAsyncAction.run(() => super.getRules());
   }
 
   @override

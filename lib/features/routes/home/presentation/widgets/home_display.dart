@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/event/event_inject.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
 import 'package:flutter_85bet_mobile/features/routes/home/data/models/game_category_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../state/home_store.dart';
 import 'home_display_banner.dart';
@@ -173,6 +174,10 @@ class _HomeDisplayState extends State<HomeDisplay> {
     if (url.contains(Global.DOMAIN_NAME)) {
       fixUrl = url.substring(
           url.indexOf(Global.DOMAIN_NAME) + Global.DOMAIN_NAME.length);
+      if (fixUrl.startsWith('/images/')) {
+        launch(url);
+        return;
+      }
     } else if (!url.startsWith('/')) {
       fixUrl = '/$url';
     } else {
