@@ -181,7 +181,7 @@ class _WalletDialogState extends State<WalletDialog> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.all(24.0),
+                          padding: const EdgeInsets.all(12.0),
                           child: Text(
                             '${widget.store.transferErrorList}',
                             style: TextStyle(fontSize: FontSize.SUBTITLE.value),

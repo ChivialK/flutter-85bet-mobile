@@ -333,14 +333,14 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
                 iconData: IconCode.gridWithdraw,
               ),
             ),
-            // Expanded(
-            //   flex: 1,
-            //   child: _createShortcutButton(
-            //     page: RoutePage.transfer,
-            //     isUserOnly: true,
-            //     iconData: IconCode.gridTransfer,
-            //   ),
-            // ),
+            Expanded(
+              flex: 1,
+              child: _createShortcutButton(
+                page: RoutePage.transfer,
+                isUserOnly: true,
+                iconData: IconCode.gridTransfer,
+              ),
+            ),
             Expanded(
               flex: 1,
               child: _createShortcutButton(
@@ -348,14 +348,14 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
                 iconData: IconCode.gridVip,
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: _createShortcutButton(
-                page: RoutePage.promo,
-                iconData: IconCode.navPromo,
-                isLast: true,
-              ),
-            ),
+            // Expanded(
+            //   flex: 1,
+            //   child: _createShortcutButton(
+            //     page: RoutePage.promo,
+            //     iconData: IconCode.navPromo,
+            //     isLast: true,
+            //   ),
+            // ),
           ],
         ),
       ),

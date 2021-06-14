@@ -1,4 +1,5 @@
 import 'package:flutter_85bet_mobile/core/internal/input_limit.dart';
+import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 import 'package:flutter_85bet_mobile/utils/value_util.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -50,5 +51,6 @@ extension RegisterFormExtension on RegisterForm {
         value: mobileno.length,
         min: InputLimit.PHONE_MIN,
         max: InputLimit.PHONE_MAX,
-      );
+      ) &&
+      mobileno.isValidChinaPhone;
 }

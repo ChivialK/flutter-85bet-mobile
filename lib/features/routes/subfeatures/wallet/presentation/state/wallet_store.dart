@@ -170,6 +170,7 @@ abstract class _WalletStore with Store {
               (failure) {
                 transferErrorList ??= new StringBuffer();
                 transferErrorList.write(failure.message);
+                transferSuccess = false;
               },
               (Map map) {
                 debugPrint('wallet transfer result: ${map.length}');
@@ -195,6 +196,7 @@ abstract class _WalletStore with Store {
               Duration(milliseconds: 500), () => waitForTransfer = false));
     } on Exception {
       waitForTypeChange = false;
+      transferSuccess = false;
       setErrorMsg(code: 4);
     }
   }

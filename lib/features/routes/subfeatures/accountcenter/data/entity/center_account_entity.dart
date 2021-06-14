@@ -9,6 +9,7 @@ abstract class CenterAccountEntity with _$CenterAccountEntity {
     int accountId,
     String birthDate,
     String phone,
+    String verified,
     String gender,
     String email,
     String wechat,
@@ -22,7 +23,8 @@ abstract class CenterAccountEntity with _$CenterAccountEntity {
 extension CenterAccountEntityExtension on CenterAccountEntity {
   bool get canBindCard => firstName.isEmpty;
   bool get canBindBirthDate => birthDate.isEmpty;
-  bool get canVerifyPhone => phone.isNotEmpty && phone.contains('未') == true;
+  bool get canVerifyPhone =>
+      (phone.isNotEmpty && phone.contains('未') == true) || verified == "0";
   bool get canBindMail => email.isEmpty;
   bool get canBindWechat => wechat.isEmpty;
   bool get canBindCgp => cgpWallet.isEmpty || cgpWallet != '-1';

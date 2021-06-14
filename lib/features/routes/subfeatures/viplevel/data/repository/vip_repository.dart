@@ -9,6 +9,7 @@ class VipLevelApi {
 
 abstract class VipLevelRepository {
   Future<Either<Failure, VipLevelModel>> getLevel();
+  Future<Either<Failure, RequestCodeModel>> getRules();
 }
 
 class VipLevelRepositoryImpl implements VipLevelRepository {
@@ -22,6 +23,20 @@ class VipLevelRepositoryImpl implements VipLevelRepository {
     final result = await requestModel<VipLevelModel>(
       request: dioApiService.get(VipLevelApi.GET_LEVEL),
       jsonToModel: VipLevelModel.jsonToVipLevelModel,
+      tag: 'remote-VIP',
+    );
+//    debugPrint('test response type: ${result.runtimeType}, data: $result');
+    return result.fold(
+      (failure) => Left(failure),
+      (model) => Right(model),
+    );
+  }
+
+  @override
+  Future<Either<Failure, RequestCodeModel>> getRules() async {
+    final result = await requestModel<RequestCodeModel>(
+      request: dioApiService.get(VipLevelApi.GET_RULE),
+      jsonToModel: RequestCodeModel.jsonToCodeModel,
       tag: 'remote-VIP',
     );
 //    debugPrint('test response type: ${result.runtimeType}, data: $result');

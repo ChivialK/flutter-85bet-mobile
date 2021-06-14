@@ -18,14 +18,14 @@ class _VipLevelRouteState extends State<VipLevelRoute> {
     _store ??= sl.get<VipLevelStore>();
     super.initState();
     // execute action on init
-    _store.getLevel();
+    _store.initialize();
   }
 
   @override
   void didUpdateWidget(VipLevelRoute oldWidget) {
     _store.clearData();
     super.didUpdateWidget(oldWidget);
-    _store.getLevel();
+    _store.initialize();
   }
 
   @override
@@ -72,7 +72,7 @@ class _VipLevelRouteState extends State<VipLevelRoute> {
                 case VipLevelStoreState.loading:
                   return LoadingWidget();
                 case VipLevelStoreState.loaded:
-                  return VipLevelDisplay(_store.levelModel);
+                  return VipLevelDisplay(_store.levelModel, _store.ruleData);
                 default:
                   return SizedBox.shrink();
               }

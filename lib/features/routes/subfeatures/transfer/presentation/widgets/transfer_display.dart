@@ -350,7 +350,7 @@ class _TransferDisplayState extends State<TransferDisplay> {
                               child: new CustomizeFieldWidget(
                                 key: _amountFieldKey,
                                 fieldType: FieldType.Numbers,
-                                hint: 'NTD',
+                                hint: '$creditSymbol',
                                 persistHint: false,
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 0.0),

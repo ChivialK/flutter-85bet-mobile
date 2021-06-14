@@ -17,19 +17,20 @@ class ScreenNavigationBarItem extends Vnum<RouteListItem> {
     iconData: IconCode.navDeposit,
     route: RoutePage.depositFeature,
   ));
+
   // static ScreenNavigationBarItem agent =
   //     ScreenNavigationBarItem.define(RouteListItem(
   //   iconData: IconCode.navAgent,
   //   route: RoutePage.agentLogin,
   // ));
-  // static ScreenNavigationBarItem promo =
-  //     ScreenNavigationBarItem.define(RouteListItem(
-  //   // iconData: IconCode.navPromo,
-  //   route: RoutePage.promo,
-  // ));
+  static ScreenNavigationBarItem promo =
+      ScreenNavigationBarItem.define(RouteListItem(
+    iconData: IconCode.navPromo,
+    route: RoutePage.promo,
+  ));
   static ScreenNavigationBarItem service =
       ScreenNavigationBarItem.define(RouteListItem(
-    iconData: IconCode.csLine,
+    iconData: IconCode.csService,
     route: RoutePage.service,
   ));
   static ScreenNavigationBarItem member =

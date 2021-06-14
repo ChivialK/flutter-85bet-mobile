@@ -19,6 +19,7 @@ class _$CenterModelTearOff {
       @JsonKey(name: 'accountid', defaultValue: -1) int accountId,
       @JsonKey(name: 'dob', defaultValue: '') String birthDate,
       @JsonKey(name: 'mobileno', defaultValue: '') String phone,
+      @JsonKey(name: 'phone_verification', defaultValue: '0') String verified,
       String gender = '',
       String email = '',
       String wechat = '',
@@ -55,6 +56,7 @@ class _$CenterModelTearOff {
       accountId: accountId,
       birthDate: birthDate,
       phone: phone,
+      verified: verified,
       gender: gender,
       email: email,
       wechat: wechat,
@@ -104,6 +106,8 @@ mixin _$CenterModel {
   String get birthDate;
   @JsonKey(name: 'mobileno', defaultValue: '')
   String get phone;
+  @JsonKey(name: 'phone_verification', defaultValue: '0')
+  String get verified;
   String get gender;
   String get email;
   String get wechat;
@@ -177,6 +181,7 @@ abstract class $CenterModelCopyWith<$Res> {
       @JsonKey(name: 'accountid', defaultValue: -1) int accountId,
       @JsonKey(name: 'dob', defaultValue: '') String birthDate,
       @JsonKey(name: 'mobileno', defaultValue: '') String phone,
+      @JsonKey(name: 'phone_verification', defaultValue: '0') String verified,
       String gender,
       String email,
       String wechat,
@@ -224,6 +229,7 @@ class _$CenterModelCopyWithImpl<$Res> implements $CenterModelCopyWith<$Res> {
     Object accountId = freezed,
     Object birthDate = freezed,
     Object phone = freezed,
+    Object verified = freezed,
     Object gender = freezed,
     Object email = freezed,
     Object wechat = freezed,
@@ -262,6 +268,7 @@ class _$CenterModelCopyWithImpl<$Res> implements $CenterModelCopyWith<$Res> {
       accountId: accountId == freezed ? _value.accountId : accountId as int,
       birthDate: birthDate == freezed ? _value.birthDate : birthDate as String,
       phone: phone == freezed ? _value.phone : phone as String,
+      verified: verified == freezed ? _value.verified : verified as String,
       gender: gender == freezed ? _value.gender : gender as String,
       email: email == freezed ? _value.email : email as String,
       wechat: wechat == freezed ? _value.wechat : wechat as String,
@@ -339,6 +346,7 @@ abstract class _$CenterModelCopyWith<$Res>
       @JsonKey(name: 'accountid', defaultValue: -1) int accountId,
       @JsonKey(name: 'dob', defaultValue: '') String birthDate,
       @JsonKey(name: 'mobileno', defaultValue: '') String phone,
+      @JsonKey(name: 'phone_verification', defaultValue: '0') String verified,
       String gender,
       String email,
       String wechat,
@@ -388,6 +396,7 @@ class __$CenterModelCopyWithImpl<$Res> extends _$CenterModelCopyWithImpl<$Res>
     Object accountId = freezed,
     Object birthDate = freezed,
     Object phone = freezed,
+    Object verified = freezed,
     Object gender = freezed,
     Object email = freezed,
     Object wechat = freezed,
@@ -426,6 +435,7 @@ class __$CenterModelCopyWithImpl<$Res> extends _$CenterModelCopyWithImpl<$Res>
       accountId: accountId == freezed ? _value.accountId : accountId as int,
       birthDate: birthDate == freezed ? _value.birthDate : birthDate as String,
       phone: phone == freezed ? _value.phone : phone as String,
+      verified: verified == freezed ? _value.verified : verified as String,
       gender: gender == freezed ? _value.gender : gender as String,
       email: email == freezed ? _value.email : email as String,
       wechat: wechat == freezed ? _value.wechat : wechat as String,
@@ -498,6 +508,7 @@ class _$_CenterModel implements _CenterModel {
       @JsonKey(name: 'accountid', defaultValue: -1) this.accountId,
       @JsonKey(name: 'dob', defaultValue: '') this.birthDate,
       @JsonKey(name: 'mobileno', defaultValue: '') this.phone,
+      @JsonKey(name: 'phone_verification', defaultValue: '0') this.verified,
       this.gender = '',
       this.email = '',
       this.wechat = '',
@@ -545,6 +556,9 @@ class _$_CenterModel implements _CenterModel {
   @override
   @JsonKey(name: 'mobileno', defaultValue: '')
   final String phone;
+  @override
+  @JsonKey(name: 'phone_verification', defaultValue: '0')
+  final String verified;
   @JsonKey(defaultValue: '')
   @override
   final String gender;
@@ -641,7 +655,7 @@ class _$_CenterModel implements _CenterModel {
 
   @override
   String toString() {
-    return 'CenterModel(accountCode: $accountCode, accountId: $accountId, birthDate: $birthDate, phone: $phone, gender: $gender, email: $email, wechat: $wechat, firstName: $firstName, autoTransfer: $autoTransfer, cgpWallet: $cgpWallet, cpwWallet: $cpwWallet, lotto: $lotto, allGame: $allGame, allGameLevel: $allGameLevel, allGameValue: $allGameValue, cardGame: $cardGame, cardGameLevel: $cardGameLevel, cardGameValue: $cardGameValue, casinoGame: $casinoGame, casinoGameLevel: $casinoGameLevel, casinoGameValue: $casinoGameValue, fishGame: $fishGame, fishGameLevel: $fishGameLevel, fishGameValue: $fishGameValue, lotteryGame: $lotteryGame, lotteryGameLevel: $lotteryGameLevel, lotteryGameValue: $lotteryGameValue, slotGame: $slotGame, slotGameLevel: $slotGameLevel, slotGameValue: $slotGameValue, sportGame: $sportGame, sportGameLevel: $sportGameLevel, sportGameValue: $sportGameValue, vipOption: $vipOption, vipSetting: $vipSetting)';
+    return 'CenterModel(accountCode: $accountCode, accountId: $accountId, birthDate: $birthDate, phone: $phone, verified: $verified, gender: $gender, email: $email, wechat: $wechat, firstName: $firstName, autoTransfer: $autoTransfer, cgpWallet: $cgpWallet, cpwWallet: $cpwWallet, lotto: $lotto, allGame: $allGame, allGameLevel: $allGameLevel, allGameValue: $allGameValue, cardGame: $cardGame, cardGameLevel: $cardGameLevel, cardGameValue: $cardGameValue, casinoGame: $casinoGame, casinoGameLevel: $casinoGameLevel, casinoGameValue: $casinoGameValue, fishGame: $fishGame, fishGameLevel: $fishGameLevel, fishGameValue: $fishGameValue, lotteryGame: $lotteryGame, lotteryGameLevel: $lotteryGameLevel, lotteryGameValue: $lotteryGameValue, slotGame: $slotGame, slotGameLevel: $slotGameLevel, slotGameValue: $slotGameValue, sportGame: $sportGame, sportGameLevel: $sportGameLevel, sportGameValue: $sportGameValue, vipOption: $vipOption, vipSetting: $vipSetting)';
   }
 
   @override
@@ -659,6 +673,9 @@ class _$_CenterModel implements _CenterModel {
                     .equals(other.birthDate, birthDate)) &&
             (identical(other.phone, phone) ||
                 const DeepCollectionEquality().equals(other.phone, phone)) &&
+            (identical(other.verified, verified) ||
+                const DeepCollectionEquality()
+                    .equals(other.verified, verified)) &&
             (identical(other.gender, gender) ||
                 const DeepCollectionEquality().equals(other.gender, gender)) &&
             (identical(other.email, email) ||
@@ -712,9 +729,7 @@ class _$_CenterModel implements _CenterModel {
             (identical(other.fishGameLevel, fishGameLevel) ||
                 const DeepCollectionEquality()
                     .equals(other.fishGameLevel, fishGameLevel)) &&
-            (identical(other.fishGameValue, fishGameValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.fishGameValue, fishGameValue)) &&
+            (identical(other.fishGameValue, fishGameValue) || const DeepCollectionEquality().equals(other.fishGameValue, fishGameValue)) &&
             (identical(other.lotteryGame, lotteryGame) || const DeepCollectionEquality().equals(other.lotteryGame, lotteryGame)) &&
             (identical(other.lotteryGameLevel, lotteryGameLevel) || const DeepCollectionEquality().equals(other.lotteryGameLevel, lotteryGameLevel)) &&
             (identical(other.lotteryGameValue, lotteryGameValue) || const DeepCollectionEquality().equals(other.lotteryGameValue, lotteryGameValue)) &&
@@ -735,6 +750,7 @@ class _$_CenterModel implements _CenterModel {
       const DeepCollectionEquality().hash(accountId) ^
       const DeepCollectionEquality().hash(birthDate) ^
       const DeepCollectionEquality().hash(phone) ^
+      const DeepCollectionEquality().hash(verified) ^
       const DeepCollectionEquality().hash(gender) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(wechat) ^
@@ -778,6 +794,7 @@ abstract class _CenterModel implements CenterModel {
       @JsonKey(name: 'accountid', defaultValue: -1) int accountId,
       @JsonKey(name: 'dob', defaultValue: '') String birthDate,
       @JsonKey(name: 'mobileno', defaultValue: '') String phone,
+      @JsonKey(name: 'phone_verification', defaultValue: '0') String verified,
       String gender,
       String email,
       String wechat,
@@ -822,6 +839,9 @@ abstract class _CenterModel implements CenterModel {
   @override
   @JsonKey(name: 'mobileno', defaultValue: '')
   String get phone;
+  @override
+  @JsonKey(name: 'phone_verification', defaultValue: '0')
+  String get verified;
   @override
   String get gender;
   @override

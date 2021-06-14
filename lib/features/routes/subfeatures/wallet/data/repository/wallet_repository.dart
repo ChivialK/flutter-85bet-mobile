@@ -1,6 +1,7 @@
 import 'dart:async' show StreamController;
 
 import 'package:dio/dio.dart';
+import 'package:flutter_85bet_mobile/core/internal/local_strings.dart';
 import 'package:flutter_85bet_mobile/core/repository_export.dart';
 
 import '../models/wallet_model.dart';
@@ -18,10 +19,13 @@ class WalletApi {
 
 abstract class WalletRepository {
   Future<Either<Failure, WalletModel>> getWallet();
+
   Future<Either<Failure, String>> postWalletType(bool toSingle);
+
   Future<Either<Failure, Map<String, dynamic>>> postTransferAll(
     StreamController<String> progressController,
   );
+
   Future<Either<Failure, bool>> cancelTransferAll();
 }
 
@@ -91,9 +95,11 @@ class WalletRepositoryImpl implements WalletRepository {
     );
 //    debugPrint('test response type: ${result.runtimeType}, data: $result');
     return result.fold(
-      (failure) => [],
+      (failure) => null,
       (model) {
-        if (model.data.isNotEmpty) {
+        if (!model.isSuccess) {
+          return [];
+        } else if (model.data.isNotEmpty) {
           try {
             // decode list in json format to string list
             List decoded = JsonUtil.decodeArray(model.data, trim: false);
@@ -119,7 +125,7 @@ class WalletRepositoryImpl implements WalletRepository {
                 msg: 'wallet platform map error!!', error: e, tag: tag);
           }
         }
-        return [];
+        return null;
       },
     );
   }
@@ -130,7 +136,11 @@ class WalletRepositoryImpl implements WalletRepository {
   ) async {
     _postListCancelToken = new CancelToken();
     List platforms = await _getPromiseList();
-    if (platforms != null && platforms.isNotEmpty) {
+    if (platforms == null) {
+      MyLogger.warn(
+          msg: 'cannot retrieve platform list in wallet page!!', tag: tag);
+      return Left(Failure.server());
+    } else if (platforms.isNotEmpty) {
       final result = await Future.microtask(
         () => dioApiService.postList(
           WalletApi.POST_TRANSFER,
@@ -149,9 +159,8 @@ class WalletRepositoryImpl implements WalletRepository {
       ).catchError((e) => null);
       return Right(result);
     } else {
-      MyLogger.warn(
-          msg: 'cannot retrieve platform list in wallet page!!', tag: tag);
-      return Left(Failure.server());
+      return Left(
+          Failure.errorMessage(msg: localeStr.messageActionTooFrequent));
     }
   }
 

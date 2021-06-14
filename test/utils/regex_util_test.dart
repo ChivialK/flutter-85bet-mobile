@@ -68,6 +68,15 @@ void main() {
     expect(testStr5.hasChinese, true);
   });
 
+  test('test phone regex', () {
+    String phone = '13400164942';
+    String phone2 = '14751234520';
+    String phone3 = '10457623501';
+    expect(phone.isValidChinaPhone, true);
+    expect(phone2.isValidChinaPhone, true);
+    expect(phone3.isValidChinaPhone, false);
+  });
+
   test('test mix string to int', () {
     String mixStr = 'failure(code: 8000)';
     String extract = mixStr.replaceAll(RegExp('[^0-9]'), '');

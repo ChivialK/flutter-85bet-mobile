@@ -42,7 +42,12 @@ extension GameEntityExtension on GameEntity {
     return data;
   }
 
-  String get imageUrl => '/images/games/game/$id.jpg';
+  // String get imageUrl => '/images/games/game/$id.jpg';
+  String get imageUrl {
+    final imgName = gameUrl.replaceAll('/', '_');
+    return '/images/games/all/$imgName.jpg';
+  }
+
   bool isLongText(double limit) => (Global.lang.isChinese)
       ? cname.countLength > limit
       : ename.countLength > limit;

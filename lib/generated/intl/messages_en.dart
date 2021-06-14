@@ -31,7 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m5(value) => "Not enough credit: ${value}";
 
-  static m6(value) => "Total: NTD ${value}";
+  static m6(value) => "Total: ￥ ${value}";
 
   static m7(no) => "${no} Restricted Debit Card and Alipay Balance Payment!\n";
 
@@ -63,7 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m21(num, num2, num3) => "Range: ${num}~${num2} (Step:${num3})";
 
-  static m22(value) => "Reality: ${value} NTD";
+  static m22(value) => "Reality: ${value} ￥";
 
   static m23(value) => "signed ${value} days";
 
@@ -123,7 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m51(value) => "${value} points";
 
-  static m52(value) => "NTD ${value}";
+  static m52(value) => "￥ ${value}";
 
   static m53(from, to) => "${from} to ${to}";
 
@@ -135,6 +135,49 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "aboutCertTitle" : MessageLookupByLibrary.simpleMessage("Certifact"),
+    "aboutCertTitleBVI" : MessageLookupByLibrary.simpleMessage("BVI Certified"),
+    "aboutCertTitleGC" : MessageLookupByLibrary.simpleMessage("Gambling Commission"),
+    "aboutCertTitleMGA" : MessageLookupByLibrary.simpleMessage("MGA License"),
+    "aboutCertTitlePGC" : MessageLookupByLibrary.simpleMessage("PAGCOR License"),
+    "aboutDataDesc10" : MessageLookupByLibrary.simpleMessage("85BET is licensed by the Isle of Man and the Cagayan and Freeport Economic Zones. This is a multinational company with operations in the Asia-Pacific region."),
+    "aboutDataDesc11" : MessageLookupByLibrary.simpleMessage("85bet relies on its rich experience and reputation to service more than ten million players, which demonstrates long-term legitimacy and is completely reliable."),
+    "aboutDataDesc12" : MessageLookupByLibrary.simpleMessage("Is a game company under M.A.N Entertainment Group, headquartered in Manila, Philippines. This is considered the largest corporation in the Asian online gambling market with a large workforce. With the recognized high confidence, 85bet has now become one of the International Online Games Association\'s most fully verified and licensed bookmakers."),
+    "aboutDataDesc20" : MessageLookupByLibrary.simpleMessage("Open a Vietnamese 85bet account to join online all of our online betting promotions high quality entertainment website with exceptionally good value. We believe that in bonus points, customers will have the opportunity to receive valuable gifts and incentives when participating in promotions."),
+    "aboutDataDesc21" : MessageLookupByLibrary.simpleMessage("Become our best partner and enjoy great commissions every month by referring players to 85bet."),
+    "aboutDataDesc22" : MessageLookupByLibrary.simpleMessage("85bet betting odds soccer strives to provide a channel of entertainment to our customers in a positive way. We have safeguards primarily promoting and ensuring responsible betting."),
+    "aboutDataDesc23" : MessageLookupByLibrary.simpleMessage("With a stable and safe betting system. Your privacy is our top priority so we are always in strict compliance with the privacy policies."),
+    "aboutDataDesc30" : MessageLookupByLibrary.simpleMessage("Football betting odds We offer major tournaments such as: Premier League, Spanish Championship La Liga, Italian Serie A, UEFA Championship, French National Championship, Germany, NFL, NBA, NCAA, Women\'s Basketball, Tennis, Racing F1 We are honored to bring you over 4,000 matches per month."),
+    "aboutDataDesc31" : MessageLookupByLibrary.simpleMessage("Online games with many opportunities to win Jackpots in games: Roulette, Blackjack, Poker, Slots. More progressive jackpot prizes and higher chances of winning in 85bet."),
+    "aboutDataDesc32" : MessageLookupByLibrary.simpleMessage("In addition we also offer many other types of online games, especially: Live Casino with hot dealers in Baccarat, Sicbo, Dragon / Tiger, Roulette and Online Casino Slots, easy to play."),
+    "aboutDataDesc40" : MessageLookupByLibrary.simpleMessage("Bonus promotions for new members. Bonuses on subsequent Fundings and refunds to existing members."),
+    "aboutDataDesc41" : MessageLookupByLibrary.simpleMessage("See also FAQs for sports and other games. Support for account registration, Money Transfer, withdrawals and other technical information."),
+    "aboutDataDesc42" : MessageLookupByLibrary.simpleMessage("We offer excellent options for customers to deposit and withdraw money through NETELLER, Moneybookers, International Bank Transfer, Western Union. We have it all, let\'s get started right away with 85bet."),
+    "aboutDataDesc43" : MessageLookupByLibrary.simpleMessage("If you need any help or questions about online betting on football odds or online casino, we will provide 24/7 support via Live Chat, Phone and email."),
+    "aboutDataDesc50" : MessageLookupByLibrary.simpleMessage("Vietnam football odds Provides the results of all the best sports games and leagues in Vietnam today."),
+    "aboutDataDesc51" : MessageLookupByLibrary.simpleMessage("More than 200 diverse tournaments with a variety of sports, formats, teams and individual matches, fixtures, lineups, teams, extra times and deferred matches."),
+    "aboutDataDesc52" : MessageLookupByLibrary.simpleMessage("All of our Sports Rules are strictly followed by the Official Rules of the Best Organizing Committee in Vietnam today."),
+    "aboutDataDesc53" : MessageLookupByLibrary.simpleMessage("Live Casino fully displays: bet limit, result and bet history details. All of your betting information is integrated on the screen for your entertainment convenience. You can check any bet information at any time."),
+    "aboutDataSubtitle20" : MessageLookupByLibrary.simpleMessage("Registration"),
+    "aboutDataSubtitle21" : MessageLookupByLibrary.simpleMessage("Agency"),
+    "aboutDataSubtitle22" : MessageLookupByLibrary.simpleMessage("Responsible Betting"),
+    "aboutDataSubtitle23" : MessageLookupByLibrary.simpleMessage("Security"),
+    "aboutDataSubtitle30" : MessageLookupByLibrary.simpleMessage("Sports Betting And Live Betting soccer odds"),
+    "aboutDataSubtitle31" : MessageLookupByLibrary.simpleMessage("Game online"),
+    "aboutDataSubtitle32" : MessageLookupByLibrary.simpleMessage("Online Casino"),
+    "aboutDataSubtitle40" : MessageLookupByLibrary.simpleMessage("Promotion"),
+    "aboutDataSubtitle41" : MessageLookupByLibrary.simpleMessage("Support center"),
+    "aboutDataSubtitle42" : MessageLookupByLibrary.simpleMessage("Payment methods"),
+    "aboutDataSubtitle43" : MessageLookupByLibrary.simpleMessage("Contact"),
+    "aboutDataSubtitle50" : MessageLookupByLibrary.simpleMessage("Sports Results"),
+    "aboutDataSubtitle51" : MessageLookupByLibrary.simpleMessage("Bet Statistics"),
+    "aboutDataSubtitle52" : MessageLookupByLibrary.simpleMessage("Sports Betting"),
+    "aboutDataSubtitle53" : MessageLookupByLibrary.simpleMessage("Casino Betting"),
+    "aboutDataTitle1" : MessageLookupByLibrary.simpleMessage("Privacy statement"),
+    "aboutDataTitle2" : MessageLookupByLibrary.simpleMessage("INFORMATION"),
+    "aboutDataTitle3" : MessageLookupByLibrary.simpleMessage("PRODUCT"),
+    "aboutDataTitle4" : MessageLookupByLibrary.simpleMessage("INFORMATION CENTRE"),
+    "aboutDataTitle5" : MessageLookupByLibrary.simpleMessage("Betting information"),
     "actionBack" : MessageLookupByLibrary.simpleMessage("Back"),
     "actionHelp" : MessageLookupByLibrary.simpleMessage("Tutorial"),
     "actionNotify" : MessageLookupByLibrary.simpleMessage("Notify"),
@@ -227,6 +270,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "balanceTransferAmountError" : m5,
     "balanceTransferInText" : MessageLookupByLibrary.simpleMessage("In"),
     "balanceTransferOutText" : MessageLookupByLibrary.simpleMessage("Out"),
+    "bankcardNotice1" : MessageLookupByLibrary.simpleMessage("1. The member name and the bound bank card account name must be the same person (for the security of your account, please do not tell others the bank card binding information)"),
+    "bankcardNotice2" : MessageLookupByLibrary.simpleMessage("2. If you do not truthfully fill in the real name and card number of your bank card as required, and the bound information is inconsistent with the real information of your bank card, your withdrawal will not be processed. Therefore, when binding the bank card , Must be filled in carefully to ensure that it is correct. If you encounter related problems, please contact the online customer service immediately for the safety of your funds, we will verify your identity and deal with it in time for you."),
+    "bankcardNotice3" : MessageLookupByLibrary.simpleMessage("3. Bank cards that have been bound cannot be bound to other game accounts again."),
+    "bankcardNotice4" : MessageLookupByLibrary.simpleMessage("4. Bank branch: refers to the branch of your bank card account."),
+    "bankcardNotice5" : MessageLookupByLibrary.simpleMessage("5. Account opening outlet: the bank outlet that issued the bank card when the bank card was first opened."),
+    "bankcardNotice6" : MessageLookupByLibrary.simpleMessage("*The correct bank branch and account opening outlet, please contact the customer service of your issuing bank for inquiries"),
     "bankcardViewHintNew" : MessageLookupByLibrary.simpleMessage("Please bind a bankcard for receiving payment"),
     "bankcardViewTitleBank" : MessageLookupByLibrary.simpleMessage("Bank"),
     "bankcardViewTitleBankArea" : MessageLookupByLibrary.simpleMessage("Area"),
@@ -289,6 +338,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "centerDialogCpwRightLinkError" : MessageLookupByLibrary.simpleMessage("Url Error, please contact service."),
     "centerDialogCpwRightTitle" : MessageLookupByLibrary.simpleMessage("APP installed"),
     "centerHintNoName" : MessageLookupByLibrary.simpleMessage("Please go to the binding bank card to make related settings"),
+    "centerHintNotVerified" : MessageLookupByLibrary.simpleMessage("Not Verified"),
+    "centerHintVerified" : MessageLookupByLibrary.simpleMessage("Verified"),
     "centerLuckyButtonBind" : MessageLookupByLibrary.simpleMessage("Confirm Bind"),
     "centerLuckyButtonGenerate" : MessageLookupByLibrary.simpleMessage("Auto Generated"),
     "centerLuckyHint" : MessageLookupByLibrary.simpleMessage("Bind the Lucky Code, you can participate in the Lottery Match Code, wonderful gift for you !!!"),
@@ -565,6 +616,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "messagePlatformMaintenance" : MessageLookupByLibrary.simpleMessage("Platform under maintenance"),
     "messageRegisterFailed" : MessageLookupByLibrary.simpleMessage("Registration failed"),
     "messageRepeatAccount" : MessageLookupByLibrary.simpleMessage("Account name repeat"),
+    "messageRepeatEmail" : MessageLookupByLibrary.simpleMessage("Email already used"),
     "messageRepeatMobile" : MessageLookupByLibrary.simpleMessage("Repeated registration of mobile phone number"),
     "messageRepeatPhone" : MessageLookupByLibrary.simpleMessage("Phone Number already registered"),
     "messageSentVerify" : MessageLookupByLibrary.simpleMessage("Verify Code has sent"),
@@ -607,6 +659,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkChangedHint" : MessageLookupByLibrary.simpleMessage("Detect network status has changed, do you want to refresh?"),
     "noticeTabGeneral" : MessageLookupByLibrary.simpleMessage("General Message"),
     "noticeTabMaintenance" : MessageLookupByLibrary.simpleMessage("Maintenance Notification"),
+    "pageTitleAbout" : MessageLookupByLibrary.simpleMessage("About us"),
     "pageTitleCenter" : MessageLookupByLibrary.simpleMessage("Center"),
     "pageTitleCollect" : MessageLookupByLibrary.simpleMessage("Word Collect"),
     "pageTitleDeposit" : MessageLookupByLibrary.simpleMessage("Recharge"),

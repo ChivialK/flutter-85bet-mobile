@@ -48,6 +48,10 @@
   "@pageTitleSign": {
     "type": "text"
   },
+  "pageTitleAbout": "关于我们",
+  "@pageTitleAbout": {
+    "type": "text"
+  },
   "pageTitleRoller": "幸运轮盘",
   "@pageTitleRoller": {
     "type": "text"
@@ -56,7 +60,7 @@
   "@pageTitleCollect": {
     "type": "text"
   },
-  "pageTitleDeposit": "充值",
+  "pageTitleDeposit": "存款",
   "@pageTitleDeposit": {
     "type": "text"
   },
@@ -104,7 +108,7 @@
   "@pageTitleMemberCard": {
     "type": "text"
   },
-  "pageTitleMemberWithdraw": "提现",
+  "pageTitleMemberWithdraw": "取款",
   "@pageTitleMemberWithdraw": {
     "type": "text"
   },
@@ -172,7 +176,7 @@
   "@pageTitleMore": {
     "type": "text"
   },
-  "toolBarMemberCredit": "NTD {value}",
+  "toolBarMemberCredit": "￥ {value}",
   "@toolBarMemberCredit": {
     "type": "text",
     "placeholders": {
@@ -613,6 +617,10 @@
   "@messageInvalidBirthDate": {
     "type": "text"
   },
+  "messageRepeatEmail": "信箱重复",
+  "@messageRepeatEmail": {
+    "type": "text"
+  },
   "messageRepeatPhone": "手机号重复",
   "@messageRepeatPhone": {
     "type": "text"
@@ -712,11 +720,11 @@
       }
     }
   },
-  "messageInvalidDepositAmountMaxLimit": "充值金额超过上限",
+  "messageInvalidDepositAmountMaxLimit": "存款金额超过上限",
   "@messageInvalidDepositAmountMaxLimit": {
     "type": "text"
   },
-  "messageInvalidDepositAmountMinLimit": "充值金额低于下限",
+  "messageInvalidDepositAmountMinLimit": "存款金额低于下限",
   "@messageInvalidDepositAmountMinLimit": {
     "type": "text"
   },
@@ -779,7 +787,7 @@
   "@messageInvalidWithdrawUnderAmount": {
     "type": "text"
   },
-  "messageInvalidWithdrawExceedAmount": "超过单笔最大提现金额(请参考会员等级制度)",
+  "messageInvalidWithdrawExceedAmount": "超过单笔最大取款金额(请参考会员等级制度)",
   "@messageInvalidWithdrawExceedAmount": {
     "type": "text"
   },
@@ -1263,7 +1271,7 @@
   "@promoDetailRules": {
     "type": "text"
   },
-  "memberGridTitleDeposit": "充值",
+  "memberGridTitleDeposit": "存款",
   "@memberGridTitleDeposit": {
     "type": "text"
   },
@@ -1275,7 +1283,7 @@
   "@memberGridTitleCard": {
     "type": "text"
   },
-  "memberGridTitleWithdraw": "提现",
+  "memberGridTitleWithdraw": "取款",
   "@memberGridTitleWithdraw": {
     "type": "text"
   },
@@ -1419,11 +1427,35 @@
   "@bankcardViewTitleSend": {
     "type": "text"
   },
+  "bankcardNotice1": "1.会员姓名与绑定之银行卡户名必须为同一人（为了您的账户安全，请您切勿将银行卡绑定信息告诉他人）",
+  "@bankcardNotice1": {
+    "type": "text"
+  },
+  "bankcardNotice2": "2.如果您没有按要求如实填写银行卡的真实姓名和卡号，所绑定信息与您银行卡真实信息不一致时，您的提款将不予处理。因此绑定银行卡时，必须仔细填写确保无误。如果遇到相关问题，为了您的资金安全请立即与在线客服联系，我们将会核实您的身份后，及时为您处理。",
+  "@bankcardNotice2": {
+    "type": "text"
+  },
+  "bankcardNotice3": "3.已绑定过的银行卡，不能再次绑定其他游戏账户。",
+  "@bankcardNotice3": {
+    "type": "text"
+  },
+  "bankcardNotice4": "4.银行支行：意指您银行卡开户行的分支机构。",
+  "@bankcardNotice4": {
+    "type": "text"
+  },
+  "bankcardNotice5": "5.开户网点：最开始办理银行卡开户时发卡的那家银行网点。",
+  "@bankcardNotice5": {
+    "type": "text"
+  },
+  "bankcardNotice6": "*正确的银行支行及开户网点，请与您发卡银行的客服联系查询",
+  "@bankcardNotice6": {
+    "type": "text"
+  },
   "withdrawViewTitleAmount": "提款金额",
   "@withdrawViewTitleAmount": {
     "type": "text"
   },
-  "withdrawViewTitlePwd": "提现密码",
+  "withdrawViewTitlePwd": "取款密码",
   "@withdrawViewTitlePwd": {
     "type": "text"
   },
@@ -1463,7 +1495,7 @@
   "@withdrawViewHint2": {
     "type": "text"
   },
-  "withdrawViewHintMax": "最高提现",
+  "withdrawViewHintMax": "最高取款",
   "@withdrawViewHintMax": {
     "type": "text"
   },
@@ -1591,6 +1623,14 @@
   "@centerHintNoName": {
     "type": "text"
   },
+  "centerHintNotVerified": "未验证",
+  "@centerHintNotVerified": {
+    "type": "text"
+  },
+  "centerHintVerified": "已验证",
+  "@centerHintVerified": {
+    "type": "text"
+  },
   "centerLuckyTitle": "请在以下7个空格中，填入01~49的数字",
   "@centerLuckyTitle": {
     "type": "text"
@@ -1683,7 +1723,7 @@
   "@betsFieldDateError": {
     "type": "text"
   },
-  "betsTextTotal": "总计: NTD {value}",
+  "betsTextTotal": "总计: ￥ {value}",
   "@betsTextTotal": {
     "type": "text",
     "placeholders": {
@@ -1728,11 +1768,11 @@
   "@dealsViewSpinnerType0": {
     "type": "text"
   },
-  "dealsViewSpinnerType1": "充值",
+  "dealsViewSpinnerType1": "存款",
   "@dealsViewSpinnerType1": {
     "type": "text"
   },
-  "dealsViewSpinnerType2": "提现",
+  "dealsViewSpinnerType2": "取款",
   "@dealsViewSpinnerType2": {
     "type": "text"
   },
@@ -1796,11 +1836,11 @@
   "@dealsDetailTypeAdjustWithdraw": {
     "type": "text"
   },
-  "depositPaymentNoData": "查無可使用的充值方式",
+  "depositPaymentNoData": "查無可使用的存款方式",
   "@depositPaymentNoData": {
     "type": "text"
   },
-  "depositPaymentTitleBank": "银行充值",
+  "depositPaymentTitleBank": "银行存款",
   "@depositPaymentTitleBank": {
     "type": "text"
   },
@@ -1852,7 +1892,7 @@
   "@depositPaymentSpinnerTitleAccountBank": {
     "type": "text"
   },
-  "depositPaymentSpinnerTitleMethod": "充值方式",
+  "depositPaymentSpinnerTitleMethod": "存款方式",
   "@depositPaymentSpinnerTitleMethod": {
     "type": "text"
   },
@@ -1876,7 +1916,7 @@
   "@depositPaymentEditTitleAmount": {
     "type": "text"
   },
-  "depositPaymentEditTitleCurrencyHint": "现实: {value} NTD",
+  "depositPaymentEditTitleCurrencyHint": "现实: {value} ￥",
   "@depositPaymentEditTitleCurrencyHint": {
     "type": "text",
     "placeholders": {
@@ -1932,11 +1972,11 @@
   "@depositPaymentTitleTutorial": {
     "type": "text"
   },
-  "depositPaymentMethodLocal1": "转帐充值",
+  "depositPaymentMethodLocal1": "转帐存款",
   "@depositPaymentMethodLocal1": {
     "type": "text"
   },
-  "depositPaymentMethodLocal2": "ATM充值",
+  "depositPaymentMethodLocal2": "ATM存款",
   "@depositPaymentMethodLocal2": {
     "type": "text"
   },
@@ -1944,11 +1984,11 @@
   "@depositPaymentNoPromo": {
     "type": "text"
   },
-  "depositHintRedirectBankcard": "充值请先填写银行卡资讯",
+  "depositHintRedirectBankcard": "存款请先填写银行卡资讯",
   "@depositHintRedirectBankcard": {
     "type": "text"
   },
-  "depositHintTextAccount": "充值帐号资讯请联络客服",
+  "depositHintTextAccount": "存款帐号资讯请联络客服",
   "@depositHintTextAccount": {
     "type": "text"
   },
@@ -1978,7 +2018,7 @@
       }
     }
   },
-  "depositHintTextClearInfo": "{no}【重要提醒】勿保留银行帐户，请您在每次充值前重新获取最新的收款帐户，若存款至停用的收款帐户，公司无法查收恕不负责！\n",
+  "depositHintTextClearInfo": "{no}【重要提醒】勿保留银行帐户，请您在每次存款前重新获取最新的收款帐户，若存款至停用的收款帐户，公司无法查收恕不负责！\n",
   "@depositHintTextClearInfo": {
     "type": "text",
     "placeholders": {
@@ -1987,7 +2027,7 @@
       }
     }
   },
-  "depositHintTextMaxExceed": "{no}超出在线支付单日额度限制或单笔大额充值，可使用其它充值方式\n",
+  "depositHintTextMaxExceed": "{no}超出在线支付单日额度限制或单笔大额存款，可使用其它存款方式\n",
   "@depositHintTextMaxExceed": {
     "type": "text",
     "placeholders": {
@@ -2080,11 +2120,11 @@
       }
     }
   },
-  "depositMessageFailed": "充值失败，请稍候重试或联系客服",
+  "depositMessageFailed": "存款失败，请稍候重试或联系客服",
   "@depositMessageFailed": {
     "type": "text"
   },
-  "depositMessageFormError": "充值信息错误，请重新选择充值方式或联系客服",
+  "depositMessageFormError": "存款信息错误，请重新选择存款方式或联系客服",
   "@depositMessageFormError": {
     "type": "text"
   },
@@ -3150,6 +3190,178 @@
   },
   "downloadHintPlatformIos": "(苹果适用)",
   "@downloadHintPlatformIos": {
+    "type": "text"
+  },
+  "aboutCertTitle": "牌照",
+  "@aboutCertTitle": {
+    "type": "text"
+  },
+  "aboutCertTitleGC": "英国GC监督委员会",
+  "@aboutCertTitleGC": {
+    "type": "text"
+  },
+  "aboutCertTitleMGA": "马耳他博彩牌照（MGA）认证",
+  "@aboutCertTitleMGA": {
+    "type": "text"
+  },
+  "aboutCertTitlePGC": "菲律宾（PAGCOR）监督博彩牌",
+  "@aboutCertTitlePGC": {
+    "type": "text"
+  },
+  "aboutCertTitleBVI": "英属维尔京群岛（BVI）认证",
+  "@aboutCertTitleBVI": {
+    "type": "text"
+  },
+  "aboutDataTitle1": "隐私声明",
+  "@aboutDataTitle1": {
+    "type": "text"
+  },
+  "aboutDataDesc10": "我们致力为客户保护隐私并提供一个最安全的游戏平台，在此网站搜集的数据将会为您提供最卓越的服务，我们不会出卖或租赁您的个人信息给第三方，对于有机会接触客户个人信息的协助伙伴也必需遵守我们订立的隐私保密规则。\n\n",
+  "@aboutDataDesc10": {
+    "type": "text"
+  },
+  "aboutDataDesc11": "SBB Relies on its rich experience and reputation to service more than ten million players, which demonstrates long-term legitimacy and is completely reliable.",
+  "@aboutDataDesc11": {
+    "type": "text"
+  },
+  "aboutDataDesc12": "Is a game company under M.A.N Entertainment Group, headquartered in Manila, Philippines. This is considered the largest corporation in the Asian online gambling market with a large workforce. With the recognized high confidence, has now become one of the International Online Games Association's most fully verified and licensed bookmakers.",
+  "@aboutDataDesc12": {
+    "type": "text"
+  },
+  "aboutDataTitle2": "新手教学",
+  "@aboutDataTitle2": {
+    "type": "text"
+  },
+  "aboutDataSubtitle20": "註冊",
+  "@aboutDataSubtitle20": {
+    "type": "text"
+  },
+  "aboutDataDesc20": "您可以通过常见问题项目，获得有关存款、提款及其他问题的解答和协助；或有任何问题，请与24H在线客服联系。",
+  "@aboutDataDesc20": {
+    "type": "text"
+  },
+  "aboutDataSubtitle21": "機構",
+  "@aboutDataSubtitle21": {
+    "type": "text"
+  },
+  "aboutDataDesc21": "成為我們最好的合作夥伴，並通過將玩家推薦給85bet來每月享受豐厚的佣金。",
+  "@aboutDataDesc21": {
+    "type": "text"
+  },
+  "aboutDataSubtitle22": "負責任的博彩",
+  "@aboutDataSubtitle22": {
+    "type": "text"
+  },
+  "aboutDataDesc22": "足球博彩致力於以積極的方式為我們的客戶提供娛樂渠道。我們有主要促進和確保負責任博彩的保障措施。",
+  "@aboutDataDesc22": {
+    "type": "text"
+  },
+  "aboutDataSubtitle23": "安全",
+  "@aboutDataSubtitle23": {
+    "type": "text"
+  },
+  "aboutDataDesc23": "具有穩定和安全的投注系統。您的隱私是我們的首要任務，因此我們始終嚴格遵守隱私政策。",
+  "@aboutDataDesc23": {
+    "type": "text"
+  },
+  "aboutDataTitle3": "游戏规则",
+  "@aboutDataTitle3": {
+    "type": "text"
+  },
+  "aboutDataSubtitle30": "體育博彩和現場博彩足球賠率",
+  "@aboutDataSubtitle30": {
+    "type": "text"
+  },
+  "aboutDataDesc30": "足球博彩賠率我們提供以下大型賽事：英超，西班牙冠軍西甲聯賽，意大利甲級聯賽，歐洲冠軍聯賽，法國國家錦標賽，德國，NFL，NBA，NCAA，女子籃球，網球，賽車F1我們很榮幸為您帶來每月超過4,000場比賽。",
+  "@aboutDataDesc30": {
+    "type": "text"
+  },
+  "aboutDataSubtitle31": "在線遊戲",
+  "@aboutDataSubtitle31": {
+    "type": "text"
+  },
+  "aboutDataDesc31": "在線遊戲有很多機會贏得遊戲中的大獎：輪盤，二十一點，撲克，老虎機。更多的累積獎金和更高的中獎機會。",
+  "@aboutDataDesc31": {
+    "type": "text"
+  },
+  "aboutDataSubtitle32": "線上賭場",
+  "@aboutDataSubtitle32": {
+    "type": "text"
+  },
+  "aboutDataDesc32": "此外，我們還提供許多其他類型的在線遊戲，尤其是：真人娛樂場，在百家樂，骰寶，龍/虎，輪盤賭和在線娛樂場老虎機等熱門遊戲商中都很容易玩。",
+  "@aboutDataDesc32": {
+    "type": "text"
+  },
+  "aboutDataTitle4": "责任条款",
+  "@aboutDataTitle4": {
+    "type": "text"
+  },
+  "aboutDataSubtitle40": "晉升",
+  "@aboutDataSubtitle40": {
+    "type": "text"
+  },
+  "aboutDataDesc40": "本公司只接受年龄已满18岁的注册用户，并同意您所提供之个人信息不实，或个人信息有异动但没有更新以致于与原登录之数据不符时，本公司有权随时终止您的会员资格及使用各项会员服务之权利。",
+  "@aboutDataDesc40": {
+    "type": "text"
+  },
+  "aboutDataSubtitle41": "支持中心",
+  "@aboutDataSubtitle41": {
+    "type": "text"
+  },
+  "aboutDataDesc41": "另請參閱體育和其他遊戲的常見問題解答。 支持帳戶註冊，匯款，取款和其他技術信息。",
+  "@aboutDataDesc41": {
+    "type": "text"
+  },
+  "aboutDataSubtitle42": "支付方式",
+  "@aboutDataSubtitle42": {
+    "type": "text"
+  },
+  "aboutDataDesc42": "We offer excellent options for customers to deposit and withdraw money through NETELLER, Moneybookers, International Bank Transfer, Western Union. We have it all, let's get started right away with.",
+  "@aboutDataDesc42": {
+    "type": "text"
+  },
+  "aboutDataSubtitle43": "聯繫",
+  "@aboutDataSubtitle43": {
+    "type": "text"
+  },
+  "aboutDataDesc43": "如果您需要有關在足球賠率或在線賭場上的在線投注的任何幫助或問題，我們將通過實時聊天，電話和電子郵件提供24/7全天候支持。",
+  "@aboutDataDesc43": {
+    "type": "text"
+  },
+  "aboutDataTitle5": "责任博彩",
+  "@aboutDataTitle5": {
+    "type": "text"
+  },
+  "aboutDataSubtitle50": "體育成績",
+  "@aboutDataSubtitle50": {
+    "type": "text"
+  },
+  "aboutDataDesc50": "新宝盈积极努力地为玩家提供一个优质的娱乐平台。并已设置升级了多项安全设施来确保新宝盈游戏的公平公正。",
+  "@aboutDataDesc50": {
+    "type": "text"
+  },
+  "aboutDataSubtitle51": "投注統計",
+  "@aboutDataSubtitle51": {
+    "type": "text"
+  },
+  "aboutDataDesc51": "超過200種不同的比賽，包括各種體育項目，形式，團隊和個人比賽，固定裝置，陣容，團隊，加時賽和延期比賽。",
+  "@aboutDataDesc51": {
+    "type": "text"
+  },
+  "aboutDataSubtitle52": "體育博彩",
+  "@aboutDataSubtitle52": {
+    "type": "text"
+  },
+  "aboutDataDesc52": "我們所有的運動規則都嚴格遵守今天越南最佳組織委員會的正式規則。",
+  "@aboutDataDesc52": {
+    "type": "text"
+  },
+  "aboutDataSubtitle53": "賭場博彩",
+  "@aboutDataSubtitle53": {
+    "type": "text"
+  },
+  "aboutDataDesc53": "真人娛樂場完全顯示：下注限制，結果和下注歷史記錄詳細信息。您的所有投注信息都集成在屏幕上，以方便娛樂。您可以隨時查看任何投注信息。",
+  "@aboutDataDesc53": {
     "type": "text"
   }
 }

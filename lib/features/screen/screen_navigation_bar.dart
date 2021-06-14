@@ -14,7 +14,8 @@ class ScreenNavigationBar extends StatefulWidget {
 class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
   static final List<ScreenNavigationBarItem> _tabs = [
     ScreenNavigationBarItem.home,
-    ScreenNavigationBarItem.deposit,
+    // ScreenNavigationBarItem.deposit,
+    ScreenNavigationBarItem.promo,
     ScreenNavigationBarItem.member,
     ScreenNavigationBarItem.service,
   ];

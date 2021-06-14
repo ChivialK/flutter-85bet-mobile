@@ -52,11 +52,14 @@ final _chineseRegex = RegExp(
 final _chineseInvalidRegex =
     RegExp("[\u3105-\u3129]|[\u02CA]|[\u02CB]|[\u02C7]|[\u02C9]");
 
+final _chinaPhoneRegex = RegExp(
+    r'^((13[0-9])|(14[0-9])|(15[0-9])|(16[0-9])|(17[0-9])|(18[0-9])|(19[0-9]))\d{8}$');
+
 final _digitRegex = RegExp(r'\d+');
 
 extension RegexExtension on String {
   /// String Regex
-  bool get isUrl => Uri.parse(this).isAbsolute;
+  bool get isUrl => Uri.parse(this).hasAbsolutePath;
 
   bool get isEmail => EmailValidator.validate(this);
 
@@ -70,6 +73,8 @@ extension RegexExtension on String {
       _htmlRegex.hasMatch("""$this""".replaceAll('\n', ''));
 
   bool get isValidDate => _dateRegex.hasMatch(this);
+
+  bool get isValidChinaPhone => _chinaPhoneRegex.hasMatch(this);
 
   bool get hasChinese => _chineseRegex.hasMatch(this);
 

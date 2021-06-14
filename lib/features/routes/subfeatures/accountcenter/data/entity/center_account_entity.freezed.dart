@@ -19,6 +19,7 @@ class _$CenterAccountEntityTearOff {
       int accountId,
       String birthDate,
       String phone,
+      String verified,
       String gender,
       String email,
       String wechat,
@@ -31,6 +32,7 @@ class _$CenterAccountEntityTearOff {
       accountId: accountId,
       birthDate: birthDate,
       phone: phone,
+      verified: verified,
       gender: gender,
       email: email,
       wechat: wechat,
@@ -52,6 +54,7 @@ mixin _$CenterAccountEntity {
   int get accountId;
   String get birthDate;
   String get phone;
+  String get verified;
   String get gender;
   String get email;
   String get wechat;
@@ -73,6 +76,7 @@ abstract class $CenterAccountEntityCopyWith<$Res> {
       int accountId,
       String birthDate,
       String phone,
+      String verified,
       String gender,
       String email,
       String wechat,
@@ -97,6 +101,7 @@ class _$CenterAccountEntityCopyWithImpl<$Res>
     Object accountId = freezed,
     Object birthDate = freezed,
     Object phone = freezed,
+    Object verified = freezed,
     Object gender = freezed,
     Object email = freezed,
     Object wechat = freezed,
@@ -111,6 +116,7 @@ class _$CenterAccountEntityCopyWithImpl<$Res>
       accountId: accountId == freezed ? _value.accountId : accountId as int,
       birthDate: birthDate == freezed ? _value.birthDate : birthDate as String,
       phone: phone == freezed ? _value.phone : phone as String,
+      verified: verified == freezed ? _value.verified : verified as String,
       gender: gender == freezed ? _value.gender : gender as String,
       email: email == freezed ? _value.email : email as String,
       wechat: wechat == freezed ? _value.wechat : wechat as String,
@@ -136,6 +142,7 @@ abstract class _$CenterAccountEntityCopyWith<$Res>
       int accountId,
       String birthDate,
       String phone,
+      String verified,
       String gender,
       String email,
       String wechat,
@@ -162,6 +169,7 @@ class __$CenterAccountEntityCopyWithImpl<$Res>
     Object accountId = freezed,
     Object birthDate = freezed,
     Object phone = freezed,
+    Object verified = freezed,
     Object gender = freezed,
     Object email = freezed,
     Object wechat = freezed,
@@ -176,6 +184,7 @@ class __$CenterAccountEntityCopyWithImpl<$Res>
       accountId: accountId == freezed ? _value.accountId : accountId as int,
       birthDate: birthDate == freezed ? _value.birthDate : birthDate as String,
       phone: phone == freezed ? _value.phone : phone as String,
+      verified: verified == freezed ? _value.verified : verified as String,
       gender: gender == freezed ? _value.gender : gender as String,
       email: email == freezed ? _value.email : email as String,
       wechat: wechat == freezed ? _value.wechat : wechat as String,
@@ -196,6 +205,7 @@ class _$_CenterAccountEntity implements _CenterAccountEntity {
       this.accountId,
       this.birthDate,
       this.phone,
+      this.verified,
       this.gender,
       this.email,
       this.wechat,
@@ -213,6 +223,8 @@ class _$_CenterAccountEntity implements _CenterAccountEntity {
   @override
   final String phone;
   @override
+  final String verified;
+  @override
   final String gender;
   @override
   final String email;
@@ -229,7 +241,7 @@ class _$_CenterAccountEntity implements _CenterAccountEntity {
 
   @override
   String toString() {
-    return 'CenterAccountEntity(accountCode: $accountCode, accountId: $accountId, birthDate: $birthDate, phone: $phone, gender: $gender, email: $email, wechat: $wechat, firstName: $firstName, autoTransfer: $autoTransfer, cgpWallet: $cgpWallet, cpwWallet: $cpwWallet)';
+    return 'CenterAccountEntity(accountCode: $accountCode, accountId: $accountId, birthDate: $birthDate, phone: $phone, verified: $verified, gender: $gender, email: $email, wechat: $wechat, firstName: $firstName, autoTransfer: $autoTransfer, cgpWallet: $cgpWallet, cpwWallet: $cpwWallet)';
   }
 
   @override
@@ -247,6 +259,9 @@ class _$_CenterAccountEntity implements _CenterAccountEntity {
                     .equals(other.birthDate, birthDate)) &&
             (identical(other.phone, phone) ||
                 const DeepCollectionEquality().equals(other.phone, phone)) &&
+            (identical(other.verified, verified) ||
+                const DeepCollectionEquality()
+                    .equals(other.verified, verified)) &&
             (identical(other.gender, gender) ||
                 const DeepCollectionEquality().equals(other.gender, gender)) &&
             (identical(other.email, email) ||
@@ -274,6 +289,7 @@ class _$_CenterAccountEntity implements _CenterAccountEntity {
       const DeepCollectionEquality().hash(accountId) ^
       const DeepCollectionEquality().hash(birthDate) ^
       const DeepCollectionEquality().hash(phone) ^
+      const DeepCollectionEquality().hash(verified) ^
       const DeepCollectionEquality().hash(gender) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(wechat) ^
@@ -294,6 +310,7 @@ abstract class _CenterAccountEntity implements CenterAccountEntity {
       int accountId,
       String birthDate,
       String phone,
+      String verified,
       String gender,
       String email,
       String wechat,
@@ -310,6 +327,8 @@ abstract class _CenterAccountEntity implements CenterAccountEntity {
   String get birthDate;
   @override
   String get phone;
+  @override
+  String get verified;
   @override
   String get gender;
   @override

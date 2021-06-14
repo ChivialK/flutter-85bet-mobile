@@ -569,41 +569,46 @@ class _LoginDisplayState extends State<LoginDisplay> with AfterLayoutMixin {
             ],
           ),
         ),
-        // SizedBox(width: 6.0),
-        // GestureDetector(
-        //   onTap: () {
-        //     // clear text field focus
-        //     FocusScope.of(context).unfocus();
-        //     RouterNavigate.navigateToPage(RoutePage.service);
-        //   },
-        //   child: Row(
-        //     children: [
-        //       Padding(
-        //         padding: const EdgeInsets.all(8.0),
-        //         child: Text(
-        //           localeStr.btnResetPassword,
-        //           style: TextStyle(
-        //             fontSize: FontSize.SUBTITLE.value,
-        //             color: Color(0xff33b6e4),
-        //             decoration: TextDecoration.underline,
-        //           ),
-        //         ),
-        //       ),
-        //       Container(
-        //         constraints: BoxConstraints.tight(Size(24, 24)),
-        //         decoration: BoxDecoration(
-        //           shape: BoxShape.circle,
-        //           color: Color(0xff33b6e4),
-        //         ),
-        //         child: Icon(
-        //           const IconData(0xf128, fontFamily: 'FontAwesome'),
-        //           color: Colors.white,
-        //           size: 16.0,
-        //         ),
-        //       )
-        //     ],
-        //   ),
-        // ),
+        SizedBox(width: 6.0),
+        GestureDetector(
+          onTap: () {
+            // clear text field focus
+            FocusScope.of(context).unfocus();
+            RouterNavigate.navigateToPage(
+              RoutePage.service,
+              arg: WebRouteArguments(
+                startUrl: Global.CS_SERVICE_URL,
+              ),
+            );
+          },
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  localeStr.btnResetPassword,
+                  style: TextStyle(
+                    fontSize: FontSize.SUBTITLE.value,
+                    color: Color(0xff33b6e4),
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              Container(
+                constraints: BoxConstraints.tight(Size(24, 24)),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xff33b6e4),
+                ),
+                child: Icon(
+                  const IconData(0xf128, fontFamily: 'FontAwesome'),
+                  color: Colors.white,
+                  size: 16.0,
+                ),
+              )
+            ],
+          ),
+        ),
       ],
     );
   }

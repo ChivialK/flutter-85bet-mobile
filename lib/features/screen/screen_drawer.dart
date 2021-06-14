@@ -14,6 +14,7 @@ class ScreenDrawer extends StatelessWidget {
     ScreenDrawerItem.promo,
     // ScreenDrawerItem.store,
     // ScreenDrawerItem.roller,
+    ScreenDrawerItem.about,
     ScreenDrawerItem.website,
     ScreenDrawerItem.logout,
 //    ScreenDrawerItem.testUI,

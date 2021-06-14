@@ -33,6 +33,7 @@ import 'package:flutter_85bet_mobile/features/routes/subfeatures/notice/presenta
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/viplevel/presentation/vip_level_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/store/presentation/store_route.dart';
 import 'package:flutter_85bet_mobile/features/routes/subfeatures/roller/presentation/roller_route.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/about/presentation/about_route.dart';
 import 'package:flutter_85bet_mobile/features/test_area_route.dart';
 
 abstract class Routes {
@@ -65,6 +66,7 @@ abstract class Routes {
   static const levelRoute = '/level-route';
   static const storeRoute = '/store-route';
   static const rollerRoute = '/roller-route';
+  static const aboutRoute = '/about-route';
   static const testAreaRoute = '/test-area-route';
   static const all = {
     homeRoute,
@@ -96,6 +98,7 @@ abstract class Routes {
     levelRoute,
     storeRoute,
     rollerRoute,
+    aboutRoute,
     testAreaRoute,
   };
 }
@@ -400,6 +403,13 @@ class FeatureRouter extends RouterBase {
         return PageRouteBuilder<dynamic>(
           pageBuilder: (context, animation, secondaryAnimation) =>
               RollerRoute(),
+          settings: settings,
+          transitionsBuilder: MyStaticPageTransition.slide,
+          transitionDuration: const Duration(milliseconds: 400),
+        );
+      case Routes.aboutRoute:
+        return PageRouteBuilder<dynamic>(
+          pageBuilder: (context, animation, secondaryAnimation) => AboutRoute(),
           settings: settings,
           transitionsBuilder: MyStaticPageTransition.slide,
           transitionDuration: const Duration(milliseconds: 400),

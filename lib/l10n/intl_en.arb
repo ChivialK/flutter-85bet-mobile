@@ -48,6 +48,10 @@
   "@pageTitleSign": {
     "type": "text"
   },
+  "pageTitleAbout": "About us",
+  "@pageTitleAbout": {
+    "type": "text"
+  },
   "pageTitleRoller": "Lucky Roller",
   "@pageTitleRoller": {
     "type": "text"
@@ -172,7 +176,7 @@
   "@pageTitleMore": {
     "type": "text"
   },
-  "toolBarMemberCredit": "NTD {value}",
+  "toolBarMemberCredit": "￥ {value}",
   "@toolBarMemberCredit": {
     "type": "text",
     "placeholders": {
@@ -611,6 +615,10 @@
   },
   "messageInvalidBirthDate": "Date of Birth Error",
   "@messageInvalidBirthDate": {
+    "type": "text"
+  },
+  "messageRepeatEmail": "Email already used",
+  "@messageRepeatEmail": {
     "type": "text"
   },
   "messageRepeatPhone": "Phone Number already registered",
@@ -1419,6 +1427,30 @@
   "@bankcardViewTitleSend": {
     "type": "text"
   },
+  "bankcardNotice1": "1. The member name and the bound bank card account name must be the same person (for the security of your account, please do not tell others the bank card binding information)",
+  "@bankcardNotice1": {
+    "type": "text"
+  },
+  "bankcardNotice2": "2. If you do not truthfully fill in the real name and card number of your bank card as required, and the bound information is inconsistent with the real information of your bank card, your withdrawal will not be processed. Therefore, when binding the bank card , Must be filled in carefully to ensure that it is correct. If you encounter related problems, please contact the online customer service immediately for the safety of your funds, we will verify your identity and deal with it in time for you.",
+  "@bankcardNotice2": {
+    "type": "text"
+  },
+  "bankcardNotice3": "3. Bank cards that have been bound cannot be bound to other game accounts again.",
+  "@bankcardNotice3": {
+    "type": "text"
+  },
+  "bankcardNotice4": "4. Bank branch: refers to the branch of your bank card account.",
+  "@bankcardNotice4": {
+    "type": "text"
+  },
+  "bankcardNotice5": "5. Account opening outlet: the bank outlet that issued the bank card when the bank card was first opened.",
+  "@bankcardNotice5": {
+    "type": "text"
+  },
+  "bankcardNotice6": "*The correct bank branch and account opening outlet, please contact the customer service of your issuing bank for inquiries",
+  "@bankcardNotice6": {
+    "type": "text"
+  },
   "withdrawViewTitleAmount": "Withdrawal Amount",
   "@withdrawViewTitleAmount": {
     "type": "text"
@@ -1591,6 +1623,14 @@
   "@centerHintNoName": {
     "type": "text"
   },
+  "centerHintNotVerified": "Not Verified",
+  "@centerHintNotVerified": {
+    "type": "text"
+  },
+  "centerHintVerified": "Verified",
+  "@centerHintVerified": {
+    "type": "text"
+  },
   "centerLuckyTitle": "Please fill in the numbers from 01 to 49 in the following 7 spaces",
   "@centerLuckyTitle": {
     "type": "text"
@@ -1683,7 +1723,7 @@
   "@betsFieldDateError": {
     "type": "text"
   },
-  "betsTextTotal": "Total: NTD {value}",
+  "betsTextTotal": "Total: ￥ {value}",
   "@betsTextTotal": {
     "type": "text",
     "placeholders": {
@@ -1725,39 +1765,39 @@
     "type": "text"
   },
   "dealsViewSpinnerType0": "All",
-  "@ dealsViewSpinnerType0": {
+  "@dealsViewSpinnerType0": {
     "type": "text"
   },
   "dealsViewSpinnerType1": "Recharge",
-  "@ dealsViewSpinnerType1": {
+  "@dealsViewSpinnerType1": {
     "type": "text"
   },
   "dealsViewSpinnerType2": "Withdrawal",
-  "@ dealsViewSpinnerType2": {
+  "@dealsViewSpinnerType2": {
     "type": "text"
   },
   "dealsViewSpinnerType3": "Bonus",
-  "@ dealsViewSpinnerType3": {
+  "@dealsViewSpinnerType3": {
     "type": "text"
   },
   "dealsViewSpinnerStatus0": "All",
-  "@ dealsViewSpinnerStatus0": {
+  "@dealsViewSpinnerStatus0": {
     "type": "text"
   },
   "dealsViewSpinnerStatus1": "Success",
-  "@ dealsViewSpinnerStatus1": {
+  "@dealsViewSpinnerStatus1": {
     "type": "text"
   },
   "dealsViewSpinnerStatus2": "Rejected",
-  "@ dealsViewSpinnerStatus2": {
+  "@dealsViewSpinnerStatus2": {
     "type": "text"
   },
   "dealsViewSpinnerStatus3": "Processing",
-  "@ dealsViewSpinnerStatus3": {
+  "@dealsViewSpinnerStatus3": {
     "type": "text"
   },
   "dealsViewSpinnerStatus4": "New Deal",
-  "@ dealsViewSpinnerStatus4": {
+  "@dealsViewSpinnerStatus4": {
     "type": "text"
   },
   "dealsHeaderSerial": "No.",
@@ -1876,7 +1916,7 @@
   "@depositPaymentEditTitleAmount": {
     "type": "text"
   },
-  "depositPaymentEditTitleCurrencyHint": "Reality: {value} NTD",
+  "depositPaymentEditTitleCurrencyHint": "Reality: {value} ￥",
   "@depositPaymentEditTitleCurrencyHint": {
     "type": "text",
     "placeholders": {
@@ -1933,11 +1973,11 @@
     "type": "text"
   },
   "depositPaymentMethodLocal1": "Local Transfer",
-  "@ depositPaymentMethodLocal1": {
+  "@depositPaymentMethodLocal1": {
     "type": "text"
   },
   "depositPaymentMethodLocal2": "ATM Deposit",
-  "@ depositPaymentMethodLocal2": {
+  "@depositPaymentMethodLocal2": {
     "type": "text"
   },
   "depositPaymentNoPromo": "Without Promo",
@@ -2098,31 +2138,31 @@
     }
   },
   "depositNewbieQuick0": "Debit Card Tutorial",
-  "@ depositNewbieQuick0": {
+  "@depositNewbieQuick0": {
     "type": "text"
   },
   "depositNewbieAli0": "Alipay Tutorial",
-  "@ depositNewbieAli0": {
+  "@depositNewbieAli0": {
     "type": "text"
   },
   "depositNewbieAli1": "First open Alipay on your mobile phone and log in, click the [Transfer] function on the motherboard.",
-  "@ depositNewbieAli1": {
+  "@depositNewbieAli1": {
     "type": "text"
   },
   "depositNewbieAli2": "Select the [Go to Bank Card] button at the bottom of the transfer page",
-  "@ depositNewbieAli2": {
+  "@depositNewbieAli2": {
     "type": "text"
   },
   "depositNewbieAli3": "It is also necessary to fill in [Payee Card Number] == [Banking] == [Payee Name] == [Payment Amount]",
-  "@ depositNewbieAli3": {
+  "@depositNewbieAli3": {
     "type": "text"
   },
   "depositNewbieAli4": "After submission, enter Alipay [Payment Password].",
-  "@ depositNewbieAli4": {
+  "@depositNewbieAli4": {
     "type": "text"
   },
   "depositNewbieAli5": "After the transfer is successful, you can view it in the Alipay bill details, and change the transfer details and arrival time.",
-  "@ depositNewbieAli5": {
+  "@depositNewbieAli5": {
     "type": "text"
   },
   "depositNewbieJd0": "JD.COM Tutorial",
@@ -2146,31 +2186,31 @@
     "type": "text"
   },
   "depositNewbieUnion0": "UnionPay Payment Tutorial",
-  "@ depositNewbieUnion0": {
+  "@depositNewbieUnion0": {
     "type": "text"
   },
   "depositNewbieUnion1": "1. Download UnionPay Wallet App",
-  "@ depositNewbieUnion1": {
+  "@depositNewbieUnion1": {
     "type": "text"
   },
   "depositNewbieUnion2": "2. Register and log in.",
-  "@ depositNewbieUnion2": {
+  "@depositNewbieUnion2": {
     "type": "text"
   },
   "depositNewbieUnion3": "3. Bind a bank card, select Card Manager → Card List → Add Bank Card → Add a New Card.",
-  "@ depositNewbieUnion3": {
+  "@depositNewbieUnion3": {
     "type": "text"
   },
   "depositNewbieUnion4": "You can add both credit and debit cards",
-  "@ depositNewbieUnion4": {
+  "@depositNewbieUnion4": {
     "type": "text"
   },
   "depositNewbieWechat0": "Code Scan Tutorial",
-  "@ depositNewbieWechat0": {
+  "@depositNewbieWechat0": {
     "type": "text"
   },
   "depositNewbieWechat1": "1. Take a payment QR code with a mobile phone.",
-  "@ depositNewbieWechat1": {
+  "@depositNewbieWechat1": {
     "type": "text"
   },
   "depositNewbieWechat2": "2. Then use another mobile phone WeChat to scan the code.",
@@ -2231,19 +2271,19 @@
     "type": "text"
   },
   "balanceHintText1": "1. Please exit the game or game betting interface before transferring money.",
-  "@ balanceHintText1": {
+  "@balanceHintText1": {
     "type": "text"
   },
   "balanceHintText2": "2. When not participating in the activity, the amount of the indoor transfer cannot be less than 1 yuan, and there is no handling fee for indoor transfer.",
-  "@ balanceHintText2": {
+  "@balanceHintText2": {
     "type": "text"
   },
   "balanceHintText3": "3. If you have a slow internet connection, please wait for a while and don't repeat the submission multiple times.",
-  "@ balanceHintText3": {
+  "@balanceHintText3": {
     "type": "text"
   },
   "balanceHintText4": "4. If the platform amount has not changed after 4 successful transfers, please refresh the platform manually or contact customer service",
-  "@ balanceHintText4": {
+  "@balanceHintText4": {
     "type": "text"
   },
   "rollbackHeaderTextTime": "Time Interval",
@@ -2698,19 +2738,19 @@
     "type": "text"
   },
   "wheelOrderTableTextStatus0": "Not dispatched",
-  "@ wheelOrderTableTextStatus0": {
+  "@wheelOrderTableTextStatus0": {
     "type": "text"
   },
   "wheelOrderTableTextStatus1": "Dispatched",
-  "@ wheelOrderTableTextStatus1": {
+  "@wheelOrderTableTextStatus1": {
     "type": "text"
   },
   "wheelApplyTableTextStatus0": "Not reached",
-  "@ wheelApplyTableTextStatus0": {
+  "@wheelApplyTableTextStatus0": {
     "type": "text"
   },
   "wheelApplyTableTextStatus1": "Achieved",
-  "@ wheelApplyTableTextStatus1": {
+  "@wheelApplyTableTextStatus1": {
     "type": "text"
   },
   "wheelApplyTableTextStatus2": "Applied",
@@ -2768,11 +2808,11 @@
     }
   },
   "storeRecordSpinnerTitle1": "Show",
-  "@ storeRecordSpinnerTitle1": {
+  "@storeRecordSpinnerTitle1": {
     "type": "text"
   },
   "storeRecordSpinnerTitle2": "item",
-  "@ storeRecordSpinnerTitle2": {
+  "@storeRecordSpinnerTitle2": {
     "type": "text"
   },
   "storeRecordFieldHint": "Please enter a product name",
@@ -2867,15 +2907,15 @@
     "type": "text"
   },
   "storeProductWindowHint1": "Limited number, while stocks last",
-  "@ storeProductWindowHint1": {
+  "@storeProductWindowHint1": {
     "type": "text"
   },
   "storeProductWindowHint2": "Use per branch",
-  "@ storeProductWindowHint2": {
+  "@storeProductWindowHint2": {
     "type": "text"
   },
   "storeProductWindowHint3": "Point Exchange",
-  "@ storeProductWindowHint3": {
+  "@storeProductWindowHint3": {
     "type": "text"
   },
   "storeRequestWindowTextPoint": "Accumulated Points:",
@@ -3150,6 +3190,178 @@
   },
   "downloadHintPlatformIos": "(iOS Only)",
   "@downloadHintPlatformIos": {
+    "type": "text"
+  },
+  "aboutCertTitle": "Certifact",
+  "@aboutCertTitle": {
+    "type": "text"
+  },
+  "aboutCertTitleGC": "Gambling Commission",
+  "@aboutCertTitleGC": {
+    "type": "text"
+  },
+  "aboutCertTitleMGA": "MGA License",
+  "@aboutCertTitleMGA": {
+    "type": "text"
+  },
+  "aboutCertTitlePGC": "PAGCOR License",
+  "@aboutCertTitlePGC": {
+    "type": "text"
+  },
+  "aboutCertTitleBVI": "BVI Certified",
+  "@aboutCertTitleBVI": {
+    "type": "text"
+  },
+  "aboutDataTitle1": "Privacy statement",
+  "@aboutDataTitle1": {
+    "type": "text"
+  },
+  "aboutDataDesc10": "85BET is licensed by the Isle of Man and the Cagayan and Freeport Economic Zones. This is a multinational company with operations in the Asia-Pacific region.",
+  "@aboutDataDesc10": {
+    "type": "text"
+  },
+  "aboutDataDesc11": "85bet relies on its rich experience and reputation to service more than ten million players, which demonstrates long-term legitimacy and is completely reliable.",
+  "@aboutDataDesc11": {
+    "type": "text"
+  },
+  "aboutDataDesc12": "Is a game company under M.A.N Entertainment Group, headquartered in Manila, Philippines. This is considered the largest corporation in the Asian online gambling market with a large workforce. With the recognized high confidence, 85bet has now become one of the International Online Games Association's most fully verified and licensed bookmakers.",
+  "@aboutDataDesc12": {
+    "type": "text"
+  },
+  "aboutDataTitle2": "INFORMATION",
+  "@aboutDataTitle2": {
+    "type": "text"
+  },
+  "aboutDataSubtitle20": "Registration",
+  "@aboutDataSubtitle20": {
+    "type": "text"
+  },
+  "aboutDataDesc20": "Open a Vietnamese 85bet account to join online all of our online betting promotions high quality entertainment website with exceptionally good value. We believe that in bonus points, customers will have the opportunity to receive valuable gifts and incentives when participating in promotions.",
+  "@aboutDataDesc20": {
+    "type": "text"
+  },
+  "aboutDataSubtitle21": "Agency",
+  "@aboutDataSubtitle21": {
+    "type": "text"
+  },
+  "aboutDataDesc21": "Become our best partner and enjoy great commissions every month by referring players to 85bet.",
+  "@aboutDataDesc21": {
+    "type": "text"
+  },
+  "aboutDataSubtitle22": "Responsible Betting",
+  "@aboutDataSubtitle22": {
+    "type": "text"
+  },
+  "aboutDataDesc22": "85bet betting odds soccer strives to provide a channel of entertainment to our customers in a positive way. We have safeguards primarily promoting and ensuring responsible betting.",
+  "@aboutDataDesc22": {
+    "type": "text"
+  },
+  "aboutDataSubtitle23": "Security",
+  "@aboutDataSubtitle23": {
+    "type": "text"
+  },
+  "aboutDataDesc23": "With a stable and safe betting system. Your privacy is our top priority so we are always in strict compliance with the privacy policies.",
+  "@aboutDataDesc23": {
+    "type": "text"
+  },
+  "aboutDataTitle3": "PRODUCT",
+  "@aboutDataTitle3": {
+    "type": "text"
+  },
+  "aboutDataSubtitle30": "Sports Betting And Live Betting soccer odds",
+  "@aboutDataSubtitle30": {
+    "type": "text"
+  },
+  "aboutDataDesc30": "Football betting odds We offer major tournaments such as: Premier League, Spanish Championship La Liga, Italian Serie A, UEFA Championship, French National Championship, Germany, NFL, NBA, NCAA, Women's Basketball, Tennis, Racing F1 We are honored to bring you over 4,000 matches per month.",
+  "@aboutDataDesc30": {
+    "type": "text"
+  },
+  "aboutDataSubtitle31": "Game online",
+  "@aboutDataSubtitle31": {
+    "type": "text"
+  },
+  "aboutDataDesc31": "Online games with many opportunities to win Jackpots in games: Roulette, Blackjack, Poker, Slots. More progressive jackpot prizes and higher chances of winning in 85bet.",
+  "@aboutDataDesc31": {
+    "type": "text"
+  },
+  "aboutDataSubtitle32": "Online Casino",
+  "@aboutDataSubtitle32": {
+    "type": "text"
+  },
+  "aboutDataDesc32": "In addition we also offer many other types of online games, especially: Live Casino with hot dealers in Baccarat, Sicbo, Dragon / Tiger, Roulette and Online Casino Slots, easy to play.",
+  "@aboutDataDesc32": {
+    "type": "text"
+  },
+  "aboutDataTitle4": "INFORMATION CENTRE",
+  "@aboutDataTitle4": {
+    "type": "text"
+  },
+  "aboutDataSubtitle40": "Promotion",
+  "@aboutDataSubtitle40": {
+    "type": "text"
+  },
+  "aboutDataDesc40": "Bonus promotions for new members. Bonuses on subsequent Fundings and refunds to existing members.",
+  "@aboutDataDesc40": {
+    "type": "text"
+  },
+  "aboutDataSubtitle41": "Support center",
+  "@aboutDataSubtitle41": {
+    "type": "text"
+  },
+  "aboutDataDesc41": "See also FAQs for sports and other games. Support for account registration, Money Transfer, withdrawals and other technical information.",
+  "@aboutDataDesc41": {
+    "type": "text"
+  },
+  "aboutDataSubtitle42": "Payment methods",
+  "@aboutDataSubtitle42": {
+    "type": "text"
+  },
+  "aboutDataDesc42": "We offer excellent options for customers to deposit and withdraw money through NETELLER, Moneybookers, International Bank Transfer, Western Union. We have it all, let's get started right away with 85bet.",
+  "@aboutDataDesc42": {
+    "type": "text"
+  },
+  "aboutDataSubtitle43": "Contact",
+  "@aboutDataSubtitle43": {
+    "type": "text"
+  },
+  "aboutDataDesc43": "If you need any help or questions about online betting on football odds or online casino, we will provide 24/7 support via Live Chat, Phone and email.",
+  "@aboutDataDesc43": {
+    "type": "text"
+  },
+  "aboutDataTitle5": "Betting information",
+  "@aboutDataTitle5": {
+    "type": "text"
+  },
+  "aboutDataSubtitle50": "Sports Results",
+  "@aboutDataSubtitle50": {
+    "type": "text"
+  },
+  "aboutDataDesc50": "Vietnam football odds Provides the results of all the best sports games and leagues in Vietnam today.",
+  "@aboutDataDesc50": {
+    "type": "text"
+  },
+  "aboutDataSubtitle51": "Bet Statistics",
+  "@aboutDataSubtitle51": {
+    "type": "text"
+  },
+  "aboutDataDesc51": "More than 200 diverse tournaments with a variety of sports, formats, teams and individual matches, fixtures, lineups, teams, extra times and deferred matches.",
+  "@aboutDataDesc51": {
+    "type": "text"
+  },
+  "aboutDataSubtitle52": "Sports Betting",
+  "@aboutDataSubtitle52": {
+    "type": "text"
+  },
+  "aboutDataDesc52": "All of our Sports Rules are strictly followed by the Official Rules of the Best Organizing Committee in Vietnam today.",
+  "@aboutDataDesc52": {
+    "type": "text"
+  },
+  "aboutDataSubtitle53": "Casino Betting",
+  "@aboutDataSubtitle53": {
+    "type": "text"
+  },
+  "aboutDataDesc53": "Live Casino fully displays: bet limit, result and bet history details. All of your betting information is integrated on the screen for your entertainment convenience. You can check any bet information at any time.",
+  "@aboutDataDesc53": {
     "type": "text"
   }
 }

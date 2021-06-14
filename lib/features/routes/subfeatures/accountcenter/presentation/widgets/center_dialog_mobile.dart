@@ -2,6 +2,7 @@ import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/features/export_internal_file.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/customize_field_widget.dart';
+import 'package:flutter_85bet_mobile/features/general/widgets/customize_titled_container.dart';
 import 'package:flutter_85bet_mobile/features/general/widgets/dialog_widget.dart';
 
 import '../state/center_store.dart';
@@ -38,7 +39,7 @@ class _CenterDialogMobileState extends State<CenterDialogMobile>
       debug: true,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.fromLTRB(16.0, 14.0, 16.0, 12.0),
+          padding: const EdgeInsets.fromLTRB(30.0, 14.0, 30.0, 12.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -58,31 +59,48 @@ class _CenterDialogMobileState extends State<CenterDialogMobile>
                   physics: ClampingScrollPhysics(),
                   shrinkWrap: true,
                   children: <Widget>[
-                    new CustomizeFieldWidget(
-                      key: _phoneFieldKey,
-                      fieldType: FieldType.Numbers,
-                      hint: '',
-                      persistHint: false,
-                      prefixText: localeStr.centerTextTitlePhone,
-                      suffixText: localeStr.userVerifyButtonText('\n'),
-                      suffixLetterWidth: 3.6,
-                      suffixAction: (input) {
-                        debugPrint(
-                            'post request: ${widget.store.waitForResponse}');
-                        if (widget.store.waitForResponse == false)
-                          widget.store.postVerifyRequest(
-                              _phoneFieldKey.currentState.getInput);
-                      },
-                      maxInputLength: InputLimit.PHONE_MAX,
-                      readOnly: true,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: new CustomizeTitledContainer(
+                        prefixText: localeStr.centerTextTitlePhone,
+                        prefixTextSize: FontSize.SUBTITLE.value,
+                        backgroundColor: themeColor.fieldPrefixBgColor,
+                        child: new CustomizeFieldWidget(
+                          key: _phoneFieldKey,
+                          fieldType: FieldType.Numbers,
+                          hint: '',
+                          persistHint: false,
+                          readOnly: true,
+                          hasBorder: false,
+                          padding: const EdgeInsets.symmetric(vertical: 0.0),
+                          maxInputLength: InputLimit.PHONE_MAX,
+                          suffixText: localeStr.userVerifyButtonText('\n'),
+                          suffixLetterWidth: 3.6,
+                          suffixAction: (input) {
+                            debugPrint(
+                                'post request: ${widget.store.waitForResponse}');
+                            if (widget.store.waitForResponse == false)
+                              widget.store.postVerifyRequest(
+                                  _phoneFieldKey.currentState.getInput);
+                          },
+                        ),
+                      ),
                     ),
-                    new CustomizeFieldWidget(
-                      key: _verifyFieldKey,
-                      fieldType: FieldType.Account,
-                      hint: '',
-                      persistHint: false,
-                      prefixText: localeStr.userVerifyFieldTitle,
-                      maxInputLength: InputLimit.VERIFY,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: new CustomizeTitledContainer(
+                        prefixText: localeStr.userVerifyFieldTitle,
+                        prefixTextSize: FontSize.SUBTITLE.value,
+                        backgroundColor: themeColor.fieldPrefixBgColor,
+                        child: new CustomizeFieldWidget(
+                          key: _verifyFieldKey,
+                          fieldType: FieldType.Account,
+                          hint: '',
+                          persistHint: false,
+                          padding: const EdgeInsets.symmetric(vertical: 0.0),
+                          maxInputLength: InputLimit.VERIFY,
+                        ),
+                      ),
                     ),
                   ],
                 ),

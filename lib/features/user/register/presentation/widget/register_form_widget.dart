@@ -10,6 +10,7 @@ import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
 import 'package:flutter_85bet_mobile/features/themes/icon_code.dart';
 import 'package:flutter_85bet_mobile/features/user/data/entity/user_entity.dart';
 import 'package:flutter_85bet_mobile/features/user/login/presentation/widgets/login_navigate.dart';
+import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 
 import '../../../data/form/register_form.dart';
 import '../state/register_store.dart';
@@ -396,7 +397,7 @@ class _RegisterFormWidgetState extends State<RegisterFormWidget>
                                       min: InputLimit.PHONE_MIN,
                                       max: InputLimit.PHONE_MAX,
                                     ) ||
-                                    !input.startsWith('13');
+                                    !input.isValidChinaPhone;
                               });
                             },
                           ),

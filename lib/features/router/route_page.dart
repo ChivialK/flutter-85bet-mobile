@@ -275,6 +275,15 @@ class RoutePage extends Vnum<RouteInfo> {
     isUserOnly: true,
   ));
 
+  static const RoutePage sideAbout = const RoutePage.define(RouteInfo(
+    id: RouteEnum.ABOUT,
+    route: Routes.aboutRoute,
+    webPageName: ('/aboutus'),
+    showDrawer: true,
+    hideLanguageOption: true,
+    isUserOnly: false,
+  ));
+
   static const RoutePage sideDownload = const RoutePage.define(RouteInfo(
     id: RouteEnum.DOWNLOAD,
     route: Routes.downloadAreaRoute,

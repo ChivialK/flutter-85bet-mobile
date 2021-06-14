@@ -135,6 +135,16 @@ class S {
     );
   }
 
+  /// `About us`
+  String get pageTitleAbout {
+    return Intl.message(
+      'About us',
+      name: 'pageTitleAbout',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Lucky Roller`
   String get pageTitleRoller {
     return Intl.message(
@@ -445,10 +455,10 @@ class S {
     );
   }
 
-  /// `NTD {value}`
+  /// `￥ {value}`
   String toolBarMemberCredit(Object value) {
     return Intl.message(
-      'NTD $value',
+      '￥ $value',
       name: 'toolBarMemberCredit',
       desc: '',
       args: [value],
@@ -1410,6 +1420,16 @@ class S {
     return Intl.message(
       'Date of Birth Error',
       name: 'messageInvalidBirthDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email already used`
+  String get messageRepeatEmail {
+    return Intl.message(
+      'Email already used',
+      name: 'messageRepeatEmail',
       desc: '',
       args: [],
     );
@@ -3215,6 +3235,66 @@ class S {
     );
   }
 
+  /// `1. The member name and the bound bank card account name must be the same person (for the security of your account, please do not tell others the bank card binding information)`
+  String get bankcardNotice1 {
+    return Intl.message(
+      '1. The member name and the bound bank card account name must be the same person (for the security of your account, please do not tell others the bank card binding information)',
+      name: 'bankcardNotice1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2. If you do not truthfully fill in the real name and card number of your bank card as required, and the bound information is inconsistent with the real information of your bank card, your withdrawal will not be processed. Therefore, when binding the bank card , Must be filled in carefully to ensure that it is correct. If you encounter related problems, please contact the online customer service immediately for the safety of your funds, we will verify your identity and deal with it in time for you.`
+  String get bankcardNotice2 {
+    return Intl.message(
+      '2. If you do not truthfully fill in the real name and card number of your bank card as required, and the bound information is inconsistent with the real information of your bank card, your withdrawal will not be processed. Therefore, when binding the bank card , Must be filled in carefully to ensure that it is correct. If you encounter related problems, please contact the online customer service immediately for the safety of your funds, we will verify your identity and deal with it in time for you.',
+      name: 'bankcardNotice2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3. Bank cards that have been bound cannot be bound to other game accounts again.`
+  String get bankcardNotice3 {
+    return Intl.message(
+      '3. Bank cards that have been bound cannot be bound to other game accounts again.',
+      name: 'bankcardNotice3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `4. Bank branch: refers to the branch of your bank card account.`
+  String get bankcardNotice4 {
+    return Intl.message(
+      '4. Bank branch: refers to the branch of your bank card account.',
+      name: 'bankcardNotice4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `5. Account opening outlet: the bank outlet that issued the bank card when the bank card was first opened.`
+  String get bankcardNotice5 {
+    return Intl.message(
+      '5. Account opening outlet: the bank outlet that issued the bank card when the bank card was first opened.',
+      name: 'bankcardNotice5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `*The correct bank branch and account opening outlet, please contact the customer service of your issuing bank for inquiries`
+  String get bankcardNotice6 {
+    return Intl.message(
+      '*The correct bank branch and account opening outlet, please contact the customer service of your issuing bank for inquiries',
+      name: 'bankcardNotice6',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Withdrawal Amount`
   String get withdrawViewTitleAmount {
     return Intl.message(
@@ -3645,6 +3725,26 @@ class S {
     );
   }
 
+  /// `Not Verified`
+  String get centerHintNotVerified {
+    return Intl.message(
+      'Not Verified',
+      name: 'centerHintNotVerified',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verified`
+  String get centerHintVerified {
+    return Intl.message(
+      'Verified',
+      name: 'centerHintVerified',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please fill in the numbers from 01 to 49 in the following 7 spaces`
   String get centerLuckyTitle {
     return Intl.message(
@@ -3875,10 +3975,10 @@ class S {
     );
   }
 
-  /// `Total: NTD {value}`
+  /// `Total: ￥ {value}`
   String betsTextTotal(Object value) {
     return Intl.message(
-      'Total: NTD $value',
+      'Total: ￥ $value',
       name: 'betsTextTotal',
       desc: '',
       args: [value],
@@ -4345,10 +4445,10 @@ class S {
     );
   }
 
-  /// `Reality: {value} NTD`
+  /// `Reality: {value} ￥`
   String depositPaymentEditTitleCurrencyHint(Object value) {
     return Intl.message(
-      'Reality: $value NTD',
+      'Reality: $value ￥',
       name: 'depositPaymentEditTitleCurrencyHint',
       desc: '',
       args: [value],
@@ -7070,6 +7170,436 @@ class S {
     return Intl.message(
       '(iOS Only)',
       name: 'downloadHintPlatformIos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Certifact`
+  String get aboutCertTitle {
+    return Intl.message(
+      'Certifact',
+      name: 'aboutCertTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gambling Commission`
+  String get aboutCertTitleGC {
+    return Intl.message(
+      'Gambling Commission',
+      name: 'aboutCertTitleGC',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MGA License`
+  String get aboutCertTitleMGA {
+    return Intl.message(
+      'MGA License',
+      name: 'aboutCertTitleMGA',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PAGCOR License`
+  String get aboutCertTitlePGC {
+    return Intl.message(
+      'PAGCOR License',
+      name: 'aboutCertTitlePGC',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `BVI Certified`
+  String get aboutCertTitleBVI {
+    return Intl.message(
+      'BVI Certified',
+      name: 'aboutCertTitleBVI',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy statement`
+  String get aboutDataTitle1 {
+    return Intl.message(
+      'Privacy statement',
+      name: 'aboutDataTitle1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `85BET is licensed by the Isle of Man and the Cagayan and Freeport Economic Zones. This is a multinational company with operations in the Asia-Pacific region.`
+  String get aboutDataDesc10 {
+    return Intl.message(
+      '85BET is licensed by the Isle of Man and the Cagayan and Freeport Economic Zones. This is a multinational company with operations in the Asia-Pacific region.',
+      name: 'aboutDataDesc10',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `85bet relies on its rich experience and reputation to service more than ten million players, which demonstrates long-term legitimacy and is completely reliable.`
+  String get aboutDataDesc11 {
+    return Intl.message(
+      '85bet relies on its rich experience and reputation to service more than ten million players, which demonstrates long-term legitimacy and is completely reliable.',
+      name: 'aboutDataDesc11',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Is a game company under M.A.N Entertainment Group, headquartered in Manila, Philippines. This is considered the largest corporation in the Asian online gambling market with a large workforce. With the recognized high confidence, 85bet has now become one of the International Online Games Association's most fully verified and licensed bookmakers.`
+  String get aboutDataDesc12 {
+    return Intl.message(
+      'Is a game company under M.A.N Entertainment Group, headquartered in Manila, Philippines. This is considered the largest corporation in the Asian online gambling market with a large workforce. With the recognized high confidence, 85bet has now become one of the International Online Games Association\'s most fully verified and licensed bookmakers.',
+      name: 'aboutDataDesc12',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `INFORMATION`
+  String get aboutDataTitle2 {
+    return Intl.message(
+      'INFORMATION',
+      name: 'aboutDataTitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Registration`
+  String get aboutDataSubtitle20 {
+    return Intl.message(
+      'Registration',
+      name: 'aboutDataSubtitle20',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open a Vietnamese 85bet account to join online all of our online betting promotions high quality entertainment website with exceptionally good value. We believe that in bonus points, customers will have the opportunity to receive valuable gifts and incentives when participating in promotions.`
+  String get aboutDataDesc20 {
+    return Intl.message(
+      'Open a Vietnamese 85bet account to join online all of our online betting promotions high quality entertainment website with exceptionally good value. We believe that in bonus points, customers will have the opportunity to receive valuable gifts and incentives when participating in promotions.',
+      name: 'aboutDataDesc20',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Agency`
+  String get aboutDataSubtitle21 {
+    return Intl.message(
+      'Agency',
+      name: 'aboutDataSubtitle21',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Become our best partner and enjoy great commissions every month by referring players to 85bet.`
+  String get aboutDataDesc21 {
+    return Intl.message(
+      'Become our best partner and enjoy great commissions every month by referring players to 85bet.',
+      name: 'aboutDataDesc21',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsible Betting`
+  String get aboutDataSubtitle22 {
+    return Intl.message(
+      'Responsible Betting',
+      name: 'aboutDataSubtitle22',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `85bet betting odds soccer strives to provide a channel of entertainment to our customers in a positive way. We have safeguards primarily promoting and ensuring responsible betting.`
+  String get aboutDataDesc22 {
+    return Intl.message(
+      '85bet betting odds soccer strives to provide a channel of entertainment to our customers in a positive way. We have safeguards primarily promoting and ensuring responsible betting.',
+      name: 'aboutDataDesc22',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Security`
+  String get aboutDataSubtitle23 {
+    return Intl.message(
+      'Security',
+      name: 'aboutDataSubtitle23',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `With a stable and safe betting system. Your privacy is our top priority so we are always in strict compliance with the privacy policies.`
+  String get aboutDataDesc23 {
+    return Intl.message(
+      'With a stable and safe betting system. Your privacy is our top priority so we are always in strict compliance with the privacy policies.',
+      name: 'aboutDataDesc23',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PRODUCT`
+  String get aboutDataTitle3 {
+    return Intl.message(
+      'PRODUCT',
+      name: 'aboutDataTitle3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sports Betting And Live Betting soccer odds`
+  String get aboutDataSubtitle30 {
+    return Intl.message(
+      'Sports Betting And Live Betting soccer odds',
+      name: 'aboutDataSubtitle30',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Football betting odds We offer major tournaments such as: Premier League, Spanish Championship La Liga, Italian Serie A, UEFA Championship, French National Championship, Germany, NFL, NBA, NCAA, Women's Basketball, Tennis, Racing F1 We are honored to bring you over 4,000 matches per month.`
+  String get aboutDataDesc30 {
+    return Intl.message(
+      'Football betting odds We offer major tournaments such as: Premier League, Spanish Championship La Liga, Italian Serie A, UEFA Championship, French National Championship, Germany, NFL, NBA, NCAA, Women\'s Basketball, Tennis, Racing F1 We are honored to bring you over 4,000 matches per month.',
+      name: 'aboutDataDesc30',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Game online`
+  String get aboutDataSubtitle31 {
+    return Intl.message(
+      'Game online',
+      name: 'aboutDataSubtitle31',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Online games with many opportunities to win Jackpots in games: Roulette, Blackjack, Poker, Slots. More progressive jackpot prizes and higher chances of winning in 85bet.`
+  String get aboutDataDesc31 {
+    return Intl.message(
+      'Online games with many opportunities to win Jackpots in games: Roulette, Blackjack, Poker, Slots. More progressive jackpot prizes and higher chances of winning in 85bet.',
+      name: 'aboutDataDesc31',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Online Casino`
+  String get aboutDataSubtitle32 {
+    return Intl.message(
+      'Online Casino',
+      name: 'aboutDataSubtitle32',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In addition we also offer many other types of online games, especially: Live Casino with hot dealers in Baccarat, Sicbo, Dragon / Tiger, Roulette and Online Casino Slots, easy to play.`
+  String get aboutDataDesc32 {
+    return Intl.message(
+      'In addition we also offer many other types of online games, especially: Live Casino with hot dealers in Baccarat, Sicbo, Dragon / Tiger, Roulette and Online Casino Slots, easy to play.',
+      name: 'aboutDataDesc32',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `INFORMATION CENTRE`
+  String get aboutDataTitle4 {
+    return Intl.message(
+      'INFORMATION CENTRE',
+      name: 'aboutDataTitle4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Promotion`
+  String get aboutDataSubtitle40 {
+    return Intl.message(
+      'Promotion',
+      name: 'aboutDataSubtitle40',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bonus promotions for new members. Bonuses on subsequent Fundings and refunds to existing members.`
+  String get aboutDataDesc40 {
+    return Intl.message(
+      'Bonus promotions for new members. Bonuses on subsequent Fundings and refunds to existing members.',
+      name: 'aboutDataDesc40',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support center`
+  String get aboutDataSubtitle41 {
+    return Intl.message(
+      'Support center',
+      name: 'aboutDataSubtitle41',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See also FAQs for sports and other games. Support for account registration, Money Transfer, withdrawals and other technical information.`
+  String get aboutDataDesc41 {
+    return Intl.message(
+      'See also FAQs for sports and other games. Support for account registration, Money Transfer, withdrawals and other technical information.',
+      name: 'aboutDataDesc41',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment methods`
+  String get aboutDataSubtitle42 {
+    return Intl.message(
+      'Payment methods',
+      name: 'aboutDataSubtitle42',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We offer excellent options for customers to deposit and withdraw money through NETELLER, Moneybookers, International Bank Transfer, Western Union. We have it all, let's get started right away with 85bet.`
+  String get aboutDataDesc42 {
+    return Intl.message(
+      'We offer excellent options for customers to deposit and withdraw money through NETELLER, Moneybookers, International Bank Transfer, Western Union. We have it all, let\'s get started right away with 85bet.',
+      name: 'aboutDataDesc42',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact`
+  String get aboutDataSubtitle43 {
+    return Intl.message(
+      'Contact',
+      name: 'aboutDataSubtitle43',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you need any help or questions about online betting on football odds or online casino, we will provide 24/7 support via Live Chat, Phone and email.`
+  String get aboutDataDesc43 {
+    return Intl.message(
+      'If you need any help or questions about online betting on football odds or online casino, we will provide 24/7 support via Live Chat, Phone and email.',
+      name: 'aboutDataDesc43',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Betting information`
+  String get aboutDataTitle5 {
+    return Intl.message(
+      'Betting information',
+      name: 'aboutDataTitle5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sports Results`
+  String get aboutDataSubtitle50 {
+    return Intl.message(
+      'Sports Results',
+      name: 'aboutDataSubtitle50',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vietnam football odds Provides the results of all the best sports games and leagues in Vietnam today.`
+  String get aboutDataDesc50 {
+    return Intl.message(
+      'Vietnam football odds Provides the results of all the best sports games and leagues in Vietnam today.',
+      name: 'aboutDataDesc50',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bet Statistics`
+  String get aboutDataSubtitle51 {
+    return Intl.message(
+      'Bet Statistics',
+      name: 'aboutDataSubtitle51',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More than 200 diverse tournaments with a variety of sports, formats, teams and individual matches, fixtures, lineups, teams, extra times and deferred matches.`
+  String get aboutDataDesc51 {
+    return Intl.message(
+      'More than 200 diverse tournaments with a variety of sports, formats, teams and individual matches, fixtures, lineups, teams, extra times and deferred matches.',
+      name: 'aboutDataDesc51',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sports Betting`
+  String get aboutDataSubtitle52 {
+    return Intl.message(
+      'Sports Betting',
+      name: 'aboutDataSubtitle52',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All of our Sports Rules are strictly followed by the Official Rules of the Best Organizing Committee in Vietnam today.`
+  String get aboutDataDesc52 {
+    return Intl.message(
+      'All of our Sports Rules are strictly followed by the Official Rules of the Best Organizing Committee in Vietnam today.',
+      name: 'aboutDataDesc52',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Casino Betting`
+  String get aboutDataSubtitle53 {
+    return Intl.message(
+      'Casino Betting',
+      name: 'aboutDataSubtitle53',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Live Casino fully displays: bet limit, result and bet history details. All of your betting information is integrated on the screen for your entertainment convenience. You can check any bet information at any time.`
+  String get aboutDataDesc53 {
+    return Intl.message(
+      'Live Casino fully displays: bet limit, result and bet history details. All of your betting information is integrated on the screen for your entertainment convenience. You can check any bet information at any time.',
+      name: 'aboutDataDesc53',
       desc: '',
       args: [],
     );

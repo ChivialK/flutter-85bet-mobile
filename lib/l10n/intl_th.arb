@@ -48,6 +48,10 @@
   "@pageTitleSign": {
     "type": "text"
   },
+  "pageTitleAbout": "เกี่ยวกับเรา",
+  "@pageTitleAbout": {
+    "type": "text"
+  },
   "pageTitleRoller": "ลัคกี้โรลเลอร์",
   "@pageTitleRoller": {
     "type": "text"
@@ -172,7 +176,7 @@
   "@pageTitleMore": {
     "type": "text"
   },
-  "toolBarMemberCredit": "NTD {value}",
+  "toolBarMemberCredit": "￥ {value}",
   "@toolBarMemberCredit": {
     "type": "text",
     "placeholders": {
@@ -611,6 +615,10 @@
   },
   "messageInvalidBirthDate": "วันเกิดผิด",
   "@messageInvalidBirthDate": {
+    "type": "text"
+  },
+  "messageRepeatEmail": "กล่องจดหมายซ้ำ",
+  "@messageRepeatEmail": {
     "type": "text"
   },
   "messageRepeatPhone": "หมายเลขโทรศัพท์ซ้ำกัน",
@@ -1419,6 +1427,30 @@
   "@bankcardViewTitleSend": {
     "type": "text"
   },
+  "bankcardNotice1": "1. ชื่อสมาชิกและชื่อบัญชีบัตรธนาคารที่ผูกไว้ต้องเป็นบุคคลเดียวกัน (เพื่อความปลอดภัยของบัญชี โปรดอย่าบอกข้อมูลการผูกมัดของบัตรธนาคารแก่ผู้อื่น)",
+  "@bankcardNotice1": {
+    "type": "text"
+  },
+  "bankcardNotice2": "2. หากคุณไม่กรอกชื่อจริงและหมายเลขบัตรของบัตรธนาคารของคุณตามความเป็นจริงตามที่กำหนด และข้อมูลที่ถูกผูกไว้ไม่สอดคล้องกับข้อมูลจริงของบัตรธนาคารของคุณ การถอนเงินของคุณจะไม่ได้รับการประมวลผล ดังนั้น เมื่อผูกมัดกับบัตรธนาคาร จะต้องกรอกอย่างระมัดระวังเพื่อให้แน่ใจว่าถูกต้อง หากคุณพบปัญหาที่เกี่ยวข้องโปรดติดต่อฝ่ายบริการลูกค้าออนไลน์ทันทีเพื่อความปลอดภัยของเงินของคุณเราจะตรวจสอบตัวตนของคุณและจัดการกับมันให้ทันท่วงที สำหรับคุณ.",
+  "@bankcardNotice2": {
+    "type": "text"
+  },
+  "bankcardNotice3": "3. บัตรธนาคารที่ถูกผูกไว้ไม่สามารถผูกกับบัญชีเกมอื่นได้อีก",
+  "@bankcardNotice3": {
+    "type": "text"
+  },
+  "bankcardNotice4": "4. สาขาธนาคาร: หมายถึงสาขาของบัญชีบัตรธนาคารของคุณ",
+  "@bankcardNotice4": {
+    "type": "text"
+  },
+  "bankcardNotice5": "5. ช่องทางการเปิดบัญชี: ร้านที่ออกบัตรเมื่อเปิดบัตรครั้งแรก",
+  "@bankcardNotice5": {
+    "type": "text"
+  },
+  "bankcardNotice6": "*สาขาธนาคารที่ถูกต้องและสาขาที่เปิดบัญชี โปรดติดต่อฝ่ายบริการลูกค้าของธนาคารผู้ออกบัตรของคุณเพื่อสอบถามข้อมูล",
+  "@bankcardNotice6": {
+    "type": "text"
+  },
   "withdrawViewTitleAmount": "จำนวนเงินที่ถอน",
   "@withdrawViewTitleAmount": {
     "type": "text"
@@ -1589,6 +1621,14 @@
   },
   "centerHintNoName": "โปรดไปที่บัตรธนาคารที่มีผลผูกพันเพื่อทำการตั้งค่าที่เกี่ยวข้อง",
   "@centerHintNoName": {
+    "type": "text"
+  },
+  "centerHintNotVerified": "ไม่ได้รับการยืนยัน",
+  "@centerHintNotVerified": {
+    "type": "text"
+  },
+  "centerHintVerified": "ยืนยันแล้ว",
+  "@centerHintVerified": {
     "type": "text"
   },
   "centerLuckyTitle": "กรุณากรอกตัวเลขตั้งแต่ 01 ถึง 49 ในช่องว่าง 7 ช่องต่อไปนี้",
@@ -1876,7 +1916,7 @@
   "@depositPaymentEditTitleAmount": {
     "type": "text"
   },
-  "depositPaymentEditTitleCurrencyHint": "ความเป็นจริง: NTD {value}",
+  "depositPaymentEditTitleCurrencyHint": "ความเป็นจริง: ￥ {value}",
   "@depositPaymentEditTitleCurrencyHint": {
     "type": "text",
     "placeholders": {
@@ -1952,7 +1992,7 @@
   "@depositHintTextAccount": {
     "type": "text"
   },
-  "depositHintTextAmount": "ขีดจำกัดการฝากเงินครั้งเดียว: NTD {value}",
+  "depositHintTextAmount": "ขีดจำกัดการฝากเงินครั้งเดียว: ￥ {value}",
   "@depositHintTextAmount": {
     "type": "text",
     "placeholders": {
@@ -3130,26 +3170,198 @@
   },
   "downloadAndroidCgpay": "CGPAY สำหรับ Android",
   "@downloadAndroidCgpay": {
-    "พิมพ์": "text"
+   "type": "text"
   },
   "downloadIosCgpay": "CGPAY สำหรับ IOS",
   "@downloadIosCgpay": {
-    "พิมพ์": "text"
+   "type": "text"
   },
   "downloadAndroidDns": "ซ่อมแซม DNS สำหรับ Android",
   "@downloadAndroidDns": {
-    "พิมพ์": "text"
+   "type": "text"
   },
   "downloadIosDns": "ซ่อมแซม DNS สำหรับ IOS",
   "@downloadIosDns": {
-    "พิมพ์": "text"
+   "type": "text"
   },
   "downloadHintPlatformAndroid": "(Android เท่านั้น)",
   "@downloadHintPlatformAndroid": {
-    "พิมพ์": "text"
+   "type": "text"
   },
   "downloadHintPlatformIos": "(iOS เท่านั้น)",
   "@downloadHintPlatformIos": {
-    "พิมพ์": "text"
+   "type": "text"
+  },
+  "aboutCertTitle": "ใบอนุญาต",
+  "@aboutCertTitle": {
+    "type": "text"
+  },
+  "aboutCertTitleGC": "คณะกรรมการกำกับดูแล GC ของอังกฤษ",
+  "@aboutCertTitleGC": {
+    "type": "text"
+  },
+  "aboutCertTitleMGA": "Malta Gaming License (MGA) Certification",
+  "@aboutCertTitleMGA": {
+    "type": "text"
+  },
+  "aboutCertTitlePGC": "การ์ดเกมภายใต้การดูแลของฟิลิปปินส์ (PAGCOR)",
+  "@aboutCertTitlePGC": {
+    "type": "text"
+  },
+  "aboutCertTitleBVI": "การรับรองหมู่เกาะบริติชเวอร์จิน (BVI)",
+  "@aboutCertTitleBVI": {
+    "type": "text"
+  },
+  "aboutDataTitle1": "คำชี้แจงสิทธิส่วนบุคคล",
+  "@aboutDataTitle1": {
+    "type": "text"
+  },
+  "aboutDataDesc10": "ได้รับใบอนุญาตจาก Isle of Man, Cagayan และ Freeport Economic Zone ซึ่งเป็น บริษัท ข้ามชาติที่ดำเนินงานในภูมิภาคเอเชียแปซิฟิก\n\n",
+  "@aboutDataDesc10": {
+    "type": "text"
+  },
+  "aboutDataDesc11": "อาศัยประสบการณ์และชื่อเสียงอันยาวนานในการให้บริการแก่ผู้เล่นมากกว่า 10 ล้านคนซึ่งแสดงให้เห็นถึงความชอบธรรมและความชอบธรรมในระยะยาวและมีความน่าเชื่อถืออย่างสมบูรณ์",
+  "@aboutDataDesc11": {
+    "type": "text"
+  },
+  "aboutDataDesc12": "เป็น บริษัท เกมภายใต้ MAN Entertainment Group ซึ่งมีสำนักงานใหญ่อยู่ในกรุงมะนิลาประเทศฟิลิปปินส์ซึ่งถือได้ว่าเป็น บริษัท ที่ใหญ่ที่สุดในตลาดการพนันออนไลน์ในเอเชียที่มีพนักงานจำนวนมาก 85bet มีความเชื่อมั่นสูงเป็นที่ยอมรับและปัจจุบันได้กลายเป็นสมาคมเกมออนไลน์ระดับนานาชาติ เจ้ามือรับแทงที่ผ่านการตรวจสอบและได้รับใบอนุญาตอย่างสมบูรณ์ที่สุดแห่งหนึ่ง ",
+  "@aboutDataDesc12": {
+    "type": "text"
+  },
+  "aboutDataTitle2": "ข้อมูล",
+  "@aboutDataTitle2": {
+    "type": "text"
+  },
+  "aboutDataSubtitle20": "ลงทะเบียน",
+  "@aboutDataSubtitle20": {
+    "type": "text"
+  },
+  "aboutDataDesc20": "เปิดบัญชี 85bet เวียดนามและเข้าร่วมเว็บไซต์ความบันเทิงคุณภาพสูงโปรโมชั่นเดิมพันออนไลน์ทั้งหมดของเราในราคาสุดคุ้มเราเชื่อว่าในคะแนนโบนัสลูกค้าจะมีโอกาสได้รับสิ่งที่มีค่าเมื่อเข้าร่วมกิจกรรมส่งเสริมการขาย ของขวัญและรางวัล ",
+  "@aboutDataDesc20": {
+    "type": "text"
+  },
+  "aboutDataSubtitle21": "องค์กร",
+  "@aboutDataSubtitle21": {
+    "type": "text"
+  },
+  "aboutDataDesc21": "เป็นพันธมิตรที่ดีที่สุดของเราและเพลิดเพลินไปกับค่าคอมมิชชั่นรายเดือนมากมายโดยแนะนำผู้เล่นให้เข้าสู่ 85bet",
+  "@aboutDataDesc21": {
+    "type": "text"
+  },
+  "aboutDataSubtitle22": "การเล่นเกมอย่างมีความรับผิดชอบ",
+  "@aboutDataSubtitle22": {
+    "type": "text"
+  },
+  "aboutDataDesc22": "85bet Odds Odds Football มุ่งมั่นที่จะจัดหาช่องทางความบันเทิงให้กับลูกค้าของเราในทางบวกเรามีการป้องกันเพื่อส่งเสริมและรับรองการพนันอย่างมีความรับผิดชอบ",
+  "@aboutDataDesc22": {
+    "type": "text"
+  },
+  "aboutDataSubtitle23": "ความปลอดภัย",
+  "@aboutDataSubtitle23": {
+    "type": "text"
+  },
+  "aboutDataDesc23": "ระบบการเดิมพันที่มั่นคงและปลอดภัยความเป็นส่วนตัวของคุณเป็นสิ่งสำคัญสูงสุดของเราดังนั้นเราจึงปฏิบัติตามนโยบายความเป็นส่วนตัวอย่างเคร่งครัดเสมอ",
+  "@aboutDataDesc23": {
+    "type": "text"
+  },
+  "aboutDataTitle3": "ผลิตภัณฑ์",
+  "@aboutDataTitle3": {
+    "type": "text"
+  },
+  "aboutDataSubtitle30": "การพนันกีฬาและอัตราเดิมพันฟุตบอลสด",
+  "@aboutDataSubtitle30": {
+    "type": "text"
+  },
+  "aboutDataDesc30": "ราคาต่อรองการพนันฟุตบอลเราจัดให้มีเหตุการณ์สำคัญดังต่อไปนี้: พรีเมียร์ลีก, แชมป์ลาลีกาสเปน, กัลโช่เซเรียอาอิตาลี, ยูฟ่าแชมเปี้ยนส์ลีก, แชมป์แห่งชาติฝรั่งเศส, เยอรมนี, NFL, NBA, ซีเอ, บาสเก็ตบอลหญิง, เทนนิส, แข่ง F1 เรารู้สึกเป็นเกียรติที่ได้นำเสนอเกมมากกว่า 4,000 เกมต่อเดือน ",
+  "@aboutDataDesc30": {
+    "type": "text"
+  },
+  "aboutDataSubtitle31": "เกมออนไลน์",
+  "@aboutDataSubtitle31": {
+    "type": "text"
+  },
+  "aboutDataDesc31": "เกมออนไลน์มีโอกาสมากมายที่จะชนะรางวัลใหญ่ในเกม: รูเล็ตแบล็คแจ็คโป๊กเกอร์สล็อตแมชชีนแจ็คพอตมากขึ้นและโอกาสในการชนะ 85bet สูงขึ้น",
+  "@aboutDataDesc31": {
+    "type": "text"
+  },
+  "aboutDataSubtitle32": "คาสิโนออนไลน์",
+  "@aboutDataSubtitle32": {
+    "type": "text"
+  },
+  "aboutDataDesc32": "นอกจากนี้เรายังให้บริการเกมออนไลน์ประเภทอื่น ๆ อีกมากมายโดยเฉพาะ: คาสิโนสดซึ่งมีให้บริการในผู้จำหน่ายเกมยอดนิยมเช่นบาคาร่า sic bo มังกร / เสือรูเล็ตและเครื่องสล็อตคาสิโนออนไลน์ เล่นง่ายมาก ",
+  "@aboutDataDesc32": {
+    "type": "text"
+  },
+  "aboutDataTitle4": "ศูนย์ข้อมูล",
+  "@aboutDataTitle4": {
+    "type": "text"
+  },
+  "aboutDataSubtitle40": "โปรโมชัน",
+  "@aboutDataSubtitle40": {
+    "type": "text"
+  },
+  "aboutDataDesc40": "โปรโมชั่นโบนัสสำหรับสมาชิกใหม่โบนัสสำหรับเงินที่ตามมาและการคืนเงินให้กับสมาชิกที่มีอยู่",
+  "@aboutDataDesc40": {
+    "type": "text"
+  },
+  "aboutDataSubtitle41": "ศูนย์สนับสนุน",
+  "@aboutDataSubtitle41": {
+    "type": "text"
+  },
+  "aboutDataDesc41": "โปรดดูคำถามที่พบบ่อยเกี่ยวกับกีฬาและเกมอื่น ๆ การลงทะเบียนบัญชีการโอนเงินการถอนเงินและข้อมูลทางเทคนิคอื่น ๆ ได้รับการสนับสนุน",
+  "@aboutDataDesc41": {
+    "type": "text"
+  },
+  "aboutDataSubtitle42": "วิธีการชำระเงิน",
+  "@aboutDataSubtitle42": {
+    "type": "text"
+  },
+  "aboutDataDesc42": "เราให้บริการลูกค้าด้วยตัวเลือกที่ยอดเยี่ยมสำหรับการเติมเงินและถอนเงินผ่าน NETELLER, Moneybookers, การโอนเงินผ่านธนาคารระหว่างประเทศ, Western Union เรามีทุกอย่างให้เราเริ่ม 85bet ทันที",
+  "@aboutDataDesc42": {
+    "type": "text"
+  },
+  "aboutDataSubtitle43": "ติดต่อ",
+  "@aboutDataSubtitle43": {
+    "type": "text"
+  },
+  "aboutDataDesc43": "หากคุณต้องการความช่วยเหลือหรือคำถามใด ๆ เกี่ยวกับอัตราต่อรองฟุตบอลหรือการเดิมพันออนไลน์ในคาสิโนออนไลน์เราจะให้การสนับสนุนตลอด 24 ชั่วโมงทุกวันทางแชทสดทางโทรศัพท์และอีเมล",
+  "@aboutDataDesc43": {
+    "type": "text"
+  },
+  "aboutDataTitle5": "ข้อมูลการเดิมพัน",
+  "@aboutDataTitle5": {
+    "type": "text"
+  },
+  "aboutDataSubtitle50": "ผลการแข่งขันกีฬา",
+  "@aboutDataSubtitle50": {
+    "type": "text"
+  },
+  "aboutDataDesc50": "ราคาบอลเวียดนามให้ผลลัพธ์ของเกมกีฬาและลีกที่ดีที่สุดทั้งหมดในเวียดนามในปัจจุบัน",
+  "@aboutDataDesc50": {
+    "type": "text"
+  },
+  "aboutDataSubtitle51": "สถิติการเดิมพัน",
+  "@aboutDataSubtitle51": {
+    "type": "text"
+  },
+  "aboutDataDesc51": "เกมที่แตกต่างกันมากกว่า 200 เกมซึ่งรวมถึงกีฬารูปแบบทีมและเกมเดี่ยวการแข่งขันผู้เล่นตัวจริงทีมงานล่วงเวลาและเกมที่เลื่อนออกไป",
+  "@aboutDataDesc51": {
+    "type": "text"
+  },
+  "aboutDataSubtitle52": "การพนันกีฬา",
+  "@aboutDataSubtitle52": {
+    "type": "text"
+  },
+  "aboutDataDesc52": "กฎกีฬาทั้งหมดของเราปฏิบัติตามกฎอย่างเป็นทางการของคณะกรรมการจัดการแข่งขันที่ดีที่สุดของเวียดนามในปัจจุบัน",
+  "@aboutDataDesc52": {
+    "type": "text"
+  },
+  "aboutDataSubtitle53": "การเล่นเกมคาสิโน",
+  "@aboutDataSubtitle53": {
+    "type": "text"
+  },
+  "aboutDataDesc53": "คาสิโนสดจะแสดงอย่างครบถ้วน: ขีด จำกัด การเดิมพันผลลัพธ์และรายละเอียดประวัติการเดิมพันข้อมูลการเดิมพันทั้งหมดของคุณรวมอยู่บนหน้าจอเพื่อความบันเทิงที่สะดวกสบายคุณสามารถดูข้อมูลการเดิมพันได้ตลอดเวลา",
+  "@aboutDataDesc53": {
+    "type": "text"
   }
 }

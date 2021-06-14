@@ -31,7 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m5(value) => "Thiếu cân bằng: ${value}";
 
-  static m6(value) => "Tổng cộng: NTD ${value}";
+  static m6(value) => "Tổng cộng: ￥ ${value}";
 
   static m7(no) => "${no} Chỉ thẻ ghi nợ và thanh toán số dư Alipay！\n";
 
@@ -63,7 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m21(num, num2, num3) => "Phạm vi đầu vào:${num}~${num2}(Số tiền là bội số của ${num3})";
 
-  static m22(value) => "Thực tế: ${value} NTD";
+  static m22(value) => "Thực tế: ${value} ￥";
 
   static m23(value) => "Đăng nhập tích lũy trong ${value} ngày";
 
@@ -123,7 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m51(value) => "Tích điểm ${value}";
 
-  static m52(value) => "NTD ${value}";
+  static m52(value) => "￥ ${value}";
 
   static m53(from, to) => "${from} Đến ${to}";
 
@@ -135,6 +135,49 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "aboutCertTitle" : MessageLookupByLibrary.simpleMessage("Giấy phép"),
+    "aboutCertTitleBVI" : MessageLookupByLibrary.simpleMessage("Chứng nhận Quần đảo Virgin thuộc Anh (BVI)"),
+    "aboutCertTitleGC" : MessageLookupByLibrary.simpleMessage("Ủy ban Giám sát GC của Anh"),
+    "aboutCertTitleMGA" : MessageLookupByLibrary.simpleMessage("Chứng nhận Giấy phép Trò chơi Malta (MGA)"),
+    "aboutCertTitlePGC" : MessageLookupByLibrary.simpleMessage("Thẻ chơi game được giám sát của Philippines (PAGCOR)"),
+    "aboutDataDesc10" : MessageLookupByLibrary.simpleMessage("đã có giấy phép từ Isle of Man, Cagayan và Freeport Economic Zone. Đây là một công ty đa quốc gia hoạt động ở khu vực Châu Á - Thái Bình Dương.\n\n"),
+    "aboutDataDesc11" : MessageLookupByLibrary.simpleMessage("dựa vào kinh nghiệm và danh tiếng phong phú của mình để cung cấp dịch vụ cho hơn 10 triệu người chơi, điều này cho thấy tính hợp pháp và hợp pháp lâu dài và hoàn toàn đáng tin cậy."),
+    "aboutDataDesc12" : MessageLookupByLibrary.simpleMessage("Đây là công ty trò chơi trực thuộc Tập đoàn giải trí MAN có trụ sở chính tại Manila, Philippines. Đây được coi là công ty lớn nhất trong thị trường cờ bạc trực tuyến châu Á với lực lượng lao động lớn. 85bet có độ tin cậy cao được công nhận và hiện đã trở thành hiệp hội trò chơi trực tuyến quốc tế Một trong những nhà cái được cấp phép và xác minh đầy đủ nhất. "),
+    "aboutDataDesc20" : MessageLookupByLibrary.simpleMessage("Mở tài khoản 85bet Việt Nam và tham gia tất cả các trang web giải trí chất lượng cao khuyến mãi cá cược trực tuyến của chúng tôi với mức giá ưu đãi. Chúng tôi tin rằng với số điểm thưởng, khách hàng sẽ có cơ hội nhận được giá trị khi tham gia các hoạt động khuyến mãi Quà tặng và phần thưởng. "),
+    "aboutDataDesc21" : MessageLookupByLibrary.simpleMessage("Hãy trở thành đối tác tốt nhất của chúng tôi và hưởng hoa hồng hàng tháng hậu hĩnh bằng cách giới thiệu người chơi đến 85bet."),
+    "aboutDataDesc22" : MessageLookupByLibrary.simpleMessage("85bet Odds Odds Football cam kết cung cấp các kênh giải trí cho khách hàng của chúng tôi một cách tích cực. Chúng tôi có các biện pháp bảo vệ để thúc đẩy và đảm bảo cờ bạc có trách nhiệm."),
+    "aboutDataDesc23" : MessageLookupByLibrary.simpleMessage("Với hệ thống cá cược ổn định và an toàn. Quyền riêng tư của bạn là ưu tiên hàng đầu của chúng tôi, vì vậy chúng tôi luôn tuân thủ nghiêm ngặt chính sách bảo mật."),
+    "aboutDataDesc30" : MessageLookupByLibrary.simpleMessage("Tỷ lệ cá cược bóng đá. Chúng tôi cung cấp các sự kiện chính sau: Ngoại hạng Anh, Giải vô địch Tây Ban Nha La Liga, Serie A Ý, UEFA Champions League, Giải vô địch quốc gia Pháp, Đức, NFL, NBA, NCAA, bóng rổ nữ, quần vợt, đua xe F1 Chúng tôi rất hân hạnh được mang đến cho bạn hơn 4.000 trò chơi mỗi tháng. "),
+    "aboutDataDesc31" : MessageLookupByLibrary.simpleMessage("Trò chơi trực tuyến có nhiều cơ hội để giành được các giải thưởng lớn trong trò chơi: roulette, blackjack, poker, máy đánh bạc. Nhiều giải đặc biệt hơn và cơ hội thắng 85bet càng cao."),
+    "aboutDataDesc32" : MessageLookupByLibrary.simpleMessage("Ngoài ra, chúng tôi còn cung cấp nhiều loại trò chơi trực tuyến khác, đặc biệt là: sòng bạc trực tiếp, có sẵn trong các nhà cung cấp trò chơi phổ biến như baccarat, sic bo, dragon / tiger, roulette và máy đánh bạc trực tuyến Thật dễ dàng để chơi. "),
+    "aboutDataDesc40" : MessageLookupByLibrary.simpleMessage("Thưởng khuyến mãi cho các thành viên mới. Thưởng cho các khoản tiền tiếp theo và hoàn lại tiền cho các thành viên hiện tại."),
+    "aboutDataDesc41" : MessageLookupByLibrary.simpleMessage("Vui lòng tham khảo Câu hỏi thường gặp về thể thao và các trò chơi khác. Đăng ký tài khoản, chuyển tiền, rút ​​tiền và thông tin kỹ thuật khác được hỗ trợ."),
+    "aboutDataDesc42" : MessageLookupByLibrary.simpleMessage("Chúng tôi cung cấp cho khách hàng các tùy chọn tuyệt vời để nạp tiền và rút tiền qua NETELLER, Moneybookers, Chuyển khoản ngân hàng quốc tế, Western Union. Chúng tôi có mọi thứ, hãy bắt đầu 85bet ngay lập tức."),
+    "aboutDataDesc43" : MessageLookupByLibrary.simpleMessage("Nếu bạn cần bất kỳ trợ giúp hoặc thắc mắc nào liên quan đến tỷ lệ cá cược bóng đá hoặc cá cược trực tuyến trên sòng bạc trực tuyến, chúng tôi sẽ hỗ trợ 24/7 qua trò chuyện trực tiếp, điện thoại và email."),
+    "aboutDataDesc50" : MessageLookupByLibrary.simpleMessage("Tỷ lệ cá cược bóng đá Việt Nam cung cấp kết quả của tất cả các trận đấu và giải đấu thể thao hay nhất tại Việt Nam hiện nay."),
+    "aboutDataDesc51" : MessageLookupByLibrary.simpleMessage("Hơn 200 trò chơi khác nhau, bao gồm nhiều môn thể thao, định dạng, trò chơi đồng đội và cá nhân, lịch thi đấu, đội hình, đội, thêm giờ và trò chơi bị hoãn."),
+    "aboutDataDesc52" : MessageLookupByLibrary.simpleMessage("Tất cả các quy tắc thể thao của chúng tôi đều tuân thủ nghiêm ngặt các quy định chính thức của Ban tổ chức Giải Việt Nam hiện nay."),
+    "aboutDataDesc53" : MessageLookupByLibrary.simpleMessage("Sòng bạc trực tiếp hiển thị đầy đủ: giới hạn cá cược, kết quả và chi tiết lịch sử cá cược. Mọi thông tin cá cược của bạn đều được tích hợp trên màn hình để tiện giải trí. Bạn có thể xem thông tin cá cược bất kỳ lúc nào."),
+    "aboutDataSubtitle20" : MessageLookupByLibrary.simpleMessage("Đăng ký"),
+    "aboutDataSubtitle21" : MessageLookupByLibrary.simpleMessage("Tổ chức"),
+    "aboutDataSubtitle22" : MessageLookupByLibrary.simpleMessage("Trò chơi có trách nhiệm"),
+    "aboutDataSubtitle23" : MessageLookupByLibrary.simpleMessage("Bảo mật"),
+    "aboutDataSubtitle30" : MessageLookupByLibrary.simpleMessage("Cá cược thể thao và tỷ lệ cá cược bóng đá trực tiếp"),
+    "aboutDataSubtitle31" : MessageLookupByLibrary.simpleMessage("Trò chơi Trực tuyến"),
+    "aboutDataSubtitle32" : MessageLookupByLibrary.simpleMessage("Sòng bạc Trực tuyến"),
+    "aboutDataSubtitle40" : MessageLookupByLibrary.simpleMessage("Quảng cáo"),
+    "aboutDataSubtitle41" : MessageLookupByLibrary.simpleMessage("Trung tâm Hỗ trợ"),
+    "aboutDataSubtitle42" : MessageLookupByLibrary.simpleMessage("Phương thức Thanh toán"),
+    "aboutDataSubtitle43" : MessageLookupByLibrary.simpleMessage("Liên hệ"),
+    "aboutDataSubtitle50" : MessageLookupByLibrary.simpleMessage("Kết quả thể thao"),
+    "aboutDataSubtitle51" : MessageLookupByLibrary.simpleMessage("Thống kê Đặt cược"),
+    "aboutDataSubtitle52" : MessageLookupByLibrary.simpleMessage("Cá cược thể thao"),
+    "aboutDataSubtitle53" : MessageLookupByLibrary.simpleMessage("Trò chơi đánh bạc"),
+    "aboutDataTitle1" : MessageLookupByLibrary.simpleMessage("Cam kết bảo mật"),
+    "aboutDataTitle2" : MessageLookupByLibrary.simpleMessage("Thông tin"),
+    "aboutDataTitle3" : MessageLookupByLibrary.simpleMessage("Sản phẩm"),
+    "aboutDataTitle4" : MessageLookupByLibrary.simpleMessage("Trung tâm Thông tin"),
+    "aboutDataTitle5" : MessageLookupByLibrary.simpleMessage("Thông tin Cược"),
     "actionBack" : MessageLookupByLibrary.simpleMessage("Quay lại"),
     "actionHelp" : MessageLookupByLibrary.simpleMessage("Hướng dẫn"),
     "actionNotify" : MessageLookupByLibrary.simpleMessage("Thông báo"),
@@ -217,7 +260,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "agentTitleAccount" : m2,
     "appVersion" : m3,
     "balanceHintText1" : MessageLookupByLibrary.simpleMessage("1.Vui lòng thoát khỏi TRÒ CHƠI hoặc giao diện cá cược TRÒ CHƠI trước khi chuyển."),
-    "balanceHintText2" : MessageLookupByLibrary.simpleMessage("2.Trong khi tham gia trò chơi này, số tiền không được ít hơn 200000 NTD, số tiền này không tính phí khi chuyển."),
+    "balanceHintText2" : MessageLookupByLibrary.simpleMessage("2.Trong khi tham gia trò chơi này, số tiền không được ít hơn 200000 ￥, số tiền này không tính phí khi chuyển."),
     "balanceHintText3" : MessageLookupByLibrary.simpleMessage("3.Nếu tốc độ mạng chậm, vui lòng kiên nhẫn chờ một lúc, không lặp lại việc gửi nhiều lần."),
     "balanceHintText4" : MessageLookupByLibrary.simpleMessage("4.Nếu số tiền nền tảng không thay đổi sau khi chuyển thành công, vui lòng làm mới nền tảng theo cách thủ công hoặc liên hệ với dịch vụ khách hàng"),
     "balanceHintTextTitle" : MessageLookupByLibrary.simpleMessage("CHÚ Ý："),
@@ -227,6 +270,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "balanceTransferAmountError" : m5,
     "balanceTransferInText" : MessageLookupByLibrary.simpleMessage("Đi vào"),
     "balanceTransferOutText" : MessageLookupByLibrary.simpleMessage("Ngoài"),
+    "bankcardNotice1" : MessageLookupByLibrary.simpleMessage("1. Tên thành viên và tên tài khoản thẻ ngân hàng bị ràng buộc phải là cùng một người (để bảo mật tài khoản của bạn, vui lòng không cho người khác biết thông tin ràng buộc thẻ ngân hàng)"),
+    "bankcardNotice2" : MessageLookupByLibrary.simpleMessage("2. Nếu bạn không điền trung thực tên thật và số thẻ của thẻ ngân hàng theo yêu cầu và thông tin ràng buộc không phù hợp với thông tin thực của thẻ ngân hàng, thì giao dịch rút tiền của bạn sẽ không được xử lý. Do đó , khi đóng thẻ ngân hàng, phải điền cẩn thận để đảm bảo chính xác. Nếu bạn gặp vấn đề liên quan, vui lòng liên hệ ngay với bộ phận chăm sóc khách hàng trực tuyến để đảm bảo an toàn cho số tiền của bạn, chúng tôi sẽ xác minh danh tính của bạn và xử lý kịp thời cho bạn."),
+    "bankcardNotice3" : MessageLookupByLibrary.simpleMessage("3. Thẻ ngân hàng đã bị ràng buộc không thể liên kết lại với các tài khoản trò chơi khác."),
+    "bankcardNotice4" : MessageLookupByLibrary.simpleMessage("4. Chi nhánh ngân hàng: đề cập đến chi nhánh tài khoản thẻ ngân hàng của bạn."),
+    "bankcardNotice5" : MessageLookupByLibrary.simpleMessage("5. Cơ sở mở tài khoản: đại lý ngân hàng đã phát hành thẻ ngân hàng khi thẻ ngân hàng được mở lần đầu tiên."),
+    "bankcardNotice6" : MessageLookupByLibrary.simpleMessage("* Địa chỉ mở tài khoản và chi nhánh ngân hàng chính xác, vui lòng liên hệ với bộ phận chăm sóc khách hàng của ngân hàng phát hành của bạn để được giải đáp"),
     "bankcardViewHintNew" : MessageLookupByLibrary.simpleMessage("Vui lòng liên kết thẻ ngân hàng để nhận thanh toán"),
     "bankcardViewTitleBank" : MessageLookupByLibrary.simpleMessage("Ngân hàng BIDV"),
     "bankcardViewTitleBankArea" : MessageLookupByLibrary.simpleMessage("Khu vực"),
@@ -289,6 +338,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "centerDialogCpwRightLinkError" : MessageLookupByLibrary.simpleMessage("Không thể lấy URL ràng buộc, vui lòng liên hệ với dịch vụ khách hàng"),
     "centerDialogCpwRightTitle" : MessageLookupByLibrary.simpleMessage("ỨNG DỤNG Gobao"),
     "centerHintNoName" : MessageLookupByLibrary.simpleMessage("Vui lòng đến thẻ ngân hàng ràng buộc để thực hiện các cài đặt có liên quan"),
+    "centerHintNotVerified" : MessageLookupByLibrary.simpleMessage("Chưa được xác minh"),
+    "centerHintVerified" : MessageLookupByLibrary.simpleMessage("Đã xác minh"),
     "centerLuckyButtonBind" : MessageLookupByLibrary.simpleMessage("Xác nhận ràng buộc"),
     "centerLuckyButtonGenerate" : MessageLookupByLibrary.simpleMessage("Được tạo tự động"),
     "centerLuckyHint" : MessageLookupByLibrary.simpleMessage("Mã may mắn，Đã có thể tham gia vào mã sáu màu may mắn，Món quà tuyệt vời cho bạn!!!"),
@@ -565,6 +616,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "messagePlatformMaintenance" : MessageLookupByLibrary.simpleMessage("Nền tảng đang được bảo trì"),
     "messageRegisterFailed" : MessageLookupByLibrary.simpleMessage("đăng ký thất bại"),
     "messageRepeatAccount" : MessageLookupByLibrary.simpleMessage("Đăng ký tài khoản trùng lặp"),
+    "messageRepeatEmail" : MessageLookupByLibrary.simpleMessage("Hộp thư trùng lặp"),
     "messageRepeatMobile" : MessageLookupByLibrary.simpleMessage("Đăng ký nhiều lần số điện thoại di động"),
     "messageRepeatPhone" : MessageLookupByLibrary.simpleMessage("Số điện thoại trùng lặp"),
     "messageSentVerify" : MessageLookupByLibrary.simpleMessage("mã xác minh đã gửi"),
@@ -607,6 +659,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkChangedHint" : MessageLookupByLibrary.simpleMessage("Đã phát hiện thấy thay đổi trạng thái mạng. Bạn có muốn làm mới trang không?"),
     "noticeTabGeneral" : MessageLookupByLibrary.simpleMessage("Tin nhắn chung"),
     "noticeTabMaintenance" : MessageLookupByLibrary.simpleMessage("Tin nhắn bảo trì"),
+    "pageTitleAbout" : MessageLookupByLibrary.simpleMessage("về chúng tôi"),
     "pageTitleCenter" : MessageLookupByLibrary.simpleMessage("Tài khoản"),
     "pageTitleCollect" : MessageLookupByLibrary.simpleMessage("Hoạt động thu gom"),
     "pageTitleDeposit" : MessageLookupByLibrary.simpleMessage("NẠP TIỀN"),

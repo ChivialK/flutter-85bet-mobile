@@ -35,7 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m7(no) => "${no} บัตรเดบิตที่ถูก จำกัด และการชำระยอดคงเหลือ Alipay! \n";
 
-  static m8(value) => "ขีดจำกัดการฝากเงินครั้งเดียว: NTD ${value}";
+  static m8(value) => "ขีดจำกัดการฝากเงินครั้งเดียว: ￥ ${value}";
 
   static m9(no) => "${no} [คำเตือนสำคัญ] อย่าเก็บบัญชีธนาคารของคุณไว้โปรดรับบัญชีเรียกเก็บเงินล่าสุดอีกครั้งก่อนการเติมเงินแต่ละครั้งหากคุณฝากเงินไปยังบัญชีรับเงินที่ปิดใช้งาน บริษัท จะไม่สามารถตรวจสอบการเรียกเก็บเงินและจะไม่ รับผิดชอบ! \n ";
 
@@ -63,7 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m21(num, num2, num3) => "ช่วง: ${num}~${num2} (ขั้นตอน: ${num3})";
 
-  static m22(value) => "ความเป็นจริง: NTD ${value}";
+  static m22(value) => "ความเป็นจริง: ￥ ${value}";
 
   static m23(value) => "ลงนามแล้ว ${value} วัน";
 
@@ -123,7 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m51(value) => "${value} คะแนน";
 
-  static m52(value) => "NTD ${value}";
+  static m52(value) => "￥ ${value}";
 
   static m53(from, to) => "${from} ถึง ${to}";
 
@@ -135,6 +135,49 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "aboutCertTitle" : MessageLookupByLibrary.simpleMessage("ใบอนุญาต"),
+    "aboutCertTitleBVI" : MessageLookupByLibrary.simpleMessage("การรับรองหมู่เกาะบริติชเวอร์จิน (BVI)"),
+    "aboutCertTitleGC" : MessageLookupByLibrary.simpleMessage("คณะกรรมการกำกับดูแล GC ของอังกฤษ"),
+    "aboutCertTitleMGA" : MessageLookupByLibrary.simpleMessage("Malta Gaming License (MGA) Certification"),
+    "aboutCertTitlePGC" : MessageLookupByLibrary.simpleMessage("การ์ดเกมภายใต้การดูแลของฟิลิปปินส์ (PAGCOR)"),
+    "aboutDataDesc10" : MessageLookupByLibrary.simpleMessage("ได้รับใบอนุญาตจาก Isle of Man, Cagayan และ Freeport Economic Zone ซึ่งเป็น บริษัท ข้ามชาติที่ดำเนินงานในภูมิภาคเอเชียแปซิฟิก\n\n"),
+    "aboutDataDesc11" : MessageLookupByLibrary.simpleMessage("อาศัยประสบการณ์และชื่อเสียงอันยาวนานในการให้บริการแก่ผู้เล่นมากกว่า 10 ล้านคนซึ่งแสดงให้เห็นถึงความชอบธรรมและความชอบธรรมในระยะยาวและมีความน่าเชื่อถืออย่างสมบูรณ์"),
+    "aboutDataDesc12" : MessageLookupByLibrary.simpleMessage("เป็น บริษัท เกมภายใต้ MAN Entertainment Group ซึ่งมีสำนักงานใหญ่อยู่ในกรุงมะนิลาประเทศฟิลิปปินส์ซึ่งถือได้ว่าเป็น บริษัท ที่ใหญ่ที่สุดในตลาดการพนันออนไลน์ในเอเชียที่มีพนักงานจำนวนมาก 85bet มีความเชื่อมั่นสูงเป็นที่ยอมรับและปัจจุบันได้กลายเป็นสมาคมเกมออนไลน์ระดับนานาชาติ เจ้ามือรับแทงที่ผ่านการตรวจสอบและได้รับใบอนุญาตอย่างสมบูรณ์ที่สุดแห่งหนึ่ง "),
+    "aboutDataDesc20" : MessageLookupByLibrary.simpleMessage("เปิดบัญชี 85bet เวียดนามและเข้าร่วมเว็บไซต์ความบันเทิงคุณภาพสูงโปรโมชั่นเดิมพันออนไลน์ทั้งหมดของเราในราคาสุดคุ้มเราเชื่อว่าในคะแนนโบนัสลูกค้าจะมีโอกาสได้รับสิ่งที่มีค่าเมื่อเข้าร่วมกิจกรรมส่งเสริมการขาย ของขวัญและรางวัล "),
+    "aboutDataDesc21" : MessageLookupByLibrary.simpleMessage("เป็นพันธมิตรที่ดีที่สุดของเราและเพลิดเพลินไปกับค่าคอมมิชชั่นรายเดือนมากมายโดยแนะนำผู้เล่นให้เข้าสู่ 85bet"),
+    "aboutDataDesc22" : MessageLookupByLibrary.simpleMessage("85bet Odds Odds Football มุ่งมั่นที่จะจัดหาช่องทางความบันเทิงให้กับลูกค้าของเราในทางบวกเรามีการป้องกันเพื่อส่งเสริมและรับรองการพนันอย่างมีความรับผิดชอบ"),
+    "aboutDataDesc23" : MessageLookupByLibrary.simpleMessage("ระบบการเดิมพันที่มั่นคงและปลอดภัยความเป็นส่วนตัวของคุณเป็นสิ่งสำคัญสูงสุดของเราดังนั้นเราจึงปฏิบัติตามนโยบายความเป็นส่วนตัวอย่างเคร่งครัดเสมอ"),
+    "aboutDataDesc30" : MessageLookupByLibrary.simpleMessage("ราคาต่อรองการพนันฟุตบอลเราจัดให้มีเหตุการณ์สำคัญดังต่อไปนี้: พรีเมียร์ลีก, แชมป์ลาลีกาสเปน, กัลโช่เซเรียอาอิตาลี, ยูฟ่าแชมเปี้ยนส์ลีก, แชมป์แห่งชาติฝรั่งเศส, เยอรมนี, NFL, NBA, ซีเอ, บาสเก็ตบอลหญิง, เทนนิส, แข่ง F1 เรารู้สึกเป็นเกียรติที่ได้นำเสนอเกมมากกว่า 4,000 เกมต่อเดือน "),
+    "aboutDataDesc31" : MessageLookupByLibrary.simpleMessage("เกมออนไลน์มีโอกาสมากมายที่จะชนะรางวัลใหญ่ในเกม: รูเล็ตแบล็คแจ็คโป๊กเกอร์สล็อตแมชชีนแจ็คพอตมากขึ้นและโอกาสในการชนะ 85bet สูงขึ้น"),
+    "aboutDataDesc32" : MessageLookupByLibrary.simpleMessage("นอกจากนี้เรายังให้บริการเกมออนไลน์ประเภทอื่น ๆ อีกมากมายโดยเฉพาะ: คาสิโนสดซึ่งมีให้บริการในผู้จำหน่ายเกมยอดนิยมเช่นบาคาร่า sic bo มังกร / เสือรูเล็ตและเครื่องสล็อตคาสิโนออนไลน์ เล่นง่ายมาก "),
+    "aboutDataDesc40" : MessageLookupByLibrary.simpleMessage("โปรโมชั่นโบนัสสำหรับสมาชิกใหม่โบนัสสำหรับเงินที่ตามมาและการคืนเงินให้กับสมาชิกที่มีอยู่"),
+    "aboutDataDesc41" : MessageLookupByLibrary.simpleMessage("โปรดดูคำถามที่พบบ่อยเกี่ยวกับกีฬาและเกมอื่น ๆ การลงทะเบียนบัญชีการโอนเงินการถอนเงินและข้อมูลทางเทคนิคอื่น ๆ ได้รับการสนับสนุน"),
+    "aboutDataDesc42" : MessageLookupByLibrary.simpleMessage("เราให้บริการลูกค้าด้วยตัวเลือกที่ยอดเยี่ยมสำหรับการเติมเงินและถอนเงินผ่าน NETELLER, Moneybookers, การโอนเงินผ่านธนาคารระหว่างประเทศ, Western Union เรามีทุกอย่างให้เราเริ่ม 85bet ทันที"),
+    "aboutDataDesc43" : MessageLookupByLibrary.simpleMessage("หากคุณต้องการความช่วยเหลือหรือคำถามใด ๆ เกี่ยวกับอัตราต่อรองฟุตบอลหรือการเดิมพันออนไลน์ในคาสิโนออนไลน์เราจะให้การสนับสนุนตลอด 24 ชั่วโมงทุกวันทางแชทสดทางโทรศัพท์และอีเมล"),
+    "aboutDataDesc50" : MessageLookupByLibrary.simpleMessage("ราคาบอลเวียดนามให้ผลลัพธ์ของเกมกีฬาและลีกที่ดีที่สุดทั้งหมดในเวียดนามในปัจจุบัน"),
+    "aboutDataDesc51" : MessageLookupByLibrary.simpleMessage("เกมที่แตกต่างกันมากกว่า 200 เกมซึ่งรวมถึงกีฬารูปแบบทีมและเกมเดี่ยวการแข่งขันผู้เล่นตัวจริงทีมงานล่วงเวลาและเกมที่เลื่อนออกไป"),
+    "aboutDataDesc52" : MessageLookupByLibrary.simpleMessage("กฎกีฬาทั้งหมดของเราปฏิบัติตามกฎอย่างเป็นทางการของคณะกรรมการจัดการแข่งขันที่ดีที่สุดของเวียดนามในปัจจุบัน"),
+    "aboutDataDesc53" : MessageLookupByLibrary.simpleMessage("คาสิโนสดจะแสดงอย่างครบถ้วน: ขีด จำกัด การเดิมพันผลลัพธ์และรายละเอียดประวัติการเดิมพันข้อมูลการเดิมพันทั้งหมดของคุณรวมอยู่บนหน้าจอเพื่อความบันเทิงที่สะดวกสบายคุณสามารถดูข้อมูลการเดิมพันได้ตลอดเวลา"),
+    "aboutDataSubtitle20" : MessageLookupByLibrary.simpleMessage("ลงทะเบียน"),
+    "aboutDataSubtitle21" : MessageLookupByLibrary.simpleMessage("องค์กร"),
+    "aboutDataSubtitle22" : MessageLookupByLibrary.simpleMessage("การเล่นเกมอย่างมีความรับผิดชอบ"),
+    "aboutDataSubtitle23" : MessageLookupByLibrary.simpleMessage("ความปลอดภัย"),
+    "aboutDataSubtitle30" : MessageLookupByLibrary.simpleMessage("การพนันกีฬาและอัตราเดิมพันฟุตบอลสด"),
+    "aboutDataSubtitle31" : MessageLookupByLibrary.simpleMessage("เกมออนไลน์"),
+    "aboutDataSubtitle32" : MessageLookupByLibrary.simpleMessage("คาสิโนออนไลน์"),
+    "aboutDataSubtitle40" : MessageLookupByLibrary.simpleMessage("โปรโมชัน"),
+    "aboutDataSubtitle41" : MessageLookupByLibrary.simpleMessage("ศูนย์สนับสนุน"),
+    "aboutDataSubtitle42" : MessageLookupByLibrary.simpleMessage("วิธีการชำระเงิน"),
+    "aboutDataSubtitle43" : MessageLookupByLibrary.simpleMessage("ติดต่อ"),
+    "aboutDataSubtitle50" : MessageLookupByLibrary.simpleMessage("ผลการแข่งขันกีฬา"),
+    "aboutDataSubtitle51" : MessageLookupByLibrary.simpleMessage("สถิติการเดิมพัน"),
+    "aboutDataSubtitle52" : MessageLookupByLibrary.simpleMessage("การพนันกีฬา"),
+    "aboutDataSubtitle53" : MessageLookupByLibrary.simpleMessage("การเล่นเกมคาสิโน"),
+    "aboutDataTitle1" : MessageLookupByLibrary.simpleMessage("คำชี้แจงสิทธิส่วนบุคคล"),
+    "aboutDataTitle2" : MessageLookupByLibrary.simpleMessage("ข้อมูล"),
+    "aboutDataTitle3" : MessageLookupByLibrary.simpleMessage("ผลิตภัณฑ์"),
+    "aboutDataTitle4" : MessageLookupByLibrary.simpleMessage("ศูนย์ข้อมูล"),
+    "aboutDataTitle5" : MessageLookupByLibrary.simpleMessage("ข้อมูลการเดิมพัน"),
     "actionBack" : MessageLookupByLibrary.simpleMessage("ย้อนกลับ"),
     "actionHelp" : MessageLookupByLibrary.simpleMessage("บทช่วยสอน"),
     "actionNotify" : MessageLookupByLibrary.simpleMessage("แจ้งเตือน"),
@@ -227,6 +270,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "balanceTransferAmountError" : m5,
     "balanceTransferInText" : MessageLookupByLibrary.simpleMessage("โอนเข้า"),
     "balanceTransferOutText" : MessageLookupByLibrary.simpleMessage("โอนออก"),
+    "bankcardNotice1" : MessageLookupByLibrary.simpleMessage("1. ชื่อสมาชิกและชื่อบัญชีบัตรธนาคารที่ผูกไว้ต้องเป็นบุคคลเดียวกัน (เพื่อความปลอดภัยของบัญชี โปรดอย่าบอกข้อมูลการผูกมัดของบัตรธนาคารแก่ผู้อื่น)"),
+    "bankcardNotice2" : MessageLookupByLibrary.simpleMessage("2. หากคุณไม่กรอกชื่อจริงและหมายเลขบัตรของบัตรธนาคารของคุณตามความเป็นจริงตามที่กำหนด และข้อมูลที่ถูกผูกไว้ไม่สอดคล้องกับข้อมูลจริงของบัตรธนาคารของคุณ การถอนเงินของคุณจะไม่ได้รับการประมวลผล ดังนั้น เมื่อผูกมัดกับบัตรธนาคาร จะต้องกรอกอย่างระมัดระวังเพื่อให้แน่ใจว่าถูกต้อง หากคุณพบปัญหาที่เกี่ยวข้องโปรดติดต่อฝ่ายบริการลูกค้าออนไลน์ทันทีเพื่อความปลอดภัยของเงินของคุณเราจะตรวจสอบตัวตนของคุณและจัดการกับมันให้ทันท่วงที สำหรับคุณ."),
+    "bankcardNotice3" : MessageLookupByLibrary.simpleMessage("3. บัตรธนาคารที่ถูกผูกไว้ไม่สามารถผูกกับบัญชีเกมอื่นได้อีก"),
+    "bankcardNotice4" : MessageLookupByLibrary.simpleMessage("4. สาขาธนาคาร: หมายถึงสาขาของบัญชีบัตรธนาคารของคุณ"),
+    "bankcardNotice5" : MessageLookupByLibrary.simpleMessage("5. ช่องทางการเปิดบัญชี: ร้านที่ออกบัตรเมื่อเปิดบัตรครั้งแรก"),
+    "bankcardNotice6" : MessageLookupByLibrary.simpleMessage("*สาขาธนาคารที่ถูกต้องและสาขาที่เปิดบัญชี โปรดติดต่อฝ่ายบริการลูกค้าของธนาคารผู้ออกบัตรของคุณเพื่อสอบถามข้อมูล"),
     "bankcardViewHintNew" : MessageLookupByLibrary.simpleMessage("กรุณาผูกบัตรธนาคารเพื่อรับการชำระเงิน"),
     "bankcardViewTitleBank" : MessageLookupByLibrary.simpleMessage("ธนาคาร"),
     "bankcardViewTitleBankArea" : MessageLookupByLibrary.simpleMessage("พื้นที่"),
@@ -289,6 +338,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "centerDialogCpwRightLinkError" : MessageLookupByLibrary.simpleMessage("URL ผิดพลาดโปรดติดต่อฝ่ายบริการ"),
     "centerDialogCpwRightTitle" : MessageLookupByLibrary.simpleMessage("ติดตั้ง APP แล้ว"),
     "centerHintNoName" : MessageLookupByLibrary.simpleMessage("โปรดไปที่บัตรธนาคารที่มีผลผูกพันเพื่อทำการตั้งค่าที่เกี่ยวข้อง"),
+    "centerHintNotVerified" : MessageLookupByLibrary.simpleMessage("ไม่ได้รับการยืนยัน"),
+    "centerHintVerified" : MessageLookupByLibrary.simpleMessage("ยืนยันแล้ว"),
     "centerLuckyButtonBind" : MessageLookupByLibrary.simpleMessage("ยืนยันการผูก"),
     "centerLuckyButtonGenerate" : MessageLookupByLibrary.simpleMessage("สร้างอัตโนมัติ"),
     "centerLuckyHint" : MessageLookupByLibrary.simpleMessage("ผูกรหัสนำโชค คุณสามารถมีส่วนร่วมในรหัสจับคู่ลอตเตอรี ของขวัญที่ยอดเยี่ยมสำหรับคุณ !!!"),
@@ -565,6 +616,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "messagePlatformMaintenance" : MessageLookupByLibrary.simpleMessage("แพลตฟอร์มอยู่ระหว่างการบำรุงรักษา"),
     "messageRegisterFailed" : MessageLookupByLibrary.simpleMessage("การลงทะเบียนล้มเหลว"),
     "messageRepeatAccount" : MessageLookupByLibrary.simpleMessage("การลงทะเบียนบัญชีที่ซ้ำกัน"),
+    "messageRepeatEmail" : MessageLookupByLibrary.simpleMessage("กล่องจดหมายซ้ำ"),
     "messageRepeatMobile" : MessageLookupByLibrary.simpleMessage("การลงทะเบียนหมายเลขโทรศัพท์มือถือซ้ำ"),
     "messageRepeatPhone" : MessageLookupByLibrary.simpleMessage("หมายเลขโทรศัพท์ซ้ำกัน"),
     "messageSentVerify" : MessageLookupByLibrary.simpleMessage("ยืนยันรหัสได้ส่งแล้ว"),
@@ -607,6 +659,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkChangedHint" : MessageLookupByLibrary.simpleMessage("ตรวจพบสถานะเครือข่ายมีการเปลี่ยนแปลงคุณต้องการรีเฟรชหรือไม่"),
     "noticeTabGeneral" : MessageLookupByLibrary.simpleMessage("ข้อความทั่วไป"),
     "noticeTabMaintenance" : MessageLookupByLibrary.simpleMessage("การแจ้งเตือนการบำรุงรักษา"),
+    "pageTitleAbout" : MessageLookupByLibrary.simpleMessage("เกี่ยวกับเรา"),
     "pageTitleCenter" : MessageLookupByLibrary.simpleMessage("ศูนย์"),
     "pageTitleCollect" : MessageLookupByLibrary.simpleMessage("รวบรวมคำ"),
     "pageTitleDeposit" : MessageLookupByLibrary.simpleMessage("เติมเงิน"),

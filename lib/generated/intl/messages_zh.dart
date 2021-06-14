@@ -31,13 +31,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m5(value) => "余额不足: ${value}";
 
-  static m6(value) => "总计: NTD ${value}";
+  static m6(value) => "总计: ￥ ${value}";
 
   static m7(no) => "${no}限用借记卡与支付宝余额支付！\n";
 
   static m8(value) => "单笔最高限额: ${value}";
 
-  static m9(no) => "${no}【重要提醒】勿保留银行帐户，请您在每次充值前重新获取最新的收款帐户，若存款至停用的收款帐户，公司无法查收恕不负责！\n";
+  static m9(no) => "${no}【重要提醒】勿保留银行帐户，请您在每次存款前重新获取最新的收款帐户，若存款至停用的收款帐户，公司无法查收恕不负责！\n";
 
   static m10(no) => "${no}如遇到存款扫码失败等故障，请尝试刷新重试，并联系客服使用其他替换信道\n";
 
@@ -49,7 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m14(no) => "${no}单笔最高限额\n";
 
-  static m15(no) => "${no}超出在线支付单日额度限制或单笔大额充值，可使用其它充值方式\n";
+  static m15(no) => "${no}超出在线支付单日额度限制或单笔大额存款，可使用其它存款方式\n";
 
   static m16(no) => "${no}温馨提醒：使用快捷支付需支付小数两位，系统会自动带入（若您提交小数两位为00则无法成功）\n";
 
@@ -63,7 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m21(num, num2, num3) => "输入范围:${num}~${num2}(金额为${num3}的倍数)";
 
-  static m22(value) => "现实: ${value} NTD";
+  static m22(value) => "现实: ${value} ￥";
 
   static m23(value) => "已累积签到${value}天";
 
@@ -123,7 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m51(value) => "${value}积分";
 
-  static m52(value) => "NTD ${value}";
+  static m52(value) => "￥ ${value}";
 
   static m53(from, to) => "${from} 到 ${to}";
 
@@ -135,6 +135,49 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "aboutCertTitle" : MessageLookupByLibrary.simpleMessage("牌照"),
+    "aboutCertTitleBVI" : MessageLookupByLibrary.simpleMessage("英属维尔京群岛（BVI）认证"),
+    "aboutCertTitleGC" : MessageLookupByLibrary.simpleMessage("英国GC监督委员会"),
+    "aboutCertTitleMGA" : MessageLookupByLibrary.simpleMessage("马耳他博彩牌照（MGA）认证"),
+    "aboutCertTitlePGC" : MessageLookupByLibrary.simpleMessage("菲律宾（PAGCOR）监督博彩牌"),
+    "aboutDataDesc10" : MessageLookupByLibrary.simpleMessage("我们致力为客户保护隐私并提供一个最安全的游戏平台，在此网站搜集的数据将会为您提供最卓越的服务，我们不会出卖或租赁您的个人信息给第三方，对于有机会接触客户个人信息的协助伙伴也必需遵守我们订立的隐私保密规则。\n\n"),
+    "aboutDataDesc11" : MessageLookupByLibrary.simpleMessage("SBB Relies on its rich experience and reputation to service more than ten million players, which demonstrates long-term legitimacy and is completely reliable."),
+    "aboutDataDesc12" : MessageLookupByLibrary.simpleMessage("Is a game company under M.A.N Entertainment Group, headquartered in Manila, Philippines. This is considered the largest corporation in the Asian online gambling market with a large workforce. With the recognized high confidence, has now become one of the International Online Games Association\'s most fully verified and licensed bookmakers."),
+    "aboutDataDesc20" : MessageLookupByLibrary.simpleMessage("您可以通过常见问题项目，获得有关存款、提款及其他问题的解答和协助；或有任何问题，请与24H在线客服联系。"),
+    "aboutDataDesc21" : MessageLookupByLibrary.simpleMessage("成為我們最好的合作夥伴，並通過將玩家推薦給85bet來每月享受豐厚的佣金。"),
+    "aboutDataDesc22" : MessageLookupByLibrary.simpleMessage("足球博彩致力於以積極的方式為我們的客戶提供娛樂渠道。我們有主要促進和確保負責任博彩的保障措施。"),
+    "aboutDataDesc23" : MessageLookupByLibrary.simpleMessage("具有穩定和安全的投注系統。您的隱私是我們的首要任務，因此我們始終嚴格遵守隱私政策。"),
+    "aboutDataDesc30" : MessageLookupByLibrary.simpleMessage("足球博彩賠率我們提供以下大型賽事：英超，西班牙冠軍西甲聯賽，意大利甲級聯賽，歐洲冠軍聯賽，法國國家錦標賽，德國，NFL，NBA，NCAA，女子籃球，網球，賽車F1我們很榮幸為您帶來每月超過4,000場比賽。"),
+    "aboutDataDesc31" : MessageLookupByLibrary.simpleMessage("在線遊戲有很多機會贏得遊戲中的大獎：輪盤，二十一點，撲克，老虎機。更多的累積獎金和更高的中獎機會。"),
+    "aboutDataDesc32" : MessageLookupByLibrary.simpleMessage("此外，我們還提供許多其他類型的在線遊戲，尤其是：真人娛樂場，在百家樂，骰寶，龍/虎，輪盤賭和在線娛樂場老虎機等熱門遊戲商中都很容易玩。"),
+    "aboutDataDesc40" : MessageLookupByLibrary.simpleMessage("本公司只接受年龄已满18岁的注册用户，并同意您所提供之个人信息不实，或个人信息有异动但没有更新以致于与原登录之数据不符时，本公司有权随时终止您的会员资格及使用各项会员服务之权利。"),
+    "aboutDataDesc41" : MessageLookupByLibrary.simpleMessage("另請參閱體育和其他遊戲的常見問題解答。 支持帳戶註冊，匯款，取款和其他技術信息。"),
+    "aboutDataDesc42" : MessageLookupByLibrary.simpleMessage("We offer excellent options for customers to deposit and withdraw money through NETELLER, Moneybookers, International Bank Transfer, Western Union. We have it all, let\'s get started right away with."),
+    "aboutDataDesc43" : MessageLookupByLibrary.simpleMessage("如果您需要有關在足球賠率或在線賭場上的在線投注的任何幫助或問題，我們將通過實時聊天，電話和電子郵件提供24/7全天候支持。"),
+    "aboutDataDesc50" : MessageLookupByLibrary.simpleMessage("新宝盈积极努力地为玩家提供一个优质的娱乐平台。并已设置升级了多项安全设施来确保新宝盈游戏的公平公正。"),
+    "aboutDataDesc51" : MessageLookupByLibrary.simpleMessage("超過200種不同的比賽，包括各種體育項目，形式，團隊和個人比賽，固定裝置，陣容，團隊，加時賽和延期比賽。"),
+    "aboutDataDesc52" : MessageLookupByLibrary.simpleMessage("我們所有的運動規則都嚴格遵守今天越南最佳組織委員會的正式規則。"),
+    "aboutDataDesc53" : MessageLookupByLibrary.simpleMessage("真人娛樂場完全顯示：下注限制，結果和下注歷史記錄詳細信息。您的所有投注信息都集成在屏幕上，以方便娛樂。您可以隨時查看任何投注信息。"),
+    "aboutDataSubtitle20" : MessageLookupByLibrary.simpleMessage("註冊"),
+    "aboutDataSubtitle21" : MessageLookupByLibrary.simpleMessage("機構"),
+    "aboutDataSubtitle22" : MessageLookupByLibrary.simpleMessage("負責任的博彩"),
+    "aboutDataSubtitle23" : MessageLookupByLibrary.simpleMessage("安全"),
+    "aboutDataSubtitle30" : MessageLookupByLibrary.simpleMessage("體育博彩和現場博彩足球賠率"),
+    "aboutDataSubtitle31" : MessageLookupByLibrary.simpleMessage("在線遊戲"),
+    "aboutDataSubtitle32" : MessageLookupByLibrary.simpleMessage("線上賭場"),
+    "aboutDataSubtitle40" : MessageLookupByLibrary.simpleMessage("晉升"),
+    "aboutDataSubtitle41" : MessageLookupByLibrary.simpleMessage("支持中心"),
+    "aboutDataSubtitle42" : MessageLookupByLibrary.simpleMessage("支付方式"),
+    "aboutDataSubtitle43" : MessageLookupByLibrary.simpleMessage("聯繫"),
+    "aboutDataSubtitle50" : MessageLookupByLibrary.simpleMessage("體育成績"),
+    "aboutDataSubtitle51" : MessageLookupByLibrary.simpleMessage("投注統計"),
+    "aboutDataSubtitle52" : MessageLookupByLibrary.simpleMessage("體育博彩"),
+    "aboutDataSubtitle53" : MessageLookupByLibrary.simpleMessage("賭場博彩"),
+    "aboutDataTitle1" : MessageLookupByLibrary.simpleMessage("隐私声明"),
+    "aboutDataTitle2" : MessageLookupByLibrary.simpleMessage("新手教学"),
+    "aboutDataTitle3" : MessageLookupByLibrary.simpleMessage("游戏规则"),
+    "aboutDataTitle4" : MessageLookupByLibrary.simpleMessage("责任条款"),
+    "aboutDataTitle5" : MessageLookupByLibrary.simpleMessage("责任博彩"),
     "actionBack" : MessageLookupByLibrary.simpleMessage("返回"),
     "actionHelp" : MessageLookupByLibrary.simpleMessage("教程"),
     "actionNotify" : MessageLookupByLibrary.simpleMessage("通知"),
@@ -227,6 +270,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "balanceTransferAmountError" : m5,
     "balanceTransferInText" : MessageLookupByLibrary.simpleMessage("转入"),
     "balanceTransferOutText" : MessageLookupByLibrary.simpleMessage("转出"),
+    "bankcardNotice1" : MessageLookupByLibrary.simpleMessage("1.会员姓名与绑定之银行卡户名必须为同一人（为了您的账户安全，请您切勿将银行卡绑定信息告诉他人）"),
+    "bankcardNotice2" : MessageLookupByLibrary.simpleMessage("2.如果您没有按要求如实填写银行卡的真实姓名和卡号，所绑定信息与您银行卡真实信息不一致时，您的提款将不予处理。因此绑定银行卡时，必须仔细填写确保无误。如果遇到相关问题，为了您的资金安全请立即与在线客服联系，我们将会核实您的身份后，及时为您处理。"),
+    "bankcardNotice3" : MessageLookupByLibrary.simpleMessage("3.已绑定过的银行卡，不能再次绑定其他游戏账户。"),
+    "bankcardNotice4" : MessageLookupByLibrary.simpleMessage("4.银行支行：意指您银行卡开户行的分支机构。"),
+    "bankcardNotice5" : MessageLookupByLibrary.simpleMessage("5.开户网点：最开始办理银行卡开户时发卡的那家银行网点。"),
+    "bankcardNotice6" : MessageLookupByLibrary.simpleMessage("*正确的银行支行及开户网点，请与您发卡银行的客服联系查询"),
     "bankcardViewHintNew" : MessageLookupByLibrary.simpleMessage("请先绑定一张银行卡，用于收款"),
     "bankcardViewTitleBank" : MessageLookupByLibrary.simpleMessage("银行"),
     "bankcardViewTitleBankArea" : MessageLookupByLibrary.simpleMessage("地区"),
@@ -289,6 +338,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "centerDialogCpwRightLinkError" : MessageLookupByLibrary.simpleMessage("无法取得绑定网址，请联系客服"),
     "centerDialogCpwRightTitle" : MessageLookupByLibrary.simpleMessage("已有购宝APP"),
     "centerHintNoName" : MessageLookupByLibrary.simpleMessage("请至绑订银行卡做相关设定"),
+    "centerHintNotVerified" : MessageLookupByLibrary.simpleMessage("未验证"),
+    "centerHintVerified" : MessageLookupByLibrary.simpleMessage("已验证"),
     "centerLuckyButtonBind" : MessageLookupByLibrary.simpleMessage("确认绑定"),
     "centerLuckyButtonGenerate" : MessageLookupByLibrary.simpleMessage("自动生成"),
     "centerLuckyHint" : MessageLookupByLibrary.simpleMessage("绑定六合幸运码，就能参加六合彩运码对对碰哦，精彩大礼送给你!!!"),
@@ -327,11 +378,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "dealsViewSpinnerStatus3" : MessageLookupByLibrary.simpleMessage("处理中"),
     "dealsViewSpinnerStatus4" : MessageLookupByLibrary.simpleMessage("新交易"),
     "dealsViewSpinnerType0" : MessageLookupByLibrary.simpleMessage("全部"),
-    "dealsViewSpinnerType1" : MessageLookupByLibrary.simpleMessage("充值"),
-    "dealsViewSpinnerType2" : MessageLookupByLibrary.simpleMessage("提现"),
+    "dealsViewSpinnerType1" : MessageLookupByLibrary.simpleMessage("存款"),
+    "dealsViewSpinnerType2" : MessageLookupByLibrary.simpleMessage("取款"),
     "dealsViewSpinnerType3" : MessageLookupByLibrary.simpleMessage("红利"),
-    "depositHintRedirectBankcard" : MessageLookupByLibrary.simpleMessage("充值请先填写银行卡资讯"),
-    "depositHintTextAccount" : MessageLookupByLibrary.simpleMessage("充值帐号资讯请联络客服"),
+    "depositHintRedirectBankcard" : MessageLookupByLibrary.simpleMessage("存款请先填写银行卡资讯"),
+    "depositHintTextAccount" : MessageLookupByLibrary.simpleMessage("存款帐号资讯请联络客服"),
     "depositHintTextAli" : m7,
     "depositHintTextAmount" : m8,
     "depositHintTextClearInfo" : m9,
@@ -349,8 +400,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "depositHintTextUnionB" : MessageLookupByLibrary.simpleMessage("B、登入中国银行手机App，通过右上角“+”中的付款功能或移动支付模块中的付款功能；\n"),
     "depositHintTextUnionC" : MessageLookupByLibrary.simpleMessage("C、进入向商家付款的二维码页面，对准机具扫码即可。\n"),
     "depositHintTextUnionShortcut" : m18,
-    "depositMessageFailed" : MessageLookupByLibrary.simpleMessage("充值失败，请稍候重试或联系客服"),
-    "depositMessageFormError" : MessageLookupByLibrary.simpleMessage("充值信息错误，请重新选择充值方式或联系客服"),
+    "depositMessageFailed" : MessageLookupByLibrary.simpleMessage("存款失败，请稍候重试或联系客服"),
+    "depositMessageFormError" : MessageLookupByLibrary.simpleMessage("存款信息错误，请重新选择存款方式或联系客服"),
     "depositMessageSuccessLocal" : m19,
     "depositNewbieAli0" : MessageLookupByLibrary.simpleMessage("支付宝转银行卡教学"),
     "depositNewbieAli1" : MessageLookupByLibrary.simpleMessage("首先打开手机支付宝并登入，在主板面点击【转账】功能。"),
@@ -387,17 +438,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "depositPaymentEditTitleName" : MessageLookupByLibrary.simpleMessage("打款人姓名"),
     "depositPaymentEditTitleNameHint" : MessageLookupByLibrary.simpleMessage("请填写您的打款人姓名"),
     "depositPaymentEditTitleNote" : MessageLookupByLibrary.simpleMessage("备注"),
-    "depositPaymentMethodLocal1" : MessageLookupByLibrary.simpleMessage("转帐充值"),
-    "depositPaymentMethodLocal2" : MessageLookupByLibrary.simpleMessage("ATM充值"),
-    "depositPaymentNoData" : MessageLookupByLibrary.simpleMessage("查無可使用的充值方式"),
+    "depositPaymentMethodLocal1" : MessageLookupByLibrary.simpleMessage("转帐存款"),
+    "depositPaymentMethodLocal2" : MessageLookupByLibrary.simpleMessage("ATM存款"),
+    "depositPaymentNoData" : MessageLookupByLibrary.simpleMessage("查無可使用的存款方式"),
     "depositPaymentNoPromo" : MessageLookupByLibrary.simpleMessage("放弃申请优惠"),
     "depositPaymentSpinnerTitleAccountBank" : MessageLookupByLibrary.simpleMessage("打款人银行"),
     "depositPaymentSpinnerTitleBank" : MessageLookupByLibrary.simpleMessage("支付银行"),
-    "depositPaymentSpinnerTitleMethod" : MessageLookupByLibrary.simpleMessage("充值方式"),
+    "depositPaymentSpinnerTitleMethod" : MessageLookupByLibrary.simpleMessage("存款方式"),
     "depositPaymentSpinnerTitlePromo" : MessageLookupByLibrary.simpleMessage("选择优惠"),
     "depositPaymentTitleAli" : MessageLookupByLibrary.simpleMessage("支付宝支付"),
     "depositPaymentTitleAtm" : MessageLookupByLibrary.simpleMessage("网银转帐"),
-    "depositPaymentTitleBank" : MessageLookupByLibrary.simpleMessage("银行充值"),
+    "depositPaymentTitleBank" : MessageLookupByLibrary.simpleMessage("银行存款"),
     "depositPaymentTitleCgp" : MessageLookupByLibrary.simpleMessage("购宝钱包"),
     "depositPaymentTitleJd" : MessageLookupByLibrary.simpleMessage("京东支付"),
     "depositPaymentTitleOnline" : MessageLookupByLibrary.simpleMessage("在线支付"),
@@ -475,14 +526,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "memberGridTitleBet" : MessageLookupByLibrary.simpleMessage("投注记录"),
     "memberGridTitleCard" : MessageLookupByLibrary.simpleMessage("银行卡"),
     "memberGridTitleDeal" : MessageLookupByLibrary.simpleMessage("交易记录"),
-    "memberGridTitleDeposit" : MessageLookupByLibrary.simpleMessage("充值"),
+    "memberGridTitleDeposit" : MessageLookupByLibrary.simpleMessage("存款"),
     "memberGridTitleFlow" : MessageLookupByLibrary.simpleMessage("流水记录"),
     "memberGridTitleLogout" : MessageLookupByLibrary.simpleMessage("登出"),
     "memberGridTitleMessage" : MessageLookupByLibrary.simpleMessage("站内信"),
     "memberGridTitleTransaction" : MessageLookupByLibrary.simpleMessage("转帐记录"),
     "memberGridTitleTransfer" : MessageLookupByLibrary.simpleMessage("转帐"),
     "memberGridTitleWallet" : MessageLookupByLibrary.simpleMessage("免转钱包"),
-    "memberGridTitleWithdraw" : MessageLookupByLibrary.simpleMessage("提现"),
+    "memberGridTitleWithdraw" : MessageLookupByLibrary.simpleMessage("取款"),
     "messageActionCheckTerms" : MessageLookupByLibrary.simpleMessage("请阅读并勾选同意投注規则"),
     "messageActionFailed" : MessageLookupByLibrary.simpleMessage("操作无效"),
     "messageActionFillForm" : MessageLookupByLibrary.simpleMessage("请确认栏位信息并填写完整"),
@@ -533,9 +584,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "messageInvalidConfirmPassword" : MessageLookupByLibrary.simpleMessage("密码不符合"),
     "messageInvalidDate" : MessageLookupByLibrary.simpleMessage("日期错误"),
     "messageInvalidDepositAmount" : MessageLookupByLibrary.simpleMessage("金额输入错误"),
-    "messageInvalidDepositAmountMaxLimit" : MessageLookupByLibrary.simpleMessage("充值金额超过上限"),
+    "messageInvalidDepositAmountMaxLimit" : MessageLookupByLibrary.simpleMessage("存款金额超过上限"),
     "messageInvalidDepositAmountMin" : m34,
-    "messageInvalidDepositAmountMinLimit" : MessageLookupByLibrary.simpleMessage("充值金额低于下限"),
+    "messageInvalidDepositAmountMinLimit" : MessageLookupByLibrary.simpleMessage("存款金额低于下限"),
     "messageInvalidDepositName" : MessageLookupByLibrary.simpleMessage("帐号名称错误"),
     "messageInvalidEmail" : MessageLookupByLibrary.simpleMessage("信箱格式错误"),
     "messageInvalidFormat" : MessageLookupByLibrary.simpleMessage("格式错误"),
@@ -551,7 +602,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "messageInvalidVerify" : MessageLookupByLibrary.simpleMessage("请输入验证码"),
     "messageInvalidWechat" : MessageLookupByLibrary.simpleMessage("微信号格式错误"),
     "messageInvalidWithdrawAmount" : MessageLookupByLibrary.simpleMessage("超过帐户余额"),
-    "messageInvalidWithdrawExceedAmount" : MessageLookupByLibrary.simpleMessage("超过单笔最大提现金额(请参考会员等级制度)"),
+    "messageInvalidWithdrawExceedAmount" : MessageLookupByLibrary.simpleMessage("超过单笔最大取款金额(请参考会员等级制度)"),
     "messageInvalidWithdrawPassword" : MessageLookupByLibrary.simpleMessage("密码不符合(默认值为登录密码)"),
     "messageInvalidWithdrawUnderAmount" : MessageLookupByLibrary.simpleMessage("低于最低提款金额"),
     "messageInvalidZalo" : MessageLookupByLibrary.simpleMessage("Zalo格式错误"),
@@ -565,6 +616,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "messagePlatformMaintenance" : MessageLookupByLibrary.simpleMessage("平台维护中"),
     "messageRegisterFailed" : MessageLookupByLibrary.simpleMessage("注册失败"),
     "messageRepeatAccount" : MessageLookupByLibrary.simpleMessage("帐号重复注册"),
+    "messageRepeatEmail" : MessageLookupByLibrary.simpleMessage("信箱重复"),
     "messageRepeatMobile" : MessageLookupByLibrary.simpleMessage("手机号码重复注册"),
     "messageRepeatPhone" : MessageLookupByLibrary.simpleMessage("手机号重复"),
     "messageSentVerify" : MessageLookupByLibrary.simpleMessage("已发送验证码"),
@@ -607,9 +659,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkChangedHint" : MessageLookupByLibrary.simpleMessage("偵測到網路狀態變更，是否要刷新頁面?"),
     "noticeTabGeneral" : MessageLookupByLibrary.simpleMessage("一般讯息"),
     "noticeTabMaintenance" : MessageLookupByLibrary.simpleMessage("维护通知"),
+    "pageTitleAbout" : MessageLookupByLibrary.simpleMessage("关于我们"),
     "pageTitleCenter" : MessageLookupByLibrary.simpleMessage("个人中心"),
     "pageTitleCollect" : MessageLookupByLibrary.simpleMessage("集字活动"),
-    "pageTitleDeposit" : MessageLookupByLibrary.simpleMessage("充值"),
+    "pageTitleDeposit" : MessageLookupByLibrary.simpleMessage("存款"),
     "pageTitleDownload" : MessageLookupByLibrary.simpleMessage("APP下载区"),
     "pageTitleHome" : MessageLookupByLibrary.simpleMessage("首页"),
     "pageTitleLogin" : MessageLookupByLibrary.simpleMessage("登入"),
@@ -631,7 +684,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pageTitleMemberTransaction" : MessageLookupByLibrary.simpleMessage("转帐记录"),
     "pageTitleMemberTransfer" : MessageLookupByLibrary.simpleMessage("转帐"),
     "pageTitleMemberWallet" : MessageLookupByLibrary.simpleMessage("免转钱包"),
-    "pageTitleMemberWithdraw" : MessageLookupByLibrary.simpleMessage("提现"),
+    "pageTitleMemberWithdraw" : MessageLookupByLibrary.simpleMessage("取款"),
     "pageTitleMore" : MessageLookupByLibrary.simpleMessage("更多"),
     "pageTitleNotice" : MessageLookupByLibrary.simpleMessage("公告"),
     "pageTitlePromo" : MessageLookupByLibrary.simpleMessage("优惠"),
@@ -828,7 +881,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "wheelTextTitleRules" : MessageLookupByLibrary.simpleMessage("活动规则"),
     "withdrawViewHint1" : MessageLookupByLibrary.simpleMessage("提款时想要更改与网络绑定的银行卡的会员，请联系在线客服以获取指示。"),
     "withdrawViewHint2" : MessageLookupByLibrary.simpleMessage("每个会员账户每天最多只能取3次提款，如果超过3次将加收5％的服务费。"),
-    "withdrawViewHintMax" : MessageLookupByLibrary.simpleMessage("最高提现"),
+    "withdrawViewHintMax" : MessageLookupByLibrary.simpleMessage("最高取款"),
     "withdrawViewOptionCgp" : MessageLookupByLibrary.simpleMessage("使用CGP钱包"),
     "withdrawViewOptionCpw" : MessageLookupByLibrary.simpleMessage("使用购宝钱包"),
     "withdrawViewOptionHint1" : MessageLookupByLibrary.simpleMessage("如需提取虚拟货币请绑定後选取"),
@@ -837,7 +890,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "withdrawViewOptionVirtual" : MessageLookupByLibrary.simpleMessage("不使用虚拟货币"),
     "withdrawViewTitleAmount" : MessageLookupByLibrary.simpleMessage("提款金额"),
     "withdrawViewTitleNote" : MessageLookupByLibrary.simpleMessage("备注"),
-    "withdrawViewTitlePwd" : MessageLookupByLibrary.simpleMessage("提现密码"),
+    "withdrawViewTitlePwd" : MessageLookupByLibrary.simpleMessage("取款密码"),
     "workInProgress" : MessageLookupByLibrary.simpleMessage("功能即将上线!")
   };
 }

@@ -37,9 +37,10 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
   bool _showPasswordError = false;
 
   double _currentCredit = 0;
-  int _amountMin = 200;
+  int _amountMin = 300;
   int _amountMax = 0;
-  int _flowLimit = 0;
+
+  // int _flowLimit = 0;
 
   void _validateForm() {
     final form = _formKey.currentState;
@@ -50,17 +51,18 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
         password: _passwordFieldKey.currentState.getInput,
         type: '0',
       );
-      if (_currentCredit != -1) {
-        var hasEnoughFlow = rangeCheck(
-            value: dataForm.amount.strToInt,
-            min: _amountMin,
-            max: _currentCredit - _flowLimit);
-        debugPrint('hasEnoughFlow= $hasEnoughFlow');
-        if (!hasEnoughFlow) {
-          callToast(localeStr.withdrawViewOptionHint2 + '$_flowLimit');
-          return;
-        }
-      }
+      // if (_currentCredit != -1) {
+      //   var hasEnoughFlow = rangeCheck(
+      //       value: dataForm.amount.strToInt,
+      //       min: _amountMin,
+      //       // max: _currentCredit - _flowLimit);
+      //       max: _currentCredit);
+      //   debugPrint('hasEnoughFlow= $hasEnoughFlow');
+      //   if (!hasEnoughFlow) {
+      //     callToast(localeStr.withdrawViewOptionHint2 + '$_flowLimit');
+      //     return;
+      //   }
+      // }
       if (dataForm.isValid) {
         debugPrint('bankcard form: ${dataForm.toJson()}');
         if (widget.store.waitForWithdrawResult) {
@@ -81,7 +83,7 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
         ThemeInterface.minusSize;
     super.initState();
     _amountMax = widget.store.limit;
-    _flowLimit = widget.store.rollback;
+    // _flowLimit = widget.store.rollback;
   }
 
   @override
@@ -300,63 +302,63 @@ class _WithdrawDisplayViewState extends State<WithdrawDisplayView> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 4.0, horizontal: 16.0),
-                      child: RichText(
-                        maxLines: 2,
-                        text: TextSpan(
-                          children: <InlineSpan>[
-                            WidgetSpan(
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    right: 4.0, bottom: 2.0),
-                                child: Icon(
-                                  const IconData(0xf05a,
-                                      fontFamily: 'FontAwesome'),
-                                  color: themeColor.hintHyperLink,
-                                  size: FontSize.NORMAL.value,
-                                ),
-                              ),
-                            ),
-                            TextSpan(
-                              text: localeStr.withdrawViewOptionHint2,
-                              style: TextStyle(color: themeColor.hintHyperLink),
-                            ),
-                            TextSpan(
-                              text: '$_flowLimit',
-                              style: TextStyle(color: themeColor.hintHyperLink),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: RichText(
-                        maxLines: 2,
-                        text: TextSpan(
-                          children: <InlineSpan>[
-                            WidgetSpan(
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    right: 4.0, bottom: 2.0),
-                                child: Icon(
-                                  const IconData(0xf05a,
-                                      fontFamily: 'FontAwesome'),
-                                  color: themeColor.hintHyperLink,
-                                  size: FontSize.NORMAL.value,
-                                ),
-                              ),
-                            ),
-                            TextSpan(
-                              text: localeStr.withdrawViewOptionHint3,
-                              style: TextStyle(color: themeColor.hintHyperLink),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(
+                    //       vertical: 4.0, horizontal: 16.0),
+                    //   child: RichText(
+                    //     maxLines: 2,
+                    //     text: TextSpan(
+                    //       children: <InlineSpan>[
+                    //         WidgetSpan(
+                    //           child: Padding(
+                    //             padding: const EdgeInsets.only(
+                    //                 right: 4.0, bottom: 2.0),
+                    //             child: Icon(
+                    //               const IconData(0xf05a,
+                    //                   fontFamily: 'FontAwesome'),
+                    //               color: themeColor.hintHyperLink,
+                    //               size: FontSize.NORMAL.value,
+                    //             ),
+                    //           ),
+                    //         ),
+                    //         TextSpan(
+                    //           text: localeStr.withdrawViewOptionHint2,
+                    //           style: TextStyle(color: themeColor.hintHyperLink),
+                    //         ),
+                    //         TextSpan(
+                    //           text: '$_flowLimit',
+                    //           style: TextStyle(color: themeColor.hintHyperLink),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    //   child: RichText(
+                    //     maxLines: 2,
+                    //     text: TextSpan(
+                    //       children: <InlineSpan>[
+                    //         WidgetSpan(
+                    //           child: Padding(
+                    //             padding: const EdgeInsets.only(
+                    //                 right: 4.0, bottom: 2.0),
+                    //             child: Icon(
+                    //               const IconData(0xf05a,
+                    //                   fontFamily: 'FontAwesome'),
+                    //               color: themeColor.hintHyperLink,
+                    //               size: FontSize.NORMAL.value,
+                    //             ),
+                    //           ),
+                    //         ),
+                    //         TextSpan(
+                    //           text: localeStr.withdrawViewOptionHint3,
+                    //           style: TextStyle(color: themeColor.hintHyperLink),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
 
                     ///
                     /// Submit Button

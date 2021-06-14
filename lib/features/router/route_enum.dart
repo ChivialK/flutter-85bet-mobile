@@ -123,6 +123,8 @@ extension RouteEnumExtension on RouteEnum {
         return localeStr.pageTitleSign;
       case RouteEnum.WEBSITE:
         return localeStr.gameCategoryWeb;
+      case RouteEnum.ABOUT:
+        return localeStr.pageTitleAbout;
 
       /// More
       case RouteEnum.MORE:

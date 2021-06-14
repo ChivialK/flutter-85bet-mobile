@@ -10,7 +10,7 @@ bool rangeCheck({@required num value, @required num min, num max = 0}) {
     return value >= min;
 }
 
-final String creditSymbol = 'NTD ';
+final String creditSymbol = '￥ ';
 final NumberFormat numFormat = new NumberFormat("###0.00", "en_US");
 final NumberFormat creditFormat =
     new NumberFormat("$creditSymbol#,##0.00", "en_US");
@@ -120,7 +120,7 @@ String formatValue(
 }
 
 extension ValueUtilExtension on String {
-  int get strToInt => stringToInt(this);
+  int get strToInt => (this != null) ? stringToInt(this) : -1;
 
   int get strToIntNoErrorStack => stringToInt(this, printErrorStack: false);
 

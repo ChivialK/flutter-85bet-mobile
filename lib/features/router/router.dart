@@ -1,4 +1,5 @@
 import 'package:flutter_85bet_mobile/builders/autoroute/auto_route_annotations.dart';
+import 'package:flutter_85bet_mobile/features/routes/subfeatures/about/presentation/about_route.dart';
 
 import '../routes/home/presentation/home_route.dart';
 import '../routes/member/presentation/member_route.dart';
@@ -68,6 +69,7 @@ class $FeatureRouter {
   VipLevelRoute levelRoute;
   StoreRoute storeRoute;
   RollerRoute rollerRoute;
+  AboutRoute aboutRoute;
 
   /// test route
   TestAreaRoute testAreaRoute;

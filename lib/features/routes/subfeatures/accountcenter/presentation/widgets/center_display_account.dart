@@ -9,6 +9,7 @@ import 'package:flutter_85bet_mobile/utils/regex_util.dart';
 import '../../data/entity/center_account_entity.dart'
     show CenterAccountEntity, CenterAccountEntityExtension;
 import '../state/center_store.dart';
+import 'center_dialog_mobile.dart';
 import 'center_store_inherit_widget.dart';
 
 class CenterDisplayAccount extends StatefulWidget {
@@ -165,7 +166,31 @@ class _CenterDisplayAccountState extends State<CenterDisplayAccount> {
         ),
         _buildRow(
           localeStr.centerTextTitlePhone,
-          Text('${_storeData.phone}', style: _textStyle),
+          Text(
+              (_storeData.canVerifyPhone)
+                  ? '${_storeData.phone}(${localeStr.centerHintNotVerified})'
+                  : '${_storeData.phone}',
+              style: _textStyle),
+          child: (_storeData.canVerifyPhone)
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: GestureDetector(
+                    child:
+                        _buildButtonContainer(localeStr.centerTextButtonBind),
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => new CenterDialogMobile(
+                          store: _store,
+                          mobile: _storeData.phone.split('(')[0],
+                        ),
+                      );
+                    },
+                  ),
+                )
+              : null,
+          wrapInColumn: _storeData.canVerifyPhone,
         ),
         _buildRow(
           localeStr.centerTextTitleMail,

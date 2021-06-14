@@ -56,6 +56,12 @@ class ScreenDrawerItem extends Vnum<RouteListItem> {
     iconData: IconCode.drawerRoller,
     route: RoutePage.sideRoller,
   ));
+  static ScreenDrawerItem about = ScreenDrawerItem.define(RouteListItem(
+    // imageName: 'images/mobile-turntable_Color1.png',
+    // imageSubName: 'images/mobile-turntable.png',
+    route: RoutePage.sideAbout,
+    iconData: IconCode.tabAbout,
+  ));
   static ScreenDrawerItem website = ScreenDrawerItem.define(RouteListItem(
     routeId: RouteEnum.WEBSITE,
     iconData: IconCode.tabWebsite,

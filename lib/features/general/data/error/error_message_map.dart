@@ -51,6 +51,8 @@ class MessageMap {
         return localeStr.messageInvalidWithdrawPassword;
       case 'dobBefore':
         return localeStr.betsFieldDateError;
+      case 'emailUnique':
+        return localeStr.messageInvalidEmail;
       case 'amountMoreThanBalance':
         return localeStr.messageInvalidWithdrawAmount;
       case 'belowTheMinimum':

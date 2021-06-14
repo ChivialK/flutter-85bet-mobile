@@ -74,6 +74,9 @@ void main() {
   });
 
   test('test string verify', () {
+    String asiaUrl =
+        "https://asia365s.com/223B2D/?lang=zh-cn&sid=7af412b0e09f23f479d3b92a1a187bc20cb395fdaf6c195584da88ae4437f55fc5596547a64126a4b890153a1e789263ab#/redirect";
+    expect(asiaUrl.isUrl, true);
     expect(Global.CURRENT_BASE.isUrl, true);
     expect('a1234@'.isEmail, false);
     expect('a1234@yahoo.com'.isEmail, true);

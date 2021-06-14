@@ -182,7 +182,9 @@ class BalanceGridItemState extends State<BalanceGridItem>
                   children: <Widget>[
                     Expanded(
                       child: Text(
-                        (isMaintaining) ? _maintenanceText : 'NTD $_credit',
+                        (isMaintaining)
+                            ? _maintenanceText
+                            : '$creditSymbol $_credit',
                         style: TextStyle(
                           color: themeColor.balanceCardTextColor,
                           fontWeight: FontWeight.bold,

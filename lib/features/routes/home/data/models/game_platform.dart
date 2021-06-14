@@ -108,6 +108,8 @@ extension GamePlatformEntityExtension on GamePlatformEntity {
 
   String get imageUrl => '/images/nav/nav_${site}_$category.png';
 
+  // String get imageUrl => '/images/nav/mob/mob_${category}_$site.png';
+
   String get gameUrl => '$site/$category/0';
 
   String get label {

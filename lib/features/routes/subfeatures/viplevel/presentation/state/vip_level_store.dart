@@ -15,9 +15,10 @@ abstract class _VipLevelStore with Store {
   _VipLevelStore(this._repository);
 
   @observable
-  ObservableFuture<Either<Failure, VipLevelModel>> _levelFuture;
+  ObservableFuture<List> _initFuture;
 
   VipLevelModel levelModel;
+  String ruleData;
 
   @observable
   String errorMessage;
@@ -38,14 +39,31 @@ abstract class _VipLevelStore with Store {
   @computed
   VipLevelStoreState get state {
     // If the user has not yet triggered a action or there has been an error
-    if (_levelFuture == null || _levelFuture.status == FutureStatus.rejected) {
+    if (_initFuture == null || _initFuture.status == FutureStatus.rejected) {
       return VipLevelStoreState.initial;
     }
     // Pending Future means "loading"
     // Fulfilled Future means "loaded"
-    return _levelFuture.status == FutureStatus.pending
+    return _initFuture.status == FutureStatus.pending
         ? VipLevelStoreState.loading
         : VipLevelStoreState.loaded;
+  }
+
+  @action
+  Future<void> initialize() async {
+    try {
+      // Reset the possible previous error message.
+      errorMessage = null;
+      // Fetch from the repository and wrap the regular Future into an observable.
+      _initFuture = ObservableFuture(Future.wait([
+        if (levelModel == null) Future.value(getLevel()),
+        Future.value(getRules()),
+      ]));
+      // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
+      await _initFuture;
+    } on Exception {
+      setErrorMsg(code: 1);
+    }
   }
 
   @action
@@ -54,9 +72,8 @@ abstract class _VipLevelStore with Store {
       // Reset the possible previous error message.
       errorMessage = null;
       // Fetch from the repository and wrap the regular Future into an observable.
-      _levelFuture = ObservableFuture(_repository.getLevel());
       // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
-      await _levelFuture.then((result) {
+      await _repository.getLevel().then((result) {
 //        debugPrint('vip level result: $result');
         result.fold(
           (failure) => setErrorMsg(msg: failure.message, showOnce: true),
@@ -65,12 +82,32 @@ abstract class _VipLevelStore with Store {
       });
     } on Exception {
       //errorMessage = "Couldn't fetch description. Is the device online?";
-      setErrorMsg(code: 1);
+      setErrorMsg(code: 2);
+    }
+  }
+
+  @action
+  Future<void> getRules() async {
+    try {
+      // Reset the possible previous error message.
+      errorMessage = null;
+      // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
+      await _repository.getRules().then((result) {
+//        debugPrint('vip level result: $result');
+        result.fold(
+          (failure) => setErrorMsg(msg: failure.message, showOnce: true),
+          (model) => (model.isSuccess) ? ruleData = model.data : ruleData = "",
+        );
+      });
+    } on Exception {
+      //errorMessage = "Couldn't fetch description. Is the device online?";
+      setErrorMsg(code: 3);
     }
   }
 
   void clearData() {
-    _levelFuture = null;
+    _initFuture = null;
     levelModel = null;
+    ruleData = "";
   }
 }

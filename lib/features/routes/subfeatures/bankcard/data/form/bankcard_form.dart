@@ -16,14 +16,16 @@ abstract class BankcardForm with _$BankcardForm {
 
 extension BankcardFormExtension on BankcardForm {
   bool get isValid =>
-      owner.isNotEmpty &&
+      // owner.isNotEmpty &&
       bankId.isNotEmpty &&
       card.isNotEmpty &&
-      branch.isNotEmpty;
+      branch.isNotEmpty &&
+      province.isNotEmpty &&
+      area.isNotEmpty;
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'bankname': this.owner,
+      // 'bankname': this.owner,
       'bankindex': this.bankId,
       'bankaccno': this.card,
       'bankaddress': this.branch,
