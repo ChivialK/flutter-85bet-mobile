@@ -75,7 +75,7 @@ class HomeDisplayMarquee extends StatelessWidget {
               onPressed: () =>
                   RouterNavigate.navigateToPage(RoutePage.sideNoticeBoard),
               child: AutoSizeText(
-                localeStr.pageTitleNotice,
+                localeStr.pageTitleMore,
                 style: TextStyle(fontSize: FontSize.NORMAL.value),
                 maxLines: 1,
                 minFontSize: FontSize.SMALL.value - 4,

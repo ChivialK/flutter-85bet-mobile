@@ -57,7 +57,7 @@ abstract class _VipLevelStore with Store {
       // Fetch from the repository and wrap the regular Future into an observable.
       _initFuture = ObservableFuture(Future.wait([
         if (levelModel == null) Future.value(getLevel()),
-        Future.value(getRules()),
+        if (ruleData == null || ruleData.isEmpty) Future.value(getRules()),
       ]));
       // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
       await _initFuture;

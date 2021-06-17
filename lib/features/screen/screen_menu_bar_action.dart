@@ -85,26 +85,26 @@ class _ScreenMenuBarActionState extends State<ScreenMenuBarAction> {
               onPressed: () => RouterNavigate.navigateToPage(RoutePage.login,
                   arg: LoginRouteArguments(returnHomeAfterLogin: true)),
             ),
-            SizedBox(width: 4.0),
-            RaisedButton(
-              child: new Text(
-                localeStr.pageTitleRegisterFree,
-                style: TextStyle(
-                  fontSize: FontSize.NORMAL.value + 1,
-                  color: themeColor.buttonTextPrimaryColor,
-                ),
-              ),
-              visualDensity: VisualDensity(horizontal: -3.0),
-              // onPressed: () =>
-              //     RouterNavigate.navigateToPage(RoutePage.register),
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  barrierDismissible: true,
-                  builder: (_) => new RegisterRoute(isDialog: true),
-                );
-              },
-            ),
+            // SizedBox(width: 4.0),
+            // RaisedButton(
+            //   child: new Text(
+            //     localeStr.pageTitleRegisterFree,
+            //     style: TextStyle(
+            //       fontSize: FontSize.NORMAL.value + 1,
+            //       color: themeColor.buttonTextPrimaryColor,
+            //     ),
+            //   ),
+            //   visualDensity: VisualDensity(horizontal: -3.0),
+            //   // onPressed: () =>
+            //   //     RouterNavigate.navigateToPage(RoutePage.register),
+            //   onPressed: () {
+            //     showDialog(
+            //       context: context,
+            //       barrierDismissible: true,
+            //       builder: (_) => new RegisterRoute(isDialog: true),
+            //     );
+            //   },
+            // ),
           ],
         ),
       ),

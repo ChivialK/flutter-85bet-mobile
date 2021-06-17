@@ -362,7 +362,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "centerTextTitleWechat" : MessageLookupByLibrary.simpleMessage("微信号："),
     "centerViewTitleData" : MessageLookupByLibrary.simpleMessage("个人资料"),
     "centerViewTitleLotto" : MessageLookupByLibrary.simpleMessage("六合幸运码"),
-    "centerViewTitleVipRank" : MessageLookupByLibrary.simpleMessage("Vip阶层"),
+    "centerViewTitleVipRank" : MessageLookupByLibrary.simpleMessage("VIP"),
     "dealsDetailTypeAdjustCash" : MessageLookupByLibrary.simpleMessage("调整金额"),
     "dealsDetailTypeAdjustDeposit" : MessageLookupByLibrary.simpleMessage("调整存款"),
     "dealsDetailTypeAdjustWithdraw" : MessageLookupByLibrary.simpleMessage("调整取款"),

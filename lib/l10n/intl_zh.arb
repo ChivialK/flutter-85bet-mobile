@@ -1555,7 +1555,7 @@
   "@centerViewTitleLotto": {
     "type": "text"
   },
-  "centerViewTitleVipRank": "Vip阶层",
+  "centerViewTitleVipRank": "VIP",
   "@centerViewTitleVipRank": {
     "type": "text"
   },

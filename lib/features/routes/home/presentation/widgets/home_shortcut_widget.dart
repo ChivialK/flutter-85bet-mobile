@@ -328,17 +328,17 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
             Expanded(
               flex: 1,
               child: _createShortcutButton(
-                page: RoutePage.withdraw,
+                page: RoutePage.transfer,
                 isUserOnly: true,
-                iconData: IconCode.gridWithdraw,
+                iconData: IconCode.gridTransfer,
               ),
             ),
             Expanded(
               flex: 1,
               child: _createShortcutButton(
-                page: RoutePage.transfer,
+                page: RoutePage.withdraw,
                 isUserOnly: true,
-                iconData: IconCode.gridTransfer,
+                iconData: IconCode.gridWithdraw,
               ),
             ),
             Expanded(

@@ -54,22 +54,26 @@ class VipLevelDisplay extends StatelessWidget {
               (index) => _buildLevel(data.levels[index]),
             ).toList() +
             List.of({
-              Container(
-                padding: const EdgeInsets.only(top: 16.0),
-                height: 1600,
-                // child: HtmlWidget(rules),
-                child: InAppWebView(
-                  initialOptions: InAppWebViewGroupOptions(
-                    crossPlatform: InAppWebViewOptions(supportZoom: false),
-                    android: AndroidInAppWebViewOptions(useWideViewPort: true),
-                  ),
-                  initialData: InAppWebViewInitialData(
-                    data: _buildHtmlText(),
-                    mimeType: Global.WEB_MIMETYPE,
-                    encoding: Global.webEncoding.name,
-                  ),
-                ),
-              )
+              (rules.isNotEmpty)
+                  ? Container(
+                      padding: const EdgeInsets.only(top: 16.0),
+                      height: 1800,
+                      // child: HtmlWidget(rules),
+                      child: InAppWebView(
+                        initialOptions: InAppWebViewGroupOptions(
+                          crossPlatform:
+                              InAppWebViewOptions(supportZoom: false),
+                          android:
+                              AndroidInAppWebViewOptions(useWideViewPort: true),
+                        ),
+                        initialData: InAppWebViewInitialData(
+                          data: _buildHtmlText(),
+                          mimeType: Global.WEB_MIMETYPE,
+                          encoding: Global.webEncoding.name,
+                        ),
+                      ),
+                    )
+                  : SizedBox.shrink()
             }),
       ),
     );
@@ -78,7 +82,7 @@ class VipLevelDisplay extends StatelessWidget {
   String _buildHtmlText() {
     final String htmlBgColor = themeColor.defaultBackgroundColor.toHexNoAlpha();
     final String htmlTextColor = themeColor.dialogTextColor.toHexNoAlpha();
-    debugPrint("rules: $rules");
+    // debugPrint("rules: $rules");
     return '<html>'
         '<head><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"></head>'
         '<body bgcolor="$htmlBgColor" text="$htmlTextColor" style="line-height:1.2;">'
