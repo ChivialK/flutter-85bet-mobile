@@ -16,6 +16,7 @@ _$_BankcardModel _$_$_BankcardModelFromJson(Map<String, dynamic> json) {
     bankCity: json['bankcity'] as String ?? '',
     bankArea: json['bankarea'] as String ?? '',
     bankName: json['bankname'] as String ?? '',
+    phoneVerification: json['phone_verification'] as String ?? '',
   );
 }
 
@@ -29,4 +30,5 @@ Map<String, dynamic> _$_$_BankcardModelToJson(_$_BankcardModel instance) =>
       'bankcity': instance.bankCity,
       'bankarea': instance.bankArea,
       'bankname': instance.bankName,
+      'phone_verification': instance.phoneVerification,
     };

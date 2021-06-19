@@ -16,8 +16,8 @@ class _ScreenNavigationBarState extends State<ScreenNavigationBar> {
     ScreenNavigationBarItem.home,
     // ScreenNavigationBarItem.deposit,
     ScreenNavigationBarItem.promo,
-    ScreenNavigationBarItem.member,
     ScreenNavigationBarItem.service,
+    ScreenNavigationBarItem.member,
   ];
 
   FeatureScreenStore _store;

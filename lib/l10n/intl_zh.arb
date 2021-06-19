@@ -905,6 +905,10 @@
   "@messageErrorBindBankcard": {
     "type": "text"
   },
+  "messageErrorVerifyPhone": "请先驗證手機號！",
+  "@messageErrorVerifyPhone": {
+    "type": "text"
+  },
   "messageErrorAccount": "帐号错误",
   "@messageErrorAccount": {
     "type": "text"

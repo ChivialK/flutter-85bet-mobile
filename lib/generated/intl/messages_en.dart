@@ -571,6 +571,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "messageErrorTimeoutError" : MessageLookupByLibrary.simpleMessage("Network timed out, please try again later"),
     "messageErrorToken" : MessageLookupByLibrary.simpleMessage("User token error, please logout and login again"),
     "messageErrorVerify" : MessageLookupByLibrary.simpleMessage("Verify code error, please check your input or tap image to refresh"),
+    "messageErrorVerifyPhone" : MessageLookupByLibrary.simpleMessage("Please verify your phone number first！"),
     "messageErrorVerifyShort" : MessageLookupByLibrary.simpleMessage("Verify code error"),
     "messageErrorWithdraw" : MessageLookupByLibrary.simpleMessage("withdrawal failed"),
     "messageExceedRemainCredit" : MessageLookupByLibrary.simpleMessage("Not enough credit"),

@@ -571,6 +571,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "messageErrorTimeoutError" : MessageLookupByLibrary.simpleMessage("Mạng đã hết thời gian chờ, vui lòng thử lại sau"),
     "messageErrorToken" : MessageLookupByLibrary.simpleMessage("Xác minh người dùng không thành công, vui lòng đăng nhập lại"),
     "messageErrorVerify" : MessageLookupByLibrary.simpleMessage("Mã xác minh sai, vui lòng kiểm tra thông tin đầu vào hoặc nhấp vào hình ảnh để làm mới"),
+    "messageErrorVerifyPhone" : MessageLookupByLibrary.simpleMessage("Vui lòng xác minh số điện thoại của bạn trước！"),
     "messageErrorVerifyShort" : MessageLookupByLibrary.simpleMessage("Lỗi mã xác minh"),
     "messageErrorWithdraw" : MessageLookupByLibrary.simpleMessage("Rút tiền không thành công"),
     "messageExceedRemainCredit" : MessageLookupByLibrary.simpleMessage("Số dư"),

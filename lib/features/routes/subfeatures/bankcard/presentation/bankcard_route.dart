@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_85bet_mobile/core/network/handler/request_code_model.dart';
 import 'package:flutter_85bet_mobile/features/exports_for_route_widget.dart';
+import 'package:flutter_85bet_mobile/features/router/app_navigate.dart';
 
 import 'state/bankcard_store.dart';
 import 'widgets/bankcard_display.dart';
@@ -25,7 +26,7 @@ class _BankcardRouteState extends State<BankcardRoute> {
   @override
   void initState() {
     _store ??= sl.get<BankcardStore>();
-    _store.getBankcard();
+    _store.getBankcard(widget.withdraw);
     super.initState();
   }
 
@@ -74,7 +75,7 @@ class _BankcardRouteState extends State<BankcardRoute> {
             callToastInfo(
                 MessageMap.getSuccessMessage(result.msg, RouteEnum.BANKCARD),
                 icon: Icons.check_circle_outline);
-            _store.getBankcard();
+            _store.getBankcard(widget.withdraw);
           } else {
             callToastError(
                 MessageMap.getErrorMessage(result.msg, RouteEnum.BANKCARD));
@@ -113,18 +114,27 @@ class _BankcardRouteState extends State<BankcardRoute> {
                 case BankcardStoreState.loading:
                   return LoadingWidget();
                 case BankcardStoreState.loaded:
+                  bool validPhone = _store.bankcard.phoneVerification.isEmpty;
                   bool validCard =
                       _store.bankcard != null && _store.bankcard.hasCard;
-                  if (!validCard && widget.withdraw) {
-                    Future.delayed(Duration(milliseconds: 300), () {
-                      callToast(localeStr.messageErrorBindBankcard);
-                    });
-                  }
-                  if (validCard && widget.withdraw) {
+                  if (widget.withdraw && validPhone && validCard) {
                     return WithdrawDisplay(bankcard: _store.bankcard);
-                  } else if (validCard) {
+                  } else if (widget.withdraw && !validPhone) {
+                    Future.delayed(Duration(milliseconds: 300), () {
+                      callToast(localeStr.messageErrorVerifyPhone);
+                    });
+                    Future.sync(() {
+                      RouterNavigate.replacePage(RoutePage.center);
+                    });
+                    return Container();
+                  } else if (!widget.withdraw && validCard) {
                     return BankcardDisplayCard(bankcard: _store.bankcard);
                   } else {
+                    if (widget.withdraw && !validCard) {
+                      Future.delayed(Duration(milliseconds: 300), () {
+                        callToast(localeStr.messageErrorBindBankcard);
+                      });
+                    }
                     return BankcardDisplay(
                       store: _store,
                       bankcard: _store.bankcard,

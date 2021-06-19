@@ -134,6 +134,7 @@ class RouterNavigate {
   ];
 
   static String get current => _currentRoute;
+  static String get previous => _previousRoute;
 
   static StreamController<RouteInfo> _routeInfo =
       StreamController<RouteInfo>.broadcast();

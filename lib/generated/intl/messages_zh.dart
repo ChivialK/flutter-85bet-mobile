@@ -571,6 +571,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "messageErrorTimeoutError" : MessageLookupByLibrary.simpleMessage("网络逾時，请稍候再重试"),
     "messageErrorToken" : MessageLookupByLibrary.simpleMessage("用户验证失败，请重新登入或联系客服"),
     "messageErrorVerify" : MessageLookupByLibrary.simpleMessage("验证码错误，请检查输入或点击图片刷新"),
+    "messageErrorVerifyPhone" : MessageLookupByLibrary.simpleMessage("请先驗證手機號！"),
     "messageErrorVerifyShort" : MessageLookupByLibrary.simpleMessage("验证码错误"),
     "messageErrorWithdraw" : MessageLookupByLibrary.simpleMessage("提款失败"),
     "messageExceedRemainCredit" : MessageLookupByLibrary.simpleMessage("超过余额"),

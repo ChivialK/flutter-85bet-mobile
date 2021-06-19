@@ -120,9 +120,10 @@ String formatValue(
 }
 
 extension ValueUtilExtension on String {
-  int get strToInt => (this != null) ? stringToInt(this) : -1;
+  int get strToInt =>
+      (this != null) ? stringToInt(this, printErrorStack: false) : -1;
 
-  int get strToIntNoErrorStack => stringToInt(this, printErrorStack: false);
+  int get strToIntDebug => stringToInt(this);
 
   double get strToDouble => stringToDouble(this);
 

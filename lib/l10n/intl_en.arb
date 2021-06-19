@@ -905,6 +905,10 @@
   "@messageErrorBindBankcard": {
     "type": "text"
   },
+  "messageErrorVerifyPhone": "Please verify your phone number first！",
+  "@messageErrorVerifyPhone": {
+    "type": "text"
+  },
   "messageErrorAccount": "Account Error",
   "@messageErrorAccount": {
     "type": "text"

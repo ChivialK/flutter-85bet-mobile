@@ -1975,6 +1975,16 @@ class S {
     );
   }
 
+  /// `Please verify your phone number first！`
+  String get messageErrorVerifyPhone {
+    return Intl.message(
+      'Please verify your phone number first！',
+      name: 'messageErrorVerifyPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Account Error`
   String get messageErrorAccount {
     return Intl.message(

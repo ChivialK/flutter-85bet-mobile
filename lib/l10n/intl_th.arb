@@ -905,6 +905,10 @@
   "@messageErrorBindBankcard": {
     "type": "text"
   },
+  "messageErrorVerifyPhone": "โปรดยืนยันหมายเลขโทรศัพท์ของคุณก่อน！",
+  "@messageErrorVerifyPhone": {
+    "type": "text"
+  },
   "messageErrorAccount": "ข้อผิดพลาดของบัญชี",
   "@messageErrorAccount": {
     "type": "text"

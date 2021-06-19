@@ -571,6 +571,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "messageErrorTimeoutError" : MessageLookupByLibrary.simpleMessage("เครือข่ายหมดเวลาโปรดลองอีกครั้งในภายหลัง"),
     "messageErrorToken" : MessageLookupByLibrary.simpleMessage("ข้อผิดพลาดโทเค็นของผู้ใช้โปรดออกจากระบบและเข้าสู่ระบบอีกครั้ง"),
     "messageErrorVerify" : MessageLookupByLibrary.simpleMessage("รหัสยืนยันไม่ถูกต้อง โปรดตรวจสอบการป้อนข้อมูลหรือคลิกที่ภาพเพื่อรีเฟรช"),
+    "messageErrorVerifyPhone" : MessageLookupByLibrary.simpleMessage("โปรดยืนยันหมายเลขโทรศัพท์ของคุณก่อน！"),
     "messageErrorVerifyShort" : MessageLookupByLibrary.simpleMessage("ข้อผิดพลาดรหัสยืนยัน"),
     "messageErrorWithdraw" : MessageLookupByLibrary.simpleMessage("การถอนล้มเหลว"),
     "messageExceedRemainCredit" : MessageLookupByLibrary.simpleMessage("เกินความสมดุล"),

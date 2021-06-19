@@ -71,12 +71,12 @@ abstract class _BankcardStore with Store {
   }
 
   @action
-  Future<void> getBankcard() async {
+  Future<void> getBankcard(bool isWithdraw) async {
     try {
       // Reset the possible previous error message.
       errorMessage = null;
       // ObservableFuture extends Future - it can be awaited and exceptions will propagate as usual.
-      _bankcardFuture = ObservableFuture(_repository.getBankcard());
+      _bankcardFuture = ObservableFuture(_repository.getBankcard(isWithdraw));
       await _bankcardFuture.then((result) {
 //        debugPrint('bankcard result: $result');
         result.fold(

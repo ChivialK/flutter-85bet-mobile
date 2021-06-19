@@ -157,8 +157,8 @@ mixin _$BankcardStore on _BankcardStore, Store {
   final _$getBankcardAsyncAction = AsyncAction('_BankcardStore.getBankcard');
 
   @override
-  Future<void> getBankcard() {
-    return _$getBankcardAsyncAction.run(() => super.getBankcard());
+  Future<void> getBankcard(bool isWithdraw) {
+    return _$getBankcardAsyncAction.run(() => super.getBankcard(isWithdraw));
   }
 
   final _$getBanksAsyncAction = AsyncAction('_BankcardStore.getBanks');

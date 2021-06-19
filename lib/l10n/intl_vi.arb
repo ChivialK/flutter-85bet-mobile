@@ -905,6 +905,10 @@
   "@messageErrorBindBankcard": {
     "type": "text"
   },
+  "messageErrorVerifyPhone": "Vui lòng xác minh số điện thoại của bạn trước！",
+  "@messageErrorVerifyPhone": {
+    "type": "text"
+  },
   "messageErrorAccount": "Lỗi tài khoản",
   "@messageErrorAccount": {
     "type": "text"

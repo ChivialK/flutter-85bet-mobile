@@ -18,14 +18,24 @@ class _$BankcardModelTearOff {
 
 // ignore: unused_element
   _BankcardModel call(
-      {@nullable bool hasCard,
-      @JsonKey(name: 'bankaddress', defaultValue: '') String bankAddress,
-      @JsonKey(name: 'firstname', defaultValue: '') String firstName,
-      @JsonKey(name: 'bankaccountno', defaultValue: '') String bankAccountNo,
-      @JsonKey(name: 'bankprovince', defaultValue: '') String bankProvince,
-      @JsonKey(name: 'bankcity', defaultValue: '') String bankCity,
-      @JsonKey(name: 'bankarea', defaultValue: '') String bankArea,
-      @JsonKey(name: 'bankname', defaultValue: '') String bankName}) {
+      {@nullable
+          bool hasCard,
+      @JsonKey(name: 'bankaddress', defaultValue: '')
+          String bankAddress,
+      @JsonKey(name: 'firstname', defaultValue: '')
+          String firstName,
+      @JsonKey(name: 'bankaccountno', defaultValue: '')
+          String bankAccountNo,
+      @JsonKey(name: 'bankprovince', defaultValue: '')
+          String bankProvince,
+      @JsonKey(name: 'bankcity', defaultValue: '')
+          String bankCity,
+      @JsonKey(name: 'bankarea', defaultValue: '')
+          String bankArea,
+      @JsonKey(name: 'bankname', defaultValue: '')
+          String bankName,
+      @JsonKey(name: 'phone_verification', defaultValue: '')
+          String phoneVerification}) {
     return _BankcardModel(
       hasCard: hasCard,
       bankAddress: bankAddress,
@@ -35,6 +45,7 @@ class _$BankcardModelTearOff {
       bankCity: bankCity,
       bankArea: bankArea,
       bankName: bankName,
+      phoneVerification: phoneVerification,
     );
   }
 
@@ -66,6 +77,8 @@ mixin _$BankcardModel {
   String get bankArea;
   @JsonKey(name: 'bankname', defaultValue: '')
   String get bankName;
+  @JsonKey(name: 'phone_verification', defaultValue: '')
+  String get phoneVerification;
 
   Map<String, dynamic> toJson();
   $BankcardModelCopyWith<BankcardModel> get copyWith;
@@ -77,14 +90,24 @@ abstract class $BankcardModelCopyWith<$Res> {
           BankcardModel value, $Res Function(BankcardModel) then) =
       _$BankcardModelCopyWithImpl<$Res>;
   $Res call(
-      {@nullable bool hasCard,
-      @JsonKey(name: 'bankaddress', defaultValue: '') String bankAddress,
-      @JsonKey(name: 'firstname', defaultValue: '') String firstName,
-      @JsonKey(name: 'bankaccountno', defaultValue: '') String bankAccountNo,
-      @JsonKey(name: 'bankprovince', defaultValue: '') String bankProvince,
-      @JsonKey(name: 'bankcity', defaultValue: '') String bankCity,
-      @JsonKey(name: 'bankarea', defaultValue: '') String bankArea,
-      @JsonKey(name: 'bankname', defaultValue: '') String bankName});
+      {@nullable
+          bool hasCard,
+      @JsonKey(name: 'bankaddress', defaultValue: '')
+          String bankAddress,
+      @JsonKey(name: 'firstname', defaultValue: '')
+          String firstName,
+      @JsonKey(name: 'bankaccountno', defaultValue: '')
+          String bankAccountNo,
+      @JsonKey(name: 'bankprovince', defaultValue: '')
+          String bankProvince,
+      @JsonKey(name: 'bankcity', defaultValue: '')
+          String bankCity,
+      @JsonKey(name: 'bankarea', defaultValue: '')
+          String bankArea,
+      @JsonKey(name: 'bankname', defaultValue: '')
+          String bankName,
+      @JsonKey(name: 'phone_verification', defaultValue: '')
+          String phoneVerification});
 }
 
 /// @nodoc
@@ -106,6 +129,7 @@ class _$BankcardModelCopyWithImpl<$Res>
     Object bankCity = freezed,
     Object bankArea = freezed,
     Object bankName = freezed,
+    Object phoneVerification = freezed,
   }) {
     return _then(_value.copyWith(
       hasCard: hasCard == freezed ? _value.hasCard : hasCard as bool,
@@ -121,6 +145,9 @@ class _$BankcardModelCopyWithImpl<$Res>
       bankCity: bankCity == freezed ? _value.bankCity : bankCity as String,
       bankArea: bankArea == freezed ? _value.bankArea : bankArea as String,
       bankName: bankName == freezed ? _value.bankName : bankName as String,
+      phoneVerification: phoneVerification == freezed
+          ? _value.phoneVerification
+          : phoneVerification as String,
     ));
   }
 }
@@ -133,14 +160,24 @@ abstract class _$BankcardModelCopyWith<$Res>
       __$BankcardModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@nullable bool hasCard,
-      @JsonKey(name: 'bankaddress', defaultValue: '') String bankAddress,
-      @JsonKey(name: 'firstname', defaultValue: '') String firstName,
-      @JsonKey(name: 'bankaccountno', defaultValue: '') String bankAccountNo,
-      @JsonKey(name: 'bankprovince', defaultValue: '') String bankProvince,
-      @JsonKey(name: 'bankcity', defaultValue: '') String bankCity,
-      @JsonKey(name: 'bankarea', defaultValue: '') String bankArea,
-      @JsonKey(name: 'bankname', defaultValue: '') String bankName});
+      {@nullable
+          bool hasCard,
+      @JsonKey(name: 'bankaddress', defaultValue: '')
+          String bankAddress,
+      @JsonKey(name: 'firstname', defaultValue: '')
+          String firstName,
+      @JsonKey(name: 'bankaccountno', defaultValue: '')
+          String bankAccountNo,
+      @JsonKey(name: 'bankprovince', defaultValue: '')
+          String bankProvince,
+      @JsonKey(name: 'bankcity', defaultValue: '')
+          String bankCity,
+      @JsonKey(name: 'bankarea', defaultValue: '')
+          String bankArea,
+      @JsonKey(name: 'bankname', defaultValue: '')
+          String bankName,
+      @JsonKey(name: 'phone_verification', defaultValue: '')
+          String phoneVerification});
 }
 
 /// @nodoc
@@ -164,6 +201,7 @@ class __$BankcardModelCopyWithImpl<$Res>
     Object bankCity = freezed,
     Object bankArea = freezed,
     Object bankName = freezed,
+    Object phoneVerification = freezed,
   }) {
     return _then(_BankcardModel(
       hasCard: hasCard == freezed ? _value.hasCard : hasCard as bool,
@@ -179,6 +217,9 @@ class __$BankcardModelCopyWithImpl<$Res>
       bankCity: bankCity == freezed ? _value.bankCity : bankCity as String,
       bankArea: bankArea == freezed ? _value.bankArea : bankArea as String,
       bankName: bankName == freezed ? _value.bankName : bankName as String,
+      phoneVerification: phoneVerification == freezed
+          ? _value.phoneVerification
+          : phoneVerification as String,
     ));
   }
 }
@@ -188,14 +229,24 @@ class __$BankcardModelCopyWithImpl<$Res>
 /// @nodoc
 class _$_BankcardModel implements _BankcardModel {
   const _$_BankcardModel(
-      {@nullable this.hasCard,
-      @JsonKey(name: 'bankaddress', defaultValue: '') this.bankAddress,
-      @JsonKey(name: 'firstname', defaultValue: '') this.firstName,
-      @JsonKey(name: 'bankaccountno', defaultValue: '') this.bankAccountNo,
-      @JsonKey(name: 'bankprovince', defaultValue: '') this.bankProvince,
-      @JsonKey(name: 'bankcity', defaultValue: '') this.bankCity,
-      @JsonKey(name: 'bankarea', defaultValue: '') this.bankArea,
-      @JsonKey(name: 'bankname', defaultValue: '') this.bankName});
+      {@nullable
+          this.hasCard,
+      @JsonKey(name: 'bankaddress', defaultValue: '')
+          this.bankAddress,
+      @JsonKey(name: 'firstname', defaultValue: '')
+          this.firstName,
+      @JsonKey(name: 'bankaccountno', defaultValue: '')
+          this.bankAccountNo,
+      @JsonKey(name: 'bankprovince', defaultValue: '')
+          this.bankProvince,
+      @JsonKey(name: 'bankcity', defaultValue: '')
+          this.bankCity,
+      @JsonKey(name: 'bankarea', defaultValue: '')
+          this.bankArea,
+      @JsonKey(name: 'bankname', defaultValue: '')
+          this.bankName,
+      @JsonKey(name: 'phone_verification', defaultValue: '')
+          this.phoneVerification});
 
   factory _$_BankcardModel.fromJson(Map<String, dynamic> json) =>
       _$_$_BankcardModelFromJson(json);
@@ -224,10 +275,13 @@ class _$_BankcardModel implements _BankcardModel {
   @override
   @JsonKey(name: 'bankname', defaultValue: '')
   final String bankName;
+  @override
+  @JsonKey(name: 'phone_verification', defaultValue: '')
+  final String phoneVerification;
 
   @override
   String toString() {
-    return 'BankcardModel(hasCard: $hasCard, bankAddress: $bankAddress, firstName: $firstName, bankAccountNo: $bankAccountNo, bankProvince: $bankProvince, bankCity: $bankCity, bankArea: $bankArea, bankName: $bankName)';
+    return 'BankcardModel(hasCard: $hasCard, bankAddress: $bankAddress, firstName: $firstName, bankAccountNo: $bankAccountNo, bankProvince: $bankProvince, bankCity: $bankCity, bankArea: $bankArea, bankName: $bankName, phoneVerification: $phoneVerification)';
   }
 
   @override
@@ -257,7 +311,10 @@ class _$_BankcardModel implements _BankcardModel {
                     .equals(other.bankArea, bankArea)) &&
             (identical(other.bankName, bankName) ||
                 const DeepCollectionEquality()
-                    .equals(other.bankName, bankName)));
+                    .equals(other.bankName, bankName)) &&
+            (identical(other.phoneVerification, phoneVerification) ||
+                const DeepCollectionEquality()
+                    .equals(other.phoneVerification, phoneVerification)));
   }
 
   @override
@@ -270,7 +327,8 @@ class _$_BankcardModel implements _BankcardModel {
       const DeepCollectionEquality().hash(bankProvince) ^
       const DeepCollectionEquality().hash(bankCity) ^
       const DeepCollectionEquality().hash(bankArea) ^
-      const DeepCollectionEquality().hash(bankName);
+      const DeepCollectionEquality().hash(bankName) ^
+      const DeepCollectionEquality().hash(phoneVerification);
 
   @override
   _$BankcardModelCopyWith<_BankcardModel> get copyWith =>
@@ -299,7 +357,9 @@ abstract class _BankcardModel implements BankcardModel {
       @JsonKey(name: 'bankarea', defaultValue: '')
           String bankArea,
       @JsonKey(name: 'bankname', defaultValue: '')
-          String bankName}) = _$_BankcardModel;
+          String bankName,
+      @JsonKey(name: 'phone_verification', defaultValue: '')
+          String phoneVerification}) = _$_BankcardModel;
 
   factory _BankcardModel.fromJson(Map<String, dynamic> json) =
       _$_BankcardModel.fromJson;
@@ -328,6 +388,9 @@ abstract class _BankcardModel implements BankcardModel {
   @override
   @JsonKey(name: 'bankname', defaultValue: '')
   String get bankName;
+  @override
+  @JsonKey(name: 'phone_verification', defaultValue: '')
+  String get phoneVerification;
   @override
   _$BankcardModelCopyWith<_BankcardModel> get copyWith;
 }

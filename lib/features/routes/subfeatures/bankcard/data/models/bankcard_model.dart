@@ -14,6 +14,8 @@ abstract class BankcardModel with _$BankcardModel {
     @JsonKey(name: 'bankcity', defaultValue: '') String bankCity,
     @JsonKey(name: 'bankarea', defaultValue: '') String bankArea,
     @JsonKey(name: 'bankname', defaultValue: '') String bankName,
+    @JsonKey(name: 'phone_verification', defaultValue: '')
+        String phoneVerification,
   }) = _BankcardModel;
 
   factory BankcardModel.fromJson(Map<String, dynamic> json) =>
