@@ -12,5 +12,6 @@ abstract class UserEntity with _$UserEntity {
 }
 
 extension UserEntityExtension on UserEntity {
-  UserEntity updateCredit(String credit) => copyWith(credit: credit);
+  UserEntity updateCredit(String credit) =>
+      this != null ? copyWith(credit: credit) : this;
 }

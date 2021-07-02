@@ -100,8 +100,11 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
     super.initState();
     _smallerWidget = _areaHeight < widget.sizeCalc.shortcutMaxHeight;
     _iconSize = (_smallerWidget)
-        ? Size(widget.sizeCalc.shortcutMinIconSize,
-            widget.sizeCalc.shortcutMinIconSize)
+        ? (Global.lang.isChinese)
+            ? Size(widget.sizeCalc.shortcutMinIconSize + 4,
+                widget.sizeCalc.shortcutMinIconSize + 4)
+            : Size(widget.sizeCalc.shortcutMinIconSize,
+                widget.sizeCalc.shortcutMinIconSize)
         : Size(widget.sizeCalc.shortcutMaxIconSize,
             widget.sizeCalc.shortcutMaxIconSize);
   }
@@ -401,21 +404,23 @@ class HomeShortcutWidgetState extends State<HomeShortcutWidget> {
                         ? Icon(
                             iconData,
                             color: themeColor.homeBoxIconColor,
+                            size: _iconSize.height,
                           )
                         : Icon(
                             Icons.broken_image,
                             color: themeColor.homeBoxIconColor,
+                            size: _iconSize.height,
                           ),
               ),
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(top: 4.0),
+                padding: const EdgeInsets.only(top: 2.0),
                 alignment: Alignment.center,
                 child: AutoSizeText(
                   replaceLabel ?? page.pageTitle ?? '',
                   style: TextStyle(color: themeColor.homeBoxIconTextColor),
-                  maxLines: 2,
+                  maxLines: (Global.lang.isChinese) ? 1 : 2,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                   minFontSize: FontSize.SMALLER.value,

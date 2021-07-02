@@ -186,7 +186,7 @@ class HomeTabItemState extends State<HomeTabItem> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
-                padding: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.all(3.0),
                 constraints: BoxConstraints.tight(_iconSize),
                 child: _buildImage(),
               ),
@@ -202,8 +202,10 @@ class HomeTabItemState extends State<HomeTabItem> {
                           ? themeColor.homeTabSelectedTextColor
                           : themeColor.defaultTextColor,
                     ),
-                    maxLines: 3,
-                    minFontSize: FontSize.SMALL.value,
+                    maxLines: (Global.lang.isChinese) ? 2 : 3,
+                    minFontSize: (Global.lang.isChinese)
+                        ? FontSize.NORMAL.value
+                        : FontSize.SMALL.value,
                     maxFontSize: FontSize.SUBTITLE.value,
                     overflow: TextOverflow.ellipsis,
                   ),

@@ -39,6 +39,7 @@ class HomeDisplaySizeCalc {
         Global.device.width - Global.device.safeHorizontalPadding;
 
     /// Tab Bar
+    // lock chinese 0.3 & 100; other 0.35 & 120
     _barMaxWidth = (availableWidth * 0.35).floorToDouble();
     _barMinWidth = _barMaxWidth - _barItemInset;
     if (_barMinWidth < 120) {

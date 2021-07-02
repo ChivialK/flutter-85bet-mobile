@@ -25,7 +25,7 @@ class RoutePage extends Vnum<RouteInfo> {
   static const RoutePage login = const RoutePage.define(RouteInfo(
     id: RouteEnum.LOGIN,
     route: Routes.loginRoute,
-    bottomNavIndex: 2,
+    bottomNavIndex: 3,
   ));
 
   static const RoutePage register = const RoutePage.define(RouteInfo(
@@ -58,7 +58,7 @@ class RoutePage extends Vnum<RouteInfo> {
     route: Routes.serviceWebRoute,
     // root: Routes.serviceRoute,
     webPageName: ('/customer_service'),
-    bottomNavIndex: 3,
+    bottomNavIndex: 2,
     hideAppbarActions: false,
     hideLanguageOption: true,
   ));
@@ -67,7 +67,7 @@ class RoutePage extends Vnum<RouteInfo> {
     id: RouteEnum.MEMBER,
     route: Routes.memberRoute,
     webPageName: ('/myaccount'),
-    bottomNavIndex: 2,
+    bottomNavIndex: 3,
     isUserOnly: true,
   ));
 
@@ -75,7 +75,6 @@ class RoutePage extends Vnum<RouteInfo> {
     id: RouteEnum.DEPOSIT,
     route: Routes.depositFeatureRoute,
     webPageName: ('/deposit'),
-    bottomNavIndex: 1,
     isUserOnly: true,
   ));
 

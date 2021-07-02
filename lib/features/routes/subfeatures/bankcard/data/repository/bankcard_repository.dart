@@ -61,7 +61,13 @@ class BankcardRepositoryImpl implements BankcardRepository {
             return Left(Failure.dataType());
           }
         } else {
-          return Right(BankcardModel(hasCard: false));
+          if (data.msg == "bindPhone") {
+            return Right(
+                BankcardModel(hasCard: false, phoneVerification: "error"));
+          } else if (data.msg == "bindCard") {
+            return Right(BankcardModel(hasCard: false, phoneVerification: ""));
+          }
+          return Right(BankcardModel(hasCard: false, phoneVerification: ""));
         }
       },
     );

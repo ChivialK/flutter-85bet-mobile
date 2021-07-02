@@ -437,12 +437,12 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                   key: _amountFieldKey,
                   fieldType: FieldType.Numbers,
                   hint: localeStr.depositPaymentEditTitleAmountHintRange(
-                    _localData.min?.strToInt ?? 1,
-                    _localData.max.strToInt,
+                    _localData.min ?? 1,
+                    _localData.max,
                   ),
                   persistHint: false,
                   padding: const EdgeInsets.symmetric(vertical: 0.0),
-                  maxInputLength: _localData.max.length,
+                  maxInputLength: '${_localData.max}'.length,
                   onInputChanged: (input) {
                     setState(() {
                       int amt = input.strToInt;
@@ -450,8 +450,8 @@ class _PaymentContentLocalState extends State<PaymentContentLocal> {
                       _showAmountError = input.contains('.') ||
                           !rangeCheck(
                             value: (input.isNotEmpty) ? int.parse(input) : 0,
-                            min: _localData.min?.strToInt ?? 1,
-                            max: _localData.max.strToInt,
+                            min: _localData.min ?? 1,
+                            max: _localData.max,
                           );
                     });
                   },

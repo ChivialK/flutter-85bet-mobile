@@ -327,7 +327,7 @@ class HomeRepositoryImpl implements HomeRepository {
     if (!connected) return Left(Failure.network());
 
     final result = await requestData(
-      request: dioApiService.post(
+      request: dioApiService.get(
         HomeApi.GAME_FAVORITE,
         data: {
           'accountid': jwtInterface.accountId,
